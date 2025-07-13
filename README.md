@@ -1,7 +1,7 @@
 # Ingenico
 My personal research about known data about TeliumOS (version 1 and 2) and Ingenico terminals based on it.
 
-### Why?
+## Why?
 Since 2 years this topic has bothered me, I was really keen on exploring this topic more. That's why this repo exists.
 
 ## TeliumOS PoS terminals
