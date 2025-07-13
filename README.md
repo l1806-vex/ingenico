@@ -1,6 +1,9 @@
 # Ingenico
 My personal research about known data about TeliumOS (version 1 and 2) and Ingenico terminals based on it.
 
+### Why?
+Since 2 years this topic has bothered me, I was really keen on exploring this topic more. That's why this repo exists.
+
 ## TeliumOS PoS terminals
 TeliumOS has been developed since 2004 and has been discontinued in 2018, since 2018 Ingenico PoS terminals run Tetra (extended TeliumOS)
 
