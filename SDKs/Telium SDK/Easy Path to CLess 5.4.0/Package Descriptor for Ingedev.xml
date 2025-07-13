@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?packageDescriptor version="1.0"?>
+
+<package name="Easy Path to C'Less" version="5.4.0" type="EASY_PATH" description="Easy Path to C'Less">
+	<documents>
+		<document name="ExpressPay 1.0 to 2.0.1 Application Migration Note.pdf" description="American Express ExpressPay 1.0 to 2.0.1 Application Migration Note" location="Documents" />
+		<document name="ExpressPay.chm" description="American Express ExpressPay 1.0 Reference Guide" location="Documents" />
+		<document name="ExpressPay 2.0.1 and 3.0.chm" description="American Express ExpressPay 2.0.1 and 3.0 Reference Guide" location="Documents" />
+		<document name="ExpressPay 2.0.1 to 3.0 Application migration note.pdf" description="American Express ExpressPay 2.0.1 to 3.0 Application Migration Note" location="Documents" />
+		<document name="Discover.chm" description="Discover Reference Guide" location="Documents" />
+		<document name="Interac.chm" description="Interac Reference Guide" location="Documents" />
+		<document name="PayPass 2.x and 3.x.chm" description="Mastercard PayPass 2.x and 3.x Reference Guide" location="Documents" />
+		<document name="MasterCard PayPass 3.x - Kernel overview and migration help.pdf" description="MasterCard PayPass 3.x - Kernel overview and migration help" location="Documents" />
+		<document name="payWave 2.0.2.chm" description="Visa payWave 2.0.2 Reference Guide" location="Documents" />
+		<document name="payWave 2.1.1.chm" description="Visa payWave 2.1.1 Reference Guide" location="Documents" />
+		<document name="payWave 2.0.2 to 2.1.1 Application Migration Note.pdf" description="Visa payWave 2.0.2 to 2.1.1 Application Migration Note" location="Documents" />
+		<document name="VisaWave.chm" description="Visa Wave 2 Reference Guide" location="Documents" />
+		<document name="SDI.chm" description="Intelligent Reader Interface (SDI) Reference Guide" location="Documents" />
+	</documents>
+	<includeDirectories>
+		<includeDirectory location="SDK/Inc" />
+	</includeDirectories>
+	<toolchains>
+		<toolchain id="gnuArm" librariesLocation="SDK/lib_gnu" />
+		<toolchain id="gnuArm4" librariesLocation="SDK/lib_gnu4" />
+		<toolchain id="armRvds" librariesLocation="SDK/lib_rvd" />
+	</toolchains>
+	<libraries>
+		<library name="ExpressPayInterface" description="American Express ExpressPay Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="DiscoverInterface" description="Discover Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="InteracInterface" description="Interac Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="PayPassInterface" description="Mastercard PayPass Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="payWaveInterface" description="Visa payWave Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="VisaWaveInterface" description="Visa Wave 2 Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="DEL" description="DEL Management Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="SDI" description="Intelligent Reader Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+	</libraries>
+	<defines>
+	</defines>
+	<samples>
+		<sample name="C'Less Custom" description="C'Less Custom Application" location="SDK/Sample" />
+	</samples>
+	<components>
+		<component name="Mastercard PayPass 2.0 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="PayPass 2_0 0101.M10" terminal="M10" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M30" terminal="M30" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M31" terminal="M31" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M34" terminal="M34" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M36" terminal="M36" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M37" terminal="M37" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M38" terminal="M38" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M39" terminal="M39" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M40" terminal="M40" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M43" terminal="M43" description="Mastercard PayPass 2.0 Kernel" />
+				<catalogFile name="PayPass 2_0 0101.M46" terminal="M46" description="Mastercard PayPass 2.0 Kernel" />
+			</catalogFiles>
+		</component>
+		<component name="Mastercard PayPass 2.1 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="PayPass 2_1 0203.M45" terminal="M45" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M10" terminal="M10" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M30" terminal="M30" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M31" terminal="M31" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M34" terminal="M34" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M36" terminal="M36" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M37" terminal="M37" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M38" terminal="M38" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M39" terminal="M39" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M40" terminal="M40" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M41" terminal="M41" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M42" terminal="M42" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M43" terminal="M43" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M44" terminal="M44" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M46" terminal="M46" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M47" terminal="M47" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M48" terminal="M48" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M49" terminal="M49" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M50" terminal="M50" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M51" terminal="M51" description="Mastercard PayPass 2.1 Kernel" />
+				<catalogFile name="PayPass 2_1 0204.M52" terminal="M52" description="Mastercard PayPass 2.1 Kernel" />
+			</catalogFiles>
+		</component>
+		<component name="Mastercard PayPass 3.0.1 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="PayPass 3_0_1 0371.M10" terminal="M10" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M30" terminal="M30" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M31" terminal="M31" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M34" terminal="M34" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M36" terminal="M36" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M37" terminal="M37" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M38" terminal="M38" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M39" terminal="M39" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M40" terminal="M40" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M41" terminal="M41" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M42" terminal="M42" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M43" terminal="M43" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M44" terminal="M44" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M45" terminal="M45" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M46" terminal="M46" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M47" terminal="M47" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M48" terminal="M48" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M49" terminal="M49" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M50" terminal="M50" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M51" terminal="M51" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M52" terminal="M52" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M53" terminal="M53" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M54" terminal="M54" description="Mastercard PayPass 3.0.1 Kernel" />
+				<catalogFile name="PayPass 3_0_1 0371.M55" terminal="M55" description="Mastercard PayPass 3.0.1 Kernel" />
+        <catalogFile name="PayPass 3_0_1 0371.M56" terminal="M56" description="Mastercard PayPass 3.0.1 Kernel" />
+        <catalogFile name="PayPass 3_0_1 0371.M57" terminal="M57" description="Mastercard PayPass 3.0.1 Kernel" />
+      </catalogFiles>
+		</component>
+    <component name="Mastercard PayPass 3.0.1 Kernel Beta" location="Component/Kernels">
+      <catalogFiles>
+        <catalogFile name="PayPass 3_0_1 0373.M10" terminal="M10" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M30" terminal="M30" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M31" terminal="M31" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M34" terminal="M34" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M36" terminal="M36" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M37" terminal="M37" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M38" terminal="M38" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M39" terminal="M39" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M40" terminal="M40" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M41" terminal="M41" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M42" terminal="M42" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M43" terminal="M43" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M44" terminal="M44" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M45" terminal="M45" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M46" terminal="M46" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M47" terminal="M47" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M48" terminal="M48" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M49" terminal="M49" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M50" terminal="M50" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M51" terminal="M51" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M52" terminal="M52" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M53" terminal="M53" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M54" terminal="M54" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M55" terminal="M55" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M56" terminal="M56" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+        <catalogFile name="PayPass 3_0_1 0373.M57" terminal="M57" description="Mastercard PayPass 3.0.1 Kernel Beta" />
+      </catalogFiles>
+    </component>
+    <component name="Visa payWave 2.0.2 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="payWave 2_0_2 0108.M10" terminal="M10" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M30" terminal="M30" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M31" terminal="M31" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M34" terminal="M34" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M36" terminal="M36" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M37" terminal="M37" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M38" terminal="M38" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M39" terminal="M39" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M40" terminal="M40" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M41" terminal="M41" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M43" terminal="M43" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M44" terminal="M44" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M45" terminal="M45" description="Visa payWave 2.0.2 Kernel" />
+				<catalogFile name="payWave 2_0_2 0108.M46" terminal="M46" description="Visa payWave 2.0.2 Kernel" />
+			</catalogFiles>
+		</component>
+		<component name="Visa payWave 2.1.1 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="payWave 2_1_1 0204.M10" terminal="M10" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M30" terminal="M30" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M31" terminal="M31" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M34" terminal="M34" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M36" terminal="M36" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M37" terminal="M37" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M38" terminal="M38" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M39" terminal="M39" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M40" terminal="M40" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M41" terminal="M41" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M42" terminal="M42" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M43" terminal="M43" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M44" terminal="M44" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M45" terminal="M45" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M46" terminal="M46" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M47" terminal="M47" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M48" terminal="M48" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M49" terminal="M49" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M50" terminal="M50" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M51" terminal="M51" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M52" terminal="M52" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M53" terminal="M53" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M54" terminal="M54" description="Visa payWave 2.1.1 Kernel" />
+				<catalogFile name="payWave 2_1_1 0204.M55" terminal="M55" description="Visa payWave 2.1.1 Kernel" />
+        <catalogFile name="payWave 2_1_1 0204.M56" terminal="M56" description="Visa payWave 2.1.1 Kernel" />
+        <catalogFile name="payWave 2_1_1 0204.M57" terminal="M57" description="Visa payWave 2.1.1 Kernel" />
+      </catalogFiles>
+		</component>
+		<component name="Visa VisaWave 2 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="VisaWave 0102 (TeliumPass).M10" terminal="M10" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0102 (TeliumPass).M30" terminal="M30" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0102 (TeliumPass).M31" terminal="M31" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0102 (TeliumPass).M34" terminal="M34" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0102 (TeliumPass).M37" terminal="M37" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0102 (TeliumPass).M38" terminal="M38" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0102 (TeliumPass).M40" terminal="M40" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0103.M39" terminal="M39" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0103.M40" terminal="M40" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0103.M46" terminal="M46" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M10" terminal="M10" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M30" terminal="M30" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M31" terminal="M31" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M34" terminal="M34" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M36" terminal="M36" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M37" terminal="M37" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M38" terminal="M38" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M40" terminal="M40" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M41" terminal="M41" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M42" terminal="M42" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M43" terminal="M43" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M44" terminal="M44" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M45" terminal="M45" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M47" terminal="M47" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M48" terminal="M48" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M49" terminal="M49" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M50" terminal="M50" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M51" terminal="M51" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M52" terminal="M52" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M53" terminal="M53" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M54" terminal="M54" description="Visa VisaWave 2 Kernel" />
+				<catalogFile name="VisaWave 0104.M55" terminal="M55" description="Visa VisaWave 2 Kernel" />
+        <catalogFile name="VisaWave 0104.M56" terminal="M56" description="Visa VisaWave 2 Kernel" />
+        <catalogFile name="VisaWave 0104.M57" terminal="M57" description="Visa VisaWave 2 Kernel" />
+      </catalogFiles>
+		</component>
+		<component name="American Express ExpressPay 1.0 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="ExpressPay 1 0101.M36" terminal="M36" description="American Express ExpressPay 1.0 Kernel" />
+				<catalogFile name="ExpressPay 1 0101.M38" terminal="M38" description="American Express ExpressPay 1.0 Kernel" />
+			</catalogFiles>
+		</component>
+		<component name="American Express ExpressPay 2.0.1a Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="ExpressPay 2 0211.M10" terminal="M10" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M30" terminal="M30" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M31" terminal="M31" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M34" terminal="M34" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M36" terminal="M36" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M37" terminal="M37" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M38" terminal="M38" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M39" terminal="M39" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M40" terminal="M40" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M42" terminal="M42" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M43" terminal="M43" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M44" terminal="M44" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M45" terminal="M45" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M46" terminal="M46" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M47" terminal="M47" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0211.M48" terminal="M48" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0215.M49" terminal="M49" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0215.M50" terminal="M50" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0215.M51" terminal="M51" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0215.M52" terminal="M52" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0215.M53" terminal="M53" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0215.M54" terminal="M54" description="American Express ExpressPay 2.0.1 Kernel" />
+				<catalogFile name="ExpressPay 2 0215.M55" terminal="M55" description="American Express ExpressPay 2.0.1 Kernel" />
+        <catalogFile name="ExpressPay 2 0215.M56" terminal="M56" description="American Express ExpressPay 2.0.1 Kernel" />
+        <catalogFile name="ExpressPay 2 0215.M57" terminal="M57" description="American Express ExpressPay 2.0.1 Kernel" />
+      </catalogFiles>
+		</component>
+		<component name="American Express ExpressPay 3.0 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="ExpressPay 3_0 0308.M10" terminal="M10" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M40" terminal="M40" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M41" terminal="M41" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M42" terminal="M42" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M43" terminal="M43" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M44" terminal="M44" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M45" terminal="M45" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0306.M46" terminal="M46" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M47" terminal="M47" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M48" terminal="M48" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M49" terminal="M49" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M50" terminal="M50" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M51" terminal="M51" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M52" terminal="M52" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M53" terminal="M53" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M54" terminal="M54" description="American Express ExpressPay 3.0 Kernel" />
+				<catalogFile name="ExpressPay 3_0 0308.M55" terminal="M55" description="American Express ExpressPay 3.0 Kernel" />
+        <catalogFile name="ExpressPay 3_0 0308.M56" terminal="M56" description="American Express ExpressPay 3.0 Kernel" />
+        <catalogFile name="ExpressPay 3_0 0308.M57" terminal="M57" description="American Express ExpressPay 3.0 Kernel" />
+      </catalogFiles>
+		</component>
+		<component name="Discover Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="Discover 0101.M10" terminal="M10" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M30" terminal="M30" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M31" terminal="M31" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M34" terminal="M34" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M36" terminal="M36" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M37" terminal="M37" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M38" terminal="M38" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M39" terminal="M39" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M40" terminal="M40" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M41" terminal="M41" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M42" terminal="M42" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M43" terminal="M43" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M44" terminal="M44" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M45" terminal="M45" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M46" terminal="M46" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M47" terminal="M47" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M48" terminal="M48" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M49" terminal="M49" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M50" terminal="M50" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M51" terminal="M51" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M52" terminal="M52" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M53" terminal="M53" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M54" terminal="M54" description="Discover Kernel" />
+				<catalogFile name="Discover 0101.M55" terminal="M55" description="Discover Kernel" />
+        <catalogFile name="Discover 0101.M56" terminal="M56" description="Discover Kernel" />
+        <catalogFile name="Discover 0101.M57" terminal="M57" description="Discover Kernel" />
+      </catalogFiles>
+		</component>
+		<component name="Interac 1.2 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="Interac 0101.M30" terminal="M30" description="Interac 1.2 Kernel" />
+				<catalogFile name="Interac 0101.M31" terminal="M31" description="Interac 1.2 Kernel" />
+				<catalogFile name="Interac 0101.M36" terminal="M36" description="Interac 1.2 Kernel" />
+				<catalogFile name="Interac 0101.M40" terminal="M40" description="Interac 1.2 Kernel" />
+				<catalogFile name="Interac 0101.M42" terminal="M42" description="Interac 1.2 Kernel" />
+				<catalogFile name="Interac 0101.M43" terminal="M43" description="Interac 1.2 Kernel" />
+				<catalogFile name="Interac 0101.M44" terminal="M44" description="Interac 1.2 Kernel" />
+				<catalogFile name="Interac 0101.M45" terminal="M45" description="Interac 1.2 Kernel" />
+				<catalogFile name="Interac 0101.M46" terminal="M46" description="Interac 1.2 Kernel" />
+			</catalogFiles>
+		</component>
+		<component name="Interac 1.4 Kernel" location="Component/Kernels">
+			<catalogFiles>
+				<catalogFile name="Interac 0103.M10" terminal="M10" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M30" terminal="M30" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M31" terminal="M31" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M34" terminal="M34" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M36" terminal="M36" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M37" terminal="M37" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M38" terminal="M38" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M39" terminal="M39" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M40" terminal="M40" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M41" terminal="M41" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M42" terminal="M42" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M43" terminal="M43" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M44" terminal="M44" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M45" terminal="M45" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M46" terminal="M46" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M47" terminal="M47" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M48" terminal="M48" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M49" terminal="M49" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M50" terminal="M50" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M51" terminal="M51" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M52" terminal="M52" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M53" terminal="M53" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M54" terminal="M54" description="Interac 1.4 Kernel" />
+				<catalogFile name="Interac 0103.M55" terminal="M55" description="Interac 1.4 Kernel" />
+        <catalogFile name="Interac 0103.M56" terminal="M56" description="Interac 1.4 Kernel" />
+        <catalogFile name="Interac 0103.M57" terminal="M57" description="Interac 1.4 Kernel" />
+      </catalogFiles>
+		</component>
+    <component name="PPSE Application Selection" location="Component/PPSE Application Selection">
+      <catalogFiles>
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M10" terminal="M10" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M30" terminal="M30" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M31" terminal="M31" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M34" terminal="M34" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M36" terminal="M36" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M37" terminal="M37" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M38" terminal="M38" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M39" terminal="M39" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M40" terminal="M40" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M41" terminal="M41" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M42" terminal="M42" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M43" terminal="M43" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M44" terminal="M44" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M45" terminal="M45" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M46" terminal="M46" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M47" terminal="M47" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M48" terminal="M48" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M49" terminal="M49" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M50" terminal="M50" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M51" terminal="M51" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M52" terminal="M52" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M53" terminal="M53" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M54" terminal="M54" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M55" terminal="M55" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M56" terminal="M56" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0371.M57" terminal="M57" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M10" terminal="M10" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M30" terminal="M30" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M31" terminal="M31" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M34" terminal="M34" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M36" terminal="M36" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M37" terminal="M37" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M38" terminal="M38" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M39" terminal="M39" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M40" terminal="M40" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M41" terminal="M41" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M42" terminal="M42" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M43" terminal="M43" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M44" terminal="M44" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M45" terminal="M45" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M46" terminal="M46" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M47" terminal="M47" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M48" terminal="M48" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M49" terminal="M49" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M50" terminal="M50" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M51" terminal="M51" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M52" terminal="M52" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M53" terminal="M53" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M54" terminal="M54" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M55" terminal="M55" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M56" terminal="M56" description="PPSE Application Selection" />
+        <catalogFile name="PPSE Application Selection For PayPass 0373.M57" terminal="M57" description="PPSE Application Selection" />
+      </catalogFiles>
+    </component>
+
+
+
+
+    <component name="Intelligent Reader Components" location="Component/Intelligent Reader">
+			<catalogFiles>
+				<catalogFile name="Reader Components.M34" terminal="M34" description="Intelligent Reader Components" />
+				<catalogFile name="Reader Components.M47" terminal="M47" description="Intelligent Reader Components" />
+				<catalogFile name="Reader Components.M50" terminal="M50" description="Intelligent Reader Components" />
+			</catalogFiles>
+		</component>
+		<component name="Intelligent Reader Application" location="Component/Intelligent Reader">
+			<catalogFiles>
+				<catalogFile name="Reader Application.M34" terminal="M34" description="Intelligent Reader Application" />
+				<catalogFile name="Reader Application.M47" terminal="M47" description="Intelligent Reader Application" />
+				<catalogFile name="Reader Application.M50" terminal="M50" description="Intelligent Reader Application" />
+			</catalogFiles>
+		</component>
+		<component name="Host Protocol for Intelligent Reader" location="Component/Intelligent Reader">
+			<catalogFiles>
+				<catalogFile name="Host Protocol.M10" terminal="M10" description="Host Protocol for Intelligent Reader" />
+				<catalogFile name="Host Protocol.M30" terminal="M30" description="Host Protocol for Intelligent Reader" />
+				<catalogFile name="Host Protocol.M31" terminal="M31" description="Host Protocol for Intelligent Reader" />
+				<catalogFile name="Host Protocol.M34" terminal="M34" description="Host Protocol for Intelligent Reader" />
+				<catalogFile name="Host Protocol.M37" terminal="M37" description="Host Protocol for Intelligent Reader" />
+				<catalogFile name="Host Protocol.M38" terminal="M38" description="Host Protocol for Intelligent Reader" />
+				<catalogFile name="Host Protocol.M40" terminal="M40" description="Host Protocol for Intelligent Reader" />
+			</catalogFiles>
+		</component>
+		<component name="C'Less Custom Application with ExpressPay 3.0 - payWave 2.1.1" location="Component/Custom with ExpressPay 3.0 - payWave 2.1.1">
+			<catalogFiles>
+				<catalogFile name="DEMO.M10" terminal="M10" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M30" terminal="M30" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M31" terminal="M31" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M36" terminal="M36" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M37" terminal="M37" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M39" terminal="M39" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M40" terminal="M40" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M41" terminal="M41" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M42" terminal="M42" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M43" terminal="M43" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M44" terminal="M44" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M45" terminal="M45" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M46" terminal="M46" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M48" terminal="M48" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M50" terminal="M50" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M51" terminal="M51" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M52" terminal="M52" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M53" terminal="M53" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M54" terminal="M54" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M55" terminal="M55" description="C'Less Custom Demo Application" />
+        <catalogFile name="DEMO.M56" terminal="M56" description="C'Less Custom Demo Application" />
+        <catalogFile name="DEMO.M57" terminal="M57" description="C'Less Custom Demo Application" />
+        <catalogFile name="DEBUG.M10" terminal="M10" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M30" terminal="M30" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M31" terminal="M31" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M36" terminal="M36" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M37" terminal="M37" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M39" terminal="M39" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M40" terminal="M40" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M41" terminal="M41" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M42" terminal="M42" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M43" terminal="M43" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M44" terminal="M44" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M45" terminal="M45" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M46" terminal="M46" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M48" terminal="M48" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M50" terminal="M50" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M51" terminal="M51" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M52" terminal="M52" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M53" terminal="M53" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M54" terminal="M54" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M55" terminal="M55" description="C'Less Custom Debug Application" />
+        <catalogFile name="DEBUG.M56" terminal="M56" description="C'Less Custom Debug Application" />
+        <catalogFile name="DEBUG.M57" terminal="M57" description="C'Less Custom Debug Application" />
+      </catalogFiles>
+		</component>
+		<component name="C'Less Custom Application with PayPass 3.0.1" location="Component/Custom with PayPass 3.0.1">
+			<catalogFiles>
+				<catalogFile name="DEMO.M10" terminal="M10" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M30" terminal="M30" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M31" terminal="M31" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M34" terminal="M34" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M36" terminal="M36" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M37" terminal="M37" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M38" terminal="M38" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M39" terminal="M39" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M40" terminal="M40" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M41" terminal="M41" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M42" terminal="M42" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M43" terminal="M43" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M44" terminal="M44" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M45" terminal="M45" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M46" terminal="M46" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M48" terminal="M48" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M49" terminal="M49" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M50" terminal="M50" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M51" terminal="M51" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M52" terminal="M52" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M53" terminal="M53" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M54" terminal="M54" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M55" terminal="M55" description="C'Less Custom Demo Application" />
+        <catalogFile name="DEMO.M56" terminal="M56" description="C'Less Custom Demo Application" />
+        <catalogFile name="DEMO.M57" terminal="M57" description="C'Less Custom Demo Application" />
+        <catalogFile name="DEBUG.M10" terminal="M10" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M30" terminal="M30" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M31" terminal="M31" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M34" terminal="M34" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M36" terminal="M36" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M37" terminal="M37" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M38" terminal="M38" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M39" terminal="M39" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M40" terminal="M40" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M41" terminal="M41" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M42" terminal="M42" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M43" terminal="M43" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M44" terminal="M44" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M45" terminal="M45" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M46" terminal="M46" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M48" terminal="M48" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M49" terminal="M49" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M50" terminal="M50" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M51" terminal="M51" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M52" terminal="M52" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M53" terminal="M53" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M54" terminal="M54" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M55" terminal="M55" description="C'Less Custom Debug Application" />
+        <catalogFile name="DEBUG.M56" terminal="M56" description="C'Less Custom Debug Application" />
+        <catalogFile name="DEBUG.M57" terminal="M57" description="C'Less Custom Debug Application" />
+      </catalogFiles>
+		</component>
+		<component name="C'Less Custom for Intelligent Reader" location="Component/Custom for Intelligent Reader">
+			<catalogFiles>
+				<catalogFile name="DEMO.M10" terminal="M10" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M30" terminal="M30" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M31" terminal="M31" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M37" terminal="M37" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEMO.M40" terminal="M40" description="C'Less Custom Demo Application" />
+				<catalogFile name="DEBUG.M10" terminal="M10" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M30" terminal="M30" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M31" terminal="M31" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M37" terminal="M37" description="C'Less Custom Debug Application" />
+				<catalogFile name="DEBUG.M40" terminal="M40" description="C'Less Custom Debug Application" />
+			</catalogFiles>
+		</component>
+	</components>
+</package>

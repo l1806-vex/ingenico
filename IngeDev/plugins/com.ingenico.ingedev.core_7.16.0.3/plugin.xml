@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <extension
+         id="ingedevNature"
+         name="Ingedev Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ingenico.ingedev.core.U32ProjectNature"/>
+      </runtime>
+      <builder id="com.ingenico.ingedev.core.ingedevBuilder"/>
+      <!-- TGOTODO Ingedev nature requires C and C++ nature, but it does not seem to work... -->
+      <!--requires-nature id="org.eclipse.cdt.core.CProjectNature"/-->
+      <!--requires-nature id="org.eclipse.cdt.core.CCProjectNature"/-->
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="com.ingenico.ingedev.internal.core.CoreInitializer"/>
+   </extension>
+   <extension
+         id="ingedevBuilder"
+         name="U32 Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            callOnEmptyDelta="true"
+            hasNature="true">
+         <run class="com.ingenico.ingedev.internal.core.make.U32MakeBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="U32ScannerInfoProvider"
+         point="org.eclipse.cdt.core.ScannerInfoProvider">
+      <cextension>
+         <run
+               class="com.ingenico.ingedev.core.U32ScannerInfoProvider">
+         </run>
+      </cextension>
+   </extension>
+   <extension
+         point="org.eclipse.team.core.fileTypes">
+      <fileTypes
+            extension="mk"
+            type="text"/>
+      <fileTypes
+            extension="tlv"
+            type="text"/>
+      <fileTypes
+            extension="vbs"
+            type="text"/>
+      <fileTypes
+            extension="def"
+            type="text"/>
+      <fileTypes
+            extension="ingProject"
+            type="text"/>
+      <fileTypes
+            extension="bat"
+            type="text"/>
+   </extension>
+   <extension
+         id="IngesignErrorParser"
+         name="Ingesign error parser"
+         point="org.eclipse.cdt.core.ErrorParser">
+      <errorparser
+            class="com.ingenico.ingedev.internal.core.errorparsers.IngesignErrorParser">
+      </errorparser>
+   </extension>
+   <extension
+         id="ResourceCompilerErrorParser"
+         name="Resource compiler error parser"
+         point="org.eclipse.cdt.core.ErrorParser">
+      <errorparser
+            class="com.ingenico.ingedev.internal.core.errorparsers.ResourceCompilerErrorParser">
+      </errorparser>
+   </extension>
+   <extension
+         id="CheckU32BinFileErrorParser"
+         name="CheckU32BinFile error parser"
+         point="org.eclipse.cdt.core.ErrorParser">
+      <errorparser
+            class="com.ingenico.ingedev.internal.core.errorparsers.CheckU32BinFileErrorParser">
+      </errorparser>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <file-association
+            content-type="org.eclipse.core.runtime.xml"
+            file-names=".ingProject">
+      </file-association>
+   </extension>
+   <extension point="com.ingenico.ingedev.help.helpContribution">
+       <helpFiles
+             categoryID="com.ingenico.ingedev.u32Help"
+             chapter="Unicapt 32"
+             class="com.ingenico.ingedev.core.U32HelpFileProvider"
+             contributorID="U32CorePlugin"
+             external_docs_chapter="Additional (non indexed) documents"
+             id="com.ingenico.ingedev.core.helpFiles2"
+             root_chapter="UNICAPT 32 Reference Guide">
+       </helpFiles>
+    </extension>
+</plugin>

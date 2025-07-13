@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Generated-from: 1231340654000;type=2
+Bundle-ManifestVersion: 2
+Bundle-Name: CVS SSPI Plug-in
+Bundle-SymbolicName: net.amduat.eclipse.team.cvs.sspi; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: sspi.jar
+Bundle-Activator: org.eclipse.core.internal.compatibility.PluginActivator
+Bundle-Vendor: amduat.net
+Bundle-Localization: plugin
+Export-Package: net.amduat.eclipse.team.cvs.sspi
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime.compatibility,
+ org.eclipse.team.cvs.core,
+ org.eclipse.team.core
+Eclipse-LazyStart: true
+Plugin-Class: net.amduat.eclipse.team.cvs.sspi.SSPIPlugin

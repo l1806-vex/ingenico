@@ -1,0 +1,44 @@
+;System pack prod for EFT930 Directory included
+;System R+ Dir
+8203021262.ddf
+8203021262.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver VFS
+30210330.ddf
+30210330.sgn
+;Booster Full EMV2000 + MockUp
+30938521.ddf
+30938521.sgn
+;Pack System
+37772400.pdf
+37772400.sgn
+;Driver Modem 930
+40150322.ddf
+40150322.sgn
+;LDBG Remote Debugger
+8133080140.ddf
+8133080140.sgn
+;DLL WIFI
+8136650300.ldf
+8136650300.sgn
+;Driver GPRS
+8200120212.ddf
+8200120212.sgn
+;Driver UMS
+8200210320.ddf
+8200210320.sgn
+;Driver HID
+8200220124.ddf
+8200220124.sgn
+;Driver USB CDC
+8200320620.ddf
+8200320620.sgn
+;Driver CLESS
+8200490235.ddf
+8200490235.sgn
+;Driver WIFI
+8200540212.ddf
+8200540212.sgn
+

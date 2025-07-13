@@ -1,0 +1,10 @@
+<Parameters>
+    <Apn>internet</Apn>
+    <Login>Username</Login>
+    <Password>Password</Password>
+    <Address>www.free.fr</Address>
+    <Port>80</Port>
+    <Phone>PROFILE_00</Phone>
+    <Baud>4</Baud>
+    <RLP>1</RLP>
+</Parameters>

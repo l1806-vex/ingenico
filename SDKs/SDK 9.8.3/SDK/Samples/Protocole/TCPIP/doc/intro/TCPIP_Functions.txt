@@ -1,0 +1,43 @@
+ /** \page Functions Main Functions
+
+* The following are the main functionalities of the TCP/IP Sample Application: 
+*
+* - <b>Network Info</b> (\ref DFU_ComNetInfoDisplay )
+* - <b>HTTP Server</b> ( \ref DFU_ComServerStart )
+* - <b>HTTP Client</b> ( \ref DFU_ComClientConnect )
+*
+* \section tcpsecf1 Network Info
+*
+* Displays the Ethernet parameters of the terminal. The terminal's IP address will be displayed followed by the subnet mask.
+* 
+* \b Note: On products that have an Ethernet interface through a Bluetooth base ( EFT930, iWL2XX) it returns the local Ethernet interface's parameters and not the ones from the base's interface.
+* 
+* \section tcpsecf2 HTTP Server
+* 
+* Selecting this item from the menu will start a socket server.
+* 
+* Function Tasks:
+* - Create a listening socket  ( \ref _DFU_ComStart ) 
+* - Bind/assign a name to a socket  ( \ref _DFU_ComSetServer )
+* - Listens to incoming connections. Up to eight (8) simultaneous connections can be handled by the server. 
+* - Accept Incoming connection
+* - Receives messages from the socket (from the client socket)
+* - Transmit messages to another socket (to the client socket)
+* - Close the socket connection
+* 
+* \section tcpsecf3 HTTP Client
+* 
+* Selecting this item from the menu will start a socket client.
+* 
+* Function Tasks:
+* - Create a socket to be used to connect to a server. ( \ref _DFU_ComStart )
+* - Set the address and port of the server to connect to ( \ref _DFU_ComSetClient )
+* - Connect to a socket server ( \ref _DFU_ComConnect )
+* - Transmit an HTTP request message to the server
+* - Waits and receives a response message from the server
+* - Close the socket connection
+
+
+
+
+  */

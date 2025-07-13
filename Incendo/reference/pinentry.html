@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><title>IncendoOnline: TML Reference: &lt;pinentry&gt; element </title>
+<link rel="stylesheet" type="text/css" href="tmlref.css" />
+</head><body> 
+<div class="logo"><span class="logo_in">in</span><span class="logo_cendo">cendo</span><span class="logo_online" >online</span> : TML Reference</div>
+<div class="navigation"><a class="element" href="a.html">&lt;a&gt;</a><br/><a class="element" href="arg.html">&lt;arg&gt;</a><br/><a class="element" href="baddata.html">&lt;baddata&gt;</a><br/><a class="element" href="base.html">&lt;base&gt;</a><br/><a class="element" href="br.html">&lt;br&gt;</a><br/><a class="element" href="call.html">&lt;call&gt;</a><br/><a class="element" href="call_func.html">&lt;call_func&gt;</a><br/><a class="element" href="card.html">&lt;card&gt;</a><br/><a class="element" href="col.html">&lt;col&gt;</a><br/><a class="element" href="colgroup.html">&lt;colgroup&gt;</a><br/><a class="element" href="condition.html">&lt;condition&gt;</a><br/><a class="element" href="dd.html">&lt;dd&gt;</a><br/><a class="element" href="defaults.html">&lt;defaults&gt;</a><br/><a class="element" href="display.html">&lt;display&gt;</a><br/><a class="element" href="div.html">&lt;div&gt;</a><br/><a class="element" href="dl.html">&lt;dl&gt;</a><br/><a class="element" href="dt.html">&lt;dt&gt;</a><br/><a class="element" href="dynamic.html">&lt;dynamic&gt;</a><br/><a class="element" href="econn.html">&lt;econn&gt;</a><br/><a class="element" href="error.html">&lt;error&gt;</a><br/><a class="element" href="form.html">&lt;form&gt;</a><br/><a class="element" href="getvar.html">&lt;getvar&gt;</a><br/><a class="element" href="h1.html">&lt;h1&gt;</a><br/><a class="element" href="h2.html">&lt;h2&gt;</a><br/><a class="element" href="h3.html">&lt;h3&gt;</a><br/><a class="element" href="head.html">&lt;head&gt;</a><br/><a class="element" href="hr.html">&lt;hr&gt;</a><br/><a class="element" href="img.html">&lt;img&gt;</a><br/><a class="element" href="input.html">&lt;input&gt;</a><br/><a class="element" href="interface.html">&lt;interface&gt;</a><br/><a class="element" href="layout.html">&lt;layout&gt;</a><br/><a class="element" href="li.html">&lt;li&gt;</a><br/><a class="element" href="link.html">&lt;link&gt;</a><br/><a class="element" href="log.html">&lt;log&gt;</a><br/><a class="element" href="logdcl.html">&lt;logdcl&gt;</a><br/><a class="element" href="logrec.html">&lt;logrec&gt;</a><br/><a class="element" href="next.html">&lt;next&gt;</a><br/><a class="element" href="ol.html">&lt;ol&gt;</a><br/><a class="element" href="p.html">&lt;p&gt;</a><br/><a class="element" href="param.html">&lt;param&gt;</a><br/><a class="element" href="pinentry.html">&lt;pinentry&gt;</a><br/><a class="element" href="pre.html">&lt;pre&gt;</a><br/><a class="element" href="print.html">&lt;print&gt;</a><br/><a class="element" href="prompt.html">&lt;prompt&gt;</a><br/><a class="element" href="reconciliation.html">&lt;reconciliation&gt;</a><br/><a class="element" href="retval.html">&lt;retval&gt;</a><br/><a class="element" href="screen.html">&lt;screen&gt;</a><br/><a class="element" href="setvar.html">&lt;setvar&gt;</a><br/><a class="element" href="span.html">&lt;span&gt;</a><br/><a class="element" href="strtemplate.html">&lt;strtemplate&gt;</a><br/><a class="element" href="submit.html">&lt;submit&gt;</a><br/><a class="element" href="submit_log.html">&lt;submit_log&gt;</a><br/><a class="element" href="table.html">&lt;table&gt;</a><br/><a class="element" href="tbody.html">&lt;tbody&gt;</a><br/><a class="element" href="td.html">&lt;td&gt;</a><br/><a class="element" href="textarea.html">&lt;textarea&gt;</a><br/><a class="element" href="tfoot.html">&lt;tfoot&gt;</a><br/><a class="element" href="tform.html">&lt;tform&gt;</a><br/><a class="element" href="th.html">&lt;th&gt;</a><br/><a class="element" href="thead.html">&lt;thead&gt;</a><br/><a class="element" href="tml.html">&lt;tml&gt;</a><br/><a class="element" href="tr.html">&lt;tr&gt;</a><br/><a class="element" href="txnconfirm.html">&lt;txnconfirm&gt;</a><br/><a class="element" href="txnnew.html">&lt;txnnew&gt;</a><br/><a class="element" href="txnsubmit.html">&lt;txnsubmit&gt;</a><br/><a class="element" href="ul.html">&lt;ul&gt;</a><br/><a class="element" href="vardcl.html">&lt;vardcl&gt;</a><br/><a class="element" href="variant.html">&lt;variant&gt;</a><br/></div><div class="content">
+<h1>&lt;pinentry&gt; element</h1> 
+<span class="annotation"><p>
+Used within the <a class="element" href="tform.html">&lt;tform&gt;</a> for the card PIN entry. The application switches to the secure mode and
+uses the security features of the terminal to accept user input and encrypt it according to the
+specified encryption algorithm. This ensures that the pin is never stored in an unencrypted form,
+and therefore can not be compromised.</p>
+<p>The encryption algorithm is set by the <span class="highlight">type</span> attribute.</p>
+<p>For most encryption types:
+<ol>
+<li class="num_list1"><span class="highlight">card.pan</span> variable should be filled with the card PAN number. You can do this by reading it
+from the card or setting the PAN number manually.</li>
+<li class="num_list1"><span class="highlight">card.pin.array</span> variable may be set to the DUKPT array you wish to use. You can leave it set
+to the default value of <span class="highlight">0</span>.</li>
+<li class="num_list1">use the <a class="element" href="pinentry.html">&lt;pinentry&gt;</a> element with the appropriate encryption type. After the PIN is entered, it
+will be processed by the secure hardware of the terminal.</li></ol></p>
+<p>
+This will set the following variables:
+<ul>
+<li class="list1"><span class="highlight">card.pin</span> - encrypted PIN</li>
+<li class="list1"><span class="highlight">card.pin.smid</span> -  key serial number</li>
+<li class="list1"><span class="highlight">card.pin.length</span> - the number of characters in the entered PIN</li></ul></p>
+<p>
+You will usually need to submit the <span class="highlight">card.pin</span> and <span class="highlight">card.pin.smid</span> variables to the acquirer for
+verification.</p>
+<p>The <span class="highlight">icc</span> encryption type is different:
+<ol>
+<li class="num_list1">During an ICC EMV transaction, cardholder verification methods are requested from the card
+using the <a class="element" href="card.html">&lt;card&gt;</a> element - the <span class="highlight">get_cvm</span> command of the <span class="highlight">icc_emv</span> parser. If after the parser
+call the <span class="highlight">card.parser.cvm</span> variable is set to <span class="highlight">"pin"</span>, this indicates that an offline PIN
+verification is required.</li>
+<li class="num_list1">To perform the PIN entry, use the <a class="element" href="pinenetry.html">&lt;pinenetry&gt;</a> element with the <span class="highlight">type</span> attribute set to
+<span class="highlight">"icc"</span>. The terminal will interact with the ICC to securely input the PIN data.</li>
+<li class="num_list1">To verify the PIN, use the <span class="highlight">verify</span> command of the <span class="highlight">icc_emv</span> parser (see <a class="element" href="card.html">&lt;card&gt;</a> element
+description). It will set the <span class="highlight">card.parser.cvr</span> variable.</li>
+<li class="num_list1">If the value of the <span class="highlight">card.parser.cvr</span> is set to <span class="highlight">"failed"</span> it means that an incorrect PIN has
+been entered, but the maximum number of tries has not yet been exceeded. You should perform the
+<a class="element" href="pinentry.html">&lt;pinentry&gt;</a> command again until the <span class="highlight">card.parser.cvr</span> is set to <span class="highlight">"ok"</span> or <span class="highlight">"ok_msg"</span> - correct PIN -
+or <span class="highlight">"pin_tries"</span> - maximum number of tries exceeded.</li></ol></p>
+<p>
+For more information of the ICC EMV program flow see the ICC EMV tutorial or BTMLPA application
+example.<br/>
+</p>
+</span> 
+<h2>Parent elements:</h2><a class="element" href="tform.html">tform</a> <br/><h2> Attributes </h2>
+<table><tr><th>Name</th><th>Type</th><th>Description</th></tr><tr><td>prompt</td><td><span class="type">xs:string</span><br/></td><td><p>
+The text message that should be displayed by the terminal during the PIN entry process. For
+example, <span class="highlight">"Enter PIN"</span>
+</p>
+</td></tr> 
+<tr><td>length</td><td><span class="type">Number</span><br/></td><td><p>
+The number of digits the PIN should contain (minimum should be <span class="highlight">4</span>).</p>
+<p>One or more digits.</p>
+<p>The value should conform to the following regex:
+<span class="highlight">[0-9]+</span> .</p>
+<p>Default value is <span class="highlight">4</span> .</p>
+</td></tr> 
+<tr><td>type</td><td><span class="type">xs:token</span><br/></td><td><p>
+PIN encryption algorithm.<br/>
+The value should be one of the following:
+<ul>
+<li class="list1"><span class="highlight">icc</span> - Offline ICC PIN verification.</li>
+<li class="list1"><span class="highlight">3des</span></li>
+<li class="list1"><span class="highlight">dukpt</span></li>
+<li class="list1"><span class="highlight">dukpt3des</span></li>
+<li class="list1"><span class="highlight">dukptlight</span></li>
+<li class="list1"><span class="highlight">dukptl3des</span></li></ul>
+</p>
+</td></tr> 
+<tr><td>id</td><td><span class="type">xs:ID</span><br/></td><td><p>
+Document-wide unique id. In practice only used for <a class="element" href="screen.html">&lt;screen&gt;</a> elements. Maximum length of
+a screen ID is 32 characters.<br/>
+</p>
+</td></tr> 
+<tr><td>class</td><td><span class="type">xs:NMTOKENS</span><br/></td><td><p>
+Space separated list of classes. Used for CSS formatting.<br/>
+</p>
+</td></tr> 
+</table><h2>Child elements:</h2>((<a class="element" href="p.html">p</a> | (<a class="element" href="h1.html">h1</a> | <a class="element" href="h2.html">h2</a> | <a class="element" href="h3.html">h3</a>) | <a class="element" href="div.html">div</a> | (<a class="element" href="ul.html">ul</a> | <a class="element" href="ol.html">ol</a> | <a class="element" href="dl.html">dl</a>) | (<a class="element" href="pre.html">pre</a> | <a class="element" href="hr.html">hr</a>) | <a class="element" href="table.html">table</a> | <a class="element" href="log.html">log</a>) | <a class="element" href="form.html">form</a> | (<a class="element" href="a.html">a</a> | (<a class="element" href="br.html">br</a> | <a class="element" href="span.html">span</a> | <a class="element" href="getvar.html">getvar</a> | <a class="element" href="img.html">img</a> | <a class="element" href="dynamic.html">dynamic</a>) | (<a class="element" href="input.html">input</a> | <a class="element" href="textarea.html">textarea</a>)))*</div></body></html>

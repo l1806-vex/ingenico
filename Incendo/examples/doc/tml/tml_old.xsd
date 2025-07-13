@@ -1,0 +1,1885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" xml:lang="en"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.ingenico.co.uk/tml"
+    xmlns="http://www.ingenico.co.uk/tml"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    elementFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation>
+    TML XML Schema based on
+        XHTML 1.0 (Second Edition) Strict XML Schema
+
+    COPYRIGHT (C) 2004-2005 Ingenico UK
+    ALL RIGHTS RESERVED
+
+    $Id: tml.xsd,v 1.43 2009/06/25 15:08:13 divanov Exp $
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== Imported Names ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="ContentType">
+    <xs:annotation>
+      <xs:documentation>
+      media type, as per [RFC2045]
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Charset">
+    <xs:annotation>
+      <xs:documentation>
+      a character encoding, as per [RFC2045]
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Character">
+    <xs:annotation>
+      <xs:documentation>
+      a single character, as per section 2.2 of [XML]
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" fixed="true"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Number">
+    <xs:annotation>
+      <xs:documentation>
+      one or more digits
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:pattern value="[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PositiveNumber">
+    <xs:annotation>
+      <xs:documentation>
+      positive number
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:positiveInteger">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LinkTypes">
+    <xs:annotation>
+      <xs:documentation>
+      space-separated list of link types
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="URI">
+    <xs:annotation>
+      <xs:documentation>
+      a Uniform Resource Identifier, see [RFC2396]
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:anyURI"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Datetime">
+    <xs:annotation>
+      <xs:documentation>
+      date and time information. ISO date format
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Text">
+    <xs:annotation>
+      <xs:documentation>
+      used for titles etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Length">
+    <xs:annotation>
+      <xs:documentation>
+      nn for pixels or nn% for percentage length
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\-+]?(\d+|\d+(\.\d+)?%)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MultiLength">
+    <xs:annotation>
+      <xs:documentation>
+      pixel, percentage, or relative
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\-+]?(\d+|\d+(\.\d+)?%)|[1-9]?(\d+)?\*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Pixels">
+    <xs:annotation>
+      <xs:documentation>
+      integer representing length in pixels
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Generic Attributes ===============================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:attributeGroup name="coreattrs">
+    <xs:annotation>
+      <xs:documentation>
+      core attributes common to most elements
+      id       document-wide unique id
+      class    space separated list of classes
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attribute name="class" type="xs:NMTOKENS"/>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="attrs">
+    <xs:attributeGroup ref="coreattrs"/>
+  </xs:attributeGroup>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Text Elements ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:group name="inline.forms">
+    <xs:choice>
+      <xs:element ref="input"/>
+      <xs:element ref="textarea"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="special">
+    <xs:choice>
+      <xs:element ref="br"/>
+      <xs:element ref="span"/>
+      <xs:element ref="getvar"/>
+      <xs:element ref="img"/>
+      <xs:element ref="dynamic"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="inline">
+    <xs:annotation>
+      <xs:documentation>
+      elements of inline.forms may appear only inside the form element
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="a"/>
+      <xs:group ref="special"/>
+      <xs:group ref="inline.forms"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="Inline" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+      "Inline" covers inline or "text-level" elements
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="inline"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== Block level elements ==============================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:group name="heading">
+    <xs:choice>
+      <xs:element ref="h1"/>
+      <xs:element ref="h2"/>
+      <xs:element ref="h3"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="lists">
+    <xs:choice>
+      <xs:element ref="ul"/>
+      <xs:element ref="ol"/>
+      <xs:element ref="dl"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="blocktext">
+    <xs:choice>
+      <xs:element ref="pre"/>
+      <xs:element ref="hr"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="block">
+    <xs:choice>
+      <xs:element ref="p"/>
+      <xs:group ref="heading"/>
+      <xs:element ref="div"/>
+      <xs:group ref="lists"/>
+      <xs:group ref="blocktext"/>
+      <xs:element ref="table"/>
+      <xs:element ref="log"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="Block">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="block"/>
+      <xs:element ref="form"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="NoForm" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+      Block-level elements without form.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="block"/>
+      <xs:group ref="inline"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="Flow" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+      "Flow" mixes block and inline and is used for list items etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="block"/>
+      <xs:element ref="form"/>
+      <xs:group ref="inline"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>
+    ===================== Variables ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="Formatter">
+    <xs:annotation>
+      <xs:documentation>
+         The TML can contain directive to pretty print the variable value.
+         This can be specified using additional formatter attribute. This
+         applies for all variable types except opaque. So, there are three
+         formatters - number, string and date.
+
+         The special symbols defined for each formatter can be escaped with
+         the \, i.e. the \ denies the special meaning of the one following
+         symbol, f.e. the \ itself.
+
+         Number formatter can contain any characters. All symbols except
+         explicitly specified below are printed "as is". The following special
+         symbols are available:
+
+         '^' at the beginning of the formatter. The positions in the fixed
+             part of the string will be occupied from right to left. On the
+             position other that first it is considered as normal printable
+             symbol
+         '0' specifies fixed amount of decimals. If this position is empty in
+             the real number, the zero is printed instead
+         '*' means any number of decimals. This symbol can be present only
+             once in the formatter and it can only be present after the fixed
+             positions. The term "after" takes into account the printing
+             direction above.
+
+         String formatter is a more complex formatter. It can contain any
+         characters. All symbols except explicitly specified below are printed
+         "as is". The following special symbols are available:
+
+         'c' or 'n' means normal symbol or number at this position
+         'c#' or 'n#' means hidden symbol or decimal, i.e. '*' at this position
+         '*' or number can follow above specifiers, indicating the required
+             amount of such symbols in the string ('*' means unlimited and
+             similar to number formatter can not be specified more than once)
+
+         Date formatter can contain any characters. All symbols except
+         explicitly specified below are printed "as is". The following special
+         symbols are available:
+
+         'YYYY' or 'yyyy' - year in full form, 4 digits wide
+         'YY' or 'yy' - year in short form, 2 digits wide
+         'MM' - month
+         'DD' or 'dd' - day
+         'HH' or 'hh' - hour
+         'mm' - minute
+         'SS' or 'ss' - seconds
+         'am/pm' or 'AM/PM' - 12-hour clock
+         "am/pm" turns into "am" or "pm", "AM/PM" turns into "AM" or "PM"
+         Each specifier can present only once.
+
+         Date formatter escaped symbols:
+         "Y", "y", "M", "m", "D", "d", "H", "h", "S", "s".
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="ValrefFormatter">
+    <xs:annotation>
+      <xs:documentation>
+         The same as Formatter, but can be get from variable specified as a
+         Valref
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="Valref"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Permissions">
+    <xs:annotation>
+      <xs:documentation>
+         The rights are the following:
+          - read in the scope the variable belongs to
+          - write in the scope the variable belongs to
+          - forbid re-definitions in scopes below
+          - read in scopes below
+          - write in scopes below
+         The pattern is the following - "rwxrw".
+
+         Any symbol except the '-' declares that the bit is set
+
+         The default is "rw-rw" - all operations allowed
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:element name="vardcl">
+    <xs:annotation>
+      <xs:documentation>
+      variable declaration.
+
+      There are some pre-defined variables, which are assigned to
+      user input during forms processing.
+
+      Pre-defined variables are listed in TML specification.
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS"/>
+      <xs:attribute name="type" default="string">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="integer"/>
+            <xs:enumeration value="string"/>
+            <xs:enumeration value="date"/>
+            <xs:enumeration value="opaque"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="volatile" default="yes">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+            <xs:enumeration value="txnvar"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="value" type="xs:string"/>
+      <xs:attribute name="format" type="Formatter"/>
+      <xs:attribute name="perms" type="Permissions" default="rw-rw"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="Valref">
+    <xs:annotation>
+      <xs:documentation>
+      reference to the value.
+
+      Value is specified either as a constant or as variable
+      reference using prefix "tmlvar:".
+
+      For example:
+
+          "12"
+          "tmlvar:card.pan"
+
+      Binary constants should be specified in Base64.
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:element name="setvar">
+    <xs:annotation>
+      <xs:documentation>
+      change variable value.
+
+      "setvar" elements may be specified for each screen and are processed
+      one-by-one in the same order as they appear in the TML.
+
+      It is used to assign new value to the TML variable specified using
+      attribute "name".
+
+      "lo" means "left operand" and "ro" - "right openand".
+
+      Following rules should be used:
+          * if "ro" or "op" attributes are absent, value specified in "lo"
+            is assigned to the variable;
+          * operations specified in "op" is performed over "lo" and "ro" and
+            the result is assigned to the variable.
+
+      Only "plus" operation is allowed for strings.
+
+      Type of the result is the same as type of the variable identified
+      by the name. Arguments are cast to this type using following rules:
+
+      date -> integer    number of seconds since Epoche is calculated
+      integer -> date    date corresponding to number of seconds since Epoche
+                         specified by the integer is constructed
+
+      date -> string     human readable string in local format
+      string -> date     prohibited
+
+      integer -> string  integer is printed to the string
+      string -> integer  prohinited except strings with human readable number
+
+      Operations for opaque data are prohibited. Only constant assignment
+      is allowed.
+
+      Casting is always performed before calculation of the expression.
+
+      The format is specified to conventionally assign 122.22 to integer
+      variables and correctly enter dates.
+
+      Operation "format" is special. Only string variable can be used in
+      name. It formats the "lo" argument like getvar does.
+
+      "item" and "number" are kinds of comma separated lists processing
+      operations. 'number' returns number of list items but 'item' - the list 
+      item itself.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:string"/>
+      <xs:attribute name="format" type="Formatter"/>
+      <xs:attribute name="lo" use="required" type="Valref"/>
+      <xs:attribute name="ro" type="Valref"/>
+      <xs:attribute name="op">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="plus"/>
+            <xs:enumeration value="minus"/>
+            <xs:enumeration value="format"/>
+            <xs:enumeration value="item"/>
+            <xs:enumeration value="number"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getvar">
+    <xs:annotation>
+      <xs:documentation>
+      refer to variable value
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS"/>
+      <xs:attribute name="format" type="ValrefFormatter"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="variant">
+    <xs:annotation>
+      <xs:documentation>
+      element using for switching between several possible next screens.
+
+      This is a logical expression with two operands and comparison operations.
+
+      "lo" means "left operand" and "ro" - "right openand".
+
+      Casting in performed by follows:
+          * for "equal" and "not_equal" operation operands of the same
+            type are compared as is, operands of different types are cast
+            to strings (if it is possible);
+          * for "less" and "less_or_equal" operations all operands are
+            cast to integers (for opaque and strings lengths are calculated).
+
+      Variants in the list are processed one-by-one and the screen corresponding
+      to the first matching expression is used.
+
+      URI of the screen is specified in "uri" attribute and may be either
+      constant URI string or variable reference ("tmlvar:name").
+
+      Attribute "key" defines "hot" key buttons. Only "key" and "uri" attributes
+      allowed in this case.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="lo" type="Valref"/>
+      <xs:attribute name="ro" type="Valref"/>
+      <xs:attribute name="uri" use="required" type="Valref"/>
+      <xs:attribute name="format" type="Formatter"/>
+      <xs:attribute name="timeout" type="Valref"/>
+      <xs:attribute name="op" default="equal">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="equal"/>
+            <xs:enumeration value="not_equal"/>
+            <xs:enumeration value="less"/>
+            <xs:enumeration value="less_or_equal"/>
+            <xs:enumeration value="contains"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="key">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="00"/>
+            <xs:enumeration value="f1"/>
+            <xs:enumeration value="f2"/>
+            <xs:enumeration value="f3"/>
+            <xs:enumeration value="f4"/>
+            <xs:enumeration value="f5"/>
+            <xs:enumeration value="f6"/>
+            <xs:enumeration value="f7"/>
+            <xs:enumeration value="f8"/>
+            <xs:enumeration value="f9"/>
+            <xs:enumeration value="down"/>
+            <xs:enumeration value="up"/>
+            <xs:enumeration value="menu"/>
+            <xs:enumeration value="stop"/>
+            <xs:enumeration value="cancel"/>
+            <xs:enumeration value="enter"/>
+            <xs:enumeration value="any"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="strtemplate">
+    <xs:annotation>
+      <xs:documentation>
+      Operation, similar to C sprintf. Assign formatted text to string
+      variable.
+
+      Text in format allowes placeholders. Placeholders are a numbered
+      entities referrencied to a variables in the list inside. They
+      are formed using the following pattern: "%nnn", f.e. the following
+      string is valid:
+        "Variable %1"
+      %1 in this string should be substituted with a first value of
+      getvar in the inner list.
+      The "%" symbol can be escaped with the \, i.e. the \ denies
+      the special meaning of the "%" symbol.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="getvar" minOccurs="0" maxOccurs="9"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:string"/>
+      <xs:attribute name="format" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="NextScreen">
+    <xs:annotation>
+      <xs:documentation>
+      specifies URI of the screen.
+
+      Usually URI is specified as a constant or variable reference in
+      the mandatory "uri" attribute. However it's allowed to specify
+      several conditional variants. This variants are processed
+      one-by-one in the specified order and first matching is used.
+
+      If no matching variants are found, the URI specified in the
+      attribute "uri" is used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="variant" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="uri" use="required" type="Valref"/>
+  </xs:complexType>
+
+
+  <xs:annotation>
+    <xs:documentation>
+    ===================== User Logger ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="layout">
+    <xs:annotation>
+      <xs:documentation>
+        User Logger Layout.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+         <xs:extension base="NoForm">
+            <xs:attributeGroup ref="attrs"/>
+            <xs:attribute name="name" use="required" type="xs:NMTOKENS"/>
+         </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="logdcl">
+    <xs:annotation>
+      <xs:documentation>
+      User Logger declaration.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="vardcl" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="layout" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS"/>
+      <xs:attribute name="css" type="xs:string"/>
+      <xs:attribute name="perms" type="Permissions" default="rw-rw"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="logrec">
+    <xs:annotation>
+      <xs:documentation>
+      One Log record appending.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="log">
+    <xs:annotation>
+      <xs:documentation>
+      Log rendering.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS"/>
+      <xs:attribute name="layout" use="required" type="xs:string"/>
+      <xs:attribute name="type" use="optional" default="normal">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="normal"/>
+            <xs:enumeration value="reverse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="submit_log">
+    <xs:annotation>
+      <xs:documentation>
+      Log submitting to the host.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Document Structure ==================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="tml">
+    <xs:annotation>
+      <xs:documentation>
+      root of the TML page, containing whole or part of the TML application.
+      All pages of TML application should have the same name and should
+      not refer to TML pages with other name.
+
+      If TML application is splitted to several static pages,
+      all pages shoud be specified using element "link" in "head".
+      Other external resources, like style sheet and images
+      should be specified there as well. It is recommended to download
+      all resources immediately when the first page is loaded.
+
+      Attribute "cache" may be used to alllow/prohibit caching of the page.
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="head" minOccurs="0"/>
+        <xs:element ref="vardcl" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="logdcl" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="screen" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="cache" default="allow">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="allow"/>
+            <xs:enumeration value="deny"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Document Head =======================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="head">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="link" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="base" minOccurs="0"/>
+        <xs:element ref="defaults" minOccurs="0"/>
+        <xs:element name="error" minOccurs="0" type="NextScreen"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="defaults">
+    <xs:annotation>
+      <xs:documentation>
+      default values for some screen attribues.
+
+      Attributes "menu" and "cancel" may be used to specify URI, to
+      which browser should switch to if user presses "Menu" or "Cancel".
+      They may be overriden by "menu" and "cancel" attributes of screens.
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="menu" type="Valref"/>
+      <xs:attribute name="cancel" type="Valref"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="base">
+    <xs:annotation>
+      <xs:documentation>
+      document base URI
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="href" use="required" type="URI"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="link">
+    <xs:complexType>
+      <xs:attribute name="charset" type="Charset"/>
+      <xs:attribute name="href" type="URI"/>
+      <xs:attribute name="type" type="ContentType"/>
+      <xs:attribute name="rel" type="LinkTypes"/>
+      <xs:attribute name="rev" type="LinkTypes"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Block level elements =================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="div">
+    <xs:annotation>
+      <xs:documentation>
+      generic language/style container
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Paragraphs =======================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="p">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Headings =========================================
+
+    There are six levels of headings from h1 (the most important)
+    to h6 (the least important).
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="h1">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="h2">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="h3">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Lists ============================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="ul">
+    <xs:annotation>
+      <xs:documentation>
+      Unordered list
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="li"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ol">
+    <xs:annotation>
+      <xs:documentation>
+      Ordered (numbered) list
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="li"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="li">
+    <xs:annotation>
+      <xs:documentation>
+      list item
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    definition lists - dt for term, dd for its definition
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="dl">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="dt"/>
+        <xs:element ref="dd"/>
+      </xs:choice>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="dt">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="dd">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Horizontal Rule ==================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="hr">
+    <xs:complexType>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Preformatted Text ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="pre">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+           <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== The Anchor Element ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="a">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attribute name="href" type="Valref"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ===================== Inline Elements ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="span">
+    <xs:annotation>
+      <xs:documentation>
+      generic language/style container
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="br">
+    <xs:annotation>
+      <xs:documentation>
+      forced line break
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="coreattrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="dynamic">
+    <xs:annotation>
+      <xs:documentation>
+      dynamic content delimiter
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Images ===========================================
+
+    To avoid accessibility problems for people who aren't
+    able to see the image, you should provide a text
+    description using the alt attribute.
+    In addition, avoid the use of server-side image maps.
+    Note that in this DTD there is no name attribute. That
+    is only available in the transitional and frameset DTD.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="img">
+    <xs:complexType>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="src" use="required" type="Text"/>
+      <xs:attribute name="alt" use="required" type="Text"/>
+      <xs:attribute name="height" type="Length"/>
+      <xs:attribute name="width" type="Length"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:annotation>
+    <xs:documentation>
+    ======================= Tables =======================================
+
+    Derived from IETF HTML table standard, see [RFC1942]
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="TRules">
+    <xs:annotation>
+      <xs:documentation>
+      The rules attribute defines which rules to draw between cells:
+
+      If rules is absent then assume:
+          "none" if border is absent or border="0" otherwise "all"
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="none"/>
+      <xs:enumeration value="rows"/>
+      <xs:enumeration value="cols"/>
+      <xs:enumeration value="all"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:attributeGroup name="cellhalign">
+    <xs:annotation>
+      <xs:documentation>
+      horizontal alignment attributes for cell contents
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="align">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="left"/>
+          <xs:enumeration value="center"/>
+          <xs:enumeration value="right"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="cellvalign">
+    <xs:annotation>
+      <xs:documentation>
+      vertical alignment attributes for cell contents
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="top"/>
+          <xs:enumeration value="middle"/>
+          <xs:enumeration value="bottom"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="col"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="colgroup"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="thead"/>
+        <xs:element minOccurs="0" ref="tfoot"/>
+        <xs:choice>
+          <xs:element maxOccurs="unbounded" ref="tbody"/>
+          <xs:element maxOccurs="unbounded" ref="tr"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="width" type="Length"/>
+      <xs:attribute name="height" type="Length"/>
+      <xs:attribute name="border" type="Pixels"/>
+      <xs:attribute name="rules" type="TRules"/>
+      <xs:attribute name="cellspacing" type="Length"/>
+      <xs:attribute name="cellpadding" type="Length"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    Use thead to duplicate headers when breaking table
+    across page boundaries, or for static headers when
+    tbody sections are rendered in scrolling panel.
+
+    Use tfoot to duplicate footers when breaking table
+    across page boundaries, or for static footers when
+    tbody sections are rendered in scrolling panel.
+
+    Use multiple tbody sections when rules are needed
+    between groups of table rows.
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="thead">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="tr"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tfoot">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="tr"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tbody">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="tr"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="colgroup">
+    <xs:annotation>
+      <xs:documentation>
+      colgroup groups a set of col elements. It allows you to group
+      several semantically related columns together.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="col"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="span" default="1" type="PositiveNumber"/>
+      <xs:attribute name="width" type="MultiLength"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="col">
+    <xs:annotation>
+      <xs:documentation>
+      col elements define the alignment properties for cells in
+      one or more columns.
+
+      The width attribute specifies the width of the columns, e.g.
+
+          width=64        width in screen pixels
+          width=0.5*      relative width of 0.5
+
+      The span attribute causes the attributes of one
+      col element to apply to more than one column.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="span" default="1" type="Number"/>
+      <xs:attribute name="width" type="MultiLength"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tr">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="th"/>
+        <xs:element ref="td"/>
+      </xs:choice>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    th is for headers, td for data and for cells acting as both
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="th">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attribute name="rowspan" default="1" type="Number"/>
+          <xs:attribute name="colspan" default="1" type="Number"/>
+          <xs:attributeGroup ref="cellhalign"/>
+          <xs:attributeGroup ref="cellvalign"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="td">
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attribute name="rowspan" default="1" type="Number"/>
+          <xs:attribute name="colspan" default="1" type="Number"/>
+          <xs:attributeGroup ref="cellhalign"/>
+          <xs:attributeGroup ref="cellvalign"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Screens ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="screen">
+    <xs:annotation>
+      <xs:documentation>
+      logical unit of TML page.
+
+      Variable settings specified by setvar elements are executed every time
+      when the switching is performed to the screen (except switching to the
+      screen after rendering of the error message).
+
+      Attributes "menu" and "cancel" may be used to specify URI, to
+      which browser should switch to if user presses "Menu" or "Cancel".
+
+      "next" element is used when URI of the next screen is not specified
+      in the screen itself. If the element contains links, "next" is
+      ignored.
+
+      Attribute "next" has the same meaning as the element, but
+      cannot contain variants. If both element and attribute are specified,
+      element has a priority.
+
+      Important: Please, notice, that screen with submit element inside must have "next"
+      attribute, or submit element should have a nested next element.
+
+      If "display" element does not contain links then the text is rendered
+      on the terminal display and pressing of the any key is aiwated.
+      If non-zero timeout is used, and no key is pressed during specified
+      number of seconds, switching to the next screen is performed
+      automatically.
+
+      "id" attribute is mandatory in TML. This attribute comes from XHTML and
+      is applicable from CSS point of view, so this strage note is added
+      instead of use="required"
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="setvar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="strtemplate" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="logrec" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="next" minOccurs="0" type="NextScreen"/>
+        <xs:element name="error" minOccurs="0" type="NextScreen"/>
+        <xs:choice>
+            <xs:element ref="display" minOccurs="0"/>
+            <xs:element ref="print" minOccurs="0"/>
+            <xs:element ref="tform" minOccurs="0"/>
+            <xs:element ref="call_func" minOccurs="0"/>
+            <xs:element ref="submit" minOccurs="0"/>
+            <xs:element ref="run" minOccurs="0"/>
+            <xs:element ref="txnnew" minOccurs="0"/>
+            <xs:element ref="txnsubmit" minOccurs="0"/>
+            <xs:element ref="txnconfirm" minOccurs="0"/>
+            <xs:element ref="reconciliation" minOccurs="0"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="menu" type="Valref"/>
+      <xs:attribute name="cancel" type="Valref"/>
+      <xs:attribute name="next" type="Valref"/>
+      <xs:attribute name="timeout" type="Valref" default="0"/>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="display">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="Flow"/>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="print">
+    <xs:annotation>
+      <xs:documentation>
+      screen, which will be printed once using terminal printer.
+      Anchor elements are ignored. After printing switching to the
+      screen specified in the "next" is performed.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+         <xs:extension base="NoForm"/>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="call_func">
+    <xs:annotation>
+      <xs:documentation>
+      the function to be called.
+
+      It is assumed that the TML user agent implements some functions
+      accessible to TML application writer and supports the corresponding
+      symbol table.
+
+      The functions, which may be called using this elements have no
+      parameters - it is assumed that they use TML variables.
+
+      Links specified in "next" and "error" elements should be used in the
+      case of success and failure of the function call.
+
+      The function must fill the variable "err.description".
+
+      Following functions are supported on any terminal:
+
+          print_offline_posts - print all offline posts in the HTTP storage
+
+          cancel_offline_post - cancel offline post by the number in the
+                                list printed by the privious function
+                                (number should be located in the variable
+                                 "oebr.post_id")
+
+          connect_to_server   - this routine forces HTTP client to connect to
+                                the server to submit postponed requests and
+                                refresh the HTTP cache
+
+          clear_http_cache    - clear the HTTP cache
+
+          net_initialisation  - initialise the terminal via network
+
+          release_transport   - disconnect from the server if connected
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:token"/>
+      <xs:attribute name="param" use="optional" type="Valref"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="submit">
+    <xs:annotation>
+      <xs:documentation>
+      submit values of variables to the HTTP server (to URI
+      specified in "tgt" attribute as the constant or TML
+      variable reference).
+
+      Submitting may be either online or offline - depending
+      on TML variable "oebr.submit_mode" content - "offline" or "online".
+      HTTP client should check this variable and follow its value
+      unless its storage for postponed submit requests is not
+      overflowed. In the last case submit should be done online and
+      the "oebr.submit_mode" variable should be updated properly.
+
+      If submitting is online and server specifies "See Other",
+      then switching to URI specified by the server is performed.
+      Otherwise switching to screen specified in "next" is performed
+      immediately after submitting.
+
+      "cache" attribute may be used to allow caching of this request
+      on HTTP proxy.
+
+      "econn" attribute or element is required
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="econn" minOccurs="0" type="NextScreen"/>
+        <xs:choice>
+          <xs:element ref="getvar" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="submit_log" minOccurs="0"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="tgt" type="Valref"/>
+      <xs:attribute name="econn" type="Valref"/>
+      <xs:attribute name="cache" default="deny">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="allow"/>
+            <xs:enumeration value="deny"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>      
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="in">
+    <xs:annotation>
+      <xs:documentation>
+      Specifies input parameter (argument) of VAS/plugin call.
+
+      Attribute "name" - name of corresponding TML variable.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+        <xs:attribute name="name" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="out">
+    <xs:annotation>
+      <xs:documentation>
+      Specifies output parameter (return value) of VAS/plugin call.
+
+      Attribute "name" - name of corresponding TML variable.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+        <xs:attribute name="name" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="run">
+    <xs:annotation>
+      <xs:documentation>
+        "run" screen is used for calling of external application (plug-in) or
+        service. 
+
+        Atrribute "name" is the plug-in/service name. 
+
+        Attribute "type" specifies type of plug-in as dll/application/service. 
+
+        Attribute "password" specifies the password for service authentication 
+        (by default is used as blank for no authentication).
+
+        Input parameters are specifies in content of this type of screen. The 
+        order of parameters makes sence.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="in" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="out" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="Valref"/>
+      <xs:attribute name="type" default="app">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="dll"/>
+            <xs:enumeration value="app"/>
+            <xs:enumeration value="vas"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>      
+      <xs:attribute name="password" default="" type="Valref"/>
+    </xs:complexType> 
+  </xs:element>
+
+  <xs:element name="txnsubmit">
+    <xs:annotation>
+      <xs:documentation>
+      submit transaction to server
+      "econn" attribute or element is required
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="econn" minOccurs="0" type="NextScreen"/>
+        <xs:choice>
+          <xs:element ref="getvar" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="tgt" type="Valref"/>
+      <xs:attribute name="econn" type="Valref"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="txnnew">
+    <xs:annotation>
+      <xs:documentation>
+      tag that creates a new transaction.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="type" use="required" type="xs:NMTOKENS"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="txnconfirm">
+    <xs:annotation>
+      <xs:documentation>
+      tag that confirms the transaction.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="status" use="required" type="xs:NMTOKENS"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="reconciliation">
+    <xs:annotation>
+      <xs:documentation>
+      tag that starts reconciliation.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Terminal forms ============================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="tform">
+    <xs:annotation>
+      <xs:documentation>
+      terminal form.
+
+      Data entered by user are placed to pre-defined variables,
+      depending on form type.
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="baddata" minOccurs="0"/>
+        <xs:choice>
+          <xs:sequence>
+            <xs:element ref="card" maxOccurs="unbounded"/>
+            <xs:element ref="prompt" minOccurs="0"/>
+          </xs:sequence>
+          <xs:element ref="pinentry"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="prompt">
+    <xs:annotation>
+      <xs:documentation>
+      message to be rendered on the screen during tform processing.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="NoForm">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="baddata">
+    <xs:annotation>
+      <xs:documentation>
+      message to be rendered on the screen in the case if incorrect data
+      are entered. The message is rendered during timeout seconds or until
+      user presses any key.
+
+      Then the user agent should switch back to form screen without loss of
+      the context.
+
+      If timeout is 0, then the key pressing is required for switching
+      to the parent screen.
+
+      Attribute "max" (if non-zero) specifies maximum number of tries
+      which allowed for reading of the data. After max tries browser
+      switches to the screen specified in the "next" attribute.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="NoForm">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attribute name="timeout" default="2" type="Valref"/>
+          <xs:attribute name="max" default="0" type="Number"/>
+          <xs:attribute name="next" default="tmlvar:oebr.prev_screen"
+                        type="Valref"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="card">
+    <xs:annotation>
+      <xs:documentation>
+      read data from magnetic card or ICC.
+
+      Text specified by "p" element is rendered as a prompt.
+
+      If the smart card is removed from the device during the operation,
+      "card.parser.verdict" should be set to "reject" and
+      "card.parser.reject_reason" should be filled properly.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="parser" type="xs:string" use="required"/>
+      <xs:attribute name="parser_params" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="pinentry">
+    <xs:annotation>
+      <xs:documentation>
+      pinpad keyboard input.
+
+      If prompt is specified, it is rendered on the pinpad display.
+      The prompt is cleared after form processing.
+
+      Attribute type defines the type of pin entry:
+          icc  - EMV offline PIN checks
+          3des - PIN block will be encrypted with 3des
+          dukpt - unique per transaction key will be created and PIN block
+                  will be encrypted with it
+          dukpt3des - unique per transaction key will be created and PIN block
+                  will be encrypted with it using 3des algorithm
+
+      Otherwise encrypted PIN is saved in the pre-defined variable pin.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="prompt" type="xs:string"/>
+      <xs:attribute name="length" default="4" type="Number"/>
+      <xs:attribute name="type">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="icc"/>
+            <xs:enumeration value="3des"/>
+            <xs:enumeration value="dukpt"/>
+            <xs:enumeration value="dukpt3des"/>
+            <xs:enumeration value="dukptlight"/>
+            <xs:enumeration value="dukptl3des"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Forms ============================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="form">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="NoForm"/>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:attributeGroup name="input.restrictions">
+    <xs:annotation>
+      <xs:documentation>
+      restrictions for data entered via "input" and "textarea".
+      min and max restrict the value for numbers and dates and the length
+      for strings and opaque.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="equal" type="Valref"/>
+    <xs:attribute name="not_equal" type="Valref"/>
+    <xs:attribute name="min" type="Valref"/>
+    <xs:attribute name="max" type="Valref"/>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="InputType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="number"/>
+      <xs:enumeration value="date"/>
+      <xs:enumeration value="text"/>
+      <xs:enumeration value="password"/>
+      <xs:enumeration value="checkbox"/>
+      <xs:enumeration value="radio"/>
+      <xs:enumeration value="submit"/>
+      <xs:enumeration value="reset"/>
+      <xs:enumeration value="signature"/>
+      <xs:enumeration value="list"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="input">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="baddata" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="type" default="text" type="InputType"/>
+      <xs:attribute name="name">
+        <xs:annotation>
+          <xs:documentation>
+          the name attribute is name of the user-declared variable.
+          For checkbox or radio this variable is set to "checked" or
+          empty string.
+
+          Checks specified by restrictions are performed only if
+          "baddata" element is specified.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="alt" type="Text"/>
+      <xs:attribute name="checked">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="checked"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="readonly"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="size" type="Number"/>
+      <xs:attribute name="rows" type="Number"/>
+      <xs:attributeGroup ref="input.restrictions"/>
+      <xs:attribute name="value" type="Valref"/>
+      <xs:attribute name="format" type="Formatter"/>
+      <xs:attribute name="width" type="Length"/>
+      <xs:attribute name="height" type="Length"/>
+      <xs:attribute name="multiple" default="no">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="textarea">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="baddata" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="alt" type="Text"/>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="name" use="required">
+        <xs:annotation>
+          <xs:documentation>
+          the name attribute is name of the user-declared variable
+
+          Checks specified by restrictions are performed only is
+          "baddata" element is specified.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="readonly">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="readonly"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rows" use="required" type="Number"/>
+      <xs:attribute name="cols" use="required" type="Number"/>
+      <xs:attributeGroup ref="input.restrictions"/>
+      <xs:attribute name="value" type="Valref"/>
+      <xs:attribute name="format" type="Formatter"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
+
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2004-2005 Ingenico UK
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico UK.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico UK
+ or with the prior written consent of Ingenico UK or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico UK.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

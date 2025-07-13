@@ -1,0 +1,21 @@
+ /** \mainpage SSL Sample 
+
+This document is intended to help beginners to learn how the SSL functionality in SDK is done. 
+
+It shows :
+	- how to manage the SSL configuration profiles.
+	- how to print the content of a X509 certificate.
+	- how to perform a SSL connection with mutual authentication.
+
+  * To learn about the SSL Sample, please refer to the following pages:
+  * 
+  * - \subpage Purpose 
+  * - \subpage Functions 
+  * - \subpage Before 
+  * - \subpage HowTo 
+  * \image html "logotelium_293x196.png" 
+  */
+
+//-----------------------------------------------------------
+
+

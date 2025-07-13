@@ -1,0 +1,41 @@
+<epdPar>
+
+   
+ <T_GPRS_TEST_SETTINGS>
+   
+     <id_row>0</id_row>
+       
+     <nameStr>orange</nameStr>
+
+     <nSlotId>0</nSlotId>
+      
+     <szPinCode></szPinCode>
+  
+     <szAPn>orange-mib</szAPn>
+   
+     <nPort>80</nPort>
+      
+     <szHostName>www.orange.fr</szHostName>
+   
+ </T_GPRS_TEST_SETTINGS>
+  
+ <T_GPRS_TEST_SETTINGS>
+     
+     <id_row>1</id_row>
+      
+     <nameStr>sfr</nameStr>
+     
+     <nSlotId>1</nSlotId>
+       
+     <szPinCode></szPinCode>
+   
+     <szAPn>websfr</szAPn>
+  
+     <nPort>80</nPort>
+     
+     <szHostName>www.sfr.fr</szHostName>
+  
+ </T_GPRS_TEST_SETTINGS>
+
+
+</epdPar>

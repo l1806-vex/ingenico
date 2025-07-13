@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.core.runtime
+Bundle-Vendor: Ingenico
+Fragment-Host: com.ingenico.ingedev.telium.simulation.bin;bundle-versi
+ on="0.0.0"
+Bundle-ClassPath: teliumsimubinwin32.jar
+Bundle-Version: 7.16.0.3
+Eclipse-PlatformFilter: (& (osgi.ws=win32) (osgi.os=win32) (osgi.arch=
+ x86))
+Bundle-Name: Telium Simulation Bin Win32 Fragment
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ingenico.ingedev.telium.simulation.bin.win32;
+ singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

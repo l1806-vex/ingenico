@@ -1,0 +1,31 @@
+<epdPar>
+  
+    <pinKey>BE272A9DB2272FDB</pinKey>
+    <macKey>877DF21FC0A5700D</macKey>
+    <pinMasterKey>3B2C7C7E6829AEDA</pinMasterKey>
+    <macMasterKey>D197ED41E31815A0</macMasterKey>
+    <rootKey>9999999999999999</rootKey>
+    <trcOutput>1</trcOutput>
+    <secConfig>
+        <id_row>0</id_row>
+        <securePart>0</securePart>
+        <terminalBooster>1</terminalBooster>
+        <peripheralBooster>0</peripheralBooster>
+        <pinpadBooster>1</pinpadBooster>
+    </secConfig>
+    <secConfig>
+        <id_row>1</id_row>
+        <securePart>0</securePart>
+        <terminalBooster>1</terminalBooster>
+        <peripheralBooster>0</peripheralBooster>
+        <pinpadBooster>1</pinpadBooster>
+    </secConfig>
+    <secConfig>
+        <id_row>2</id_row>
+        <securePart>0</securePart>
+        <terminalBooster>1</terminalBooster>
+        <peripheralBooster>0</peripheralBooster>
+        <pinpadBooster>1</pinpadBooster>
+    </secConfig>
+
+</epdPar>

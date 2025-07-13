@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?>
+
+<?ingedev version="7.16.1.3"?>
+
+<projectDescription activeConfig="GNU_ARM_DEBUG" applicationType="0x7af0" binaryName="GOAL_SAMPLE" dataBinaryFileBaseName="DATA7AF0" descr="Application with all CHM samples" projectFamily="GOALSAMPLE" projectType="APP" useDataFileNamingConvention="true">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="Src\Main.c" parentProject=""/>
+<file generated="false" name="Src\Entry.c" parentProject=""/>
+<file generated="false" name="Src\Menu.c" parentProject=""/>
+<file generated="false" name="Src\DateScreen.c" parentProject=""/>
+<file generated="false" name="Src\Utils.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="false"/>
+<archiveFilesVirtualFolder name="Archive Files">
+<archive archiveModifierName="gmlToTbrConverter" dirParentProject="" directoryToArchive="GOAL\Resources" name="Bin\Resources.tar"/>
+</archiveFilesVirtualFolder>
+</virtualFolders>
+<configs>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG" sign="false" teliumCompatibility="Telium 2" zip="false">
+<userIncs>
+<userInc value="..\..\..\..\..\..\_Inc_SDK\Component\GraphicLib"/>
+<userInc value="..\..\..\..\..\..\_Inc_SDK\Component\GraphicLibCommon"/>
+<userInc value="Inc"/>
+<userInc value="IncGen"/>
+<userInc value="${workspace_loc:/[LIB] GOAL_Sample}"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.8.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.8.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.8.0"/>
+<packageLib name="GraphicLib" package="Telium SDK" version="9.8.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.8.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.8.0"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_BINARY_NAME=&quot;${appli_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_DATA_FILE_BINARY_NAME=&quot;${appli_full_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_TELIUM1_BINARY_NAME=&quot;${appli_data_file_telium1_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_TELIUM2_BINARY_NAME=&quot;${appli_data_file_telium2_binary_name}&quot;"/>
+</userDefines>
+<prebuild command="" description=""/>
+<externalSchemes/>
+<postbuild command="" description=""/>
+<projectLibraries>
+<projectLib name="[LIB] GOAL_Sample" parentProject="[LIB] GOAL_Sample" projectLibCfg="GNU_ARM_DEBUG"/>
+</projectLibraries>
+<dataFiles>
+<dataFile alias="_default_" isDefault="true" name="Bin/Resources.tar" parentProject="">
+<targetTerminals>
+<targetTerminal name="generic128x64"/>
+<targetTerminal name="generic240x320"/>
+<targetTerminal name="generic320x240"/>
+<targetTerminal name="generic320x480"/>
+<targetTerminal name="generic480x272"/>
+<targetTerminal name="generic640x480"/>
+<targetTerminal name="iWB220"/>
+<targetTerminal name="iWB250"/>
+<targetTerminal name="iWL350"/>
+<targetTerminal name="iWL280"/>
+<targetTerminal name="iWL250"/>
+<targetTerminal name="EFT930G"/>
+<targetTerminal name="EFT930B"/>
+<targetTerminal name="EFT930W"/>
+<targetTerminal name="EFT930P"/>
+<targetTerminal name="iWL220"/>
+<targetTerminal name="E560"/>
+<targetTerminal name="EFT930"/>
+<targetTerminal name="EFT930S"/>
+<targetTerminal name="iCT250"/>
+<targetTerminal name="iCT220"/>
+<targetTerminal name="E532"/>
+<targetTerminal name="EFTsmart"/>
+<targetTerminal name="EFT30"/>
+<targetTerminal name="EFTsmart2"/>
+<targetTerminal name="iSC250"/>
+<targetTerminal name="iSC350"/>
+<targetTerminal name="Twin30"/>
+<targetTerminal name="Twin32"/>
+<targetTerminal name="Twin33"/>
+<targetTerminal name="iPP350"/>
+<targetTerminal name="iPP320"/>
+<targetTerminal name="iPP480"/>
+<targetTerminal name="ML30"/>
+<targetTerminal name="ML30CC"/>
+<targetTerminal name="iST150"/>
+<targetTerminal name="SPM"/>
+<targetTerminal name="iMP320"/>
+<targetTerminal name="iMP350"/>
+<targetTerminal name="CAD30UCM"/>
+<targetTerminal name="iUC180"/>
+<targetTerminal name="iUP250"/>
+</targetTerminals>
+</dataFile>
+</dataFiles>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="true" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE" sign="false" teliumCompatibility="Telium 2" zip="true">
+<userIncs>
+<userInc value="..\..\..\..\..\..\_Inc_SDK\Component\GraphicLib"/>
+<userInc value="..\..\..\..\..\..\_Inc_SDK\Component\GraphicLibCommon"/>
+<userInc value="Inc"/>
+<userInc value="IncGen"/>
+<userInc value="${workspace_loc:/[LIB] GOAL_Sample}"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.8.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.8.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.8.0"/>
+<packageLib name="GraphicLib" package="Telium SDK" version="9.8.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.8.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.8.0"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_BINARY_NAME=&quot;${appli_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_DATA_FILE_BINARY_NAME=&quot;${appli_full_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_TELIUM1_BINARY_NAME=&quot;${appli_data_file_telium1_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_TELIUM2_BINARY_NAME=&quot;${appli_data_file_telium2_binary_name}&quot;"/>
+</userDefines>
+<prebuild/>
+<postbuild/>
+<externalSchemes/>
+<projectLibraries>
+<projectLib name="[LIB] GOAL_Sample" parentProject="[LIB] GOAL_Sample" projectLibCfg="GNU_ARM_RELEASE"/>
+</projectLibraries>
+<dataFiles>
+<dataFile alias="_default_" isDefault="true" name="Bin/Resources.tar" parentProject="">
+<targetTerminals>
+<targetTerminal name="generic128x64"/>
+<targetTerminal name="generic240x320"/>
+<targetTerminal name="generic320x240"/>
+<targetTerminal name="generic320x480"/>
+<targetTerminal name="generic480x272"/>
+<targetTerminal name="generic640x480"/>
+<targetTerminal name="iWB220"/>
+<targetTerminal name="iWB250"/>
+<targetTerminal name="iWL350"/>
+<targetTerminal name="iWL280"/>
+<targetTerminal name="iWL250"/>
+<targetTerminal name="EFT930G"/>
+<targetTerminal name="EFT930B"/>
+<targetTerminal name="EFT930W"/>
+<targetTerminal name="EFT930P"/>
+<targetTerminal name="iWL220"/>
+<targetTerminal name="E560"/>
+<targetTerminal name="EFT930"/>
+<targetTerminal name="EFT930S"/>
+<targetTerminal name="iCT250"/>
+<targetTerminal name="iCT220"/>
+<targetTerminal name="E532"/>
+<targetTerminal name="EFTsmart"/>
+<targetTerminal name="EFT30"/>
+<targetTerminal name="EFTsmart2"/>
+<targetTerminal name="iSC250"/>
+<targetTerminal name="iSC350"/>
+<targetTerminal name="Twin30"/>
+<targetTerminal name="Twin32"/>
+<targetTerminal name="Twin33"/>
+<targetTerminal name="iPP350"/>
+<targetTerminal name="iPP320"/>
+<targetTerminal name="iPP480"/>
+<targetTerminal name="ML30"/>
+<targetTerminal name="ML30CC"/>
+<targetTerminal name="iST150"/>
+<targetTerminal name="SPM"/>
+<targetTerminal name="iMP320"/>
+<targetTerminal name="iMP350"/>
+<targetTerminal name="CAD30UCM"/>
+<targetTerminal name="iUC180"/>
+<targetTerminal name="iUP250"/>
+</targetTerminals>
+</dataFile>
+</dataFiles>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

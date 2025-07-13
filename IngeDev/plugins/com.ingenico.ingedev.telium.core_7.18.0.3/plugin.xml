@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="archiveModifier" name="Telium Archive File Modifier" schema="schema/archiveModifier.exsd"/>
+   <extension-point id="pinCodeProvider" name="PIN Code Provider" schema="schema/pinCodeProvider.exsd"/>
+   <extension-point id="signatureProvider" name="Telium Signature Provider" schema="schema/signatureProvider.exsd"/>
+   <extension-point id="buildProvider" name="Telium Build Provider" schema="schema/buildProvider.exsd"/>
+   <extension-point id="toolchainProvider" name="Telium Toolchain Provider" schema="schema/toolchainProvider.exsd"/>
+     <extension
+         id="teliumNature"
+         name="Telium Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ingenico.ingedev.telium.core.TeliumProjectNature"/>
+      </runtime>
+      <builder
+            id="com.ingenico.ingedev.telium.core.ingedevBuilder">
+      </builder>
+      <!--builder id="com.ingenico.ingedev.core.ingedevBuilder"/-->
+      <!-- TGOTODO Ingedev nature requires C and C++ nature, but it does not seem to work... -->
+      <!--requires-nature id="org.eclipse.cdt.core.CProjectNature"/-->
+      <!--requires-nature id="org.eclipse.cdt.core.CCProjectNature"/-->
+   </extension>
+        <extension
+         id="teliumSystemNature"
+         name="Telium System Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="com.ingenico.ingedev.telium.core.TeliumSystemNature"/>
+      </runtime>
+   </extension>
+        <extension
+              id="teliumSystemLibNature"
+              name="Telium System Library Nature"
+              point="org.eclipse.core.resources.natures">
+           <runtime>
+              <run
+                    class="com.ingenico.ingedev.telium.core.TeliumSystemLibNature">
+              </run>
+           </runtime>
+        </extension>
+        <extension
+              id="teliumSystemDllNature"
+              name="Telium System Shared Library Nature"
+              point="org.eclipse.core.resources.natures">
+           <runtime>
+              <run
+                    class="com.ingenico.ingedev.telium.core.TeliumSystemDllNature">
+              </run>
+           </runtime>
+        </extension>
+        <extension
+              id="teliumResourceNature"
+              name="Telium Resource Nature"
+              point="org.eclipse.core.resources.natures">
+           <runtime>
+              <run
+                    class="com.ingenico.ingedev.telium.core.TeliumResourceNature">
+              </run>
+           </runtime>
+        </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="com.ingenico.ingedev.telium.internal.core.TeliumCoreInitializer"/>
+   </extension>
+   <extension
+         id="ingedevBuilder"
+         name="Telium Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            callOnEmptyDelta="true"
+            hasNature="true">
+         <run
+               class="com.ingenico.ingedev.telium.internal.core.make.TeliumMakeBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="TeliumScannerInfoProvider"
+         point="org.eclipse.cdt.core.ScannerInfoProvider">
+      <cextension>
+         <run
+               class="com.ingenico.ingedev.telium.core.TeliumScannerInfoProvider">
+         </run>
+      </cextension>
+   </extension>
+   <extension
+         point="org.eclipse.team.core.fileTypes">
+      <fileTypes
+            extension="teliumProject"
+            type="text"/>
+      <fileTypes
+            extension="explib"
+            type="text">
+      </fileTypes>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <file-association
+            content-type="org.eclipse.core.runtime.xml"
+            file-names=".teliumProject">
+      </file-association>
+      <file-association
+            content-type="org.eclipse.core.runtime.text"
+            file-extensions="TXT">
+      </file-association>
+      <file-association
+            content-type="org.eclipse.core.runtime.text"
+            file-extensions="lst">
+      </file-association>
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="ADF"
+            id="telium1AppDescr"
+            name="Telium 1 Application Descriptor">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="LDF"
+            id="telium1DllDescr"
+            name="Telium 1 DLL Descriptor">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="PDF"
+            id="telium1ParameterDescr"
+            name="Telium 1 Parameter Descriptor">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="M3X"
+            id="telium1Cat"
+            name="Telium 1 Catalog File">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="M4X"
+            id="telium2Cat"
+            name="Telium 2 Catalog File">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.cdt.core.binaryFile"
+            file-extensions="BIN"
+            id="teliumUnsignedBin"
+            name="Telium Unsigned Binary File">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.cdt.core.binaryFile"
+            file-extensions="SGN"
+            id="telium1SignedComponent"
+            name="Telium 1 Signed Component">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.cdt.core.binaryFile"
+            file-extensions="AGN"
+            id="telium2SignedApp"
+            name="Telium 2 Signed Application">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.cdt.core.binaryFile"
+            file-extensions="LGN"
+            id="telium2SignedDll"
+            name="Telium 2 Signed DLL">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.cdt.core.binaryFile"
+            file-extensions="PGN"
+            id="telium2SignedParameter"
+            name="Telium 2 Signed Parameter">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.cdt.core.binaryFile"
+            file-extensions="MGN"
+            id="telium2SignedMultimediaCertificateFile"
+            name="Telium 2 Signed Multimedia Certificate File">
+      </content-type>
+      <file-association
+            content-type="org.eclipse.core.runtime.xml"
+            file-names=".explib">
+      </file-association>
+   </extension>
+   <extension point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+      		namespace="com.ingenico.ingedev.telium"
+            properties="hasProjectType"
+            type="org.eclipse.core.runtime.IAdaptable"
+            class="com.ingenico.ingedev.telium.internal.core.propertytester.TeliumResourcePropertyTester"
+            id="com.ingenico.ingedev.telium.resourcePropertyTester">
+      </propertyTester>
+   </extension>
+   <extension
+         point="com.ingenico.ingedev.help.helpContribution">
+      <helpFiles
+            categoryID="com.ingenico.ingedev.teliumHelp"
+            chapter="Telium Packages"
+            class="com.ingenico.ingedev.telium.core.packages.TeliumPackagesHelpFileProvider"
+            contributorID="teliumCorePlugin"
+            id="com.ingenico.ingedev.telium.core.helpFiles3"
+            root_chapter="TELIUM Reference Guide">
+      </helpFiles>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="com.ingenico.ingedev.telium.internal.core.TeliumProjectTypePropertyTester"
+            id="com.ingenico.ingedev.telium.core.projectTypePropertyTester"
+            namespace="com.ingenico.ingedev.telium.core"
+            properties="hasProjectType"
+            type="org.eclipse.core.runtime.IAdaptable">
+      </propertyTester>
+   </extension>
+   <extension
+         id="com.ingenico.ingedev.telium.core.archivemodifierproblem"
+         name="Telium Archive Modifier Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+</plugin>

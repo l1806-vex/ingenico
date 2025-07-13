@@ -1,0 +1,7 @@
+Bin*
+BuildFiles*
+Obj*
+.links
+Debug
+Release
+*.user

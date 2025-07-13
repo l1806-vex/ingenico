@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+        
+    <xs:simpleType name="dalnametype">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(/[A-Fa-f0-9]{4}/)?[A-Za-z0-9]+" />           
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
+

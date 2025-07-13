@@ -1,0 +1,68 @@
+; Training Application
+; Generated after building Training project (see \WithGoal\Training)
+TRAININGV01.AGN
+; User2 Application
+; Generated after building User2 project (see \WithGoal\User2)
+USER2V01.AGN
+; BeepDll Library
+; Generated after building BeepDll project (see \WithGoal\BeepDll)
+BEEPDLLV01.LGN
+; LinkLayer (see \Program Files\TeliumSDK\SDK 9.10.0\Component\LinkLayer\WithIP)
+36280412.AGN
+; Appli Message Parameter
+; Generated with BuildMSG tool and S.A.T (see \WithGoal\Message\Appli Messages\Sample.bat)
+SAMPLEMSG.PGN
+; Manager Message Parameter
+; Generated with BuildMSG tool and S.A.T (see \WithGoal\Message\Manager Messages\RussianEFT.bat)
+EFT.PGN
+; Font ISO5 (Russian) Standard [For compatibility with Manager Message] (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\Standard)
+8442190111.PGN
+; Font GOAL_LATIN_IT    (All Latin italic characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442450103.PGN
+; Font GOAL_LATIN_BO    (All Latin bold characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442460103.PGN
+; Font GOAL_LATIN_BI    (All Latin bold italic characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442470103.PGN
+; Font GOAL_CYGRE_NO    (All Cyrillic and Greek normal characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442480103.PGN
+; Font GOAL_CYGRE_IT    (All Cyrillic and Greek italic characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442490103.PGN
+; Font GOAL_CYGRE_BO    (All Cyrillic and Greek bold characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442500103.PGN
+; Font GOAL_CYGRE_BI    (All Cyrillic and Greek bold italic characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442510103.PGN
+; Font GOAL_ORIENTA_NO  (All Arabic and Hebrew normal characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442520103.PGN
+; Font GOAL_ORIENTA_BO  (All Arabic and Hebrew bold characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\GOAL)
+8442530103.PGN
+; FONT USER CAND_LATIN1 (Latin ISO1 [normal, bold, italic, bold italic] characters Candara (sans-serif))  
+; Generated with FontGenerator tool and S.A.T (see \WithGoal\Font\FontGenerator\fonts\Candara\CandaraLatin1.FonPrj)
+83530101.PGN
+-eHOST
+BWCARDT0.BMP
+BWCARDT1.BMP
+BWCARDT2.BMP
+BWCARDT3.BMP
+BWCARDT4.BMP
+BWCARDT5.BMP
+BWCARDT6.BMP
+BWCARDT7.BMP
+BWCARDT8.BMP
+BWCARDT9.BMP
+BWCARDT10.BMP
+BWCARDU0.BMP
+BWCARDU1.BMP
+BWCARDU2.BMP
+BWCARDU3.BMP
+BWCARDU4.BMP
+BWCARDU5.BMP
+BWCARDU6.BMP
+BWCARDU7.BMP
+BWCARDU8.BMP
+BWCARDU9.BMP
+BWCARDU10.BMP
+TIGERD_BW.BMP
+TIGERP_BW.BMP
+POPPING.GIF
+FILE.PAR
+VFS.TXT

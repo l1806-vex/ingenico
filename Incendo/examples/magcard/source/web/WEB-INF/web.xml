@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+  "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+
+<web-app>
+
+  <!--Servlet Filter that handles client requests.-->
+  <filter>
+     <filter-name>RequestFilter</filter-name>
+     <filter-class>com.ingenico.tml.example.magcard.RequestFilter</filter-class>
+     <description>This Filter handles client requests to tml resources according to client type.</description>
+  </filter>
+
+  <filter-mapping>
+     <filter-name>RequestFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>MagCardTxnProcessingServlet</servlet-name>
+    <display-name>Magnetic card transaction processing servlet</display-name>
+    <servlet-class>com.ingenico.tml.example.magcard.MagCardTxnProcessingServlet</servlet-class>
+    <init-param>
+      <param-name>tmlPostDataClass</param-name>
+      <param-value>com.ingenico.tml.example.magcard.MagCardTxnData</param-value>
+    </init-param>
+    <init-param>
+      <param-name>topLimit</param-name>
+      <param-value>20000</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <!-- FreeMarker view servlet (to replace JSP) -->
+  <servlet>
+    <servlet-name>freemarker</servlet-name>
+    <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
+    
+    <!-- FreemarkerServlet settings: -->
+    <init-param>
+      <param-name>TemplatePath</param-name>
+      <param-value>/</param-value>
+    </init-param>
+    <init-param>
+      <param-name>NoCache</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>ContentType</param-name>
+      <param-value>text/tml</param-value>
+    </init-param>
+    
+    <!-- FreeMarker settings: -->
+    <init-param>
+      <param-name>template_update_delay</param-name>
+      <param-value>0</param-value> <!-- 0 is for development only! Use higher value otherwise. -->
+    </init-param>
+    <init-param>
+      <param-name>default_encoding</param-name>
+      <param-value>ISO-8859-1</param-value>
+    </init-param>
+    <init-param>
+      <param-name>locale</param-name>
+      <param-value>en_US</param-value>
+    </init-param>
+    <init-param>
+      <param-name>number_format</param-name>
+      <param-value>0.##########</param-value>
+    </init-param>
+    
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>MagCardTxnProcessingServlet</servlet-name>
+    <url-pattern>/authtxn</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>freemarker</servlet-name>
+    <url-pattern>*.dtml</url-pattern>
+  </servlet-mapping>
+
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/exception.tml</location>
+  </error-page>
+
+  <mime-mapping>
+    <extension>tml</extension>
+    <mime-type>text/tml</mime-type>
+  </mime-mapping>
+
+  <mime-mapping>
+    <extension>lib</extension>
+    <mime-type>image/lib</mime-type>
+  </mime-mapping>
+
+</web-app>
+
+<!--========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

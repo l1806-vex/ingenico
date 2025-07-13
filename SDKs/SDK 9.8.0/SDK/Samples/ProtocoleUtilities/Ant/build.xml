@@ -1,0 +1,243 @@
+<project name="Build" default="main">
+
+	<!-- Load the ant-contrib package (needed for the 'foreach' task). -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	</taskdef>
+
+	<property name="debugflag" value="false"/>
+
+	<property name="build.log.dir" location="${basedir}/buildlogs"/>
+	<mkdir dir="${build.log.dir}"/>
+	<tstamp>
+		<format property="timestamp" pattern="yyyy-MM-dd_HH-mm-ss"/>
+	</tstamp>
+
+	<property name="build.log.filename" value="buildLog_${timestamp}.txt"/>
+	<property name="rebuild.err.filename" value="buildErrors_${timestamp}.txt"/>
+	
+	<property name="exportDir" location="${basedir}/Delivery" />
+	<property name="importDir" location="${basedir}/Delivery" />
+	<property name="workspaceDir" location="${basedir}/../.." />
+
+	<target name="initProjectName">
+		<ingedev.getCurrentProjectName outputproperty="projectName"/>
+	</target>	
+
+
+	<!-- main target (called by default) -->
+	<target name="main" depends="initProjectName">
+		<record name="${build.log.dir}/${build.log.filename}" loglevel="info" append="false" action="start"/>
+		<echo message="Build logged to ${build.log.filename}"/>
+
+		<!-- ${ingedev.version} property is set to IngeDev version-->
+		<echo message="IngeDev Version=">${ingedev.version}</echo>
+
+		<echo message=""/>
+		<echo message="**************************************************************"/>
+		<echo>Building '${projectName}'... </echo>
+
+		<echo message=""/>
+		<echo message="**************************************************************"/>
+		<echo message="Build ACTIVE Configuration"/>
+		<antcall target="build_ACTIVE_CONFIG">
+		</antcall>
+
+		<record name="${build.log.dir}/${build.log.filename}" loglevel="verbose" append="false" action="stop"/>
+		<eclipse.refreshLocal resource="${projectName}" depth="infinite"/>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: build_ACTIVE_CONFIG      
+          
+		Build ACTIVE_CONFIG configuration  
+         - - - - - - - - - - - - - - - - - -->
+	<target name="build_ACTIVE_CONFIG" depends="initProjectName">
+		<ingedev.telium.build						
+						project="${projectName}"
+				 		kind ="incremental"				
+						/>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: buildAllConfigsWithForEach      
+          
+		get all Telium configuration and call 'buildOneConfig' target to build each config  
+	- - - - - - - - - - - - - - - - - -->
+	<target name="buildAllConfigsWithForEach" depends="initProjectName">
+		<ingedev.telium.getBuildConfigurations
+			debugflag="${debugflag}"
+			project="${projectName}"
+			outputProperty="configList"			
+			/>
+		<foreach list="${configList}" param="one.build.config" target="buildOneConfig" delimiter=" ">
+		</foreach>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	    target: buildOneConfig
+		
+	    build (kind ="incremental") the given config (one.build.config property) for the 
+		given project (project="${projectName}"). 
+	- - - - - - - - - - - - - - - - - -->
+	<target name="buildOneConfig" depends="initProjectName">
+
+		<ingedev.telium.build						
+						config="${one.build.config}"
+						project="${projectName}"
+				 		kind ="incremental"				
+						/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: buildAllConfig
+                         
+		build (kind ="incremental") all configuration (config="ALL") for the 
+		given project (project="${projectName}"), and fail on error (failonerror="true"). 
+		That means the build stop at the first found error, and consequently does not continue 
+		with other configurations.                         
+	- - - - - - - - - - - - - - - - - -->
+
+	<target name="buildAllConfig" depends="initProjectName">
+		<property name="outputErrFileName" value="${build.log.dir}/${rebuild.err.filename}">
+		</property>
+		<ingedev.telium.build
+			errorsoutputfile="${outputErrFileName}"
+			failonerror="true"
+			config="ALL"
+			project="${projectName}"			
+			kind ="incremental"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: rebuildAllConfigWithFailOnError               
+          
+		rebuild (kind ="full") all configuration (config="ALL") for the 
+		given project (project="${projectName}"), and fail on error (failonerror="true"). 
+		That means the build stop at the first found error, and consequently does not continue 
+       	with other configurations.                         
+	- - - - - - - - - - - - - - - - - -->
+
+	<target name="rebuildAllConfigWithFailOnError" depends="initProjectName">
+		<property name="outputErrFileName" value="${build.log.dir}/${rebuild.err.filename}">
+		</property>
+		<ingedev.telium.build
+				errorsoutputfile="${outputErrFileName}"
+				failonerror="true"
+				config="ALL"
+				project="${projectName}"			
+				kind ="full"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: rebuildAllConfigAndTestIfFailed    
+          
+		rebuild (kind ="full") all configuration (config="ALL") for the 
+		given project (project="${projectName}"), and don't fail on error (failonerror="false"). 
+		That means even an error is found build continue for other configurations.             
+        At the end, if the given 'outputErrFileName' exists, that means there are some errors, and the build fails         
+	- - - - - - - - - - - - - - - - - -->
+	<target name="rebuildAllConfigAndTestIfFailed" depends="initProjectName">
+		<property name="outputErrFileName" value="${build.log.dir}/${rebuild.err.filename}"/>
+		<ingedev.telium.build
+			errorsoutputfile="${outputErrFileName}"
+			failonerror="false"
+			config="ALL"
+			project="${projectName}"			
+			kind ="full"/>
+		<eclipse.refreshLocal resource="${build.log.dir}" depth="infinite"/>
+		<available file="${outputErrFileName}" property="errors.exist"/>
+		<fail if="errors.exist" message="Errors occurs during the build. See '${outputErrFileName}' for more details...">
+		</fail>
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: exportLib	
+
+		Export for Ingedev the given Telium library project
+		- - - - - - - - - - - - - - - - - -->
+	<target name="exportSubProject" depends="initProjectName">
+	
+		<ingedev.telium.export project="${projectName}" configs="ALL"  kind="full" exportPath="${exportDir}/ExportLibs" stripsymbols="true" />
+	</target>
+	
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: importlib	
+
+		Import an Exported Telium Lib 
+		- - - - - - - - - - - - - - - - - -->
+	<target name="importlib" >
+		<unzip src="${importDir}/Telium.zip" dest="../"/>
+	</target>
+		
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: checkout from svn
+			
+		Import from svn 
+	- - - - - - - - - - - - - - - - - -->
+	<target name="svn-checkout" >
+		<property name="apptest" value="TTestApp1"/>
+		<property name="svnurl_telium_example" value="https://svn.ingenico.com/TOOLS/ExternalTools/QA/FolderSet/IngeDEv/Telium" />
+		<svn username="${user.name}"  password="">  <!-- set password -->
+			<checkout url="${svnurl_telium_example}/${apptest}" revision="HEAD"  destpath="${workspaceDir}/${apptest}"  />
+		</svn>
+	</target>
+		
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: migrate package project 
+		
+		from 7.4 to 7.6	
+	- - - - - - - - - - - - - - - - - -->
+	<target	name="migrate1"  depends="initProjectName">
+		<property name="teliumsdk" value="Telium SDK" />
+		<ingedev.telium.migratepackage 
+			packageName="${teliumsdk}" 
+			project="${projectName}"			 
+			packageVersion="7.4" 
+			packageNewVersion="7.6"	/>
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: migrate all package project 
+		
+		named "Telium SDK" to 7.6	
+	- - - - - - - - - - - - - - - - - -->
+	<target	name="migrate2"  depends="initProjectName">
+		<property name="teliumsdk" value="Telium SDK" />
+		<ingedev.telium.migratepackage 
+			packageName="${teliumsdk}" 
+			project="${projectName}"			 
+			allpackage="true"
+			packageNewVersion="7.6"	/>
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: Add package project
+		
+	- - - - - - - - - - - - - - - - - -->
+	<target	name="addpack"  >
+		<property name="teliumpackagepath" location="D:/applicationsfiles/ingenico/SDK30" />
+		<ingedev.telium.addpackage package_descriptor_url="${teliumpackagepath}/SDK 9.2.0/SDKDescriptor.xml"/>
+	</target>
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: importProject		
+			
+		Import the project into the workspace    
+	- - - - - - - - - - - - - - - - - -->
+	<target name="importProject">
+		<ingedev.projectImport projectdir="D:\mytest2"/>
+	</target>		
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: removeProject		
+			
+		Remove the project from the workspace    
+	- - - - - - - - - - - - - - - - - -->
+	<target name="removeProject">
+		<ingedev.removeProject projectname="test2"/>
+	</target>
+		
+</project>

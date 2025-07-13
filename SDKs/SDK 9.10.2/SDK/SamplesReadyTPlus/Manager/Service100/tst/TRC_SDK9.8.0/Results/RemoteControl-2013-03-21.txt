@@ -1,0 +1,167 @@
+2013-03-21 18:00:41,388 TRC.main INFO    : Starting Play Thread
+2013-03-21 18:00:41,859 TRC.ScriptEditor INFO    : File saved as : D:\Sample_Project_Philipin\Samples\SourceCode\trunk\Service100\tst\TRC_SDK9.8.0\Run_All_Tests.py
+2013-03-21 18:00:41,941 TRC.main INFO    : Starting script
+2013-03-21 18:00:41,944 TRC.main INFO    : Clearing History
+2013-03-21 18:00:41,967 TRC.main INFO    : Starting script D:\Sample_Project_Philipin\Samples\SourceCode\trunk\Service100\tst\TRC_SDK9.8.0\Run_All_Tests.py
+2013-03-21 18:00:46,137 root     INFO    : starting test suite
+2013-03-21 18:00:46,976 root     INFO    : starting test serv100_tst_001.py
+2013-03-21 18:00:48,194 TRC.main INFO    : SendKey('F')
+2013-03-21 18:00:50,595 TRC.main INFO    : SendKey('-')
+2013-03-21 18:00:52,825 TRC.main INFO    : SendKey('V')
+2013-03-21 18:00:53,951 TRC.main INFO    : Waiting for image('20130321-160456-120000.png')
+2013-03-21 18:00:53,973 TRC.main INFO    : Timeout: 30
+2013-03-21 18:00:54,944 TRC.ImageTools INFO    : Image not found (Best Match = -44.39%)
+2013-03-21 18:00:55,263 TRC.ImageTools INFO    : 1 Image(s) found (Match = 100.00%) 
+2013-03-21 18:00:57,707 TRC.main INFO    : SendKey('1')
+2013-03-21 18:01:00,197 TRC.main INFO    : SendKey('2')
+2013-03-21 18:01:03,082 TRC.main INFO    : SendKey('3')
+2013-03-21 18:01:05,746 TRC.main INFO    : SendKey('4')
+2013-03-21 18:01:08,223 TRC.main INFO    : SendKey('V')
+2013-03-21 18:01:09,460 TRC.main INFO    : Waiting for image('20130321-160522-691000.png')
+2013-03-21 18:01:09,502 TRC.main INFO    : Timeout: 30
+2013-03-21 18:01:10,147 TRC.ImageTools INFO    : 1 Image(s) found (Match = 100.00%) 
+2013-03-21 18:01:11,903 TRC.main INFO    : SendKey('V')
+2013-03-21 18:01:14,069 TRC.main INFO    : Waiting for image('20130321-161035-855000.png')
+2013-03-21 18:01:14,125 TRC.main INFO    : Timeout: 30
+2013-03-21 18:01:14,849 TRC.ImageTools INFO    : 1 Image(s) found (Match = 100.00%) 
+2013-03-21 18:01:15,242 TRC.main INFO    : SendKey('V')
+2013-03-21 18:01:16,519 TRC.main INFO    : Waiting for image('20130321-160545-213000.png')
+2013-03-21 18:01:16,548 TRC.main INFO    : Timeout: 30
+2013-03-21 18:01:17,690 TRC.ImageTools INFO    : 1 Image(s) found (Match = 100.00%) 
+2013-03-21 18:01:18,647 TRC.main INFO    : InsertCard
+2013-03-21 18:01:18,996 TRC.main INFO    : Waiting for image('20130321-160604-555000.png')
+2013-03-21 18:01:19,032 TRC.main INFO    : Timeout: 30
+2013-03-21 18:01:19,839 TRC.ImageTools INFO    : 1 Image(s) found (Match = 100.00%) 
+2013-03-21 18:01:22,641 TRC.main INFO    : RemoveCard
+2013-03-21 18:01:22,999 root     INFO    : test ok (no exceptions)
+2013-03-21 18:01:24,130 root     INFO    : starting test serv100_tst_002.py
+2013-03-21 18:01:25,979 TRC.main INFO    : SendKey('F')
+2013-03-21 18:01:26,959 TRC.main INFO    : SendKey('-')
+2013-03-21 18:01:29,334 TRC.main INFO    : SendKey('V')
+2013-03-21 18:01:30,381 TRC.main INFO    : Waiting for image('20130321-162652-327000.png')
+2013-03-21 18:01:30,404 TRC.main INFO    : Timeout: 30
+2013-03-21 18:01:30,868 TRC.ImageTools INFO    : Image not found (Best Match = -422.12%)
+2013-03-21 18:01:31,101 TRC.ImageTools INFO    : Image not found (Best Match = -422.12%)
+2013-03-21 18:01:31,487 TRC.ImageTools INFO    : 1 Image(s) found (Match = 100.00%) 
+2013-03-21 18:01:33,617 TRC.main INFO    : SendKey('1')
+2013-03-21 18:01:35,809 TRC.main INFO    : SendKey('2')
+2013-03-21 18:01:38,056 TRC.main INFO    : SendKey('3')
+2013-03-21 18:01:40,183 TRC.main INFO    : SendKey('4')
+2013-03-21 18:01:42,553 TRC.main INFO    : SendKey('V')
+2013-03-21 18:01:43,559 TRC.main INFO    : Waiting for image('20130321-162711-471000.png')
+2013-03-21 18:01:43,581 TRC.main INFO    : Timeout: 30
+2013-03-21 18:01:44,266 TRC.ImageTools INFO    : Image not found (Best Match = -61.62%)
+2013-03-21 18:01:44,453 TRC.ImageTools INFO    : 1 Image(s) found (Match = 100.00%) 
+2013-03-21 18:01:46,174 TRC.main INFO    : SendKey('V')
+2013-03-21 18:01:48,835 TRC.main INFO    : SendKey('-')
+2013-03-21 18:01:51,510 TRC.main INFO    : SendKey('-')
+2013-03-21 18:01:52,523 TRC.main INFO    : Waiting for image('20130321-162724-231000.png')
+2013-03-21 18:01:52,545 TRC.main INFO    : Timeout: 30
+2013-03-21 18:01:53,342 TRC.ImageTools INFO    : 1 Image(s) found (Match = 100.00%) 
+2013-03-21 18:01:55,003 TRC.main INFO    : SendKey('V')
+2013-03-21 18:01:57,549 TRC.main INFO    : SendKey('V')
+2013-03-21 18:02:00,357 TRC.main INFO    : InsertCard
+2013-03-21 18:02:02,112 TRC.main INFO    : SendKey('V')
+2013-03-21 18:02:04,864 TRC.main INFO    : RemoveCard
+2013-03-21 18:02:05,223 root     INFO    : test ok (no exceptions)
+2013-03-21 18:02:06,252 root     INFO    : starting test serv100_tst_003.py
+2013-03-21 18:02:07,466 TRC.main INFO    : SendKey('F')
+2013-03-21 18:02:10,117 TRC.main INFO    : SendKey('-')
+2013-03-21 18:02:12,532 TRC.main INFO    : SendKey('V')
+2013-03-21 18:02:13,601 TRC.main INFO    : SendKey('1')
+2013-03-21 18:02:14,555 TRC.main INFO    : SendKey('2')
+2013-03-21 18:02:15,555 TRC.main INFO    : SendKey('3')
+2013-03-21 18:02:16,572 TRC.main INFO    : SendKey('4')
+2013-03-21 18:02:17,558 TRC.main INFO    : SendKey('V')
+2013-03-21 18:02:19,609 TRC.main INFO    : SendKey('V')
+2013-03-21 18:02:22,505 TRC.main INFO    : SendKey('-')
+2013-03-21 18:02:24,934 TRC.main INFO    : SendKey('V')
+2013-03-21 18:02:25,953 root     INFO    : test ok (no exceptions)
+2013-03-21 18:02:26,921 root     INFO    : starting test serv100_tst_004.py
+2013-03-21 18:02:27,989 TRC.main INFO    : SendKey('F')
+2013-03-21 18:02:30,269 TRC.main INFO    : SendKey('-')
+2013-03-21 18:02:32,566 TRC.main INFO    : SendKey('V')
+2013-03-21 18:02:37,835 TRC.main INFO    : SendKey('1')
+2013-03-21 18:02:40,151 TRC.main INFO    : SendKey('2')
+2013-03-21 18:02:42,279 TRC.main INFO    : SendKey('3')
+2013-03-21 18:02:45,002 TRC.main INFO    : SendKey('4')
+2013-03-21 18:02:47,286 TRC.main INFO    : SendKey('V')
+2013-03-21 18:02:53,288 TRC.main INFO    : SendKey('-')
+2013-03-21 18:02:56,292 TRC.main INFO    : SendKey('-')
+2013-03-21 18:02:59,220 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:07,131 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:08,102 root     INFO    : test ok (no exceptions)
+2013-03-21 18:03:09,992 root     INFO    : starting test serv100_tst_005.py
+2013-03-21 18:03:11,155 TRC.main INFO    : SendKey('F')
+2013-03-21 18:03:13,405 TRC.main INFO    : SendKey('-')
+2013-03-21 18:03:15,563 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:17,598 TRC.main INFO    : SendKey('1')
+2013-03-21 18:03:18,707 TRC.main INFO    : SendKey('2')
+2013-03-21 18:03:19,726 TRC.main INFO    : SendKey('3')
+2013-03-21 18:03:20,721 TRC.main INFO    : SendKey('4')
+2013-03-21 18:03:21,717 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:23,788 TRC.main INFO    : SendKey('-')
+2013-03-21 18:03:25,983 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:28,709 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:31,088 TRC.main INFO    : InsertCard
+2013-03-21 18:03:32,789 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:36,434 TRC.main INFO    : RemoveCard
+2013-03-21 18:03:36,798 root     INFO    : test ok (no exceptions)
+2013-03-21 18:03:37,855 root     INFO    : starting test serv100_tst_006.py
+2013-03-21 18:03:39,069 TRC.main INFO    : SendKey('F')
+2013-03-21 18:03:40,086 TRC.main INFO    : SendKey('-')
+2013-03-21 18:03:42,497 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:43,670 TRC.main INFO    : SendKey('1')
+2013-03-21 18:03:44,744 TRC.main INFO    : SendKey('2')
+2013-03-21 18:03:45,746 TRC.main INFO    : SendKey('3')
+2013-03-21 18:03:47,065 TRC.main INFO    : SendKey('4')
+2013-03-21 18:03:47,217 TRC.main INFO    : SendKey('1')
+2013-03-21 18:03:50,203 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:52,401 TRC.main INFO    : SendKey('-')
+2013-03-21 18:03:54,903 TRC.main INFO    : SendKey('V')
+2013-03-21 18:03:57,200 TRC.main INFO    : SendKey('-')
+2013-03-21 18:03:59,561 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:00,529 TRC.main INFO    : Swipe: Swipe(track2='B4970100000010006301D12121010000000000F7')
+2013-03-21 18:04:02,621 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:03,625 root     INFO    : test ok (no exceptions)
+2013-03-21 18:04:04,691 root     INFO    : starting test serv100_tst_007.py
+2013-03-21 18:04:05,743 TRC.main INFO    : SendKey('F')
+2013-03-21 18:04:06,786 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:09,255 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:10,424 TRC.main INFO    : SendKey('1')
+2013-03-21 18:04:11,398 TRC.main INFO    : SendKey('2')
+2013-03-21 18:04:12,371 TRC.main INFO    : SendKey('3')
+2013-03-21 18:04:13,355 TRC.main INFO    : SendKey('4')
+2013-03-21 18:04:14,326 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:16,549 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:18,990 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:21,411 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:22,552 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:23,750 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:25,950 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:29,253 TRC.main INFO    : InsertCard
+2013-03-21 18:04:31,727 TRC.main INFO    : RemoveCard
+2013-03-21 18:04:32,111 root     INFO    : test ok (no exceptions)
+2013-03-21 18:04:33,229 root     INFO    : starting test serv100_tst_008.py
+2013-03-21 18:04:34,417 TRC.main INFO    : SendKey('F')
+2013-03-21 18:04:35,413 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:37,823 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:38,904 TRC.main INFO    : SendKey('1')
+2013-03-21 18:04:39,888 TRC.main INFO    : SendKey('2')
+2013-03-21 18:04:40,861 TRC.main INFO    : SendKey('3')
+2013-03-21 18:04:41,877 TRC.main INFO    : SendKey('4')
+2013-03-21 18:04:42,851 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:45,213 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:47,526 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:49,897 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:50,894 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:52,039 TRC.main INFO    : SendKey('-')
+2013-03-21 18:04:53,311 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:55,983 TRC.main INFO    : SendKey('V')
+2013-03-21 18:04:59,085 TRC.main INFO    : InsertCard
+2013-03-21 18:05:01,737 TRC.main INFO    : RemoveCard
+2013-03-21 18:05:02,088 root     INFO    : test ok (no exceptions)
+2013-03-21 18:05:03,341 root     INFO    : test suite is done
+2013-03-21 18:05:10,051 TRC.main INFO    : Finished script D:\Sample_Project_Philipin\Samples\SourceCode\trunk\Service100\tst\TRC_SDK9.8.0\Run_All_Tests.py
+2013-03-21 18:05:10,540 TRC.main INFO    : ----------------------------------
+2013-03-21 18:05:10,561 TRC.main INFO    : Test OK

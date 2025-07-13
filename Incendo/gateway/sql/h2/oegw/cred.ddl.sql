@@ -1,0 +1,3 @@
+DROP ALL OBJECTS;
+
+

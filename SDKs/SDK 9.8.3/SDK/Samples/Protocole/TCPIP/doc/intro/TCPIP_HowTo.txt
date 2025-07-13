@@ -1,0 +1,113 @@
+ /** \page HowTo Basic Operation
+
+* \b TCP/IP Sample Application requires a socket tool to act as a client or a server. 
+*
+* A sample open source software that can be used is the Hercules SETUP Utility. Go to http://www.hw-group.com/products/hercules/index_en.html to download the tool.
+*
+* \section tcpsecht1 Running the HTTP SERVER
+*
+* <em>On the Terminal side:</em>
+*
+* 1. Activate Telium Manager's menu by pressing \b 'F' key 
+*
+* 2. On the Telium Manager's menu, select \b TCPIP.
+*
+* 3. Select <b>HTTP Server</b> on the SAMPLE TCP/IP menu.
+*
+* 4. Terminal displays <b>"Launching Server Test.."</b>
+* 
+* 5. Terminal displays <b>"Creating socket.."</b>
+*
+* 6. Terminal displays <b>"Listening.."</b>. The terminal then waits for any client to connect within <b>60 seconds</b>.
+* If no requests are received within 60 seconds, the test will terminate and display <b>"Shutting down connection.."</b> then displays \b "OK" message  before going back to the TCPIP Menu
+*
+* \b Note: The server can process 8 simultaneous requests at a given moment.
+*
+* <em>On the PC side:</em>
+*
+* 7. Open <b>Hercules. Note that several instances of Hercules Client can be made to connect to the server. The server can process 8 simultaneous requests at any given moment.</b> 
+*
+* 8. On each Hercules instance, Click the <b>TCP Client</b> tab, Specify the Module IP (the IP Address of the terminal acting as server) and the Port number to connect to. The information is displayed when you go to TCPIP>Network info in the terminal.
+*
+* Ex. 192.168.0.1 The server will use the port \b 80 which is the DEFAULT_HTTP_PORT defined in pmu.c
+*
+* 9. Click \b Connect on each Hercules instance.
+*
+* <em>On the Terminal side:</em>
+*
+* 10. Terminal displays \b "Accepted connection!" then goes back to \b "Listening.." state. The terminal then waits for any client activity within <b>60 seconds</b>.
+* If there's no activity coming from any client, the test will terminate and display <b>"Shutting down connection.."</b> then displays \b "OK" message  before going back to the TCPIP Menu
+*
+*
+* <em>On the PC side:</em>
+*
+* 11. On each client instance, Send an HTTP Get request to the terminal using this sample format: GET /INDEX.HTML HTTP/1.1 $0d$0a$0d$0a - Be sure to indicate the file name of the HTML file that was loaded in the terminal(INDEX.HTML). 
+*
+* The HTML file (it must have an extension name HTML not HTM) must have been loaded into the HOST directory on the terminal. A sample HTML file is provided under "..\res" folder of TCPIP sample.
+*
+* \b Note: Failure to send any request would result to a time out and terminal will shut down all active connections and stops listening.
+*
+* <em>On the Terminal side:</em>
+*
+* 12. The server on the terminal checks the validity of the HTTP request message sent by any client sending request messages. It sends the following response based on the result of checking of the request message sent.:
+*
+* a. <b>echo of the file</b> - when a proper message has been received - that is, the message should contain a valid HTTP header.
+* 
+* b. <b>Malformed HTTP Request</b> - when HTTP header format is invalid.
+*
+* c. <b>HTTP/1.0 404 KO</b> -  When HTTP header is valid but the file is missing. Load HTML file on host folder in LLT.
+*
+* <em>On the PC side:</em>
+*
+* 13. Click \b "Disconnect" to close the session with the server.
+*
+* <em>On the Terminal side:</em>
+*
+* 14. Terminal waits for requests from other clients within 60 seconds. If none, the terminal will terminate all existing connections and stops listening. Displays "Shutting down connection.." then displays "OK" message before going back to the TCPIP Menu
+*
+* \section tcpsecht2 Running HTTP Client
+*
+* <em>On the PC side:</em>
+*
+* 1. Open \b Hercules
+*
+* 2. Click the <b>TCP Server</b> tab, indicate the port to be used then hit the LISTEN button
+*
+* <em>On the Terminal side:</em>
+*
+* 3. Activate Telium Manager's menu by pressing the \b 'F' key.
+*
+* 4. On the Telium Manager's menu, select \b TCPIP.
+*
+* 5. On the SAMPLE TCP/IP menu, select <b>Client Test Config</b>.
+*
+* 6. Enter the host name such as "www.google.com" or the IP address of the host then press ENTER
+*
+* 7. Enter the port number as indicated on the Hercules Utility (TCP Server) then press \b ENTER
+*
+* 8. On the SAMPLE TCP/IP menu, select <b>HTTP Client</b>.
+*
+* 9. The terminal shall now connect to the server
+* 
+* 10. Displays "Sending"  while terminal sends an HTTP GET request. 
+*
+* 11. It waits for a response for 60 seconds. If none, the terminal will close the connection. Displays <b>"Shutting down connection.."</b> then displays \b "OK" message  before going back to the TCPIP Menu
+*
+* <em>On the PC side:</em>
+*
+* 12. Enter any data on the send text box then hit \b "SEND"
+*
+* <em>On the Terminal side:</em>
+*
+* 13. Terminal displays "Receiving". if session is not ended manually (as described in the next step), the terminal after <b>60 seconds</b> will time out and  display <b>"Shutting down connection.."</b> then displays \b "OK" message  before going back to the TCPIP Menu
+*
+* <em>On the PC side:</em>
+*
+* 14. To end the session, Click the \b "CLOSE" button.
+*
+* <em>On the Terminal side:</em>
+*
+* 15. Terminal display <b>"Shutting down connection.."</b> then displays \b "OK" message  before going back to the TCPIP Menu
+
+
+  */

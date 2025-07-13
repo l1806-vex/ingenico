@@ -1,0 +1,24 @@
+;System pack prod for iWL280
+;Pack System
+37771104.pgn
+;iWL280 base list
+8201371104.pgn
+;Driver BC06 handheld T3
+8201410456.dgn
+;Boot Ram T3
+8205000013.dgn
+;Driver VFS T3
+8205100328.dgn
+;Driver CLESS ThunderIII
+8205110230.dgn
+;System Thunder T3
+8205011110.dgn
+;Booster III system ISC
+8205130248.dgn
+;Booster III Boot Flash ISC
+8205150015.dgn
+;Driver GPRS T3
+8205290206.dgn
+;TS Configuration file
+8442310001.pgn
+

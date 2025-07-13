@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?u32Simulation version="2.0"?>
+
+<?ingedev version="7.2.0.5"?>
+
+<simulationParameters>
+<appli appType="user" configFileName="WW0000011900" countryCode="WW" dataRootDir="" domainNb="0" number="0" path="" physicalName="WW000001_GMA" simulatedConfigName="SIMULATION_T01" softType="master" userName="gmaBinaries">
+<codeFile location="WW0000011901.dll" type="mainCode"/>
+<codeFile location="WW000001190Z" type="resource"/>
+</appli>
+</simulationParameters>

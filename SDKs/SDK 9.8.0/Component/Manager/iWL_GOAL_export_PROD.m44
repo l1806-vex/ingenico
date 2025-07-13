@@ -1,0 +1,113 @@
+;TELIUM MANAGER EXPORT iWL GOAL PROD
+;PPR30 Export
+8443690333.lgn
+;Security Exp T2
+46560342.lgn
+;INGESTATE COMPATIBILITY T2
+47787401.pgn
+;Header BW
+8443730261.lgn
+;HEADER IWL250
+8440970261.lgn
+;DLL E2EE
+8440780406.lgn
+;Telium SDK
+8442291068.pgn
+;GL DLL FOR EFT930CC/ICT250/IPP350/ML30CC/IWL250
+8443510321.lgn
+;GL DLL FOR EFT930/ICT220/IPP320/ML30/IWL220
+8443710321.lgn
+;GM RESOURCE FOR EFT930CC/ICT250/IPP350/ML30CC/IWL250
+8443577401.pgn
+;GM RESOURCE FOR EFT930/ICT220/IPP320/ML30/IWL220
+8443727401.pgn
+;M2OS
+8445920961.agn
+;tmtools
+8446220111.lgn
+;Extension
+8445941061.lgn
+;Graphic Librairy
+8445960781.lgn
+;M2OS Parameters
+8445970861.lgn
+;Entry
+8445980781.lgn
+;Cam/Date Librairy
+8445990861.lgn
+;PSC Protocol
+8446010681.lgn
+;NULL Protocol
+8446020691.lgn
+;Cryptographic librairy
+8446060531.lgn
+;EMV Selection
+8446080721.lgn
+;IAM
+8446090691.lgn
+;Pinpad
+8446100701.lgn
+;ums
+8446160691.lgn
+;gprs
+8446210821.lgn
+;Hardware cnf
+8446420311.lgn
+;COLOR
+8446920371.lgn
+;PackM2OS
+8447787401.pgn
+; Font file manager(mandatory)
+8440580342.PGN
+; Skin for the 320x240 screen (mandatory for screen 320x240)
+8440600342.PGN
+; Graphical library (mandatory)
+8440550342.LGN
+; Skin for the 128x64 screen (mandatory for screen 128x64)
+8440590342.PGN
+; Graphical server (mandatory)
+8440560342.LGN
+; Plugin signature capture for GOAL (optional)
+8443210342.LGN
+; Image WGU decoder (mandatory)
+8443000342.LGN
+; Plugin video for GOAL (optional)
+8443200342.LGN
+; Tools library (mandatory)
+8440540342.LGN
+; Data abstract layer thunder II and III (mandatory)
+8205320011.LGN
+; Graphical driver thunder II (mandatory)
+8203710223.DGN
+; Image PNG decoder (optional), Dependencies LIBPNG DLL and ZLIB DLL
+8443010342.LGN
+; Image GIF decoder (optional), Dependencies LIBGIF DLL
+8443060342.LGN
+; LIBJPG DLL (optional)
+8443050342.LGN
+; LIBPNG DLL (optional)
+8443030342.LGN
+; ZLIB DLL (optional)
+8443020342.LGN
+; Image JPEG decoder (optional), Dependencies LIBJPG DLL
+8443040342.LGN
+; Image BMP decoder (optional)
+8443080342.LGN
+; LIBGIF DLL (optional)
+8443070342.LGN
+; Barcode PDF 417 encoder (optional)
+8443380342.LGN
+; Barcode QR encoder (optional)
+8443320342.LGN
+; Barcode CODE 25 encoder (optional)
+8443340342.LGN
+; Barcode CODE 128 encoder (optional)
+8443330342.LGN
+; Barcode EAN 8 encoder (optional)
+8443360342.LGN
+; Barcode EAN 13 encoder (optional)
+8443370342.LGN
+; Barcode CODE 39 encoder (optional)
+8443350342.LGN
+; Keymap file (mandatory)
+8443310102.PGN

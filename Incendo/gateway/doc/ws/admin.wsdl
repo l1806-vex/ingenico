@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2004-2006 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico UK.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap"
+                  xmlns:tns="http://ingenico.com/ns/admin" xmlns:tnsdata="http://ingenico.com/ns/admin/data"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://www.ingenico.com/terminal-config"
+                  xmlns:common="http://ingenico.com/ns/common/data" targetNamespace="http://ingenico.com/ns/admin">
+    <wsdl:types>
+        <schema targetNamespace="http://ingenico.com/ns/admin/data" xmlns="http://www.w3.org/2001/XMLSchema">
+            <include schemaLocation="./admin.xsd"/>
+            <xsd:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="addUserRequest">
+        <documentation>
+            add a new user
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="user" type="tnsdata:User">
+            <documentation>
+                user data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="groupName" type="xsd:string">
+            <documentation>
+                optionally supplied a the name of the group to which the user shoudl be assigned
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="changeUserRequest">
+        <documentation>
+            change user
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="user" type="tnsdata:User">
+            <documentation>
+                user data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="changeUserPasswordRequest">
+        <documentation>
+            change user password
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="login" type="xsd:string">
+            <documentation>
+                the login name of the user
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="initiatorEncodedPassword" type="xsd:string">
+            <documentation>
+                Encoded password of the user requesting the password change. Encode using sha1 algorithm (passwd +
+                timestamp)
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="timestamp" type="xsd:long">
+            <documentation>
+                timestamp - must be same timestamp as used to encode the password
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="newPassword" type="xsd:string">
+            <documentation>
+                new password
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="userRequest">
+        <documentation>
+            Request object containing user login details and auth credentials
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="login" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="groupRequest">
+        <documentation>
+            Request object containing group name and auth credentials
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="name" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="addUserGroupRequest">
+        <documentation>
+            add a new user group
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="user" type="tnsdata:UserGroup">
+            <documentation>
+                user group data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="changeUserGroupRequest">
+        <documentation>
+            change group
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="group" type="tnsdata:UserGroup">
+            <documentation>
+                group
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="dropUserGroupRequest">
+        <documentation>
+            add a new user
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="name" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="assignUserToGroupRequest">
+        <documentation>
+            Authenticates a given user
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="user" type="xsd:string"/>
+        <wsdl:part name="group" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="listUsersRequest">
+        <documentation>
+            Returns a list of all users ( or limited by the optionally supplied group)
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="partialUsername" type="xsd:string"/>
+        <wsdl:part name="group" type="xsd:string"/>
+        <wsdl:part name="sortableFields" type="common:SortList"/>
+    </wsdl:message>
+    <wsdl:message name="listUsersResponse">
+        <documentation>
+            Response contains list of users
+        </documentation>
+        <wsdl:part name="userList" type="tnsdata:Users"/>
+    </wsdl:message>
+    <wsdl:message name="getUserResponse">
+        <documentation>
+            Response contain a single user
+        </documentation>
+        <wsdl:part name="user" type="tnsdata:User"/>
+        <wsdl:part name="group" type="tnsdata:UserGroup"/>
+    </wsdl:message>
+    <wsdl:message name="getGroupResponse">
+        <documentation>
+            Response contain a group user
+        </documentation>
+        <wsdl:part name="group" type="tnsdata:UserGroup"/>
+    </wsdl:message>
+    <wsdl:message name="listGroupsRequest">
+        <documentation>
+            Returns a list of all groups
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="sortableFields" type="common:SortList"/>
+    </wsdl:message>
+    <wsdl:message name="listGroupsResponse">
+        <documentation>
+            Response contains list of users
+        </documentation>
+        <wsdl:part name="groupList" type="tnsdata:UserGroups"/>
+    </wsdl:message>
+    <wsdl:message name="authenticateRequest">
+        <documentation>
+            Authenticates a given user
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="loginRequest">
+        <documentation>
+            Authenticates a given user
+        </documentation>
+        <wsdl:part name="name" type="xsd:string"/>
+        <wsdl:part name="password" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="authenticateResponse">
+        <documentation>
+            Response contains list of services
+        </documentation>
+        <wsdl:part name="userAuthentication" type="tnsdata:UserAuthentication"/>
+    </wsdl:message>
+    <wsdl:message name="baseResponse">
+        <documentation>
+            Response contains result (valid or not), error message in case of any errors
+        </documentation>
+        <wsdl:part name="rslt" type="xsd:long"/>
+        <wsdl:part name="errormsg" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="AdminWSIF">
+
+        <wsdl:operation name="addUser">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="addUserRequest" message="tns:addUserRequest"/>
+            <wsdl:output name="addUserResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeUser">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="changeUserRequest" message="tns:changeUserRequest"/>
+            <wsdl:output name="changeUserResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeUserPassword">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="changeUserPasswordRequest" message="tns:changeUserPasswordRequest"/>
+            <wsdl:output name="changeUserPasswordResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="dropUser">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="dropUserRequest" message="tns:userRequest"/>
+            <wsdl:output name="dropUserResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="lockUser">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="lockUserRequest" message="tns:userRequest"/>
+            <wsdl:output name="lockUserResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="unlockUser">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="unlockUserRequest" message="tns:userRequest"/>
+            <wsdl:output name="unlockUserResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addUserGroup">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="addUserGroupRequest" message="tns:addUserGroupRequest"/>
+            <wsdl:output name="addUserGroupResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeUserGroup">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="changeUserGroupRequest" message="tns:changeUserGroupRequest"/>
+            <wsdl:output name="changeUserGroupResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="dropUserGroup">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="dropUserGroupRequest" message="tns:dropUserGroupRequest"/>
+            <wsdl:output name="dropUserGroupResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="listUsers">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="listUsersRequest" message="tns:listUsersRequest"/>
+            <wsdl:output name="listUsersResponse" message="tns:listUsersResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="listGroups">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="listGroupRequest" message="tns:listGroupsRequest"/>
+            <wsdl:output name="listGroupResponse" message="tns:listGroupsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="assignUserToGroup">
+            <documentation>
+                Assign assign user to a groups. If the group is not supplied, then user is unassigned from current
+                group.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="assignUserToGroupRequest" message="tns:assignUserToGroupRequest"/>
+            <wsdl:output name="assignUserToGroupResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="authenticateUser">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="authenticateRequest" message="tns:authenticateRequest"/>
+            <wsdl:output name="authenticateResponse" message="tns:authenticateResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="loginRequest" message="tns:loginRequest"/>
+            <wsdl:output name="authenticateResponse" message="tns:authenticateResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUser">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="getUserRequest" message="tns:userRequest"/>
+            <wsdl:output name="getUserResponse" message="tns:getUserResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getGroup">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input name="getGroupRequest" message="tns:groupRequest"/>
+            <wsdl:output name="getGroupResponse" message="tns:getGroupResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AdminSoapBinding" type="tns:AdminWSIF">
+        <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="addUser">
+            <documentation>
+                Adds a new user
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeUser">
+            <documentation>
+                changes user
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeUserPassword">
+            <documentation>
+                changes user password
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="dropUser">
+            <documentation>
+                drops user
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="lockUser">
+            <documentation>
+                locks user
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="unlockUser">
+            <documentation>
+                unlocks user
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addUserGroup">
+            <documentation>
+                Adds a new user group
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeUserGroup">
+            <documentation>
+                changes user group
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="dropUserGroup">
+            <documentation>
+                drops user group
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listUsers">
+            <documentation>
+                Returns list of users
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listGroups">
+            <documentation>
+                Returns list of groups
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="assignUserToGroup">
+            <documentation>
+                assigns/unassigns users to a group
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="authenticateUser">
+            <documentation>
+                archives activity logs
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="login">
+            <documentation>
+                Initially logins user
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUser">
+            <documentation>
+                Returns the user matching the supplied user login
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGroup">
+            <documentation>
+                Returns the group matching the supplied group name
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Admin"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/admin"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AdminWSIFService">
+        <wsdl:port name="Admin" binding="tns:AdminSoapBinding">
+            <wsdlsoap:address location="http://localhost:8090/cfgsrv/services/Admin"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

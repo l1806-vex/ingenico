@@ -1,0 +1,20 @@
+;System pack for EFT930 base BEM
+;Pack System
+37771104.pdf
+37771104.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver Modem 930
+40150322.ddf
+40150322.sgn
+;Driver USB CDC
+8200320616.ddf
+8200320616.sgn
+;System R+
+8200361110.ddf
+8200361110.sgn
+;Driver BC06 base T2
+8201260236.ddf
+8201260236.sgn
+

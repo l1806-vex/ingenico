@@ -1,0 +1,47 @@
+;System pack prod EFT30
+;System R+
+8200361472.ddf
+8200361472.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver Modem
+30150340.ddf
+30150340.sgn
+;Driver Dsp 128
+30160210.ddf
+30160210.sgn
+;Driver VFS
+30210332.ddf
+30210332.sgn
+;Driver PPR
+30220104.ddf
+30220104.sgn
+;Booster Full EMV2000 +
+30930522.ddf
+30930522.sgn
+;Pack System
+37772808.pdf
+37772808.sgn
+;Driver GPRS
+8200120236.ddf
+8200120236.sgn
+;Driver UMS
+8200210320.ddf
+8200210320.sgn
+;Driver HID
+8200220124.ddf
+8200220124.sgn
+;Driver USB CDC
+8200320628.ddf
+8200320628.sgn
+;Driver CLESS
+8200490239.ddf
+8200490239.sgn
+;System P30
+8200570149.ddf
+8200570149.sgn
+;System PP30S
+8200910120.ddf
+8200910120.sgn
+

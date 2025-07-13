@@ -1,0 +1,20 @@
+;Components for iUP2xx + iUR2xx platform
+;UCMC
+33860306.agn
+;UCM Start
+33870306.lgn
+;Pack UCM Components
+37930307.pgn
+;DLL UCI
+8130390103.lgn
+;OS iUR250
+8203730360.dgn
+;DLL ExtReader
+8442330104.lgn
+;App GetReadyTH2
+8442420103.agn
+;iUP250 No Device
+UCMI000b.PAS
+;iUP250 + iUR250 + SAMS + NOEP
+UCMIZ61e.PAS
+

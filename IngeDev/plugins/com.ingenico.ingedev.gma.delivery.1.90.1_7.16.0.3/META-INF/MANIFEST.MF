@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Ingenico
+Bundle-Version: 7.16.0.3
+Bundle-Localization: plugin
+Bundle-Name: GMA Delivery 1.90.1 Plug-in
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ingenico.ingedev.gma.delivery.1.90.1;singleto
+ n:=true
+
+

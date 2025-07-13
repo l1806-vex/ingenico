@@ -1,0 +1,20 @@
+;System pack prod for BASE iWL220-250 & 280
+;Pack System
+37771104.pgn
+;Boot Ram
+30140503.dgn
+;Driver Modem 930
+40150322.dgn
+;Driver USB CDC
+8200320616.dgn
+;System R+
+8200361110.dgn
+;Driver BC06 base T2
+8201260456.dgn
+;iWL220-250 base list
+8201360101.pgn
+;Driver SSC_DAA
+8203680101.dgn
+;Driver Modem V34
+8203690104.dgn
+

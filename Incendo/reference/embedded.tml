@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tml xmlns="http://www.ingenico.co.uk/tml">
+
+    <head>
+    <link href="emb://customer.tml" rev="text/tml"/>
+    <link href="embedded.css" rev="stylesheet"/>
+    <defaults menu="#main" cancel="#main"/>
+    </head>
+
+    <!-- Declaration of variables -->
+    <!-- Built-in variables -->
+
+    <!-- Time zone -->
+    <vardcl name="oebr.time_zone" value="0" type="integer" perms="rwxr-" volatile= "no"/>
+
+    <!-- Cache update policy: all or expired -->
+    <vardcl name="oebr.cache_update_policy" value="expired" perms="rwx--" volatile= "no"/>    
+
+    <!-- Current URI -->
+    <vardcl name="oebr.current_uri" perms="rwxr-"/>
+
+    <!-- Amount values -->
+    <vardcl name="payment.amount" type="integer" perms="rwxrw"/>
+    <vardcl name="payment.amount_other" type="integer" perms="rwxrw"/>
+
+    <!-- Error message -->
+    <vardcl name="err.description" perms="rwxrw"/>
+
+    <!-- Description of error ocurred during data input -->
+    <vardcl name="err.baddata_reason" perms="rwxrw"/>
+
+    <!-- Identifier of the offline post to be cancelled -->
+    <vardcl name="oebr.post_id" type="integer" perms="rwxrw"/>
+
+    <!-- Last rendered screen -->
+    <vardcl name="oebr.prev_screen" perms="rwxr-"/>
+
+    <!-- Last date/time when the terminal was connected to the OEGW -->
+    <vardcl name="oebr.last_connection_dt" type="date"  perms="rwxrw" volatile= "no"/>
+
+    <!-- OEGW certificate -->
+    <vardcl name="oegw.certificate" perms="rwx--" volatile="no" value="
+-----BEGIN CERTIFICATE-----
+MIICkDCCAfmgAwIBAgIBADANBgkqhkiG9w0BAQQFADCBhDEPMA0GA1UEAxMGVGVz
+dENBMRIwEAYDVQQIEwlCZXJrc2hpcmUxEDAOBgNVBAcTB05ld2J1cnkxCzAJBgNV
+BAYTAkdCMSgwJgYJKoZIhvcNAQkBFhlzbEBuZW1lc2lzLmluZ2VuaWNvLmNvLnVr
+MRQwEgYDVQQKEwtJbmdlbmljbyBVSzAeFw0wNTEwMjYyMjMxMThaFw0wODEwMjUy
+MjMxMThaMIGEMQ8wDQYDVQQDEwZUZXN0Q0ExEjAQBgNVBAgTCUJlcmtzaGlyZTEQ
+MA4GA1UEBxMHTmV3YnVyeTELMAkGA1UEBhMCR0IxKDAmBgkqhkiG9w0BCQEWGXNs
+QG5lbWVzaXMuaW5nZW5pY28uY28udWsxFDASBgNVBAoTC0luZ2VuaWNvIFVLMIGf
+MA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDEdQzcQ4tVFPQVaxwhTf95gMMfwmhu
+S/V/ya27sahQvv04GNzP/7j/iVrje7pHxw2se4V3wu+fcwXvx3A7+JtolGUCc8Qx
+yWjEdK2AMZ0UdhMtK/iQ8+93393p3VQQklSQHDBTQpla90/P2lSLj01Qg6cYV7rW
+u6yHSk9kkHh83QIDAQABoxAwDjAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUA
+A4GBAL14e3M+Rftjan3UFHTU3GrMT7hUCAZc/Rdy2Sw8Bpc/fQIVTVN20HJCpJOD
+kY9GqTIKND/etsmblmz3JFnBI4jYvJCvHWQXjPlrQIDbLddp4BUw2fIFSwmTgrsB
+fIzz3epobesSI1ijN5eGBgf6npdwZZ1GjkcLMMAbV7+PODx9
+-----END CERTIFICATE-----
+    "/>
+    <!-- OEGW terminal password -->
+    <vardcl name="terminal.password" perms="rwx--" volatile="no"/>
+    <!-- Terminal certificate -->
+    <vardcl name="terminal.certificate" perms="rwx--" volatile="no" value="
+-----BEGIN CERTIFICATE-----
+MIICwDCCAimgAwIBAgIBBDANBgkqhkiG9w0BAQQFADCBkDEbMBkGA1UEAxMST3Bl
+bkVzdGF0ZSBUZXN0IENBMRIwEAYDVQQIEwlCZXJrc2hpcmUxEDAOBgNVBAcTB05l
+d2J1cnkxCzAJBgNVBAYTAkdCMSgwJgYJKoZIhvcNAQkBFhlkbEBuZW1lc2lzLmlu
+Z2VuaWNvLmNvLnVrMRQwEgYDVQQKEwtJbmdlbmljbyBVSzAeFw0wNjA3MjgyMDA1
+NDNaFw0wOTA3MjcyMDA1NDNaMIGrMRIwEAYDVQQDEwlUZXN0IFVzZXIxFjAUBgNV
+BAgTDU1vc2NvdyBSZWdpb24xDzANBgNVBAcTBk1vc2NvdzELMAkGA1UEBhMCUlUx
+KDAmBgkqhkiG9w0BCQEWGXR1QG5lbWVzaXMuaW5nZW5pY28uY28udWsxHTAbBgNV
+BAoTFE9wZW5Fc3RhdGUgVGVzdCBUZWFtMRYwFAYDVQQLEw1PcGVuRXN0YXRlIFFB
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPWCL038dq2Epdh/izb8a163fk
+9O7qlpBjDBKIJ30n1Xi25HolMEAJ2HdnJFieJaAYQFfFR3rR8I63CLTZEVLnW10m
+mkw4zDFt7MwsznsWs4NjfClyKBM1yxIeZTkmfM5cjIvhFeISoul8rrgFXpU5PLv3
+sntNjlJrUiBIG9ByXQIDAQABow0wCzAJBgNVHRMEAjAAMA0GCSqGSIb3DQEBBAUA
+A4GBADRn3X3bem+QCxrBtIbAeLU6RWqFrNLeN3YfJl6jZjaqy3ZUQ65j+PYpDPLg
+tUifPIgHh+r1KiN2IQqvUzzs3A91Pi7CYx5fgwgpkFUmtHDVMW/h0bKS7xzfHE7u
+3ox5bpRuJJDpwxHxxsQUxVOy+V7gTSgLJk6Dd8C1NINs9/7l
+-----END CERTIFICATE-----
+    "/>
+    <!-- Terminal private key -->
+    <vardcl name="terminal.privkey" perms="rwx--" volatile="no" value="
+-----BEGIN RSA PRIVATE KEY-----
+MIICWwIBAAKBgQDPWCL038dq2Epdh/izb8a163fk9O7qlpBjDBKIJ30n1Xi25Hol
+MEAJ2HdnJFieJaAYQFfFR3rR8I63CLTZEVLnW10mmkw4zDFt7MwsznsWs4NjfCly
+KBM1yxIeZTkmfM5cjIvhFeISoul8rrgFXpU5PLv3sntNjlJrUiBIG9ByXQIDAQAB
+AoGAOA8VTG2gZgPaf1U+6YzEBfWG8fFDE0vn98+Qxx0eGoH95Dz7xUg5WDAdgFZ0
+WzXDBiuHT4BW9aH7hAMnmjSz2/rQKwc/cM2ZUi5SWdDcdUqfu9Eg03y8Lp2ifjFN
+HCX2tlx15neHM8XDW4I7hQGIEGWx9Bn5xAQiL9S3pZf4gUECQQDunFNg6jQrL357
+U4NlLLdMKzAgRiv4B8NojdDn/+2Xk028qj86cb/dneC3hD9gdy/KybKpvkjTqSqC
+mbsLHm2NAkEA3nR8QcyVhmhNCoJEfZnuqqRRzWi4JMBXnaKwWABvn10BYzdHmIV/
+2SULUgylOXBYy7SNPr77xeJWOT9ZEr7cEQJARmGgCm8qsi5RLYllsXsuGe6HRI3O
+PFv13KowG66W42XUwTiqa8/Pm0wNU7RTiV2+oB88bussyhoU6u7ziAUSpQJAECdX
+SpPnm74BMi0pehFugleyVP8wuAJ7mkfRFGLbuC/RxPmjqlCvav5Epy2h5dzhpdEz
+nIXT1JfN+RQ/jJvtcQJAKWkEoxrQr+8UNF0D+7ctqNe5nNsSiCQS93fueo6jP3Rv
+NFZAsEztALAJ5SeBif7nQ6wt0viLYsgtMvRz+f0nBw==
+-----END RSA PRIVATE KEY-----
+    "/>
+
+    <!-- Synchronize cache on call_func name="connect_to_server" -->
+    <vardcl name="oebr.connect.sync_cache" value="yes" perms="rwxrw" volatile="no"/>
+    <!-- Send CFGM request on call_func name="connect_to_server" -->
+    <vardcl name="oebr.connect.sync_config" value="yes" perms="rwxrw" volatile="no"/>
+    <!-- Push offline posts pool on call_func name="connect_to_server" -->
+    <vardcl name="oebr.connect.pool_off" value="yes" perms="rwxrw" volatile="no"/>
+
+    <!-- Variables related to 3rd party applications  -->
+    <vardcl name="oebr.3rdparty.var_list" value="oebr.3rdparty.app_name;oebr.3rdparty.timeout;card.emv.aac;oebr.last_connection_dt" perms="rwxrw" volatile="no"/>
+    <vardcl name="oebr.3rdparty.app_name" value="GB000400_Ima" perms="rwxrw" volatile="no"/>
+    <vardcl name="oebr.3rdparty.timeout" type="integer" value="0" perms="rwxrw" volatile="no"/>
+
+    <!-- Variables related to barcode  -->
+    <vardcl name="imager.code_id" perms="rwxrw"/>
+    <vardcl name="imager.aim_id" perms="rwxrw"/>
+    <vardcl name="imager.aim_modifier" perms="rwxrw"/>
+    <vardcl name="imager.data" perms="rwxrw"/>
+
+    <!-- Variables filled by different parsers -->
+    <vardcl name="card.parser.type" perms="rwxrw"/>
+    <vardcl name="card.cardholder_name" perms="rwxrw"/>
+    <vardcl name="card.pan" perms="rwxrw"/>
+    <vardcl name="card.issuer_name" perms="rwxrw"/>
+    <vardcl name="card.issue_number" type="integer" perms="rwxrw"/>
+    <vardcl name="card.scheme" perms="rwxrw"/>
+    <vardcl name="card.effective_date" type="date" perms="rwxrw"/>
+    <vardcl name="card.expiry_date" type="date" perms="rwxrw"/>
+    <vardcl name="card.mag.iso1_track" perms="rwxrw"/>
+    <vardcl name="card.mag.iso2_track" perms="rwxrw"/>
+    <vardcl name="card.mag.iso3_track" perms="rwxrw"/>
+    <vardcl name="card.mag.service_code" perms="rwxrw"/>
+
+
+    <vardcl name="card.pin" type="string" perms="rwxr-"/>
+    <vardcl name="card.pin.ksn" type="string" perms="rwxrw"/>
+    <vardcl name="card.pin.smid" type="string" perms="rwxr-"/>
+    <vardcl name="card.pin.length" type="integer" perms="rwxr-"/>
+    <!-- Identifies the key slot to encrypt the PIN for both DUKPT & 3DES -->
+    <vardcl name="card.pin.key" value="0.0"
+            type="string" perms="rwxrw" volatile="no"/>
+
+    <!-- Risk management verdict: online, offline or reject -->
+    <vardcl name="card.parser.verdict" perms="rwxrw"/>
+
+    <!-- Reason of the transaction rejection. -->
+    <vardcl name="card.parser.reject_reason" perms="rwxrw"/>
+
+    <vardcl name="card.emv.app_pan_seq" type="integer" perms="rwxrw"/>
+    <vardcl name="card.emv.aid" perms="rwxrw"/>
+    <vardcl name="card.emv.aip" type="integer" perms="rwxrw"/>
+    <vardcl name="card.emv.auc" type="integer" perms="rwxrw"/>
+    <vardcl name="card.emv.atc" type="integer" perms="rwxrw"/>
+    <vardcl name="card.emv.aac" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.tc" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.arqc" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.iad" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.tvr" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.unumber" type="integer" perms="rwxrw"/>
+    <vardcl name="card.emv.iac_default" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.iac_denial" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.iac_online" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.iso_track2" type="opaque" perms="rwxrw"/>
+    <vardcl name="card.emv.cvmr" type="opaque" perms="rwxrw"/>
+    <!-- Specifies, how card details are entered:
+         1 - magnetic card is swiped
+         2 - ICC
+         3 - entered via keyboard 
+    -->
+    <vardcl name="card.input_type" type="integer" perms="rwxrw"/>
+
+    <vardcl name="terminal.pinpad_present" value="0" type="integer" perms="r-x--" volatile= "no"/>
+
+    <!-- Authorisation reply (0/1) -->
+    <vardcl name="payment.txn_result" type="integer" perms="rwxrw"/>
+    <vardcl name="payment.auth_code" type="string" perms="rwxrw"/>
+    <vardcl name="payment.auth_resp_code" type="integer" perms="rwxrw"/>
+    <vardcl name="payment.emv.issuer_auth" type="opaque" perms="rwxrw"/>
+    <vardcl name="payment.emv.arpc" type="opaque" perms="rwxrw"/>
+
+    <!-- ICC scripts -->
+    <vardcl name="payment.emv.issuer_script1" type="opaque" perms="rwxrw"/>
+    <vardcl name="payment.emv.issuer_script2" type="opaque" perms="rwxrw"/>
+    <vardcl name="payment.emv.issuer_script_results" type="opaque" perms="rwxrw"/>
+
+    <!-- Cardholder Verification Method -->
+    <vardcl name="card.parser.cvm" perms="rwxrw"/>
+
+    <!-- Signature is required -->
+    <vardcl name="card.emv.signature" type="integer" perms="rwxrw"/>
+
+    <!-- Cardholder Verification Result -->
+    <vardcl name="card.parser.cvr" perms="rwxrw"/>
+
+    <!-- Last pin entry attempt -->
+    <vardcl name="card.emv.last_attempt" type="integer" perms="rwxrw"/>
+
+    <!-- Submit mode: online or offline. 
+         Analysed by the HTTP client. -->
+    <vardcl name="oebr.submit_mode" perms="rwxrw"/>
+
+    <!-- Reason of data submitting failure; filled by the HTTP client -->
+    <vardcl name="oebr.econn" type="integer" perms="rwxrw"/>
+
+    <!-- Transaction identifier -->
+    <vardcl name="oebr.transid" type="integer" value="1" perms="rwxrw" volatile= "no"/>
+
+    <!-- ISO transaction type -->
+    <vardcl name="payment.trans_type" type="integer" perms="rwxrw"/>
+
+
+    <!-- Read-only variables -->
+
+    <!-- Unique identifier -->
+    <vardcl name="oebr.unique_id" type="integer" perms="r-xr-"/>
+    
+    <!-- Calendar time -->
+    <vardcl name="terminal.datetime" type="date" perms="r-xr-"/>
+    <vardcl name="terminal.datetime_start" type="date" value ="2006/01/01" format="YYYY/MM/DD" perms="r-xr-" volatile= "no"/>
+
+    <!-- Unique Ingenico terminal identifier -->
+    <vardcl name="terminal.itid" value="100" perms="rwxr-" volatile= "no"/>
+
+    <!-- Ingenico terminal model -->
+    <vardcl name="terminal.model" type="integer" perms="r-xr-"/>
+
+    <!-- Micro-Browser version -->
+    <vardcl name="oebr.version" perms="r-xr-"/>
+
+    <!-- Constant Micro-Browser application version. Should be taken
+         from OS when is retrieved -->
+    <vardcl name="oebr.appversion" perms="r-xr-"/>
+
+    <!-- Terminal OS version. Should be taken from OS when is retrieved -->
+    <vardcl name="terminal.os" perms="r-xr-" volatile= "no"/>
+
+    <!-- Terminal Part Number -->
+    <vardcl name="terminal.part_number" perms="r-xr-" volatile= "no"/>
+
+    <!-- Terminal Serial Number -->
+    <vardcl name="terminal.serial_number" perms="r-xr-" volatile= "no"/>
+    <!-- Default Terminal Serial Number -->
+    <vardcl name="terminal.serial_number_default" value="123456789012" perms="r-x--" volatile= "no"/>
+    <!-- Check default Terminal Serial Number flag -->
+    <vardcl name="terminal.sn_check" type="integer" value="1" perms="rwx--" volatile= "no"/>
+
+
+    <!-- Variables changed during terminal configuration and initialisation -->
+    <!-- PIN for blank terminal initialisation -->
+    <vardcl name="oebr.pin_init" value="100" perms="rwx--" volatile= "no"/>
+
+    <!-- Administrative password -->
+    <vardcl name="oebr.supervisor_passwd" value="123" perms="rwx--" volatile= "no"/>
+
+    <!-- Run browser after reboot -->
+    <vardcl name="oebr.run_on_reboot" value="yes" perms="rwx--" volatile= "no"/>
+    <vardcl name="oebr.run_on_reboot_str" value="yes" perms="rwx--" volatile= "no"/>
+
+    <!-- Restore the page rendered before power off -->
+    <!-- stay_on_page mode is excluded from current version
+         <vardcl name="oebr.stay_on_page"/> 
+     -->
+   
+
+    <!-- Maximum and current number of offline posts -->
+    <vardcl name="oebr.max_offline_posts" type="integer" value="64"  perms="rwxr-" volatile= "no"/>
+    <vardcl name="oebr.posts_number" type="integer" perms="rwxr-" volatile= "no"/>
+    <!-- Temporary post count -->
+    <vardcl name="oebr.posts_number_tmp" type="integer" perms="rwxr-" volatile= "no"/>
+    <!-- During offline post printing specify what to show: header name value
+         Each subsequent value shows previous one.
+       header - print each offline post header only
+           name   - header + name of all variables included
+       value  - header + name & value of all variables included
+     WARNING: This creates a security hole in production if set to other
+              than 'header'. PLS USE WITH EXTREME CARE
+      -->
+    <vardcl name="oebr.posts_print_mode" value="header" perms="rwxr-" volatile= "no"/>
+
+    <!-- terminal backlight timeout and 'off' strength value -->
+    <vardcl name="oebr.backlight.timeout" type="integer" value="600" perms="rwxr-" volatile= "no"/>
+    <vardcl name="oebr.backlight.off_strength" type="integer" value="0" perms="rwxr-" volatile= "no"/>
+
+    <!-- indicators positioin
+         "none" - nowhere;
+         "default" - default configuration: radio indicator -> "top-left",
+                     craddle battery, external power & battery -> "top-right";
+         "A-left" "A-middle" "A-right" where A = {"top", "bottom"}
+         "B-top" "B-middle" "B-bottom" where B = {"right", "left"} -->
+    <vardcl name="oebr.indicators" value="default" perms="rwxr-" volatile= "no"/>
+
+    <!-- Merchant information -->
+    <vardcl name="payment.merchant_number" type="integer" perms="rwxr-"/>
+
+    <!-- IP parameters -->
+
+    <!-- so timeout in seconds -->
+    <vardcl name="ip.so_timeout" type="integer" value="30" perms="rwxr-" volatile= "no"/>
+
+    <!-- ip.media := { ethernet | modem | dsl | com | gprs | socket} -->
+    <vardcl name="ip.media" value="com" perms="rwxr-" volatile= "no"/>
+
+    <!-- ip.term_ip := { dynamic | static } -->
+    <vardcl name="ip.term_ip" value="dynamic" perms="rwxr-" volatile= "no"/>
+
+    <!-- ip.static_addr := byte_int.byte_int.byte_int.byte_int -->
+    <vardcl name="ip.static_addr" value="192.168.0.10" perms="rwxr-" volatile= "no"/>
+
+    <!-- ip.net_mask := byte_int.byte_int.byte_int.byte_int -->
+    <vardcl name="ip.net_mask" value="255.255.255.0" perms="rwxr-" volatile= "no"/>
+
+    <!-- ip.default_gateway := byte_int.byte_int.byte_int.byte_int -->
+    <vardcl name="ip.default_gateway" value="192.168.0.1" perms="rwxr-" volatile= "no"/>
+
+    <!-- ip.dns1 := byte_int.byte_int.byte_int.byte_int -->
+    <vardcl name="ip.dns1" value="0.0.0.0" perms="rwxr-" volatile= "no"/>
+
+    <!-- ip.dns2 := byte_int.byte_int.byte_int.byte_int -->
+    <vardcl name="ip.dns2" value="0.0.0.0" perms="rwxr-" volatile= "no"/>
+
+    <!-- ip.local_addr := byte_int.byte_int.byte_int.byte_int
+         This is local terminal's IP after successfully connection
+     -->
+    <vardcl name="ip.local_addr" value="0.0.0.0" perms="rwxr-" volatile= "yes"/>
+
+    <!-- This is timeout for network setting retrival
+     -->
+    <vardcl name="ip.net_conn_timeout" type="integer" value="120" perms="rwxr-" volatile= "no"/>
+
+    <!-- This is persistent connection switch -->
+    <vardcl name="ip.persistent" value="yes" perms="rwxr-" volatile="no" />
+
+    <!-- PPP parameters -->
+    <vardcl name="ppp.phone" value="908450885336" perms="rwxr-" volatile= "no"/>
+    <vardcl name="ppp.login" value="ingenico_oe" perms="rwx--" volatile= "no"/>
+    <vardcl name="ppp.password" value="1234567890" perms="rwx--" volatile= "no"/>
+    <vardcl name="ppp.retries" type="integer" value="3" perms="rwxr-" volatile= "no"/>
+    <vardcl name="ppp.conn_timeout" type="integer" value="120" perms="rwxr-" volatile= "no"/>
+
+    <!-- PPP Auth type: PAP, CHAP -->
+    <vardcl name="ppp.authtype" value="PAP" perms="rwxr-" volatile= "no"/>
+
+    <!-- COM parameters -->
+    <vardcl name="com.name" value="COM1" perms="rwxr-" volatile= "no"/>
+    <vardcl name="com.speed" value="115200" perms="rwxr-" volatile= "no"/>
+    <vardcl name="com.data_size" value="8" perms="rwxr-" volatile= "no"/>
+    <vardcl name="com.parity" value="none" perms="rwxr-" volatile= "no"/>
+    <vardcl name="com.stop_bits" value="1" perms="rwxr-" volatile= "no"/>
+
+    <!-- OEGW parameters -->
+    <vardcl name="oegw.ip" value="127.0.0.1" perms="rwxr-" volatile= "no"/>
+    <vardcl name="oegw.ip.resolved" value="0.0.0.0" perms="rwxr-" volatile= "yes"/>
+    <vardcl name="oegw.port" type="integer" value="61000" perms="rwxr-" volatile= "no"/>
+    <vardcl name="oegw.init_port" type="integer" value="61001" perms="rwxr-" volatile= "no"/>
+    <vardcl name="oegw.resp_timeout" type="integer" value="25" perms="rwxr-" volatile= "no"/>
+    <vardcl name="oegw.init_resp_timeout" type="integer" value="25" perms="rwxr-" volatile= "no"/>        
+
+    <!-- GPRS parameters -->
+    <vardcl name="gprs.gsm_pin1" value="0000" perms="rwxr-" volatile= "no"/>
+    <vardcl name="gprs.gsm_puk1" value="00000000" perms="rwxr-" volatile= "no"/>
+    <vardcl name="gprs.apn" value="internet.msk" perms="rwxr-" volatile= "no"/>
+    <vardcl name="gprs.selection_to" type="integer" value="60" perms="rwxr-" volatile= "no"/>
+
+    <!-- Auxiliary variables -->
+    <vardcl name="passwd" perms="rw---"/>
+    <vardcl name="screen_after_call" perms="rw---"/>
+
+    <!-- Audio variables -->
+    <vardcl name="audio.volume" type="integer" value="100" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.mute" value="off" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.next_ref" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.next_url" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.focus_get" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.tml_key_press" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.connection_open" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.connection_close" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.any_key" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.enter_key" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.clear_key" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.cancel_key" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.paper_feed_key" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.app_start" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.app_stop" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.app_error" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.emv_insert" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.emv_remove" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.swipe" value="sound_click_midtone" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.swipe_failed" value="sound_click_low" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.barcode_read" value="sound_short_high" perms="rwxr-" volatile= "no"/>
+    <vardcl name="audio.barcode_failed" value="sound_short_low" perms="rwxr-" volatile= "no"/>
+
+    <!-- CFGM variables used for timestamp keeping -->
+    <!-- scan interval has been set to 1 sec according to management decision
+         for keeping cfgm syncronization at the each connection to OEGW
+    -->
+    <vardcl name="cfgm.scan.interval" type="integer" value="1" perms="rwx--" volatile= "no"/>
+    <vardcl name="cfgm.mag.timestamp" type="integer" value="0" perms="rwxr-" volatile= "no"/>
+    <vardcl name="cfgm.emv.timestamp" type="integer" value="0" perms="rwxr-" volatile= "no"/>
+
+    <!-- Start page URI -->
+    <vardcl name="oebr.start_page" value="/" perms="rwx--" volatile= "no"/>
+
+    <!-- local variables for nested screen printing -->
+    <vardcl name="emb.next"             perms="rw---" value="" /> <!-- go to that screen after nested printing -->
+    <vardcl name="emb.stack.0"          perms="rw---" value="" />
+    <vardcl name="emb.stack.1"          perms="rw---" value="" />
+    <vardcl name="emb.stack.2"          perms="rw---" value="" />
+    <vardcl name="emb.stack.3"          perms="rw---" value="" />
+    <vardcl name="emb.stack.4"          perms="rw---" value="" />
+    <vardcl name="emb.stack.5"          perms="rw---" value="" />
+    <vardcl name="emb.stack.6"          perms="rw---" value="" />
+    <vardcl name="emb.stack.7"          perms="rw---" value="" />
+    <vardcl name="emb.stack.8"          perms="rw---" value="" />
+    <vardcl name="emb.stack_new.0"      perms="rw---" value="" />
+    <vardcl name="emb.stack_new.1"      perms="rw---" value="" />
+    <vardcl name="emb.stack_new.2"      perms="rw---" value="" />
+    <vardcl name="emb.stack_new.3"      perms="rw---" value="" />
+    <vardcl name="emb.stack_new.4"      perms="rw---" value="" />
+    <vardcl name="emb.stack_new.5"      perms="rw---" value="" />
+    <vardcl name="emb.stack_new.6"      perms="rw---" value="" />
+    <vardcl name="emb.stack_new.7"      perms="rw---" value="" />
+    <vardcl name="emb.stack_new.8"      perms="rw---" value="" />
+
+    <screen id="main">
+        <next uri="customer.tml#custom"/>
+    </screen>
+
+    <screen id="main2">
+        <next uri="emb://e_5100.tml#main">
+            <variant lo="tmlvar:terminal.model" op="equal" ro="8550" uri="emb://e_8550.tml#main"/>
+        </next>
+    </screen>
+
+    <screen id="error">
+        <next uri="emb://e_5100.tml#error">
+            <variant lo="tmlvar:terminal.model" op="equal" ro="8550" uri="emb://e_8550.tml#error"/>
+        </next>
+    </screen>
+
+</tml>
+
+<!--
+ ==========================================================================
+ COPYRIGHT (C) 2004-2006 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

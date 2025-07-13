@@ -1,0 +1,8 @@
+<Parameters>
+    <Apn>internet.globe.com.ph</Apn>
+    <Address>www.free.fr</Address>
+    <Port>80</Port>
+    <Profile>PROFILE_00</Profile>
+    <Login>Username</Login>
+    <Password>Password</Password>
+</Parameters>

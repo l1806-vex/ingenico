@@ -1,0 +1,2 @@
+Run SortDirectory.reg to sort files handier 
+See http://support.microsoft.com/kb/319827/ for details

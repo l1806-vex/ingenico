@@ -1,0 +1,85 @@
+; Lines beginning with ';' are commentaries
+
+KernelID=XXXX
+TerminalID=XXXX
+BmpPathName=Elite_500.bmp
+MaskPathName=Elite_500_mask.bmp
+BmpScreenWidth=354
+ScreenUpperLeftCorner=190,274
+ScreenRealSizePixels=128,64
+
+; Type = Standard or Touch
+ScreenType=Standard
+
+ScreenNbBitsPerPixel=1
+KeyboardId=4
+PrinterNbCharsPerLine=24
+
+;Enter
+Button=Rectangular, 0x3A, 0x0F, 486, 673, 577, 807, 0x0D
+
+;F4
+Button=Rectangular, 0x43, 0x10, 558, 423, 601, 459, 0x73
+
+;F3
+Button=Rectangular, 0x42, 0x11, 555, 368, 603, 402, 0x72
+
+;F2
+Button=Rectangular, 0x41, 0x12, 557, 314, 604, 348, 0x71
+
+;F1
+Button=Rectangular, 0x40, 0x13, 559, 266, 606, 299, 0x70
+
+;F5
+Button=Rectangular, 0x44, 0x19, 127, 422, 166, 458, 0x74
+
+;F9
+Button=Rectangular, 0x48, 0x15, 127, 369, 169, 402, 0x78
+
+;F8
+Button=Rectangular, 0x47, 0x16, 126, 318, 170, 348, 0x77
+
+;F6
+Button=Rectangular, 0x45, 0x18, 127, 269, 175, 299, 0x75
+
+;Paper feed (PC = Page Up)
+Button=Rectangular, 0x3F, 0x14, 142, 743, 220, 807, 0x21
+
+;Clear (PC = Escape)
+Button=Rectangular, 0x3B, 0x05, 482, 541, 563, 586, 0x1B
+
+;Corr (PC = Backspace)
+Button=Rectangular, 0x3D, 0x06, 484, 604, 567, 654, 0x08
+
+;9
+Button=Rectangular, 0x39, 0x0E, 371, 677, 457, 733, 0x69, 0x39
+
+;8
+Button=Rectangular, 0x38, 0x09, 259, 675, 342, 734, 0x68, 0x38
+
+;7
+Button=Rectangular, 0x37, 0x04, 150, 670, 229, 729, 0x67, 0x37
+
+;6
+Button=Rectangular, 0x36, 0x0D, 373, 607, 457, 659, 0x66, 0x36
+
+;5
+Button=Rectangular, 0x35, 0x08, 264, 607, 346, 660, 0x65, 0x35
+
+;4
+Button=Rectangular, 0x34, 0x03, 158, 602, 237, 657, 0x64, 0x34
+
+;3
+Button=Rectangular, 0x33, 0x0C, 375, 545, 457, 592, 0x63, 0x33
+
+;2
+Button=Rectangular, 0x32, 0x07, 269, 545, 349, 593, 0x62, 0x32
+
+;1
+Button=Rectangular, 0x31, 0x02, 166, 540, 242, 590, 0x61, 0x31
+
+;0
+Button=Rectangular, 0x30, 0x0A, 254, 750, 340, 813, 0x60, 0x30
+
+;00
+Button=Rectangular, 0x3C, 0x01, 370, 753, 458, 814, 0x6E

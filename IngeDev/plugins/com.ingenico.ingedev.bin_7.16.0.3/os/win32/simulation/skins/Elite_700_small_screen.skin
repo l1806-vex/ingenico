@@ -1,0 +1,65 @@
+KernelID=XXXX
+TerminalID=XXXX
+BmpPathName=Elite_700_small_screen.bmp
+MaskPathName=Elite_700_small_screen_mask.bmp
+BmpScreenWidth=365
+ScreenUpperLeftCorner=111,314
+ScreenRealSizePixels=128,32
+ScreenType=Standard
+ScreenNbBitsPerPixel=1
+KeyboardId=1
+PrinterNbCharsPerLine=24
+
+;Enter
+Button=Elliptic, 0x3A, 0x0F, 429, 700, 514, 820, 0x0D
+
+;F3
+Button=Elliptic, 0x42, 0x0E, 363, 477, 451, 534, 0x72
+
+;F2
+Button=Elliptic, 0x41, 0x0D, 246, 480, 334, 537, 0x71, 0x26
+
+;F1
+Button=Elliptic, 0x40, 0x0C, 126, 480, 217, 534, 0x70, 0x28
+
+;Paper feed (PC = Page Up)
+Button=Elliptic, 0x3F, 0x0B, 71, 771, 151, 820, 0x21
+
+;Clear (PC = Escape)
+Button=Elliptic, 0x3B, 0x05, 423, 589, 500, 623, 0x1B
+
+;Corr (PC = Backspace)
+Button=Elliptic, 0x3D, 0x06, 426, 643, 503, 680, 0x08
+
+;9
+Button=Elliptic, 0x39, 0x0E, 314, 697, 391, 740, 0x69, 0x39
+
+;8
+Button=Elliptic, 0x38, 0x09, 194, 697, 274, 740, 0x68, 0x38
+
+;7
+Button=Elliptic, 0x37, 0x04, 77, 703, 157, 746, 0x67, 0x37
+
+;6
+Button=Elliptic, 0x36, 0x0D, 311, 637, 389, 674, 0x66, 0x36
+
+;5
+Button=Elliptic, 0x35, 0x08, 197, 637, 274, 677, 0x65, 0x35
+
+;4
+Button=Elliptic, 0x34, 0x03, 83, 643, 160, 683, 0x64, 0x34
+
+;3
+Button=Elliptic, 0x33, 0x0C, 311, 586, 389, 620, 0x63, 0x33
+
+;2
+Button=Elliptic, 0x32, 0x07, 200, 586, 274, 620, 0x62, 0x32
+
+;1
+Button=Elliptic, 0x31, 0x02, 86, 591, 160, 626, 0x61, 0x31
+
+;0
+Button=Elliptic, 0x30, 0x0A, 191, 763, 271, 809, 0x60, 0x30
+
+;00
+Button=Elliptic, 0x3C, 0x01, 314, 763, 394, 809, 0x6E

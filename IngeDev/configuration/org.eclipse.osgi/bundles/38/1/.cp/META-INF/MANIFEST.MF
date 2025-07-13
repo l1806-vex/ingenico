@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Ingenico
+Bundle-Version: 7.16.0.3
+Bundle-Name: Telium Development
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ingenico.ingedev.telium;singleton:=true
+
+

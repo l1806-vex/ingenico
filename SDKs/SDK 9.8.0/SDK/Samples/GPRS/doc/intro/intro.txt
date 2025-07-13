@@ -1,0 +1,25 @@
+ /** \mainpage GPRS Sample 
+
+This document is intended to help beginners to learn how the GPRS functionality in SDK is done. 
+
+It shows :
+	- how to configure GPRS, PPP, TCP/IP and GSM settings.
+	- how to activate and deactivate GPRS.
+	- how to Connect and disconnect PPP.
+	- how to perform TCP/IP connection thru GPRS Network.
+	- how to run GSM.
+
+  * To learn about the GPRS Sample, please refer to the following pages:
+  * 
+  * - \subpage Purpose 
+  * - \subpage Functions 
+  * - \subpage Before 
+  * - \subpage HowTo 
+  * \image html "logotelium_293x196.png" 
+  */
+
+//-----------------------------------------------------------
+
+
+
+

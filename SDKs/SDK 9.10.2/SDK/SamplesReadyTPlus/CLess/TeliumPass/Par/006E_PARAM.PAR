@@ -1,0 +1,20 @@
+<epdPar>
+  
+    <aidOption101>05030000</aidOption101>
+    <aidPaywaveSmall>A000000003</aidPaywaveSmall>
+    <aidPaypassSmall>A000000004</aidPaypassSmall>
+    <amtBin15>000005DC</amtBin15>
+    <amtNum25>000000002500</amtNum25>
+    <amtNum20>000000002000</amtNum20>
+    <amtNum10>000000001000</amtNum10>
+    <apduOption>01100000</apduOption>
+    <selectPPSE>05030000</selectPPSE>
+    <apduSW9000>0900</apduSW9000>
+    <kernelPaypass>0002</kernelPaypass>
+    <kernelVisa>0003</kernelVisa>
+    <propId1>12345678</propId1>
+    <propId2>11223344</propId2>
+    <ttqNoOption>B2000000</ttqNoOption>
+    <trcOutput>1</trcOutput>
+
+</epdPar>

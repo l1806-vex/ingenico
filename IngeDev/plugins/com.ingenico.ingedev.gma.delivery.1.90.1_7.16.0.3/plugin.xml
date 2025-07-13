@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="com.ingenico.ingedev.gma.gmaDelivery">
+      <gmaDelivery
+            countryCode="WW"
+            customGmaDir="gmaDelivery/customGma"
+            defines="GMA_USE_MENU_LIB_LIBRARY"
+            docDir="gmaDelivery/docs"
+            domainNumber="0"
+            heapSize="40960"
+            libraryDir="gmaDelivery/libs"
+            mainModuleReservedCodeAndDataSize="0x80000"
+            mainModuleReservedCodeSize="0x40000"
+            mainTaskStackSize="8192"
+            simulationBinDir="gmaDelivery/simulationBin"
+            systemLibsForCustomGma="LNet;LGsm;LDbg"
+            terminalBinDir="gmaDelivery/terminalBin"
+            userLibsForCustomGma="gmaCore;gmaLib;MenuLib;EditLib;DebugLib;gmaCustomLib;menuLibLaf;ssaStd;stdMaintConfig;StdMaintenance;GCL;GCL_ETH;GCL_GSM;GCL_MODEM;GCL_SERIAL;GCL_SSL;GCL_PGSUP"
+            userLibsForGmaCompliantApp="gmaLib;gmaCustomLib"
+            userLibsForGmaPluginApp="gmaLib"
+            userName="GMA"
+            version="1.90.1">
+         <gmaPlugins>
+            <gmaPlugin
+                  description="General settings for the terminal."
+                  id="settings"
+                  libName="gmaPluginSettings"
+                  name="Settings"
+                  presentByDefault="true"
+                  registerFunction="pgRegistryPluginSettings();"
+                  registerHeaderFile="pgMainSettings.h"
+                  shortName="Settings"/>
+            <gmaPlugin
+                  description="Handles communication with a server."
+                  id="smf"
+                  libName="gmaPluginSMF"
+                  name="Maintenance"
+                  registerFunction="pgRegistryPluginSMF();"
+                  registerHeaderFile="MainSMF.h"
+                  shortName="Maint."/>
+            <gmaPlugin
+                  description="Handles display of battery icon."
+                  id="por"
+                  libName="gmaPluginPOR"
+                  name="Battery Management"
+                  registerFunction="pgRegistryPluginPOR();"
+                  registerHeaderFile="MainPOR.h"
+                  shortName="Batt."/>
+            <gmaPlugin
+                  description="Management of the Ethernet connection."
+                  id="eth"
+                  libName="gmaPluginEth"
+                  name="Ethernet"
+                  registerFunction="pgRegistryEthPlugin()"
+                  registerHeaderFile="ethMain.h"
+                  shortName="Eth."/>
+            <gmaPlugin
+                  description="Management of the GSM / GPRS connection."
+                  id="gsm"
+                  libName="gmaPluginGsm"
+                  name="GSM / GPRS"
+                  registerFunction="pgRegistryGsmPlugin()"
+                  registerHeaderFile="gsmMain.h"
+                  shortName="GSM"/>
+            <gmaPlugin
+                  description="Management of the Wi-Fi connection."
+                  id="wifi"
+                  libName="gmaPluginWifi"
+                  name="Wi-Fi"
+                  registerFunction="pgRegistryWifiPlugin()"
+                  registerHeaderFile="MainWifi.h"
+                  shortName="Wi-Fi"/>
+            <gmaPlugin
+                  description="Management of the Bluetooth communication between the terminal and its base."
+                  id="rad"
+                  libName="gmaPluginRadio"
+                  name="Radio (Bluetooth)"
+                  registerFunction="pgRegistryPluginRAD();"
+                  registerHeaderFile="pgMainRAD.h"
+                  shortName="Radio"/>
+            <gmaPlugin
+                  description="Manual entry for magnetic card data"
+                  id="manCardEntry"
+                  libName="gmaPluginMCrdEn"
+                  name="Manual Card Data Entry"
+                  registerFunction="pgRegistryMCrdEnPlugin();"
+                  registerHeaderFile="pgMainMCrdEn.h"
+                  shortName="Man. Card Entry">
+            </gmaPlugin>
+            <gmaPlugin
+                  description="Management of a PPP connection"
+                  id="ppp"
+                  libName="gmaPluginPPP"
+                  name="PPP"
+                  registerFunction="pgRegistryGmaPluginPPPPg();"
+                  registerHeaderFile="gmaPluginPPPMain.h"
+                  shortName="PPP">
+            </gmaPlugin>
+            <gmaPlugin
+                  description="Selection of the IP channel to use"
+                  id="ip"
+                  libName="gmaPluginIPChannelSel"
+                  name="IP Channel Selection"
+                  presentByDefault="true"
+                  registerFunction="pgRegistryGmaPluginIPChannelMain();"
+                  registerHeaderFile="gmaPluginIPChannelMain.h"
+                  shortName="IP Chan. Sel.">
+            </gmaPlugin>
+         </gmaPlugins>
+         <binPackages>
+            <binPackage
+                  gmaPluginIds="settings;por;smf;ip"
+                  targetPlatform="U32"
+                  terminalType="0"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;ip"
+                  targetPlatform="U32"
+                  terminalType="1"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;ip"
+                  targetPlatform="Win32"
+                  terminalType="1"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;por;rad;ip"
+                  targetPlatform="U32"
+                  terminalType="2"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;gsm;por;smf;ip"
+                  targetPlatform="U32"
+                  terminalType="3"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;gsm;por;smf;ip"
+                  targetPlatform="Win32"
+                  terminalType="3"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;eth;smf;ip"
+                  targetPlatform="U32"
+                  terminalType="4"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;eth;smf;ip"
+                  targetPlatform="Win32"
+                  terminalType="4"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;wifi;ip"
+                  targetPlatform="U32"
+                  terminalType="5"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;por;wifi;ip"
+                  targetPlatform="U32"
+                  terminalType="6"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;por;rad;eth;ip"
+                  targetPlatform="U32"
+                  terminalType="7"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;manCardEntry;ip"
+                  targetPlatform="U32"
+                  terminalType="8"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;ppp;ip"
+                  targetPlatform="U32"
+                  terminalType="9"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;por;ppp;ip"
+                  targetPlatform="U32"
+                  terminalType="10"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;por;eth;ppp;ip"
+                  targetPlatform="U32"
+                  terminalType="11"
+                  uiLibrary="menuLib">
+            </binPackage>
+            <binPackage
+                  gmaPluginIds="settings;smf;eth;ip"
+                  targetPlatform="U32"
+                  terminalType="34"
+                  uiLibrary="LAF">
+            </binPackage>
+         </binPackages>
+         <terminalModels>
+            <terminalModel modelName="i3070">
+               <terminalType type="1"/>
+               <terminalType
+                     type="8"/>
+               <terminalType type="9"/>
+            </terminalModel>
+            <terminalModel modelName="i5100/i5310">
+               <terminalType type="1"/>
+               <terminalType
+                     type="8"/>
+               <terminalType type="9"/>
+            </terminalModel>
+            <terminalModel modelName="i5100/i5310  Ethernet">
+               <terminalType type="4"/>
+               <terminalType type="11"/>
+            </terminalModel>
+            <terminalModel modelName="i5100/i5310  Wi-Fi">
+               <terminalType type="5"/>
+            </terminalModel>
+            <terminalModel modelName="i5050">
+               <terminalType type="0"/>
+               <terminalType type="10"/>
+            </terminalModel>
+            <terminalModel modelName="i6500/i6550">
+               <terminalType type="4"/>
+               <terminalType type="11"/>
+            </terminalModel>
+            <terminalModel modelName="i7780">
+               <terminalType type="2"/>
+            </terminalModel>
+            <terminalModel modelName="i7780 Ethernet">
+               <terminalType type="7"/>
+            </terminalModel>
+            <terminalModel modelName="i7910">
+               <terminalType type="3"/>
+            </terminalModel>
+            <terminalModel modelName="i8200">
+               <terminalType type="3"/>
+            </terminalModel>
+            <terminalModel modelName="i8500">
+               <terminalType type="3"/>
+            </terminalModel>
+            <terminalModel modelName="i6770">
+               <terminalType type="4"/>
+               <terminalType type="11"/>
+            </terminalModel>
+            <terminalModel modelName="i6780">
+               <terminalType type="4"/>
+               <terminalType type="11"/>
+            </terminalModel>
+            <terminalModel modelName="i7810">
+               <terminalType type="6"/>
+            </terminalModel>
+            <terminalModel modelName="i9530">
+               <terminalType type="34"/>
+            </terminalModel>
+         </terminalModels>
+      </gmaDelivery>
+   </extension>
+
+</plugin>

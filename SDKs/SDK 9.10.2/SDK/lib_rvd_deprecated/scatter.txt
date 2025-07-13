@@ -1,0 +1,19 @@
+LR_APPLI 0x00000000
+{
+ ER_APPLI_CODE 0x00000000
+ {
+   cstartup.o(+RO, +First)
+   *(+RO) 
+ }
+ DATA 0x00200000
+ {
+   *(+RW) 
+ }
+ BSS +0
+ {
+   *(+ZI)  
+ }
+}
+
+
+

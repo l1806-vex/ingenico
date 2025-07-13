@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<termlayout>
+    <!--
+
+    This file contains the terminal layout representation
+
+    It is just a copy of 5100layout.xml
+
+    -->
+
+    <!-- Simulator box -->
+    <simbody sx="323" sy="622" body_icon="skins/5100/box.png"/>
+
+    <!-- Printer widget -->
+    <printerbody sx="428" sy="620" body_icon="skins/common/printer-box.png"
+            of_off_x="9" of_off_y="44" of_sx="409" of_sy="566" />
+    <!--Small dialog widgets and their buttons-->
+
+    <!--ICC cards insert dialog-->
+    <sdbody sx="321" sy="155" body_icon="skins/common/icc-box.png"
+            title="ICC card reader" />
+    <sdbutton off_x="18" off_y="54" sx="66" sy="37"
+        texton="insert" function="ICCInsert"/>
+    <sdbutton off_x="95" off_y="54" sx="66" sy="37"
+        texton="cancel" function="ICCCancel"/>
+
+    <!--ICC cards remove dialog-->
+    <sdbody sx="321" sy="155" body_icon="skins/common/icc-remove-box.png"
+            title="ICC card eject" off_x="300" off_y="622"/>
+    <sdbutton off_x="85" off_y="86" sx="151" sy="39"
+        texton="remove card" function="ICCRemove"/>
+
+    <!--Magnetic card dialog-->
+    <sdbody sx="321" sy="155" body_icon="skins/common/magnetic-box.png"
+            title="Magnetic stripe card" />
+    <sdbutton off_x="18" off_y="54" sx="66" sy="37"
+        texton="swipe" function="MAGSwipe"/>
+    <sdbutton off_x="91" off_y="54" sx="66" sy="37"
+        texton="add" function="MAGAdd"/>
+    <sdbutton off_x="164" off_y="54" sx="66" sy="37"
+        texton="delete" function="MAGDelete"/>
+    <sdbutton off_x="237" off_y="54" sx="66" sy="37"
+        texton="cancel" function="MAGCancel"/>
+
+    <!--Add magnetic card dialog-->
+    <sdbody sx="816" sy="243" body_icon="skins/common/magnetic-add-box.png"
+            title="Add card" />
+    <sdbutton off_x="653" off_y="58" sx="66" sy="37"
+        texton="ok" function="MAGADDOk"/>
+    <sdbutton off_x="726" off_y="58" sx="66" sy="37"
+        texton="cancel" function="MAGADDCancel"/>
+
+    <!--Switch simulator model dialog-->
+    <sdbody sx="321" sy="155" body_icon="skins/common/switch-model-box.png"
+            title="Switch simulator model" />
+    <sdbutton off_x="18" off_y="54" sx="66" sy="37"
+        texton="ok" function="SwitchModelOk"/>
+    <sdbutton off_x="95" off_y="54" sx="66" sy="37"
+        texton="cancel" function="SwitchModelCancel"/>
+
+
+    <!--Risk managment dialog-->
+    <sdbody sx="321" sy="155" body_icon="skins/common/risk-managment-box.png"
+        title="Risk managment" />
+    <sdbutton off_x="20" off_y="58" sx="66" sy="37"
+        texton="offline" function="RISKMGTOffline"/>
+    <sdbutton off_x="91" off_y="58" sx="66" sy="37"
+        texton="decline" function="RISKMGTDecline"/>
+    <sdbutton off_x="164" off_y="58" sx="66" sy="37"
+        texton="online" function="RISKMGTOnline"/>
+
+    <!--Screen widget-->
+    <screen off_x="33" off_y="172"/>
+
+    <!--Keypad widget-->
+    <keypad off_x="24" off_y="313" sx="273" sy="244"
+            body_icon="skins/5100/keypad.png"/>
+
+    <!--Keypad buttons-->
+    <keypadbutton off_x="13" off_y="16" sx="80" sy="40"
+        kpb_icon="skins/5100/f1.png" kpb_icon_down="skins/5100/f1d.png"
+        hmi_code="HMI_KEY_F1" accel="Down"/>
+    <keypadbutton off_x="96" off_y="16" sx="80" sy="40"
+        kpb_icon="skins/5100/f2.png" kpb_icon_down="skins/5100/f2d.png"
+        hmi_code="HMI_KEY_F2" accel="Up"/>
+    <keypadbutton off_x="176" off_y="16" sx="81" sy="41"
+        kpb_icon="skins/5100/f3.png" kpb_icon_down="skins/5100/f3d.png"
+        hmi_code="HMI_KEY_F3" accel="F3"/>
+    <keypadbutton off_x="10" off_y="54" sx="53" sy="47"
+        kpb_icon="skins/common/1.png" kpb_icon_down="skins/common/1d.png"
+        hmi_code="1" accel="1"/>
+    <keypadbutton off_x="71" off_y="65" sx="60" sy="44"
+        kpb_icon="skins/common/2.png" kpb_icon_down="skins/common/2d.png"
+        hmi_code="2" accel="2"/>
+    <keypadbutton off_x="141" off_y="65" sx="60" sy="44"
+        kpb_icon="skins/common/3.png" kpb_icon_down="skins/common/3d.png"
+        hmi_code="3" accel="3"/>
+    <keypadbutton off_x="211" off_y="54" sx="53" sy="47"
+        kpb_icon="skins/common/stop.png" kpb_icon_down="skins/common/stopd.png"
+        hmi_code="HMI_KEY_CLEAR" accel="Esc"/>
+    <keypadbutton off_x="10" off_y="96" sx="53" sy="47"
+        kpb_icon="skins/common/4.png" kpb_icon_down="skins/common/4d.png"
+        hmi_code="4" accel="4"/>
+    <keypadbutton off_x="72" off_y="108" sx="60" sy="44"
+        kpb_icon="skins/common/5.png" kpb_icon_down="skins/common/5d.png"
+        hmi_code="5" accel="5"/>
+    <keypadbutton off_x="141" off_y="108" sx="60" sy="44"
+        kpb_icon="skins/common/6.png" kpb_icon_down="skins/common/6d.png"
+        hmi_code="6" accel="6"/>
+    <keypadbutton off_x="210" off_y="96" sx="53" sy="47"
+        kpb_icon="skins/common/c.png" kpb_icon_down="skins/common/cd.png"
+        hmi_code="HMI_KEY_BCKSP" accel="Backspace"/>
+    <keypadbutton off_x="12" off_y="140" sx="53" sy="47"
+        kpb_icon="skins/common/7.png" kpb_icon_down="skins/common/7d.png"
+        hmi_code="7" accel="7"/>
+    <keypadbutton off_x="73" off_y="150" sx="60" sy="44"
+        kpb_icon="skins/common/8.png" kpb_icon_down="skins/common/8d.png"
+        hmi_code="8" accel="8"/>
+    <keypadbutton off_x="140" off_y="150" sx="60" sy="44"
+        kpb_icon="skins/common/9.png" kpb_icon_down="skins/common/9d.png"
+        hmi_code="9" accel="9"/>
+    <keypadbutton off_x="208" off_y="137" sx="52" sy="96"
+        kpb_icon="skins/common/ok.png"  kpb_icon_down="skins/common/okd.png"
+        hmi_code="HMI_KEY_ENTER" accel="Return" accel2="Enter"/>
+    <keypadbutton off_x="14" off_y="185" sx="53" sy="47"
+        kpb_icon="skins/common/feed.png" kpb_icon_down="skins/common/feedd.png"
+        hmi_code="HMI_KEY_PAPER_FEED" accel="Print"/>
+    <keypadbutton off_x="74" off_y="192" sx="60" sy="44"
+        kpb_icon="skins/common/0.png" kpb_icon_down="skins/common/0d.png"
+        hmi_code="0" accel="0"/>
+    <keypadbutton off_x="139" off_y="192" sx="60" sy="44"
+        kpb_icon="skins/common/00.png" kpb_icon_down="skins/common/00d.png"
+        hmi_code="HMI_KEY_00_PT" accel="#" accel2="-"/>
+
+    <!--Simulator body buttons for invoking dialogs/window manager support-->
+    <!--Minimize button (_)-->
+    <simbutton off_x="240" off_y="28" sx="27" sy="27"
+        kpb_icon="skins/common/minimize.png"  kpb_icon_down="skins/common/minimized.png"
+        function="MinimizeSim"/>
+    <!--Close button (X)-->
+    <simbutton off_x="262" off_y="28" sx="27" sy="27"
+        kpb_icon="skins/common/close.png" kpb_icon_down="skins/common/closed.png"
+        function="CloseSim" accel="ALT+F4"/>
+    <!--Invoke switch model dialog button-->
+    <simbutton off_x="203" off_y="28" sx="27" sy="27"
+        kpb_icon="skins/common/switch.png" kpb_icon_down="skins/common/switchd.png"
+        function="SwitchSim" accel="ALT+S"/>
+    <!--Invoke reset terminal button-->
+    <simbutton off_x="181" off_y="28" sx="27" sy="27"
+        kpb_icon="skins/common/reset.png" kpb_icon_down="skins/common/resetd.png"
+        function="ResetSim" accel="ALT+R"/>
+    <!--Clear printer widget button. Located on printer widget-->
+    <simbutton off_x="365" off_y="10" sx="51" sy="27"
+        kpb_icon="skins/common/clearprn.png" kpb_icon_down="skins/common/clearprnd.png"
+        function="ClearPrinter" accel="ALT+P"/>
+    <!--Copy printer widget content to clipboard button.
+        Located on printer widget-->
+    <simbutton off_x="315" off_y="10" sx="51" sy="27"
+        kpb_icon="skins/common/copyprn.png" kpb_icon_down="skins/common/copyprnd.png"
+        function="ClipPrinter" accel="ALT+C"/>
+    <!--Invoke insert card dialog button-->
+    <simbutton off_x="21" off_y="538" sx="141" sy="65"
+        kpb_icon="skins/5100/insertcard.png" kpb_icon_down="skins/5100/insertcardd.png"
+        function="InsertCard" accel="I"/>
+    <!--Invoke swipe card dialog button-->
+    <simbutton off_x="160" off_y="537" sx="141" sy="65"
+        kpb_icon="skins/5100/swipecard.png"  kpb_icon_down="skins/5100/swipecardd.png"
+        function="SwipeCard" accel="S"/>
+</termlayout>

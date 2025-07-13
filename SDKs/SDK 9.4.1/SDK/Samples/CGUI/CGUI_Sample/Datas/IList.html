@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+  
+<HEAD>
+  
+  <META http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+    
+  <LINK href="IList.css" rel="stylesheet" type="text/css">
+  <TITLE>IconList</TITLE>
+
+<script type="text/javascript">
+
+
+//Internal script variables-----------------------------------------------------
+//Which Ahref get the current focus
+var FocusX=0; FocusY=0;      
+//Number of Rows and Columns of icon
+var NumRow=2; NumCol=3;
+
+//Initialisation function-------------------------------------------------------
+function Init()
+{
+  document.getElementById('A'+((FocusY*NumCol)+FocusX+1)).style.backgroundPosition="center";
+  AGetFocus((FocusY*NumCol)+FocusX+1);
+}      
+
+//Event on keypress-------------------------------------------------------------
+function KeyPress(event)
+{
+  var GoodKey = 1;
+  document.getElementById("FromApp").style.display = "none";
+  StopTimer = 1;
+  NewFocusY = FocusY;
+  NewFocusX = FocusX;
+ // document.getElementById("MenuTitle").innerHTML = event.keyCode
+  
+  switch(event.keyCode)
+  {
+    
+  //right arrow
+  case 39:  //ff numpad
+  case 0xF81B:
+    NewFocusX = (FocusX >= (NumCol-1)) ? 0: FocusX + 1;
+    //Line Change 
+    if(NewFocusX == 0)
+      NewFocusY = (FocusY >= (NumRow-1)) ? 0: FocusY + 1;      
+    break;
+    
+   //left arrow
+  case 37:  //ff numpad
+  case 0xF81C:
+    NewFocusX = (FocusX <= 0) ? NumCol-1: FocusX - 1;  
+    if(NewFocusX == (NumCol-1))
+      NewFocusY = (FocusY <= 0) ? NumRow-1: FocusY - 1;
+    break;  
+    
+  case 13: //green key or enter
+    ASelect((FocusY*NumCol)+FocusX+1);
+    break;  
+  
+  default : GoodKey = 0;   break;
+  }       
+
+  if(GoodKey == 1) 
+  {         
+    document.getElementById('A'+((FocusY*NumCol)+FocusX+1)).style.backgroundPosition="90px 0px";
+    FocusY = NewFocusY;
+    FocusX = NewFocusX;
+    document.getElementById('A'+((FocusY*NumCol)+FocusX+1)).style.backgroundPosition="center";
+    AGetFocus((FocusY*NumCol)+FocusX+1);
+    return(false);
+  } 
+     
+  return(true);
+          
+}
+ 
+//React on link activation------------------------------------------------------
+function ASelect(Item)
+{
+  var Content = "";
+  switch(Item)
+  {
+    case 1:
+      StopTimer = 0;
+      Timer();
+      Content = "Init clock";
+      break;
+    case 2:
+      Content = "Selected Settings";
+      break;
+    case 3:
+      Content = Terminal;
+      break;
+    case 4:
+      document.location.href = "app://DemoList?Action=IList2";
+      break;
+    case 5:
+      Content = "Selected Trash";
+      break;
+    case 6:
+      document.location.href = "app://DemoList?Action=Back";
+      break;
+    
+  }
+  if(Content != "")
+  {
+    document.getElementById("FromApp").value = Content;
+    document.getElementById("FromApp").style.display = "block";
+  }
+}  
+
+//Clock function : display time-------------------------------------------------
+function Timer() 
+{
+   var dt=new Date()
+   document.getElementById("FromApp").value = dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds();
+   if(!StopTimer)
+    setTimeout("Timer()",500);
+}
+   
+      
+//Change description when getting focus-----------------------------------------
+function AGetFocus(Item)
+{
+var Content = "";
+  switch(Item)
+  {
+    case 1:      
+      Content = "Date & Time";   break;
+    case 2:
+      Content = "Settings";      break;
+    case 3:
+      Content = "Terminal";      break;
+    case 4:
+      Content = "Go to Icon List 2"; break;
+    case 5:
+      Content = "Trash";         break;
+    case 6:
+      Content = "Home Return";    break;    
+  }
+ document.getElementById("Description").innerHTML = Content;
+}            
+      
+</script>
+
+<script type="text/javascript">
+  var Terminal = "<?tpl TERMINAL ?>";
+</script>    
+</HEAD>
+  
+<BODY onkeypress="KeyPress(event);" onload="Init()">  
+  <DIV  id="Container">  
+    <P id="MenuTitle">An Icon List</P>      
+    
+    <TABLE border="0" id="IconTable" cellspacing="0px" cellpadding="0px">
+      <TR class="IconRows">
+        <TD id='CFirst'  class="IconCells"><div id="A1" class="Select" ></div></TD>
+        <TD id='CSecond' class="IconCells"><div id="A2" class="Select" ></div></TD>
+        <TD id='CThird'  class="IconCells"><div id="A3" class="Select" ></div></TD>
+      </TR>
+      
+      <TR>
+        <TD colspan="3" id="FApp"><INPUT type="text" id="FromApp" value="test"></TD>
+      </TR>
+      
+      <TR class="IconRows">
+        <TD id='CFourth' class="IconCells"><div id="A4" class="Select" ></div></TD>
+        <TD id='CFifth'  class="IconCells"><div id="A5" class="Select" ></div></TD>
+        <TD id='CSixth'  class="IconCells"><div id="A6" class="Select" ></div></TD>
+      </TR>
+      
+      <TR>
+        <TD colspan="3" id="Description">  </TD>
+      </TR>
+    </TABLE>
+  </DIV>
+</BODY>
+
+</HTML>
+ 

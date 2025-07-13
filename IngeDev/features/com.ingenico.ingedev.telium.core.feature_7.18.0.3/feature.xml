@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ingenico.ingedev.telium.core.feature"
+      label="%featureName"
+      version="7.18.0.3"
+      provider-name="%providerName">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.core"
+         download-size="0"
+         install-size="0"
+         version="7.18.0.3"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.goal.core"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.generic.xmlUtils"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.bin"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.bin.win32.gnuarm.v343"
+         os="win32"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         fragment="true"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.bin.win32.gnuarm.v434"
+         os="win32"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         fragment="true"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.bin.win32.tools"
+         os="win32"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         fragment="true"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.simulation.bin"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.simulation.bin.win32"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         fragment="true"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.simulation.core"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.telium.dal.utils"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.goal.jni"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.goal.workspace"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.goal.skin.core"
+         download-size="0"
+         install-size="0"
+         version="7.18.0.3"
+         unpack="false"/>
+
+</feature>

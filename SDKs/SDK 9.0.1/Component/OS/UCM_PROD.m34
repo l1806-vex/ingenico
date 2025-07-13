@@ -1,0 +1,47 @@
+;System pack for UCM
+;System R+
+8200361110.ddf
+8200361110.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver VFS
+30210328.ddf
+30210328.sgn
+;Driver Modem 930
+40150322.ddf
+40150322.sgn
+;Driver GPRS
+8200120206.ddf
+8200120206.sgn
+;Driver UMS
+8200210320.ddf
+8200210320.sgn
+;Driver HID
+8200220124.ddf
+8200220124.sgn
+;Driver USB CDC
+8200320616.ddf
+8200320616.sgn
+;Driver UCM
+8200410202.ddf
+8200410202.sgn
+;Driver CLESS
+8200490230.ddf
+8200490230.sgn
+;Driver external printer
+8200520203.ddf
+8200520203.sgn
+;swipe MPC10LC
+8200560105.ddf
+8200560105.sgn
+;Driver Remote CAD30VR
+8200610102.ddf
+8200610102.sgn
+;generic driver leds
+8201030207.ddf
+8201030207.sgn
+;Pack System
+37771104.pdf
+37771104.sgn
+

@@ -1,0 +1,70 @@
+ /** \page Functions Main Functions
+
+* The following are the main functionalities of the SSL Sample Application: 
+*
+* - \b Profiles - Add (\ref FUN_SslProfileAdd), Delete ( \ref FUN_SslProfileDelete ) and List ( \ref FUN_SslProfileListPrint )
+* - \b Connection ( \ref FUN_SslConnectionTest )
+* - \b Config ( \ref FLOW_ParamConfigSSLProcess )
+*
+* \section sslsecf1 Profiles 
+*
+* Allows the user to Add, Delete and List (Print) available profiles
+* 
+* \b Add 
+* 
+* This is the first step that a user must execute. A profile must be added in order to have a successful loading of profile during Config and Connection. It creates a new profile configured for mutual authentication.
+* 
+* Function Tasks:
+* - Create a new SSL Profile (SSL_NewProfile)
+* - Sets the SSL protocol used by the SSL Profile (SSL_ProfileSetProtocol)
+* - Sets the mask of ciphers and export modes supported by the profile (SSL_ProfileSetCipher)
+* - Sets the private key file used by the SSL profile (SSL_ProfileSetKeyFile )
+* - Sets the certificate file used by the ssl profile (SSL_ProfileSetCertificateFile)
+* - Adds a CA or CRL to a profile (SSL_ProfileAddCertificateCA)
+* - Saves an SSL profile (SSL_SaveProfile)
+* - Unloads an SSL profile (SSL_UnloadProfile )
+* 
+* \b Delete 
+* 
+* Allows the user to delete a profile in the terminal.
+* 
+* Function Tasks:
+* - Deletes an SSL profile in the SSL saved list (SSL_DeleteProfile)
+* 
+* \b List 
+* 
+* Prints each profile that has been created. For each profile, it prints information 
+about its certificates : the validity period, the common name (CN)...
+* 
+* Function Tasks:
+* - Prints the name of the file which contains the client X509 certificate (SSL_ProfileGetCertificateFile)
+* - Prints the name of the CA certificate file (SSL_ProfileGetCAFile)
+* 
+* \section sslsecf2 Connection
+* 
+* Selecting this item from the menu will start an SSL connection.
+* 
+* Function Tasks:
+* - Start SSL (DFU_StartSsl) 
+* - Load the profile that was selected during config (SSL_LoadProfile)
+* - Connects SSL (DFU_ConnectSSL) 
+* - Creates an SSL Structure (SSL_New)
+* - Connect to the Server (SSL_Connect)
+* - Disconnects SSL  (DFU_DisconnectSsl)
+* - Closes an SSL Connection (SSL_Disconnect)
+* - Stop SSL (DFU_StopSsl)
+* - Free an allocated SSL Structure (SSL_Free)
+* 
+* \section sslsecf3 Configure
+* 
+* Selecting this item from the menu will allow the user to configure host name, port number and profile to be used.
+* 
+* Function Tasks:
+* - Prompts user to enter Host Name or Host Address to connect to. ( \ref _FUN_ConfigStateSSLServerAddressGet )
+* - Prompts user to enter Port Number to connect to ( \ref _FUN_ConfigStateSSLServerPortGet )
+* - Prompts user to select profile to be used from list. ( \ref _FUN_ConfigStateSSLProfileGet )
+
+
+
+
+  */

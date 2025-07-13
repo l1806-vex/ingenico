@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<defines>
+    <enumeration>
+        <type>TELIUMKEY</type>
+        <item>
+            <name>KEY_0</name>
+            <value>\u0030</value>
+            <comment>Telium numeric 0 key</comment>
+        </item>
+        <item>
+            <name>KEY_1</name>
+            <value>\u0031</value>
+            <comment>Telium numeric 1 key</comment>
+        </item>
+        <item>
+            <name>KEY_2</name>
+            <value>\u0032</value>
+            <comment>Telium numeric 2 key</comment>
+        </item>
+        <item>
+            <name>KEY_3</name>
+            <value>\u0033</value>
+            <comment>Telium numeric 3 key</comment>
+        </item>
+        <item>
+            <name>KEY_4</name>
+            <value>\u0034</value>
+            <comment>Telium numeric 4 key</comment>
+        </item>
+        <item>
+            <name>KEY_5</name>
+            <value>\u0035</value>
+            <comment>Telium numeric 5 key</comment>
+        </item>
+        <item>
+            <name>KEY_6</name>
+            <value>\u0036</value>
+            <comment>Telium numeric 6 key</comment>
+        </item>
+        <item>
+            <name>KEY_7</name>
+            <value>\u0037</value>
+            <comment>Telium numeric 7 key</comment>
+        </item>
+        <item>
+            <name>KEY_8</name>
+            <value>\u0038</value>
+            <comment>Telium numeric 8 key</comment>
+        </item>
+        <item>
+            <name>KEY_9</name>
+            <value>\u0039</value>
+            <comment>Telium numeric 9 key</comment>
+        </item>
+        <item>
+            <name>KEY_DOT</name>
+            <value>\u002E</value>
+            <comment>Telium dot key</comment>
+        </item>
+        <item>
+            <name>KEY_VALID</name>
+            <value>\uF850</value>
+            <comment>Telium green key</comment>
+        </item>
+        <item>
+            <name>KEY_CANCEL</name>
+            <value>\uF851</value>
+            <comment>Telium red key</comment>
+        </item>
+        <item>
+            <name>KEY_CORRECTION</name>
+            <value>\uF852</value>
+            <comment>Telium yellow key</comment>
+        </item>
+        <item>
+            <name>KEY_PAPER</name>
+            <value>\uF853</value>
+            <comment>Telium paper feed key</comment>
+        </item>
+        <item>
+            <name>KEY_F</name>
+            <value>\uF854</value>
+            <comment>Telium function key</comment>
+        </item>
+        <item>
+            <name>KEY_F1</name>
+            <value>\uF855</value>
+            <comment>Telium function 1 key</comment>
+        </item>
+        <item>
+            <name>KEY_F2</name>
+            <value>\uF856</value>
+            <comment>Telium function 2 key</comment>
+        </item>
+        <item>
+            <name>KEY_F3</name>
+            <value>\uF857</value>
+            <comment>Telium function 3 key</comment>
+        </item>
+        <item>
+            <name>KEY_F4</name>
+            <value>\uF858</value>
+            <comment>Telium function 4 key</comment>
+        </item>
+        <item>
+            <name>KEY_UP</name>
+            <value>\uF859</value>
+            <comment>Telium up arrow key</comment>
+        </item>
+        <item>
+            <name>KEY_DOWN</name>
+            <value>\uF85A</value>
+            <comment>Telium down arrow key</comment>
+        </item>
+        <item>
+            <name>KEY_OK</name>
+            <value>\uF86B</value>
+            <comment>Telium ok key</comment>
+        </item>
+        <item>
+            <name>KEY_CLEAR</name>
+            <value>\uF86C</value>
+            <comment>Telium clear key</comment>
+        </item>
+    </enumeration>
+    <enumeration>
+        <type>FONTSIZES</type>
+        <item>
+            <name>XXSMALL</name>
+            <value>0x3FF0</value>
+            <comment>Extra extra small font size</comment>
+        </item>
+        <item>
+            <name>XSMALL</name>
+            <value>0x3FF1</value>
+            <comment>Extra small font size</comment>
+        </item>
+        <item>
+            <name>SMALL</name>
+            <value>0x3FF2</value>
+            <comment>Small font size</comment>
+        </item>
+        <item>
+            <name>MEDIUM</name>
+            <value>0x3FF3</value>
+            <comment>Medium font size</comment>
+        </item>
+        <item>
+            <name>LARGE</name>
+            <value>0x3FF4</value>
+            <comment>Large font size</comment>
+        </item>
+        <item>
+            <name>XLARGE</name>
+            <value>0x3FF5</value>
+            <comment>Extra large font size</comment>
+        </item>
+        <item>
+            <name>XXLARGE</name>
+            <value>0x3FF6</value>
+            <comment>Extra extra large font size</comment>
+        </item>
+        <item>
+            <name>5</name>
+            <value>5</value>
+            <comment>font size 5</comment>
+        </item>
+        <item>
+            <name>6</name>
+            <value>6</value>
+            <comment>font size 6</comment>
+        </item>
+        <item>
+            <name>7</name>
+            <value>7</value>
+            <comment>font size 7</comment>
+        </item>
+        <item>
+            <name>8</name>
+            <value>8</value>
+            <comment>font size 8</comment>
+        </item>
+        <item>
+            <name>9</name>
+            <value>9</value>
+            <comment>font size 9</comment>
+        </item>
+        <item>
+            <name>10</name>
+            <value>10</value>
+            <comment>font size 10</comment>
+        </item>
+        <item>
+            <name>11</name>
+            <value>11</value>
+            <comment>font size 11</comment>
+        </item>
+        <item>
+            <name>12</name>
+            <value>12</value>
+            <comment>font size 12</comment>
+        </item>
+        <item>
+            <name>13</name>
+            <value>13</value>
+            <comment>font size 13</comment>
+        </item>
+        <item>
+            <name>14</name>
+            <value>14</value>
+            <comment>font size 14</comment>
+        </item>
+        <item>
+            <name>15</name>
+            <value>15</value>
+            <comment>font size 15</comment>
+        </item>
+        <item>
+            <name>16</name>
+            <value>16</value>
+            <comment>font size 16</comment>
+        </item>
+        <item>
+            <name>17</name>
+            <value>17</value>
+            <comment>font size 17</comment>
+        </item>
+        <item>
+            <name>18</name>
+            <value>18</value>
+            <comment>font size 18</comment>
+        </item>
+        <item>
+            <name>19</name>
+            <value>19</value>
+            <comment>font size 19</comment>
+        </item>
+        <item>
+            <name>20</name>
+            <value>20</value>
+            <comment>font size 20</comment>
+        </item>
+        <item>
+            <name>21</name>
+            <value>21</value>
+            <comment>font size 21</comment>
+        </item>
+        <item>
+            <name>22</name>
+            <value>22</value>
+            <comment>font size 22</comment>
+        </item>
+        <item>
+            <name>23</name>
+            <value>23</value>
+            <comment>font size 23</comment>
+        </item>
+        <item>
+            <name>24</name>
+            <value>24</value>
+            <comment>font size 24</comment>
+        </item>
+        <item>
+            <name>25</name>
+            <value>25</value>
+            <comment>font size 25</comment>
+        </item>
+        <item>
+            <name>26</name>
+            <value>26</value>
+            <comment>font size 26</comment>
+        </item>
+        <item>
+            <name>27</name>
+            <value>27</value>
+            <comment>font size 27</comment>
+        </item>
+        <item>
+            <name>28</name>
+            <value>28</value>
+            <comment>font size 28</comment>
+        </item>
+        <item>
+            <name>29</name>
+            <value>29</value>
+            <comment>font size 29</comment>
+        </item>
+        <item>
+            <name>30</name>
+            <value>30</value>
+            <comment>font size 30</comment>
+        </item>
+        <item>
+            <name>31</name>
+            <value>31</value>
+            <comment>font size 31</comment>
+        </item>
+        <item>
+            <name>32</name>
+            <value>32</value>
+            <comment>font size 32</comment>
+        </item>
+        <item>
+            <name>33</name>
+            <value>33</value>
+            <comment>font size 33</comment>
+        </item>
+        <item>
+            <name>34</name>
+            <value>34</value>
+            <comment>font size 34</comment>
+        </item>
+        <item>
+            <name>35</name>
+            <value>35</value>
+            <comment>font size 35</comment>
+        </item>
+        <item>
+            <name>36</name>
+            <value>36</value>
+            <comment>font size 36</comment>
+        </item>
+        <item>
+            <name>37</name>
+            <value>37</value>
+            <comment>font size 37</comment>
+        </item>
+        <item>
+            <name>38</name>
+            <value>38</value>
+            <comment>font size 38</comment>
+        </item>
+        <item>
+            <name>39</name>
+            <value>39</value>
+            <comment>font size 39</comment>
+        </item>
+        <item>
+            <name>40</name>
+            <value>40</value>
+            <comment>font size 40</comment>
+        </item>
+        <item>
+            <name>41</name>
+            <value>41</value>
+            <comment>font size 41</comment>
+        </item>
+        <item>
+            <name>42</name>
+            <value>42</value>
+            <comment>font size 42</comment>
+        </item>
+        <item>
+            <name>43</name>
+            <value>43</value>
+            <comment>font size 43</comment>
+        </item>
+        <item>
+            <name>44</name>
+            <value>44</value>
+            <comment>font size 44</comment>
+        </item>
+        <item>
+            <name>45</name>
+            <value>45</value>
+            <comment>font size 45</comment>
+        </item>
+        <item>
+            <name>46</name>
+            <value>46</value>
+            <comment>font size 46</comment>
+        </item>
+        <item>
+            <name>47</name>
+            <value>47</value>
+            <comment>font size 47</comment>
+        </item>
+        <item>
+            <name>48</name>
+            <value>48</value>
+            <comment>font size 48</comment>
+        </item>
+        <item>
+            <name>49</name>
+            <value>49</value>
+            <comment>font size 49</comment>
+        </item>
+        <item>
+            <name>50</name>
+            <value>50</value>
+            <comment>font size 50</comment>
+        </item>
+        <item>
+            <name>51</name>
+            <value>51</value>
+            <comment>font size 51</comment>
+        </item>
+        <item>
+            <name>52</name>
+            <value>52</value>
+            <comment>font size 52</comment>
+        </item>
+        <item>
+            <name>53</name>
+            <value>53</value>
+            <comment>font size 53</comment>
+        </item>
+        <item>
+            <name>54</name>
+            <value>54</value>
+            <comment>font size 54</comment>
+        </item>
+        <item>
+            <name>55</name>
+            <value>55</value>
+            <comment>font size 55</comment>
+        </item>
+        <item>
+            <name>56</name>
+            <value>56</value>
+            <comment>font size 56</comment>
+        </item>
+        <item>
+            <name>57</name>
+            <value>57</value>
+            <comment>font size 57</comment>
+        </item>
+        <item>
+            <name>58</name>
+            <value>58</value>
+            <comment>font size 58</comment>
+        </item>
+        <item>
+            <name>59</name>
+            <value>59</value>
+            <comment>font size 59</comment>
+        </item>
+        <item>
+            <name>60</name>
+            <value>60</value>
+            <comment>font size 60</comment>
+        </item>
+        <item>
+            <name>61</name>
+            <value>61</value>
+            <comment>font size 61</comment>
+        </item>
+        <item>
+            <name>62</name>
+            <value>62</value>
+            <comment>font size 62</comment>
+        </item>
+        <item>
+            <name>63</name>
+            <value>63</value>
+            <comment>font size 63</comment>
+        </item>
+        <item>
+            <name>64</name>
+            <value>64</value>
+            <comment>font size 64</comment>
+        </item>
+        <item>
+            <name>65</name>
+            <value>65</value>
+            <comment>font size 65</comment>
+        </item>
+        <item>
+            <name>66</name>
+            <value>66</value>
+            <comment>font size 66</comment>
+        </item>
+        <item>
+            <name>67</name>
+            <value>67</value>
+            <comment>font size 67</comment>
+        </item>
+        <item>
+            <name>68</name>
+            <value>68</value>
+            <comment>font size 68</comment>
+        </item>
+        <item>
+            <name>69</name>
+            <value>69</value>
+            <comment>font size 69</comment>
+        </item>
+        <item>
+            <name>70</name>
+            <value>70</value>
+            <comment>font size 70</comment>
+        </item>
+        <item>
+            <name>71</name>
+            <value>71</value>
+            <comment>font size 71</comment>
+        </item>
+        <item>
+            <name>72</name>
+            <value>72</value>
+            <comment>font size 72</comment>
+        </item>
+        <item>
+            <name>73</name>
+            <value>73</value>
+            <comment>font size 73</comment>
+        </item>
+        <item>
+            <name>74</name>
+            <value>74</value>
+            <comment>font size 74</comment>
+        </item>
+        <item>
+            <name>75</name>
+            <value>75</value>
+            <comment>font size 75</comment>
+        </item>
+        <item>
+            <name>76</name>
+            <value>76</value>
+            <comment>font size 76</comment>
+        </item>
+        <item>
+            <name>77</name>
+            <value>77</value>
+            <comment>font size 77</comment>
+        </item>
+        <item>
+            <name>78</name>
+            <value>78</value>
+            <comment>font size 78</comment>
+        </item>
+        <item>
+            <name>79</name>
+            <value>79</value>
+            <comment>font size 79</comment>
+        </item>
+        <item>
+            <name>80</name>
+            <value>80</value>
+            <comment>font size 80</comment>
+        </item>
+        <item>
+            <name>81</name>
+            <value>81</value>
+            <comment>font size 81</comment>
+        </item>
+        <item>
+            <name>82</name>
+            <value>82</value>
+            <comment>font size 82</comment>
+        </item>
+        <item>
+            <name>83</name>
+            <value>83</value>
+            <comment>font size 83</comment>
+        </item>
+        <item>
+            <name>84</name>
+            <value>84</value>
+            <comment>font size 84</comment>
+        </item>
+        <item>
+            <name>85</name>
+            <value>85</value>
+            <comment>font size 85</comment>
+        </item>
+        <item>
+            <name>86</name>
+            <value>86</value>
+            <comment>font size 86</comment>
+        </item>
+        <item>
+            <name>87</name>
+            <value>87</value>
+            <comment>font size 87</comment>
+        </item>
+        <item>
+            <name>88</name>
+            <value>88</value>
+            <comment>font size 88</comment>
+        </item>
+        <item>
+            <name>89</name>
+            <value>89</value>
+            <comment>font size 89</comment>
+        </item>
+        <item>
+            <name>90</name>
+            <value>90</value>
+            <comment>font size 90</comment>
+        </item>
+        <item>
+            <name>91</name>
+            <value>91</value>
+            <comment>font size 91</comment>
+        </item>
+        <item>
+            <name>92</name>
+            <value>92</value>
+            <comment>font size 92</comment>
+        </item>
+        <item>
+            <name>93</name>
+            <value>93</value>
+            <comment>font size 93</comment>
+        </item>
+        <item>
+            <name>94</name>
+            <value>94</value>
+            <comment>font size 94</comment>
+        </item>
+        <item>
+            <name>95</name>
+            <value>95</value>
+            <comment>font size 95</comment>
+        </item>
+        <item>
+            <name>96</name>
+            <value>96</value>
+            <comment>font size 96</comment>
+        </item>
+        <item>
+            <name>97</name>
+            <value>97</value>
+            <comment>font size 97</comment>
+        </item>
+        <item>
+            <name>98</name>
+            <value>98</value>
+            <comment>font size 98</comment>
+        </item>
+        <item>
+            <name>99</name>
+            <value>99</value>
+            <comment>font size 99</comment>
+        </item>
+    </enumeration>
+</defines>

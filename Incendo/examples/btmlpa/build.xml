@@ -1,0 +1,201 @@
+<!--========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+
+<project name="oe/examples/btmlpa/tmlapp" default="oe/examples/btmlpa/tmlapp/build" >
+
+    <property name="dist.lib.dir" location="${basedir}/../lib" />
+    <property name="lib.dir.common" location="${dist.lib.dir}/common" />
+    <property name="lib.web" location="${dist.lib.dir}/web" />
+    <property name="java.bin.path" value="classes" />
+    <property name="tmp.path" value="tmp" />
+    <property name="src.java.path" value="source/java" />
+    <property name="src.web.path" value="source/web" />
+    <property name="src.config.path" value="source/config" />
+    <property file="${dist.lib.dir}/libraries.properties" />
+	
+    <!-- set global properties for this build -->
+    <property name="btmlpa.war.file.name" value="btmlpa.war" />
+    <property environment="env" />
+
+
+    <fileset id="project.common.jars" dir="${lib.dir.common}">
+        <include name="${common.jar.log4j}" />
+        <include name="${common.jar.cglib}" />
+        <include name="${common.jar.dom4j}" />
+        <include name="${common.jar.jdbc}" />
+        <include name="${common.jar.mysql}" />
+    	<include name="${common.jar.mssql}" />
+        <include name="${common.jar.postgres}" />
+        <include name="${common.jar.h2}" />
+	<include name="${common.jar.oracle}" />
+        <include name="${common.jar.jta}" />
+        <include name="${common.jar.odmg}" />
+        <include name="${common.jar.xalan}" />
+        <include name="${common.jar.xerces}" />
+        <include name="${common.jar.xml-apis}" />
+        <include name="${common.jar.commons-collections}" />
+        <include name="${common.jar.commons-dbcp}" />
+        <include name="${common.jar.commons-logging}" />
+        <include name="${common.jar.commons-pool}" />
+        <include name="${common.jar.dbtool}" />
+    </fileset>
+
+    <fileset id="project.examples.jars" dir="${dist.lib.dir}">
+        <include name="${host.jar.iutil}" />
+        <include name="${common.jar.payment-api}" />
+        <include name="${common.jar.payment-dummy-impl}" />
+        <include name="${common.jar.tml-toolkit}" />
+    </fileset>
+
+    <fileset id="project.web.jars" dir="${lib.web}">
+        <include name="${web.jar.servlet}" />
+        <include name="${host.jar.webappl}" />        
+    </fileset>
+
+    <path id="project.class.path">
+        <fileset refid="project.common.jars" />        
+        <fileset refid="project.examples.jars" />
+        <fileset refid="project.web.jars" />
+        <pathelement path="${java.class.path}" />
+        <pathelement location="${java.bin.path}" />
+    </path>
+
+
+    <target name="oe/examples/btmlpa/tmlapp/init">
+        <mkdir dir="${java.bin.path}" />
+    </target>
+
+    <target name="oe/examples/btmlpa/tmlapp/clean">
+        <delete dir="${java.bin.path}" />
+        <delete dir="${tmp.path}" />        
+    </target>
+
+    <target name="oe/examples/btmlpa/tmlapp/compile" depends="oe/examples/btmlpa/tmlapp/init">
+        <javac srcdir="${src.java.path}" destdir="${java.bin.path}" debug="on">
+            <classpath refid="project.class.path" />
+            <exclude name="**/test/**" />
+        </javac>
+    </target>
+
+    <target name="oe/examples/btmlpa/tmlapp/make-war" depends="oe/examples/btmlpa/tmlapp/compile">
+        <mkdir dir="${tmp.path}" />        
+        <copy todir="${tmp.path}">
+            <fileset dir="${src.web.path}">
+                <include name="**/tmlapp.tml" />
+            </fileset>
+            <filterset>
+                <filter token="VERSION" value="3.0.0.0-dev" />
+            </filterset>
+        </copy>
+        <java jar="${dist.lib.dir}/${host.jar.oe-converter}" fork="true">
+            <classpath refid="project.class.path" />
+            <arg value="image/lib"/>
+            <arg value="uc32color"/>
+            <arg value="${tmp.path}/btmlpa.lib"/>
+            <arg value="${src.web.path}/8550/images"/>
+        </java>
+
+        
+        <!-- Create the distribution directory -->
+        <mkdir dir="webapp"/>
+        <war warfile="webapp/${btmlpa.war.file.name}" webxml="${src.web.path}/WEB-INF/web.xml">
+
+            <lib dir="${lib.dir.common}">
+                <include name="${common.jar.log4j}" />
+                <include name="${common.jar.tml-toolkit}" />
+                <include name="${common.jar.cglib}" />
+                <include name="${common.jar.dom4j}" />
+                <include name="${common.jar.jdbc}" />
+                <include name="${common.jar.hibernate}" />
+                <include name="${common.jar.mysql}" />
+                <include name="${common.jar.mssql}" />
+                <include name="${common.jar.postgres}" />
+                <include name="${common.jar.h2}" />            
+		<include name="${common.jar.oracle}" />
+                <include name="${common.jar.jta}" />
+                <include name="${common.jar.odmg}" />
+                <include name="${common.jar.xalan}" />
+                <include name="${common.jar.xerces}" />
+                <include name="${common.jar.xml-apis}" />
+                <include name="${common.jar.commons-collections}" />
+                <include name="${common.jar.commons-dbcp}" />
+                <include name="${common.jar.commons-logging}" />
+                <include name="${common.jar.commons-pool}" />
+                <include name="${common.jar.commons-codec}" />
+                <include name="${common.jar.freemarker}" />
+                <include name="${common.jar.dbtool}" />
+            </lib>
+
+            <lib dir="${dist.lib.dir}">
+                <include name="${common.jar.log4j}" />
+                <include name="${host.jar.oe-converter}}" />
+                <include name="${common.jar.tml-toolkit}" />
+                <include name="${common.jar.payment-api}" />
+                <include name="${common.jar.payment-dummy-impl}" />
+                <include name="${host.jar.iutil}" />
+                <include name="${host.jar.activitylog}" />
+            </lib>
+            
+            <lib dir="${lib.web}">
+                <include name="${host.jar.webappl}" />        
+            </lib>
+                
+            <classes dir="${java.bin.path}">
+                <include name="**/*.class" />
+            </classes>
+
+            <classes dir="${src.config.path}">
+                <include name="*.properties" />
+            </classes>
+
+            <fileset dir="${src.web.path}">
+                <include name="5100/*.*" />
+                <exclude name="5100/tmlapp.tml" />
+            </fileset>
+
+            <fileset dir="${src.web.path}">
+                <include name="8550/**/*.*" />
+                <exclude name="8550/images/*.gif" />
+                <exclude name="8550/design/**/*.*" />
+                <exclude name="8550/tmlapp.tml" />
+            </fileset>
+
+            <fileset dir="${tmp.path}">
+                <include name="**/tmlapp.tml" />
+            </fileset>
+
+	    <zipfileset dir="${tmp.path}" prefix="8550/images">
+                <include name="**/btmlpa.lib" />
+	    </zipfileset>
+
+        </war>
+    </target>
+
+    <target name="oe/examples/btmlpa/tmlapp/build" depends="oe/examples/btmlpa/tmlapp/clean, oe/examples/btmlpa/tmlapp/make-war">
+        <copy todir="sql">
+            <fileset dir="source/sql">
+                <include name="**/*.*"/>
+            </fileset>
+        </copy>
+        
+        <antcall target="oe/examples/btmlpa/tmlapp/clean"/>
+    </target>
+
+</project>

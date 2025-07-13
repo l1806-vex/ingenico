@@ -1,0 +1,13 @@
+How to build TMS file for IMAGE loader
+
+ImageLoader application expects to receive from TMS "ImageLoader.par" file.
+
+A "ImageLoader.par" is a "TAR" file obtained in by "tar" operation on 
+a directory that contents:
+- optional "UpdateParams.IL" ImageLoader configuration file
+- images to install
+- directory with "animation inside"
+The obtained ".TAR" file is after renamed with ".PAR" extension.
+
+
+See different provided examples.

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<mag>
+
+    <card name="ICC solutions 1. Barclays"
+       track1=""
+       track2="4929498311394007=15032010048600000001"/>
+
+    <card name="ICC solutions 2. Royal Bank of Scotland"
+       track1=""
+       track2="5434849995000168=15022011470600901214"/>
+
+    <card name="ICC solutions 3. HSBC"
+       track1=""
+       track2="675940111111111115=15092012188405087"/>
+
+    <card name="ICC solutions 4. Lloyds TSB"
+       track1=""
+       track2="4921817918764023=15052012260000000000"/>
+
+    <card name="ICC solutions 5. JCB"
+       track1=""
+       track2="3540829999421012=49122010000000000000"/>
+
+    <card name="ICC solutions 5. JCB expired"
+       track1=""
+       track2="3540829999421012=10122010000000000000"/>
+
+    <card name="Made up. Invalid"
+       track1="1234567890123456789^JENNIFER LOPEZ"
+       track2="1234567890123456789^JENNIFER LOPEZ"/>
+
+    <card name="ETEC UK Maestro"
+       track1=""
+       track2="6759690000000016=15082010000007257210"/>
+
+    <card name="ETEC Maestro REQ01"
+       track1=""
+       track2="6799998900000000014=1512201054150557"/>
+
+    <card name="AMEX ISO Test Card"
+       track1=""
+       track2="371151111011112=151210199121111100001"/>
+
+    <card name="AMEX ANSI Test Card"
+       track1=""
+       track2="341151111011119=1512991211111"/>
+
+    <card name="AMEX Invalid Test Card"
+       track1=""
+       track2="341151111011119=15129912111111234567890"/>
+
+    <card name="Laser test card"
+       track1=""
+       track2="630495000000000006=151122234444566777"/>
+
+</mag>

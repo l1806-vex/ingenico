@@ -1,0 +1,79 @@
+INGENICO LICENCE AGREEMENT
+(ONLY FOR DEVELOPMENT SOFTWARE WITH FOREIGN COMPANY)
+
+
+CAUTION / NOTICE TO USER : BY OPENING THIS PACKAGE OR BY ACCESSING, DISPLAYING, AND/OR USING THE SOFTWARE CONTAINED ON THIS DISK, YOU INDICATE YOUR UNDERSTANDING AND ACCEPTANCE OF THE FOLLOWING TERMS AND CONDITIONS.  PLEASE CAREFULLY READ THESE TERMS AND CONDITIONS BEFORE OPENING THIS PACKAGE OR BY ACCESSING, DISPLAYING, AND/OR USING THE SOFTWARE CONTAINED ON THIS DISK.  IF YOU DO NOT AGREE, PROMPTLY RETURN THE PRODUCT TO INGENICO FROM WHICH IT WAS ACQUIRED FOR A FULL REFUND OF THE LICENSE FEE PAID, IF ANY, FOR THE PRODUCT.
+
+
+1.  DEFINITIONS
+
+In this Software Licence Agreement the following words shall have the following meanings:
+
+1.1 "the Company" is Ingenico.
+
+1.2 "the User" is the person, the group of persons, company or any entity who shall be licensed to use the Software.
+
+1.3 "Use" means to install and download the Software in accordance with the Documentation.
+
+1.4 "the Software" includes all computer program(s) in object code form only supplied by the Company for which the User is granted a license.
+
+1.5 "the Software Licence Agreement" refers to the terms set in herein under which the User is licensed to use the specified Software.
+
+1.6 "the Software Medium" is the medium on which the Software is supplied.
+
+1.7 "the Documentation" means the reference manual and all associated documents that are designed to instruct the User how to operate the Software and/or Hardware, supplied by the Company.
+
+
+2.  SOFTWARE LICENCE AGREEMENT
+
+2.1 The right to use the Software supplied by the Company is subject to this Software Licence Agreement. Upon opening this package (CD-ROM containing the Software), a non-transferable and non-exclusive right to use the Software will be granted to the User. The Software Licence Agreement grants the number of Users within the User ´s company as specified in Appendix A.
+
+2.2 The User shall not without the express prior permission of the Company :
+    - use, copy (subject to clause 2.4), modify, merge the Software except as provided in the Agreement,
+    - use any backup or archival copies of the Software (or allow anyone else to use such copies) for any purpose other than to replace the original copy in the event it is destroyed or becomes defective,
+    - decompile, reverse engineer or disassemble the Software except as permitted by law, or
+    - provide or otherwise make available the Software in any form, in whole or in part to any other entity.
+
+2.3 Support, modifications and updates could be provided to User subject to conditions to be agreed in a Support Agreement.
+
+2.4 The User may copy the Software for back-up and archival purposes only, provided that the original and each copy of the Software is kept in the User’s possession. Each copy of Software shall remain the property of the Company. No other copy is authorised.
+
+
+3.  COPYRIGHT / PROTECTION
+
+3.1 All rights, title and interest in and to the Software, the Documentation, copyright, patent, trade secret and other intellectual property rights, and proprietary right therein are and shall at all times remain the property of the Company or its vendors, and neither the Software, any copy there of nor this Software Licence Agreement may be assigned, sub-licensed or otherwise transferred by the User without the previous written consent of the Company or its vendors.
+
+3.2 The User acknowledges that a portion of the Software may consist of software which is the proprietary software of certain third party licensors (Company’s Licensors) who have agreed that the Company shall have the right to incorporate the software within and/or integrate such software with the Software. The User agrees that the Company may without notice to or consent from the User, assign to the Company’s Licensors its right to enforce the provisions of this Agreement relating to the proprietary rights and trade secrets of such software.
+
+3.3 The User shall ensure that the Software and Documentation remains secret and confidential and shall take appropriate action in respect of its employees, independent contractors and any other personnel located at its premises to ensure that the Software is protected from unauthorised use, copying and modification, and shall ensure that the Software is protected from unauthorised disclosure, duplication or reproduction in whole or in part.
+
+
+4.  WARRANTIES, EXCLUSIONS AND LIMITATIONS OF LIABILITY
+
+4.1 The Company warrants the Software Medium to be free from defect in materials or workmanship in all respect; If during the Warranty Period (three (3) months from delivery) such a defect in the Software Medium should occur, it may be returned to the Company and upon proof of such a defect the Software Medium will be replaced or repaired without charge.
+
+4.2 The User acknowledges that the Software has not been written to meet any individual requirements of the User, that it has not been tested in every possible combination and operating environment, that it is not necessarily free from defects and errors and that it is the responsibility of the User to ensure himself that the Software is satisfactory for his purpose. Accordingly, the User shall assumed all risks concerning, in particular, the results and performance of the Software, as well as repair or overhauling costs in the event that the Software proves to be defective.
+
+    USER ACCEPTS THE LICENSED SOFTWARE "AS IS" AND "WITH ALL FAULTS".  THE LICENSED SOFTWARE IS PROVIDED WITHOUT ANY WARRANTY WHATSOEVER. THE COMPANY DISCLAIMS ALL WARRANTIES, WHETHER STATUTORY, EXPRESS, IMPLIED, ORAL OR WRITTEN, INCLUDING ALL WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE SELECTION, DISTRIBUTION AND USE OF THE LICENSED SOFTWARE IS WITH USER.  NEITHER THE COMPAGNY WARRANT THAT THE LICENSED SOFTWARE WILL MEET THE REQUIREMENTS OF THE USER OR ANY END-USER OR THAT THE OPERATION OF THE LICENSED SOFTWARE WILL BE UNINTERRUPTED OR ERROR FREE.
+
+4.3 TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NEITHER THE COMPANY NOR ANYONE ELSE INVOLVED IN CREATING, PRODUCING OR DELIVERING THE SOFTWARE SHALL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, IMMATERIAL, SPECIAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES ARISING OUT OF USE OF THE SOFTWARE OR INABILITY TO USE THE SOFTWARE (INCLUDING, BUT NOT LIMITED TO, DOWNTIME, DAMAGE TO OR REPLACEMENT OF PROGRAMS AND DATA, LOSS OF PROFIT,LOSS OF USE, LOSS OF BUSINESS, LOSS OF CUSTOMERS ), ARISING FROM CLAIMS BASED IN WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH CLAIM OR DAMAGE.  THE PROVISIONS OF THIS PARAGRAPH WILL SURVIVE ANY TERMINATION OF THIS AGREEMENT.
+
+4.4 The Company will have no liability for any loss, damage, or injury wholly or in part resulting from any cause beyond its control including but not limited to any failure by the User to follow any operating instructions or from the User negligence, environmental factor, damage necessitated or caused by fair wear and tear or by improper use, installation, repair or alteration.
+
+4.5 The aggregate liability of the Company under or in connection with this Software Licence Agreement (no matter how many claims are made or whatever the basis of such claims) shall be limited in total to the amount paid for the Software.
+
+
+5.  TERMINATION
+
+The Company shall have the right to terminate the Software Licence Agreement at any time by notice in writing to the User if the User shall commit a breach of any of the obligations on its part to be performed or observed herein, and fail to remedy the same within twenty-one (21) days after notice is given to it by the Company requiring such remedy, in which case the User must return all copies of the Software and the Documentation to the Company within fourteen (14) days.
+
+
+6.  GENERAL
+
+6.1 Any notice to be given pursuant to this Software Licence Agreement shall be made in writing and served at the address for each party appearing in this Software Licence Agreement and shall be deemed to have been given 10 (ten) days after posting by first class airmail pre-paid post.
+
+6.2 The Company makes no representation or warranty as to the accuracy of any catalogue leaflets or advertising literature which are intended merely to present a general picture of the Company’s products.
+
+6.3 Any dispute arising out of and in connection with this Agreement, and which cannot be settled amicably will be finally submitted to arbitration under the rules of arbitration of the International Chamber of Commerce by one arbitrator appointed in accordance with the said rules. Arbitration proceedings shall be conducted in English and the award shall be final and binding upon the Parties. This Software Licence Agreement is governed in all respect by the French Law.
+
+6.4 The Company is hereby authorised to use the name of User as reference in general marketing material.

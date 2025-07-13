@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?>
+
+<?ingedev version="7.16.1.3"?>
+
+<projectDescription activeConfig="GNU_ARM_DEBUG" applicationType="0x161" binaryName="TRAININGV01" dataBinaryFileBaseName="DATA0161" descr="Training Application" enableUsingCpp="false" projectFamily="MYTRAINING" projectType="APP" useDataFileNamingConvention="true">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="Src\Main.c" parentProject=""/>
+<file generated="false" name="Src\Entry.c" parentProject=""/>
+<file generated="false" name="Src\Backlight.c" parentProject=""/>
+<file generated="false" name="Src\Buzzer.c" parentProject=""/>
+<file generated="false" name="Src\ComEthernet.c" parentProject=""/>
+<file generated="false" name="Src\ComGPRS.c" parentProject=""/>
+<file generated="false" name="Src\ComModem.c" parentProject=""/>
+<file generated="false" name="Src\ComPPP.c" parentProject=""/>
+<file generated="false" name="Src\ComSerial.c" parentProject=""/>
+<file generated="false" name="Src\ComUSB.c" parentProject=""/>
+<file generated="false" name="Src\ConfFlash.c" parentProject=""/>
+<file generated="false" name="Src\ConfHardware.c" parentProject=""/>
+<file generated="false" name="Src\ConfSoftware.c" parentProject=""/>
+<file generated="false" name="Src\Delay.c" parentProject=""/>
+<file generated="false" name="Src\Display.c" parentProject=""/>
+<file generated="false" name="Src\DLL.c" parentProject=""/>
+<file generated="false" name="Src\English.c" parentProject=""/>
+<file generated="false" name="Src\FFMS.c" parentProject=""/>
+<file generated="false" name="Src\FMG.c" parentProject=""/>
+<file generated="false" name="Src\FontISO8859.c" parentProject=""/>
+<file generated="false" name="Src\FontUTF8.c" parentProject=""/>
+<file generated="false" name="Src\Goal.c" parentProject=""/>
+<file generated="false" name="Src\Graphic.c" parentProject=""/>
+<file generated="false" name="Src\IAC.c" parentProject=""/>
+<file generated="false" name="Src\IAM.c" parentProject=""/>
+<file generated="false" name="Src\Input.c" parentProject=""/>
+<file generated="false" name="Src\Keyboard.c" parentProject=""/>
+<file generated="false" name="Src\LIB.c" parentProject=""/>
+<file generated="false" name="Src\Magnetic.c" parentProject=""/>
+<file generated="false" name="Src\Mapapp.c" parentProject=""/>
+<file generated="false" name="Src\Message.c" parentProject=""/>
+<file generated="false" name="Src\PowerFailure.c" parentProject=""/>
+<file generated="false" name="Src\Printer.c" parentProject=""/>
+<file generated="false" name="Src\Schemes.c" parentProject=""/>
+<file generated="false" name="Src\Smart.c" parentProject=""/>
+<file generated="false" name="Src\Task.c" parentProject=""/>
+<file generated="false" name="Src\Timer.c" parentProject=""/>
+<file generated="false" name="Src\Utility.c" parentProject=""/>
+<file generated="false" name="Src\VFS.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="false"/>
+<archiveFilesVirtualFolder name="Archive Files"/>
+</virtualFolders>
+<configs>
+<config codeBaseAddr="0x0" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" disassembler="false" enableCPPExceptions="false" gnu4StackProtectionMode="ProPolice" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG" sign="false" teliumCompatibility="Telium 2" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+<userInc value="${workspace_loc:/BeepLib/ExpInc}"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.8.3"/>
+<packageLib name="trap" package="Telium SDK" version="9.8.3"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.8.3"/>
+<packageLib name="AVL" package="Telium SDK" version="9.8.3"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.8.3"/>
+<packageLib name="SEC" package="Telium SDK" version="9.8.3"/>
+<packageLib name="GraphicLib" package="Telium SDK" version="9.8.3"/>
+<packageLib name="libcpatch" package="Telium SDK" version="9.8.3"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.8.3"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.8.3"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<packageSchemes>
+<packageScheme name="DEBUGSigned\T2\TlvCipherDa.sgn" package="Telium SDK" version="9.8.3"/>
+<packageScheme name="DEBUGSigned\T2\TlvFirstKey.sgn" package="Telium SDK" version="9.8.3"/>
+<packageScheme name="DEBUGSigned\T2\TlvFree.sgn" package="Telium SDK" version="9.8.3"/>
+<packageScheme name="DEBUGSigned\T2\TlvIso9564.sgn" package="Telium SDK" version="9.8.3"/>
+<packageScheme name="DEBUGSigned\T2\TlvKeyVerif.sgn" package="Telium SDK" version="9.8.3"/>
+<packageScheme name="DEBUGSigned\T2\TlvLoadKey.sgn" package="Telium SDK" version="9.8.3"/>
+</packageSchemes>
+<projectLibraries>
+<projectLib name="BeepLib" parentProject="BeepLib" projectLibCfg="GNU_ARM_DEBUG"/>
+</projectLibraries>
+<externalSchemes/>
+<dataFiles/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="true" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" disassembler="false" enableCPPExceptions="false" gnu4StackProtectionMode="ProPolice" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE" sign="false" teliumCompatibility="Telium 2" zip="true">
+<userIncs>
+<userInc value="Inc"/>
+<userInc value="${workspace_loc:/BeepLib/ExpInc}"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.8.3"/>
+<packageLib name="trap" package="Telium SDK" version="9.8.3"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.8.3"/>
+<packageLib name="AVL" package="Telium SDK" version="9.8.3"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.8.3"/>
+<packageLib name="SEC" package="Telium SDK" version="9.8.3"/>
+<packageLib name="GraphicLib" package="Telium SDK" version="9.8.3"/>
+<packageLib name="libcpatch" package="Telium SDK" version="9.8.3"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.8.3"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.8.3"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+<projectLibraries>
+<projectLib name="BeepLib" parentProject="BeepLib" projectLibCfg="GNU_ARM_RELEASE"/>
+</projectLibraries>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

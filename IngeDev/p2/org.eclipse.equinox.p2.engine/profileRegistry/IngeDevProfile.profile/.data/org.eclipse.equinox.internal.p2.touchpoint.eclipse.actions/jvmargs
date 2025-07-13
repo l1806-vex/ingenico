@@ -1,0 +1,4 @@
+#Fri Feb 15 18:11:53 CET 2013
+-Xms=40m
+-XX\:MaxPermSize\==256m
+-Xmx=512m

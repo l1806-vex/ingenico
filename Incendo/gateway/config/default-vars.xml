@@ -1,0 +1,152 @@
+<default-variables>
+
+
+    <variable name="oebr.secure_screen_timeout" type="integer" format="">
+        <documentation>Security zone timeout</documentation>
+    </variable>
+
+    <variable name="oebr.time_zone" type="integer" format="">
+        <documentation>OEBR Timezone</documentation>
+    </variable>
+
+    <variable name="oebr.cache_update_policy" type="string" format="">
+        <documentation>Cache update policy: all or expired</documentation>
+    </variable>
+
+    <variable name="oebr.cache.storage" type="integer" format="">
+        <documentation>Cache storage limit. Checked for new resources only.</documentation>
+    </variable>
+
+    <variable name="oebr.connect.pool_off" type="string" format="">
+        <documentation>Push offline posts pool on call_func name="connect_to_server</documentation>
+    </variable>
+
+    <variable name="oebr.offline.storage" type="integer" format="">
+        <documentation>Maximum and current number of offline posts</documentation>
+    </variable>
+
+    <variable name="oebr.backlight.timeout" type="integer" format="">
+        <documentation>Terminal backlight timeout</documentation>
+    </variable>
+
+    <variable name="oebr.backlight.off_strength" type="integer" format="">
+        <documentation>Terminal backlight strength</documentation>
+    </variable>
+
+    <variable name="oegw.certificate" type="string" format="">
+        <documentation>OEGW X.509 Digital certificate</documentation>
+    </variable>
+
+    <variable name="terminal.certificate" type="string" format="">
+        <documentation>OEBR X.509 Digital certificate</documentation>
+    </variable>
+
+    <variable name="terminal.privkey" type="string" format="">
+        <documentation>Terminal private key</documentation>
+    </variable>
+
+    <variable name="oegw.ip" type="string" format="">
+        <documentation>OEGW IP Address</documentation>
+    </variable>
+
+    <variable name="oegw.port" type="integer" format="">
+        <documentation>OEGW data port</documentation>
+    </variable>
+
+    <variable name="oegw.init_port" type="integer" format="">
+        <documentation>OEGW init port</documentation>
+    </variable>
+
+    <variable name="oegw.timeout" type="integer" format="">
+        <documentation>OEGW socket timeout</documentation>
+    </variable>
+    
+    <variable name="batch.upload.mode" type="string" format="">
+        <documentation>
+            List consisting of a combination of the following modes:
+            startup: BDU starts at IOBR startup
+            idle: BDU starts after IOBR has been inactive for a certain amount of time defined by the oebr.backlight.timeout variable.
+            connected: BDU is performed when the terminal connects to IOGW.
+            scheduled: BDU will start according to the schedule defined by the batch.upload.days and batch.upload.time parameters.
+            scan interval has been set to 1 sec according to management decision
+            for keeping cfgm syncronization at the each connection to OEGW
+        </documentation>
+    </variable>
+
+    <variable name="batch.upload.days" type="string" format="">
+        <documentation>
+            List of days from Monday to Sunday during which BDU should be done when batch.upload.mode is set to "scheduled".
+            Time should also be set.
+        </documentation>
+    </variable>
+
+    <variable name="batch.upload.time" type="string" format="">
+        <documentation>
+            Depending on batch.upload.mode settings, this parameter indicates a specific time (hh:mm).
+        </documentation>
+    </variable>
+
+    <variable name="batch.upload.duration" type="integer" format="">
+        <documentation>
+            Defined in seconds. Allowed duration for full BDU. If BDU is not complete when this timer expires, 
+            it stops and will continue during the next session.
+            This parameter is used to avoid infinite tries to upload a transaction 
+            (e.g. case where the service application responsible to manage those transactions is not available).
+        </documentation>
+    </variable>
+
+    <variable name="ip.media" type="string" format="">
+        <documentation>ip.media := { ethernet | modem | dsl | com | gprs | socket}</documentation>
+    </variable>
+
+    <variable name="ip.term_ip" type="string" format="">
+        <documentation>ip.term_ip := { dynamic | static }</documentation>
+    </variable>
+
+    <variable name="ip.static_addr" type="string" format="">
+        <documentation>ip.static_addr := byte_int.byte_int.byte_int.byte_int</documentation>
+    </variable>
+
+    <variable name="ip.net_mask" type="string" format="">
+        <documentation>ip.net_mask := byte_int.byte_int.byte_int.byte_int</documentation>
+    </variable>
+
+    <variable name="ip.default_gateway" type="string" format="">
+        <documentation>ip.default_gateway := byte_int.byte_int.byte_int.byte_int</documentation>
+    </variable>
+
+    <variable name="ip.dns1" type="string" format="">
+        <documentation>ip.dns1 := byte_int.byte_int.byte_int.byte_int</documentation>
+    </variable>
+
+    <variable name="ip.dns2" type="string" format="">
+        <documentation>ip.dns2 := byte_int.byte_int.byte_int.byte_int</documentation>
+    </variable>
+
+    <variable name="ip.net_conn_timeout" type="integer" format="">
+        <documentation>This is timeout for network setting retrival</documentation>
+    </variable>
+
+    <variable name="ip.ssl" type="string" format="">
+        <documentation>Socket layer security : no | ssl</documentation>
+    </variable>
+    <variable name="com.name" type="string" format="">
+        <documentation>COM name</documentation>
+    </variable>
+
+    <variable name="com.speed" type="string" format="">
+        <documentation>COM speed</documentation>
+    </variable>
+
+    <variable name="gprs.apn" type="string" format="">
+        <documentation>GPRS APN</documentation>
+    </variable>
+
+    <variable name="oebr.next_update" type="date" format="">
+        <documentation>Date of next browser update</documentation>
+    </variable>
+
+    <variable name="oebr.next_gateway" type="date" format="">
+        <documentation>Date of next connect to gateway</documentation>
+    </variable>
+</default-variables>

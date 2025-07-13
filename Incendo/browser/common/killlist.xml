@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+    <!--
+
+    This file contains kill list for diectory
+    entries, when simulator switches model.
+
+    -->
+<killlist>
+    <direntry value="oebr.cfg"/>
+    <direntry value="oebr.cfgbak"/>
+    <direntry value="isrunning"/>
+    <direntry value="cfgm"/>
+    <direntry value="http"/>
+    <direntry value="log"/>
+    <direntry value="parser"/>
+    <direntry value="varlib"/>
+</killlist>

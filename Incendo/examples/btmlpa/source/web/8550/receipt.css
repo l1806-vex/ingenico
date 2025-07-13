@@ -1,0 +1,4 @@
+table.receipt { text-align: left; width: 100%; margin-left: 10px; margin-right: 10px; margin-top: 40px; margin-bottom: 60px;}
+p.amount{font-size: large; font-weight: bold}
+table.warning{text-align: center; vertical-align: middle; height: 100%; width: 100%;}
+span.bold{font-weight: bold;}

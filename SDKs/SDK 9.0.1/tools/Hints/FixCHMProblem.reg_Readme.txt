@@ -1,0 +1,2 @@
+Run FixCHMProblem.reg to be able to run a CHM file from a network directory.
+See http://support.microsoft.com/kb/896054 for details

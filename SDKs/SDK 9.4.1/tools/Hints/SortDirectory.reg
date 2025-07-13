@@ -1,0 +1,3 @@
+REGEDIT4
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\Currentversion\Policies\Explorer]
+"NoStrCmpLogical"=dword:00000001 

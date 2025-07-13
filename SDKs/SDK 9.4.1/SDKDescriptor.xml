@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?packageDescriptor version="1.0"?> 
+<!DOCTYPE package [
+	<!ENTITY deviceHwConf SYSTEM "deviceHwConf.xml"> 
+]>
+
+<package name="Telium SDK" version="9.4.1" type="TDS" description="Telium Software Development Kit">
+	<documents>
+		<documentDirectory name="Documents" includeSubDirs="true"/>
+	</documents>
+	<includeDirectories>
+		<includeDirectory location="SDK/inc" />
+		</includeDirectories>
+	<toolchains>
+		<toolchain id="gnuArm" librariesLocation="SDK/lib_gnu" />
+		<toolchain id="gnuArm4" librariesLocation="SDK/lib_gnu_434" />
+		<toolchain id="armRvds" librariesLocation="SDK/lib_rvd" />
+	</toolchains>
+	<libraries>
+		<library name="eft30" description="OS and Manager APIs">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="eft30cpp" deprecated="true" description="OS and Manager APIs for C++ developments">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="trap" description="Low Level Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="trapcpp" deprecated="true"  description="Low Level Library for C++ developments">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="PinLib_Deprecated" deprecated="true"  description="Schemas Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="IAPP" description="Inter Processors Dialogue (necessary for schemes)" default="FALSE">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="AVL" description="Advanced Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="AVLcpp" deprecated="true"  description="Advanced Library">
+			<toolchains>
+        <toolchain id="gnuArm" extension=".lib"/>
+        <toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="AVL_Deprecated" deprecated="true"  description="AVL Legacy">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="AVLcpp_Deprecated" deprecated="true"  description="AVL Legacy">
+			<toolchains>
+        <toolchain id="gnuArm" extension=".lib"/>
+        <toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="LinkLayerExeInterface" description="Link Layer Interface">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="LinkLayerExeInterface_DEL" deprecated="true" description="Link Layer Interface (Data Element List)">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="LinkLayerExeInterface_Script" deprecated="true" description="Link Layer Interface Script">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="SEC" description="Dll Security">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="E2EE_DLL" description="Dll E2EE">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="Digest" description="Dll Digest">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="SEC_extend" description="Additionnal librairy for Dll Security">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="dll_wifi" description="dll_wifi">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="FTP_" description="dll_FTP">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="FTP_Cpp_" deprecated="true"  description="FTP Library for C++ developments">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="SSL_" description="dll_SSL">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="IP_" description="TCPIP library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="IP_Cpp_" deprecated="true"  description="IP Library for C++ developments">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="SNMP_" description="SNMP library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="IMG_" description="Image format Conversion library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="GraphicLib" description="GOAL (Graphic Object Advanced Library)" category="GOAL">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="WGUI_" description="CGUI library" category="CGUI">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="TPass" description="TPass library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="Mifare" description="Mifare library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="GTL" description="GTL library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+    <library name="libcpatch" description="C Library patch" removeWarning="This library makes dynamic allocation working in the C Library (needed for vsnprintf....)">
+	    <toolchains>
+        <toolchain id="gnuArm" extension=".o"/>
+        <toolchain id="gnuArm4" extension=".o"/>
+  	  </toolchains>
+    </library>
+	</libraries>
+	<defines>
+		<define id="_EXPORT_"/>
+		<define id="_EFT30_"/>
+	</defines>
+
+	<schemes location="Component/Schemes"/>
+
+	<tools location="tools" />
+
+	
+	<goal description="GOAL Components for IngeDev">
+		<xsd>
+			<dalSchema location="tools/IngeDev/XSD_Schemas/DAL.xsd" description="XSD Validation schema for DAL"/>
+			<dalNameSpaceSchema location="tools/IngeDev/XSD_Schemas/DALns.xsd" description="XSD Validation schema for DAL with namespace"/>
+			<goalSchema location="tools/IngeDev/XSD_Schemas/GL.xsd" description="XSD Validation schema for GOAL"/>			
+			<dalDefinesSchema location="tools/IngeDev/XSD_Schemas/DALdefines.xsd" description="XSD Validation schema DAL Common Definition"/>
+		</xsd>
+		<dll>
+			<preview location="tools/IngeDev/GOAL/dll/win32/GLJava.dll" os="win32" version="3.23" description="GOAL DLL for Win32 Preview"/>		
+		</dll>
+		<jars>
+			<jarPreview location="tools/IngeDev/GOAL/java/jars/GL.jar" version="3.23" description="GOAL JAR for Win32 Preview"/>
+		</jars>
+		<skins location="tools/IngeDev/GOAL/skins/fileSystem" />
+	</goal>
+	
+	&deviceHwConf;
+</package>

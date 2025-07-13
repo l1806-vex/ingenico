@@ -1,0 +1,18 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifndef __OEM_ISPM_DEF_H_INCLUDED__
+#define __OEM_ISPM_DEF_H_INCLUDED__
+
+#define APPLE_FIOCTL_EXTERNAL		    		(0x8000)
+#define APPLE_FIOCTL_CDE_UPDATE_IAP_BT_PARAMETERS (APPLE_FIOCTL_EXTERNAL + 9)
+#define APPLE_FIOCTL_CDE_TEST_IAP_COPRO (APPLE_FIOCTL_EXTERNAL + 10)
+#define APPLE_FIOCTL_NETWORK_GATEWAY_STATUS      (APPLE_FIOCTL_EXTERNAL + 11)
+
+
+#endif   // __OEM_ISPM_DEF_H_INCLUDED__
+
+#ifdef __cplusplus
+}
+#endif

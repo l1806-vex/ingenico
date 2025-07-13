@@ -1,0 +1,640 @@
+Archive member included because of file (symbol)
+
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens100.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (Get_AppliName)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens112.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (Get_FileName)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens25.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (USQ_Ajoutermn)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens33.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (Ascbin)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens53.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (d_tolong)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens54.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (longto_d)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens87.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (USR_ServiceCall)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param90.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (PSQ_read_state_param)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv24.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (SV_read_date)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (sprintf)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens100.o) (extenslib_open)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param90.o) (paramlib_open)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv24.o) (svlib_open)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (ExeSchAndWaitEnd)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1302___STDOUT.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (__STDOUT)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1303_OS_rtc_CurrentTask.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (OS_rtc_CurrentTask)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1305_OS_rtc_SignalEvent.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (OS_rtc_SignalEvent)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1306_OS_rtc_ClearEvents.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (OS_rtc_ClearEvents)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1313_fclose.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (fclose)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1314_fopen.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (fopen)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1319_getc.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (getc)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_131B___STDIN.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (__STDIN)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_131E_status.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (status)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1323__vfprintf.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (_vfprintf)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1324_vsprintf.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (vsprintf)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1328_putc.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (putc)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1329_ttestall.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (ttestall)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_132A_fork.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (fork)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_132B_kill.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (kill)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_132C_FormatOem.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (FormatOem)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_133C_memcpy.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (memcpy)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_133E_strcpy.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (strcpy)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1342_memcmp.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (memcmp)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1346_memset.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (memset)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1348_ObjectGetInfo.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (ObjectGetInfo)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1349_ObjectLoad.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o) (ObjectLoad)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_134D_ServiceRegister.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (ServiceRegister)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_134E_ServiceGet.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (ServiceGet)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1350_DllLink.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o) (DllLink)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1352_DllUnlink.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o) (DllUnlink)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1356_stdperif.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (stdperif)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_135F_dalloc.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (dalloc)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1360_copy.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (copy)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1361_putcrc.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (putcrc)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1362_dfree.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (dfree)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1363_salloc.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (salloc)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1364_copy_systeme.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (copy_systeme)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1365_call.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (call)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1375_download.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (download)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1378_OEM_exit.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens100.o) (OEM_exit)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_138B_FS_dskcreate.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (FS_dskcreate)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_138D_FS_mount.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (FS_mount)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1399_FS_unlink.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (FS_unlink)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_139B_FS_open.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (FS_open)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_139C_FS_close.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (FS_close)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_139D_FS_read.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (FS_read)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_139E_FS_write.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (FS_write)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13A8_info_seg.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (info_seg)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13AB_first_init.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (first_init)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13AD_raz_init.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (raz_init)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13B2_ApplicationGetCurrent.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o (ApplicationGetCurrent)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13C1_trace.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (trace)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13C2_InitGkDrv.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o) (InitGkDrv)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13C5_ObjectGetDescriptor.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (ObjectGetDescriptor)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13F1_OS_rtc_WaitEvents32.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (OS_rtc_WaitEvents32)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_140A_dallocUsb.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (dallocUsb)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_140B_copyUsb.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (copyUsb)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_140C_putcrcUsb.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (putcrcUsb)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_140D_dfreeUsb.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (dfreeUsb)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1410_callUsb.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (callUsb)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1432_SystemFioctl.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (SystemFioctl)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_145A_dallocGeneric.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (dallocGeneric)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_145B_copyGeneric.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (copyGeneric)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_145C_putcrcGeneric.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (putcrcGeneric)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_145D_dfreeGeneric.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (dfreeGeneric)
+W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1460_callGeneric.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (callGeneric)
+C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o) (strlen)
+C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_divsi3.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (__divsi3)
+C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_umodsi3.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (__umodsi3)
+C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_modsi3.o)
+                              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o (__modsi3)
+C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_dvmd_tls.o)
+                              C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_divsi3.o) (__div0)
+C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_call_via_rX.o)
+                              W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o) (_call_via_r0)
+
+Allocating common symbols
+Common symbol       size              file
+
+DllGetProcAddress3  0x4               W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o)
+g_xCalendarDescriptor
+                    0xc4              X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+g_xTaskDescriptor   0x4ec4            X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+DllGetProcAddress7  0x4               W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param.o)
+DllGetProcAddress12
+                    0x4               W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00100000
+ram              0x00200000         0x00100000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x00000000     0x289c
+                0x00000000                __text_start = .
+ *(.first)
+ .first         0x00000000       0x60 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\cstartup.o
+                0x00000000                _start
+ *(.text)
+ .text          0x00000060      0xcc8 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+                0x00000334                ASMCALL_DeleteTask
+                0x000001ec                L_CreateOrMountDisk
+                0x000005a4                L_RestituteTask
+                0x000007ec                L_VerifyDate
+                0x00000534                L_RestituteCal
+                0x00000138                ASMCALL_GetNextTaskInfo
+                0x000008f4                ModifiedDate
+                0x00000c90                ExecuteTask
+                0x00000a18                ASMCALL_ModifyTask
+                0x00000100                ASMCALL_TaskExist
+                0x00000770                FindTaskToExecute
+                0x00000b64                ASMCALL_AddTask
+                0x00000864                ASMCALL_CalculateDeltaDate
+                0x000004cc                ASMCALL_CreateCalendar
+                0x00000198                ASMCALL_GetTaskInfo
+                0x0000041c                ASMCALL_DeleteCalendar
+                0x000003dc                ASMCALL_ActivateCalendar
+ .text          0x00000d28      0x3c4 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+                0x00000f38                entry
+                0x00000dc8                is_name
+                0x00001064                Main
+                0x00000e78                modif_param
+                0x00000ff8                state
+                0x00000d28                MainAsmServices
+                0x00000e9c                is_time_function
+                0x00000e34                is_state
+                0x00000f14                give_interface
+                0x00000ee0                time_function
+                0x0000100c                after_reset
+ .text          0x000010ec       0x50 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens100.o)
+                0x000010ec                Get_AppliName
+ .text          0x0000113c       0x50 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens112.o)
+                0x0000113c                Get_FileName
+ .text          0x0000118c       0x50 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens25.o)
+                0x0000118c                USQ_Ajoutermn
+ .text          0x000011dc       0x54 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens33.o)
+                0x000011dc                Ascbin
+ .text          0x00001230       0x4c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens53.o)
+                0x00001230                d_tolong
+ .text          0x0000127c       0x50 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens54.o)
+                0x0000127c                longto_d
+ .text          0x000012cc       0xc8 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens87.o)
+                0x000012cc                USR_ServiceCall
+                0x00001330                USQ_ServiceCall
+ .text          0x00001394       0x4c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param90.o)
+                0x00001394                PSQ_read_state_param
+ .text          0x000013e0       0x4c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv24.o)
+                0x000013e0                SV_read_date
+ .text          0x0000142c      0x19c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o)
+                0x0000151c                putchar
+                0x00001480                printf
+                0x000014a4                format
+                0x00001534                puts
+                0x0000142c                fprintf
+                0x00001448                vprintf
+                0x00001548                InitGK
+                0x00001464                sprintf
+                0x00001574                WaitOnError
+                0x000014c0                OEM_exit_asm
+                0x000014cc                __stdprt
+                0x000015c4                InitVar_vide
+                0x00001564                TrapResetDiv0
+                0x000014e4                pprintf
+ .text          0x000015c8       0x5c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o)
+                0x00001614                extenslib_close
+                0x000015c8                extenslib_open
+ .text          0x00001624       0x5c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param.o)
+                0x00001624                paramlib_open
+                0x00001670                paramlib_close
+ .text          0x00001680       0x5c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv.o)
+                0x00001680                svlib_open
+                0x000016cc                svlib_close
+ .text          0x000016dc      0x93c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o)
+                0x00001c3c                ExeSchAndWaitEndGeneric
+                0x00001ba4                ExeSchAndWaitEnd
+                0x00001cc4                DllExeSchAndWaitEndUsb
+                0x00001d48                ExeSchSysAndWaitEnd
+                0x00001bf0                ExeSchAndWaitEndUsb
+                0x00001c88                DllExeSchAndWaitEnd
+                0x00001b94                sch_purgeGeneric
+                0x00001f78                Dllsch_initGeneric
+                0x00001d98                sch_init
+                0x00001ec0                Dllsch_init
+                0x00001fdc                sch_end
+                0x00001d00                DllExeSchAndWaitEndGeneric
+                0x00001b88                sch_purgeUsb
+                0x00001b7c                sch_purge
+                0x00001e58                sch_initGeneric
+                0x00001df8                sch_initUsb
+                0x00001f1c                Dllsch_initUsb
+ .text          0x00002018       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1302___STDOUT.o)
+                0x00002018                __STDOUT
+ .text          0x00002028       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1303_OS_rtc_CurrentTask.o)
+                0x00002028                OS_rtc_CurrentTask
+ .text          0x00002038       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1305_OS_rtc_SignalEvent.o)
+                0x00002038                OS_rtc_SignalEvent
+ .text          0x00002048       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1306_OS_rtc_ClearEvents.o)
+                0x00002048                OS_rtc_ClearEvents
+ .text          0x00002058       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1313_fclose.o)
+                0x00002058                fclose
+ .text          0x00002068       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1314_fopen.o)
+                0x00002068                fopen
+ .text          0x00002078       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1319_getc.o)
+                0x00002078                getc
+ .text          0x00002088       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_131B___STDIN.o)
+                0x00002088                __STDIN
+ .text          0x00002098       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_131E_status.o)
+                0x00002098                status
+ .text          0x000020a8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1323__vfprintf.o)
+                0x000020a8                _vfprintf
+ .text          0x000020b8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1324_vsprintf.o)
+                0x000020b8                vsprintf
+ .text          0x000020c8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1328_putc.o)
+                0x000020c8                putc
+ .text          0x000020d8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1329_ttestall.o)
+                0x000020d8                ttestall
+ .text          0x000020e8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_132A_fork.o)
+                0x000020e8                fork
+ .text          0x000020f8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_132B_kill.o)
+                0x000020f8                kill
+ .text          0x00002108       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_132C_FormatOem.o)
+                0x00002108                FormatOem
+ .text          0x00002118       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_133C_memcpy.o)
+                0x00002118                memcpy
+ .text          0x00002128       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_133E_strcpy.o)
+                0x00002128                strcpy
+ .text          0x00002138       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1342_memcmp.o)
+                0x00002138                memcmp
+ .text          0x00002148       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1346_memset.o)
+                0x00002148                memset
+ .text          0x00002158       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1348_ObjectGetInfo.o)
+                0x00002158                ObjectGetInfo
+ .text          0x00002168       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1349_ObjectLoad.o)
+                0x00002168                ObjectLoad
+ .text          0x00002178       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_134D_ServiceRegister.o)
+                0x00002178                ServiceRegister
+ .text          0x00002188       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_134E_ServiceGet.o)
+                0x00002188                ServiceGet
+ .text          0x00002198       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1350_DllLink.o)
+                0x00002198                DllLink
+ .text          0x000021a8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1352_DllUnlink.o)
+                0x000021a8                DllUnlink
+ .text          0x000021b8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1356_stdperif.o)
+                0x000021b8                stdperif
+ .text          0x000021c8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_135F_dalloc.o)
+                0x000021c8                dalloc
+ .text          0x000021d8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1360_copy.o)
+                0x000021d8                copy
+ .text          0x000021e8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1361_putcrc.o)
+                0x000021e8                putcrc
+ .text          0x000021f8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1362_dfree.o)
+                0x000021f8                dfree
+ .text          0x00002208       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1363_salloc.o)
+                0x00002208                salloc
+ .text          0x00002218       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1364_copy_systeme.o)
+                0x00002218                copy_systeme
+ .text          0x00002228       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1365_call.o)
+                0x00002228                call
+ .text          0x00002238       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1375_download.o)
+                0x00002238                download
+ .text          0x00002248       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1378_OEM_exit.o)
+                0x00002248                OEM_exit
+ .text          0x00002258       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_138B_FS_dskcreate.o)
+                0x00002258                FS_dskcreate
+ .text          0x00002268       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_138D_FS_mount.o)
+                0x00002268                FS_mount
+ .text          0x00002278       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1399_FS_unlink.o)
+                0x00002278                FS_unlink
+ .text          0x00002288       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_139B_FS_open.o)
+                0x00002288                FS_open
+ .text          0x00002298       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_139C_FS_close.o)
+                0x00002298                FS_close
+ .text          0x000022a8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_139D_FS_read.o)
+                0x000022a8                FS_read
+ .text          0x000022b8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_139E_FS_write.o)
+                0x000022b8                FS_write
+ .text          0x000022c8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13A8_info_seg.o)
+                0x000022c8                info_seg
+ .text          0x000022d8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13AB_first_init.o)
+                0x000022d8                first_init
+ .text          0x000022e8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13AD_raz_init.o)
+                0x000022e8                raz_init
+ .text          0x000022f8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13B2_ApplicationGetCurrent.o)
+                0x000022f8                ApplicationGetCurrent
+ .text          0x00002308       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13C1_trace.o)
+                0x00002308                trace
+ .text          0x00002318       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13C2_InitGkDrv.o)
+                0x00002318                InitGkDrv
+ .text          0x00002328       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13C5_ObjectGetDescriptor.o)
+                0x00002328                ObjectGetDescriptor
+ .text          0x00002338       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_13F1_OS_rtc_WaitEvents32.o)
+                0x00002338                OS_rtc_WaitEvents32
+ .text          0x00002348       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_140A_dallocUsb.o)
+                0x00002348                dallocUsb
+ .text          0x00002358       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_140B_copyUsb.o)
+                0x00002358                copyUsb
+ .text          0x00002368       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_140C_putcrcUsb.o)
+                0x00002368                putcrcUsb
+ .text          0x00002378       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_140D_dfreeUsb.o)
+                0x00002378                dfreeUsb
+ .text          0x00002388       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1410_callUsb.o)
+                0x00002388                callUsb
+ .text          0x00002398       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1432_SystemFioctl.o)
+                0x00002398                SystemFioctl
+ .text          0x000023a8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_145A_dallocGeneric.o)
+                0x000023a8                dallocGeneric
+ .text          0x000023b8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_145B_copyGeneric.o)
+                0x000023b8                copyGeneric
+ .text          0x000023c8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_145C_putcrcGeneric.o)
+                0x000023c8                putcrcGeneric
+ .text          0x000023d8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_145D_dfreeGeneric.o)
+                0x000023d8                dfreeGeneric
+ .text          0x000023e8       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib(trap_1460_callGeneric.o)
+                0x000023e8                callGeneric
+ .text          0x000023f8       0x14 C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+                0x000023f8                strlen
+ .text          0x0000240c       0x94 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_divsi3.o)
+                0x0000240c                __divsi3
+ .text          0x000024a0       0xc8 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_umodsi3.o)
+                0x000024a0                __umodsi3
+ .text          0x00002568       0xd8 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_modsi3.o)
+                0x00002568                __modsi3
+ .text          0x00002640        0x4 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_dvmd_tls.o)
+                0x00002640                __div0
+ .text          0x00002644       0x3c C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_call_via_rX.o)
+                0x0000264c                _call_via_r2
+                0x0000265c                _call_via_r6
+                0x00002658                _call_via_r5
+                0x00002650                _call_via_r3
+                0x00002670                _call_via_fp
+                0x00002664                _call_via_r8
+                0x00002660                _call_via_r7
+                0x00002644                _call_via_r0
+                0x0000266c                _call_via_sl
+                0x00002678                _call_via_sp
+                0x00002668                _call_via_r9
+                0x00002654                _call_via_r4
+                0x00002648                _call_via_r1
+                0x00002674                _call_via_ip
+                0x0000267c                _call_via_lr
+ *(.strings)
+ *(.strings.*)
+ *(.rodata)
+ .rodata        0x00002680       0x28 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .rodata        0x000026a8        0xc W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o)
+ *(.rodata.*)
+ .rodata.str1.4
+                0x000026b4       0x43 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+                                 0x44 (size before relaxing)
+ *fill*         0x000026f7        0x1 00
+ .rodata.str1.4
+                0x000026f8       0x4d X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+                                 0x50 (size before relaxing)
+ *fill*         0x00002745        0x3 00
+ .rodata.str1.4
+                0x00002748        0xe W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens100.o)
+                                 0x10 (size before relaxing)
+ *fill*         0x00002756        0x2 00
+ .rodata.str1.4
+                0x00002758        0xd W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens112.o)
+                                 0x10 (size before relaxing)
+ *fill*         0x00002765        0x3 00
+ .rodata.str1.4
+                0x00002768        0xe W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens25.o)
+                                 0x10 (size before relaxing)
+ *fill*         0x00002776        0x2 00
+ .rodata.str1.4
+                0x00002778        0x7 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens33.o)
+                                  0x8 (size before relaxing)
+ *fill*         0x0000277f        0x1 00
+ .rodata.str1.4
+                0x00002780        0x9 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens53.o)
+                                  0xc (size before relaxing)
+ *fill*         0x00002789        0x3 00
+ .rodata.str1.4
+                0x0000278c        0x9 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens54.o)
+                                  0xc (size before relaxing)
+ *fill*         0x00002795        0x3 00
+ .rodata.str1.4
+                0x00002798       0x20 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens87.o)
+ .rodata.str1.4
+                0x000027b8       0x15 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param90.o)
+                                 0x18 (size before relaxing)
+ *fill*         0x000027cd        0x3 00
+ .rodata.str1.4
+                0x000027d0        0xd W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv24.o)
+                                 0x10 (size before relaxing)
+ *fill*         0x000027dd        0x3 00
+ .rodata.str1.4
+                0x000027e0       0x19 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o)
+                                 0x28 (size before relaxing)
+ *fill*         0x000027f9        0x3 00
+ .rodata.str1.4
+                0x000027fc       0x10 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o)
+ .rodata.str1.4
+                0x0000280c        0x6 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param.o)
+                                 0x10 (size before relaxing)
+ *fill*         0x00002812        0x2 00
+ .rodata.str1.4
+                0x00002814        0x3 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv.o)
+                                  0xc (size before relaxing)
+ *fill*         0x00002817        0x1 00
+ .rodata.str1.4
+                0x00002818       0x82 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o)
+                                 0x84 (size before relaxing)
+ *(.glue_7)
+ *fill*         0x0000289a        0x2 00
+ *(.glue_7t)
+                0x0000289c                __text_end = .
+
+.init           0x00200000       0xc0 load address 0x0000289c
+                0x00200000                __data_start = .
+ *(.data)
+ .data          0x00200000       0xc0 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+                0x002000c0                __data_end = .
+
+.bss            0x002000c0     0x5000
+                0x002000c0                __bss_start = .
+ *(.bss)
+ .bss           0x002000c0        0x4 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+                0x002000c0                g_bTaskInProgress
+ .bss           0x002000c4        0x4 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .bss           0x002000c8        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens100.o)
+ .bss           0x002000cc        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens112.o)
+ .bss           0x002000d0        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens25.o)
+ .bss           0x002000d4        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens33.o)
+ .bss           0x002000d8        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens53.o)
+ .bss           0x002000dc        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens54.o)
+ .bss           0x002000e0        0x8 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens87.o)
+ .bss           0x002000e8        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param90.o)
+ .bss           0x002000ec        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv24.o)
+ .bss           0x002000f0       0x3c W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o)
+ *(COMMON)
+ COMMON         0x0020012c     0x4f88 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+                0x0020012c                g_xCalendarDescriptor
+                0x002001f0                g_xTaskDescriptor
+ COMMON         0x002050b4        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o)
+                0x002050b4                DllGetProcAddress3
+ COMMON         0x002050b8        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param.o)
+                0x002050b8                DllGetProcAddress7
+ COMMON         0x002050bc        0x4 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv.o)
+                0x002050bc                DllGetProcAddress12
+                0x002050c0                __bss_end = .
+                0x002050c0                end = .
+LOAD X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+LOAD X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+LOAD W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\cstartup.o
+LOAD W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib
+LOAD W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib
+LOAD W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\trap.lib
+LOAD C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a
+LOAD C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a
+OUTPUT(X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\8131690104.AXF elf32-littlearm)
+
+.debug_abbrev   0x00000000      0x50d
+ .debug_abbrev  0x00000000      0x1f5 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+ .debug_abbrev  0x000001f5      0x23a X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .debug_abbrev  0x0000042f       0x7a C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+ .debug_abbrev  0x000004a9       0x14 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_divsi3.o)
+ .debug_abbrev  0x000004bd       0x14 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_umodsi3.o)
+ .debug_abbrev  0x000004d1       0x14 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_modsi3.o)
+ .debug_abbrev  0x000004e5       0x14 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_dvmd_tls.o)
+ .debug_abbrev  0x000004f9       0x14 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_call_via_rX.o)
+
+.debug_info     0x00000000     0x42df
+ .debug_info    0x00000000     0x105f X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+ .debug_info    0x0000105f     0x2ee0 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .debug_info    0x00003f3f       0xb7 C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+ .debug_info    0x00003ff6       0x95 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_divsi3.o)
+ .debug_info    0x0000408b       0x95 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_umodsi3.o)
+ .debug_info    0x00004120       0x95 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_modsi3.o)
+ .debug_info    0x000041b5       0x95 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_dvmd_tls.o)
+ .debug_info    0x0000424a       0x95 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_call_via_rX.o)
+
+.debug_line     0x00000000      0x98d
+ .debug_line    0x00000000      0x415 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+ .debug_line    0x00000415      0x23d X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .debug_line    0x00000652       0xc6 C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+ .debug_line    0x00000718       0x8a C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_divsi3.o)
+ .debug_line    0x000007a2       0x7c C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_umodsi3.o)
+ .debug_line    0x0000081e       0x85 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_modsi3.o)
+ .debug_line    0x000008a3       0x6e C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_dvmd_tls.o)
+ .debug_line    0x00000911       0x7c C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_call_via_rX.o)
+
+.debug_frame    0x00000000      0x4cc
+ .debug_frame   0x00000000      0x338 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+ .debug_frame   0x00000338      0x16c X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .debug_frame   0x000004a4       0x28 C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+
+.debug_pubnames
+                0x00000000      0x2b0
+ .debug_pubnames
+                0x00000000      0x1dd X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+ .debug_pubnames
+                0x000001dd       0xb6 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .debug_pubnames
+                0x00000293       0x1d C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+
+.debug_aranges  0x00000000      0x100
+ .debug_aranges
+                0x00000000       0x20 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+ .debug_aranges
+                0x00000020       0x20 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .debug_aranges
+                0x00000040       0x20 C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+ .debug_aranges
+                0x00000060       0x20 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_divsi3.o)
+ .debug_aranges
+                0x00000080       0x20 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_umodsi3.o)
+ .debug_aranges
+                0x000000a0       0x20 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_modsi3.o)
+ .debug_aranges
+                0x000000c0       0x20 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_dvmd_tls.o)
+ .debug_aranges
+                0x000000e0       0x20 C:\GCC_3.4.3\lib\gcc\arm-elf\3.4.3\thumb\soft\interwork/libgcc.a(_call_via_rX.o)
+
+.debug_ranges   0x00000000       0x30
+ .debug_ranges  0x00000000       0x30 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+
+.debug_str      0x00000000     0x1c86
+ .debug_str     0x00000000      0x8ca X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+                                0x96b (size before relaxing)
+ .debug_str     0x000008ca     0x1364 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+                               0x194f (size before relaxing)
+ .debug_str     0x00001c2e       0x58 C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)
+                                 0xe1 (size before relaxing)
+
+.comment        0x00000000      0x132
+ .comment       0x00000000       0x12 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Service.o
+ .comment       0x00000012       0x12 X:\pplasse\Liv\TeliumSoftware\Component\AVL\VGE_ASM\ASM_COM\Gnu\obj\ASM_Entry.o
+ .comment       0x00000024       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens100.o)
+ .comment       0x00000036       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens112.o)
+ .comment       0x00000048       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens25.o)
+ .comment       0x0000005a       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens33.o)
+ .comment       0x0000006c       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens53.o)
+ .comment       0x0000007e       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens54.o)
+ .comment       0x00000090       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens87.o)
+ .comment       0x000000a2       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param90.o)
+ .comment       0x000000b4       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv24.o)
+ .comment       0x000000c6       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(LibAppli.o)
+ .comment       0x000000d8       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(extens.o)
+ .comment       0x000000ea       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(param.o)
+ .comment       0x000000fc       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\eft30.lib(sv.o)
+ .comment       0x0000010e       0x12 W:\DeliveryRetD\TeliumSoftware\SDK\SDK30\0704\SDK 7.4\SDK\lib_gnu\PinLib.lib(gestpinsch.o)
+ .comment       0x00000120       0x12 C:\GCC_3.4.3\arm-elf\lib\thumb\soft\interwork/libc.a(strlen.o)

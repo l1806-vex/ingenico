@@ -1,0 +1,60 @@
+Manifest-Version: 1.0
+Export-Package: com.ingenico.ingedev.telium.core; uses:="org.eclipse.c
+ dt.core,  org.eclipse.core.runtime,  com.ingenico.ingedev.telium.core
+ .project.descriptor,  com.ingenico.ingedev.telium.internal.core.proje
+ ct.descriptor,  org.eclipse.cdt.core.parser,  com.ingenico.ingedev.ge
+ neric.core,  com.ingenico.ingedev.telium.internal.core.model,  com.in
+ genico.ingedev.telium.core.model,  org.eclipse.core.resources,  org.o
+ sgi.framework,  org.eclipse.core.variables",com.ingenico.ingedev.teli
+ um.core.model; uses:="com.ingenico.ingedev.generic.core,  com.ingenic
+ o.ingedev.telium.core,  org.eclipse.core.runtime,  com.ingenico.inged
+ ev.telium.core.project.descriptor,  org.eclipse.core.resources,  com.
+ ingenico.ingedev.generic.core.project.descriptor",com.ingenico.ingede
+ v.telium.core.packages; uses:="com.ingenico.ingedev.generic.core,  co
+ m.ingenico.ingedev.telium.core,  org.eclipse.core.runtime,  com.ingen
+ ico.ingedev.telium.core.project.descriptor,  org.eclipse.core.resourc
+ es,  com.ingenico.ingedev.help,  org.w3c.dom",com.ingenico.ingedev.te
+ lium.core.project.descriptor; uses:="com.ingenico.ingedev.generic.cor
+ e,  com.ingenico.ingedev.telium.core,  com.ingenico.ingedev.telium.co
+ re.model,  org.eclipse.core.resources,  com.ingenico.ingedev.generic.
+ core.project.descriptor,  org.w3c.dom",com.ingenico.ingedev.telium.co
+ re.project.descriptor.old,com.ingenico.ingedev.telium.core.utils; use
+ s:="com.ingenico.ingedev.telium.core,  org.eclipse.core.runtime,  com
+ .ingenico.ingedev.telium.core.project.descriptor,  org.eclipse.core.r
+ esources",com.ingenico.ingedev.telium.internal.core; uses:="com.ingen
+ ico.ingedev.generic.core,  com.ingenico.ingedev.telium.core,  com.ing
+ enico.ingedev.telium.core.project.descriptor,  org.eclipse.core.expre
+ ssions,  org.eclipse.core.resources,  org.eclipse.core.runtime.prefer
+ ences,  org.eclipse.core.variables,  com.ingenico.ingedev.generic.int
+ ernal.core",com.ingenico.ingedev.telium.internal.core.filegenerator;u
+ ses:="org.eclipse.core.runtime,com.ingenico.ingedev.telium.core.proje
+ ct.descriptor,org.eclipse.core.resources",com.ingenico.ingedev.telium
+ .internal.core.make; uses:="com.ingenico.ingedev.generic.core,  org.e
+ clipse.core.runtime,  com.ingenico.ingedev.telium.core.project.descri
+ ptor,  org.eclipse.cdt.core.resources,  com.ingenico.ingedev.telium.i
+ nternal.core.project.descriptor,  org.eclipse.core.resources,  org.w3
+ c.dom",com.ingenico.ingedev.telium.internal.core.makenew,com.ingenico
+ .ingedev.telium.internal.core.model;x-friends:="com.ingenico.ingedev.
+ telium.ui,com.ingenico.ingedev.telium.uta",com.ingenico.ingedev.teliu
+ m.internal.core.project.descriptor;x-friends:="com.ingenico.ingedev.t
+ elium.ui,com.ingenico.ingedev.telium.download.ui,com.ingenico.ingedev
+ .telium.uta"
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: ingedevteliumcore.jar
+Bundle-Name: Telium Core Plug-in
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources,or
+ g.eclipse.core.filesystem,org.eclipse.core.expressions,org.eclipse.cd
+ t.core,org.eclipse.core.variables,org.eclipse.team.core,com.ingenico.
+ ingedev.generic.core,com.ingenico.ingedev.telium.bin,com.ingenico.ing
+ edev.generic.bin,com.ingenico.ingedev.help,com.ingenico.ingedev.teliu
+ m.simulation.bin,org.eclipse.draw2d
+Bundle-Vendor: Ingenico
+Bundle-Version: 7.18.0.3
+Bundle-ManifestVersion: 2
+Bundle-Activator: com.ingenico.ingedev.telium.core.TeliumCorePlugin
+Bundle-SymbolicName: com.ingenico.ingedev.telium.core;singleton:=true
+Import-Package: com.ingenico.ingedev.telium.internal.core.filegenerato
+ r,org.eclipse.jface.viewers
+
+

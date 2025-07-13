@@ -1,0 +1,27 @@
+ /** \page Purpose Purpose of the Sample
+
+The SSL sample application goal is to demonstrate the use of the following SDK functions:
+*
+* - \b New - creates an ssl structure.
+* - \b Connect - connect to the server.
+* - \b Disconnect - closes a SSL connection.
+* - \b Free - free an allocated SSL structure.
+* - \b NewProfile - creates a new ssl profile and returns its handle.
+* - \b SaveProfile - saves an ssl profile. All the modifications made in this profile are stored in flash.
+* - \b UnloadProfile - unloads an ssl profile.
+* - \b DeleteProfile - deletes an ssl profile in the ssl saved list.
+* - \b GetProfile - loads a profile search by its index in the profile list
+* - \b GetProfileCount - gets the number of profiles
+* - \b ProfileGetName - gets the name of the profile
+* - \b ProfileGetLastIpServer - gets the ip and port value
+* - \b ProfileGetLastError - returns the error code of the last operation.
+* - \b ProfileGetCertificateFile - returns the name of the file which contains the client X509 certificate
+* - \b ProfileGetCAFile - returns the name of the CA certificate file
+* - \b ProfileSetProtocol - sets the ssl protocol used by the ssl profile.
+* - \b ProfileSetCipher - sets the mask of ciphers and export modes supported by the profile.
+* - \b ProfileSetKeyFile - sets the private key file used by the ssl profile
+* - \b ProfileSetCertificateFile - sets the certificate file used by the ssl profile.
+* - \b ProfileAddCertificateCA - adds a CA or CRL to a profile.
+
+
+  */

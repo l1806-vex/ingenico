@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ingenico.jsat.ide_feature"
+      label="jSAT"
+      version="2.0.4.201302151731"
+      provider-name="INGENICO">
+
+   <url>
+      <discovery label="Ingenico homepage" url="http://www.ingenico.com/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.help.ui" version="3.4.1" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.ingenico.jsat.core"
+         download-size="0"
+         install-size="0"
+         version="2.0.4.201302151731"/>
+
+   <plugin
+         id="com.ingenico.jsat.ui"
+         download-size="0"
+         install-size="0"
+         version="2.0.4.201302151731"/>
+
+   <plugin
+         id="com.ingenico.jsat.doc.user"
+         download-size="0"
+         install-size="0"
+         version="2.0.4.201302151731"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.jsat.commandLine"
+         download-size="0"
+         install-size="0"
+         version="2.0.4.201302151731"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.jsat.ui.ingedevextension"
+         download-size="0"
+         install-size="0"
+         version="2.0.4.201302151731"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.jsat.core.ingedevextension"
+         download-size="0"
+         install-size="0"
+         version="2.0.4.201302151731"
+         unpack="false"/>
+
+</feature>

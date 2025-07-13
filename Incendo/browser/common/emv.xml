@@ -1,0 +1,883 @@
+<?xml version="1.0"?>
+<emv>
+    <!-- 
+    
+    This file contains the list of ICC, which are accessible to simulator user. 
+    User should specify:
+        TLVs returned by EMV kernel;
+        ICC Master Key;
+        PSE presence;
+        Risk Management Policy.
+             
+    Following TLVs are may be specified:
+     
+       Data Element                   Tag     Format         Default (hex)
+     
+    Application Identifier            0x004F  b[6:16]           
+    Application Label                 0x0050  an[1:16]       "VISA"
+    ISO Track 2 Equivalent Data       0x0057  b[1:19]        No TLV
+    Application PAN                   0x005A  cn[1:19]
+    Application Interchange Profile   0x0082  b[2]           5C00
+    Application Priority Indicator    0x0087  b[1]           01
+        Possible values 00, 01-0F and 81-8F 
+        (use "8x" value to set manual select and "0x" to allow auto select;
+         use "00" to turn off priorities).
+    CVM list [Note 1]                 0x008E  b[0:252]       0000000000 
+                                                             0000000503
+    CA Public Key Index               0x008F  b[1]           99
+    Cardholder Name                   0x5F20  ans[27:45]
+    Application Expiration Date       0x5F24  n[6] YYMMDD
+    Application Effective Date        0x5F25  n[6] YYMMDD
+    Application PAN Sequence Number   0x5F34  n[2]           0
+    Issuer Country Code               0x5F56  an[3]
+    Application Usage Control         0x9F07  b[2]           FFC0
+    Issuer Action Code - Default      0x9F0D  b[5]           F0406C2000 
+    Issuer Action Code - Denial       0x9F0E  b[5]           0010800000 
+    Issuer Action Code - Online       0x9F0F  b[5]           F0687CF800
+    Issuer Application Data           0x9F10  b[0:32]        No TLV
+    Application Preferred Name        0x9F12  an[1:16]
+    Application Transaction Counter   0x9F36  b[2]           Starts from 0001
+    PIN                               0xDF20  an[4:12]
+    Canadian Appli Selection Flag     0xDF62  b[2:32]
+    PIN Try Counter                   0x9F17 n[2]            03
+
+    [Note 1] If you wish to simulate absence of the CVM on the ICC, specify
+    value 00000000.
+
+    For each TLV hexadecimal tag (without 0x) should be provided using 
+    attribute "tag", for example: tag="0057".
+
+    Value should be provided according to data element format:
+        * for an and ans human-readable strings should be provided;
+        * for n and cn formats strings with ASCII decimal digits
+          should be provided ("1235"); trailing 0xF (for cn) and leading
+          zeros (for n) may be omitted;
+        * for b strings with ASCII hexadecimal digits should be provided
+          ("000A17b"); zeros should not be omitted.
+
+    ICC Master key should be specified as b[16].
+
+    PSE presence should be specified as "yes or "no" (default: "no")
+
+    Risk Manamegent Policy may be:
+        * offline - EMV always recommends go offline;
+        * online  - EMV always recommends go online; approve in the
+                    case of the communication failure;
+        * online_strict - EMV always recommends go online; decline in the
+                          case of the communication failure;
+        * decline - EMV always declines the transaction during the risk
+                    management;
+        * ask - simulator asks user about EMV Kernel decision;
+        * emv - risk management specified in the EMV Book 3 is performed.
+
+    The last option is not supported in the first version of the simulator.
+    Thus the user should understand, that most data provided by the
+    Configuration Service are ignored.
+
+    Application status:
+        * ok;
+        * aid_blocked;
+        * card_blocked.
+    -->
+
+    <card name="NO PSE, 1APP, OK"
+          mk="0123456789abcdef1111222233334444"
+          pse="no">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="PSE, 1APP, OK"
+          mk="0123456789abcdef1111222233334444"
+          pse="yes">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="NO PSE, 1APP, BLOCKED"
+          mk="0123456789abcdef1111222233334444"
+          pse="no">
+
+        <app policy="online" status="aid_blocked">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="PSE, 1APP, BLOCKED"
+          mk="0123456789abcdef1111222233334444"
+          pse="yes">
+
+        <app policy="online" status="aid_blocked">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="NO PSE, MULTI APP, OK"
+          mk="0123456789abcdef1111222233334444"
+          pse="no">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="VISA"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="PSE, MULTI APP, OK"
+          mk="0123456789abcdef1111222233334444"
+          pse="yes">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="VISA"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="NO PSE, MULTI APP, 1 BLOCKED"
+          mk="0123456789abcdef1111222233334444"
+          pse="no">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="VISA"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+
+        <app policy="online" status="aid_blocked">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="PSE, MULTI APP, 1 BLOCKED"
+          mk="0123456789abcdef1111222233334444"
+          pse="yes">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="VISA"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+
+        <app policy="online" status="aid_blocked">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="NO PSE, MULTI APP, ALL BLOCKED"
+          mk="0123456789abcdef1111222233334444"
+          pse="no">
+
+        <app policy="online" status="aid_blocked">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="VISA"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+
+        <app policy="online" status="aid_blocked">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="PSE, MULTI APP, ALL BLOCKED"
+          mk="0123456789abcdef1111222233334444"
+          pse="yes">
+
+        <app policy="online" status="aid_blocked">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="VISA"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+
+        <app policy="online" status="aid_blocked">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="ICC solutions RBS (MasterCard)"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="ICC solutions Barclays (VISA Credit)"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="BARCLAYCARD VISA"/>
+            <tlv tag="57" value="4929498311400002D08032010098800000001F"/>
+            <tlv tag="5A" value="4929498311400002"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="000000000000000041031E0302031F03"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="BMSTESTCARDA5603/A"/>
+            <tlv tag="5F24" value="200331"/>
+            <tlv tag="5F25" value="020401"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FD80"/>
+            <tlv tag="9f0d" value="4040488000"/>
+            <tlv tag="9f0e" value="1010A00060"/>
+            <tlv tag="9f0f" value="40E84C9800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="ICC solutions JCB" 
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000651010"/>
+            <tlv tag="50" value="4A4342"/>
+            <tlv tag="57" value="3540829999421012D49122010000000000000F"/>
+            <tlv tag="5A" value="3540829999421012"/>
+            <tlv tag="82" value="7C00"/>
+            <tlv tag="8E" value="000000000000000041035E035F03"/>
+            <tlv tag="8F" value="01"/>
+            <tlv tag="5F20" value="JCB/ICHIRO                "/>
+            <tlv tag="5F24" value="491231"/>
+            <tlv tag="5F25" value="500101"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FFC0"/>
+            <tlv tag="9f0d" value="F860ACF800"/>
+            <tlv tag="9f0e" value="0010000000"/>
+            <tlv tag="9f0f" value="F860ACF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card> 
+
+    <card name="ICC solutions 1. Barclays" 
+          mk="0123456789abcdef1111222233334444"> 
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="BARCLAYCARD VISA"/>
+            <tlv tag="57" value="4929498311394007D06032010048600000001F"/>
+            <tlv tag="5A" value="4929498311394007"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="000000000000000041031E0302031F03"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="BARCLAYCARDIPT/1                  "/>
+            <tlv tag="5F24" value="200331"/>
+            <tlv tag="5F25" value="020401"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F0406C2000"/>
+            <tlv tag="9f0e" value="0010800000"/>
+            <tlv tag="9f0f" value="F0687CF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="ICC solutions 2. Royal Bank of Scotland" 
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MASTERCARD"/>
+            <tlv tag="57" value="5434849995007841D08122011502000902556F"/>
+            <tlv tag="5A" value="5434849995007841"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8e" value="0000000000000000420141031E0302031F03"/>
+            <tlv tag="8F" value="FE"/>
+            <tlv tag="5F20" value="CARD/RCTP"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="040423"/>
+            <tlv tag="5F34" value="02"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F070EC2800"/>
+            <tlv tag="9f0e" value="2050000000"/>
+            <tlv tag="9f0f" value="F078ECF800"/>
+            <tlv tag="9f36" value="0002"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="ICC solutions 4. Lloyds TSB"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="VISADEBIT       "/>
+            <tlv tag="57" value="4921817918764023D06052012260000000000F"/>
+            <tlv tag="5A" value="4921817918764023"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8e" value="000000000000000041031E0302031F00"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="CVMTT TO REN DEBIT/CARD LA"/>
+            <tlv tag="5F24" value="200531"/>
+            <tlv tag="5F25" value="030801"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FFC0"/>
+            <tlv tag="9f0d" value="F060EC2800"/>
+            <tlv tag="9f0e" value="0010000000"/>
+            <tlv tag="9f0f" value="F068FCF800"/>
+            <tlv tag="9f36" value="0003"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="ICC solutions 5. JCB"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000651010"/>
+            <tlv tag="50" value="JCB"/>
+            <tlv tag="57" value="3540829999421012D49122010000000000000F"/>
+            <tlv tag="5A" value="3540829999421012"/>
+            <tlv tag="82" value="7C00"/>
+            <tlv tag="8e" value="000000000000000041035E035F03"/>
+            <tlv tag="8F" value="01"/>
+            <tlv tag="5F20" value="JCB/ICHIRO                "/>
+            <tlv tag="5F24" value="200331"/>
+            <tlv tag="5F25" value="020401"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FFC0"/>
+            <tlv tag="9f0d" value="F860ACF800"/>
+            <tlv tag="9f0e" value="0010000000"/>
+            <tlv tag="9f0f" value="F860ACF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="Made up. Invalid"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="B0000000031010"/>
+            <tlv tag="50" value="BARCLAYCARD VISA"/>
+            <tlv tag="57" value="4929498311394007D06032010048600000001F"/>
+            <tlv tag="5A" value="4929498311394007"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="000000000000000043031E0302031F03"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="BARCLAYCARDIPT/1                  "/>
+            <tlv tag="5F24" value="200331"/>
+            <tlv tag="5F25" value="980401"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F0406C2000"/>
+            <tlv tag="9f0e" value="0010800000"/>
+            <tlv tag="9f0f" value="F0687CF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="Made up. Expired" 
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="BARCLAYCARD VISA"/>
+            <tlv tag="57" value="4929498311394007D06032010048600000001F"/>
+            <tlv tag="5A" value="4929498311394007"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="000000000000000043031E0302031F03"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="BARCLAYCARDIPT/1                  "/>
+            <tlv tag="5F24" value="030331"/>
+            <tlv tag="5F25" value="980401"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F0406C2000"/>
+            <tlv tag="9f0e" value="0010800000"/>
+            <tlv tag="9f0f" value="F0687CF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card> 
+
+    <card name="Made up. Signature"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="BARCLAYCARD VISA"/>
+            <tlv tag="57" value="4929498311394007D06032010048600000001F"/>
+            <tlv tag="5A" value="4929498311394007"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="000000000000000043031E0302031F03"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="BARCLAYCARDIPT/1                  "/>
+            <tlv tag="5F24" value="200331"/>
+            <tlv tag="5F25" value="020401"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F0406C2000"/>
+            <tlv tag="9f0e" value="0010800000"/>
+            <tlv tag="9f0f" value="F0687CF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="Made up. Offline"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="BARCLAYCARD VISA"/>
+            <tlv tag="57" value="4929498311394007D06032010048600000001F"/>
+            <tlv tag="5A" value="4929498311394007"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="000000000000000041031E0302031F03"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="BARCLAYCARDIPT/1                  "/>
+            <tlv tag="5F24" value="200331"/>
+            <tlv tag="5F25" value="020401"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9f07" value="FF00"/>
+            <tlv tag="9f0d" value="F0406C2000"/>
+            <tlv tag="9f0e" value="0010800000"/>
+            <tlv tag="9f0f" value="F0687CF800"/>
+            <tlv tag="9f36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="Interac ICCSIM Select 21"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="online" status="ok">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="App1"/>
+            <tlv tag="57" value="4761739001010010D10122200123456789"/>
+            <tlv tag="5A" value="4761739001010010"/>
+            <tlv tag="82" value="1C00"/>
+            <tlv tag="87" value="81"/>
+            <tlv tag="8E" value="000000000000000041030203"/>
+            <tlv tag="8F" value="64"/>
+            <tlv tag="5F20" value="Test Card 1"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="950701"/>
+            <tlv tag="5F34" value="01"/>
+            <tlv tag="5F56" value="CAN"/>
+            <tlv tag="9F07" value="AB00"/>
+            <tlv tag="9F0D" value="F078FCB800"/>
+            <tlv tag="9F0E" value="0010D80000"/>
+            <tlv tag="9F0F" value="FC7824F880"/>
+            <tlv tag="9F12" value="Application 1"/>
+            <tlv tag="9F36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+            <tlv tag="DF62" value="FFFF"/>
+        </app>
+
+        <app policy="offline" status="aid_blocked">
+            <tlv tag="4F" value="A0000000040000"/>
+            <tlv tag="50" value="App2"/>
+            <tlv tag="57" value="4761739001010029D10122200123456789"/>
+            <tlv tag="5A" value="4761739001010029"/>
+            <tlv tag="82" value="1C00"/>
+            <tlv tag="8E" value="000000000000000041030203"/>
+            <tlv tag="8F" value="64"/>
+            <tlv tag="5F20" value="Test Card 2"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="950701"/>
+            <tlv tag="5F34" value="01"/>
+            <tlv tag="5F56" value="CAN"/>
+            <tlv tag="9F07" value="AB00"/>
+            <tlv tag="9F0D" value="F078FCB800"/>
+            <tlv tag="9F0E" value="0010D80000"/>
+            <tlv tag="9F0F" value="FC7824F880"/>
+            <tlv tag="9F12" value="Application 2"/>
+            <tlv tag="9F36" value="0004"/>
+            <tlv tag="DF20" value="1234"/>
+            <tlv tag="DF62" value="0000"/>
+        </app>
+    </card> 
+
+    <card name="ADVT Test Card #22"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="A000000003101001"/>
+            <tlv tag="50" value="VISA CREDIT"/>
+            <tlv tag="57" value="4761739001010010D10122011143878089"/>
+            <tlv tag="5A" value="4761739001010010"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="87" value="81"/>
+            <tlv tag="8E" value="00000000000000001E0302031F00"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="VISA ACQUIRER TEST CARD 22"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="950701"/>
+            <tlv tag="5F34" value="01"/>
+            <tlv tag="9F07" value="FF00"/>
+            <tlv tag="9F0D" value="F040008800"/>
+            <tlv tag="9F0E" value="0040000000"/>
+            <tlv tag="9F0F" value="F040009800"/>
+            <tlv tag="9F12" value="Visa Credit"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="A000000003101002"/>
+            <tlv tag="50" value="VISA DEBIT"/>
+            <tlv tag="57" value="4761739001010010D10122011143878089"/>
+            <tlv tag="5A" value="4761739001010010"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="8E" value="00000000000000001E0302031F00"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="VISA ACQUIRER TEST CARD 22"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="950701"/>
+            <tlv tag="5F34" value="01"/>
+            <tlv tag="9F07" value="FF00"/>
+            <tlv tag="9F0D" value="F040008800"/>
+            <tlv tag="9F0E" value="0010000000"/>
+            <tlv tag="9F0F" value="F040009800"/>
+            <tlv tag="9F12" value="Visa Debit"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="ADVT Test Card #18"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="A0000000031010"/>
+            <tlv tag="50" value="VISA CREDIT"/>
+            <tlv tag="57" value="4761739001010010D10122011143878089"/>
+            <tlv tag="5A" value="4761739001010010"/>
+            <tlv tag="82" value="5C00"/>
+            <tlv tag="87" value="81"/>
+            <tlv tag="8E" value="000000000000000001031E0302031F00"/>
+            <tlv tag="8F" value="99"/>
+            <tlv tag="5F20" value="VISA ACQUIRER TEST CARD 18"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="950701"/>
+            <tlv tag="5F34" value="01"/>
+            <tlv tag="9F07" value="FF00"/>
+            <tlv tag="9F0D" value="F040008800"/>
+            <tlv tag="9F0E" value="0040000000"/>
+            <tlv tag="9F0F" value="F040009800"/>
+            <tlv tag="9F12" value="CREDITO DE VISA"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+
+    <card name="Online Global 01"
+          mk="0123456789abcdef1111222233334444">
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="A0000000041010"/>
+            <tlv tag="50" value="MasterCard"/>
+            <tlv tag="57" value="5413330089000278D0712201097760337F"/>
+            <tlv tag="5A" value="5413330089000278"/>
+            <tlv tag="82" value="5800"/>
+            <tlv tag="87" value="81"/>
+            <tlv tag="8E" value="000000000000000041035E0342031F03"/>
+            <tlv tag="8F" value="F8"/>
+            <tlv tag="5F20" value="Online Global 01"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="961231"/>
+            <tlv tag="5F34" value="00"/>
+            <tlv tag="9F07" value="FF00"/>
+            <tlv tag="9F0D" value="F040642000"/>
+            <tlv tag="9F0E" value="0010880000"/>
+            <tlv tag="9F0F" value="F0E064F800"/>
+            <tlv tag="9F12" value="MasterCard"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+
+        <app policy="offline" status="ok">
+            <tlv tag="4F" value="A0000000043060"/>
+            <tlv tag="50" value="Maestro"/>
+            <tlv tag="57" value="6799998900000000279D0712201002310609"/>
+            <tlv tag="5A" value="6799998900000000279"/>
+            <tlv tag="82" value="5800"/>
+            <tlv tag="87" value="02"/>
+            <tlv tag="8E" value="00000000000000000200"/>
+            <tlv tag="8F" value="F8"/>
+            <tlv tag="5F20" value="Online Global 01"/>
+            <tlv tag="5F24" value="201231"/>
+            <tlv tag="5F25" value="961231"/>
+            <tlv tag="5F34" value="01"/>
+            <tlv tag="9F07" value="5700"/>
+            <tlv tag="9F0D" value="F04064A000"/>
+            <tlv tag="9F0E" value="0010880000"/>
+            <tlv tag="9F0F" value="F0E064F800"/>
+            <tlv tag="9F12" value="Maestro"/>
+            <tlv tag="DF20" value="1234"/>
+        </app>
+    </card>
+</emv>

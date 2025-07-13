@@ -1,0 +1,47 @@
+;System pack for SMART 2 Directory included
+;System R+ Dir
+8203021635.ddf
+8203021635.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver VFS
+30210332.ddf
+30210332.sgn
+;Driver PPR
+30220104.ddf
+30220104.sgn
+;Pack System
+37773012.pdf
+37773012.sgn
+;Driver Modem 930
+40150340.ddf
+40150340.sgn
+;Driver GPRS
+8200120238.ddf
+8200120238.sgn
+;Driver UMS
+8200210320.ddf
+8200210320.sgn
+;Driver HID
+8200220124.ddf
+8200220124.sgn
+;Driver USB CDC
+8200320628.ddf
+8200320628.sgn
+;Driver CLESS
+8200490243.ddf
+8200490243.sgn
+;System P30
+8200570149.ddf
+8200570149.sgn
+;Boot Flash Booster 2
+8200630304.ddf
+8200630304.sgn
+;ML30/SMART2 Booster 2
+8200640230.ddf
+8200640230.sgn
+;System PP30S
+8200910120.ddf
+8200910120.sgn
+

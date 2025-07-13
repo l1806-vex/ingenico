@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Generated-from: 1231340654000;type=4
+Bundle-ManifestVersion: 2
+Bundle-Name: CVS SSPI Win32 Fragment
+Bundle-SymbolicName: net.amduat.eclipse.team.cvs.sspi.win32
+Bundle-Version: 1.0.0
+Bundle-Vendor: amduat.net
+Fragment-Host: net.amduat.eclipse.team.cvs.sspi;bundle-version="[1.0.0,2.0.0)"
+Bundle-Localization: plugin

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="1.5"?>
+
+<?ingedev version="7.14.1.0"?>
+
+<projectDescription activeConfig="GNU_ARM_RELEASE" applicationType="0x6e" binaryName="BANKING" descr="Banking" enableUsingCpp="false" projectFamily="BANKING" projectType="APP" useDataFileNamingConvention="true">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="Src\Entry.c" parentProject=""/>
+<file generated="false" name="Src\Main.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="false"/>
+<dataFilesVirtualFolder name="Data Files"/>
+<archiveFilesVirtualFolder name="Archive Files"/>
+</virtualFolders>
+<configs>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG" sign="false" teliumCompatibility="All">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.8.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.8.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.8.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.8.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.8.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.8.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.8.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.8.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.8.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.8.0"/>
+<packageLib name="AUDIT" package="Telium Unattended" version="3.3"/>
+<packageLib name="DEXUCS" package="Telium Unattended" version="3.3"/>
+<packageLib name="UCMC" package="Telium Unattended" version="3.3"/>
+<packageLib name="UCMSTART" package="Telium Unattended" version="3.3"/>
+<packageLib name="P40" package="Telium Unattended" version="3.3"/>
+<packageLib name="UCMHOST" package="Telium Unattended" version="3.3"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.8.0"/>
+<packageDefine package="Telium Unattended" version="3.3"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.8.0"/>
+<packageInc package="Telium Unattended" version="3.3"/>
+</packageIncs>
+<userDefines/>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="true" dataBaseAddr="0x200000" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE" sign="true" teliumCompatibility="Telium 1" zip="true">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.8.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.8.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.8.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.8.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.8.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.8.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.8.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.8.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.8.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.8.0"/>
+<packageLib name="AUDIT" package="Telium Unattended" version="3.3"/>
+<packageLib name="DEXUCS" package="Telium Unattended" version="3.3"/>
+<packageLib name="P40" package="Telium Unattended" version="3.3"/>
+<packageLib name="UCMC" package="Telium Unattended" version="3.3"/>
+<packageLib name="UCMHOST" package="Telium Unattended" version="3.3"/>
+<packageLib name="UCMSTART" package="Telium Unattended" version="3.3"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.8.0"/>
+<packageDefine package="Telium Unattended" version="3.3"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.8.0"/>
+<packageInc package="Telium Unattended" version="3.3"/>
+</packageIncs>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+<userDefines/>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

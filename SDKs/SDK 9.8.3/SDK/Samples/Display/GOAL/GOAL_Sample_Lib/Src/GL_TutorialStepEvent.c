@@ -1,0 +1,144 @@
+#include "GL_GraphicLib.h"
+
+#define GL_ID_MR         1
+#define GL_ID_MRS        2
+#define GL_ID_FIRST_NAME 3
+#define GL_ID_LAST_NAME  4
+#define GL_ID_BIRTH_DAY  5
+#define GL_ID_MARRIED    6
+#define GL_ID_OK         7
+#define GL_ID_CANCEL     8
+
+// On click ok button event
+static bool GL_Tutorial_OnOkClick(T_GL_HMESSAGE message)
+{
+	GL_Message_SetResult(message, GL_KEY_VALID);
+	return true;
+}
+
+// On click cancel button event
+static bool GL_Tutorial_OnCancelClick(T_GL_HMESSAGE message)
+{
+	GL_Message_SetResult(message, GL_KEY_CANCEL);
+	return true;
+}
+
+void GL_TutorialStepEvent(void)
+{
+	// Creates the graphic lib instance. The creation of the graphics library takes an important time, it is recommended to do creation once at application startup and use it for all windows created after.
+	T_GL_HGRAPHIC_LIB gl = GL_GraphicLib_Create();
+
+	// Creates window
+	T_GL_HWIDGET window = GL_Window_Create(gl);
+
+	// Creates main layout
+	T_GL_HWIDGET mainLayout = GL_Layout_Create(window);
+
+	// Creates the title
+	{
+		T_GL_HWIDGET title = GL_Label_Create(mainLayout);
+		GL_Widget_SetItem(title, 0, 0); 
+		GL_Widget_SetText(title, "Information");
+		GL_Widget_SetBackColor(title, GL_COLOR_PURPLE);
+		GL_Widget_SetForeColor(title, GL_COLOR_WHITE);
+		GL_Widget_SetExpand(title, GL_DIRECTION_WIDTH);
+		GL_Widget_SetGrow(title, GL_DIRECTION_WIDTH);
+		GL_Widget_SetGrow(title, GL_DIRECTION_WIDTH);
+	}
+
+	// Create the footer layout
+	{
+		T_GL_HWIDGET footerLayout;
+		T_GL_HWIDGET buttonOk;
+		T_GL_HWIDGET buttonCancel;
+
+		footerLayout = GL_Layout_Create(mainLayout);
+		GL_Widget_SetItem(footerLayout, 0, 2);
+		
+		buttonOk = GL_Button_Create(footerLayout);
+		GL_Widget_SetText(buttonOk, "OK");
+		buttonCancel = GL_Button_Create(footerLayout);
+		GL_Widget_SetText(buttonCancel, "Cancel");
+		GL_Widget_SetItem(buttonOk, 0, 0);
+		GL_Widget_SetItem(buttonCancel, 1, 0);
+		GL_Widget_SetId(buttonOk,     GL_ID_OK);
+		GL_Widget_SetId(buttonCancel, GL_ID_CANCEL);
+
+		GL_Widget_SetGrow(footerLayout, GL_DIRECTION_WIDTH);
+		GL_Widget_SetGrow(buttonOk,     GL_DIRECTION_WIDTH);
+		GL_Widget_SetGrow(buttonCancel, GL_DIRECTION_WIDTH);
+		GL_Widget_SetShortcut(buttonOk,     GL_KEY_VALID);
+		GL_Widget_SetShortcut(buttonCancel, GL_KEY_CANCEL);
+		GL_Widget_SetFocusable(buttonOk, false);
+		GL_Widget_SetFocusable(buttonCancel, false);
+	}
+
+	// Create the input layout
+	{
+		T_GL_HWIDGET inputLayout;
+		T_GL_HWIDGET widget;
+		inputLayout = GL_Layout_Create(mainLayout);
+		GL_Widget_SetItem(inputLayout, 0, 1);
+
+		widget = GL_RadioButton_Create(inputLayout);
+		GL_Widget_SetText(widget, "Mr");
+		GL_Widget_SetItem(widget, 0, 0);
+		GL_Widget_SetExpand(widget, GL_DIRECTION_WIDTH);
+		GL_Widget_SetId(widget, GL_ID_MR);
+		GL_Widget_SetCheck(widget, true);
+
+		widget = GL_RadioButton_Create(inputLayout);
+		GL_Widget_SetText(widget, "Mrs");
+		GL_Widget_SetItem(widget, 1, 0);
+		GL_Widget_SetExpand(widget, GL_DIRECTION_WIDTH);
+		GL_Widget_SetId(widget, GL_ID_MRS);
+
+		widget = GL_Label_Create(inputLayout);
+		GL_Widget_SetText(widget, "First name");
+		GL_Widget_SetItem(widget, 0, 1);
+
+		widget = GL_Edit_Create(inputLayout);
+		GL_Widget_SetItem(widget, 1, 1);
+		GL_Widget_SetExpand(widget, GL_DIRECTION_WIDTH);
+		GL_Widget_SetId(widget, GL_ID_FIRST_NAME);
+
+		widget = GL_Label_Create(inputLayout);
+		GL_Widget_SetText(widget, "Last name");
+		GL_Widget_SetItem(widget, 0, 2);
+
+		widget = GL_Edit_Create(inputLayout);
+		GL_Widget_SetItem(widget, 1, 2);
+		GL_Widget_SetExpand(widget, GL_DIRECTION_WIDTH);
+		GL_Widget_SetId(widget, GL_ID_LAST_NAME);
+
+		widget = GL_Label_Create(inputLayout);
+		GL_Widget_SetText(widget, "Birth day");
+		GL_Widget_SetItem(widget, 0, 3);
+
+		widget = GL_Edit_Create(inputLayout);
+		GL_Widget_SetItem(widget, 1, 3);
+		GL_Widget_SetExpand(widget, GL_DIRECTION_WIDTH);
+		GL_Widget_SetId(widget, GL_ID_BIRTH_DAY);
+
+		widget = GL_CheckButton_Create(inputLayout);
+		GL_Widget_SetText(widget, "Married");
+		GL_Widget_SetItem(widget, 1, 4);
+		GL_Widget_SetExpand(widget, GL_DIRECTION_WIDTH);
+		GL_Widget_SetId(widget, GL_ID_MARRIED);
+	}
+
+	// Register event callback
+	GL_Widget_RegisterCallbackById(window, GL_ID_OK,     GL_EVENT_STYLUS_CLICK, GL_Tutorial_OnOkClick);
+	GL_Widget_RegisterCallbackById(window, GL_ID_CANCEL, GL_EVENT_STYLUS_CLICK, GL_Tutorial_OnCancelClick);
+
+	if (GL_Window_MainLoop(window) == GL_KEY_VALID)
+	{
+		// Treatment
+	}
+
+	// Destroy the window
+	GL_Widget_Destroy(window);
+
+	// Destroy the graphic lib instance
+	GL_GraphicLib_Destroy(gl);
+}

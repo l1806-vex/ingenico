@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Signature jSAT"
+            id="com.ingenico.jsat.ui">
+      </category>
+      <view
+            name="jSAT status"
+            icon="icons/view.gif"
+      		allowMultiple="false"
+            category="com.ingenico.jsat.ui"
+            class="com.ingenico.jsat.ui.view.SttStatus"
+            id="com.ingenico.jsat.ui.view.sttstatus">
+      </view>
+      <view
+            category="com.ingenico.jsat.ui"
+            class="com.ingenico.jsat.ui.view.Log"
+      		allowMultiple="false"
+            icon="icons/view.gif"
+            id="com.ingenico.jsat.ui.view.log"
+            name="jSAT log"
+            restorable="true">
+      </view>
+      <view
+            category="com.ingenico.jsat.ui"
+            class="com.ingenico.jsat.ui.view.Signature"
+      		allowMultiple="false"
+            icon="icons/view.gif"
+            id="com.ingenico.jsat.ui.view.signature"
+            name="Signature"
+            restorable="true">
+      </view>
+      <view
+            category="com.ingenico.jsat.ui"
+            class="com.ingenico.jsat.ui.view.DebugConsoleView"
+            icon="icons/view.gif"
+            id="com.ingenico.jsat.ui.view.debugconsoleview"
+            name="Debug console"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="com.ingenico.jsat.ui.view.sttstatus">
+         </view>        
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.ingenico.jsat.ui.preference.JsatPreferencesPage"
+            id="com.ingenico.jsat.ui.jsatpreferencepage"
+            name="jSAT">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.ingenico.jsat.ui.preference.PreferencesInitializer">
+      </initializer>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.ingenico.jsat.ui.perspective.SignaturePerspective"
+            icon="icons/Jsat32.png"
+            id="com.ingenico.jsat.ui.perspective"
+            name="jSAT">
+      </perspective>
+	</extension>
+</plugin>

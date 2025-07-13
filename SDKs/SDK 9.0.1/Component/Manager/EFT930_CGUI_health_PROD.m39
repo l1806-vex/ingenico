@@ -1,0 +1,153 @@
+;TELIUM MANAGER HEALTH EFT930 GOAL PROD
+;M2OS
+35920863.adf
+35920863.sgn
+;CB2A 
+35930773.ldf
+35930773.sgn
+;Extension
+35940963.ldf
+35940963.sgn
+;Graphic Librairy
+35960683.ldf
+35960683.sgn
+;M2OS Parameters
+35970763.ldf
+35970763.sgn
+;Entry
+35980683.ldf
+35980683.sgn
+;Cam/Date Librairy
+35990763.ldf
+35990763.sgn
+;PSC Protocol
+36010583.ldf
+36010583.sgn
+;Protocol
+36040863.ldf
+36040863.sgn
+;Cryptographic librairy
+36060433.ldf
+36060433.sgn
+;Partage
+36070583.ldf
+36070583.sgn
+;EMV Selection
+36080623.ldf
+36080623.sgn
+;IAM
+36090593.ldf
+36090593.sgn
+;Pinpad
+36100603.ldf
+36100603.sgn
+;PPS30
+36130205.ldf
+36130205.sgn
+;ums
+36160593.ldf
+36160593.sgn
+;gprs
+36210723.ldf
+36210723.sgn
+;Hardware cnf
+36420262.ldf
+36420262.sgn
+;PPR30 France
+36540310.ldf
+36540310.sgn
+;Security
+36560321.ldf
+36560321.sgn
+;COLOR
+36920273.ldf
+36920273.sgn
+;PackM2OS
+37786503.pdf
+37786503.sgn
+;HEADER EFT930CC/ICT2XX/IPP3XX/ML30CC
+8440850163.ldf
+8440850163.sgn
+;GL DLL FOR EFT930CC/ICT2XX/IPP3XX/ML30CC/IWL2XX
+8443510223.ldf
+8443510223.sgn
+;GM RESOURCE FOR EFT930CC/ICT2XX/IPP3XX/ML30CC/IWL2XX
+8443576503.pdf
+8443576503.sgn
+;Telium SDK
+8442291003.pdf
+8442291003.sgn
+; Font file manager(mandatory)
+; 00000000
+8440580306.PDF
+8440580306.SGN
+; Tools library (mandatory)
+; E0C20000
+8440540306.LDF
+8440540306.SGN
+; Image WGU decoder (mandatory)
+; E0C87000
+8443000306.LDF
+8443000306.SGN
+; Graphical server (mandatory)
+; E0C82000
+8440560306.LDF
+8440560306.SGN
+; Graphical library (mandatory)
+; E0C61000
+8440550306.LDF
+8440550306.SGN
+; Skin for the 320x240 screen (mandatory for screen 320x240)
+; 00000000
+8440600306.PDF
+8440600306.SGN
+; Data abstract layer thunder I (<b>mandatory</b>)
+8205320007.LDF
+8205320007.SGN
+; Graphical driver thunder I (<b>mandatory</b>)
+8201320208.DDF
+8201320208.SGN
+; <b>CGUI</b> web browser (<b>optional</b>)
+8136870201.LDF
+8136870201.SGN
+; <b>CGUI</b> monospace font (<b>optional</b>)
+8440160115.PDF
+8440160115.SGN
+; <b>CGUI</b> sans serif font (<b>optional</b>)
+8440170110.PDF
+8440170110.SGN
+; <b>CGUI</b> serif font (<b>optional</b>)
+8440180110.PDF
+8440180110.SGN
+; LIBPNG DLL (optional)
+; E0CA6000
+8443030306.LDF
+8443030306.SGN
+; ZLIB DLL (optional)
+; E0C99000
+8443020306.LDF
+8443020306.SGN
+; Image PNG decoder (optional), Dependencies LIBPNG DLL and ZLIB DLL
+; E0C8C000
+8443010306.LDF
+8443010306.SGN
+; Image GIF decoder (optional), Dependencies LIBGIF DLL
+; E0CC5000
+8443060306.LDF
+8443060306.SGN
+; Image BMP decoder (optional)
+; E0CDF000
+8443080306.LDF
+8443080306.SGN
+; LIBJPG DLL (optional)
+; E0CB8000
+8443050306.LDF
+8443050306.SGN
+; LIBGIF DLL (optional)
+; E0CD2000
+8443070306.LDF
+8443070306.SGN
+; Image JPEG decoder (optional), Dependencies LIBJPG DLL
+; E0CAB000
+8443040306.LDF
+8443040306.SGN

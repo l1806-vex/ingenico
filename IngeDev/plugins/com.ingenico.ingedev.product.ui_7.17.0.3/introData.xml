@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extensions>
+   <page id="whatsnew">
+      <group path="page-content/bottom-left" default="true">
+      </group>
+      <group path="page-content/bottom-right" default="true">
+      </group>
+      <group path="page-content/top-left">
+         <extension id="com.ingenico.ingedev.news" importance="high"/>
+      </group>
+      <group path="page-content/top-right">
+         <extension id="orgeclipsecdtdocuserwelcome-introExtension" importance="medium"/>
+         <extension id="org.eclipse.ui.workbench.news" importance="low"/>
+      </group>
+      <hidden>         <extension id="org.eclipse.ui.workbench.migration" importance="low"/>
+         <extension id="org.eclipse.ui.workbench" importance="low"/>
+      </hidden>
+   </page>
+</extensions>

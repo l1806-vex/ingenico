@@ -1,0 +1,29 @@
+;Mockup System pack for ML30 WebPOS
+;System R+
+8200361262.ddf
+8200361262.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver CLESS
+8200490235.ddf
+8200490235.sgn
+;ML30/SMART2 Booster 2
+8200648229.ddf
+8200648229.sgn
+;Boot Flash Booster 2
+8200630304.ddf
+8200630304.sgn
+;Pack System
+37772400.pdf
+37772400.sgn
+;Driver Printer SPM
+8201300106.ddf
+8201300106.sgn
+;LDBG Remote Debugger
+8133080140.ddf
+8133080140.sgn
+;driver color
+8203120105.ddf
+8203120105.sgn
+

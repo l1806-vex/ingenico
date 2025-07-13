@@ -1,0 +1,1 @@
+Copy in this directory the following fonts = CANDARA.TTF CANDARAB.TTF CANDARAI.TTF and CANDARAZ.TTF from Windows

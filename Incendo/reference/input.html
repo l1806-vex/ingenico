@@ -1,0 +1,768 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head><title>IncendoOnline: TML Reference: &lt;input&gt; element </title>
+<link rel="stylesheet" type="text/css" href="tmlref.css" />
+</head><body> 
+<div class="logo"><span class="logo_in">in</span><span class="logo_cendo">cendo</span><span class="logo_online" >online</span> : TML Reference</div>
+<div class="navigation"><a class="element" href="a.html">&lt;a&gt;</a><br/><a class="element" href="arg.html">&lt;arg&gt;</a><br/><a class="element" href="baddata.html">&lt;baddata&gt;</a><br/><a class="element" href="base.html">&lt;base&gt;</a><br/><a class="element" href="br.html">&lt;br&gt;</a><br/><a class="element" href="call.html">&lt;call&gt;</a><br/><a class="element" href="call_func.html">&lt;call_func&gt;</a><br/><a class="element" href="card.html">&lt;card&gt;</a><br/><a class="element" href="col.html">&lt;col&gt;</a><br/><a class="element" href="colgroup.html">&lt;colgroup&gt;</a><br/><a class="element" href="condition.html">&lt;condition&gt;</a><br/><a class="element" href="dd.html">&lt;dd&gt;</a><br/><a class="element" href="defaults.html">&lt;defaults&gt;</a><br/><a class="element" href="display.html">&lt;display&gt;</a><br/><a class="element" href="div.html">&lt;div&gt;</a><br/><a class="element" href="dl.html">&lt;dl&gt;</a><br/><a class="element" href="dt.html">&lt;dt&gt;</a><br/><a class="element" href="dynamic.html">&lt;dynamic&gt;</a><br/><a class="element" href="econn.html">&lt;econn&gt;</a><br/><a class="element" href="error.html">&lt;error&gt;</a><br/><a class="element" href="form.html">&lt;form&gt;</a><br/><a class="element" href="getvar.html">&lt;getvar&gt;</a><br/><a class="element" href="h1.html">&lt;h1&gt;</a><br/><a class="element" href="h2.html">&lt;h2&gt;</a><br/><a class="element" href="h3.html">&lt;h3&gt;</a><br/><a class="element" href="head.html">&lt;head&gt;</a><br/><a class="element" href="hr.html">&lt;hr&gt;</a><br/><a class="element" href="img.html">&lt;img&gt;</a><br/><a class="element" href="input.html">&lt;input&gt;</a><br/><a class="element" href="interface.html">&lt;interface&gt;</a><br/><a class="element" href="layout.html">&lt;layout&gt;</a><br/><a class="element" href="li.html">&lt;li&gt;</a><br/><a class="element" href="link.html">&lt;link&gt;</a><br/><a class="element" href="log.html">&lt;log&gt;</a><br/><a class="element" href="logdcl.html">&lt;logdcl&gt;</a><br/><a class="element" href="logrec.html">&lt;logrec&gt;</a><br/><a class="element" href="next.html">&lt;next&gt;</a><br/><a class="element" href="ol.html">&lt;ol&gt;</a><br/><a class="element" href="p.html">&lt;p&gt;</a><br/><a class="element" href="param.html">&lt;param&gt;</a><br/><a class="element" href="pinentry.html">&lt;pinentry&gt;</a><br/><a class="element" href="pre.html">&lt;pre&gt;</a><br/><a class="element" href="print.html">&lt;print&gt;</a><br/><a class="element" href="prompt.html">&lt;prompt&gt;</a><br/><a class="element" href="reconciliation.html">&lt;reconciliation&gt;</a><br/><a class="element" href="retval.html">&lt;retval&gt;</a><br/><a class="element" href="screen.html">&lt;screen&gt;</a><br/><a class="element" href="setvar.html">&lt;setvar&gt;</a><br/><a class="element" href="span.html">&lt;span&gt;</a><br/><a class="element" href="strtemplate.html">&lt;strtemplate&gt;</a><br/><a class="element" href="submit.html">&lt;submit&gt;</a><br/><a class="element" href="submit_log.html">&lt;submit_log&gt;</a><br/><a class="element" href="table.html">&lt;table&gt;</a><br/><a class="element" href="tbody.html">&lt;tbody&gt;</a><br/><a class="element" href="td.html">&lt;td&gt;</a><br/><a class="element" href="textarea.html">&lt;textarea&gt;</a><br/><a class="element" href="tfoot.html">&lt;tfoot&gt;</a><br/><a class="element" href="tform.html">&lt;tform&gt;</a><br/><a class="element" href="th.html">&lt;th&gt;</a><br/><a class="element" href="thead.html">&lt;thead&gt;</a><br/><a class="element" href="tml.html">&lt;tml&gt;</a><br/><a class="element" href="tr.html">&lt;tr&gt;</a><br/><a class="element" href="txnconfirm.html">&lt;txnconfirm&gt;</a><br/><a class="element" href="txnnew.html">&lt;txnnew&gt;</a><br/><a class="element" href="txnsubmit.html">&lt;txnsubmit&gt;</a><br/><a class="element" href="ul.html">&lt;ul&gt;</a><br/><a class="element" href="vardcl.html">&lt;vardcl&gt;</a><br/><a class="element" href="variant.html">&lt;variant&gt;</a><br/></div><div class="content">
+<h1>&lt;input&gt; element</h1> 
+<span class="annotation"><p>
+This tag is used within the <a class="element" href="form.html">&lt;form&gt;</a> element to collect information (text, password, etc.) entered
+by the user.</p>
+<p><a class="element" href="input.html">&lt;input&gt;</a> can be used to create input fields of different types. The type of the <a class="element" href="input.html">&lt;input&gt;</a> element is
+defined by the value of the <span class="highlight">type</span> attribute.</p>
+<p>The element has a number of validity check attributes that allow to restrict user input. These
+attributes are <span class="highlight">equal</span>, <span class="highlight">not_equal</span>, <span class="highlight">max</span> and <span class="highlight">min</span>.</p>
+<p>If the validity check fails, Incendo Browser switches to the URI specified in the child <a class="element" href="baddata.html">&lt;baddata&gt;</a>
+element. If you omit <a class="element" href="baddata.html">&lt;baddata&gt;</a>, all validity checks are skipped.</p>
+<p>If the input data is valid, the value entered by the user is assigned to the variable specified
+by the mandatory <span class="highlight">name</span> attribute.</p>
+<p>Default value that will be shown by the input field is set using the <span class="highlight">value</span> attribute.</p>
+<p>Two special input types - <span class="highlight">submit</span> and <span class="highlight">reset</span> - are used to save or reset the form data.</p>
+<p>One special input type - <span class="highlight">pinentry</span> is used within the <a class="element" href="pinentry.html">&lt;pinentry&gt;</a> elemnt of <a class="element" href="tform.html">&lt;tform&gt;</a>.</p>
+<p>For more information on the input forms see the description of the <a class="element" href="form.html">&lt;form&gt;</a> element.<br/>
+</p>
+</span> 
+<h2>Parent elements:</h2><a class="element" href="a.html">a</a> <a class="element" href="baddata.html">baddata</a> <a class="element" href="dd.html">dd</a> <a class="element" href="display.html">display</a> <a class="element" href="div.html">div</a> <a class="element" href="dt.html">dt</a> <a class="element" href="form.html">form</a> <a class="element" href="h1.html">h1</a> <a class="element" href="h2.html">h2</a> <a class="element" href="h3.html">h3</a> <a class="element" href="layout.html">layout</a> <a class="element" href="li.html">li</a> <a class="element" href="p.html">p</a> <a class="element" href="pinentry.html">pinentry</a> <a class="element" href="pre.html">pre</a> <a class="element" href="print.html">print</a> <a class="element" href="prompt.html">prompt</a> <a class="element" href="span.html">span</a> <a class="element" href="td.html">td</a> <a class="element" href="th.html">th</a> <br/><h2> Attributes </h2>
+<table><tr><th>Name</th><th>Type</th><th>Description</th></tr><tr><td>type</td><td><span class="type">InputType</span><br/></td><td><p>
+This attribute determines the type of the input field.<br/>
+The value should be one of the following:
+<ul>
+<li class="list1"><span class="highlight">number</span> - An input field for entering non-negative integer numbers. The number of digits in the input
+number can not exceed 10. Thus, the maximum number that can be entered is <span class="highlight">9999999999</span>. You
+can use the <span class="highlight">format</span> attribute so that the input field displays the numeric value in a way
+appropriate to the data being entered.</li>
+<li class="list1"><span class="highlight">date</span> - An input field for entering dates. Note that if you are using a <span class="highlight">date</span>-type variable as a
+reference for the <span class="highlight">value</span> attribute, you can set this variable to a special value of
+<span class="highlight">0000/00/00 00:00:00</span> to display an empty input field.</li>
+<li class="list1"><span class="highlight">text</span> - An input field for entering text</li>
+<li class="list1"><span class="highlight">password</span> - A text input field where the text is masked. Password is automatically checked for PCI DSS compliance:</li>
+<li class="list2">at least 7 symbols</li>
+<li class="list2">at least 1 number</li>
+<li class="list2">at least 1 capital and 1 small letter
+</li><li class="list1"><span class="highlight">checkbox</span> - A check box, a switching element representing an option which can be either selected or not.</li></ul></p>
+<p>
+As any other input element, a check box has a TML variable associated with it, which is
+specified by the <span class="highlight">name</span> attribute. It must be of a <span class="highlight">string</span> type. The initial state of a
+check box on the screen is defined by the value of this variable and the value of the <span class="highlight">value</span>
+attribute. If these two are the same, the check box is initially selected; if otherwise, the
+check box is not selected.</p>
+<p>If a user changes the state of a check box, the value of the variable associated with it is
+updated; if otherwise - remains unchanged. If a user selects a check box, the variable is
+assigned the value defined by the <span class="highlight">value</span> attribute. If a user deselects a checkbox, the
+variable is assigned an empty string (<span class="highlight">""</span>) as its value.</p>
+<p>Several checkboxes can be associated with the same variable. The value of multiple checkboxes
+is assigned to the variable as a semicolon-separated string list. Similarly, several checkboxes
+associated with the same variable can be initialy selected if the value of this variable contains
+a string list with the items that correspond to the <span class="highlight">value</span> attributes of the checkboxes.<br/>
+<ul>
+<li class="list1"><span class="highlight">radio</span> - A radio button is an element representing one of several possible options.</li></ul></p>
+<p>
+A radio button usually belongs to a group in which there are at least two radio buttons. Only
+one radio button within the group can be selected. (The situation when none of the radio
+buttons in the group are selected or when there is only one radio button in the group is
+treated as normal.)</p>
+<p>All radio buttons in the group have the same value of the <span class="highlight">name</span> attribute - the name of a
+TML variable associated with the group. When one of the radio buttons is selected, this
+variable is assigned a value defined by the <span class="highlight">value</span> attribute of the radio button that has
+been selected.</p>
+<p>The initial state of a radio button on the screen is defined by the current value of the
+variable associated with the group and the value of the <span class="highlight">value</span> attribute. If those two match
+the radio button is initially selected; if otherwise, the radio button is not selected.<br/>
+<ul>
+<li class="list1"><span class="highlight">submit</span> - Displays a button that will assign the input form values to the corresponding variables. The
+Browser will then proceed to the next screen. The label of the button can be customized using
+the <span class="highlight">value</span> attribute.Note that you do not need to use this input field to save the form data.<br/>
+See the description of the <a class="element" href="form.html">&lt;form&gt;</a> element for more detail.</li>
+<li class="list1"><span class="highlight">reset</span> - Displays a button that will reset the input form fields to their intial values. The label of
+the button can be customized using the <span class="highlight">value</span> attribute.</li>
+<li class="list1"><span class="highlight">signature</span> - A signature capture input field. This works only with touch screen terminals. The binary data
+of the bitmap image of the signature will be assigned to the input variable. So, <span class="highlight">opaque</span>-type
+variable should be used for the <span class="highlight">name</span> attribute.</li>
+<li class="list1"><span class="highlight">list</span> - A drop-down box or an open box of several rows, depending on the value of the
+<span class="highlight">rows</span> and <span class="highlight">multiple</span> attributes. The drop-down box can be opened and closed by pressing any
+number keys on the terminal keypad.</li></ul></p>
+<p>
+A list input allows a selection of a single item or a number of items from a semicolon-separated
+list of available values. The <span class="highlight">multiple</span> attribute defines whether or not multiple selections
+are possible. By default, the value <span class="highlight">"no"</span> is assumed meaning that only one of the list items
+can be selected.</p>
+<p>Initial items that are selected in the list are determined by the value of the variable referenced
+by the <span class="highlight">name</span> attribute. If the value of this attribute matches an item in the list, that
+item will be displayed as selected. If the input field allows multiple selection, you can
+specify several initial items by using a semicolon-separated list as the value of the <span class="highlight">name</span>
+variable. All matching items will be selected.</p>
+<p>Selected items are assigned to the variable defined by the <span class="highlight">name</span> attribute. If there are multiple
+items selected, they are concatenated into a semicolon <span class="highlight">;</span> separated string list before being
+assigned.<br/>
+<ul>
+<li class="list1"><span class="highlight">pinentry</span> - An input field for PIN entering.</li></ul></p>
+<p>
+Default value is <span class="highlight">text</span> .</p>
+</td></tr> 
+<tr><td>name</td><td><span class="type">xs:string</span><br/></td><td><p>
+Specifies the name of the variable which receives the value entered by the user.</p>
+<p>Depending on the type of the input field, <span class="highlight">name</span> attribute may need reference the variables
+of a specific type:
+<ul>
+<li class="list1"><span class="highlight">checkbox</span> - <span class="highlight">string</span>-type variables</li>
+<li class="list1"><span class="highlight">signature</span> - <span class="highlight">opaque</span>-type variables</li>
+<li class="list1"><span class="highlight">list</span> - <span class="highlight">string</span>-type variable</li>
+<li class="list1">others - any variable type
+</li></ul>
+</p>
+</td></tr> 
+<tr><td>alt</td><td><span class="type">Text</span><br/></td><td><p>
+This attribute is used as a text label for the virtual keyboard (touch-screen terminals only).</p>
+<p>A text string.<br/>
+</p>
+</td></tr> 
+<tr><td>readonly</td><td><span class="type">xs:token</span><br/></td><td><p>
+If this attribute is set, the input field will be read-only, i.e. its value can
+not be changed.<br/>
+The value should be one of the following:
+<ul>
+<li class="list1"><span class="highlight">readonly</span></li></ul>
+</p>
+</td></tr> 
+<tr><td>size</td><td><span class="type">Number</span><br/></td><td><p>
+Sets the minimum width of a single-line input box for input elements of the <span class="highlight">date</span>, <span class="highlight">number</span>,
+<span class="highlight">password</span> and <span class="highlight">text</span> types. The value defines how many characters should fit in the box.</p>
+<p>In addition to that, the value of this attribute defines the maximum length
+(measured in the number of characters) of the input value. Unlike the <span class="highlight">max</span> attribute, there
+is no need for a child <a class="element" href="baddata.html">&lt;baddata&gt;</a> element. Rather, the Browser will not allow you to input
+more characters than specified by <span class="highlight">size</span>.</p>
+<p>One or more digits.</p>
+<p>The value should conform to the following regex:
+<span class="highlight">[0-9]+</span> .</p>
+</td></tr> 
+<tr><td>value</td><td><span class="type">Valref</span><br/></td><td><p>
+The purpose of this attribute varies slightly depending on the input type:
+<ul>
+<li class="list1">For input elements of the <span class="highlight">date</span>, <span class="highlight">number</span>, <span class="highlight">password</span>, and <span class="highlight">text</span> types this attribute
+defines an initial value to be displayed in the input box.</li>
+<li class="list1">For input elements of the <span class="highlight">checkbox</span> and <span class="highlight">radio</span> types: specifies the value to be assigned
+to the variable defined by the <span class="highlight">name</span> attribute when the element is selected.</li>
+<li class="list1">For the <span class="highlight">list</span>-type elements, the value attribute should contain a semi-colon <span class="highlight">;</span> separated
+list of possible selection choices, i.e. <span class="highlight">"one;two;three"</span></li>
+<li class="list1">For the <span class="highlight">submit</span> and <span class="highlight">reset</span> input types this attribute specifies the text that will be
+displayed by the button</li></ul></p>
+<p>
+If you use a variable reference its value is formatted according to the <span class="highlight">format</span> attribute
+pattern before being used by the input field.</p>
+<p>It is recommended to refernce the same type of variable as the one that is specified by the
+<span class="highlight">name</span> attribute.</p>
+<p>This attribute can be either a value string, a reference to the variable that contains
+the value, an embedded funciton call or math/logical expression.</p>
+<p>If variable reference is used, the name of the variable must be prefixed by <span class="highlight">tmlvar:</span>
+i.e. <span class="highlight">tmlvar:variable.name</span></p>
+<p>If embedded function is used it must be prefixed by <span class="highlight">func:</span>. The syntax corresponds to
+WMLScript format, i.e. a TML variable as a parameter is specified as <span class="highlight">$(tml_var_name)</span>,
+integer constants are specified as decimal numbers and string constants as <span class="highlight">string</span>.</p>
+<p>Result of function call is converted to the string and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+<p>Embedded functions are:
+<ul>
+<li class="list1"><span class="highlight">String.length(string)</span> - calculates length of the string
+Example:</li>
+<li class="list1">String.length(<span class="highlight">123456</span>) returns <span class="highlight">"6"</span></li>
+<li class="list1"><span class="highlight">String.subString(string, start_index, sub_string_len)</span> - returns substring of the
+string.<br/>
+Examples:</li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"345"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"123"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"3456"</span></li>
+<li class="list1"><span class="highlight">String.subStringLast(string, start_index, sub_string_len)</span> - returns substring
+of the string counting from the end.<br/>
+Examples:</li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"234"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"456"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"1234"</span></li>
+<li class="list1"><span class="highlight">Card.luhn(string)</span> - calculates Luhn code.<br/>
+Example:</li>
+<li class="list1">Card.luhn(<span class="highlight">3540829999421012</span>) returns <span class="highlight">"9"</span></li>
+<li class="list1"><span class="highlight">Strlist.size(string)</span> - returns size of the string list (semicollon separated)
+Examples:</li>
+<li class="list1">Strlist.size(<span class="highlight">it1;it2;it3;it4;it5</span>) returns <span class="highlight">"5"</span></li>
+<li class="list1">Strlist.size(<span class="highlight"></span>) returns <span class="highlight">"0"</span></li>
+<li class="list1">Strlist.size(<span class="highlight">;;;</span>) returns <span class="highlight">"4"</span></li>
+<li class="list1"><span class="highlight">Strlist.get(string, index)</span> - returns element of the string list
+Examples:</li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 0) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 2) returns <span class="highlight">"it3"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, -2) returns <span class="highlight">";"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 7) returns <span class="highlight">";"</span></li>
+<li class="list1"><span class="highlight">Strlist.add(string, string)</span> - adds an element or another list to the string list
+Examples:</li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it</span>) returns <span class="highlight">"it1;it2;it3;it"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it1;it2</span>) returns <span class="highlight">"it1;it2;it3;it1;it2"</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight"></span>) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight">it1</span>) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">;</span>, <span class="highlight">it1</span>) returns <span class="highlight">";it1"</span></li>
+<li class="list1"><span class="highlight">Strlist.remove(string, index)</span> - removes an element from the string list
+Examples:</li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.find(string, string)</span> - find an item first occurence in the string list.<br/>
+Examples:</li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it2</span>) returns <span class="highlight">"1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight"></span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it125</span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns left part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns right part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">"it1;it2;it3"</span></li></ul></p>
+<p>
+If math/logical expression is used it must be prefixed by <span class="highlight">exp:</span>. Expression could
+contain numeric constants or TML variable names.<br/>
+Supported oerators:
+<ul>
+<li class="list1"><span class="highlight">.lt.</span> - less</li>
+<li class="list1"><span class="highlight">.le.</span> - less or equal</li>
+<li class="list1"><span class="highlight">.gt.</span> - greater</li>
+<li class="list1"><span class="highlight">.ge.</span> - greater or equal</li>
+<li class="list1"><span class="highlight">.eq.</span> - equal</li>
+<li class="list1"><span class="highlight">.ne.</span> - not equal</li>
+<li class="list1"><span class="highlight">.and.</span> - logical <span class="highlight">and</span></li>
+<li class="list1"><span class="highlight">.or.</span> - logical <span class="highlight">or</span></li>
+<li class="list1"><span class="highlight">.not.</span> - logical <span class="highlight">not</span></li>
+<li class="list1"><span class="highlight">(</span>, <span class="highlight">)</span> - priority operators</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span>, <span class="highlight">*</span>, <span class="highlight">/</span>, <span class="highlight">%</span> - binary arithmetic operators</li>
+<li class="list1"><span class="highlight">**</span> - exponentiation</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span> - unary arithmetic operators</li></ul></p>
+<p>
+Result of math expression is casted to an integer number, converted to the string
+and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a>. Result of logical expression is <span class="highlight">"1"</span> or <span class="highlight">"0"</span> (TRUE or FALSE)
+and replases <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+</td></tr> 
+<tr><td>format</td><td><span class="type">Formatter</span><br/></td><td><p>
+<span class="highlight">format</span> attribute is used in three ways:
+<ul>
+<li class="list1">If a variable reference is used as a <span class="highlight">value</span> attribute, its contents are formatted
+according to the pattern before being assigned to the input field.</li>
+<li class="list1">While the text is being entered, its representation in the input field is modified
+depending on the formatter.</li>
+<li class="list1">When the form data is saved, the value of the input field is de-formatted according to
+this pattern before being assigned to the variable specified by the <span class="highlight">name</span> attribute.</li></ul></p>
+<p>
+The formatter pattern that should be used depends on the input field type:
+<ul>
+<li class="list1"><span class="highlight">number</span> - integer formatter</li>
+<li class="list1"><span class="highlight">date</span> - date formatter</li>
+<li class="list1">others - string formatter</li></ul></p>
+<p>
+The TML can contain directive to pretty print the variable value.<br/>
+This can be specified using additional formatter attribute. This
+applies for all variable types except opaque. So, there are three
+formatters - number, string and date.</p>
+<p>The special symbols defined for each formatter can be escaped with
+the \, i.e. the \ denies the special meaning of the one following
+symbol, f.e. the \ itself.</p>
+<p>Number formatter can contain any characters. All symbols except
+explicitly specified below are printed <span class="highlight">"as is"</span>. The following special
+symbols are available:</p>
+<p><span class="highlight">^</span> at the beginning of the formatter. The positions in the fixed
+part of the string will be occupied from right to left. On the
+position other that first it is considered as normal printable
+symbol
+<span class="highlight">0</span> specifies fixed amount of decimals. If this position is empty in
+the real number, the zero is printed instead
+<span class="highlight">*</span> means any number of decimals. This symbol can be present only
+once in the formatter and it can only be present after the fixed
+positions. The term <span class="highlight">"after"</span> takes into account the printing
+direction above.</p>
+<p>String formatter is a more complex formatter. It can contain any
+characters. All symbols except explicitly specified below are printed
+<span class="highlight">"as is"</span>. The following special symbols are available:</p>
+<p><span class="highlight">c</span> or <span class="highlight">n</span> means normal symbol or number at this position
+<span class="highlight">c#</span> or <span class="highlight">n#</span> means hidden symbol or decimal, i.e. <span class="highlight">*</span> at this position
+<span class="highlight">*</span> or number can follow above specifiers, indicating the required
+amount of such symbols in the string (<span class="highlight">*</span> means unlimited and
+similar to number formatter can not be specified more than once)</p>
+<p>Date formatter can contain any characters. All symbols except
+explicitly specified below are printed <span class="highlight">"as is"</span>. The following special
+symbols are available:</p>
+<p><span class="highlight">YYYY</span> or <span class="highlight">yyyy</span> - year in full form, 4 digits wide
+<span class="highlight">YY</span> or <span class="highlight">yy</span> - year in short form, 2 digits wide
+<span class="highlight">MM</span> - month
+<span class="highlight">DD</span> or <span class="highlight">dd</span> - day
+<span class="highlight">HH</span> or <span class="highlight">hh</span> - hour
+<span class="highlight">mm</span> - minute
+<span class="highlight">SS</span> or <span class="highlight">ss</span> - seconds
+<span class="highlight">am/pm</span> or <span class="highlight">AM/PM</span> - 12-hour clock
+<span class="highlight">"am/pm"</span> turns into <span class="highlight">"am"</span> or <span class="highlight">"pm"</span>, <span class="highlight">"AM/PM"</span> turns into <span class="highlight">"AM"</span> or <span class="highlight">"PM"</span>
+Each specifier can present only once.</p>
+<p>Date formatter escaped symbols:
+<span class="highlight">"Y"</span>, <span class="highlight">"y"</span>, <span class="highlight">"M"</span>, <span class="highlight">"m"</span>, <span class="highlight">"D"</span>, <span class="highlight">"d"</span>, <span class="highlight">"H"</span>, <span class="highlight">"h"</span>, <span class="highlight">"S"</span>, <span class="highlight">"s"</span>.<br/>
+</p>
+</td></tr> 
+<tr><td>width</td><td><span class="type">Length</span><br/></td><td><p>
+Specifies the width of the input field. This property can be set via CSS.</p>
+<p>Note that this attribute will be ignored if the specifed width is less that the width of the
+initial contents of the input field or less that the width set by the <span class="highlight">size</span> attribute.</p>
+<p>Pixel or percentage length:
+<ul>
+<li class="list1"><span class="highlight">nn</span> for number of pixels. i.e. <span class="highlight">128</span> for 128 pixels</li>
+<li class="list1"><span class="highlight">nn%</span> for a percentage value. i.e. <span class="highlight">10%</span></li></ul></p>
+<p>
+The value should conform to the following regex:
+<span class="highlight">[\-+]?(\d+|\d+(\.\d+)?%)</span> .</p>
+</td></tr> 
+<tr><td>height</td><td><span class="type">Length</span><br/></td><td><p>
+For most input types, specifies the height of the input field. For <span class="highlight">list</span>-type input, sets the
+height of each row in the list box.</p>
+<p>This property can be set via CSS.</p>
+<p>Note that this attribute will be ignored if the specifed height is less that the height of the
+initial contents of the input field.</p>
+<p>Pixel or percentage length:
+<ul>
+<li class="list1"><span class="highlight">nn</span> for number of pixels. i.e. <span class="highlight">128</span> for 128 pixels</li>
+<li class="list1"><span class="highlight">nn%</span> for a percentage value. i.e. <span class="highlight">10%</span></li></ul></p>
+<p>
+The value should conform to the following regex:
+<span class="highlight">[\-+]?(\d+|\d+(\.\d+)?%)</span> .</p>
+</td></tr> 
+<tr><td>rows</td><td><span class="type">Number</span><br/></td><td><p>
+This attribute should only be present for <span class="highlight">list</span>-type input fields. Determines how many rows
+of the list should be displayed.</p>
+<p>If the <span class="highlight">rows</span> attribute is not used for the <span class="highlight">list</span>-type input, it is assumed to have a value
+of <span class="highlight">"1"</span>.</p>
+<p>If the <span class="highlight">multiple</span> attribute is omitted or its value is set to <span class="highlight">"no"</span>, the <span class="highlight">rows</span> attribute
+set to <span class="highlight">"0"</span> or <span class="highlight">"1"</span> would specify a drop-down list box.</p>
+<p>if the number of rows is greater than <span class="highlight">1</span> a scrollable open list box is displayed.</p>
+<p>One or more digits.</p>
+<p>The value should conform to the following regex:
+<span class="highlight">[0-9]+</span> .</p>
+</td></tr> 
+<tr><td>multiple</td><td><span class="type">xs:token</span><br/></td><td><p>
+Should only be used for <span class="highlight">list</span>-type input. Determines whether more than one list item can be
+selected.<br/>
+The value should be one of the following:
+<ul>
+<li class="list1"><span class="highlight">yes</span> - More than one items can be selected from the input list. This will also turn the <span class="highlight">list</span>
+input field into a scrollable open box.</li>
+<li class="list1"><span class="highlight">no</span> - Only a single item can be selected form the list. If the <span class="highlight">rows</span> attribute is set to
+<span class="highlight">0</span> or <span class="highlight">1</span> the list will be a drop-down box.</li></ul></p>
+<p>
+Default value is <span class="highlight">no</span> .</p>
+</td></tr> 
+<tr><td>id</td><td><span class="type">xs:ID</span><br/></td><td><p>
+Document-wide unique id. In practice only used for <a class="element" href="screen.html">&lt;screen&gt;</a> elements. Maximum length of
+a screen ID is 32 characters.<br/>
+</p>
+</td></tr> 
+<tr><td>class</td><td><span class="type">xs:NMTOKENS</span><br/></td><td><p>
+Space separated list of classes. Used for CSS formatting.<br/>
+</p>
+</td></tr> 
+<tr><td>equal</td><td><span class="type">Valref</span><br/></td><td><p>
+This is a validity check attribute. The Browser checkes whether the data entered by the user
+is equal to the value specified by this attribute. If not, the flow control is passed to the
+child <a class="element" href="baddata.html">&lt;baddata&gt;</a> element.</p>
+<p>If <a class="element" href="baddata.html">&lt;baddata&gt;</a> is omitted validity checks are skipped.</p>
+<p>This attribute can be either a value string, a reference to the variable that contains
+the value, an embedded funciton call or math/logical expression.</p>
+<p>If variable reference is used, the name of the variable must be prefixed by <span class="highlight">tmlvar:</span>
+i.e. <span class="highlight">tmlvar:variable.name</span></p>
+<p>If embedded function is used it must be prefixed by <span class="highlight">func:</span>. The syntax corresponds to
+WMLScript format, i.e. a TML variable as a parameter is specified as <span class="highlight">$(tml_var_name)</span>,
+integer constants are specified as decimal numbers and string constants as <span class="highlight">string</span>.</p>
+<p>Result of function call is converted to the string and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+<p>Embedded functions are:
+<ul>
+<li class="list1"><span class="highlight">String.length(string)</span> - calculates length of the string
+Example:</li>
+<li class="list1">String.length(<span class="highlight">123456</span>) returns <span class="highlight">"6"</span></li>
+<li class="list1"><span class="highlight">String.subString(string, start_index, sub_string_len)</span> - returns substring of the
+string.<br/>
+Examples:</li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"345"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"123"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"3456"</span></li>
+<li class="list1"><span class="highlight">String.subStringLast(string, start_index, sub_string_len)</span> - returns substring
+of the string counting from the end.<br/>
+Examples:</li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"234"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"456"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"1234"</span></li>
+<li class="list1"><span class="highlight">Card.luhn(string)</span> - calculates Luhn code.<br/>
+Example:</li>
+<li class="list1">Card.luhn(<span class="highlight">3540829999421012</span>) returns <span class="highlight">"9"</span></li>
+<li class="list1"><span class="highlight">Strlist.size(string)</span> - returns size of the string list (semicollon separated)
+Examples:</li>
+<li class="list1">Strlist.size(<span class="highlight">it1;it2;it3;it4;it5</span>) returns <span class="highlight">"5"</span></li>
+<li class="list1">Strlist.size(<span class="highlight"></span>) returns <span class="highlight">"0"</span></li>
+<li class="list1">Strlist.size(<span class="highlight">;;;</span>) returns <span class="highlight">"4"</span></li>
+<li class="list1"><span class="highlight">Strlist.get(string, index)</span> - returns element of the string list
+Examples:</li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 0) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 2) returns <span class="highlight">"it3"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, -2) returns <span class="highlight">";"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 7) returns <span class="highlight">";"</span></li>
+<li class="list1"><span class="highlight">Strlist.add(string, string)</span> - adds an element or another list to the string list
+Examples:</li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it</span>) returns <span class="highlight">"it1;it2;it3;it"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it1;it2</span>) returns <span class="highlight">"it1;it2;it3;it1;it2"</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight"></span>) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight">it1</span>) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">;</span>, <span class="highlight">it1</span>) returns <span class="highlight">";it1"</span></li>
+<li class="list1"><span class="highlight">Strlist.remove(string, index)</span> - removes an element from the string list
+Examples:</li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.find(string, string)</span> - find an item first occurence in the string list.<br/>
+Examples:</li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it2</span>) returns <span class="highlight">"1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight"></span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it125</span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns left part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns right part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">"it1;it2;it3"</span></li></ul></p>
+<p>
+If math/logical expression is used it must be prefixed by <span class="highlight">exp:</span>. Expression could
+contain numeric constants or TML variable names.<br/>
+Supported oerators:
+<ul>
+<li class="list1"><span class="highlight">.lt.</span> - less</li>
+<li class="list1"><span class="highlight">.le.</span> - less or equal</li>
+<li class="list1"><span class="highlight">.gt.</span> - greater</li>
+<li class="list1"><span class="highlight">.ge.</span> - greater or equal</li>
+<li class="list1"><span class="highlight">.eq.</span> - equal</li>
+<li class="list1"><span class="highlight">.ne.</span> - not equal</li>
+<li class="list1"><span class="highlight">.and.</span> - logical <span class="highlight">and</span></li>
+<li class="list1"><span class="highlight">.or.</span> - logical <span class="highlight">or</span></li>
+<li class="list1"><span class="highlight">.not.</span> - logical <span class="highlight">not</span></li>
+<li class="list1"><span class="highlight">(</span>, <span class="highlight">)</span> - priority operators</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span>, <span class="highlight">*</span>, <span class="highlight">/</span>, <span class="highlight">%</span> - binary arithmetic operators</li>
+<li class="list1"><span class="highlight">**</span> - exponentiation</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span> - unary arithmetic operators</li></ul></p>
+<p>
+Result of math expression is casted to an integer number, converted to the string
+and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a>. Result of logical expression is <span class="highlight">"1"</span> or <span class="highlight">"0"</span> (TRUE or FALSE)
+and replases <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+</td></tr> 
+<tr><td>not_equal</td><td><span class="type">Valref</span><br/></td><td><p>
+This is a validity check attribute. The Browser checkes whether the data entered by the user
+is not equal to the value specified by this attribute. If not, the flow control is passed to
+the child <a class="element" href="baddata.html">&lt;baddata&gt;</a> element.</p>
+<p>If <a class="element" href="baddata.html">&lt;baddata&gt;</a> is omitted validity checks are skipped.</p>
+<p>This attribute can be either a value string, a reference to the variable that contains
+the value, an embedded funciton call or math/logical expression.</p>
+<p>If variable reference is used, the name of the variable must be prefixed by <span class="highlight">tmlvar:</span>
+i.e. <span class="highlight">tmlvar:variable.name</span></p>
+<p>If embedded function is used it must be prefixed by <span class="highlight">func:</span>. The syntax corresponds to
+WMLScript format, i.e. a TML variable as a parameter is specified as <span class="highlight">$(tml_var_name)</span>,
+integer constants are specified as decimal numbers and string constants as <span class="highlight">string</span>.</p>
+<p>Result of function call is converted to the string and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+<p>Embedded functions are:
+<ul>
+<li class="list1"><span class="highlight">String.length(string)</span> - calculates length of the string
+Example:</li>
+<li class="list1">String.length(<span class="highlight">123456</span>) returns <span class="highlight">"6"</span></li>
+<li class="list1"><span class="highlight">String.subString(string, start_index, sub_string_len)</span> - returns substring of the
+string.<br/>
+Examples:</li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"345"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"123"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"3456"</span></li>
+<li class="list1"><span class="highlight">String.subStringLast(string, start_index, sub_string_len)</span> - returns substring
+of the string counting from the end.<br/>
+Examples:</li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"234"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"456"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"1234"</span></li>
+<li class="list1"><span class="highlight">Card.luhn(string)</span> - calculates Luhn code.<br/>
+Example:</li>
+<li class="list1">Card.luhn(<span class="highlight">3540829999421012</span>) returns <span class="highlight">"9"</span></li>
+<li class="list1"><span class="highlight">Strlist.size(string)</span> - returns size of the string list (semicollon separated)
+Examples:</li>
+<li class="list1">Strlist.size(<span class="highlight">it1;it2;it3;it4;it5</span>) returns <span class="highlight">"5"</span></li>
+<li class="list1">Strlist.size(<span class="highlight"></span>) returns <span class="highlight">"0"</span></li>
+<li class="list1">Strlist.size(<span class="highlight">;;;</span>) returns <span class="highlight">"4"</span></li>
+<li class="list1"><span class="highlight">Strlist.get(string, index)</span> - returns element of the string list
+Examples:</li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 0) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 2) returns <span class="highlight">"it3"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, -2) returns <span class="highlight">";"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 7) returns <span class="highlight">";"</span></li>
+<li class="list1"><span class="highlight">Strlist.add(string, string)</span> - adds an element or another list to the string list
+Examples:</li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it</span>) returns <span class="highlight">"it1;it2;it3;it"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it1;it2</span>) returns <span class="highlight">"it1;it2;it3;it1;it2"</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight"></span>) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight">it1</span>) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">;</span>, <span class="highlight">it1</span>) returns <span class="highlight">";it1"</span></li>
+<li class="list1"><span class="highlight">Strlist.remove(string, index)</span> - removes an element from the string list
+Examples:</li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.find(string, string)</span> - find an item first occurence in the string list.<br/>
+Examples:</li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it2</span>) returns <span class="highlight">"1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight"></span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it125</span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns left part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns right part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">"it1;it2;it3"</span></li></ul></p>
+<p>
+If math/logical expression is used it must be prefixed by <span class="highlight">exp:</span>. Expression could
+contain numeric constants or TML variable names.<br/>
+Supported oerators:
+<ul>
+<li class="list1"><span class="highlight">.lt.</span> - less</li>
+<li class="list1"><span class="highlight">.le.</span> - less or equal</li>
+<li class="list1"><span class="highlight">.gt.</span> - greater</li>
+<li class="list1"><span class="highlight">.ge.</span> - greater or equal</li>
+<li class="list1"><span class="highlight">.eq.</span> - equal</li>
+<li class="list1"><span class="highlight">.ne.</span> - not equal</li>
+<li class="list1"><span class="highlight">.and.</span> - logical <span class="highlight">and</span></li>
+<li class="list1"><span class="highlight">.or.</span> - logical <span class="highlight">or</span></li>
+<li class="list1"><span class="highlight">.not.</span> - logical <span class="highlight">not</span></li>
+<li class="list1"><span class="highlight">(</span>, <span class="highlight">)</span> - priority operators</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span>, <span class="highlight">*</span>, <span class="highlight">/</span>, <span class="highlight">%</span> - binary arithmetic operators</li>
+<li class="list1"><span class="highlight">**</span> - exponentiation</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span> - unary arithmetic operators</li></ul></p>
+<p>
+Result of math expression is casted to an integer number, converted to the string
+and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a>. Result of logical expression is <span class="highlight">"1"</span> or <span class="highlight">"0"</span> (TRUE or FALSE)
+and replases <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+</td></tr> 
+<tr><td>min</td><td><span class="type">Valref</span><br/></td><td><p>
+This is a validity check attribute. The Browser checkes whether the data entered by the user
+is more than the minimum value specified by this attribute. If not, the flow control is passed
+to the child <a class="element" href="baddata.html">&lt;baddata&gt;</a> element.</p>
+<p>For text input the length of the enetered string is checked.</p>
+<p>If <a class="element" href="baddata.html">&lt;baddata&gt;</a> is omitted validity checks are skipped.</p>
+<p>This attribute can be either a value string, a reference to the variable that contains
+the value, an embedded funciton call or math/logical expression.</p>
+<p>If variable reference is used, the name of the variable must be prefixed by <span class="highlight">tmlvar:</span>
+i.e. <span class="highlight">tmlvar:variable.name</span></p>
+<p>If embedded function is used it must be prefixed by <span class="highlight">func:</span>. The syntax corresponds to
+WMLScript format, i.e. a TML variable as a parameter is specified as <span class="highlight">$(tml_var_name)</span>,
+integer constants are specified as decimal numbers and string constants as <span class="highlight">string</span>.</p>
+<p>Result of function call is converted to the string and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+<p>Embedded functions are:
+<ul>
+<li class="list1"><span class="highlight">String.length(string)</span> - calculates length of the string
+Example:</li>
+<li class="list1">String.length(<span class="highlight">123456</span>) returns <span class="highlight">"6"</span></li>
+<li class="list1"><span class="highlight">String.subString(string, start_index, sub_string_len)</span> - returns substring of the
+string.<br/>
+Examples:</li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"345"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"123"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"3456"</span></li>
+<li class="list1"><span class="highlight">String.subStringLast(string, start_index, sub_string_len)</span> - returns substring
+of the string counting from the end.<br/>
+Examples:</li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"234"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"456"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"1234"</span></li>
+<li class="list1"><span class="highlight">Card.luhn(string)</span> - calculates Luhn code.<br/>
+Example:</li>
+<li class="list1">Card.luhn(<span class="highlight">3540829999421012</span>) returns <span class="highlight">"9"</span></li>
+<li class="list1"><span class="highlight">Strlist.size(string)</span> - returns size of the string list (semicollon separated)
+Examples:</li>
+<li class="list1">Strlist.size(<span class="highlight">it1;it2;it3;it4;it5</span>) returns <span class="highlight">"5"</span></li>
+<li class="list1">Strlist.size(<span class="highlight"></span>) returns <span class="highlight">"0"</span></li>
+<li class="list1">Strlist.size(<span class="highlight">;;;</span>) returns <span class="highlight">"4"</span></li>
+<li class="list1"><span class="highlight">Strlist.get(string, index)</span> - returns element of the string list
+Examples:</li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 0) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 2) returns <span class="highlight">"it3"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, -2) returns <span class="highlight">";"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 7) returns <span class="highlight">";"</span></li>
+<li class="list1"><span class="highlight">Strlist.add(string, string)</span> - adds an element or another list to the string list
+Examples:</li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it</span>) returns <span class="highlight">"it1;it2;it3;it"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it1;it2</span>) returns <span class="highlight">"it1;it2;it3;it1;it2"</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight"></span>) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight">it1</span>) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">;</span>, <span class="highlight">it1</span>) returns <span class="highlight">";it1"</span></li>
+<li class="list1"><span class="highlight">Strlist.remove(string, index)</span> - removes an element from the string list
+Examples:</li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.find(string, string)</span> - find an item first occurence in the string list.<br/>
+Examples:</li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it2</span>) returns <span class="highlight">"1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight"></span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it125</span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns left part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns right part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">"it1;it2;it3"</span></li></ul></p>
+<p>
+If math/logical expression is used it must be prefixed by <span class="highlight">exp:</span>. Expression could
+contain numeric constants or TML variable names.<br/>
+Supported oerators:
+<ul>
+<li class="list1"><span class="highlight">.lt.</span> - less</li>
+<li class="list1"><span class="highlight">.le.</span> - less or equal</li>
+<li class="list1"><span class="highlight">.gt.</span> - greater</li>
+<li class="list1"><span class="highlight">.ge.</span> - greater or equal</li>
+<li class="list1"><span class="highlight">.eq.</span> - equal</li>
+<li class="list1"><span class="highlight">.ne.</span> - not equal</li>
+<li class="list1"><span class="highlight">.and.</span> - logical <span class="highlight">and</span></li>
+<li class="list1"><span class="highlight">.or.</span> - logical <span class="highlight">or</span></li>
+<li class="list1"><span class="highlight">.not.</span> - logical <span class="highlight">not</span></li>
+<li class="list1"><span class="highlight">(</span>, <span class="highlight">)</span> - priority operators</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span>, <span class="highlight">*</span>, <span class="highlight">/</span>, <span class="highlight">%</span> - binary arithmetic operators</li>
+<li class="list1"><span class="highlight">**</span> - exponentiation</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span> - unary arithmetic operators</li></ul></p>
+<p>
+Result of math expression is casted to an integer number, converted to the string
+and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a>. Result of logical expression is <span class="highlight">"1"</span> or <span class="highlight">"0"</span> (TRUE or FALSE)
+and replases <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+</td></tr> 
+<tr><td>max</td><td><span class="type">Valref</span><br/></td><td><p>
+This is a validity check attribute. The Browser checkes whether the data entered by the user
+is less than the maximum value specified by this attribute. If not, the flow control is passed
+to the child <a class="element" href="baddata.html">&lt;baddata&gt;</a> element.</p>
+<p>For text input the length of the enetered string is checked.</p>
+<p>If <a class="element" href="baddata.html">&lt;baddata&gt;</a> is omitted validity checks are skipped.</p>
+<p>This attribute can be either a value string, a reference to the variable that contains
+the value, an embedded funciton call or math/logical expression.</p>
+<p>If variable reference is used, the name of the variable must be prefixed by <span class="highlight">tmlvar:</span>
+i.e. <span class="highlight">tmlvar:variable.name</span></p>
+<p>If embedded function is used it must be prefixed by <span class="highlight">func:</span>. The syntax corresponds to
+WMLScript format, i.e. a TML variable as a parameter is specified as <span class="highlight">$(tml_var_name)</span>,
+integer constants are specified as decimal numbers and string constants as <span class="highlight">string</span>.</p>
+<p>Result of function call is converted to the string and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+<p>Embedded functions are:
+<ul>
+<li class="list1"><span class="highlight">String.length(string)</span> - calculates length of the string
+Example:</li>
+<li class="list1">String.length(<span class="highlight">123456</span>) returns <span class="highlight">"6"</span></li>
+<li class="list1"><span class="highlight">String.subString(string, start_index, sub_string_len)</span> - returns substring of the
+string.<br/>
+Examples:</li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"345"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"123"</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subString(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"3456"</span></li>
+<li class="list1"><span class="highlight">String.subStringLast(string, start_index, sub_string_len)</span> - returns substring
+of the string counting from the end.<br/>
+Examples:</li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 3) returns <span class="highlight">"234"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, -1, 3) returns <span class="highlight">"456"</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 7, 3) returns <span class="highlight">""</span></li>
+<li class="list1">String.subStringLast(<span class="highlight">123456</span>, 2, 13) returns <span class="highlight">"1234"</span></li>
+<li class="list1"><span class="highlight">Card.luhn(string)</span> - calculates Luhn code.<br/>
+Example:</li>
+<li class="list1">Card.luhn(<span class="highlight">3540829999421012</span>) returns <span class="highlight">"9"</span></li>
+<li class="list1"><span class="highlight">Strlist.size(string)</span> - returns size of the string list (semicollon separated)
+Examples:</li>
+<li class="list1">Strlist.size(<span class="highlight">it1;it2;it3;it4;it5</span>) returns <span class="highlight">"5"</span></li>
+<li class="list1">Strlist.size(<span class="highlight"></span>) returns <span class="highlight">"0"</span></li>
+<li class="list1">Strlist.size(<span class="highlight">;;;</span>) returns <span class="highlight">"4"</span></li>
+<li class="list1"><span class="highlight">Strlist.get(string, index)</span> - returns element of the string list
+Examples:</li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 0) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 2) returns <span class="highlight">"it3"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, -2) returns <span class="highlight">";"</span></li>
+<li class="list1">Strlist.get(<span class="highlight">it1;it2;it3;it4;it5</span>, 7) returns <span class="highlight">";"</span></li>
+<li class="list1"><span class="highlight">Strlist.add(string, string)</span> - adds an element or another list to the string list
+Examples:</li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it</span>) returns <span class="highlight">"it1;it2;it3;it"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it1;it2</span>) returns <span class="highlight">"it1;it2;it3;it1;it2"</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight"></span>) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.add(<span class="highlight"></span>, <span class="highlight">it1</span>) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.add(<span class="highlight">;</span>, <span class="highlight">it1</span>) returns <span class="highlight">";it1"</span></li>
+<li class="list1"><span class="highlight">Strlist.remove(string, index)</span> - removes an element from the string list
+Examples:</li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.remove(<span class="highlight">it1</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.find(string, string)</span> - find an item first occurence in the string list.<br/>
+Examples:</li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it2</span>) returns <span class="highlight">"1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight"></span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1">Strlist.find(<span class="highlight">it1;it2;it3</span>, <span class="highlight">it125</span>) returns <span class="highlight">"-1"</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns left part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it1"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">""</span></li>
+<li class="list1"><span class="highlight">Strlist.splitLeft(string, index)</span> - split a string list on two and returns right part
+Examples:</li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 1) returns <span class="highlight">"it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 4) returns <span class="highlight">""</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, -2) returns <span class="highlight">"it1;it2;it3"</span></li>
+<li class="list1">Strlist.splitLeft(<span class="highlight">it1;it2;it3</span>, 0) returns <span class="highlight">"it1;it2;it3"</span></li></ul></p>
+<p>
+If math/logical expression is used it must be prefixed by <span class="highlight">exp:</span>. Expression could
+contain numeric constants or TML variable names.<br/>
+Supported oerators:
+<ul>
+<li class="list1"><span class="highlight">.lt.</span> - less</li>
+<li class="list1"><span class="highlight">.le.</span> - less or equal</li>
+<li class="list1"><span class="highlight">.gt.</span> - greater</li>
+<li class="list1"><span class="highlight">.ge.</span> - greater or equal</li>
+<li class="list1"><span class="highlight">.eq.</span> - equal</li>
+<li class="list1"><span class="highlight">.ne.</span> - not equal</li>
+<li class="list1"><span class="highlight">.and.</span> - logical <span class="highlight">and</span></li>
+<li class="list1"><span class="highlight">.or.</span> - logical <span class="highlight">or</span></li>
+<li class="list1"><span class="highlight">.not.</span> - logical <span class="highlight">not</span></li>
+<li class="list1"><span class="highlight">(</span>, <span class="highlight">)</span> - priority operators</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span>, <span class="highlight">*</span>, <span class="highlight">/</span>, <span class="highlight">%</span> - binary arithmetic operators</li>
+<li class="list1"><span class="highlight">**</span> - exponentiation</li>
+<li class="list1"><span class="highlight">+</span>, <span class="highlight">-</span> - unary arithmetic operators</li></ul></p>
+<p>
+Result of math expression is casted to an integer number, converted to the string
+and replaces <a class="element" href="Valref.html">&lt;Valref&gt;</a>. Result of logical expression is <span class="highlight">"1"</span> or <span class="highlight">"0"</span> (TRUE or FALSE)
+and replases <a class="element" href="Valref.html">&lt;Valref&gt;</a></p>
+</td></tr> 
+</table><h2>Child elements:</h2>[<a class="element" href="baddata.html">baddata</a>?]</div></body></html>

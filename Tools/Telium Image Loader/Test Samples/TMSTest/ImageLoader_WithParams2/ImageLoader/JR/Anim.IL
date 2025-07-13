@@ -1,0 +1,9 @@
+JRP
+duration=0
+01.bmp
+02.bmp
+duration=1
+03.bmp
+04.bmp
+duration=5
+05.bmp

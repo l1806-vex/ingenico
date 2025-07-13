@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.ingenico.ingedev.telium.simulation.launch.launchType">
+<stringAttribute key="com.ingenico.ingedev.telium.simulation.core.COMMUNICATIONS_FILE_DIR" value=""/>
+<booleanAttribute key="com.ingenico.ingedev.telium.simulation.core.CREATE_LOG_FILE" value="false"/>
+<stringAttribute key="com.ingenico.ingedev.telium.simulation.core.CUSTOM_COM_PORT_NUMBER" value=""/>
+<booleanAttribute key="com.ingenico.ingedev.telium.simulation.core.GDB_PROMPT" value="false"/>
+<stringAttribute key="com.ingenico.ingedev.telium.simulation.core.LAUNCH_CONFIG_VERSION" value="1.0"/>
+<stringAttribute key="com.ingenico.ingedev.telium.simulation.core.LOG_FILE_NAME" value=""/>
+<listAttribute key="com.ingenico.ingedev.telium.simulation.core.PROJECT_NAMES">
+<listEntry value=""/>
+</listAttribute>
+<booleanAttribute key="com.ingenico.ingedev.telium.simulation.core.SAVE_COMMUNICATIONS" value="true"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.simulation.core.SCRITING_COMMUNICATIONS" value="false"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.simulation.core.USE_DEFAULT_COM_PORT" value="true"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.simulation.core.VERBOSE_MODE" value="false"/>
+<stringAttribute key="org.eclipse.debug.core.source_locator_id" value="com.ingenico.ingedev.debug.core.u32SourceLocator"/>
+</launchConfiguration>

@@ -1,0 +1,21 @@
+ /** \page Purpose Purpose of the Sample
+
+The GPRS sample application goal is to demonstrate the use of the following SDK functions:
+*
+* - \b gprs_enable - activates GPRS in the terminal
+* - \b gprs_IsNetworkAvailable - checks availability of a GPRS network within a specified timeout
+* - \b gprs_stop - deactivates GPRS in the terminal
+* - \b tcp_connect_to_server - performs a connection to a TCP server
+* - \b tcp_send_to_server - sends data to the TCP server
+* - \b tcp_recv_from_server - receives data from the TCP server
+* - \b tcp_disconnect_from_server  - request a TCP disconnection and terminate all TCP/IP connections
+* - \b gprs_connect - performs the connection to the GPRS network, then initiates a PPP connection
+* - \b gprs_ppp_disconnect - disconnects the current connection to the GPRS network
+* - \b gsm_enable - activates the GSM communication mode
+* - \b gsm_disconnect - disconnects the current connection of GSM
+* - \b gsm_connect  - performs a GSM communication
+* - \b gsm_write - sends data to the GSM connection
+* - \b gsm_read - reads data from the GSM connection
+
+
+  */

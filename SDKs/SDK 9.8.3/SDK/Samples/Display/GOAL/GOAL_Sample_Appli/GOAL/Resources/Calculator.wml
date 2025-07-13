@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DAL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ingenico.com/schemas/dal/1_0">
+  <version DAL_version="01.00" this_version="01.00"/>
+  <goal name="calculator">
+    <usercontrol>
+      <grow>width</grow>
+      <expand>width</expand>
+      <children>
+        <layout>
+          <children>
+            <edit>
+              <idname>Calculator.iml#GL_ID_OPERAND_1</idname>
+              <item>
+                <column>0</column>
+                <row>0</row>
+              </item>
+              <grow>all</grow>
+              <expand>all</expand>
+              <mask>/d/d/d</mask>
+            </edit>
+            <button>
+              <idname>Calculator.iml#GL_ID_OPERATOR</idname>
+              <item>
+                <column>1</column>
+                <row>0</row>
+              </item>
+              <size>
+                <width>10</width>
+                <unit>%</unit>
+              </size>
+            </button>
+            <edit>
+              <idname>Calculator.iml#GL_ID_OPERAND_2</idname>
+              <item>
+                <column>2</column>
+                <row>0</row>
+              </item>
+              <grow>all</grow>
+              <expand>all</expand>
+              <mask>/d/d/d</mask>
+            </edit>
+            <label>
+              <idname>Calculator.iml#GL_ID_RESULT</idname>
+              <item>
+                <column>3</column>
+                <row>0</row>
+              </item>
+              <grow>all</grow>
+              <expand>all</expand>
+              <text>Result</text>
+            </label>
+          </children>
+        </layout>
+      </children>
+    </usercontrol>
+  </goal>
+</DAL>

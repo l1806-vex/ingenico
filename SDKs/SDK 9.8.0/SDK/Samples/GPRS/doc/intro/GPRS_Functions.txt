@@ -1,0 +1,130 @@
+ /** \page Functions Main Functions
+
+The following are the main functionalities of the GPRS Sample Application: 
+*
+*
+* \ref gprsecf1 
+*
+* - Activate ( \ref FUN_GprsActivate )
+* - Deactivate ( \ref FUN_GprsDeactivate )
+*
+* \ref gprsecf2
+* - Connect ( \ref FUN_PppConnect )
+* - Disconnect ( \ref FUN_PppDisconnect )
+*
+* \ref gprsecf3 ( \ref FUN_TcpIpTransceive )
+*
+* \ref gprsecf4 ( \ref FUN_GsmConnectionTest )
+*
+* \ref gprsecf5 
+* - GPRS ( \ref FLOW_ParamConfigGprsProcess )
+* - PPP ( \ref FLOW_ParamConfigPppProcess )
+* - TCP/IP ( \ref FLOW_ParamConfigTcpProcess )
+* - GSM ( \ref FLOW_ParamConfigGsmProcess )
+
+*
+* \section gprsecf1 GPRS
+*
+* Allows the user to activate and deactivate the GPRS network in the terminal.
+*
+* <b>Activate</b> ( \ref FUN_GprsActivate )
+*
+* Activates the GPRS communication mode. After the activation, the network is not immediately available, the function will wait and check the availability of the network.
+*
+* Function Tasks:
+* - Enables GPRS (gprs_enable)
+* - Checks availability of a GPRS network within a specified timeout (gprs_IsNetworkAvailable)
+*
+* <b>Deactivate</b> ( \ref FUN_GprsDeactivate )
+*
+* Deactivates the GPRS communication mode.
+*
+* Function Tasks:
+* - Disables GPRS (gprs_stop)
+*
+* \section gprsecf2 PPP
+*
+* Allows the user to connect and disconnect PPP.
+*
+* <b>Connect</b> ( \ref FUN_PppConnect )
+*
+* Performs connection to the GPRS network and initiate a PPP connection.
+*
+* Function Tasks:
+*
+* - Initiates PPP (gprs_connect)
+* - Checks availability of a GPRS network within a specified timeout (gprs_IsNetworkAvailable)
+*
+* <b>Disconnect</b> ( \ref FUN_PppDisconnect )
+*
+* Performs disconnection from PPP link
+*
+* Function Tasks:
+*
+* - Disconnects PPP (gprs_ppp_disconnect)
+*
+* \section gprsecf3 TCP/IP
+*
+* Performs TCP/IP tests thru GPRS Network
+*
+* Function Tasks:
+* - Connects to a TCP server (tcp_connect_to_server)
+* - If successful, sends sample data (tcp_send_to_server)
+* - Waits for a response from the server (tcp_recv_from_server)
+* - Terminates the TCP connection (tcp_disconnect_from_server)
+*
+* \section gprsecf4 GSM
+*
+* Executes GSM tests.
+*
+* Function Tasks:
+*
+* - Connects to a TCP server (gsm_enable)
+* - Performs GSM communication by dialing the phone number and negotiate the modulation (gsm_connect)
+* - If successful, sends sample data (gsm_write)
+* - Waits for a response from the server (gsm_read)
+* - Terminates the GSM connection (gsm_disconnect)
+*
+* \section gprsecf5 Configuration
+*
+* Allows the user to configure GPRS, PPP, TCP/IP and GSM parameters in the terminal.
+*
+* \b GPRS ( \ref FLOW_ParamConfigGprsProcess )
+*
+* Configures GPRS.
+*
+* Function Tasks:
+*
+* - Displays APN prompt ( \ref _FLOW_ConfigStateGprsApnGet )
+*
+* \b PPP ( \ref FLOW_ParamConfigPppProcess )
+*
+* Configures PPP.
+*
+* Function Tasks:
+* - Displays PPP Authentication Login prompt ( \ref _FLOW_ConfigStatePppLoginGet )
+* - Displays PPP Authentication Password prompt ( \ref _FLOW_ConfigStatePppPasswordGet )
+*
+* \b TCP/IP ( \ref FLOW_ParamConfigTcpProcess )
+*
+* Configures TCP/IP.
+*
+* Function Tasks:
+*
+* - Displays Host Name/IP Address prompt ( \ref _FLOW_ConfigStateTcpServerAddressGet)
+* - Displays Port Number prompt ( \ref _FLOW_ConfigStateTcpServerPortGet)
+*
+* \b GSM ( \ref FLOW_ParamConfigGsmProcess )
+*
+* Configures GSM.
+*
+* Function Tasks:
+*
+* - Displays Phone number prompt ( \ref _FLOW_ConfigStateGsmPhoneNumberGet )
+* - Displays list of available baud rate ( \ref _FLOW_ConfigStateGsmBaudRateGet )
+* - Displays option to enable or disable RLP Mode ( \ref _FLOW_ConfigStateGsmRlpGet )
+
+
+
+
+  */

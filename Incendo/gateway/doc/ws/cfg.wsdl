@@ -1,0 +1,1305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2004-2006 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico UK.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap"
+                  xmlns:tns="http://ingenico.com/ns/configuration-service"
+                  xmlns:tnsdata="http://ingenico.com/ns/configuration-service/data"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://ingenico.com/ns/common/data"
+                  targetNamespace="http://ingenico.com/ns/configuration-service"
+                  type="http://ingenico.com/ns/configuration-service/data">
+    <wsdl:types>
+        <schema targetNamespace="http://ingenico.com/ns/configuration-service/data"
+                xmlns="http://www.w3.org/2001/XMLSchema">
+            <xsd:include schemaLocation="./cfg.xsd"/>
+            <xsd:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="terminalRequest">
+        <documentation>
+            Request containing a group identifier
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="terminalItid" type="xsd:string">
+            <documentation>
+                the terminal reference
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getConfigListRequest">
+        <documentation>
+            Requests list of configurations of specified type
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="queryFilter" type="tnsdata:ConfigurationQuery">
+            <documentation>
+                filter object containing all fields that can be used to filter out values
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="sortOrder" type="tnsdata:ConfigurationSortFieldList">
+            <documentation>
+                filter object containing all fields that can be used to filter out values
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getConfigListResponse">
+        <wsdl:part name="data" type="tnsdata:Configurations"/>
+    </wsdl:message>
+    <wsdl:message name="getAssignedConfigTerminalRequest">
+        <documentation>
+            Requests list of configurations of specified type
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="queryFilter" type="tnsdata:AssignedConfigurationQuery">
+            <documentation>
+                filter object containing all fields that can be used to filter out values. Config Id/Version and Type
+                are not permitted to be used by this operation
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTerminalConfigDumpRequest">
+        <documentation>
+            Requests magcard configuration of specified id
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="id" type="xsd:long">
+            <documentation>
+                actually it is not id in the db, it is timestamp of the terminal configuration creation
+                we do not use real terminal id in order to hide it from external usage
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTerminalConfigDumpResponse">
+        <documentation>
+            Response contains TerminalConfigDump data
+        </documentation>
+        <wsdl:part name="data" type="tnsdata:TerminalConfigDumpData">
+            <documentation>
+                TerminalConfigDump data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getMagcardConfigRequest">
+        <documentation>
+            Requests magcard configuration of specified id
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="id" type="xsd:long">
+            <documentation>
+                actually it is not id in the db, it is timestamp of the terminal configuration creation
+                we do not use real terminal id in order to hide it from external usage
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getMagcardConfigResponse">
+        <documentation>
+            Response contains magcard configuration data itself and list of assignments
+        </documentation>
+        <wsdl:part name="data" type="tnsdata:MagcardConfigData">
+            <documentation>
+                magcard configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getICCEMVConfigRequest">
+        <documentation>
+            Requests iccemv configuration of specified id
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="id" type="xsd:long">
+            <documentation>
+                actually it is not id in the db, it is timestamp of the terminal configuration creation
+                we do not use real terminal id in order to hide it from external usage
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getICCEMVConfigResponse">
+        <documentation>
+            Response contains iccemv configuration data itself and list of assignments
+        </documentation>
+        <wsdl:part name="data" type="tnsdata:ICCEMVConfigData">
+            <documentation>
+                iccemv configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHCLConfigRequest">
+        <documentation>
+            Requests hcl configuration of specified id
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="id" type="xsd:long">
+            <documentation>
+                actually it is not id in the db, it is timestamp of the terminal configuration creation
+                we do not use real terminal id in order to hide it from external usage
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHCLConfigResponse">
+        <documentation>
+            Response contains hcl configuration data itself and list of assignments
+        </documentation>
+        <wsdl:part name="data" type="tnsdata:HCLConfigData">
+            <documentation>
+                hcl configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveMagcardConfigRequest">
+        <documentation>
+            Saves changes of magcard configuration data
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="data" type="tnsdata:MagcardConfigData"/>
+    </wsdl:message>
+    <wsdl:message name="saveICCEMVConfigRequest">
+        <documentation>
+            Saves changes of iccemv configuration data
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="data" type="tnsdata:ICCEMVConfigData"/>
+    </wsdl:message>
+    <wsdl:message name="saveHCLConfigRequest">
+        <documentation>
+            Saves changes of hcl configuration data
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="data" type="tnsdata:HCLConfigData"/>
+    </wsdl:message>
+    <wsdl:message name="getVarlibScopeConfigRequest">
+        <documentation>
+            Requests varlib scope configuration of specified id
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="id" type="xsd:long">
+            <documentation>
+                actually it is not id in the db, it is timestamp of the terminal configuration creation
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getVarlibScopeConfigResponse">
+        <documentation>
+            Response contains varlib scope configuration data itself and list of assignments
+        </documentation>
+        <wsdl:part name="varlib" type="tnsdata:VarlibScopeTerminalConfigData">
+            <documentation>
+                varlib scope configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveVarlibScopeConfigRequest">
+        <documentation>
+            Saves varlib scope configuration of specified id
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="varlib" type="tnsdata:VarlibScopeTerminalConfigData">
+            <documentation>
+                varlib scope configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addVarlibScopeConfigRequest">
+        <documentation>
+            Adds new varlib scope configuration
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="varlib" type="tnsdata:VarlibScopeTerminalConfigData">
+            <documentation>
+                varlib scope configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getVarlibScopeServiceConfigResponse">
+        <documentation>
+            Response contains varlib scope configuration data itself and list of assignments
+        </documentation>
+        <wsdl:part name="varlib" type="tnsdata:VarlibScopeServiceConfigData">
+            <documentation>
+                varlib scope configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveVarlibScopeServiceConfigRequest">
+        <documentation>
+            Saves varlib scope configuration of specified id
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="varlib" type="tnsdata:VarlibScopeServiceConfigData">
+            <documentation>
+                varlib scope configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addVarlibScopeServiceConfigRequest">
+        <documentation>
+            Adds new varlib scope configuration
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="varlib" type="tnsdata:VarlibScopeServiceConfigData">
+            <documentation>
+                varlib scope configuration data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="saveConfigResponse">
+        <documentation>
+            Response contains result (valid or not), error message in case of any errors
+            and a sign if terminal configuration passwed validation
+        </documentation>
+        <wsdl:part name="version" type="xsd:long"/>
+        <wsdl:part name="rslt" type="xsd:long"/>
+        <wsdl:part name="errormsg" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="addMagcardConfigRequest">
+        <documentation>
+            Adds a new magcard configurartion
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="data" type="tnsdata:MagcardConfigData"/>
+    </wsdl:message>
+    <wsdl:message name="addICCEMVConfigRequest">
+        <documentation>
+            Adds a new iccemv configurartion
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="data" type="tnsdata:ICCEMVConfigData"/>
+    </wsdl:message>
+    <wsdl:message name="addHCLConfigRequest">
+        <documentation>
+            Adds a new hcl configurartion
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="data" type="tnsdata:HCLConfigData"/>
+    </wsdl:message>
+    <wsdl:message name="addConfigResponse">
+        <documentation>
+            we adds a new configuration data: magcard or iccemv or hcl
+            we need to get in response:
+            - mark if config is valid, if not, see error message in errormsg field
+            - id and version of new config in order we could call assign service
+            - error message in case of any error
+        </documentation>
+        <wsdl:part name="rslt" type="xsd:long"/>
+        <wsdl:part name="id" type="xsd:long"/>
+        <wsdl:part name="version" type="xsd:long"/>
+        <wsdl:part name="errormsg" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="assignConfigToTerminalsRequest">
+        <documentation>
+            Assigns a subjects to a configuration.
+            We need to provide config identification parameters: id and version
+            We need to provide version to make sure that there has not been any third party changes
+            in config while assigment process
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="configType" type="tnsdata:ConfigType"/>
+        <wsdl:part name="configId" type="xsd:long"/>
+        <wsdl:part name="itids" type="common:ItidList">
+            <documentation>
+                terminal itids
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="baseResponse">
+        <documentation>
+            Response contains result (valid or not), error message in case of any errors
+        </documentation>
+        <wsdl:part name="rslt" type="xsd:long"/>
+        <wsdl:part name="errormsg" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="resetConfigTerminalsRequest">
+        <documentation>
+            For reset we need to define id and version of configuration and list of subjects
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="configType" type="tnsdata:ConfigType"/>
+        <wsdl:part name="itids" type="common:ItidList">
+            <documentation>
+                terminal itids
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getAssignedConfigTerminalResponse">
+        <documentation>
+            assigned configuration
+        </documentation>
+        <wsdl:part name="configuration" type="tnsdata:Configuration">
+            <documentation>
+                configuration assigned to terminal
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTerminalConfigDumpsResponse">
+        <wsdl:part name="data" type="tnsdata:TerminalConfigDumps"/>
+    </wsdl:message>
+    <wsdl:message name="getSubscriptionProfileRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="subscrId" type="xsd:long"/>
+    </wsdl:message>
+    <wsdl:message name="getSubscriptionProfileResponse">
+        <wsdl:part name="profile" type="tnsdata:Profile">
+            <documentation>
+                configuration profile assigned to subscription
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="assignSubscriptionProfileRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="subscrId" type="xsd:long"/>
+        <wsdl:part name="profile" type="xsd:string">
+            <documentation>
+                configuration profile assigned to subscription
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getServiceProfilesRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceProfilesResponse">
+        <wsdl:part name="profiles" type="tnsdata:Profiles">
+            <documentation>
+                all configuration profiles assigned to service
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addServiceProfileRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string"/>
+        <wsdl:part name="profile" type="xsd:string">
+            <documentation>
+                configuration profile assigned to configuration
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeServiceProfileRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string"/>
+        <wsdl:part name="profile" type="xsd:string">
+            <documentation>
+                configuration profile assigned to configuration
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addProfileRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="profile" type="tnsdata:Profile">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getProfilesRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getProfilesResponse">
+        <wsdl:part name="profiles" type="tnsdata:Profiles">
+            <documentation>
+                all configuration profiles
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getProfileResponse">
+        <wsdl:part name="profile" type="tnsdata:Profile">
+            <documentation>
+                configuration profile
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateProfileRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="profile" type="tnsdata:Profile">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="profileNameRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="profile" type="xsd:string">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getDefaultProfileRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="profileIdRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="profileId" type="xsd:long">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addProfileResponse">
+        <wsdl:part name="id" type="xsd:long"/>
+        <wsdl:part name="rslt" type="xsd:long"/>
+        <wsdl:part name="errormsg" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="setDefaultProfileRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string"/>
+        <wsdl:part name="profile" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:portType name="ConfigurationServiceWSIF">
+        <wsdl:operation name="getTerminalConfigDumps">
+            <documentation>
+                Return all uploaded configurations of the terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getTerminalConfigDumpsRequest" message="tns:terminalRequest"/>
+            <wsdl:output name="getTerminalConfigDumpsResponse" message="tns:getTerminalConfigDumpsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getConfigList">
+            <documentation>
+                Retrieves all configurtaion entries for a given conf type. The results from this can be used to retrieve
+                the configuration details from other operations in this service.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getConfigListRequest" message="tns:getConfigListRequest"/>
+            <wsdl:output name="getConfigListResponse" message="tns:getConfigListResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAssignedConfigTerminal">
+            <documentation>
+                Retrieves all configurtaion entries for a given conf type. The results from this can be used to retrieve
+                the configuration details from other operations in this service.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getAssignedConfigTerminalRequest" message="tns:getAssignedConfigTerminalRequest"/>
+            <wsdl:output name="getAssignedConfigTerminalListResponse" message="tns:getAssignedConfigTerminalResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getMagcardConfig">
+            <documentation>
+                Retrieve the (most recent version of) Magnetic Card configuration data for the supplied config id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getMagcardConfigRequest" message="tns:getMagcardConfigRequest"/>
+            <wsdl:output name="getMagcardConfigResponse" message="tns:getMagcardConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getICCEMVConfig">
+            <documentation>
+                Retrieve the (most recent version of) ICCEMV configuration data for the supplied config id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <documentation>
+            </documentation>
+            <wsdl:input name="getICCEMVConfigRequest" message="tns:getICCEMVConfigRequest"/>
+            <wsdl:output name="getICCEMVConfigResponse" message="tns:getICCEMVConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getHCLConfig">
+            <documentation>
+                Retrieve the (most recent version of) Hot Card configuration data for the supplied config id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getHCLConfigRequest" message="tns:getHCLConfigRequest"/>
+            <wsdl:output name="getHCLConfigResponse" message="tns:getHCLConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getVarlibScopeConfig">
+            <documentation>
+                Retrieve the (most recent version of) Varlib configuration data for the supplied config id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getVarlibScopeConfigRequest" message="tns:getVarlibScopeConfigRequest"/>
+            <wsdl:output name="getVarlibScopeConfigResponse" message="tns:getVarlibScopeConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getVarlibScopeServiceConfig">
+            <documentation>
+                Retrieve the (most recent version of) Varlib configuration data for the supplied config id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getVarlibScopeServiceConfigRequest" message="tns:getVarlibScopeConfigRequest"/>
+            <wsdl:output name="getVarlibScopeServiceConfigResponse" message="tns:getVarlibScopeServiceConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addMagcardConfig">
+            <documentation>
+                Adds magnetic card configuration to the database. A new configuration identifier will be allocated (
+                unique for all mag card
+                configurations) and the version number will be initialised to zero.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="addMagcardConfigRequest" message="tns:addMagcardConfigRequest"/>
+            <wsdl:output name="addMagcardConfigResponse" message="tns:addConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addICCEMVConfig">
+            <documentation>
+                Adds ICCEMV configuration to the database. A new configuration identifier will be allocated ( unique for
+                all iccemv
+                configurations) and the version number will be initialised to zero.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="addICCEMVConfigRequest" message="tns:addICCEMVConfigRequest"/>
+            <wsdl:output name="addICCEMVConfigResponse" message="tns:addConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addHCLConfig">
+            <documentation>
+                Adds hot card configuration to the database. A new configuration identifier will be allocated ( unique
+                for all hot card
+                configurations) and the version number will be initialised to zero.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="addHCLConfigRequest" message="tns:addHCLConfigRequest"/>
+            <wsdl:output name="addHCLConfigResponse" message="tns:addConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addVarlibScopeConfig">
+            <documentation>
+                Adds varlib scope configuration to the database. A new configuration identifier will be allocated (
+                unique for all varlib scope
+                configurations) and the version number will be initialised to zero.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="addVarlibScopeConfigRequest" message="tns:addVarlibScopeConfigRequest"/>
+            <wsdl:output name="addVarlibScopeConfigResponse" message="tns:addConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addVarlibScopeServiceConfig">
+            <documentation>
+                Adds varlib scope configuration for services to the database. A new configuration identifier will be allocated (
+                unique for all varlib scope
+                configurations) and the version number will be initialised to zero.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="addVarlibScopeConfigRequest" message="tns:addVarlibScopeServiceConfigRequest"/>
+            <wsdl:output name="addVarlibScopeConfigResponse" message="tns:addConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveMagcardConfig">
+            <documentation>
+                Saves the supplied configuration data. This is an update method. The configuration **must** already
+                exist for the
+                supplied id. The version number of the configuration will be increased ( the old configuration will not
+                be deleted)
+                This operation will fail if two users try to update the same configuration entry at the same time
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="saveConfigRequest" message="tns:saveMagcardConfigRequest"/>
+            <wsdl:output name="saveMagcardConfigResponse" message="tns:saveConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveICCEMVConfig">
+            <documentation>
+                Saves the supplied configuration data. This is an update method. The configuration **must** already
+                exist for the
+                supplied id. The version number of the configuration will be increased ( the old configuration will not
+                be deleted)
+                This operation will fail if two users try to update the same configuration entry at the same time
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="saveICCEMVConfigRequest" message="tns:saveICCEMVConfigRequest"/>
+            <wsdl:output name="saveICCEMVConfigResponse" message="tns:saveConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveHCLConfig">
+            <documentation>
+                Saves the supplied configuration data. This is an update method. The configuration **must** already
+                exist for the
+                supplied id. The version number of the configuration will be increased ( the old configuration will not
+                be deleted)
+                This operation will fail if two users try to update the same configuration entry at the same time
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="saveHCLConfigRequest" message="tns:saveHCLConfigRequest"/>
+            <wsdl:output name="saveHCLConfigResponse" message="tns:saveConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveVarlibScopeConfig">
+            <documentation>
+                Saves the supplied configuration data. This is an update method. The configuration **must** already
+                exist for the
+                supplied id. The version number of the configuration will be increased ( the old configuration will not
+                be deleted)
+                This operation will fail if two users try to update the same configuration entry at the same time
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="saveVarlibScopeConfigRequest" message="tns:saveVarlibScopeConfigRequest"/>
+            <wsdl:output name="saveVarlibScopeConfigResponse" message="tns:saveConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveVarlibScopeServiceConfig">
+            <documentation>
+                Saves the supplied configuration data. This is an update method. The configuration **must** already
+                exist for the
+                supplied id. The version number of the configuration will be increased ( the old configuration will not
+                be deleted)
+                This operation will fail if two users try to update the same configuration entry at the same time
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="saveVarlibScopeConfigRequest" message="tns:saveVarlibScopeServiceConfigRequest"/>
+            <wsdl:output name="saveVarlibScopeConfigResponse" message="tns:saveConfigResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="assignConfigToTerminals">
+            <documentation>
+                Terminals are automatically assigned the default configuration for each config type, assuming that it
+                has been set. This
+                method allows this default to be overridden to all terminals in the supplied list.
+                Any previous assignements will be archived to enable audit trails
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="assignConfigToTerminalsRequest" message="tns:assignConfigToTerminalsRequest"/>
+            <wsdl:output name="assignConfigResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="resetConfigTerminals">
+            <documentation>
+                Any terminal not assigned a configuration ( either directly or via an associated group) is given a
+                default configuration.
+                This method cancels the association between a list of terminals and it's assigned configuration, which
+                restores the assigned
+                configuration to the default values. Any previous assignments will be archived.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="resetConfigTerminalsRequest" message="tns:resetConfigTerminalsRequest"/>
+            <wsdl:output name="resetConfigTerminalsResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getTerminalConfigDump">
+            <documentation>
+                Return TerminalConfigDump with specific id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getTerminalConfigDumpRequest" message="tns:getTerminalConfigDumpRequest"/>
+            <wsdl:output name="getUTerminalConfigDumpResponse" message="tns:getTerminalConfigDumpResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getSubscriptionProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getSubscriptionProfileRequest" message="tns:getSubscriptionProfileRequest"/>
+            <wsdl:output name="getSubscriptionProfileResponse" message="tns:getSubscriptionProfileResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="assignSubscriptionProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="assignSubscriptionProfileRequest" message="tns:assignSubscriptionProfileRequest"/>
+            <wsdl:output name="assignSubscriptionProfileResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServiceProfiles">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getServiceProfilesRequest" message="tns:getServiceProfilesRequest"/>
+            <wsdl:output name="getServiceProfilesResponse" message="tns:getServiceProfilesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addServiceProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="addServiceProfileRequest" message="tns:addServiceProfileRequest"/>
+            <wsdl:output name="addServiceProfileResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeServiceProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="removeServiceProfileRequest" message="tns:removeServiceProfileRequest"/>
+            <wsdl:output name="removeServiceProfileResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="addProfileRequest" message="tns:addProfileRequest"/>
+            <wsdl:output name="addProfileResponse" message="tns:addProfileResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getProfiles">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getProfilesRequest" message="tns:getProfilesRequest"/>
+            <wsdl:output name="getProfilesResponse" message="tns:getProfilesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="updateProfileRequest" message="tns:updateProfileRequest"/>
+            <wsdl:output name="updateProfileResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="profileIdRequest" message="tns:profileIdRequest"/>
+            <wsdl:output name="getProfileResponse" message="tns:getProfileResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getProfileByName">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="profileNameRequest" message="tns:profileNameRequest"/>
+            <wsdl:output name="getProfileResponse" message="tns:getProfileResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="profileIdRequest" message="tns:profileIdRequest"/>
+            <wsdl:output name="removeProfileResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDefaultProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="getDefaultProfileRequest" message="tns:getDefaultProfileRequest"/>
+            <wsdl:output name="getProfileResponse" message="tns:getProfileResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setDefaultProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input name="setDefaultProfileRequest" message="tns:setDefaultProfileRequest"/>
+            <wsdl:output name="setDefaultProfileResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ConfigurationServiceSoapBinding" type="tns:ConfigurationServiceWSIF">
+        <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getTerminalConfigDumps">
+            <documentation>
+                Requests list of uploaded configurations
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getConfigList">
+            <documentation>
+                Requests list of configurations of specified type
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTerminalConfigDump">
+            <documentation>
+                Requests TerminalConfigDump with specific id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAssignedConfigTerminal">
+            <documentation>
+                Requests list of each configuration type that is assigned to the supplied group
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMagcardConfig">
+            <documentation>
+                Requests configuration data specified by id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getICCEMVConfig">
+            <documentation>
+                Requests configuration data specified by id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHCLConfig">
+            <documentation>
+                Requests configuration data specified by id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getVarlibScopeConfig">
+            <documentation>
+                gets varlib scope config
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getVarlibScopeServiceConfig">
+            <documentation>
+                gets varlib scope config
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveMagcardConfig">
+            <documentation>
+                Updates magcard configuration data
+                Request contains id and version number
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveICCEMVConfig">
+            <documentation>
+                Updates iccemv configuration data
+                Request contains id and version number
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveHCLConfig">
+            <documentation>
+                Updates hcl configuration data
+                Request contains id and version number
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveVarlibScopeConfig">
+            <documentation>
+                saves varlib scope config
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveVarlibScopeServiceConfig">
+            <documentation>
+                saves varlib scope config
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addMagcardConfig">
+            <documentation>
+                Adds a new magcard configuration data
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addICCEMVConfig">
+            <documentation>
+                Adds a new iccemv configuration data
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addHCLConfig">
+            <documentation>
+                Adds a new hcl configuration data
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addVarlibScopeConfig">
+            <documentation>
+                adds varlib scope config
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addVarlibScopeServiceConfig">
+            <documentation>
+                adds varlib scope config
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+	<wsdl:operation name="assignConfigToTerminals">
+            <documentation>
+                assigns list of terminals to use specified configuration
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+	<wsdl:operation name="resetConfigTerminals">
+            <documentation>
+                resets from list of terminals usage of specified configuration
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSubscriptionProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="assignSubscriptionProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServiceProfiles">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addServiceProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="removeServiceProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="addProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="getProfiles">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="updateProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="getProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="getProfileByName">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="removeProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="getDefaultProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+        <wsdl:operation name="setDefaultProfile">
+            <wsdlsoap:operation soapAction="/cfgsrv/services/ConfigurationService"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>                
+    </wsdl:binding>
+    <wsdl:service name="ConfigurationServiceWSIFService">
+        <wsdl:port name="ConfigurationService" binding="tns:ConfigurationServiceSoapBinding">
+            <wsdlsoap:address location="http://localhost:8090/cfgsrv/services/ConfigurationService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

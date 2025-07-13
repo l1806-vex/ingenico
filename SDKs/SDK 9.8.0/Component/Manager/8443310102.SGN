@@ -1,0 +1,373 @@
+ï»¿{
+	"charset":"utf8",
+
+	// Terminal key value
+	"VALIDATION"   :"\uF850",
+	"CANCEL"       :"\uF851",
+	"CORRECTION"   :"\uF852",
+	"PAPER"        :"\uF853",
+	"F"            :"\uF854",
+	"F1"           :"\uF855",
+	"F2"           :"\uF856",
+	"F3"           :"\uF857",
+	"F4"           :"\uF858",
+	"UP"           :"\uF859",
+	"DOWN"         :"\uF85A",
+	"OK"           :"\uF86B",
+	"CLEAR"        :"\uF86C",
+
+	// Virtuals key value
+	"VT_PREVIOUS"  :"\uF81B",
+	"VT_NEXT"      :"\uF81C",
+	"VT_LEFT"      :"\uF800",
+	"VT_RIGHT"     :"\uF801",
+	"VT_UP"        :"\uF802",
+	"VT_DOWN"      :"\uF803",
+
+	// Win32 key
+	"ESC"          :"\u001B",
+	"RETURN"       :"\u000D",
+	"DEL"          :"\u0008",
+
+	"VT_0"         :"0 +\"_'",
+	"VT_1"         :"1qzQZ",
+	"VT_2"         :"2abcABC",
+	"VT_3"         :"3defDEF",
+	"VT_4"         :"4ghiGHI",
+	"VT_5"         :"5jklJKL",
+	"VT_6"         :"6mnoMNO",
+	"VT_7"         :"7prsPRS",
+	"VT_8"         :"8tuvTUV",
+	"VT_9"         :"9wxyWXY",
+	"VT_DOT"       :".,-:?@",
+	"VT_7_"        :"7pqrsPQRS",
+	"VT_9_"        :"9wxyzWXYZ",
+
+	// *********************************************************************************
+	"KEYMAP1":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F4"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"EFTsmart" :"$KEYMAP1",
+	"EFT30"    :"$KEYMAP1",
+	"EFT30PLUS":"$KEYMAP1",
+	"Twin30"   :"$KEYMAP1",
+	"EFT930G"  :"$KEYMAP1",
+	"EFT930B"  :"$KEYMAP1",
+	"EFT930S"  :"$KEYMAP1",
+	"EFT930W"  :"$KEYMAP1",
+	"EFT930P"  :"$KEYMAP1",
+
+	// *********************************************************************************
+	"KEYMAP2":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F3"     :"$VT_LEFT",
+		"$F4"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"Twin33"   :"$KEYMAP2", 
+	"Twin32"   :"$KEYMAP2",
+	"Twin31"   :"$KEYMAP2",
+	
+	// *********************************************************************************
+	"KEYMAP3":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F2"     :"$VT_LEFT",
+		"$F3"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"ML30"     :"$KEYMAP3",
+	"ML30CC"   :"$KEYMAP3",
+	"iWL220"   :"$KEYMAP3",
+	"iWL250"   :"$KEYMAP3",
+
+	// *********************************************************************************
+	"KEYMAP4":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F4"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"SPM"      :"$KEYMAP4",
+	"iPP320"   :"$KEYMAP4",
+	"iPP350"   :"$KEYMAP4",
+	"iCT220"   :"$KEYMAP4",
+	"Unknown"  :"$KEYMAP4",
+	"iCT250"   :"$KEYMAP4",
+	"E532"     :"$KEYMAP4",
+	"iMP320"   :"$KEYMAP4",
+	"iMP350"   :"$KEYMAP4",
+	"iWB220"   :"$KEYMAP4",
+	"iWB250"   :"$KEYMAP4",
+	"generic128x64":"$KEYMAP4",
+	"generic320x240":"$KEYMAP4",
+
+	// *********************************************************************************
+	"KEYMAP7":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F"      :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+
+	"iSC350"   :"$KEYMAP7",
+	"iSC480"   :"$KEYMAP7",
+	"iSC250"   :"$KEYMAP7",
+	"iSC220"   :"$KEYMAP7",
+	"generic640x480":"$KEYMAP7",
+	"generic800x480":"$KEYMAP7",
+	"generic480x272":"$KEYMAP7",
+	
+	// *********************************************************************************
+	"KEYMAP8":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+		"$OK"     :"$VALIDATION",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	
+	"E560"     :"$KEYMAP8",
+
+	// *********************************************************************************
+	"KEYMAP9":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+		"$F"      :"$VT_NEXT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iWL280"   :"$KEYMAP9",
+	"generic240x320":"$KEYMAP9",
+	
+	// *********************************************************************************
+	"KEYMAP10":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+		"$F"      :"$VT_NEXT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iWL350"   :"$KEYMAP10",
+	"generic320x480":"$KEYMAP10",
+
+	// *********************************************************************************
+	"KEYMAP11":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"*"       :"$VT_LEFT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"#"       :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iUP250":"$KEYMAP11",
+
+	// *********************************************************************************
+	"KEYMAP12":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"*"       :"$VT_LEFT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"."       :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iUC180":"$KEYMAP12",
+
+	// *********************************************************************************
+	"KEYMAP13":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7_",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9_",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+		"$F"      :"$VT_NEXT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iPP480"   :"$KEYMAP13",
+}
+   0000AD2B8443310102.SGN 05C9F9AAA07B298C410F366F4DCD884CE5CE661E00000                    --kD>¦,PK‘ËôY÷p¶h‰;No
+dß95 ÊKvggø“
+§²y.7›ë wr¬„—9u­·9C9Hœd!Jñ›«skdŠaÁ1ælàãFZT?\Š1¦T.ÈT”Dód8iûëÛ$'ö‹9X×5Ídý ASCOM.FR  09102003ÿ   ìã   ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿà                                                                                                                  9»ÜÊ³ŠiW±5&--wP.‹>/§_¤]ù4„úEáŽÙÚW±äljÜéiÿjàF;ÈNBºbC?"1ž”c‚
+¡Ü™Þv²9/×¼ü7›‚GÒ¼$Vi)ëÔî¼µ"<ä³¯ 9EûÄ˜å”³Ñz .¿¹                                                                                                                              ·¶ô rSU×Ù…ºFºGvSÓLæþÓÓ¼¶‘ ÏP»BÀÝÀ²ˆÒZX#Ow§dp›$ ñðH÷A¢ó|7ü!¢ò¼¾µÝ`ÛlB?)t#WôÝ[¢j©Å™Ù|^µ‚T²O"T”
+ÁgÔ¹Q—#Ë‹+ó#-»kJ9â$´êåfÐH

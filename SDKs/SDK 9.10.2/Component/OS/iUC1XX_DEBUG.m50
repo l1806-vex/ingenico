@@ -1,0 +1,32 @@
+;System pack for iUC1XX
+;Boot Ram
+30140520.dgn
+;Driver VFS
+30210332.dgn
+;Pack System
+37773012.pgn
+;LDBG Remote Debugger
+8133080160.dgn
+;Driver GPRS
+8200120238.dgn
+;Driver UMS
+8200210320.dgn
+;Driver HID
+8200220124.dgn
+;Driver USB CDC
+8200320628.dgn
+;System R+
+8200361635.dgn
+;Driver CLESS
+8200490243.dgn
+;Driver external printer
+8200520233.dgn
+;generic driver leds
+8201030208.dgn
+;Driver BC06 handheld T1 T2
+8201250514.dgn
+;Driver iSTXXX
+8201340212.dgn
+;Driver CAM Thunder II
+8203040204.dgn
+

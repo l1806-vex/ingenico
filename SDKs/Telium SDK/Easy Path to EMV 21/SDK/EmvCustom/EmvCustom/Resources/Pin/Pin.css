@@ -1,0 +1,22 @@
+
+#ContentTable
+{
+  width:100%
+} 
+
+#ContentCell
+{
+  width:100%;
+  vertical-align:middle;
+}
+
+
+.Cells
+{
+  color:white;
+  margin:0px;
+  padding:0px;
+  font-size:14pt;
+  width:100%;  
+  text-align:center;
+}

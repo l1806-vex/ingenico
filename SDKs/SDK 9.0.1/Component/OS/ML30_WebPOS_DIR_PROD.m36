@@ -1,0 +1,26 @@
+;System pack for ML30
+;System R+ Dir
+8203021110.ddf
+8203021110.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver CLESS
+8200490230.ddf
+8200490230.sgn
+;ML30/SMART2 Booster 2
+8200640228.ddf
+8200640228.sgn
+;Boot Flash Booster 2
+8200630304.ddf
+8200630304.sgn
+;Pack System
+37771104.pdf
+37771104.sgn
+;Driver Printer SPM
+8201300106.ddf
+8201300106.sgn
+;driver color
+8203120105.ddf
+8203120105.sgn
+

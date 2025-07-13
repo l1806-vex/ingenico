@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgetMappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ingenico.com/schemas/widgetmappings/1_0">
+  <widgetMapping idname="DATE_SCREEN_EDIT_DATE" idval="1"/>
+  <widgetMapping idname="DATE_SCREEN_BUTTON_OK" idval="2"/>
+  <widgetMapping idname="GENERIC_BUTTON_CANCEL" idval="3"/>
+  <widgetMapping idname="GL_ID_MR" idval="4"/>
+  <widgetMapping idname="GL_ID_MRS" idval="5"/>
+  <widgetMapping idname="GL_ID_FIRST_NAME" idval="6"/>
+  <widgetMapping idname="GL_ID_LAST_NAME" idval="7"/>
+  <widgetMapping idname="GL_ID_BIRTH_DAY" idval="8"/>
+  <widgetMapping idname="GL_ID_MARRIED" idval="9"/>
+  <widgetMapping idname="GL_ID_OK" idval="10"/>
+  <widgetMapping idname="GL_ID_CANCEL" idval="11"/>
+  <widgetMapping idname="GL_ID_OPERATION_1" idval="100"/>
+  <widgetMapping idname="GL_ID_OPERATION_2" idval="101"/>
+  <widgetMapping idname="ID_INCLUDE_12" idval="12"/>
+  <widgetMapping idname="ID_INCLUDE_13" idval="13"/>
+</widgetMappings>

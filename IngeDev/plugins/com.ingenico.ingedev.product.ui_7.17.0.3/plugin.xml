@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <extension
+         id="ingedev"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="IngeDev"
+            application="org.eclipse.ui.ide.workbench">
+          <property name="preferenceCustomization" value="plugin_customization.ini"/>
+          <property
+                value="%blurb"
+                name="aboutText"/>
+          <property
+                value="icons/ingenico16.gif,icons/ingenico32.gif"
+                name="windowImages"/>
+          <property
+                value="IngeDev"
+                name="appName"/>
+          <property
+                value="icons/about.gif"
+                name="aboutImage"/>
+          <property
+                name="startupForegroundColor"
+                value="FFD2A6"/>
+          <property
+                name="startupProgressRect"
+                value="0,275,500,15"/>
+          <property
+                name="startupMessageRect"
+                value="7,220,441,20"/>
+          <property
+                name="introTitle"
+                value="IngeDev">
+          </property>
+          <property
+                name="introBrandingImage"
+                value="product:intro-ingeDev.png">
+          </property>
+          <property
+                name="introBrandingImageText"
+                value="IngeDev">
+          </property>
+      </product>
+   </extension>
+     <extension
+           point="org.eclipse.ui.intro">
+        <introProductBinding
+              introId="org.eclipse.ui.intro.universal"
+              productId="com.ingenico.ingedev.product.ui.ingedev">
+        </introProductBinding>
+     </extension>
+   <extension
+         point="org.eclipse.ui.intro.configExtension">
+      <configExtension
+            configId="org.eclipse.ui.intro.universalConfig"
+            content="intro/whatsnewExtensionContent.xml">
+      </configExtension>
+   </extension>
+
+</plugin>

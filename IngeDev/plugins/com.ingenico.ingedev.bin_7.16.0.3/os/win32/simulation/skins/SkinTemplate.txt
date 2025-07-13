@@ -1,0 +1,49 @@
+; Lines beginning with ';' are commentaries
+
+; Terminal ID. This ID makes up the first 4 letters of the config file name.
+TerminalID=5100
+
+; Kernel ID. This ID makes up the first 4 letters of the kernel file name.
+KernelID=5100
+
+; Path (absolute or relative to this file) to the bitmap representing the terminal
+BmpPathName=terminal.bmp
+
+; Path (absolute or relative to this file) to a black and white bitmap:
+; the pixels inside the terminal must be black and the others must be white
+MaskPathName = terminal_mask.bmp
+
+; Screen width in pixels, ON THE BITMAP
+BmpScreenWidth=365
+
+; Screen upper-left corner in pixels, ON THE BITMAP
+ScreenUpperLeftCorner=111,271
+
+; Screen actual size, in pixels
+ScreenRealSizePixels=128,64
+
+; Type = Standard or Touch
+ScreenType=Standard
+
+; TouchScreen actual resolution, in pixels
+TouchRealSizePixels=2048,1498
+
+; Screen nb bits per pixels (1 or 8)
+ScreenNbBitsPerPixel=1
+
+;ShiftCapability (0 not shifted, 1 left shifted) this parameter should be before the buttons declaration
+ShiftCapability=1
+
+; Keyboard Id
+KeyboardId=1
+
+; Printer number of characters / line, for the std font
+PrinterNbCharsPerLine=24
+
+;Buttons:
+; Style (Elliptic or Rectangular),
+;	Value returned when key pressed,
+;	Positional value (i.e. value returned in 'positional' mode)
+;	left, top, right, bottom (all in pixels),
+;	list of corresponding PC keys(the values are the VK_xxx codes defined in the 'winuser.h' file)
+Button=Elliptic, 0x3A, 0x01, 420, 720, 514, 854, 0x0D

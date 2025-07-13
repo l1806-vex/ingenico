@@ -1,0 +1,30 @@
+;System pack for iUP2XX
+;Boot Ram
+30140520.dgn
+;Driver VFS
+30210332.dgn
+;Pack System
+37773012.pgn
+;Driver GPRS
+8200120238.dgn
+;Driver UMS
+8200210320.dgn
+;Driver HID
+8200220124.dgn
+;Driver USB CDC
+8200320628.dgn
+;System R+
+8200361635.dgn
+;Driver CLESS
+8200490243.dgn
+;Driver external printer
+8200520233.dgn
+;generic driver leds
+8201030208.dgn
+;Driver BC06 handheld T1 T2
+8201250514.dgn
+;BOOSTER III Boot Flash
+8300630016.dgn
+;Booster III system
+8300640378.dgn
+

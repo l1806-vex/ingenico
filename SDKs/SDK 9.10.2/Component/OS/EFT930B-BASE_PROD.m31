@@ -1,0 +1,17 @@
+;System pack for EFT930 base
+;System R+
+8200361635.ddf
+8200361635.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver Modem 930
+40150340.ddf
+40150340.sgn
+;Driver BT base 930
+8200140166.ddf
+8200140166.sgn
+;Pack System
+37773012.pdf
+37773012.sgn
+

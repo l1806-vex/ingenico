@@ -1,0 +1,82 @@
+; Lines beginning with ';' are commentaries
+
+KernelID=8200
+TerminalID=8200
+BmpPathName=i8200.bmp
+MaskPathName=i8200_mask.bmp
+BmpScreenWidth=390
+ScreenUpperLeftCorner=151, 562
+ScreenRealSizePixels=160, 160
+KeyboardId=6
+PrinterNbCharsPerLine=24
+
+; Type = Standard or Touch
+ScreenType=Standard
+
+ScreenNbBitsPerPixel=1
+
+;Enter
+Button=Elliptic, 0x3A, 0x13, 468, 1231, 534, 1285, 0x0D
+
+;Up
+Button=Rectangular, 0x43, 0x12, 333, 1033, 351, 1049, 0x26
+
+;Left
+Button=Rectangular, 0x44, 0x11, 307, 1056, 321, 1078, 0x25
+
+;Down
+Button=Rectangular, 0x47, 0x10, 331, 1089, 356, 1109, 0x28
+
+;Center (shortcut = space bar)
+Button=Elliptic, 0x45, 0x0F, 324, 1052, 360, 1086, 0x20
+
+;Right
+Button=Rectangular, 0x46, 0x0E, 366, 1059, 386, 1083, 0x27
+
+;F1
+Button=Elliptic, 0x40, 0x0D, 168, 1050, 249, 1094, 0x70
+
+;F2
+Button=Elliptic, 0x41, 0x0C, 441, 1047, 526, 1093, 0x71
+
+;Paper feed (PC = Page Up)
+Button=Elliptic, 0x3F, 0x0B, 161, 1285, 227, 1329, 0x21
+
+;Clear (PC = Escape)
+Button=Elliptic, 0x3B, 0x05, 467, 1110, 537, 1152, 0x1B
+
+;Corr (PC = Backspace)
+Button=Elliptic, 0x3D, 0x06, 464, 1171, 533, 1212, 0x08
+
+;9
+Button=Elliptic, 0x39, 0x0E, 364, 1242, 434, 1281, 0x69, 0x39
+
+;8
+Button=Elliptic, 0x38, 0x09, 262, 1241, 331, 1281, 0x68, 0x38
+
+;7
+Button=Elliptic, 0x37, 0x04, 159, 1227, 227, 1271, 0x67, 0x37
+
+;6
+Button=Elliptic, 0x36, 0x0D, 363, 1183, 434, 1223, 0x66, 0x36
+
+;5
+Button=Elliptic, 0x35, 0x08, 260, 1184, 331, 1225, 0x65, 0x35
+
+;4
+Button=Elliptic, 0x34, 0x03, 158, 1171, 228, 1214, 0x64, 0x34
+
+;3
+Button=Elliptic, 0x33, 0x0C, 363, 1126, 434, 1167, 0x63, 0x33
+
+;2
+Button=Elliptic, 0x32, 0x07, 262, 1127, 329, 1167, 0x62, 0x32
+
+;1
+Button=Elliptic, 0x31, 0x02, 160, 1113, 227, 1157, 0x61, 0x31
+
+;0
+Button=Elliptic, 0x30, 0x0A, 260, 1298, 331, 1340, 0x60, 0x30
+
+;00
+Button=Elliptic, 0x3C, 0x01, 364, 1299, 434, 1337, 0x6E

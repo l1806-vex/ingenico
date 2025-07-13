@@ -1,0 +1,62 @@
+;System pack for EFT930 BL2
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver VFS
+30210328.ddf
+30210328.sgn
+;Pack System
+37771104.pdf
+37771104.sgn
+;Driver Modem 930
+40150322.ddf
+40150322.sgn
+;LDBG Remote Debugger
+8133080134.ddf
+8133080134.sgn
+;DLL WIFI
+8136650300.ldf
+8136650300.sgn
+;Driver GPRS
+8200120206.ddf
+8200120206.sgn
+;Driver BT base 930
+8200140162.ddf
+8200140162.sgn
+;Driver BT handheld 930
+8200150162.ddf
+8200150162.sgn
+;Driver UMS
+8200210320.ddf
+8200210320.sgn
+;Driver HID
+8200220124.ddf
+8200220124.sgn
+;Driver USB CDC
+8200320616.ddf
+8200320616.sgn
+;Driver CLESS
+8200490230.ddf
+8200490230.sgn
+;Driver WIFI
+8200540212.ddf
+8200540212.sgn
+;Boot Flash Booster 2
+8200630304.ddf
+8200630304.sgn
+;930 Booster 2 MockUp
+8201218132.ddf
+8201218132.sgn
+;Driver BC06 handheld T2
+8201250236.ddf
+8201250236.sgn
+;Driver BC06 base T2
+8201260236.ddf
+8201260236.sgn
+;System R+ Dir
+8203021110.ddf
+8203021110.sgn
+;driver color
+8203120105.ddf
+8203120105.sgn
+

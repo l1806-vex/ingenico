@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!-- Ingenico WinFF presets. Version 1.3 -->
+<presets>
+  <i1>
+    <label>MP4: video + audio (keep input dimension)</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -strict experimental -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico</category>
+  </i1>
+  <i2>
+    <label>MP4: video only (keep input dimension)</label>
+    <params>-f mp4 -an -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico</category>
+  </i2>
+  <i3>
+    <label>MP4: Any terminal [use this if you don't know what to choose]</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf "scale=min(480\,trunc(iw/4)*4):trunc(ow/a/2)*2" -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico</category>
+  </i3>
+  <i31>
+    <label>MP4: iSC480 fullwidth video (scaled, 800x???)</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf scale=min(800\,iw):-1 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico</category>
+  </i31>
+  <i4>
+    <label>MP4: iSC350 fullwidth video (scaled, 640x???)</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf scale=640:-1 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico</category>
+  </i4> 
+  <i5>
+    <label>MP4: iSC250 fullwidth video (scaled, 480x???)</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf scale=480:-1 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico</category>
+  </i5> 
+  <i6>
+    <label>MP4: iWL280 fullwidth video (scaled, 240x???)</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf scale=240:-1 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico</category>
+  </i6>
+  <i7>
+    <label>MP4: iWL350 fullwidth video (scaled, 320x???)</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf scale=320:-1 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico</category>
+  </i7>
+  <i8>
+    <label>OGG: vorbis audio (stereo, 44.1kHz, 128kbps)</label>
+    <params>-f ogg -vn -acodec vorbis -aq 30 -ac 2 -ar 44100 -strict experimental</params>
+    <extension>ogg</extension>
+    <category>Ingenico</category>
+  </i8>
+  <i9>
+    <label>WAV: uncompressed PCM 16-bit samples (stereo, 44.1kHz)</label>
+    <params>-f wav -vn -acodec pcm_s16le -ac 2 -ar 44100</params>
+    <extension>wav</extension>
+    <category>Ingenico</category>
+  </i9>
+  <i100>
+    <label>rescue mode: try this if nothing else works [don't require -fpre, for old ffmpeg binaries]</label>
+    <params>-f mp4 -vcodec libx264 -b 400k -coder 0 -bf 0 -refs 4 -keyint_min 25 -level 31 -flags +loop -sc_threshold 40 -i_qfactor 0.71 -cmp +chroma -qcomp 0.6 -qmin 10 -qmax 51 -qdiff 4 -wpredp 0 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -strict experimental -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i100>
+  <i101>
+    <label>MP4: iSC350 fullscreen video (640x480) [don't keep aspect ratio]</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -s 640x480 -aspect 4:3 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i101>
+  <i102>
+    <label>MP4: iSC250 fullscreen video (480x272) [don't keep aspect ratio]</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -s 480x272 -aspect 30:17 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i102>
+  <i103>
+    <label>MP4: iWL280 fullwidth video (scaled, 240x???) [force rounded height]</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf scale="240:trunc(ow/a/vsub)*vsub,setsar=1:1" -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i103>
+  <i104>
+    <label>MP4: iWL280 fullscreen video (scaled, 240x??? + padded, 240x320)</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf "scale=240:-1,pad=iw:320:0:(oh-ih)/2,setsar=1:1" -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i104>
+  <i104bis>
+    <label>MP4: iWL280 fullscreen video (scaled, 240x??? + padded, 240x320) [no sound]</label>
+    <params>-f mp4 -an -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf "scale=240:-1,pad=iw:320:0:(oh-ih)/2,setsar=1:1" -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i104bis>
+  <i105>
+    <label>MP4: iWL280 fullscreen video (240x320) [don't keep aspect ratio]</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -s 240x320 -aspect 3:4 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i105>
+  <i106>
+    <label>MP4: iWL350 fullscreen video (320x480) [don't keep aspect ratio]</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -s 320x480 -aspect 2:3 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i106>
+  <i107>
+    <label>MP4: iSC350 fullscreen video (scaled, 640x??? + padded, 640x480)</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf "scale=640:-1,pad=iw:480:0:(oh-ih)/2" -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i107>
+  <i108>
+    <label>MP4: iSC480 fullwidth video (scaled, ???x480) [force rounded width]</label>
+    <params>-f mp4 -acodec vorbis -aq 30 -ab 128k -ac 2 -ar 24000 -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 330k -vf scale=trunc(oh*a/2)*2:min(480\,ih) -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i108>
+  <i109>
+    <label>MP4: iSC480 fullwidth video (scaled, 800x???) [no sound]</label>
+    <params>-f mp4 -an -vcodec libx264 -fpre libx264-ingenico.ffpreset -b 400k -vf scale=min(800\,iw):-1 -strict -2 -threads 0</params>
+    <extension>mp4</extension>
+    <category>Ingenico (advanced users)</category>
+  </i109>
+  <i110>
+    <label>OGG: vorbis audio (stereo, 24kHz, 192kbps)</label>
+    <params>-f ogg -vn -acodec vorbis -aq 60 -ac 2 -ar 24000 -strict experimental</params>
+    <extension>ogg</extension>
+    <category>Ingenico (advanced users)</category>
+  </i110>
+</presets>

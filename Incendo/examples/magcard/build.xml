@@ -1,0 +1,169 @@
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2004-2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+
+<project name="oe/examples/magcard" default="oe/examples/magcard/build">
+
+    <!-- set global properties for this build -->
+    
+    <property name="dist.lib.dir" location="../lib" />
+    <property name="lib.dir.common" location="${dist.lib.dir}/common" />
+    <property name="lib.dir.web" location="${dist.lib.dir}/web" />    
+    <property name="java.bin.path" value="classes" />
+    <property name="tmp.path" value="tmp" />    
+    <property name="src.java.path" value="source/java" />        
+    <property name="src.web.path" value="source/web" />            
+    <property name="src.config.path" value="source/config" />            
+    
+    <property name="packageFile-test" value="${dist.lib.dir}/magcard-test.jar" />
+    <property name="warFile" value="magcard.war" />
+
+     <property environment="env" />
+    <property file="${dist.lib.dir}/libraries.properties" />    
+
+    <fileset id="project.common.jars" dir="${lib.dir.common}">
+        <include name="${common.jar.log4j}" />
+        <include name="${common.jar.odmg}" />
+        <include name="${common.jar.xalan}" />
+        <include name="${common.jar.xerces}" />
+        <include name="${common.jar.xml-apis}" />
+        <include name="${common.jar.commons-collections}" />
+        <include name="${common.jar.freemarker}" />
+    </fileset>
+
+    <fileset id="project.web.jars" dir="${lib.dir.web}">
+        <include name="${web.jar.servlet}" />
+    </fileset>
+
+    <fileset id="project.jars" dir="${dist.lib.dir}">
+        <include name="${host.jar.iutil}" />
+        <include name="${common.jar.tml-toolkit}" />
+    </fileset>
+    
+    <path id="project.class.path">
+        <fileset refid="project.jars" />
+        <fileset refid="project.common.jars" />        
+        <fileset refid="project.web.jars" />
+        <pathelement path="${java.class.path}" />
+        <pathelement location="${java.bin.path}" />
+    </path>
+
+    <target name="oe/examples/magcard/init">
+        <mkdir dir="${java.bin.path}" />        
+    </target>
+
+    <target name="oe/examples/magcard/clean">
+        <delete dir="${java.bin.path}" />
+        <delete dir="${tmp.path}" />
+    </target>
+
+    <target name="oe/examples/magcard/compile" depends="oe/examples/magcard/init">
+        <javac srcdir="${src.java.path}" destdir="${java.bin.path}" debug="on">
+            <classpath refid="project.class.path" />
+            <exclude name="**/test/**" />
+        </javac>
+
+    </target>
+
+    <target name="oe/examples/magcard/compile-test" depends="oe/examples/magcard/init" if="mode.debug">
+        <mkdir dir="${java.bin.path}" />
+        <javac srcdir="${src.java.path}" destdir="${java.bin.path}" debug="on">
+            <classpath refid="project.class.path" />
+            <include name="com/ingenico/tml/example/magcard/test/**" />
+        </javac>
+    </target>
+
+    <target name="oe/examples/magcard/make-jar-test" depends="oe/examples/magcard/compile-test" if="mode.debug">
+        <mkdir dir="${dist.lib.dir}" />
+        <jar destfile="${packageFile-test}">
+            <fileset dir="${java.bin.path}">
+                <include name="com/ingenico/tml/example/magcard/test/*.class" />
+            </fileset>
+        </jar>
+    </target>
+
+
+    <target name="oe/examples/magcard/make-war" depends="oe/examples/magcard/compile">
+        <mkdir dir="${tmp.path}" />
+        <copy todir="${tmp.path}">
+            <fileset dir="${src.web.path}" />
+            <filterset>
+                <filter token="VERSION" value="3.1.5.0-RC4" />
+            </filterset>
+        </copy>
+
+        <java jar="${dist.lib.dir}/${host.jar.oe-converter}" fork="true">
+            <classpath refid="project.class.path" />
+            <arg value="image/lib"/>
+            <arg value="uc32color"/>
+            <arg value="${tmp.path}/magcard.lib"/>
+            <arg value="${src.web.path}/8550/images"/>
+        </java>
+
+        <!-- Create the distribution directory -->
+        <mkdir dir="webapp"/>
+        <war warfile="webapp/${warFile}" webxml="${src.web.path}/WEB-INF/web.xml">
+
+            <lib dir="${lib.dir.common}">
+                <include name="${common.jar.log4j}" />
+                <include name="${common.jar.odmg}" />
+                <include name="${common.jar.xalan}" />
+                <include name="${common.jar.xerces}" />
+                <include name="${common.jar.xml-apis}" />
+                <include name="${common.jar.commons-collections}" />
+                <include name="${common.jar.commons-codec}" />
+                <include name="${common.jar.freemarker}" />
+            </lib>
+
+            <lib dir="${dist.lib.dir}">
+                <include name="${common.jar.tml-toolkit}" />
+                <include name="${host.jar.iutil}" />
+            </lib>
+
+            <classes dir="${java.bin.path}">
+                <include name="com/ingenico/tml/example/magcard/**/*.class" />
+                <exclude name="com/ingenico/tml/example/magcard/**/test/**/*.class" />
+            </classes>
+
+            <classes dir="${src.config.path}">
+                <include name="log4j.properties" />
+            </classes>
+
+            <fileset dir="${tmp.path}">
+                <include name="5100/*.*" />
+                <include name="8550/*.*" />
+                <exclude name="8550/images/*.*" />
+            </fileset>
+
+	    <zipfileset dir="${tmp.path}" prefix="8550/images">
+                <include name="magcard.lib" />
+	    </zipfileset>
+        </war>
+
+        <delete dir="${tmp.path}" />
+    </target>
+
+    <target name="oe/examples/magcard/build-test" depends="oe/examples/magcard/clean, oe/examples/magcard/compile-test, oe/examples/magcard/make-jar-test" if="mode.debug">
+    </target>
+
+    <target name="oe/examples/magcard/build" depends="oe/examples/magcard/clean, oe/examples/magcard/compile, oe/examples/magcard/make-war">      
+        <antcall target="oe/examples/magcard/clean"/>
+    </target>
+
+</project>

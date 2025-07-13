@@ -1,0 +1,50 @@
+;System pack for CAD30UCR (MR40)
+;System R+
+8200361262.ddf
+8200361262.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver VFS
+30210330.ddf
+30210330.sgn
+;Pack System
+37772400.pdf
+37772400.sgn
+;Driver Modem 930
+40150322.ddf
+40150322.sgn
+;LDBG Remote Debugger
+8133080140.ddf
+8133080140.sgn
+;Driver GPRS
+8200120212.ddf
+8200120212.sgn
+;Driver UMS
+8200210320.ddf
+8200210320.sgn
+;Driver HID
+8200220124.ddf
+8200220124.sgn
+;Driver USB CDC
+8200320620.ddf
+8200320620.sgn
+;Driver CLESS
+8200490235.ddf
+8200490235.sgn
+;Driver external printer
+8200520212.ddf
+8200520212.sgn
+;Boot Flash Booster 2
+8200630304.ddf
+8200630304.sgn
+;MR40 Booster 2 
+8200970133.ddf
+8200970133.sgn
+;GENERIC IO
+8200980105.ddf
+8200980105.sgn
+;generic driver leds
+8201030207.ddf
+8201030207.sgn
+

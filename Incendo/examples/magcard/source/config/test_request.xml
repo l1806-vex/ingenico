@@ -1,0 +1,34 @@
+<tmlpost xmlns="http://www.ingenico.com/tml" itid="1234:5678" 
+	post_id="1" date="1099603260">
+	<postvar name="card.parser.type" type="string" value="mag"/>
+	<postvar name="card.cardholder_name" type="string" value="Eugene Pestov"/>
+	<postvar name="card.pan" type="string" value="4040123456784321"/>
+	<postvar name="card.issuer_name" type="string" value="Guta Bank"/>
+	<postvar name="card.issue_number" type="integer" value="10"/>
+	<postvar name="card.scheme" type="string" value="VISA"/>
+	<postvar name="card.effective_date" type="date" value="1046466000"/>
+	<postvar name="card.expiry_date" type="date" value="1151772800"/>
+	<postvar name="card.mag.iso2_track" type="string" value="5678"/>
+	<postvar name="transid" type="integer" value="123"/>
+	<postvar name="payment.amount" type="integer" value="100"/>
+</tmlpost>
+
+<!--========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

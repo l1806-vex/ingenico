@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico. It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.ingenico.co.uk/tml_post" targetNamespace="http://www.ingenico.co.uk/tml_post" elementFormDefault="qualified" version="1.0" xml:lang="en">
+  <xs:annotation>
+    <xs:documentation>
+    TML post structure description
+
+    COPYRIGHT (C) 2007 Ingenico
+    ALL RIGHTS RESERVED
+
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== Imported Names ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="Number">
+    <xs:annotation>
+      <xs:documentation>
+      one or more digits
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:pattern value="[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Datetime">
+    <xs:annotation>
+      <xs:documentation>
+      date and time information. ISO date format
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Document Structure ==================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="tmlpost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="postvar" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="date" use="required" type="Datetime"/>
+      <xs:attribute name="itid" use="required" type="xs:string"/>
+      <xs:attribute name="post_id" use="required" type="Number"/>
+      <xs:attribute name="cache" default="deny">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="allow"/>
+            <xs:enumeration value="deny"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="postvar">
+    <xs:annotation>
+      <xs:documentation>Posted variable value</xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="integer"/>
+            <xs:enumeration value="string"/>
+            <xs:enumeration value="date"/>
+            <xs:enumeration value="opaque"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="value" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,89 @@
+;TELIUM MANAGER GOAL INTERNE SPM PROD
+;M2OS T2
+45920863.agn
+;CB2A T2
+45930773.lgn
+;Extens T2
+45940963.lgn
+;Graphic Librairy T2 
+45960683.lgn
+;M2OS Parameters T2
+45970763.lgn
+;Entry T2
+45980683.lgn
+;Cam/Date Librairy T2
+45990763.lgn
+;PSC Protocol T2
+46010583.lgn
+;Protocole T2
+46030793.lgn
+;Crypto T2
+46060433.lgn
+;Partage T2
+46070583.lgn
+;EMV selection T2
+46080623.lgn
+;IAM T2
+46090593.lgn
+;UMS T2
+46160593.lgn
+;GPRS T2
+46210723.lgn
+;HWCNF T2
+46420262.lgn
+;Security Fr T2
+46850321.lgn
+;PackM2OS T2
+47786503.pgn
+;Telium SDK
+8442291003.pgn
+;GL DLL FOR EFT930CC/ICT2XX/IPP3XX/ML30CC/IWL2XX
+8443510223.lgn
+;GM RESOURCE FOR EFT930CC/ICT2XX/IPP3XX/ML30CC/IWL2XX
+8443576503.pgn
+; Skin for the 128x64 screen (mandatory for screen 128x64)
+; 00000000
+8440590306.PGN
+; Image WGU decoder (mandatory)
+; E0C87000
+8443000306.LGN
+; Graphical library (mandatory)
+; E0C61000
+8440550306.LGN
+; Font file manager(mandatory)
+; 00000000
+8440580306.PGN
+; Tools library (mandatory)
+; E0C20000
+8440540306.LGN
+; Graphical server (mandatory)
+; E0C82000
+8440560306.LGN
+; Data abstract layer thunder II and III (<b>mandatory</b>)
+8205320007.LGN
+; Graphical driver thunder II (<b>mandatory</b>)
+8203710208.DGN
+; Image JPEG decoder (optional), Dependencies LIBJPG DLL
+; E0CAB000
+8443040306.LGN
+; LIBPNG DLL (optional)
+; E0CA6000
+8443030306.LGN
+; Image PNG decoder (optional), Dependencies LIBPNG DLL and ZLIB DLL
+; E0C8C000
+8443010306.LGN
+; ZLIB DLL (optional)
+; E0C99000
+8443020306.LGN
+; Image GIF decoder (optional), Dependencies LIBGIF DLL
+; E0CC5000
+8443060306.LGN
+; LIBGIF DLL (optional)
+; E0CD2000
+8443070306.LGN
+; Image BMP decoder (optional)
+; E0CDF000
+8443080306.LGN
+; LIBJPG DLL (optional)
+; E0CB8000
+8443050306.LGN

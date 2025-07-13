@@ -1,0 +1,16 @@
+Bin*
+BuildFiles*
+Obj*
+.links
+Debug
+Release
+*.user
+*.ncb
+bin
+*.xsx
+.*.bak*
+*.exe*
+_UpgradeReport_Files
+ipch
+GraphicLib.opensdf
+GraphicLib.sdf

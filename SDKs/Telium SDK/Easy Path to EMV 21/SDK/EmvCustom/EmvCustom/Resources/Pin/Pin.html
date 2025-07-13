@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+    
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>Custom EMV Pin Code message</title> 
+  <link href="../Global/Global.css" rel="stylesheet" type="text/css"> 
+  <link href="Pin.css" rel="stylesheet" type="text/css">
+  
+  
+    
+  <script type="text/javascript" src="../Global/Global.js"></script>
+  <script type="text/javascript" src="Pin.js"></script>
+
+  <style>
+    .WarningLine { background-color:white; color:black; margin:0px; padding:0px; font-size:14pt; width:100%; text-align:center; }
+  </style>
+
+  </head>
+
+<body onload="GlobalInit();PinInit();" onkeypress="return(KeyPressed(event));">
+
+  <div id="Container">
+  
+    <div id="Header">
+      <table class="Header" id="HeaderTable" cellpadding="0" cellspacing="0">
+        <tr>          
+          <td id="CHeader" class="Header"></td>          
+        </tr>
+      </table>
+    </div>
+
+    <div id="Content">
+        <table id="ContentTable" cellpadding="0" cellspacing="0">
+        <tr>
+          <td id="Cell1" class="Cells"> <?tpl PINASK ?>
+          </td>          
+        </tr>
+        <tr>
+          <td id="Cell2" class="Cells">
+            <?tpl PIN ?>
+          </td>          
+        </tr>  
+        <tr>
+          <td id="Cell3" class="Cells"> <p class="WarningLine"><?tpl PINDESC ?></p>
+          </td>          
+        </tr>          
+      </table>
+    
+    </div> 
+    
+  <!--  <table class="Footer" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="Footer" id="FLeft"></td>
+        <td class="Footer" id="FCenter"></td>
+        <td class="Footer" id="FRight"></td>
+      </tr>
+    </table> -->
+
+  </div>  
+
+</body>
+
+</html>
+ 

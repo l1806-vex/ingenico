@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumExportLib version="0.1"?><?ingedev version="7.18.0.3"?><projectDescription binaryName="EP2Dev_PAR" name="EP2Dev_PAR" projectType="exportedLib">
+<version value="1.0.0"/>
+<mode value="release"/>
+<configs>
+<config name="GNU_ARM_DEBUG" toolchain="gnuArm4"/>
+<config name="GNU_ARM_RELEASE" toolchain="gnuArm4"/>
+</configs>
+<lib_incs>
+<lib_inc value="Inc\ExpInc"/>
+</lib_incs>
+</projectDescription>

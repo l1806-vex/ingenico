@@ -1,0 +1,4 @@
+"The Bluetooth® word mark and logos are registered trademarks owned by
+Bluetooth SIG, Inc. and any use of such marks by Ingenico is under
+license. Other trademarks and trade names are those of their
+respective owners."

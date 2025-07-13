@@ -1,0 +1,170 @@
+<default-variables>
+    <variable name="gma.event.subscribed" type="" format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="oebr.connection.endstate" type="" format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="card.pin.array" type="integer" format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="card.emv.config" type="integer" format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="card.emv.terminal.type" type="opaque" format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="card.emv.terminal.caps" type="opaque" format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="card.emv.terminal.add_caps" type="opaque"
+        format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="card.emv.terminal.pan_check_aid_list" type="string"
+        format="">
+        <documentation>EMV pan check list</documentation>
+    </variable>
+    <variable name="oebr.posts_print_mode" type="" format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="oebr.indicators" type="string" format="">
+        <documentation>
+            "none" - nowhere; "default" - default configuration: radio
+            indicator -> "top-left",craddle battery, external power
+            &amp; battery -> "top-right"; "A-left" "A-middle" "A-right"
+            where A = {"top", "bottom"} "B-top" "B-middle" "B-bottom"
+            where B = {"right", "left"}
+        </documentation>
+    </variable>
+    <variable name="ppp.phone" type="string" format="">
+        <documentation>Phone number</documentation>
+    </variable>
+
+    <variable name="ppp.login" type="string" format="">
+        <documentation>Login</documentation>
+    </variable>
+
+    <variable name="ppp.password" type="string" format="">
+        <documentation>Password</documentation>
+    </variable>
+
+    <variable name="ppp.retries" type="integer" format="">
+        <documentation>Number of retries</documentation>
+    </variable>
+
+    <variable name="ppp.conn_timeout" type="integer" format="">
+        <documentation>Connection timeout</documentation>
+    </variable>
+
+    <variable name="ppp.country_code" type="" format="">
+        <documentation>
+            Possible values: auto, usa, canada, russia, france, uk
+        </documentation>
+    </variable>
+
+    <variable name="ppp.dialtype" type="" format="">
+        <documentation>Possible values: tone, pulse</documentation>
+    </variable>
+
+    <variable name="ppp.authtype" type="string" format="">
+        <documentation>
+            Possible values: auto, pap, chap, mschap, none
+        </documentation>
+    </variable>
+
+    <variable name="ppp.modem.protocol" type="" format="">
+        <documentation>
+            Possible values: auto, v22bis, v32, v32bis, v34, v90
+        </documentation>
+    </variable>
+
+    <variable name="ppp.modem.correction" type="" format="">
+        <documentation>Possible values: auto, none</documentation>
+    </variable>
+
+    <variable name="ppp.modem.compression" type="" format="">
+        <documentation>Possible values: auto, none</documentation>
+    </variable>
+
+    <variable name="ppp.modem.min_speed" type="" format="">
+        <documentation>
+            Possible values: auto, 1200, 2400, 4800, 9600, 14400, 21600,
+            24000, 26400, 28800, 31200, 33600, 34000, 36000, 56000
+        </documentation>
+    </variable>
+
+    <variable name="ppp.modem.max_speed" type="" format="">
+        <documentation>
+            Possible values: auto, 1200, 2400, 4800, 9600, 14400, 21600,
+            24000, 26400, 28800, 31200, 33600, 34000, 36000, 56000
+        </documentation>
+    </variable>
+    <variable name="audio.volume" type="integer" format="">
+        <documentation>Audio volume level 0-100</documentation>
+    </variable>
+
+    <variable name="audio.mute" type="string" format="">
+        <documentation>Mute on|off</documentation>
+    </variable>
+
+    <variable name="audio.any_key" type="string" format="">
+        <documentation>Signal for any keypress</documentation>
+    </variable>
+
+    <variable name="audio.enter_key" type="string" format="">
+        <documentation>Signal for enter key</documentation>
+    </variable>
+
+    <variable name="audio.clear_key" type="string" format="">
+        <documentation>Signal for clear key</documentation>
+    </variable>
+
+    <variable name="audio.cancel_key" type="string" format="">
+        <documentation>Signal for cancel key</documentation>
+    </variable>
+
+    <variable name="audio.paper_feed_key" type="string" format="">
+        <documentation>Signal when no paper</documentation>
+    </variable>
+
+    <variable name="audio.emv_insert" type="string" format="">
+        <documentation>Signal on EMV card insertion</documentation>
+    </variable>
+
+    <variable name="audio.emv_remove" type="string" format="">
+        <documentation>Signal on EMV card removal</documentation>
+    </variable>
+
+    <variable name="audio.swipe" type="string" format="">
+        <documentation>Signal on magnetic card swipe</documentation>
+    </variable>
+
+    <variable name="audio.swipe_failed" type="string" format="">
+        <documentation>Signal when swipe failed</documentation>
+    </variable>
+
+    <variable name="audio.barcode_read" type="string" format="">
+        <documentation>Signal on barcode scanner read</documentation>
+    </variable>
+
+    <variable name="audio.barcode_failed" type="string" format="">
+        <documentation>
+            Signal when barcode scanner reading failed
+        </documentation>
+    </variable>
+    <variable name="oebr.beep" type="" format="">
+        <documentation></documentation>
+    </variable>
+    <variable name="cfgm.scan.interval" type="integer" format="">
+        <documentation>
+            scan interval has been set to 1 sec according to management
+            decision for keeping cfgm syncronization at the each
+            connection to OEGW
+        </documentation>
+    </variable>
+    <variable name="oebr.languages" type="" format="">
+        <documentation></documentation>
+    </variable>
+</default-variables>
+

@@ -1,0 +1,30 @@
+; command line parameters (example) 
+; 2,C:\Program Files\TELIUM Tools\SST30\cmdmode.prm,12345678
+
+[SST]
+ReaderName=Gemplus GemPC410 0
+;ReaderName=Gemplus GemPC430 0
+;ReaderName=Gemplus USB Smart Card Reader 0
+CertificateSchemaDir=C:\Program Files\TELIUM Tools\SST30\certificate
+CertificateAppliDir=C:\Program Files\TELIUM Tools\SST30\certificate
+SignedSchemaDir=C:\Program Files\TELIUM Tools\SST30\Signed Schemes
+ParametersDir=C:\Program Files\TELIUM Tools\SST30\Prm Files
+DestinationDir=C:\Program Files\TELIUM Tools\SST30\Destination
+ApplicationDir=C:\Program Files\TELIUM Tools\SST30\test
+TempDir=C:\Program Files\TELIUM Tools\SST30\Temp
+
+[Schemas]
+NbSchemas=1
+;Schema1=C:\Program Files\TELIUM Tools\SST30\test\schemafork.bin
+Schema1=C:\Program Files\TELIUM Tools\SST30\test\coupure.mot
+CertificateFile=mockup.V03
+
+[Application]
+ParameterFile=param_sample.txt
+CertificateFile=mockup.V03
+ApplicationFile=testdllppr.mot
+CatalogFileExtension=30
+
+[Error]
+Code=14
+msg=Temporary directory not existing. Verify 'TempDir' section in the parameter file

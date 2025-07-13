@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<extensions>
+   <tocOrder>
+      <category id="com.ingenico.ingedev.help"/>
+      <category id="com.ingenico.ingedev.teliumHelp"/>
+      <category id="com.ingenico.ingedev.u32Help"/>
+      <category id="com.ingenico.ingedev.u32ApiDoc"/>
+      <category id="com.ingenico.ingedev.gmaApiDoc"/>
+   </tocOrder>
+</extensions>

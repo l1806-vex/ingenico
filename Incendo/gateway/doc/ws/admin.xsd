@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ingenico.com/ns/admin/data"
+           xmlns:common="http://ingenico.com/ns/common/data" targetNamespace="http://ingenico.com/ns/admin/data">
+    <xs:annotation>
+        <xs:documentation>
+            Schema definition for data types required to administer the oegw
+        </xs:documentation>
+    </xs:annotation>
+    <xs:annotation>
+        <xs:documentation>
+            ================== Imported Names ====================================
+        </xs:documentation>
+    </xs:annotation>
+    <xs:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+
+    <xs:element name="UserGroup" type="tns:UserGroup">
+        <xs:annotation>
+            <xs:documentation>
+                This entity provides user group info
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:simpleType name="UserGroup.id">
+        <xs:annotation>
+            <xs:documentation>
+                User group identification number 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:long"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="UserGroup.name">
+        <xs:annotation>
+            <xs:documentation>
+                Name of user group
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="UserGroup.description">
+        <xs:annotation>
+            <xs:documentation>
+                Small description of user group, what group is for
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="UserGroup">
+        <xs:annotation>
+            <xs:documentation>
+                This entity provides user group info
+                There is user management policy that introduces users and user groups:
+                - User might be member of any group
+                - User can be member of only one group
+                - There are 4 predefined permissions: Admin, OEMM, OEGWMM, CFGM
+                Having the permission means have a rights to do edit, insert and update actions
+                Not having permissions means having view access
+                - There are a few predefined user groups
+                - There is predefined user 'admin' 
+                New groups can be added
+                New users can be added
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="tns:UserGroup.id" use="optional"/>
+        <xs:attribute name="name" type="tns:UserGroup.name" use="required"/>
+        <xs:attribute name="descr" type="tns:UserGroup.description" use="required"/>                    
+        <xs:attribute name="serviceAllowed" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    flag indicating that Service module access is granted
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="reportingAllowed" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    flag indicating that Reporting module access is granted
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="cfgAllowed" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    flag indicating that CFGM module access is granted
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="emmAllowed" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    flag indicating that EMM module access is granted
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="oegwmmAllowed" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    flag indicating that OEGW module access is granted
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+
+    <xs:element name="User" type="tns:User"/>
+
+    <xs:simpleType name="User.id">
+        <xs:annotation>
+            <xs:documentation>
+                User identification number
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:long"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="User.name">
+        <xs:annotation>
+            <xs:documentation>
+                User name, just like Peter Smith
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="User.login">
+        <xs:annotation>
+            <xs:documentation>
+                User login, used to access the system
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="User.groupName">
+        <xs:annotation>
+            <xs:documentation>
+                user group the user is related to, otherwise empty
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="tns:UserGroup.name"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="User.password">
+        <xs:annotation>
+            <xs:documentation>
+                password used in authentication in pair with login
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="User.encryptedPassword">
+        <xs:annotation>
+            <xs:documentation>
+                Password encrypted with SHA1
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="User.status">
+        <xs:annotation>
+            <xs:documentation>
+                User status. There are the followin statuses available:
+                'E' - enabled
+                'L' - locked
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="User">
+        <xs:annotation>
+            <xs:documentation>
+                Initial info regarding user groups and users can be found in documentation for UserGroup type
+                User has id, name, login, group name the user is related to (or empty if no group),
+                login, password used for authentication
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="tns:User.id" use="optional"/>
+
+        <xs:attribute name="name" type="tns:User.name" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    user name
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="login" type="tns:User.login" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    user login
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="userGroupName" type="tns:User.groupName" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    user login
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="password" type="tns:User.password" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    user password
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="encryptedPasswd" type="tns:User.encryptedPassword" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    encrypted user password
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="passwordLastChanged" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    date when the password was last changed
+                    According to security policy user must change password each 90 days
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="status" type="tns:User.status" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    user status - can be used to indicate if the user is blocked, active etc
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+
+    <xs:element name="Users" type="tns:Users"/>
+
+    <xs:complexType name="Users">
+        <xs:annotation>
+            <xs:documentation>
+                List of users, it could be empty
+                This list used in query results when querying users
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="user" type="tns:User" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="UserGroups" type="tns:UserGroups"/>
+
+    <xs:complexType name="UserGroups">
+        <xs:annotation>
+            <xs:documentation>
+                List of groups, it could be empty
+                This list used in query results when querying groups
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="userGroup" type="tns:UserGroup" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:element name="UserAuthentication" type="tns:UserAuthentication"/>
+
+    <xs:complexType name="UserAuthentication">
+        <xs:annotation>
+            <xs:documentation>
+                This entity provides user authentication info
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="valid" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Top level valid statement i.e. true, user has some access to system, false, no access
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="statusCode" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Code which gives the caller detailed information on users status ( e.g. why the user is invalid)
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="statusMessage" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Textual (English) explaination of the status code, which caller may optionally use for display
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="session" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    unique session id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="serviceAccess" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    does the user have access to the service module
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="reportingAccess" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    does the user have access to the reporting module
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="configAccess" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    does the user have access to the config module
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="emmAccess" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    does the user have access to the emm module
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="oegwmmAccess" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    does the user have access to the oegwmm module
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="bulkAccess" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    does the user have access to the bulk processing module
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

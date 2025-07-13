@@ -1,0 +1,16 @@
+List of supported USB VID/PID:
+- VID_0B00&PID_0060: "Ingenico iPP3xx/iPP4xx"
+- VID_0B00&PID_0061: "Ingenico iSC350"
+- VID_0B00&PID_0062: "Ingenico iSC2xx"
+- VID_0B00&PID_0063: "Ingenico iSC4xx"
+- VID_0B00&PID_0066: "Ingenico iCT2xx"
+- VID_0B00&PID_0052: "Ingenico Move5000"
+- VID_0B00&PID_0053: "Ingenico Move3xxx"
+- VID_0B00&PID_0054: "Ingenico Desk3xxx"
+- VID_0B00&PID_0055: "Ingenico iHT4"
+- VID_0B00&PID_0056: "Ingenico iHT5"
+- VID_0B00&PID_0057: "Ingenico iST1xx/iUC1xx/iUP250"
+- VID_0B00&PID_0080: "Ingenico Desk5000"
+- VID_0B00&PID_0081: "Ingenico Lane5000"
+
+Moreover, all Telium products identified on the USB bus with the VID:0x079B and PID:0x0028 are supported by the Jungo Driver too.

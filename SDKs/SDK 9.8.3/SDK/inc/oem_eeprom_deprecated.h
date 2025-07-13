@@ -1,0 +1,23 @@
+/*! @addtogroup KSFAM_IOSF
+	* @{
+ */ 
+
+#ifndef OEM_EEPROM_H
+#define OEM_EEPROM_H
+
+#ifdef _DEPRECATED_EEPROM_SDK96_
+
+/*
+======================================================================
+					List of Defines
+======================================================================
+*/
+
+#define EEPROM_PROG_START     0x8001		
+
+#endif
+
+#endif
+/*! @}  */ 
+
+

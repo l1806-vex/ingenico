@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui.intro
+Bundle-Vendor: Ingenico
+Bundle-Version: 7.16.0.3
+Bundle-Name: U32 Development
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ingenico.ingedev.u32;singleton:=true
+
+

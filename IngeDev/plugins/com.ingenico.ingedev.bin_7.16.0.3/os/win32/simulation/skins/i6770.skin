@@ -1,0 +1,19 @@
+; Lines beginning with ';' are commentaries
+
+; Same kernel as 6500!!
+KernelID=6500
+
+TerminalID=6770
+BmpPathName=i6770.bmp
+MaskPathName=i6770_mask.bmp
+BmpScreenWidth=950
+ScreenUpperLeftCorner=409, 387
+ScreenRealSizePixels=320, 240
+KeyboardId=0
+PrinterNbCharsPerLine=24
+
+; Type = Standard or Touch
+ScreenType=Touch
+TouchRealSizePixels=2048,1536
+
+ScreenNbBitsPerPixel=8

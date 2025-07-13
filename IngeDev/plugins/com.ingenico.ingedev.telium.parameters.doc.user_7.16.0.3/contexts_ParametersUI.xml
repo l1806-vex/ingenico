@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+    <!-- Actions -->
+    <context id="new_ingestate_parameter_file_wizard">
+        <description>This wizard helps you to create a new IngEstate  Parameter Management Template file in the workspace.</description>
+        <topic label="Create a new IngEstate Parameter file" href="html/Create_a_new_IngeState_Parameter_file.htm"/>
+    </context>
+</contexts>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+  "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+
+<web-app>
+  <mime-mapping>
+    <extension>tml</extension>
+    <mime-type>text/tml</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>iml</extension>
+    <mime-type>image/lib</mime-type>
+  </mime-mapping>
+
+  <context-param>
+    <param-name>expiry</param-name>
+    <param-value>20</param-value>
+  </context-param>
+
+  <!-- param-value may be "none", "screen" or name of file to save request. Empty or missing param is considered "none" -->
+  <context-param>
+    <param-name>save-request</param-name>
+    <param-value>no</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>content-type</param-name>
+    <param-value>text/xml</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>authcode</param-name>
+    <param-value>000012345</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>actioncode</param-name>
+    <param-value>0000</param-value>
+  </context-param>
+
+        <servlet>
+                <servlet-name>transservlet</servlet-name>
+                <display-name>Transaction Servlet</display-name>
+                <servlet-class>
+                        com.ingenico.trans.servlet.TransServlet
+                </servlet-class>
+                <init-param>
+                        <param-name>server-environment</param-name>
+                        <param-value>tomcat</param-value>
+                </init-param>
+                <load-on-startup>0</load-on-startup>
+        </servlet>
+
+        <servlet-mapping>
+                <servlet-name>transservlet</servlet-name>
+                <url-pattern>/transservlet</url-pattern>
+        </servlet-mapping>
+
+</web-app>

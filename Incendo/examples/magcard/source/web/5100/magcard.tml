@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<tml xmlns="http://www.ingenico.com/tml">
+
+<!-- Example of simple TML application-->
+
+    <head>
+        <defaults menu="idle://idle.tml" cancel="#init_prompt"/>
+    </head>
+
+    <!-- Variable for storing result of pam_test -->
+    <vardcl name="pam.result" type="string" perms="rwx--"/>
+    <vardcl name="pam.error_reason" type="string" perms="rwx--"/>
+    <!-- transaction id -->
+    <vardcl name="transid" type="integer" perms="rw---"/>
+
+    <!-- Initial screen -->
+    <screen id="init_prompt" class="c_center" cancel="idle://idle.tml" next="#read_amount">
+        <tform>
+            <baddata class="c_center">
+                <table border="2" height="100%" width="100%"><tr><td align="center" valign="middle">
+                    <getvar name="err.baddata_reason"/>
+                </td></tr></table>
+            </baddata>
+            <card parser="mag" parser_params="read_data"/>
+            <prompt>
+                <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                    OpenEstate MAGCARD 3.1.5.0-RC4<br/>
+                    Mag Cards Processing Example<br/>
+                    Please Swipe Card
+                </td></tr></table>
+            </prompt>
+        </tform>
+    </screen>
+
+    <!-- Read the transaction data. Only amount is read (transaction type)
+           and possibly other amount should be read in real application -->
+    <screen id="read_amount" next="#mag_rm">
+        <!-- Increase transaction counter -->
+        <setvar name="transid" lo="tmlvar:oebr.unique_id"/>
+        <display>
+                   <form>
+                <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                    Amount:<br/><input alt="Amount:" type="number" name="payment.amount" size="10" format="^*0.00"/>
+                </td></tr></table>
+            </form>
+        </display>
+    </screen>
+
+    <!-- The parser should:
+             analyse amount and transaction type;
+             analyse previous submission attempt ("oebr.econn" TML value);
+             update "card.parser.verdict" variable;
+             fill "card.parser.reject_reason" variable, if necessary.
+
+         If the parser recommends offline transaction, it should
+         take into account the transaction amount (for example, add it to
+         the sum, which is compared with the floor limit during Risk Management).
+
+         When postponed submits are transmitted to the server, the HTTP
+         client informs the parser about it.
+      -->
+    <screen id="mag_rm">
+        <next uri="#mag_submit">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="#reject_trans"/>
+        </next>
+        <tform>
+            <card parser="mag" parser_params="risk_mgmt"/>
+        </tform>
+    </screen>
+
+    <!-- Submit data to the server for further processing -->
+    <screen id="mag_submit" next="#receipt">
+        <setvar name="oebr.submit_mode" lo="tmlvar:card.parser.verdict"/>
+        <submit tgt="/authtxn" econn="#check_err">
+            <getvar name="card.parser.type"/>
+            <getvar name="card.cardholder_name"/>
+            <getvar name="card.pan"/>
+            <getvar name="card.issuer_name"/>
+            <getvar name="card.issue_number"/>
+            <getvar name="card.scheme"/>
+            <getvar name="card.effective_date"/>
+            <getvar name="card.expiry_date"/>
+            <getvar name="card.mag.iso2_track"/>
+            <getvar name="transid"/>
+            <getvar name="payment.amount"/>
+        </submit>
+    </screen>
+
+    <!-- Check for offline transaction with full pool and connection error -->
+    <screen id="check_err">
+        <next uri="#mag_rm">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="offline" uri="#pool_full"/>
+            <variant lo="tmlvar:oebr.submit_mode" op="equal" ro="offline" uri="#pool_full"/>
+        </next>
+    </screen>
+
+    <screen id="pool_full" class="c_center" next="#void_trans">
+        <display>
+            <table height="100%" width="100%">
+                <tr><td align="center" valign="middle">
+                    Transactions offline pool is full and connection to server fails. 
+                    Transaction will be rejected.
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+
+    <!-- Receipt to be printed. The example is obviously incomplete. -->
+    <screen id="receipt" next="#receipt_int">
+        <display>
+            <table height="100%" width="100%">
+                <tr><td align="center" valign="middle">
+                    Print receipt on external printer? <br/>
+                    <a href="#receipt_ext">Yes</a>
+                    <a href="#receipt_int">No</a>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+
+    <!-- Receipt to be printed. The example is obviously incomplete. -->
+    <screen id="receipt_int" next="#compl_trans">
+        <print>
+            <table>
+                <tr><td>Date:</td><td><getvar name="terminal.datetime"/></td></tr>
+                <tr><td>Card:</td><td><getvar name="card.pan" format="n4n#*n4"/></td></tr>
+                <tr><td>Transaction ID:</td><td><getvar name="transid"/></td></tr>
+                <tr><td>Amount:</td><td><getvar name="payment.amount" format="^*0.00"/></td></tr>
+            </table>
+            <br/>
+            ----------------------------------------------------------------
+            <br/><br/><br/>
+        </print>
+    </screen>
+
+    <!-- Receipt to be printed on external printer. -->
+    <screen id="receipt_ext">
+        <setvar name="pam.result" lo="error"/>
+        <setvar name="pam.error_reason" lo="No reply from external printer"/>
+        <setvar name="oebr.3rdparty.app_name" lo="GB000400_Prn"/>
+        <setvar name="oebr.3rdparty.var_list" lo="terminal.datetime;card.pan;transid;payment.amount"/>
+
+        <next uri="#rec_ext_ok">
+            <variant lo="tmlvar:pam.result" op="equal" ro="error" uri="#rec_ext_er"/>
+        </next>
+
+        <tform>
+            <baddata class="c_center">
+                <table border="2" height="100%" width="100%">
+                    <tr><td align="center" valign="middle">
+                        <getvar name="err.baddata_reason"/>
+                    </td></tr>
+                </table>
+            </baddata>
+
+            <card parser="pam" parser_params="read_data"/>
+
+            <prompt>
+                <table height="100%" width="100%">
+                    <tr><td align="center" valign="middle">
+                        Printing ...<br/>
+                    </td></tr>
+                </table>
+            </prompt>
+        </tform>
+    </screen>
+
+    <!-- Receipt printing on external printer error. -->
+    <screen id="rec_ext_er" next="#compl_trans">
+        <display>
+            <table height="100%" width="100%">
+                <tr><td align="center" valign="middle">
+                    Error while printing:<br/>
+                    <getvar name="pam.error_reason"/><br/>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+
+    <!-- Receipt printed on external printer successful. -->
+    <screen id="rec_ext_ok" next="#compl_trans">
+        <display>
+            <table height="100%" width="100%">
+                <tr><td align="center" valign="middle">
+                    Printed ok<br/>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+
+    <!-- Message to be rendered to describe transaction rejection reason -->
+    <screen id="reject_trans" class="c_center" next="#void_trans">
+        <display>
+            <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                <getvar name="card.parser.reject_reason"/>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!-- Message to be rendered to confirm transaction rejection or canceling -->
+    <screen id="void_trans" class="c_center" timeout="1" next="#init_prompt">
+        <display>
+            <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                Transaction Declined
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!-- Message to be rendered to confirm successful transaction completion -->
+    <screen id="compl_trans" class="c_center" timeout="1" next="#init_prompt">
+        <display>
+            <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                Transaction Completed
+            </td></tr></table>
+        </display>
+    </screen>
+
+</tml>
+
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

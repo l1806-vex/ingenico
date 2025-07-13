@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.co
+ re.resources,org.eclipse.cdt.core,com.ingenico.ingedev.telium.core,co
+ m.ingenico.ingedev.generic.core,com.ingenico.ingedev.generic.ui,com.i
+ ngenico.ingedev.telium.ui
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 7.18.0.3
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-Activator: com.ingenico.ingedev.telium.build.signature.sat.Acti
+ vator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ingenico.ingedev.telium.build.signature.sat;s
+ ingleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

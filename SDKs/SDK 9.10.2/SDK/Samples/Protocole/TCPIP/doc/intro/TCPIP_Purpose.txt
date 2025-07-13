@@ -1,0 +1,17 @@
+ /** \page Purpose Purpose of the Sample
+
+The TCP/IP sample application goal is to demonstrate the use of the following SDK functions:
+*
+* - \b socket - creates an endpoint for communication and returns its descriptor
+* - \b connect - connects the socket to the address specified
+* - \b accept - extracts the first connection request on the queue of pending connections, creates a new socket with the same properties of socket, and allocates a new file descriptor for the socket
+* - \b selectsocket - waits for a number of sockets to change status. It allows to monitor multiple descriptors, waiting until one or more of the descriptors become available for some class of I/O operation
+* - \b closesocket - closes an existing socket
+* - \b shutdownsocket - creates an endpoint for communication and returns its descriptor
+* - \b send - used to transmit a message to another transport
+* - \b recv - used to receive messages from a socket
+* - \b bind - assigning a name to a socket
+* - \b listen - specifies the acceptance and the queue of incoming connections
+
+
+  */

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?><?ingedev version="7.18.0.3"?><projectDescription activeConfig="GNU_ARM_DEBUG_434" applicationType="0x5d" binaryName="CHIP0101" dataBinaryFileBaseName="DATA005D" descr="EMV CUSTOM" enableUsingCpp="false" projectFamily="CHIP0101" projectType="APP" useDataFileNamingConvention="true">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="Src\convert.c" parentProject=""/>
+<file generated="false" name="Src\cu_base.c" parentProject=""/>
+<file generated="false" name="Src\cu_batch.c" parentProject=""/>
+<file generated="false" name="Src\cu_black.c" parentProject=""/>
+<file generated="false" name="Src\cu_comm.c" parentProject=""/>
+<file generated="false" name="Src\cu_disk.c" parentProject=""/>
+<file generated="false" name="Src\cu_entry.c" parentProject=""/>
+<file generated="false" name="Src\cu_file.c" parentProject=""/>
+<file generated="false" name="Src\cu_lang.c" parentProject=""/>
+<file generated="false" name="Src\cu_logos.c" parentProject=""/>
+<file generated="false" name="Src\cu_mess.c" parentProject=""/>
+<file generated="false" name="Src\cu_more.c" parentProject=""/>
+<file generated="false" name="Src\cu_param.c" parentProject=""/>
+<file generated="false" name="Src\cu_pin.c" parentProject=""/>
+<file generated="false" name="Src\cu_pinen.c" parentProject=""/>
+<file generated="false" name="Src\cu_receipt.c" parentProject=""/>
+<file generated="false" name="Src\cu_serv.c" parentProject=""/>
+<file generated="false" name="Src\cu_str.c" parentProject=""/>
+<file generated="false" name="Src\cu_term.c" parentProject=""/>
+<file generated="false" name="Src\cu_trfile.c" parentProject=""/>
+<file generated="false" name="Src\gestion_param.c" parentProject=""/>
+<file generated="false" name="Src\Globals.c" parentProject=""/>
+<file generated="false" name="Src\Gpinpad.c" parentProject=""/>
+<file generated="false" name="Src\MyTlvTree.c" parentProject=""/>
+<file generated="false" name="Src\servcomm.c" parentProject=""/>
+<file generated="false" name="Src\TlvTreeDel.c" parentProject=""/>
+<file generated="false" name="Src\TrackIac.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="false"/>
+<archiveFilesVirtualFolder name="Archive Files">
+</archiveFilesVirtualFolder>
+</virtualFolders>
+<configs>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" disassembler="false" enableCPPExceptions="false" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG_343" sign="false" teliumCompatibility="All" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IMG_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SNMP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="WGUI_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="GTL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="libcpatch" package="Telium SDK" version="9.10.0"/>
+<packageLib name="DEL" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="EmvDcInterface" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="EngineInterface" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="UCMC" package="Telium Unattended" version="4.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.0"/>
+<packageDefine package="Easy Path to EMV" version="22.2.0"/>
+<packageDefine package="Telium Unattended" version="4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.0"/>
+<packageInc package="Easy Path to EMV" version="22.2.0"/>
+<packageInc package="Telium Unattended" version="4.0"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="_SECDEL_"/>
+<userDefine value="_USE_DEL_LIB_"/>
+<userDefine value="_UNUSED_"/>
+<userDefine value="_USE_UCM_"/>
+<userDefine value="_TLVTREE_DEBUG_TRACE_"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<packageSchemes>
+<packageScheme name="DEBUGSigned\T1\SchIso9564o.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SchLoadData.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SchutilTlv.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SloadKeyTlv.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvIso9564.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvLoadKey.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvFree.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvIso9564.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvLoadKey.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvFree.sgn" package="Telium SDK" version="9.10.0"/>
+</packageSchemes>
+<externalSchemes/>
+<dataFiles/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" disassembler="false" enableCPPExceptions="false" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG_434" sign="false" teliumCompatibility="All" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IMG_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SNMP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="WGUI_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="GTL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="libcpatch" package="Telium SDK" version="9.10.0"/>
+<packageLib name="DEL" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="EmvDcInterface" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="EngineInterface" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="UCMC" package="Telium Unattended" version="4.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.0"/>
+<packageDefine package="Easy Path to EMV" version="22.2.0"/>
+<packageDefine package="Telium Unattended" version="4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.0"/>
+<packageInc package="Easy Path to EMV" version="22.2.0"/>
+<packageInc package="Telium Unattended" version="4.0"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_DEPRECATED_TRAP_SDK091000_"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="_SECDEL_"/>
+<userDefine value="_USE_DEL_LIB_"/>
+<userDefine value="_UNUSED_"/>
+<userDefine value="_USE_UCM_"/>
+<userDefine value="_TLVTREE_DEBUG_TRACE_"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<packageSchemes>
+<packageScheme name="DEBUGSigned\T1\SchIso9564o.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SchLoadData.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SchutilTlv.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SloadKeyTlv.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvIso9564.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvLoadKey.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvFree.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvIso9564.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvLoadKey.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvFree.sgn" package="Telium SDK" version="9.10.0"/>
+</packageSchemes>
+<externalSchemes/>
+<dataFiles/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE_343" sign="false" teliumCompatibility="All" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IMG_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SNMP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="WGUI_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="GTL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="libcpatch" package="Telium SDK" version="9.10.0"/>
+<packageLib name="DEL" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="EmvDcInterface" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="EngineInterface" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="UCMC" package="Telium Unattended" version="4.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.0"/>
+<packageDefine package="Easy Path to EMV" version="22.2.0"/>
+<packageDefine package="Telium Unattended" version="4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.0"/>
+<packageInc package="Easy Path to EMV" version="22.2.0"/>
+<packageInc package="Telium Unattended" version="4.0"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="_SECDEL_"/>
+<userDefine value="_USE_DEL_LIB_"/>
+<userDefine value="_UNUSED_"/>
+<userDefine value="_USE_UCM_"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<packageSchemes>
+<packageScheme name="DEBUGSigned\T1\SchIso9564o.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SchLoadData.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SchutilTlv.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SloadKeyTlv.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvIso9564.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvLoadKey.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvFree.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvIso9564.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvLoadKey.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvFree.sgn" package="Telium SDK" version="9.10.0"/>
+</packageSchemes>
+<externalSchemes/>
+<dataFiles/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE_434" sign="false" teliumCompatibility="All" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IMG_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SNMP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="WGUI_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="GTL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="libcpatch" package="Telium SDK" version="9.10.0"/>
+<packageLib name="DEL" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="EmvDcInterface" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="EngineInterface" package="Easy Path to EMV" version="22.2.0"/>
+<packageLib name="UCMC" package="Telium Unattended" version="4.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.0"/>
+<packageDefine package="Easy Path to EMV" version="22.2.0"/>
+<packageDefine package="Telium Unattended" version="4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.0"/>
+<packageInc package="Easy Path to EMV" version="22.2.0"/>
+<packageInc package="Telium Unattended" version="4.0"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="_SECDEL_"/>
+<userDefine value="_USE_DEL_LIB_"/>
+<userDefine value="_UNUSED_"/>
+<userDefine value="_USE_UCM_"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<packageSchemes>
+<packageScheme name="DEBUGSigned\T1\SchIso9564o.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SchLoadData.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SchutilTlv.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\SloadKeyTlv.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvIso9564.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvLoadKey.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T1\TlvFree.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvIso9564.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvLoadKey.sgn" package="Telium SDK" version="9.10.0"/>
+<packageScheme name="DEBUGSigned\T2\TlvFree.sgn" package="Telium SDK" version="9.10.0"/>
+</packageSchemes>
+<externalSchemes/>
+<dataFiles/>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

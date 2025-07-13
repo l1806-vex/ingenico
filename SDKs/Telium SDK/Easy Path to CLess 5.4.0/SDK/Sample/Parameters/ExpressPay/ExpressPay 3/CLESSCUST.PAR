@@ -1,0 +1,150 @@
+<?xml version="1.0" standalone="yes" ?>
+<!-- Parameter file for contactless sample application -->
+	
+<tlvtree ver="1.0">
+	
+<node tag="0x0">
+	<node tag="0x9F918801"> 41 4D 45 58 20 46 55 4C 4C </node>		<!-- TAG_SAMPLE_PARAMETERS_LABEL : AMEX FULL -->
+	<node tag="0xBF918800">	<!-- TAG_SAMPLE_AID_PARAMETERS -->
+		<node tag="0x1000">
+			<!-- AID : American Express ExpressPay AID -->
+			<node tag="0x9F06"> A0 00 00 00 25 01 </node>					<!-- TAG_AID_TERMINAL : American Express ExpressPay -->
+			<node tag="0x9F928101"> 00 04 </node>							<!-- TAG_EP_KERNEL_TO_USE : ExpressPay -->
+			<node tag="0x9F928100"> 25 03 00 00 </node>						<!-- TAG_EP_AID_OPTIONS : Partial AID & Zero amount & PPSE -->
+			<node tag="0x9F92810D"> 00 00 00 00 40 00 </node>				<!-- TAG_EP_CLESS_TRANSACTION_LIMIT : 40.00 -->
+			<node tag="0x9F92810E"> 00 00 00 00 30 00 </node>				<!-- TAG_EP_CLESS_CVM_REQUIRED_LIMIT : 30.00 -->
+			<node tag="0x9F92810F"> 00 00 00 00 20 00 </node>				<!-- TAG_EP_CLESS_FLOOR_LIMIT : 20.00 -->
+			<node tag="0x9F1B"> 00 00 27 10 </node>							<!-- TAG_EMV_TERMINAL_FLOOR_LIMIT : 100.00 -->
+			<node tag="0x9F918200"> 00 3C </node>							<!-- TAG_EXPRESSPAY_UNPREDICTABLE_NUMBER_RANGE : 60 -->
+			<node tag="0x9F91820A"> 00 01 00 02 00 03 </node>							<!-- TAG_EXPRESSPAY_INT_TERMINAL_AVN_LIST : 0001 0002 0003 -->
+			<node tag="0x9F918709"> DC 50 84 00 00 </node>					<!-- TAG_EMV_INT_TAC_DEFAULT  -->
+			<node tag="0x9F91870A"> 00 00 00 00 00 </node>					<!-- TAG_EMV_INT_TAC_DENIAL -->
+			<node tag="0x9F91870B"> C4 00 00 00 00 </node>					<!-- TAG_EMV_INT_TAC_ONLINE -->
+			<node tag="0x9F91841D"> 65 6E 66 72 </node>						<!-- TAG_KERNEL_TERMINAL_SUPPORTED_LANGUAGES : en, fr -->		
+			<node tag="0x9F33"> E0 E8 88 </node>							<!-- TAG_EMV_TERMINAL_CAPABILITIES : E0 68 88 (Plaintext Off PIN, PIN Online, Signature and No CVM, SDA and CDA) -->
+      		<node tag="0x9F6D"> C0 </node>									<!-- TAG_EXPRESSPAY_TERMINAL_CAPABILITIES : 00 (ExpressPay 1.0), 40 (ExpressPay 2.0 Magstripe Only), 80 (ExpressPay 2.0 EMV and Magstripe), C0 (ExpressPay Mobile - EMV) -->
+			<node tag="0x9F6E"> F8 F0 00 00 </node>							<!-- TAG_EXPRESSPAY_TERMINAL_TRANSACTION_CAPABILITIES : Contact & Magstripe & EMV Full Online & Mobile -->
+      		<node tag="0x9F91820F">	00 00 27 10 </node> 					<!-- TAG_EXPRESSPAY_FULL_ONLINE_EMV_REMOVAL_TIMEOUT : (4E20=20 sec) (2710=10 sec) (1388=5 sec) -->
+      		<node tag="0x9F918809"> 00 00 0B B8 </node> 					<!-- TAG_SAMPLE_EXPRESSPAY_DOUBLE_TAP_TIME : (BB8=3 sec) (7D0=2 sec) (3E8=1 sec) -->
+    </node>
+		
+	</node> <!-- End node 0xBF918800 : TAG_SAMPLE_AID_PARAMETERS -->
+	
+	
+	<node tag="0xBF918801">	<!-- TAG_SAMPLE_CAKEYS_PARAMETERS -->
+
+		<node tag="0x1000">
+			<node tag="0x9F06"> A0 00 00 00 25 </node>
+			<node tag="0x9F22"> 97 </node>
+			<node tag="0x9F918704"> E178FFE834B4B767AF3C9A511F973D8E 
+									8505C5FCB2D3768075AB7CC946A95578 
+									9955879AAF737407151521996DFA43C5 
+									8E6B130EB1D863B85DC9FFB4050947A2 
+									676AA6A061A4A7AE1EDB0E36A697E87E 
+									037517EB8923136875BA2CA1087CBA7E 
+									C7653E5E28A0C261A033AF27E3A67B64 
+									BBA26956307EC47E674E3F8B722B3AE0 
+									498DB16C7985310D9F3D117300D32B09 </node>
+			<node tag="0x9F918703"> 03 </node>
+			<node tag="0x9F918702"> EB DA 52 2B 63 1B 3E B4 F4 CB FC 
+									06 79 C4 50 13 9D 2B 69 CD </node>
+		</node>
+		<node tag="0x1000">
+			<node tag="0x9F06"> A0 00 00 00 25 </node>
+			<node tag="0x9F22"> 21 </node>
+			<node tag="0x9F918704"> E178FFE834B4B767AF3C9A511F973D8E 
+									8505C5FCB2D3768075AB7CC946A95578 
+									9955879AAF737407151521996DFA43C5 
+									8E6B130EB1D863B85DC9FFB4050947A2 
+									676AA6A061A4A7AE1EDB0E36A697E87E 
+									037517EB8923136875BA2CA1087CBA7E 
+									C7653E5E28A0C261A033AF27E3A67B64 
+									BBA26956307EC47E674E3F8B722B3AE0 
+									498DB16C7985310D9F3D117300D32B09 </node>
+			<node tag="0x9F918703"> 03 </node>
+			<node tag="0x9F918702"> 22C97A1104E83A096E8467F9653859C67C5FB510 </node> <!-- Hash of all CA Key data above -->
+		</node>		
+		
+		<node tag="0x1000">
+			<node tag="0x9F06"> A0 00 00 00 25 </node>
+			<node tag="0x9F22"> 22 </node>									
+			<node tag="0x9F918704"> D31A7094FB221CBA6660FB975AAFEA80
+									DB7BB7EAFD7351E748827AB62D4AEECC
+									FC1787FD47A04699A02DB00D7C382E80
+									E804B35C59434C602389D691B9CCD51E
+									D06BE67A276119C4C10E2E40FC4EDDF9
+									DF39B9B0BDEE8D076E2A012E8A292AF8
+									EFE18553470639C1A032252E0E5748B2
+									5A3F9BA4CFCEE073038B061837F2AC1B
+									04C279640F5BD110A9DC665ED2FA6828
+									BD5D0FE810A892DEE6B0E74CE8863BDE
+									08FD5FD61A0F11FA0D14978D8CED7DD3 </node>
+			<node tag="0x9F918703"> 03 </node>
+			<node tag="0x9F918702"> 7F52A2D404271AEC8C6FFA5E6B11031CDDF7CD5B </node> <!-- Hash of all CA Key data above -->
+		</node>
+	
+	</node> <!-- End node 0xBF918801 : TAG_SAMPLE_CAKEYS_PARAMETERS-->
+	
+	
+	<node tag="0xBF918802">	<!-- TAG_SAMPLE_CAREVOK_PARAMETERS -->
+	</node> <!-- End node 0xBF918402 : TAG_SAMPLE_CAREVOK_PARAMETERS -->
+	
+	
+	<node tag="0xBF918803">	<!-- TAG_SAMPLE_ICS_PARAMETERS -->
+	
+		<node tag="0x1000">
+			<!-- ICS0 values -->
+				<node tag="0x9F928210"> 03 00 00 00 </node>								<!-- TAG_GENERIC_DETECTION_TYPE -->
+				<node tag="0x9F928212"> 00 00 17 70 </node>								<!-- TAG_GENERIC_DETECTION_GLOBAL_TIMEOUT : 6000 -->
+				<node tag="0x9F928214"> 01 </node>										<!-- TAG_GENERIC_DETECTION_NB_CARDS_TO_DETECT -->
+		
+				<!-- Application Independent Data -->
+				<node tag="0x9F1A"> 06 20 </node>										<!-- TAG_EMV_TERMINAL_COUNTRY_CODE -->
+				<node tag="0x9F40"> 60 00 F0 B0 01 </node>								<!-- TAG_EMV_ADD_TERMINAL_CAPABILITIES -->
+				<node tag="0x9F35"> 22 </node>											<!-- TAG_EMV_TERMINAL_TYPE -->
+		
+				<!-- Application Dependent Data -->
+				<node tag="0x9F01"> 01 23 45 67 89 01 </node>							<!-- TAG_EMV_ACQUIRER_IDENTIFIER -->
+				<node tag="0x9F15"> 93 11 </node>										<!-- TAG_EMV_MERCHANT_CATEGORY_CODE -->
+			<node tag="0x9F16"> 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 </node>	<!-- TAG_EMV_MERCHANT_IDENTIFIER -->
+			<node tag="0x9F1C"> 87 65 43 21 87 65 43 21 </node> 						<!-- TAG_EMV_TERMINAL_IDENTIFICATION -->
+		</node> <!-- End node 1000 -->
+	</node> <!-- End node 0xBF918403 : TAG_SAMPLE_ICS_PARAMETERS-->
+	
+	
+	
+	<node tag="0xBF918804">	<!-- TAG_SAMPLE_SPECIFIC_PARAMETERS -->
+	
+		<!-- JCB Specific parameters -->
+		<node tag="0x1000">
+			<node tag="0x9F928101"> 00 01 </node>					<!-- TAG_EP_KERNEL_TO_USE : JCB -->
+		</node> <!-- End node 1000 -->
+	
+		<!-- PAYPASS Specific parameters -->
+		<node tag="0x1000">
+			<node tag="0x9F928101"> 00 02 </node>					<!-- TAG_EP_KERNEL_TO_USE : PAYPASS -->
+		</node> <!-- End node 1000 -->
+	
+		<!-- VISA Specific parameters -->
+		<node tag="0x1000">
+			<node tag="0x9F928101"> 00 03 </node>					<!-- TAG_EP_KERNEL_TO_USE : VISA -->
+		</node> <!-- End node 1000 -->
+
+		<!-- EXPRESSPAY Specific parameters -->
+		<node tag="0x1000">
+			<node tag="0x9F928101"> 00 04 </node>					<!-- TAG_EP_KERNEL_TO_USE : EXPRESSPAY -->
+		</node> <!-- End node 1000 -->
+	
+		<!-- EMVCO Specific parameters -->
+		<node tag="0x1000">
+			<node tag="0x9F928101"> 01 01 </node>					<!-- TAG_EP_KERNEL_TO_USE : EMVCO -->
+		</node> <!-- End node 1000 -->
+	
+	<node tag="0x9F918802" format="ascii"> "EUR9782,.1" </node>		<!-- TAG_SAMPLE_GENERIC_MONEY_EXTENDED EUR9782,.1 -->
+	<node tag="0x9F918802" format="ascii"> "USD8402,.1" </node>		<!-- TAG_SAMPLE_GENERIC_MONEY_EXTENDED USD8402,.1 -->
+	
+	
+	</node> <!-- End node 0xBF918804 : TAG_SAMPLE_SPECIFIC_PARAMETERS-->
+	
+</node>	 <!-- End node 0 -->
+</tlvtree>

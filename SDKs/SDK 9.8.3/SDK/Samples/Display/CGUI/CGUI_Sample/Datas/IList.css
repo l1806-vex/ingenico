@@ -1,0 +1,111 @@
+
+/* Debug Only : Identify body in PC browser*/
+BODY
+{
+	padding:0px;
+	margin:0px;
+	background-color:silver;
+	background-image:url("Wallpaper.PNG");  
+	background-repeat:no-repeat;
+}
+
+/*A:focus for firefox only*/
+.Select
+{
+	width:70px;
+	height:70px;  
+	margin-left: auto;
+	margin-right: auto;
+	background-image:url("Select2.GIF");
+	background-position:90px 0px;
+	background-repeat:no-repeat;
+}
+
+/*table containing all the icons and description*/
+table#IconTable
+{
+	width:312px;
+	margin:0px;
+	padding:0px;
+	border:none;
+}
+
+/*all the row containing icons*/
+TR.IconRows
+{
+	height:75px;
+}
+
+/*All the cells containing an icon*/
+TD.IconCells
+{
+	width:90px;
+	height:75px;
+	vertical-align:middle;
+	text-align:center;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+
+/*define each icon*/
+TD#CFirst {background-image:url("Horloge.png");}
+TD#CSecond {background-image:url("Tools.png");}
+TD#CThird {background-image:url("PinPad.png");}
+TD#CFourth {background-image:url("Mail.png");}
+TD#CFifth {background-image:url("Trash.png");}
+TD#CSixth {background-image:url("Home.png");}
+
+/*Master container : own all the HTML page*/
+DIV#Container
+{
+	font-family: sans-serif;  
+	width:312px;
+	height:236px;
+	border-color:blue;
+	border-width:0px 4px 4px 4px;
+	border-style:solid;
+	/*overflow:auto;*/
+}
+
+/*Cell containing description text*/
+TD#Description
+{
+	text-align:center;
+	height:20px;
+	font-family: sans-serif;  
+	font-size:14pt;
+	color:white;
+	vertical-align:middle;
+}
+
+
+/* Menu title*/
+P#MenuTitle
+{
+	margin:0px;
+	padding:0px;
+	color:white;
+	background-color:blue;
+	text-align:center;
+	font-weight:bold;
+}
+
+/*Cell containing from App input*/
+TD#FApp
+{	
+	text-align:center;
+	height:30px;
+}
+
+/*Input used to get message from app*/
+#FromApp
+{
+  display:none;
+  text-align:center;
+  border : white 1px solid;
+  background : blue;
+  color : white;
+  width : 260px;
+  font-size:14pt;
+  height : 30px;
+}

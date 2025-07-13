@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?packageDescriptor version="1.0"?>
+
+<package name="Telium Unattended" version="3.3" type="Add On" description="Add On for Unattended">
+    <documents>
+			<documentDirectory name="Documents" includeSubDirs="true"/>
+   </documents>
+   <includeDirectories>
+		<includeDirectory location="SDK/inc" />
+   </includeDirectories>
+   <toolchains>
+		<toolchain id="gnuArm" librariesLocation="SDK/lib_gnu" />
+		<toolchain id="gnuArm4" librariesLocation="SDK/lib_gnu_434" />		
+   </toolchains>
+   <libraries>
+		<library name="AUDIT" description="AUDIT Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="DEXUCS" description="DEXUCS Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="P40" description="P40 Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="UCMC" description="UCMC Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="UCMHOST" description="UCMHOST Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="UCMSTART" description="UCMSTART Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="UCI" description="UCI Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="DDCMP" description="DDCMP Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="GATEWAY" description="GATEWAY Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+			</toolchains>
+		</library>
+	</libraries>          
+	<parameters>
+		<sample name="CAD30CBS" description="CAD30CBS parameters" location="SDK/parameters/CAD30_CBS" />
+		<sample name="CAD30_CBSVENDING" description="CAD30_CBSVENDING parameters" location="SDK/parameters/CAD30_CBSVENDING" />
+		<sample name="CAD30_NODEVICE" description="CAD30_NODEVICE parameters" location="SDK/parameters/CAD30_NODEVICE" />
+		<sample name="CAD30_UPT_CBSVM" description="CAD30_UPT parameters" location="SDK/parameters/CAD30_UPT_CBSVM" />
+		<sample name="CAD30_UPT" description="CAD30_UPT parameters" location="SDK/parameters/CAD30_UPT" />
+		<sample name="CAD30_UPTC" description="CAD30_UPTC parameters" location="SDK/parameters/CAD30_UPTC" />
+		<sample name="CAD30_UPTC_VP" description="CAD30_UPTC parameters" location="SDK/parameters/CAD30_UPTC_VP" />
+		<sample name="CAD30_VPS" description="CAD30_VPS parameters" location="SDK/parameters/CAD30_VPS" />
+		<sample name="CAD30_VS" description="CAD30_VS parameters" location="SDK/parameters/CAD30_VS" />
+		<sample name="CAD30_VS_VPS" description="CAD30_VS parameters" location="SDK/parameters/CAD30_VS_VPS" />
+	</parameters>
+	<defines>
+	    <define id="_EFT30_"/>
+	</defines>
+	<samples>
+		<sample name="audit" description="audit sample" location="SDK/Samples/audit" />
+		<sample name="banking" description="banking sample" location="SDK/Samples/banking" />
+		<sample name="dllhostbanking" description="dllhostbanking sample" location="SDK/Samples/dllhostbanking" />
+		<sample name="vending" description="vending sample" location="SDK/Samples/vending" />
+		<sample name="VendingContactLess" description="VendingContactLess sample" location="SDK/Samples/VendingContactLess" />
+	</samples>
+	<components>
+	</components>
+</package>

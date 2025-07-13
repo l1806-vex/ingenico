@@ -1,0 +1,20 @@
+.c_bold { font-weight: bold;}
+.c_small { font-size: small;}
+.c_large { font-size: large; text-align: left;}
+.c_bold_large { font-weight: bold; font-size: large; text-align: left;}
+.c_bold_large_center { font-weight: bold; font-size: large; text-align: center;}
+.c_bold_red_large { font-weight: bold; font-size: large; text-align: left; color: #FF0000;}
+.c_right { text-align: right;}
+.c_left { text-align: left; }
+.c_center { text-align: center;}
+.c_warn { color: #FF0000; text-align: center; font-weight: bold;}
+.c_href_menu { font-family: helvetica; font-size: large; text-indent: 2%; vertical-align: middle;}
+
+.c_prn { font-size: medium; text-align: left; }
+
+.c_image_middle {vertical-align: middle;}
+
+pre { white-space: pre; }
+
+h1 { font-weight: bold; font-size: large; text-align: left;}
+h2 { font-weight: bold; font-size: medium; text-align: left;}

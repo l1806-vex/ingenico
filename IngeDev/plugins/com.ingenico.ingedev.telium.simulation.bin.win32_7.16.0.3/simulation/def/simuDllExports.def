@@ -1,0 +1,8 @@
+; This file describes the function exported from a DLL.
+EXPORTS
+	SimuLogHN DATA
+	SimuLogAppliFileName DATA
+	StartSimu
+	SetSimuDllPath
+	SetComPort
+	entry

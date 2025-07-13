@@ -1,0 +1,46 @@
+;TELIUM MANAGER INTERNE SPM PROD
+;Header BW
+8443730261.lgn
+;M2OS
+8445920961.agn
+;tmtools
+8446220111.lgn
+;CB2A 
+8445930871.lgn
+;Extension
+8445941061.lgn
+;Graphic Librairy
+8445960781.lgn
+;M2OS Parameters
+8445970861.lgn
+;Entry
+8445980781.lgn
+;Cam/Date Librairy
+8445990861.lgn
+;PSC Protocol
+8446010681.lgn
+;Protocol
+8446030891.lgn
+;Cryptographic librairy
+8446060531.lgn
+;Partage
+8446070681.lgn
+;EMV Selection
+8446080721.lgn
+;IAM
+8446090691.lgn
+;ums
+8446160691.lgn
+;gprs
+8446210821.lgn
+;Hardware cnf
+8446420311.lgn
+;Security Fr T2
+46850342.lgn
+;INGESTATE COMPATIBILITY T2
+47787401.pgn
+;PackM2OS
+8447787401.pgn
+;Telium SDK
+8442291068.pgn
+

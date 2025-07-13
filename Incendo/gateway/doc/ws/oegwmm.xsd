@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program bexs:longs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ingenico.com/ns/oegwmm/data"
+           xmlns:common="http://ingenico.com/ns/common/data" targetNamespace="http://ingenico.com/ns/oegwmm/data">
+    <xs:annotation>
+        <xs:documentation>
+        </xs:documentation>
+    </xs:annotation>
+    <xs:annotation>
+        <xs:documentation>
+            ================== Imported Names ====================================
+        </xs:documentation>
+    </xs:annotation>
+    <xs:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+
+    <xs:simpleType name="SessionSortFieldType">
+        <xs:annotation>
+            <xs:documentation>
+                Types of configurations
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="id"/>
+            <xs:enumeration value="itid"/>
+            <xs:enumeration value="peer"/>
+            <xs:enumeration value="date"/>
+            <xs:enumeration value="status"/>
+            <xs:enumeration value="duration"/>
+            <xs:enumeration value="speed"/>
+            <xs:enumeration value="requests"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="RequestSortFieldType">
+        <xs:annotation>
+            <xs:documentation>
+                Types of configurations
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="id"/>
+            <xs:enumeration value="startdate"/>
+            <xs:enumeration value="uri"/>
+            <xs:enumeration value="duration"/>
+            <xs:enumeration value="status"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SessionStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OnGoing"/>
+            <xs:enumeration value="Completed"/>
+            <xs:enumeration value="ComplWarn"/>
+            <xs:enumeration value="Failed"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="OegwSession" type="tns:OegwSession"/>
+    <xs:complexType name="OegwSession">
+        <xs:annotation>
+            <xs:documentation>
+                This entity provides session info
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="xs:long" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    session id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="itid" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    ingenico terminal id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="peer" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    peer info
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="date" type="xs:long" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    session start date, in millisecinds since 1970, in GMT
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="status" type="tns:SessionStatus" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    session status:
+                    - 'on-going'
+                    - 'completed'
+                    - 'complwarn'
+                    - 'failed'
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="duration" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    session duration
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="speed" type="xs:double" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    session speed
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="compression" type="xs:double" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    session compression
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="istp" type="xs:int" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    session compression
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="auth" type="xs:int" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    session authorization time
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="web" type="xs:int" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    session web access time
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="db" type="xs:int" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    database access time
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="converter" type="xs:int" use="optional"/>
+        <xs:attribute name="parser" type="xs:int" use="optional"/>
+        <xs:attribute name="oegw" type="xs:int" use="optional"/>
+        <xs:attribute name="sumOegw" type="xs:int" use="optional"/>
+        <xs:attribute name="received" type="xs:int" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    size of actually received data
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="serviceName" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    name of the service for billing
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="requests" type="xs:int" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    number of requests
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="Sessions" type="tns:Sessions"/>
+    <xs:complexType name="Sessions">
+        <xs:annotation>
+            <xs:documentation>
+                list of sessions
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="session" type="tns:OegwSession" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SessionIds" type="tns:SessionIds"/>
+    <xs:complexType name="SessionIds">
+        <xs:annotation>
+            <xs:documentation>
+                list of sessions
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SessionRequest" type="tns:SessionRequest"/>
+    <xs:complexType name="SessionRequest">
+        <xs:annotation>
+            <xs:documentation>
+                This entity provides session request info
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="xs:long" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    session request id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="startdate" type="xs:long" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    request start date time, in milleseconds since 1970, GMT
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="uri" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    request uri
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="duration" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    request/reply duration
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="serviceName" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    service name for billing
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="status" type="tns:SessionStatus" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    session status
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="SessionRequests" type="tns:SessionRequests"/>
+    <xs:complexType name="SessionRequests">
+        <xs:annotation>
+            <xs:documentation>
+                list of session requests
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="site" type="tns:SessionRequest" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SessionQuery" type="tns:SessionQuery"/>
+    <xs:complexType name="SessionQuery">
+        <xs:annotation>
+            <xs:documentation>
+                session query params
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="datefrom" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    If specified, only sessions starting before the given date will be included.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="dateto" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    If specified, only sessions ending before the given date will be included.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="status" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    statuses separated by ';'
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="itid" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    itids separated by ';'
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="lastSessionId" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    last session id, need to get new sessions
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="SessionSortList" type="tns:SessionSortList"/>
+    <xs:complexType name="SessionSortList">
+        <xs:annotation>
+            <xs:documentation>
+                list of sortable fields for the session
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="site" type="tns:SessionSortField" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="RequestSortList" type="tns:RequestSortList"/>
+    <xs:complexType name="RequestSortList">
+        <xs:annotation>
+            <xs:documentation>
+                list of sortable fields for the request
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="site" type="tns:RequestSortField" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SessionSortField" type="tns:SessionSortField"/>
+    <xs:complexType name="SessionSortField">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="fieldName" type="tns:SessionSortFieldType" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="sortDirection" type="common:SortDirection" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="RequestSortField">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="fieldName" type="tns:RequestSortFieldType" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="sortDirection" type="common:SortDirection" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="RequestInfo" type="tns:RequestInfo"/>
+    <xs:complexType name="RequestInfo">
+        <xs:annotation>
+            <xs:documentation>request info</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="common:NameValuePairs" minOccurs="0"/>
+            <xs:element name="content" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ReplyInfo" type="tns:ReplyInfo"/>
+    <xs:complexType name="ReplyInfo">
+        <xs:annotation>
+            <xs:documentation>reply info</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="common:NameValuePairs" minOccurs="0"/>
+            <xs:element name="content" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="ActivityLogQuery" type="tns:ActivityLogQuery"/>
+    <xs:complexType name="ActivityLogQuery">
+        <xs:annotation>
+            <xs:documentation>
+                activity log query params
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="xs:long" use="optional"/>
+        <xs:attribute name="startSessionId" type="xs:long" use="optional"/>
+        <xs:attribute name="endSessionId" type="xs:long" use="optional"/>
+
+        <xs:attribute name="startEventTime" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    If specified, only sessions starting before the given date will be included.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="endEventTime" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    If specified, only sessions ending before the given date will be included.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="eventSeverity" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    severities separated by ';'
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="eventStatus" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    statuses separated by ';'
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="source" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:element name="ActivityLog" type="tns:ActivityLog"/>
+    <xs:complexType name="ActivityLog">
+        <xs:annotation>
+            <xs:documentation>
+                activity log
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:attribute name="id" type="xs:long" use="required"/>
+        <xs:attribute name="eventTime" type="xs:dateTime" use="optional"/>
+        <xs:attribute name="sessionId" type="xs:long" use="optional"/>
+        <xs:attribute name="activity" type="xs:string" use="optional"/>
+        <xs:attribute name="eventSeverity" type="xs:string" use="required"/>
+        <xs:attribute name="eventStatus" type="xs:string" use="required"/>
+        <xs:attribute name="eventOriginator" type="xs:string" use="optional"/>
+        <xs:attribute name="eventOriginatorIp" type="xs:string" use="optional"/>
+        <xs:attribute name="sourceComponent" type="xs:string" use="required"/>
+        <xs:attribute name="logMessage" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="ActivityLogSortList" type="tns:ActivityLogSortList"/>
+    <xs:complexType name="ActivityLogSortList">
+        <xs:annotation>
+            <xs:documentation>
+                list of sortable fields for the activity log
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="field" type="tns:ActivityLogSortField" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="ActivityLogSortField" type="tns:ActivityLogSortField"/>
+    <xs:complexType name="ActivityLogSortField">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="fieldName" type="tns:ActivityLogSortFieldType" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="sortDirection" type="common:SortDirection" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="ActivityLogSortFieldType">
+        <xs:annotation>
+            <xs:documentation>
+                Types of configurations
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="id"/>
+            <xs:enumeration value="eventTime"/>
+            <xs:enumeration value="sessionId"/>
+            <xs:enumeration value="activity"/>
+            <xs:enumeration value="eventSeverity"/>
+            <xs:enumeration value="eventStatus"/>
+            <xs:enumeration value="eventOriginator"/>
+            <xs:enumeration value="eventOriginatorIp"/>
+            <xs:enumeration value="sourceComponent"/>
+            <xs:enumeration value="logMessage"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="ActivityLogs" type="tns:ActivityLogs"/>
+    <xs:complexType name="ActivityLogs">
+        <xs:annotation>
+            <xs:documentation>
+                list of activity logs
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="log" type="tns:ActivityLog" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ActivityLogIds" type="tns:ActivityLogIds"/>
+    <xs:complexType name="ActivityLogIds">
+        <xs:annotation>
+            <xs:documentation>
+                list of activity logs
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+========================================================================
+
+==========================================================================
+COPYRIGHT (C) 2004-2006 Ingenico
+ALL RIGHTS RESERVED
+
+Copyright in the whole and every part of this software program belongs to
+Ingenico UK.  It may not be used, sold, licensed, transferred, copied
+or reproduced in whole or in part in any manner or form other than in
+accordance with and subject to the terms of a licence from Ingenico
+or with the prior written consent of Ingenico or as
+permitted by applicable law.
+This software program contains confidential and proprietary information and
+must not be disclosed, in whole or in part, to any person or organisation
+without the prior written consent of Ingenico.
+Any copies or reproductions of this software program (in whole or in part)
+made by any method must also include a copy of this legend.
+==========================================================================
+-->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap"
+                  xmlns:tns="http://ingenico.com/ns/emm" xmlns:tnsdata="http://ingenico.com/ns/emm/data"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://ingenico.com/ns/common/data"
+                  xmlns:emm="http://ingenico.com/ns/emm/data" xmlns:ns="http://www.ingenico.com/terminal-config"
+                  targetNamespace="http://ingenico.com/ns/emm">
+    <wsdl:types>
+        <schema targetNamespace="http://ingenico.com/ns/emm/data" xmlns="http://www.w3.org/2001/XMLSchema">
+            <include schemaLocation="./emm.xsd"/>
+            <xsd:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="deleteRetiredTerminalsRequest">
+        <documentation>
+            No parameters except authorization
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="days" type="xsd:int"/>
+    </wsdl:message>
+
+    <wsdl:message name="withdrawData">
+        <documentation>
+            withdrawn terminal at specified date
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="itid" type="xsd:string">
+            <documentation>
+                Terminal itid to withdraw
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="effectDate" type="xsd:long"/>
+    </wsdl:message>
+
+    <wsdl:message name="terminalListRequest">
+        <documentation>
+            query a list of terminals
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="terminalQuery" type="tnsdata:TerminalQuery">
+            <documentation>
+                Query object containing the query restrictions
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="sortOrder" type="tnsdata:TerminalSortList"/>
+    </wsdl:message>
+    <wsdl:message name="addTerminalRequest">
+        <documentation>
+            add a new terminal
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="terminal" type="tnsdata:Terminals">
+            <documentation>
+                terminal data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHistoryListResponse">
+        <documentation>
+            Response contains list of terminal histories
+        </documentation>
+        <wsdl:part name="histories" type="tnsdata:Histories"/>
+    </wsdl:message>
+    <wsdl:message name="terminalRequest">
+        <documentation>
+            change terminal
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="itid" type="xsd:string"/>
+        <wsdl:part name="terminal" type="tnsdata:Terminal">
+            <documentation>
+                terminal data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="terminalItidsStatusRequest">
+        <documentation>
+            request object containing list of itids, status to apply ( and auth credentials)
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="terminalItids" type="common:ItidList"/>
+        <wsdl:part name="status" type="tnsdata:TerminalStatus"/>
+    </wsdl:message>
+    <wsdl:message name="terminalItidRequest">
+        <documentation>
+            request object containing a terminal itid ( and auth credentials)
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="itid" type="xsd:string"/>
+    </wsdl:message>
+
+<!--    <wsdl:message name="reserveTerminalRequest">
+        <documentation>
+            request object containing a terminal itid ( and auth credentials)
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="number" type="xsd:int"/>
+        <wsdl:part name="merchantId" type="xsd:string"/>
+        <wsdl:part name="validDate" type="xsd:date"/>
+    </wsdl:message>
+
+    <wsdl:message name="reserveTerminalResponse">
+        <documentation>
+            information about the reserved terminals
+        </documentation>
+        <wsdl:part name="terminal" type="tnsdata:Terminals">
+            <documentation>
+                terminals data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+-->
+
+    <wsdl:message name="deleteTerminalRequest">
+        <documentation>
+            delete existing terminal
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="terminal" type="common:ItidList">
+            <documentation>
+                terminals data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="resetTerminalAdminPasswordRequest">
+        <documentation>
+            resets terminal admin password
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="itid" type="xsd:string">
+            <documentation>
+                terminal itid
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="password" type="xsd:string">
+            <documentation>
+                new password
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="getTerminalLogListResponse">
+        <documentation>
+            Response contains list of terminal logs
+        </documentation>
+        <wsdl:part name="data" type="tnsdata:TerminalLogs"/>
+    </wsdl:message>
+
+    <wsdl:message name="getTerminalLogRequest">
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="id" type="xsd:long"/>
+    </wsdl:message>
+
+    <wsdl:message name="getTerminalLogResponse">
+        <documentation>
+            Response contains uploaded terminal configuration data
+        </documentation>
+        <wsdl:part name="data" type="tnsdata:TerminalLogRecords">
+            <documentation>
+                terminal log (set of records)
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="getTerminalCapabilitiesResponse">
+        <documentation>
+            Response contains terminal capabilities info
+        </documentation>
+        <wsdl:part name="data" type="tnsdata:TerminalCapabilities">
+            <documentation>
+                terminal capabilities
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="groupListRequest">
+        <documentation>
+            request containing a parent group reference and a sort order
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="parentGroupReference" type="xsd:string"/>
+        <wsdl:part name="sortOrder" type="tnsdata:GroupSortList"/>
+    </wsdl:message>
+    <wsdl:message name="swapoutTerminalRequest">
+        <documentation>
+            swipe out terminal
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="swapoutDetails" type="tnsdata:SwapoutDetails"/>
+    </wsdl:message>
+    <wsdl:message name="resetTerminalRequest">
+        <documentation>
+            reset terminal
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="itid" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="replaceTerminalRequest">
+        <documentation>
+            Replace terminal by a new one.
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="oldItid" type="common:IngenicoTerminalReference"></wsdl:part>
+        <wsdl:part name="replacementData" type="tnsdata:ReplacementData"/>
+    </wsdl:message>
+    <wsdl:message name="noParamRequest">
+        <documentation>
+            get list of banks
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getTerminalResponse">
+        <documentation>
+            Response contains a single terminal
+        </documentation>
+        <wsdl:part name="terminal" type="tnsdata:Terminal"/>
+    </wsdl:message>
+    <wsdl:message name="getTerminalListResponse">
+        <documentation>
+            Response contains list of terminals
+        </documentation>
+        <wsdl:part name="terminals" type="tnsdata:Terminals"/>
+    </wsdl:message>
+    <wsdl:message name="replaceTerminalResponse">
+        <documentation>
+            Response contains resulted data of replacement.
+        </documentation>
+        <wsdl:part name="repacementResult" type="tnsdata:ReplacementExecuted"/>
+    </wsdl:message>
+    <wsdl:message name="baseResponse">
+        <documentation>
+            Response contains result (valid or not), error message in case of any errors
+        </documentation>
+        <wsdl:part name="rslt" type="xsd:long"/>
+        <wsdl:part name="errormsg" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="EMMWSIF">
+        <wsdl:operation name="addTerminal">
+            <documentation>
+                Add a list of new terminals to the system. Must have a unique ITID
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="addTerminalRequest" message="tns:addTerminalRequest"/>
+            <wsdl:output name="addTerminalResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getHistoryList">
+            <documentation>
+                Return terminal history
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="getHistoryListRequest" message="tns:terminalItidRequest"/>
+            <wsdl:output name="getHistoryListResponse" message="tns:getHistoryListResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="withdrawTerminal">
+            <documentation>
+                Sets terminal effective date for the specific ITID
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="withdrawData" message="tns:withdrawData"/>
+            <wsdl:output name="withdrawTerminalResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeTerminal">
+            <documentation>
+                Update an existing terminal ( identified by itid) information
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="changeTerminalRequest" message="tns:terminalRequest"/>
+            <wsdl:output name="changeTerminalResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setTerminalsStatus">
+            <documentation>
+                Change the status of the supplied terminals. Available status values are
+                Active, Suspended or Retired
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="setTerminalsStatusRequest" message="tns:terminalItidsStatusRequest"/>
+            <wsdl:output name="setTerminalsStatusResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="swapoutTerminal">
+            <documentation>
+                Replace an old terminal with a new one
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="swapoutTerminalRequest" message="tns:swapoutTerminalRequest"/>
+            <wsdl:output name="swapoutTerminalResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="resetTerminal">
+            <documentation>
+                Reset the terminal, ie set it to initial state, but without replacing of the terminal information
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="resetTerminalRequest" message="tns:resetTerminalRequest"/>
+            <wsdl:output name="resetTerminalResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="replaceTerminal">
+            <documentation>
+                Replace an old terminal with a new one
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="replaceTerminalRequest" message="tns:replaceTerminalRequest"/>
+            <wsdl:output name="replaceTerminalResponse" message="tns:replaceTerminalResponse"/>
+        </wsdl:operation>
+
+<!--        <wsdl:operation name="reserveTerminals">
+            <documentation>
+                Reserves set of new terminal itids
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="reserveTerminalRequest" message="tns:reserveTerminalRequest"/>
+            <wsdl:output name="reserveTerminalResponse" message="tns:reserveTerminalResponse"/>
+        </wsdl:operation>
+-->
+
+
+        <wsdl:operation name="deleteTerminals">
+            <documentation>
+                Deletes existing terminals from the system
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="deleteTerminalRequest" message="tns:deleteTerminalRequest"/>
+            <wsdl:output name="deleteTerminalResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="resetTerminalAdminPassword">
+            <documentation>
+                Resets terminal admin password
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="resetTerminalAdminPasswordRequest" message="tns:resetTerminalAdminPasswordRequest"/>
+            <wsdl:output name="resetTerminalAdminPasswordResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getTerminal">
+            <documentation>
+                Return all the terminal for the supplied ITID
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="getTerminalRequest" message="tns:terminalItidRequest"/>
+            <wsdl:output name="getTerminalResponse" message="tns:getTerminalResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getTerminals">
+            <documentation>
+                Return all terminals matching the search criteria
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="getTerminalListBankRequest" message="tns:terminalListRequest"/>
+            <wsdl:output name="getTerminalListBankResponse" message="tns:getTerminalListResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getTerminalLogList">
+            <documentation>
+                Return terminal logs of the terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="getTerminalLogListRequest" message="tns:terminalItidRequest"/>
+            <wsdl:output name="getTerminalLogListResponse" message="tns:getTerminalLogListResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getTerminalLog">
+            <documentation>
+                Return terminal log with specific id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="getTerminalLogRequest" message="tns:getTerminalLogRequest"/>
+            <wsdl:output name="getTerminalLogResponse" message="tns:getTerminalLogResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteRetiredTerminals">
+            <documentation>
+                Return terminal log with specific id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="deleteRetiredTerminalsRequest" message="tns:deleteRetiredTerminalsRequest"/>
+            <wsdl:output name="deleteRetiredTerminalsResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getTerminalCapabilities">
+            <documentation>
+                Return terminal capabilities of the terminal with specific itid
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input name="terminalItidRequest" message="tns:terminalItidRequest"/>
+            <wsdl:output name="getTerminalCapabilitiesResponse" message="tns:getTerminalCapabilitiesResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="EMMSoapBinding" type="tns:EMMWSIF">
+        <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="withdrawTerminal">
+            <documentation>
+                Sets terminal effective date for the specific ITID
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteRetiredTerminals">
+            <documentation>
+                Requests list of terminal logs
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getTerminalLogList">
+            <documentation>
+                Requests list of terminal logs
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getTerminalLog">
+            <documentation>
+                Requests uploaded configuration with specific id
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+
+        <wsdl:operation name="addTerminal">
+            <documentation>
+                Adds a new terminal
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="changeTerminal">
+            <documentation>
+                changes terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setTerminalsStatus">
+            <documentation>
+                suspends terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="resetTerminal">
+            <documentation>
+                resets terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="swapoutTerminal">
+            <documentation>
+                swaps out terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        
+        <wsdl:operation name="replaceTerminal">
+            <documentation>
+                replace terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+<!--        <wsdl:operation name="reserveTerminals">
+            <documentation>
+                Reserves set of terminal itids
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+-->
+
+        <wsdl:operation name="deleteTerminals">
+            <documentation>
+                Deletes existing terminals
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="resetTerminalAdminPassword">
+            <documentation>
+                Resets terminal admin password
+            </documentation>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="getTerminals">
+            <documentation>
+                gets list of terminals assigned to bank
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHistoryList">
+            <documentation>
+                Returns the list of History
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation> 
+        <wsdl:operation name="getTerminal">
+            <documentation>
+                gets a terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTerminalCapabilities">
+            <documentation>
+                gets hardware/software capabilities of the terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/EMM"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/emm"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EMMWSIFService">
+        <wsdl:port name="EMM" binding="tns:EMMSoapBinding">
+            <wsdlsoap:address location="http://localhost:8090/cfgsrv/services/EMM"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

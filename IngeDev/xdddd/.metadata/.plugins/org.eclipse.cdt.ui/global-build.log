@@ -1,0 +1,108 @@
+Warning: the package library 'PinLib' is not provided in the toolchain format 'GNU ARM 4.3.4' for which the project is configured. Mixing toolchains is discouraged. Therefore it is NOT recommended to use this configuration in production.
+      1 [main] sh 18396 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+                                     *-*-*
+      1 [main] sh 18240 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+--- Project 'dopekSystems', Configuration 'GNU_ARM_DEBUG', Compiler 'GNU ARM 4.3.4' ---
+      1 [main] sh 19272 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Build in progress...
+      1 [main] sh 19248 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 18580 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5508 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+done!
+
+Cannot sign project 'dopekSystems' for 'GNU_ARM_DEBUG' configuration:
+Signature preferences error: please set correct value for 'SAT tool installation path' in the 'IngeDev/Telium/Signature/Telium 2/SAT' preferences section.
+      1 [main] sh 5540 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+                                     *-*-*
+      1 [main] sh 17424 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+--- Project 'dopekSystems', Configuration 'GNU_ARM_DEBUG', Compiler 'GNU ARM 4.3.4' ---
+      1 [main] sh 3584 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+deleting intermediate files...
+      1 [main] sh 12952 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3472 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 5272 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+done!
+                                     *-*-*
+--- Project 'dopekSystems', Configuration 'GNU_ARM_DEBUG', Compiler 'GNU ARM 4.3.4' ---
+deleting binary files...
+done!
+Warning: the package library 'PinLib' is not provided in the toolchain format 'GNU ARM 4.3.4' for which the project is configured. Mixing toolchains is discouraged. Therefore it is NOT recommended to use this configuration in production.
+      1 [main] sh 17740 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+                                     *-*-*
+      1 [main] sh 16652 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+--- Project 'dopekSystems', Configuration 'GNU_ARM_DEBUG', Compiler 'GNU ARM 4.3.4' ---
+      1 [main] sh 18876 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Build in progress...
+      1 [main] sh 2672 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 18032 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 16444 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+'Src/Main.c' compilation in progress...
+      1 [main] sh 18292 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 18388 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+'Src/Entry.c' compilation in progress...
+      1 [main] sh 17136 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 18008 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+'Obj/GNU_ARM_DEBUG/DOPEKSYSTEM.axf' link in progress...
+      1 [main] sh 4280 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 17684 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 3408 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] arm-elf-ld 9740 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 4624 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] arm-elf-objcopy 4756 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 11184 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+'Bin/GNU_ARM_DEBUG/DOPEKSYSTEM.BIN' binary file generated.
+      1 [main] sh 6912 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+done!
+
+Cannot sign project 'dopekSystems' for 'GNU_ARM_DEBUG' configuration:
+Signature preferences error: please set correct value for 'SAT tool installation path' in the 'IngeDev/Telium/Signature/Telium 2/SAT' preferences section.
+Warning: the package library 'PinLib' is not provided in the toolchain format 'GNU ARM 4.3.4' for which the project is configured. Mixing toolchains is discouraged. Therefore it is NOT recommended to use this configuration in production.
+      1 [main] sh 11848 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+                                     *-*-*
+      1 [main] sh 18648 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+--- Project 'dopekSystems', Configuration 'GNU_ARM_DEBUG', Compiler 'GNU ARM 4.3.4' ---
+      1 [main] sh 5616 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+Build in progress...
+      1 [main] sh 15332 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 18924 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+      1 [main] sh 17764 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
+the public mailing list cygwin@cygwin.com
+done!
+
+Cannot sign project 'dopekSystems' for 'GNU_ARM_DEBUG' configuration:
+Signature preferences error: please set correct value for 'SAT tool installation path' in the 'IngeDev/Telium/Signature/Telium 2/SAT' preferences section.

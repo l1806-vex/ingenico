@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+    
+  <LINK href="IList2.css" rel="stylesheet" type="text/css">
+  <TITLE>IconList</TITLE>
+
+
+<script type="text/javascript">
+  var Terminal = "<?tpl TERMINAL ?>";
+  var User = "<?tpl USER ?>";
+</script>   
+
+  
+<script type="text/javascript" >
+    
+//user defined constants--------------------------------------------------------
+
+//Number of different icons in the left banner
+const nbIcons = 6;
+//Number of pixel between two icons in the left banner
+const iconSpacing = 40;
+
+//Large icons to load (same order of the left banner)
+const IconsImg = ["HorlogeLarge.png",
+    "ToolsLarge.png",
+    "PinPadLarge.png",
+    "MailLarge.png",
+    "TrashLarge.png",
+    "HomeLarge.png"];
+
+//Descriptions (same order of the left banner)
+const Description = ["Date & Time",
+    "Settings",
+    "Terminal",
+    "Mail",
+    "Trash",
+    "Home Return"];
+
+
+
+//sample constant---------------------------------------------------------------    
+//which icon is selected by the selecting div(offset in px)
+const iconOffset = 40;
+
+//Internal variable-------------------------------------------------------------    
+//Icon currently selected : 
+var selectedIcon = 0;    
+//get full height of the banner
+var BannerMax = nbIcons*40;
+//avoid scrolling (if a menu is selected for example)
+var noScroll=0;
+
+
+function KeyPress(event)
+{
+  
+  document.getElementById("FromApp").style.display = "none";
+  StopTimer = 1;
+  
+  switch(event.keyCode)
+  {
+    //down arrow   
+    case 15: //WGUI
+    case 40:  //ff      
+    case 0xF81C:
+      if(!noScroll)       
+        selectedIcon = (selectedIcon >= (nbIcons-1))?0:selectedIcon+1; 
+
+      break;
+      
+    //up arrow
+    case 14: //WGUI
+    case 38:  //ff    
+    case 0xF81B:
+      if(!noScroll)
+        selectedIcon = (selectedIcon <= 0)?nbIcons-1:selectedIcon-1;
+      break;    
+      
+    //enter - validation
+    case 13:
+      var Content = "";
+      switch(selectedIcon)
+      {
+        case 0: 
+          StopTimer = 0;
+          Timer();
+          Content = "Init clock"; 
+          break;
+      //validate settings
+        case 1: if(!noScroll) //If first validation
+                {
+                  noScroll = true;  //invalidate scrolling
+                  document.getElementById("Description").innerHTML = ""; //hide description
+                  AnimateUp();  //Animate Opening box
+                }     
+                break;
+                //Actions on click (same order of the left banner)
+                
+        case 2: Content = Terminal; break;
+        case 3: document.location.href = "app://DemoList?Action=IList1"; break;
+        case 4: Content = "Selected Trash"; break;
+        case 5: document.location.href = "app://DemoList?Action=Back"; break;       
+        
+      }
+      if(Content != "")
+      {
+        document.getElementById("FromApp").value = Content;
+        document.getElementById("FromApp").style.display = "block";
+      }
+      
+      
+      break;
+  }         
+  
+  //move the banner background
+  if(!noScroll)
+  {
+    document.getElementById("LeftContent").style.backgroundPosition = "center " + -(selectedIcon*iconSpacing-iconOffset) + "px";
+    document.getElementById("Description").innerHTML = Description[selectedIcon] ;
+    document.getElementById("RightContent").style.backgroundImage = "url(\"" + IconsImg[selectedIcon] + "\")";
+  }               
+}    
+
+var StopTimer = 1;
+//Clock function : display time-------------------------------------------------
+function Timer() 
+{
+   var dt=new Date()
+   document.getElementById("FromApp").value = dt.getHours()+":"+dt.getMinutes()+":"+dt.getSeconds();
+   if(!StopTimer)
+    setTimeout("Timer()",500);
+}
+
+//Settings Keypress management--------------------------------------------------
+function ValidSetting(event,Button)
+{              
+                          
+  if((event.keyCode == 13) && (noScroll))
+  {          
+    
+    switch(Button)
+    {
+      case 1: // Validate login : set focus on password
+      document.getElementById("SetI2").focus();
+        break;
+      case 2: //Validate password : validate form
+      document.getElementById("InputSettings").style.display="none";
+      document.getElementById("SetI2").blur();  
+      document.getElementById("Animating").style.backgroundPosition = "center -70px"; //hide background for animation
+                
+      AnimateTickDown(); //launch Animation                        
+        break;
+    }
+  
+  }      
+}
+
+
+//Animation Variable------------------------------------------------------------
+var AnimL, AnimT, AnimW, AnimH;
+var AnimMaxW, AnimMaxH, AnimMaxT, AnimMaxL, AnimWTick, AnimHTick;
+      
+//Prepare opening animation-----------------------------------------------------
+function AnimateUp()
+{
+
+  AnimL = 126; AnimT = 89;  AnimW = 0;  AnimH = 0;
+  AnimMaxW = 220; AnimMaxH = 146; AnimWTick = 44; AnimHTick = 36;
+  AnimMaxT = 16; AnimMaxL = 16;
+  //document.getElementById("Animating").style.left = AnimL + "px";
+  document.getElementById("Animating").style.top = AnimT + "px";
+  //document.getElementById("Animating").style.width = AnimW + "px";
+  document.getElementById("Animating").style.height = AnimH + "px";
+  document.getElementById("Animating").style.display="block";        
+  AnimateTickUp();          
+}
+  
+//Opening animation tick--------------------------------------------------------
+function AnimateTickUp()
+{
+  
+  AnimW += AnimWTick;
+  AnimH += AnimHTick;
+  
+  AnimW = (AnimW > AnimMaxW)? AnimMaxW:AnimW;
+  AnimH = (AnimH > AnimMaxH)? AnimMaxH:AnimH;
+          
+  AnimL -= AnimWTick/2;
+  AnimT -= AnimHTick/2;
+  
+  AnimL = (AnimL<AnimMaxL)?AnimMaxL:AnimL;
+  AnimT = (AnimT<AnimMaxT)?AnimMaxT:AnimT;
+  
+  //document.getElementById("Animating").style.left = AnimL + "px";
+  document.getElementById("Animating").style.top = AnimT + "px";
+  //document.getElementById("Animating").style.width = AnimW + "px";
+  document.getElementById("Animating").style.height = AnimH + "px";        
+
+  if((AnimL != AnimMaxL) || (AnimT != AnimMaxT))             
+    setTimeout("AnimateTickUp()",10);
+  else
+  //End of animation
+  {
+    document.getElementById("Animating").style.backgroundPosition = "right bottom";
+    document.getElementById("SetI1").value = "";
+    document.getElementById("SetI2").value = "";
+    document.getElementById("InputSettings").style.display="block";
+    document.getElementById("SetI1").focus();          
+  }
+}
+
+//Closing animation tick--------------------------------------------------------
+function AnimateTickDown()
+{
+    
+  AnimW -= AnimWTick;
+  AnimH -= AnimHTick;
+  
+  AnimW = (AnimW < 0)? 0:AnimW;
+  AnimH = (AnimH < 0)? 0:AnimH;
+          
+  AnimL += AnimWTick/2;
+  AnimT += AnimHTick/2;
+  
+  /*AnimW = 50;
+  AnimH = 2;*/
+          
+  /*AnimL = (AnimL<AnimMaxL)?AnimMaxL:AnimL;
+  AnimT = (AnimT<AnimMaxT)?AnimMaxT:AnimT;*/
+  
+  //document.getElementById("Animating").style.left = AnimL + "px";
+  document.getElementById("Animating").style.top = AnimT + "px";
+  //document.getElementById("Animating").style.width = AnimW + "px";
+  document.getElementById("Animating").style.height = AnimH + "px";
+
+  if((AnimW > 0) || (AnimH > 0))             
+    setTimeout("AnimateTickDown()",10);
+  else
+  //End of animation
+  {                   
+    document.getElementById("Animating").style.display="none";  //hide        
+    document.getElementById("Description").innerHTML = Description[selectedIcon] ;
+    noScroll = 0;
+    document.getElementById("FromApp").value = document.getElementById("SetI1").value + ":" + document.getElementById("SetI2").value ;
+    document.getElementById("FromApp").style.display = "block";
+    document.getElementById("FormSettings").submit();
+  }
+}
+
+
+//On load function : initialise container---------------------------------------    
+function Init()
+{
+  document.getElementById("LeftContent").style.backgroundPosition = "center " + iconOffset + "px";
+  document.getElementById("RightContent").style.backgroundImage = "url(\"" + IconsImg[0] + "\")";
+  document.getElementById("Description").innerHTML = Description[0] ;    
+  
+  if(User != "")
+    document.getElementById("MenuTitle").innerHTML += " - Hello " + User;
+}  
+</script>
+
+
+</HEAD>
+
+<BODY onkeypress="KeyPress(event);" onload="Init();">  
+  <DIV  id="Container">  
+      <P id="MenuTitle">An Icon List</P>
+      <DIV id="LeftContent">
+          <DIV id="Selection"></DIV>            
+      </DIV>
+      <DIV id="RightContent">
+      
+        <DIV id="Description"></DIV>                              
+        
+        <DIV id="Animating">      
+          <DIV id="InputSettings">
+            <FORM id="FormSettings" action="app://DemoList" method="get">
+              <P id="MenuTitle">Settings</P>
+              <TABLE id="InputTable">
+                <TR ><TD>Login :</TD></TR>
+                <TR><TD><INPUT name="Login" id="SetI1" type="text" onkeypress="ValidSetting(event,1);"></TD></TR>
+                <TR><TD>Password :</TD></TR>
+                <TR><TD><INPUT name="Passwd" id="SetI2" type="password" onkeypress="ValidSetting(event,2);"></TD></TR>
+                <INPUT name="Action" type="hidden" value="SettForm">
+              </TABLE>
+            </FORM>      
+          </DIV>
+        </DIV> 
+
+        <DIV><INPUT type="text" id="FromApp" value="test"></DIV>
+         
+      </DIV>
+      
+      
+      
+  </DIV>
+</BODY>
+</HTML>
+

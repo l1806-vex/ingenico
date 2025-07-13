@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         id="win32"
+         point="com.ingenico.ingedev.telium.bin.teliumBinPathProviders">
+      <teliumBinPathProvider
+            class="com.ingenico.ingedev.telium.bin.win32.gunarm.v343.Win32TeliumBinPathProviderGnuarm343"
+            name="Telium win32 binaries path provider">
+      </teliumBinPathProvider>
+   </extension>
+
+</fragment>

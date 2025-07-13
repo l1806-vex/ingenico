@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<tml xmlns="http://www.ingenico.com/tml" cache="deny">
+
+    <screen id="error" next="/magcard.tml#init_prompt">
+        <display>
+	    <table border="2" height="100%" width="100%"><tr><td align="center" valign="middle">
+		Server Error<br/>Contact Helpdesk
+            </td></tr></table>
+	</display>
+    </screen>
+
+</tml>
+
+<!--========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

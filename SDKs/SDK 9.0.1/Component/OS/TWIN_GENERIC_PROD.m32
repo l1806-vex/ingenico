@@ -1,0 +1,29 @@
+;System pack for TWIN33, Selecta
+;System R+
+8200361110.ddf
+8200361110.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver synch GPM271
+30180108.ddf
+30180108.sgn
+;Driver synch S10
+30190107.ddf
+30190107.sgn
+;Driver synch S9
+30200107.ddf
+30200107.sgn
+;Driver VFS
+30210328.ddf
+30210328.sgn
+;Pack System
+37771104.pdf
+37771104.sgn
+;Driver UMS
+8200210320.ddf
+8200210320.sgn
+;generic driver twin
+8201010305.ddf
+8201010305.sgn
+

@@ -1,0 +1,5 @@
+; This file describes the function exported from a module DLL for Ingedev 5 simulation.
+EXPORTS
+	dll_InitDllFunctionPointers
+	StartUp
+	JumpTableGet

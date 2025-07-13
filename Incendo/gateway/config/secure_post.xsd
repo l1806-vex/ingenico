@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" xml:lang="en"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.ingenico.com/tml"
+    xmlns="http://www.ingenico.com/tml"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    elementFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation>
+    TML XML Schema based on
+        XHTML 1.0 (Second Edition) Strict XML Schema
+
+    COPYRIGHT (C) 2004-2010 Ingenico
+    ALL RIGHTS RESERVED
+
+    $Id: tml.xsd,v 1.43 2009/06/25 15:08:13 divanov Exp $
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== Imported Names ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="ContentType">
+    <xs:annotation>
+      <xs:documentation>
+      Content type for linked or embedded resource, similar to XHTML. 
+      For example, "text/css" for CSS files and "text/tml" for TML pages.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Charset">
+    <xs:annotation>
+      <xs:documentation>
+      Character encoding, similar to XHTML. For example, "ISO-8859-1"
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Character">
+    <xs:annotation>
+      <xs:documentation>
+      A single character, as per section 2.2 of [XML]
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" fixed="true"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Number">
+    <xs:annotation>
+      <xs:documentation>
+      One or more digits.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:pattern value="[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PositiveNumber">
+    <xs:annotation>
+      <xs:documentation>
+      A positive integer number.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:positiveInteger">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LinkTypes">
+    <xs:annotation>
+      <xs:documentation>
+      A space-separated list of link types.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="URI">
+    <xs:annotation>
+      <xs:documentation>
+      A Uniform Resource Identifier, see [RFC2396].
+      Can be absolute or a relative. Usually, URI should be specified relative 
+      to the service base directory.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:anyURI"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Datetime">
+    <xs:annotation>
+      <xs:documentation>
+      Date and time information in ISO date and time format i.e. YYYY-MM-DD hh:mm:ss
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Text">
+    <xs:annotation>
+      <xs:documentation>
+      A text string.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Length">
+    <xs:annotation>
+      <xs:documentation>
+      Pixel or percentage length:
+      * 'nn' for number of pixels. i.e. '128' for 128 pixels
+      * 'nn%' for a percentage value. i.e. '10%'
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\-+]?(\d+|\d+(\.\d+)?%)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MultiLength">
+    <xs:annotation>
+      <xs:documentation>
+      Pixel, percentage, or relative length:
+      * 'nn' for number of pixels. i.e. '128' for 128 pixels
+      * 'nn%' for a percentage value. i.e. '10%'
+      * 'n*' for a relative length, for instance '1*'
+      
+      When allocating space for elements, Icnendo Browser first processes pixel and
+      percentage lengths, then divides the remaining space among all elements with
+      a relative length. An element with a length of '3*' will be allocated with space
+      three times bigger than an element with length '1*'. The value '*' is equivalent
+      to '1*' and instructs the Browser to fill the remaining space.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\-+]?(\d+|\d+(\.\d+)?%)|[1-9]?(\d+)?\*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Pixels">
+    <xs:annotation>
+      <xs:documentation>
+      Integer representing length in pixels
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Generic Attributes ===============================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:attributeGroup name="coreattrs">
+    <xs:annotation>
+      <xs:documentation>
+      Core attributes common to most elements
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="id" type="xs:ID">
+      <xs:annotation>
+        <xs:documentation>
+          Document-wide unique id. In practice only used for {screen} elements. Maximum length of
+          a screen ID is 12 characters.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="class" type="xs:NMTOKENS">
+      <xs:annotation>
+        <xs:documentation>
+          Space separated list of classes. Used for CSS formatting.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="attrs">
+    <xs:attributeGroup ref="coreattrs"/>
+  </xs:attributeGroup>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Common Attributes ===============================
+    </xs:documentation>
+  </xs:annotation>
+  
+
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Text Elements ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== Block level elements ==============================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:annotation>
+    <xs:documentation>
+    ===================== Variables ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="Formatter">
+    <xs:annotation>
+      <xs:documentation>
+         The TML can contain directive to pretty print the variable value.
+         This can be specified using additional formatter attribute. This
+         applies for all variable types except opaque. So, there are three
+         formatters - number, string and date.
+
+         The special symbols defined for each formatter can be escaped with
+         the \, i.e. the \ denies the special meaning of the one following
+         symbol, f.e. the \ itself.
+
+         Number formatter can contain any characters. All symbols except
+         explicitly specified below are printed "as is". The following special
+         symbols are available:
+
+         '^' at the beginning of the formatter. The positions in the fixed
+             part of the string will be occupied from right to left. On the
+             position other that first it is considered as normal printable
+             symbol
+         '0' specifies fixed amount of decimals. If this position is empty in
+             the real number, the zero is printed instead
+         '*' means any number of decimals. This symbol can be present only
+             once in the formatter and it can only be present after the fixed
+             positions. The term "after" takes into account the printing
+             direction above.
+
+         String formatter is a more complex formatter. It can contain any
+         characters. All symbols except explicitly specified below are printed
+         "as is". The following special symbols are available:
+
+         'c' or 'n' means normal symbol or number at this position
+         'c#' or 'n#' means hidden symbol or decimal, i.e. '*' at this position
+         '*' or number can follow above specifiers, indicating the required
+             amount of such symbols in the string ('*' means unlimited and
+             similar to number formatter can not be specified more than once)
+
+         Date formatter can contain any characters. All symbols except
+         explicitly specified below are printed "as is". The following special
+         symbols are available:
+
+         'YYYY' or 'yyyy' - year in full form, 4 digits wide
+         'YY' or 'yy' - year in short form, 2 digits wide
+         'MM' - month
+         'DD' or 'dd' - day
+         'HH' or 'hh' - hour
+         'mm' - minute
+         'SS' or 'ss' - seconds
+         'am/pm' or 'AM/PM' - 12-hour clock
+         "am/pm" turns into "am" or "pm", "AM/PM" turns into "AM" or "PM"
+         Each specifier can present only once.
+
+         Date formatter escaped symbols:
+         "Y", "y", "M", "m", "D", "d", "H", "h", "S", "s".
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="ValrefFormatter">
+    <xs:annotation>
+      <xs:documentation>
+         The same as 'Formatter', but the format pattern can be specified either as
+         a value string or as a variable reference to a string variable that contains the
+         pattern. The referenced variable name must be prefixed by 'tmlvar:'
+         i.e. 'tmlvar:variable.name'
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="Valref"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Permissions">
+    <xs:annotation>
+      <xs:documentation>
+         Variable access permissions that are set by using a 5-character string.
+         
+         The rights are the following:
+          # read in the scope the variable belongs to
+          # write in the scope the variable belongs to
+          # instanciate the variable in scopes below. Only relevant for system-scope variables.
+          # read in scopes below. Only relevant for system-scope variables.
+          # write in scopes below. Only relevant for system-scope variables.
+         The pattern is the following - "rwxrw".
+
+         Any symbol except the '-' declares that the bit is set
+
+         The default is "rw-rw" - all operations allowed
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Valref">
+    <xs:annotation>
+      <xs:documentation>
+       This attribute can be either a value string or a reference to the variable that contains
+       the value.
+       
+       If variable reference is used, the name of the variable must be prefixed by 'tmlvar:'
+       i.e. 'tmlvar:variable.name'
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:element name="setvar">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to modify the value of a TML variable.
+      
+      Incendo Browser processes the {setvar} elements in sequence every time it switches to a new
+      {screen} element. The only exception is when a screen is re-displayed after a {baddata} error
+      message.
+      
+      {setvar} can only operate on the variables that have been declared previously using the {vardcl}
+      elements, defined by a service or terminal variables library configurations or are pre-defined
+      by the Incendo Browser.  
+
+      The variable that will be modified is specified using the 'name' attribute. Your service should
+      have the write access permission for this variable.
+      
+      To assign a value to a variable, simply use the required value for the 'lo' attribute. 'ro' and
+      'op' attributes should be empty.
+      
+      Instead of specifying the variable value explicitly, you can define a simple expression of two
+      operands, the result of which will be assigned to the variable. The operands are specified
+      using 'lo' and 'ro' attributes and operation is defined by the 'op' attribute. 
+       
+      Available operations depend on the type of the variable specified by the 'name' attribute.
+      
+      Only direct assignment is allowed for opaque data.
+      
+      If the type of the operands does not match the type of the variable being set, the operands
+      will be cast to the appropriate type:
+      * 'integer' -> 'string' : numeric string representation
+      * 'integer' -> 'date'   : date corresponding to the number of seconds since '1970/01/01 00:00:00'
+      * 'string' -> 'integer' : integer value. Must correspond to a valid integer formatter pattern
+      * 'string' -> 'date'    : timestamp. Must correspond to a valid date formatter pattern.
+      * 'date' -> 'integer'   : number of seconds since '1970/01/01 00:00:00'
+      * 'date' -> 'string'    : string representation of the date according to the date formatter pattern.
+      * 'opaque' -> 'string'  : string representation of the binary data according to the opaque
+      formatter pattern 
+      
+      For more details and examples see the variables TML tutorial.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> 
+          Specifes the variable that is being set.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="format" type="Formatter">
+        <xs:annotation>
+          <xs:documentation> 
+          This attribute defines the pattern for the 'format' operation.
+          </xs:documentation>
+        </xs:annotation>           
+      </xs:attribute>
+      <xs:attribute name="lo" use="required" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The required attribute defines the left operand of the expression. If 'ro' and 'op'
+          attributes are omitted, the value specified in 'lo' attribute is assigned to the variable.
+          
+          If you use a variable reference as the 'lo' parameter, you must have the read permissions
+          for that variable.
+          </xs:documentation>
+        </xs:annotation>           
+      </xs:attribute>
+      <xs:attribute name="ro" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute represents the right operand of the expression.
+          
+          If you use a variable reference as the 'ro' parameter, you must have the read permissions
+          for that variable.
+          </xs:documentation>
+        </xs:annotation>       
+      </xs:attribute>
+      <xs:attribute name="op">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute defines a logical operation that is performed on the left and right
+          operands. 
+          
+          For direct assigment, use only the 'lo' attribute, 'ro' and 'op' should be empty.
+          
+          The possible operations depend on the type of variable being set.
+          </xs:documentation>
+        </xs:annotation> 
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="plus">
+              <xs:annotation>
+                <xs:documentation>
+                This operation applies to the 'integer', 'string' and 'date' variables: 
+                * 'integer' variables - add the values of the 'lo' and 'ro'
+                * 'string' variables - concatenate 'ro' to the 'lo'
+                * 'date' variables - add the number of seconds, specified by the 'ro', to the
+                date specified by the 'lo' attribute. 'lo' must reference a 'date'-type variable,
+                while 'ro' must be an integer constant or reference an 'integer'-type variable. 
+                </xs:documentation>
+              </xs:annotation>             
+            </xs:enumeration>
+            <xs:enumeration value="minus">
+              <xs:annotation>
+                <xs:documentation>
+                This operation applies to the 'integer', 'string' and 'date' variables:
+                * 'integer' variables -  substract the value of the 'ro' from the 'lo' 
+                * 'string' variables - removes the number of characters corresponding to the value of
+                the 'ro' attribute from the contents of the 'lo' attribute.
+                'lo' must be a string or a reference to a 'string'-type variable. 'ro' must be a number or a
+                reference to an 'integer'-type variable.
+                If the value of the 'ro' is positive, the characters are removed from the right-hand
+                side of the 'lo' string. If 'ro' is negative, the characters are removed from the
+                left-hand side.
+                * 'date' variables - substracts the number of seconds, specified by the 'ro', from the
+                date specified by the 'lo' attribute. 'lo' must reference a 'date'-type variable,
+                while 'ro' must be an integer constant or reference an 'integer'-type variable.              
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="format">
+              <xs:annotation>
+                <xs:documentation>
+                This operation applies the pattern of the 'format' attribute to the 'lo' attribute and
+                assignes the result to the variable specifed by the 'name' attribute.
+                'name' variable must be of the 'string' type.
+                'lo' can be either a constant (it is assumed to be of a 'string' type), or a variable
+                reference. This variable can be of any type.
+                'format' attribute pattern must correspond to the type of the 'lo'
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="item">
+              <xs:annotation>
+                <xs:documentation>
+                This operation is applicable to the string lists - 'string' variables that contain
+                items separated by the semicolon ';' character.
+                The 'item' operation will assign the contents of an item from a string list to the
+                'string'-type variable, defined by the 'name' attribute.
+                'lo' attribute should contain a string list. It can be a constant or a reference to
+                a 'string' variable.
+                'ro' attribute is should be set to the index of the item that you are trying to get.
+                It can be a constant or a reference to an 'integer'-type variable. The numbering of
+                the items starts from '0'. If the value of the 'ro' attribute is outside of the bounds
+                of the string list, the variable defined by the name attribute is set to ';'
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="number">
+              <xs:annotation>
+                <xs:documentation>
+                Returns the number of items in the string list, contained in the 'lo' attribute.
+                'ro' attribute must be empty.
+                The variable referenced by the 'name' attribute must be of the 'integer' type. 'lo'
+                attribute can contain a constant or reference a 'string'-type variable.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getvar">
+    <xs:annotation>
+      <xs:documentation>
+      This element returns the value of the variable specified by the 'name' attribute. This
+      value can be formatted using the 'format' attribute.
+      
+      Note that you must have the appropriate read permissions to access the variable.
+      
+      See the variables tutorial for a detailed explanation and examples of TML variable use.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the name of the referenced variable.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="format" type="ValrefFormatter">
+        <xs:annotation>
+          <xs:documentation>
+          Defines a formatter pattern for the variable value. The pattern must be valid for the
+          type of the variable you are trying to access.
+          
+          The value of the variable will be transformed according to this pattern before being
+          displayed/printed.
+          
+          Note that the contents of the 'format' attribute can be either be a valid formatter or
+          a reference to a 'string' - type variable that contains the pattern
+          </xs:documentation>
+        </xs:annotation>        
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tml">
+    <xs:annotation>
+      <xs:documentation>
+      This is the root tag of the TML page.
+
+      'cache' attribute determines whether the page should be saved in the terminal mememory. When
+      the Incendo Browser accesses the URI of a page that has been cached, the page will be taken
+      from the terminal memory. Uncached pages will be loaded from the application host.
+      
+      Dynamically generated pages - since they are likely to change depending on the input parameters -
+      should not be cached. 
+      
+      A TML page must contain at least one {screen} element
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="screen" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="cache" default="allow">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute determines whether the page should be saved in the terminal mememory. 
+          
+          When the Incendo Browser accesses the URI of a page that has been cached, the page will
+          be taken from the terminal memory. Uncached pages will be loaded from the application host.
+          </xs:documentation>
+        </xs:annotation>      
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="allow">
+              <xs:annotation>
+                <xs:documentation>
+                The page will be cached.
+                </xs:documentation>
+              </xs:annotation>               
+            </xs:enumeration>
+            <xs:enumeration value="deny">
+              <xs:annotation>
+                <xs:documentation>
+                The page will not be cached.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Document Head =======================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Headings =========================================
+    </xs:documentation>
+  </xs:annotation>
+
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Screens ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+
+  <xs:element name="variant">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used for code branching, similar to 'IF' construct in some other languages.
+      
+      It defines a URI of a destination screen â€“ alternative to the URI specified by the 'uri'
+      attribute of the parent {next} element.
+      
+      The {variant} element are processed in sequence. The first {variant} with the true condition
+      will be used. If none are true, then the 'uri' of the parent {next} element is used.
+      
+      There are two types of {variant} elements, processed at a different stage of the screen
+      lifecycle:
+      * key-type variants are processed while the screen is being displayed. These variants have
+      'key' or 'timeout' attributes and they are checked when the terminal keypad is pressed (or
+      in case of 'timeout', when it is not pressed)
+      * logical variants compare the values of the 'lo' and 'ro' attributes according to the
+      operation specified by the 'op' attribute. These variants are processed after the screen
+      has been displayed, and when the Browser is about to switch to the next screen. 
+      
+      Note that if you are comparing the values of the 2 variables, they should be of the same type.
+      
+      Note that the hyperlinks within a page disable the logical variants, but not the key-type ones.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="uri" use="required" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          URI of the screen Incendo Browser should switch to if the condition defined by the other
+          attribute(s) of the element is satisfied.
+        
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service
+          * 'menu' - a link to the URI defined by the 'menu' attribute of the parent {screen} element
+          * 'cancel' - a link to the URI defined by the 'cancel' attribute of the parent {screen} 
+          Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+          into the input fields are cleared - input is cancelled.          
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="lo" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute representing the left operand of the logical expression.
+          
+          If both 'lo' and 'ro' attributes are variable references, the variables
+          should be of the same time.
+          
+          The attribute is required if the 'key' or 'timeout' attribute is not present. Its use is
+          illegal in presence of the 'key' or 'timeout' attribute.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="ro" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute representing the right operand of the logical expression.
+          
+          If both 'lo' and 'ro' attributes are variable references, the variables
+          should be of the same time. 
+                   
+          The attribute is required if the 'key' or 'timeout' attribute is not present. Its use is
+          illegal in presence of the 'key' or 'timeout' attribute.          
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="op" default="equal">
+        <xs:annotation>
+          <xs:documentation> 
+          Defines a logical operation that is performed on the left ('lo') and right ('ro') operands.
+          
+          Note that the operations may differ depending on the variable type.
+          
+          The attribute is required if the 'key' or 'timeout' attribute is not present. Its use is
+          illegal in presence of the 'key' or 'timeout' attribute.
+          </xs:documentation>
+        </xs:annotation> 
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of 'lo' is equal to the value of 'ro'
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="not_equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of 'lo' is NOT equal to the value of 'ro'
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="less">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of the 'lo' operand is less than the 'ro'.
+                For string-type variables only the length of the strings is compared.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="less_or_equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of the 'lo' operand is less than the 'ro'.
+                For string-type variables only the length of the strings is compared.                
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="contains">
+              <xs:annotation>
+                <xs:documentation> 
+                Only applies to string operands. This operation returns true, if the string
+                represented by the left operand contains as its part the string represented
+                by the right operand.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="format" type="Formatter">
+        <xs:annotation>
+          <xs:documentation> 
+          If one of the operands ('lo' or 'ro') is a constant, this attribute defines the formatting
+          pattern applied to this constant prior to performing the operation defined by the 'op'
+          attribute.
+          
+          If both operands are constants or both are variable references, this attribute is ignored. It
+          is also ignored if the 'key' or 'timeout' attributes are present.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="timeout" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          Specifies the key-press timeout. This condition evaluates to true if no keys are pressed for
+          the specified number of seconds.
+          
+          As soon as any key is pressed, the timeout is reset.
+          
+          This can be useful, for example, when waiting for user input.
+          
+          Note that this {variant} condition is different from the 'timeout' attribute of the {screen}
+          element.
+          
+          You can not use this attribute if the 'key' or 'lo' + 'ro' + 'op' attributes are present.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="key">
+        <xs:annotation>
+          <xs:documentation>
+          The attribute specifying a terminal keypad key which, if pressed, initiates a jump onto the
+          screen whose URI is defined by the 'uri' attribute.
+          
+          This can be used, for example, for quick navigation.
+
+          You can not use this attribute if the 'timeout' or 'lo' + 'ro' + 'op' attributes are present. 
+          </xs:documentation>
+        </xs:annotation>     
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="00"/>
+            <xs:enumeration value="f1"/>
+            <xs:enumeration value="f2"/>
+            <xs:enumeration value="f3"/>
+            <xs:enumeration value="f4"/>
+            <xs:enumeration value="f5"/>
+            <xs:enumeration value="f6"/>
+            <xs:enumeration value="f7"/>
+            <xs:enumeration value="f8"/>
+            <xs:enumeration value="f9"/>
+            <xs:enumeration value="down"/>
+            <xs:enumeration value="up"/>
+            <xs:enumeration value="menu"/>
+            <xs:enumeration value="stop"/>
+            <xs:enumeration value="cancel"/>
+            <xs:enumeration value="enter"/>
+            <xs:enumeration value="any"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="NextScreen">
+    <xs:annotation>
+      <xs:documentation>
+      Specifies URI of the screen the Browser should switch to.
+
+      Usually URI is specified as a constant or variable reference in
+      the mandatory 'uri' attribute. However it's allowed to specify
+      several conditional variants. This variants are processed
+      one-by-one in the specified order and first matching is used.
+
+      If no matching variants are found, the URI specified in the
+      attribute 'uri' is used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="variant" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="uri" use="required" type="Valref">
+      <xs:annotation>
+        <xs:documentation>
+        Specifies a URI of the next screen the Browser will process if there are no child
+        {variant} elements or all {variant} conditions have failed.
+                
+        The URI should reference either a TML page or a screen id. Screen id should be preceded
+        by the hash '#' symbol, i.e. '#screen_id'
+                
+        There are also several special URIs:
+        * 'back' - return to the previous screen
+        * 'exit' - exit the service
+        * 'menu' - a link to the URI defined by the 'menu' attribute of the parent {screen} element
+        * 'cancel' - a link to the URI defined by the 'cancel' attribute of the parent {screen} 
+        Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+        into the input fields are cleared - input is cancelled.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="error" type="NextScreen">
+    <xs:annotation>
+      <xs:documentation>
+      Specifies the URI of the screen the Browser will switch to if an error occurs.
+      
+      If used within the {head} element, {error} defines the default error processing options
+      for the TML page. A {screen} can override this deafult by using its own child {error} element.
+      
+      You can process the error conditions using the child {variant} elements.
+      </xs:documentation>
+    </xs:annotation>  
+  </xs:element>
+
+  <xs:element name="next" type="NextScreen">
+    <xs:annotation>
+      <xs:documentation>
+      Used within the {screen} element to specify the URI of the next screen that should be processed
+      by the Browser.
+      
+      Note that you should use either this element or the 'next' attribute of the {screen} 
+      element. However, when you use the {next} tag it allows you to implement code branching using the
+      child {variant} elements.
+      </xs:documentation>
+    </xs:annotation>   
+  </xs:element>
+
+
+  <xs:element name="screen">
+    <xs:annotation>
+      <xs:documentation>
+      Defines the screen, which is a logical unit of a TML page. Each screen must have a unique name,
+      defined by its 'id' attribute.
+      
+      TML supports several types of screens, including display, print, submit, terminal form and 
+      function call screens. The type of the screen is specified using one of the child elements
+       ({display}, {print}, etc.).
+       
+      After the opening {screen} tag, you can list the variables whose values should be modified
+      using the child {setvar} and {strtemplate} elements. The variable operations are performed in a
+      sequence, starting from the first {setvar} element.
+      
+      Note that the variable operations are executed every time the Icendo Browser switches to the
+      screen. The only exception is if the screen is re-displayed after a {baddata} element is 
+      processed.
+      
+      Use the {next} element, or 'next' attribute of the {screen} element to define the URI of the next
+      screen. If both the element and the attribute are specified, the element takes precedence.
+      
+      The {next} element can be used to implement code branching, using the child {varaiant} elements.
+      
+      The 'timeout' attribute of the {screen} element can be used to specify the screen timout - 
+      the amount of time screen contents should be displayed before the Browser switches to the next
+      screen.
+      
+      If the element's content includes hyperlinks, both the 'next' attribute of the {screen} element and
+      the 'uri' attribute of the {next} element are ignored. However, some child {variant} elements of the
+      {next} tag - the ones with 'key' or 'timeout' attribute - can still be used and be effective.
+      
+      To specify the URI of the screen to switch to if an error occurs, use the {error} element.
+      
+      To associate other screens' URIs with the "Menu" (F2) and "Cancel" terminal keys, use the 'menu'
+      and 'cancel' attributes.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="setvar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="next" minOccurs="0" />
+        <xs:element ref="error" minOccurs="0" />
+      </xs:sequence> 
+      <xs:attribute name="next" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the next screen to switch to when Incendo Browser finishes processing
+          the current screen.
+          
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service
+          * 'menu' - a link to the URI defined by the 'menu' attribute
+          * 'cancel' - a link to the URI defined by the 'cancel' attribute  
+          Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+          into the input fields are cleared - input is cancelled. 
+          
+          If the {next} element is also specified for the screen, it will have precedence over this
+          attribute.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="menu" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the screen to switch to if the user presses the "Menu" (F2) button
+          while browsing the screen. The URI specified in the attribute has precedence over the URI
+          defined by the {defaults} element.
+          
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service
+          </xs:documentation>
+        </xs:annotation>        
+      </xs:attribute>
+      <xs:attribute name="cancel" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the screen to switch to if the user presses the "Cancel" button while 
+          browsing the screen. The URI specified in the attribute has precedence over the URI defined
+          by the {defaults} element.
+          
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service
+
+          Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+          into the input fields are cleared - input is cancelled. 
+          </xs:documentation>
+        </xs:annotation>          
+      </xs:attribute>
+      <xs:attribute name="timeout" type="Valref" default="0">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the maximum amount of time (in seconds) Incendo Browser should wait for the user
+          input. When the specified time has elapsed (or a key is pressed), the Browser switches to
+          the screen specified in the child {next} element or the 'next' attribute of the
+          {screen} element. 
+          
+          Note that unlike the 'timeout' attribute of {variant}, this attribute is ignored if the
+          screen contains hyperlinks or input forms.
+          </xs:documentation>
+        </xs:annotation>               
+      </xs:attribute>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
+
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2010 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico UK.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico UK
+ or with the prior written consent of Ingenico UK or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico UK.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

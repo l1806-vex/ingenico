@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<imager>
+
+    <barcode name="Barcode1" 
+        hhp_id="c" 
+        aim_id="]E0"
+        value="0123456789"/>
+        
+    <barcode name="Barcode2" 
+        hhp_id="c" 
+        aim_id="]E0"
+        value="1234567890"/>    
+
+</imager>

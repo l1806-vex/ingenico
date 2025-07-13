@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.ingenico.ingedev.launch.remoteTeliumLaunch">
+<stringAttribute key="com.ingenico.ingedev.telium.remotedebug.core.CONNECTION_TYPE" value="RS232"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.remotedebug.core.DEBUGGER_STOP_AT_BUFFER_OVERFLOW" value="false"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.remotedebug.core.DEBUGGER_STOP_AT_MAIN" value="false"/>
+<listAttribute key="com.ingenico.ingedev.telium.remotedebug.core.DLL_NAMES"/>
+<stringAttribute key="com.ingenico.ingedev.telium.remotedebug.core.ETH_PROTOCOL" value="TCP"/>
+<stringAttribute key="com.ingenico.ingedev.telium.remotedebug.core.GDB_INIT" value=""/>
+<booleanAttribute key="com.ingenico.ingedev.telium.remotedebug.core.GDB_PROMPT" value="false"/>
+<stringAttribute key="com.ingenico.ingedev.telium.remotedebug.core.LAUNCH_CONFIG_VERSION" value="1.0"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.remotedebug.core.LOAD_BINARIES" value="true"/>
+<stringAttribute key="com.ingenico.ingedev.telium.remotedebug.core.OTHER_COM_PORT" value="COM5"/>
+<stringAttribute key="com.ingenico.ingedev.telium.remotedebug.core.OTHER_ETH_IP_ADDRESS" value="0.0.0.0"/>
+<stringAttribute key="com.ingenico.ingedev.telium.remotedebug.core.OTHER_ETH_PORT" value=""/>
+<booleanAttribute key="com.ingenico.ingedev.telium.remotedebug.core.USE_DEFAULT_COM_PORT" value="false"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.remotedebug.core.USE_DEFAULT_ETH_IP_ADDRESS" value="true"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.remotedebug.core.USE_DEFAULT_ETH_PORT" value="true"/>
+<booleanAttribute key="com.ingenico.ingedev.telium.remotedebug.core.VERBOSE_MODE" value="false"/>
+<booleanAttribute key="org.eclipse.cdt.launch.ENABLE_VARIABLE_BOOKKEEPING" value="false"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value=""/>
+<stringAttribute key="org.eclipse.debug.core.source_locator_id" value="com.ingenico.ingedev.debug.core.u32SourceLocator"/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+</launchConfiguration>

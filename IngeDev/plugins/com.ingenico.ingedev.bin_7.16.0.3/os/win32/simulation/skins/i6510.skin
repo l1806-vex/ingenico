@@ -1,0 +1,75 @@
+; Lines beginning with ';' are commentaries
+
+; Same kernel as 6500!!
+KernelID=6500
+
+TerminalID=6510
+BmpPathName=i6510.bmp
+MaskPathName=i6510_mask.bmp
+BmpScreenWidth=163
+ScreenUpperLeftCorner=116, 86
+ScreenRealSizePixels=128, 64
+KeyboardId=3
+PrinterNbCharsPerLine=24
+
+; Type = Standard or Touch
+ScreenType=Standard
+
+ScreenNbBitsPerPixel=1
+
+;Enter
+Button=Elliptic, 0x3A, 0x0F, 253, 295, 295, 356, 0x0D
+
+;Paper feed (PC = Page Up)
+Button=Elliptic, 0x3F, 0x0B, 103, 329, 140, 357, 0x21
+
+;Clear (PC = Escape)
+Button=Elliptic, 0x3B, 0x05, 257, 227, 299, 257, 0x1B
+
+;Corr (PC = Backspace)
+Button=Elliptic, 0x3D, 0x06, 252, 260, 295, 289, 0x08
+
+;9
+Button=Elliptic, 0x39, 0x0E, 203, 300, 242, 324, 0x69, 0x39
+
+;8
+Button=Elliptic, 0x38, 0x09, 151, 300, 190, 327, 0x68, 0x38
+
+;7
+Button=Elliptic, 0x37, 0x04, 101, 294, 139, 322, 0x67, 0x37
+
+;6
+Button=Elliptic, 0x36, 0x0D, 203, 266, 243, 293, 0x66, 0x36
+
+;5
+Button=Elliptic, 0x35, 0x08, 148, 267, 189, 292, 0x65, 0x35
+
+;4
+Button=Elliptic, 0x34, 0x03, 98, 261, 138, 290, 0x64, 0x34
+
+;3
+Button=Elliptic, 0x33, 0x0C, 201, 234, 245, 258, 0x63, 0x33
+
+;2
+Button=Elliptic, 0x32, 0x07, 149, 234, 188, 258, 0x62, 0x32
+
+;1
+Button=Elliptic, 0x31, 0x02, 95, 229, 136, 257, 0x61, 0x31
+
+;0
+Button=Elliptic, 0x30, 0x0A, 152, 334, 190, 358, 0x60, 0x30
+
+;00
+Button=Elliptic, 0x3C, 0x01, 203, 334, 239, 358, 0x6E
+
+;F4
+Button=Elliptic, 0x43, 0x10, 292, 93, 326, 115, 0x73
+
+;F3
+Button=Elliptic, 0x42, 0x11, 292, 135, 326, 157, 0x72
+
+;F2
+Button=Elliptic, 0x41, 0x12, 66, 94, 99, 115, 0x71
+
+;F1
+Button=Elliptic, 0x40, 0x13, 65, 137, 99, 157, 0x70

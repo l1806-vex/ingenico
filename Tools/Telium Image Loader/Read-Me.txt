@@ -1,0 +1,43 @@
+The ImageLoader application has been installed on your computer. 
+
+The installation directory contents 4 directories:
+	- "Components" 				= application module
+			
+	- "Documents"					= Where user's guide of the application is located 
+	
+	- "SDK"								= elements to customise the application language 
+		* "MSG" 						= content batch file, utilities and text samples (ex: spanish)
+													to built additional custom message language file  
+	
+	- "Test Samples" 			= some samples are provided to help demonstrate the functionality 
+													of ImageLoader.
+		* "DiaporamaTest"					= some diaporama samples that can be used to test 
+																"ANIMATION" feature. "TUTORIALx" directory illustrates different
+																image format and size supported.
+		* "StaticIDLEScreenTest"	= some image samples that can be used to test "IDLE SCREEN"
+																feature
+		* "TMSTest"								= example of file to load in TMS to configure remotely
+																ImageLoader application 
+
+Note: 
+-  To display JPG and PNG images, ImageLoader application needs DLL to decode different format.
+The DLL must be loaded with the application module. They can be found in SDK package Components IMG.
+(36910101.Mxx, 36890101.Mxx, 36900101.Mxx)
+- In case of message customisation, do not forget to load the appropriate font.
+
+EVOLUTIONS LIST since first delivery:
+
+Version 1.6.0:
+--------------
+- ISO1 Font is no more needed to support embedded language in the application. However French messages file
+supporting ISO1 Font is provided as sample to customize Messages via an external file.
+- IWL280 terminals support 
+
+Known issues:
+- 640x480 JPEG images are not supported correctly by ImageLoader (not correct rendering on the screen) 
+- Some IWL280 menus/texts do not fit the screen size or Windows in which they are displayed.
+
+
+Version 1.5.0:
+--------------
+- first official delivery

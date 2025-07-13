@@ -1,0 +1,21 @@
+[%SECTION_NAME%]
+<<if telium1
+ReaderName=%READER_NAME%
+<<endif
+CertificateAppliDir=%APPLI_OR_DLL_CERTIFICATE_DIR%
+SignedSchemaDir=%SIGNED_SCHEMES_DIR%
+ApplicationDir=%APPLI_OR_DLL_BIN_FILE_DIR%
+ParametersDir=%DESCRIPTOR_FILE_DIR%
+DestinationDir=%DESTINATION_DIR%
+TempDir=%TEMPORARY_DIR%
+
+[Schemas]
+NbSchemas=%NB_SCHEMES%
+%SCHEMES_LIST%
+
+[Application]
+ParameterFile=%APPLI_OR_DLL_DESCRIPTOR_FILE_NAME%
+ApplicationFile=%APPLI_OR_DLL_BIN_FILE_NAME%
+CertificateFile=%APPLI_OR_DLL_CERTIFICATE_FILE_NAME%
+CatalogFileExtension=%CATALOG_FILE_EXTENSION%
+

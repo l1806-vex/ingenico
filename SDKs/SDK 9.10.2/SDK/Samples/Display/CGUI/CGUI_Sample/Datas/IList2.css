@@ -1,0 +1,149 @@
+
+/* Identify body only in PC browser*/
+BODY
+{
+	padding:0px;
+	margin:0px;
+	background-color:silver;
+	background-image:url("Wallpaper.PNG");  
+	background-repeat:no-repeat;
+}
+
+/* left scrolling menu*/
+DIV#LeftContent
+{
+	float:left;
+	width:60px;
+	height:214px;	
+	background-image:url("Banner.png");
+	background-repeat:repeat-y;
+	background-position:center 40px ;
+}
+
+/* selection tip in the left menu*/
+DIV#Selection
+{
+	position:relative;
+	top:35px;
+	width:60px;
+	height:40px;
+	background-image:url("Select.GIF");
+	background-repeat:no-repeat;
+	background-position:right center ;
+  
+}
+
+/* right content : large icon and description*/
+DIV#RightContent
+{
+	float:right;
+	width:252px;
+	height:214px;
+	background-image:url("Horloge.png");
+	background-repeat:no-repeat;
+	background-position:center center ;
+}
+
+/* description in right content*/
+DIV#Description
+{
+	position:relative;
+	top:170px;
+	left:0px;
+	width:100%;
+	height:36px;
+	font-family: sans-serif;  
+	font-size:14pt;
+	color:white;
+	text-align:center;
+	vertical-align:middle;
+}
+
+/*Animating Container */
+DIV#Animating
+{
+  display:none;
+
+  position:relative;
+  padding:0px;
+  top:50px;
+  left:16px;
+  width:220px;
+ 
+  color:white;
+  border-color:blue;
+  background-color:black;
+  border-style:solid;
+  
+  background-image:url("Tools.png");  
+  background-repeat:no-repeat;
+  background-position:right -70px;
+
+}
+
+/*Input container*/
+DIV#InputSettings
+{
+
+  display:none;
+  color:white;
+  padding:6px;
+}
+
+/*All input boxes*/
+INPUT
+{
+  border:none;
+  background-color:black;
+  color:white;
+  border-color:blue;
+  border-style:solid;
+  border-width:1px;
+}
+
+/*All cells*/
+TD
+{
+  color:white;
+  padding:1px;
+}
+
+
+/*Master container : own all the HTML page*/
+DIV#Container
+{
+	font-family: sans-serif;  
+	width:312px;
+	height:236px;
+	border-color:blue;
+	border-width:0px 4px 4px 4px;
+	border-style:solid;
+}
+
+/* Menu title*/
+P#MenuTitle
+{
+	margin:0px;
+	padding:0px;
+	color:white;
+	background-color:blue;
+	text-align:center;
+	font-weight:bold;
+	height:22px;
+}
+
+#FromApp
+{
+  position:relative;
+  display:none;
+  text-align:center;
+  border : white 1px solid;
+  background : blue;
+  color : white;
+  
+  top : 56px;
+  left:20px;
+  width : 220px;
+  font-size:14pt;
+  height : 30px;
+}

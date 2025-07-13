@@ -1,0 +1,37 @@
+;**********************************************************
+;                                                         *
+;  This file contains description of an official SDK      *
+;                                                         *
+;  Release : contains SDK release                         *
+;            ex : 8.1.1                                   *
+;                                                         *
+;  M_PACK  : contains Manager PACK version                *
+;            of SDK release                               *
+;            ex : 6398                                    *
+;                                                         *
+;  TS_PACK : contains system PACK version                 *
+;            of SDK release                               *
+;            ex : 1070                                    *
+;                                                         *
+;  CMP_GOAL : contains GOAL PACK version                  *
+;            of SDK release                               *
+;                                                         *
+;**********************************************************
+[Release]
+SDK=9.10.2 
+[M_PACK]
+Type=2
+Optional=0
+Component=4
+Version=7607
+[TS_PACK]
+Type=0
+Optional=0
+Component=4
+Version=3012
+[CMP_GOAL]
+Type=AC17
+Optional=1
+Component=2
+Version=0350
+

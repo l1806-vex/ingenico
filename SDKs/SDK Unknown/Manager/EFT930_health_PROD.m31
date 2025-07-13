@@ -1,0 +1,65 @@
+;TELIUM MANAGER HEALTH EFT930 PROD
+;M2OS
+35920740.adf
+35920740.sgn
+;CB2A 
+35930650.ldf
+35930650.sgn
+;Extension
+35940840.ldf
+35940840.sgn
+;Graphic Librairy
+35960560.ldf
+35960560.sgn
+;M2OS Parameters
+35970640.ldf
+35970640.sgn
+;Entry
+35980560.ldf
+35980560.sgn
+;Cam/Date Librairy
+35990640.ldf
+35990640.sgn
+;PSC Protocol
+36010460.ldf
+36010460.sgn
+;Protocol
+36040740.ldf
+36040740.sgn
+;Cryptographic librairy
+36060310.ldf
+36060310.sgn
+;Partage
+36070460.ldf
+36070460.sgn
+;EMV Selection
+36080500.ldf
+36080500.sgn
+;IAM
+36090470.ldf
+36090470.sgn
+;Pinpad
+36100480.ldf
+36100480.sgn
+;PPS30
+36130205.ldf
+36130205.sgn
+;ums
+36160470.ldf
+36160470.sgn
+;gprs
+36210600.ldf
+36210600.sgn
+;Hardware cnf
+36420235.ldf
+36420235.sgn
+;PPR30 France
+36540265.ldf
+36540265.sgn
+;Security
+36560311.ldf
+36560311.sgn
+;PackM2OS
+37785600.pdf
+37785600.sgn
+

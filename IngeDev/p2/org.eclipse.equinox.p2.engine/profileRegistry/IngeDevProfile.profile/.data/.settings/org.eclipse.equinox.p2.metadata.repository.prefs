@@ -1,0 +1,10 @@
+#Fri Nov 08 10:42:26 EET 2013
+repositories/http\:__gnuarmeclipse.sourceforge.net_updates/nickname=ARM Plug-in
+repositories/http\:__gnuarmeclipse.sourceforge.net_updates/suffix=content.xml
+repositories/http\:__gnuarmeclipse.sourceforge.net_updates/name=GNU ARM Eclipse plug-in repository
+repositories/http\:__gnuarmeclipse.sourceforge.net_updates/version=1.0.0
+repositories/http\:__gnuarmeclipse.sourceforge.net_updates/enabled=true
+repositories/http\:__gnuarmeclipse.sourceforge.net_updates/isSystem=false
+repositories/http\:__gnuarmeclipse.sourceforge.net_updates/uri=http\://gnuarmeclipse.sourceforge.net/updates
+repositories/http\:__gnuarmeclipse.sourceforge.net_updates/type=org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository
+eclipse.preferences.version=1

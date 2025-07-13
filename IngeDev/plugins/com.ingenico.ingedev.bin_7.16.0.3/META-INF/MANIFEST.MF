@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Export-Package: com.ingenico.ingedev.bin
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: ingedevbin.jar
+Bundle-Name: U32 Bin Plug-in
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.core.runtime
+Bundle-Vendor: Ingenico
+Bundle-Version: 7.16.0.3
+Bundle-ManifestVersion: 2
+Bundle-Activator: com.ingenico.ingedev.bin.BinPlugin
+Bundle-SymbolicName: com.ingenico.ingedev.bin; singleton:=true
+
+

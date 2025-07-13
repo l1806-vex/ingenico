@@ -1,0 +1,1 @@
+Don't forget the "stddef.h" from the path lib/gcc/mingw32/3.4.5/include

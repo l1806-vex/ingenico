@@ -1,0 +1,951 @@
+-------------------------------------------------------------------------
+                      PROPERTY OF INGENICO
+                  SOFTWARE DELIVERY RELEASE NOTE
+-------------------------------------------------------------------------
+Project:          GMA (Generic Master Application)
+
+/******************* v1.90.1  ******************************************/
+Date: 2009 September 24
+
+WHAT'S NEW:
+- The GSM status ticket now prints the current mode of the modem even if no
+  operator is selected.
+  
+- It is now possible to automatically power off the terminal after a given
+  time of inactivity (see the "Battery" menu). (Trackers #886/#919)
+  
+- The menu for black stripe and screen reduction is now hidden, but those
+  options are still active by default on i8550 terminals.
+  
+BUG FIXES:
+- The GMA would sometimes freeze after exiting from a plugin menu. This was
+  caused by a full message queue. (Tracker#989)
+  
+- Various fixes regarding the selection for EMV and non-EMV cards. (Trackers #920/#932).
+  In particular:
+  - After offering the selection for an EMV application, problems would occur
+    if the user chose no application and exited from the menu.
+  - 2 bytes were missing from the buffer sent to an EMV application.
+  
+- When no SIM card is insert, the "missing SIM" icon was not displayed.
+  (Tracker #983)
+  
+- On GSM terminals, there were problems with the sleep mode (GPRS not closed
+  when going to sleep mode + terminal frozen when waking up from sleep mode).
+  However, it is still not recommended to use sleep mode on GSM terminals.
+  This is a partial fix for tracker #994.
+
+/******************* v1.90.0_beta  ******************************************/
+Date: 2009 September 9
+
+WHAT'S NEW:
+- Display reduction configuration and black stripe in the reduction area. Its 
+  configuration is available in the 'Settings' plugin.  
+
+BUG FIXES:
+- GMA sometimes disconnects/reconnects to GPRS due to a missing checking 
+  of the return value of the function that retuns the network status. (Tracker #980)
+    
+- When creating a custom GMA in IngeDev using the IngeDev add-on, the maintenance
+  via socket would not work. This was caused by a missing registration of the
+  "IP channel" plugin. (Tracker #975)
+  
+- In the PPP o/ RS232 options, the baud rate value was not saved if changed.
+  (Tracker #976)
+
+- The PPP parameters were not properly saved. (Tracker #985)
+
+- Fix for a problem in the Maintenance process that would cause the GMA
+  to freeze.
+
+/******************* v1.85.4  ******************************************/
+Date: 2009 July 16
+
+WHAT'S NEW:
+- GSM: added traces in case of errors when starting LNet. 
+
+BUG FIXES:
+- The GMA would sometimes ignore an operator and try to find another one,
+  even after a succesful selection. (Trackers #973/#974)
+
+/******************* v1.85.3  ******************************************/
+Date: 2009 July 15
+
+BUG FIXES:
+- The auto-scheduling treatment for exhausted maintenance session was not working 
+  properly.
+
+- The function gmaInqGsmImeiImsi would return blank strings for IMEI and IMSI.
+  (Trackers #961/#970)
+  
+- It was sometimes impossible to register to GSM at startup (Tracker #952).
+
+/******************* v1.85.1_beta  ******************************************/
+Date: 2009 June 30
+
+WHAT'S NEW:
+
+- SMF(Maintenance): Added auto-schedule treatment, when the maintenace session has failed.
+  The new maintenance session will be scheduled for the next day.  
+
+BUG FIXES:
+- Sometimes the GMA would try to attach to GPRS when not registered on the GSM,
+  which would cause some delay during in the switching process. (Tracker #969)
+
+- The check for signal strength implemented for tracker #953 could cause trouble,
+  such as constantly deattaching/reattaching to GPRS on the same operator (the
+  problem is described in tracker #968). For safety, this check has been disabled
+  for the moment.
+
+/******************* v1.84.15  ******************************************/
+Date: 2009 June 17
+
+WHAT'S NEW:
+- Added WPA support to gmaWiFiPlugin (Tracker#769). 
+
+- "LAF" packages (type 20 to 31) are now removed from the delivered, because
+  of issue on the "Settings/Security" menu reported in tracker #925.
+  
+- Added a new package '93' which is similar to 3, except that it prints
+ "light" GSM/GPRS traces in a DFS file "log.txt".
+
+- The GPRS Connection Timeout and GPRS Connection Retries are now configurable. They are
+  available in the Advanced Options menu.
+
+- If a crash occurs, all the GMA packages now print details on the crash
+  in the file log.txt at next reboot.
+  
+- To improve the smart GPRS roaming, the GMA now sometimes uses the automatic mode
+  of the module to select an operator.
+
+BUG FIXES:
+- On the i9530, SMC and MAG events were not received during the idle state.
+  (Tracker #938)
+
+- Card data entered manually va the "Manual Card Entry" plugin is now sent
+  to the user application as ISO2 data instead of ISO1. (Tracker #927) 
+  
+- Fix: The Advanced Options menu wasn't be displayed in the GMA type 23 (Tracker#921).
+
+- Fix: It wasn't possible to enter settings submenus or another submenu of other 
+  plugins after manually entered a card. Added a hmi handle reset in the Manual Entry 
+  plugin before returning to GMA (Tracker#926).
+
+- Fix: Due to a API limitation, the gsmPlugin was having several problems for not 
+  disconnecting GPRS in a properly sequence(Tracker#916).
+
+- Fix: Now the "Enable PIN" menu of gsmPlugin is reflecting the last selected option
+  as asked by the Tracker #924.
+
+- Update: The default contrast value for i8550 terminals now is 30(Tracker#899).
+
+- Fixed delay in the following items of PIN MENU of the gmaGsmPlugin: "PIN", 
+  "Change PIN" and "Enab/Disab PIN"(Tracker#922). Additionally it was added 
+  new improvement: A menu before each final processing asking the user for reboot.
+
+- Fixed strange behavior by adding a PIN status checking if the plugin PIN status 
+  is set to "Don't ask for PIN". This avoids desynchronization between the same 
+  status in the SIM and in the plugin configuration.
+
+- Fixed general wrong icon updating after SIM PIN Code related operations. For 
+  example: after 3 PIN erronous retries, the PUK Required icon status wasn't 
+  been displayed (just in the fourth retry).
+
+- Fixed initial delay when operator selection is in automatic mode by checking 
+  if the current mode is the same of the configured mode.
+  
+- The function 'smfCommConfigScheduleMnt' from the lib 'gmaLibPgComm' was
+  requiring the function 'debugPrintf' from the lib 'DebugLib', and was
+  printing traces. This has been fixed. (Tracker #933)  
+  
+- Fixed by workaround a reset provoked by a LNET bug during PPPos disconnection.
+  (Tracker#929)
+ 
+- Added a touchScreen calibration menu option in gmaPluginSettings (Tracker#936). 
+
+- The gmaGSMPlugin was sometimes disconnecting/reconnecting to the GSM/GPRS network
+  for no reason. (Tracker #943).
+
+- In some cases the GSM/GPRS icons were not properly updated. (Tracker #939).
+
+- The gmaGSMPlugin was sometimes getting stuck waiting for a NO_CARRIER event. 
+  (Tracker#941).
+
+- When the GMA was resetting the modem, it would not always wait until the
+  modem is ready before selecting an operator. This would sometimes cause
+  the modem to be blocked. (Tracker #954)
+
+- In somes cases NO CARRIER events are not properly detected by the modem.
+  This would cause subsequent GPRS communication to fail. A workaround
+  is now made in the GMA for this issue. (Tracker #947) 
+  
+- The DNS addresses are now configurable. (Tracker#960)
+  
+- The GMA did not have a specific detection for GSM or GPRS deregistration.
+  Therefore, losses of network were not consistently detected (when they were,
+  it was mostly by chance).
+  
+- The GMA would try to attach to GPRS when no GSM network was registered.
+  This would block the modem for a while and cause the switching process
+  to take longer than it should.
+  
+- The GMA was sometimes sending commands without ensuring that the modem was
+  available. This would sometimes cause the modem to block. (Trackers #944/#945).
+  
+- In some cases the modem can be stuck for a long time (failing GPRS selection,
+  for instance). The GMA is now able to unblock the modem in those cases.
+  
+- The operator list was sometimes not refreshed when it should.
+
+- When no operator was found, the GMA would wait for 6 minutes. This delay
+  has been removed.
+
+- When migrating from one GMA version to another, some of the configuration 
+  parameters were sometimes reaffected with bad values (Detach, PDP Deactivate,
+  GPRS disconnection timeout).
+
+- When switching networks upon a GPRS deregistration, the GMA would sometimes try
+  to reattach to the same operator 2 more times.
+   
+/******************* v1.83.6  ******************************************/
+Date: 2009 January 26
+
+WHAT'S NEW:
+- Added menu in the GSM plugin allowing to choose the operator selection mode
+  (Automatic, Manual, Manual/Auto, Smart). (Tracker #906)
+
+- Added current operator Id to the ticket status in gmaGsmPlugin.
+
+- Added "Low Battery" and "Wake Up" event treatment to gmaGsmPlugin to allow 
+to turn phisical modem sleep and to turn it on in each event. 
+
+- Improved treatment of GMA_POWER_RESTORE level indication (Tracker #904).
+
+- Added current IP address to the ticket status in gmaGsmPlugin (Tracker #902)
+
+BUG FIXES:
+- The documentation for some options of the GSM plugin was missing. (Trackers
+  #802 & #912).
+
+- When importing the GMA delivery into IngeDev, the package type '0' would not
+  appear in the "Download GMA" dialog box.
+
+- Running the GMA with the manual card entry plugin in simulation mode would
+  sometimes crash if there was no user application. (Tracker #917). 
+  
+- The manual card entry plugin would not close the HMI before sending a
+  transaction message to the user application. Therefore, it was impossible for
+  the user application to use the HMI after the user had entered card data
+  manually. A new function (gmaCusConfig) was created to avoid Touch opening 
+  (by gmaCusOpenHmiHandle) in internal plugins (who uses transferred hmi handle).
+  (Tracker #909).
+  
+- The structure gmaStructMasterVersion_t sent with the message
+  GMA_STRUCT_MASTER_VERSION was not filled properly. Now the version/release
+  of the GMA is returned. (Tracker #911)
+
+- Fixes on GSM configuration ticket:
+  - The field "Software version" was incorrect
+  - The field "Creation date" has been removed because it was not meaningful
+  (Tracker #914)
+  
+- Fix: Now the Operator list is cleared when there is a succesful connection.
+That avoids the GSM plugin to use a non-updated operator list to be used 
+when the current GSM operator is not available anymore.
+
+- Fix: Fixed gsmcGprsStart NULL pointer treatment: Now the static structure 
+attributted in NULL pointer case has a hardcoded timeout value(Tracker #904);
+
+- GMA would not handle operators with MNC on 3 digits. This fix needs an OS
+  3.4.D or higher. (Tracker #905)
+  
+- Wasn't possible to access the 'Options' submenu in gmaGmsPlugin due to a 
+LAF build configuration (Tracker #898). The 'Options' submenu uses direct hmi, 
+not using LAF. Then it was been disabled in LAF build configurations.
+
+- When turning the i8550 off, the GSM modem was not turned off, even though
+  the option "Shutdown module" was on. (Tracker #897)
+  Reason: the broadcast message sending wasn't specifying the 'Broadcast'
+  logicalApp id. Rather sending the messages to all applications the function
+  was sending the messages to a random logicalApp plugin id.
+  This affected all the broadcast message sending in all plugins.  
+
+/******************* v1.82.6  ******************************************/
+Date: 2008 October 27
+WHAT'S NEW:
+- Improved the selection of the GSM/GPRS network.
+
+BUG FIXES:
+- In some cases the GSM on the 7910 might not work.
+- The GSM/GPRS on Aqua was not working using an external
+  modem. (Tracker #887)
+
+/******************* v1.81.6  ******************************************/
+Date: 2008 June 9
+
+WHAT'S NEW:
+- GMA menus can now be displayed on the i9530.
+
+- New functions allowing to ask the GMA for opening/closing the GSM.
+ (Tracker #822)
+  
+- Date/Time menu can now be protected by a password. (Tracker #808)
+
+- Tracker #830: GMA can now support of OpenEstate applications in GMA menu.
+  Now the function gmaMsgAddLogicalAppInfo, gmaMsgDelLogicalAppInfo and 
+  gmaMsgAddLogicalAppStatus can be called from GMA_MSG_POWER_ON, 
+  GMA_MSG_INIT_INTEGRITY_CHECK, GMA_MSG_STARTUP, GMA_MSG_TRANSACTION levels.
+
+- GMA documentation has been reworked. The content of the documentation
+  "Generic Master Application.pdf" has been updated and moved to gmaLib.chm.
+
+BUG FIXES:
+- It was impossible to do maintenance using a modem on V29. (Tracker #825)  
+
+- smfCommConfigScheduleMnt was not working properly when the 'action' field
+  was set to 2. (Tracker #872)
+
+- Tracker #729: The GMA now automatically tries to reconnect to the GSM/GPRS
+  network if the connection is lost.
+
+- When the name of an application was exactly 16 characters long, this could
+  cause errors in the "Startup App" functionality (blank application name in
+  the menu, startup not working...). (Tracker #866)
+
+- UI to enter IP address in SMF plugin is now the same as in the Ethernet plugin
+  (delimited with dots). Consequently, this allows to enter the IP address on
+  terminals where it was not possible: Aqua and i9530.
+  It fixes trackers #785, #615 and #824 (partially).
+  
+- It is now possible to enter hyphen (-) and underscore (_) characters in the 
+  following fields:
+  - Host name for maintenance (when "socket" type is selected)
+  - User name and password for PPP
+  
+- When entering the COM port for PPP, pressing "Del" does not erase the whole
+  string anymore.
+
+- It is now possible to enter special characters on the AQUA and i9530 for the
+  following fields:
+  - Host name for maintenance (when "socket" type is selected)
+  - User name and password for PPP
+  
+- The message 'GMA_MNT_ACTION_AUTH' was sent only once (tracker #821).
+  
+- When the GMA was sending a GMA_MNT_ACTION_xx message, it would not close
+  the HMI handle, therefore preventing applications to use the HMI (tracker
+  #821).
+
+/******************* v1.80.2  ******************************************/
+Date: 2008 February 19
+
+WHAT'S NEW:
+- Tracker #762:
+  After a unsuccessful maintenance session the failure reason is now printed.
+  
+- Tracker #761:
+  The message asking for cancelling maintenance now disappears after a specific
+  timeout. 
+- Trackers #740, #737 and #542
+	Add PPP plug-in. Connection over modem (PSTN) and serial.
+
+BUG FIXES:
+- Tracker #813:
+  Impossible to link with both Ethernet and WiFi plugins in ARM SDT because
+  of duplicated global variable "netNiConfig".
+  
+- Tracker #796:
+  Radio menu items should start with a capital letter.
+  
+- Tracker #786:
+  Mag data format different between real card and manually entered data.
+  
+- Tracker #771:
+  Terminal would freeze when setting special values for sleep mode in 
+  configuration file.
+ 
+- Correct a bug in the custom part. If a plug-in set a key to have the
+  default behavior (that is send a query to all applications asking with
+  application should treat the key) if more then one application answer
+  the query message with the same acceptance level the menu to select
+  the applications is not shown.
+  
+- Trackers #623, #770 and #798
+  Add some more characters in the edition of some fields, (SSID, User, APN)
+  
+- Fixed tracker #809:
+  During a maintenance session, the GMA now displays the connection try number.
+ 
+
+/******************* R1_73_1  ******************************************/
+Date: 22/11/2007
+TAG: GMA_VERSION_1_73_1
+
+- Fixed bug tracker #751:
+  Connectivity issues regarding GPRS.
+
+- Fixed bug tracker #734:
+  Unstable terminal behaviour when battery charge is low.
+  
+- Fixed bug tracker #733:
+  gmaInqGsmImeiImsi() does not work.
+  
+- Fixed bug tracker #720:
+  EMV card inserted before terminal boot blocks the application.
+  
+- Fixed bug tracker #716:
+  With a custom GMA created from IngeDev, some user apps were sometimes missing from
+  the "Startup app" menu.
+  
+- Fixed bug tracker #708:
+  With a custom GMA created from IngeDev, maintenance would sometimes fail.
+  
+- Fixed bug tracker #700:
+  Battery logo is missing on AQUA terminals.
+    
+- Fix a bug in the gmaCore and gmaMain that cause the message MSG_MNT not
+  beeing send when the GMA was compiled with GNU. It affect all broadcast
+  messages sent by plug-ins.
+
+- Fix the POR plug-in. The battery ICON was not appearing after a 
+  maintenance that occurs when the terminal is power on.
+
+- Finish the EMV fallback support (tracker number 699)
+
+- Fix a bug in the EMV selection. When the GMA is compiled with
+  GNU the card data gotten from the function amgEmvFinalSelect is
+  not sent correct to the application.
+
+- Correct bug tracker number 696
+  The PinPAD (6780) whistles when trying to print Ethernet configuration
+
+- Correct bug tracker number 793
+  Problem when calling gmaMsgEmvAid more than once. When an application 
+  adds several AIDs with function gmaMsgEmvAid, only the last one is 
+  taken into account. This comes from the fact that 
+  amgSelectionCriteriaAdd erases all previously added AIDs.
+
+/******************* R1_73_0  ******************************************/
+Date: 30/10/2007
+TAG:GMA_VERSION_1_73_0
+
+- Check the malloc functions in the mediadata to avoid crashs
+
+- Correct the GPRS connection timeout in the GSM plug-in
+
+- Add 3 more configurations in the GSM plug-in. Menu Options with the options: 
+  Detach, PDP Activate and PDP Deactivate.
+ 
+- Change the way non compressed color Icons are displayed to increase the
+  speedy for big icons.
+  
+- Add (parcially, fix case to have EMV fallback, card mute) EMV fallback support.
+
+- Correct a bug in the ACTIVITY status notification. Sometimes a plug-in didn't receive 
+  a Activity status.
+ 
+- Fixes in the POR plug-in to work in the I8550.
+  - Increase the time since power on until open the POR handle.
+  - fix the turn off mechanism when the battery is low
+  - Chage the way the battery status is gotten, now using asynchronous functions
+  
+
+/******************* R1_72_2  ******************************************/
+Date: 06/09/2007
+TAG: GMA_1_72_2
+
+- Correct bug tracker 671
+	Documentation error, the defines GMA_SMC_INFO_xxx don't exist. Page
+	40 of Generic Master Application.pdf
+- Correct bug tracker 661
+	missing info in the Doc about hmiTransfer
+- Correct bug tracker 692
+	Unclear documentation regarding sleep mode
+	1) The documentation should say clearly that GMA_MSG_POWER_LEVEL is
+	received when entering & going out of sleep mode (and not only for battery 
+	terminals). Also, the field GMA_POWER_RESTORE is not listed.
+	2) Description of GMA_POWER_LOW_BATTERY is wrong.
+- Correct bug tracker 697
+	There should be a introduction page inside gmaLibPgComm.chm
+- Correct a bug in the task that manage the plug-in command queue. The
+  problem only occurred when the GMA is compiled with GNU.
+/******************* R1_72_1  ******************************************/
+Date: 05/09/2007
+TAG: GMA_1_72_1
+
+- Correct problem with the exported libraries for ingedev5 in the R_1_72_0
+- Correct a bug with external plug-ins. External plug-ins will not work in 
+the version R1_72_0
+
+/******************* R1_72_0  ******************************************/
+Date: 31/08/2007
+TAG: GMA_1_72_0
+
+- Correct bug tracker 667
+	Add extern "C" to all include files.
+- Correct bug tracker 668
+	Put static in 2 global variables with same name. Problem should
+	only occur in a GMA with the Ethernet and wifi plug-in.
+- Correct bug tracker 669
+	Remove dependency between editLib and gmaCustomLib
+- Correct bug tracker 670
+	Correct some errors in the gma template application for ingedev 5
+- Correct bug tracker 675
+	Add functions to retrieve the IMSI and IMEI from the GSM plug-in
+- Correct bug tracker 680
+	Clarify the documentation of functions gmaInqPorBattLevel and 
+	gmaInqGsmSignLevel.
+- Correct bug tracker 628
+	Add support for terminal I94XX using the remote hmi
+- Correct bug tracker 617
+	Add the plug-in for manual card data entry
+- Correct bug tracker 595
+	Default Contrast for AQUA / range of contrast and product identification
+- Correct bug tracker 647
+	When testing dataTimeCalcDate with the input parameter 0, the function never ends.
+- Correct bug tracker 656
+	The GMA try to connect even if the initialisation of the parameters is not done or is wrong (no APN for example).
+- Correct bug tracker 657
+	When the RSSI polling gives a value of 99, GPRS is immedialely disconnected
+- Correct bug tracker 663
+	Contrast now limited to 2 digits.
+- Correct bug tracker 664
+	Remove the function gmaMsgIdleMessage from the gmaMsgCon.h.
+- Correct bug trackers 673 & 735
+	The application now can ask the POR plug-in about docked-undocked state and if the battery is charging
+	by calling function gmaInqPorBattLevelExt.
+- Correct bug tracker 679
+	Add the function gmaInqGsmLastErrors in the gmaInqStatus.h
+- Correct bug tracker 682
+	With the function add to correct the tracker 679 you can check for a non SIM card error
+- Correct bug tracker 683
+	"Re-connect timeout" configuration parameter has been added for GPRS
+- Correct bug tracker 685
+	GMA custom template for IngeDev 5 cannot be built with VC++ because of hmiChangeOwner function
+- Correct bug tracker 688
+	Maintenance does not start if a big color logo is used. Solution was increase the heap size.
+- Correct bug tracker 690
+	GMA - It's not easy to change the COM port for maintenance.
+	Now when you type cancel, only one caracter is deleted in the edition of the COM PORT
+	for the other options nothing change.
+- Correct bug tracker 691
+	GMA should support all GMA_MNT_xxx messages
+- Correct bug tracker 704
+	 Be able to change the language for a customized GMA 
+- Correct bug tracker 705
+	Doc: explain how to change language of customized GMA
+- Correct bug tracker 706
+	SMF plug-in doesn’t have an option for V29 under Modem config.
+- Correct bug tracker 717
+	Maintenance: connection type not memorized.
+- Correct bug tracker 674
+	Deliver more packages for simulation
+- Correct bug trackers 660 & 700
+	Battery Icon not displayed on 5050
+- Correct bug tracker 652
+	Cannot display correctly 4 lines during a maintenance session
+
+	
+/******************* R1_71_2  ******************************************/
+Date: 01/08/2007
+TAG: GMA_1_71_0
+
+- Correct the Ingedev5 libraries to work in simulation with the Ingedev5+VC.
+- Correct the Ingedev5 custom template application.
+- Add the GMA dll for simulation with the Ingedev5+VC
+
+
+/******************* R1_71_1  ******************************************/
+Date: 02/07/2007
+TAG: GMA_1_71_0
+
+- Removed not-ready plugin "gmaPluginMCrdEn" from the delivery.
+
+
+/******************* R1_71_0  ******************************************/
+Date: 12/06/2007
+TAG: GMA_1_71_0
+
+- Correct bug tracker number 648
+   Maximum number of applications managed by the GMA, now the maximum
+	number of applications is 15. 
+	The SSA version must be 5.10 or higher so that the terminals is able
+	to load more than 10 applications.
+	
+- Correct bug tracker number 653
+   battery indicator on GMA-POR plugin, now the indicator stop to indicate
+	charge when the battery is full.
+	
+- Translate to english some screens that appear in portuguese in the GSM
+   plug-in.
+   
+- Now the application are refered internally in the GMA by its DF60 name
+  (system name) instead of the application number. Now the GMA support more
+  than one application with the same application number.
+  
+- Correct bug tracker 544 
+  GPRS signal strength and battery consumption messages should be supported.
+  Added a way to inquire the GSM and POR plug-in about the GSM signal level and
+  the battery level. See the documentation gmaLibPgComm.chm.
+	
+OS used for tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I6770, I8550, I8200 and I7910.
+/******************* R1_70_3   *****************************************/
+Date 18/05/2007
+TAG: GMA 1_70_3
+- Correct the field subnetwork mask in the ethernet plug-in that are shown
+  in the print ethernet config.
+- Don't ask the sub network mask in the DHCP mode in the ethernet plug-in.
+
+/******************* R1_70_2   *****************************************/
+Date: 17/05/2007
+TAG: GMA 1_70_2
+- Correct a bug in the mediaData, if you replace a mediaId with a bigger
+  mediadata the mediaData will be stored with garbage
+- The correction made in the function gmaMsgMediaData in the 
+  version 1_70_1 has a bug.
+---Compatibility Information
+Ingedev version used to compile : 6.6.0.7 (exported libraries to Ingedev 5 too)
+
+OS used for tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I6770, I8550, I8200 and I7910.
+
+/******************* R1_70_1   *****************************************/
+Date: 15/05/2007
+TAG: GMA 1_70_1
+- Correct the bug tracker 606
+   Radio plugin crashes in simulation.
+- Correct the bug tracker 607
+   Add a description in the gmaCustomLib.chm
+	Show a description of the plug-in icons in the GMA user guide
+- Correct the bug tracker 610
+   Gateway does not auto-populate with default gateway address in the ethernet
+   plug-in.
+- Correct the bug tracker 623
+   SSID or APN entry - Possibility to enter special characters
+- Correct the bug tracker 641 and 642
+   Add entry checking in functions datetimeCalcSec and dateTimeCalcJulian
+- Correct the bug tracker 575
+   Add more information about the radio modes. 
+- Correct the bug tracker 604
+   Add a protection in the function gmaMsgMediaData to not accept
+	to big media data (limit to 2k). If the media data is bigger
+	use the function gmaMsgMediaFile that sends a global file
+	name where the mediaData is stored.
+- Correct the bug tracker number 645
+   Documentation of function datetimeAddSeconds
+- Correct the bug tracker number 637
+   The GMA now have a binary for the I7780 with ethernet plug-in
+
+---Compatibility Information
+Ingedev version used to compile : 6.6.0.7 (exported libraries to Ingedev 5 too)
+
+OS used for tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I6770, I8550, I8200 and I7910.
+
+/******************* R1_70_0 (BETA 0)***********************************/
+
+- Correct the bug tracker 559 (Not tested)
+  GMA doesn't sent GMA_MSG_MNT event to user application. 
+- Correct the bug tracker 590 and 558 (Not tested)
+  Now an application can schedule an maintenance session.
+  Use the library gmaLibPgComm to make the communication
+  process with the SMF.
+- Correct Bug tracker 550
+  	When beep=yes, some page navigation is without audio signal.
+- Correct Bug tracker 588 (made only a simple teste)
+   GMA hangs inside gmaPgMsgCloseComm function. Use the library 
+	gmaLibPgComm to make the communication process with the SMF.
+- Correct Bug tracker 593
+  	DHCP setting in Ethernet Plug-in Menu does not default correctly.
+- Correct Bug tracker 594 (Not tested)
+   Erasing EMV AIDs data from GMA 
+- Correct Bug tracker 618 (Not completelly tested)
+   Display ethernet config when there is no printer
+- Correct Bug tracker 621
+	Radio menu should be lowercase
+
+
+/******************* R1_64_0 *******************************************/
+Date: 30/03/2007
+TAG: GMA_1_64
+
+- Bug tracker 547 -> Unable to enter apn, user name & password in
+  symbolic form in the GPRS configuration menu.
+- Bug tracker 560 -> SMF plug-in failed to populate with call schedule from 
+  IngEstate.
+- Add support for cancelling the maintenance session, in terminals with or
+  without keyboard
+- In the power on message the GMA now sends the application ID of the application.
+- When a plugin receives a message from a application the field appId is now
+  filled correctly.
+- Bug tracker 579: the GMA simulation now has the ethernet plug-in.
+- Improve the gmaLib documentation with more information with the
+  logicalId to use when no logical application was added.
+- When the application didn't add a logical application in
+  the answer to the power on, a logical application is
+  automatically added with 0xFF but this logicalId 0xFF
+  makes the menu resource not be displayed. Now it is
+  fixed in this version and the menu resource will be displayed
+  in this case.
+- improve the documentation of the function gmaCstMsgResourceMenuStatus
+- Bug tracker 581: Incorrect documentation for function gmaMsgEndEncode
+- Correct the function gmaPgMsgCloseComm to close the queue when there
+  is no more open channels. It can cause problems with the gclPgSup, when
+  the taskId number of the GCL change from one connection to another.
+- Internal changes to make it works on the I8550MHC032A 
+  (correct the internal behaviour).
+- Bug tracker 592: Correct the GSM plug-in, there is a bug that could 
+  make the terminal crash in the treatment of the powerlevel message.
+- Put a protection in the function gmaMsgRead. It crashed when used without a
+  prior call to gmaMsgDecode, now it returns an error.
+- The menuLib had dependency on the gmaCustomLib. The dependency was removed.
+- In case of terminal I3070 the settings plug-in change the behaviour of the
+  keys HMI_KEY_F6 and HMI_KEY_F9 to start the plug-in menu. 
+
+---Compatibility Information
+Ingedev version used to compile : 6.6.0.3 (exported libraries to Ingedev 5 too)
+
+OS used for tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I6770, I8550, I8200 and I7910.
+  
+/******************* R1_63_0 *******************************************/
+Date: 22/02/2007
+TAG: GMA_1_63
+- Acua: Fixed the problem of blocking when some keys are pressed.
+- Fixed the binaries with terminal type 24 and 25 (problem in release 1.62).
+- remove the SMF maintenance cancel (bugs found).
+- Bug tracker 546.
+- Bug tracker 568
+- Bug tracker 556
+- Bug tracker 555
+- Bug tracker 553
+- Bug tracker 551
+- Bug tracker 516
+
+---Compatibility Information
+Ingedev version used to compile : 6.6.0.3 (exported libraries to Ingedev 5 too)
+OS used for tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I6770, I8550, I8200 and I7910.
+/******************* R1_62 *********************************************/
+Date: 16/02/2007
+TAG: GMA_1_62
+- Change the way the font is select in the optic. Solve a problem
+  when running with the openstate.
+   - Bug tracker 549
+- Now the maintenance session can be stopped in the beggining by
+  pressing the cancel key.
+- The contrast is corrected for I8550 and Acua
+---Compatibility Information
+Ingedev version used to compile : 6.6.0.3 (exported libraries to Ingedev 5 too)
+OS used for tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I6770, I8550, I8200 and I7910.
+/******************* R1_61 *********************************************/
+Date: 14/02/2007
+TAG: GMA_1_61
+- Correct the position of the battery Icon in terminals with screen of
+  the size of a I5100.
+- The start-up app menu in the settings plug-in sometimes appears with the
+  arrows in terminals without touch screen
+- Correct the position of the RADIO icon (bluetooth terminal).
+
+
+---Compatibility Information
+Ingedev version used to compile : 6.6.0.3 (exported libraries to Ingedev 5 too)
+OS used for tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I6770, I8550, I8200 and I7910.
+
+/******************* R1_60 *********************************************/
+Date: 13/02/2007
+TAG: GMA_1_60
+
+- Add support for touch screen terminals.
+	- a plug-in can set a icon as "touchable" and define an action for it.
+	- in the default implementation the menu icon and the configuration icon 
+	(on the botton left) is "touchable".
+	- The menus support touch screen (the LAF and the menuLib implementation)
+	- The edit screen shows a virtual keyboard in a terminal without a keyboard.
+- The GMA can display the menu items in the resource menu of the applications
+	if the application required
+- Change some plug-in menus items (reorganize the plug-in menus)
+   - Bug tracker 554
+- Some corrections in the SMF library incorporeted in the SMF plug-in
+	- Support of mult-processor
+	- Correct a bug in the Ingetrust connection (send clear text at
+	the end of the connection)
+- Bug tracker 492.
+
+
+---Compatibility Information
+Ingedev version used to compile : 6.6.0.2 (exported libraries to Ingedev 5 too)
+OS used for tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I6770, I8550 and I8200.
+
+/******************* R1_52 *********************************************/
+Date: 08/12/2006
+TAG: GMA_1_52
+
+- Fix the reconnection issue of version 1.51. Use of wrong parameter.
+  bug tracker number 539.
+  
+---Compatibility Information
+Ingedev version used to compile : 5.03 and 6.5.0.5
+OS used fot tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I5100 WIFI, I5100 Ethernet, I6500, I8550.
+/******************* R1_51 *********************************************/
+Date: 10/11/2006
+TAG: GMA_1_51
+
+- Correct the issues from version 1.50:
+  - Now uses the psyDateTimeForcedUpdate instead of psyDateTimeApprovedUpdate.
+  - The ethernet menu is fixed.
+  - Fix the POR plug-in.
+  - Correct the edit bug in the settings/SMF plug-in
+  - Correct the SMF. If a maintenance session is running and the terminal
+  is shut down, the next time it is powered up, the SMF makes a reconnection.
+- bug tracker 545
+---Compatibility Information
+Ingedev version used to compile : 5.03 and 6.5.0.5
+OS used fot tests: 3.0.0 and SSA WW version 5.14.
+Terminal used for tests: I5100, I5100 WIFI, I5100 Ethernet, I6500, I8550.
+/******************* R1_50 *********************************************/
+Date: 01/11/2006
+TAG: GMA_1_50
+- Add support for directly activate an application at startup. Implemented
+  in the settings plug-in.
+  - bug tracker 535
+- Settings plug-in configuration file in text mode.
+  - Bug tracker 534
+- Configurable behaviour of the menu when only one application in the
+  terminal. The configuration is stored in the settings configuration
+  file.
+  - Bug tracker 437
+- Since this version the SMF connection configuration will have future
+  compatibility.
+- Sleep mode in the settings plug-in.
+- Backlinght, contrast and beep settings in the Settings plug-in.
+- Change of the date/time use the function psyDateTimeApprovedUpdate.
+- implemented the hmi transfer function. An application
+  can ask the GMA to instead of close the HMI handle, transfer it to
+  the application.
+- The SMF plug-in uses the SMF 3.03 in the compilation.
+- Change the way the ethernet plug-in identify the ethernet device.
+ - Bug tracker 532
+---Compatibility Information
+Ingedev version used to compile : 5.03 and 6.5.0.5
+OS used fot tests: 3.0.0 and SSA WW version 5.14.
+Terminal used: I5100, I6550.
+
+
+/******************* R1_48 *********************************************/
+Date: 24/10/2006
+TAG: GMA_1_48
+- Same as the 1.45 but compiled with the SMF library for Ingetrust 3.02
+/******************* R1_47 *********************************************/
+Date: 06/10/2006
+TAG: GMA_1_47
+- Same as the 1.45 but compiled with the SMF library for Ingetrust
+/******************* R1_46 *********************************************/
+Date: 06/10/2006
+TAG: GMA_1_46
+- This version used the LAF library to show menus. This version is intended
+  to terminal with touch screen display and keyboard. The version 1.45 can
+  be used in a terminal without a touchscreen.
+  
+  This version was tested in a I6550 and I6780. Using the OS 2.9.0 and
+  SSA binaries: WWD106005140 and WWD106005141 (version 5.14).
+  
+/******************* R1_45 *********************************************/
+Date: 14/06/2006
+TAG: GMA_1_45
+- Internal changes in the gmaLib and gmaCustom. Move a code added in the
+  last release in the gmaLib to the gmaCustom.
+- Bug tracker 525
+/******************* R1_44 *********************************************/
+Date: 09/06/2006
+TAG: GMA_1_44
+- Internal corrections in the GSM plugin
+- Add support for a plugin talk with another plugin, even in the same 
+  application
+- Add a setting plugin (change date/time only in this version, more 
+  features will be added in next versions)
+- Update the SMF plugin to support call scheduling from Ingestate, add 
+  support for connections using the GSM, WIFI and ethernet plugin.
+/******************* R1_43 *********************************************/
+ADDED:
+- A function to set the GMA version was added in the GMA core
+- A function to get the schedule event list was added in the GMA core
+- An application version entry is added in the application physical list
+
+/******************* R1_40 *********************************************/
+Date: 08/05/2006
+Tag: GMA_V1_30_060309
+- Add the wifi plugin
+- Add the support for a plugin generate a transaction message
+- corrected bugs:
+  - sometimes an event was not deleted from the event list when the event
+    is executed. When the terminal was turn on again the event is executed
+    the second time.
+  - sometimes when an invalid smart card is inserted the GMA starts a 
+    "race" condition.
+/***********************************************************************/
+/******************* R1_30 *********************************************/
+Date: 09/03/2006
+Tag: GMA_V1_30_060309
+- Add the ethernet plugin
+- Add the Radio plugin
+- Now detect the terminal type in the simulation (simelite)
+/***********************************************************************/
+/******************* R1_21 *********************************************/
+Date: 08/02/2006
+Tag: GMA_V1_31_060208
+- Correct a bug in the communication with application and external plugins.
+/***********************************************************************/
+/******************* R1_20 *********************************************/
+Date: 03/02/2006
+Tag: GMA_V1_30_060203
+- Added support for I8200, I8500 and I8550.
+- Added support for color media data.
+- Added the GSM plugin
+/***********************************************************************/
+/******************* R1_13 *********************************************/
+Date: 02/02/2006
+Tag: GMA_V1_13_060202
+- now in the schedule event when you sent the date=0xFFFFFFFF, the event
+  will be scheduled in the next occurence of the schedule time, this can
+  be today or tomorrow.
+/***********************************************************************/
+/******************* R1_12 *********************************************/
+Date: 18/01/2006
+Tag: GMA_V1_12_060118
+- Correct the GMA_MEDIA_TEXT used by application to send a logo.
+- Add the GMAPGMSG.C to the gmaLib. Support for communication between application
+  and plugin.
+/***********************************************************************/
+/******************* R1_11 *********************************************/
+Date: 17/01/2006
+Tag: GMA_V1_11_060117
+- correct the simul package to permit the use without a connect terminal
+/***********************************************************************/
+/******************* R1_10 *********************************************/
+Date: 11/01/2006
+Tag: GMA_V1_10_060105
+- Split the code in a core part and a custom part.
+- add support for text logo.
+- add support for internal plugins
+- add support for logical applications
+- add a POR plugin (battery plugin) for I5050 and I7780
+- add a SMF plugin (maintenance)
+/***********************************************************************/
+/******************* R1_03 *********************************************/
+Date: 28/10/2006
+Tag:
+- Beta release
+
+
+
+
+
+
+
+

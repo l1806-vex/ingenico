@@ -1,0 +1,19 @@
+ /** \mainpage TCPIP Sample 
+
+This document is intended to help beginners to learn how the TCPIP functionality in SDK is done. It will also serve as a training application that will show 
+how the TCPIP functionality works between the Telium terminal and a PC. 
+
+In this sample, the terminal may either act as a server or a client. 
+
+  * To learn about the TCPIP Sample, please refer to the following pages:
+  * 
+  * - \subpage Purpose 
+  * - \subpage Functions 
+  * - \subpage Before 
+  * - \subpage HowTo 
+  * \image html "logotelium_293x196.png" 
+  */
+
+//-----------------------------------------------------------
+
+ 

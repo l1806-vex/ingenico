@@ -1,0 +1,230 @@
+<project name="Build" default="main">
+	<property name="exportDir" location="${basedir}/Delivery" />
+
+	
+	<!-- Load the ant-contrib package (needed for the 'foreach' task). -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	</taskdef>
+
+	<property name="debugflag" value="false" />
+
+	<property name="build.log.dir" location="${basedir}/buildlogs" />
+	<mkdir dir="${build.log.dir}" />
+	<tstamp>
+		<format property="timestamp" pattern="yyyy-MM-dd_HH-mm-ss" />
+	</tstamp>
+
+	<property name="build.log.filename" value="buildLog_${timestamp}.txt" />
+	<property name="rebuild.err.filename" value="buildErrors_${timestamp}.txt" />
+
+
+	<target name="initProjectName">
+		<ingedev.getCurrentProjectName outputproperty="projectName"/>
+	</target>	
+	
+	<!-- main target (called by default) -->
+	<target name="main" depends="initProjectName">
+		<record name="${build.log.dir}/${build.log.filename}" loglevel="info" append="false" action="start" />
+		<echo message="Build logged to ${build.log.filename}" />
+
+		<!-- ${ingedev.version} property is set to IngeDev version-->
+		<echo message="IngeDev Version=">${ingedev.version}</echo>
+
+		<echo message="" />
+		<echo message="**************************************************************" />
+		<echo>Building '${projectName}'... </echo>
+
+		<echo message="" />
+		<echo message="**************************************************************" />
+		<echo message="Build ACTIVE configuration" />
+		<antcall target="build_ACTIVE_CONFIG">
+		</antcall>
+
+		<record name="${build.log.dir}/${build.log.filename}" loglevel="verbose" append="false" action="stop" />
+		<eclipse.refreshLocal resource="${projectName}" depth="infinite" />
+	</target>
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: generateBuildFiles      
+          
+		Force U32 build files generation
+	- - - - - - - - - - - - - - - - - -->
+	<target name="generateBuildFiles" depends="initProjectName">
+		<ingedev.u32.generateBuildFiles debugflag="${debugflag}" project="${projectName}" />
+	</target>	
+
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: build_ACTIVE_CONFIG      
+          
+		Build ACTIVE_CONFIG configuration  
+	- - - - - - - - - - - - - - - - - -->
+	<target name="build_ACTIVE_CONFIG" depends="generateBuildFiles">
+		
+		<ingedev.u32.build  project="${projectName}" kind="incremental" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: buildAllConfigsWithForEach      
+          
+		get all U32 configuration and call 'buildOneConfig' target to build each config  
+	- - - - - - - - - - - - - - - - - -->
+	<target name="buildAllConfigsWithForEach" depends="generateBuildFiles">
+		<ingedev.u32.getBuildConfigurations debugflag="${debugflag}" project="${projectName}" outputProperty="configList" />
+		<foreach list="${configList}" param="one.build.config" target="buildOneConfig" delimiter=" ">
+		</foreach>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	     target: buildOneConfig
+	     
+	     build (kind ="incremental") the given config (one.build.config property) for the 
+         given project (project="${projectName}"). 
+	- - - - - - - - - - - - - - - - - -->
+	<target name="buildOneConfig" depends="generateBuildFiles">
+
+		<ingedev.u32.build config="${one.build.config}" project="${projectName}" kind="incremental" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: buildAllConfig
+                         
+		build (kind ="incremental") all configuration (config="ALL") for the 
+		given project (project="${projectName}"), and fail on error (failonerror="true"). 
+		That means the build stop at the first found error, and consequently does not continue 
+		with other configurations.                         
+	- - - - - - - - - - - - - - - - - -->
+
+	<target name="buildAllConfig"  depends="generateBuildFiles">
+		<property name="outputErrFileName" value="${build.log.dir}/${rebuild.err.filename}">
+		</property>
+		<ingedev.u32.build errorsoutputfile="${outputErrFileName}" failonerror="true" config="ALL" project="${projectName}" kind="incremental" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	      target: rebuildAllConfigWithFailOnError               
+          
+          rebuild (kind ="full") all configuration (config="ALL") for the 
+          given project (project="${projectName}"), and fail on error (failonerror="true"). 
+          That means the build stop at the first found error, and consequently does not continue 
+          with other configurations.                         
+	- - - - - - - - - - - - - - - - - -->
+
+	<target name="rebuildAllConfigWithFailOnError"  depends="generateBuildFiles">
+		<property name="outputErrFileName" value="${build.log.dir}/${rebuild.err.filename}">
+		</property>
+		<ingedev.u32.build errorsoutputfile="${outputErrFileName}" failonerror="true" config="ALL" project="${projectName}" kind="full" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: rebuildAllConfigAndTestIfFailed    
+          
+          rebuild (kind ="full") all configuration (config="ALL") for the 
+          given project (project="${projectName}"), and don't fail on error (failonerror="false"). 
+          That means even an error is found build continue for other configurations.             
+          At the end, if the given 'outputErrFileName' exists, that means there are some errors, and the build fails         
+	- - - - - - - - - - - - - - - - - -->
+	<target name="rebuildAllConfigAndTestIfFailed"  depends="generateBuildFiles">
+		<property name="outputErrFileName" value="${build.log.dir}/${rebuild.err.filename}" />
+		<ingedev.u32.build errorsoutputfile="${outputErrFileName}" failonerror="false" config="ALL" project="${projectName}" kind="full" />
+		<eclipse.refreshLocal resource="${build.log.dir}" depth="infinite" />
+		<available file="${outputErrFileName}" property="errors.exist" />
+		<fail if="errors.exist" message="Errors occurs during the build. See '${outputErrFileName}' for more details...">
+		</fail>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: buildAllSubProjects      
+          
+		get all U32 Subprojects and call 'buildOneConfig' target to build each config  
+	- - - - - - - - - - - - - - - - - -->
+	<target name="buildAllSubProjects"  depends="generateBuildFiles">
+		<ingedev.u32.getSubProjects debugflag="${debugflag}" project="${projectName}" outputProperty="subProjectsList" />
+		<foreach list="${subProjectsList}" param="one.build.subProject" target="buildOneSubProject" delimiter=" ">
+		</foreach>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	     target: buildOneSubProject
+	     
+	     build (kind ="incremental") ALL configurations of the given subproject (one.build.subProject property) for the 
+         given project (project="${projectName}"). 
+	- - - - - - - - - - - - - - - - - -->
+	<target name="buildOneSubProject" depends="generateBuildFiles">
+		<ingedev.u32.build subproject="${one.build.subProject}" config="ALL" project="${projectName}" kind="incremental" />
+	</target>
+
+
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+	    target: exportAllSubProjects 
+	    
+	    Export all (exportable) subprojects into a destination folder 
+	    To use this target, the project must contain at least a library or a common module (other subprojects are not exportable)             
+	- - - - - - - - - - - - - - - - - -->
+	<target name="exportAllSubProjects" depends="generateBuildFiles">
+
+		<ingedev.u32.getBuildConfigurations debugflag="${debugflag}" project="${projectName}" outputProperty="configList" />
+
+		<ingedev.u32.getSubProjects debugflag="${debugflag}" project="${projectName}" outputProperty="subProjectsList" type="exportable" />
+		
+		<fail unless="subProjectsList" message="No exportable subproject found."/>
+
+		<foreach list="${subProjectsList}" delimiter=" " param="export.lib" target="exportSubProject">
+		</foreach>
+		
+		<eclipse.refreshLocal resource="${projectName}" depth="infinite" />		
+	</target>
+	
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: exportSubProject	
+
+		Export for IngeDev 6 the given subproject (export.lib)  
+		- - - - - - - - - - - - - - - - - -->
+	<target name="exportSubProject" depends="generateBuildFiles">
+		<fail unless="export.lib" message="'export.lib' property must be set before calling this target."/>
+	
+		<!-- export IngeDev >= 6 -->
+		<ingedev.u32.export project="${projectName}" configs="ALL" subProject="${export.lib}" kind="full" exportPath="${exportDir}/IngeDev6Libs" stripsymbols="true" />
+	</target>
+	
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: getVersionRelease		
+		
+		Return the project version and release.    
+		- - - - - - - - - - - - - - - - - -->
+	<target name="getVersionRelease" depends="initProjectName">	
+		<ingedev.u32.getVersionRelease
+			project="${projectName}"
+			versionProperty="version"		
+			releaseProperty="release"
+		/>
+		<echo> version="${version}" release="${release}"</echo>
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+			target: importProject		
+			
+			Import the project into the workspace    
+	- - - - - - - - - - - - - - - - - -->
+	<target name="importProject">
+		<ingedev.projectImport projectdir="D:\mytest2"/>
+	</target>		
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+			target: removeProject		
+			
+			Remove the project from the workspace    
+	- - - - - - - - - - - - - - - - - -->
+	<target name="removeProject">
+		<ingedev.removeProject projectname="test2"/>
+	</target>		
+	
+		
+</project>

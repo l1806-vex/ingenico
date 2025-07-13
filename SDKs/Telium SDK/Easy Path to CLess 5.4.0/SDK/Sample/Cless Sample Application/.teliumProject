@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?>
+
+<?ingedev version="7.18.1.6"?>
+
+<projectDescription activeConfig="GNU_ARM_DEBUG" applicationType="0x6e" binaryName="SAMPLE_CL" dataBinaryFileBaseName="DATA006E" descr="Easy Path to Cless Sample" enableUsingCpp="false" projectFamily="SAMPLE_CL" projectType="APP" useDataFileNamingConvention="true">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="Src\APCLESS_Explicit.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_GuiGoal.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_Kernel.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_ParamTrn.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_PayPass.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_PayPassTorn.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_Selection.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_Services.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_ServicesImplicit.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_ServicesKernel.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_ServicesManager.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_Tools.c" parentProject=""/>
+<file generated="false" name="Src\APCLESS_payWave.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="true"/>
+<archiveFilesVirtualFolder name="Archive Files">
+<archive archiveModifierName="gmlToTbrConverter" dirParentProject="" directoryToArchive="GOAL\Resources" name="Bin\Resources.tar"/>
+</archiveFilesVirtualFolder>
+</virtualFolders>
+<configs>
+<config codeBaseAddr="0x1000" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" disassembler="false" enableCPPExceptions="false" gnu4StackProtectionMode="ProPolice" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG" sign="false" teliumCompatibility="All" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+<userInc value="IncGen"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.8.3"/>
+<packageLib name="trap" package="Telium SDK" version="9.8.3"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.8.3"/>
+<packageLib name="AVL" package="Telium SDK" version="9.8.3"/>
+<packageLib name="GraphicLib" package="Telium SDK" version="9.8.3"/>
+<packageLib name="TPass" package="Telium SDK" version="9.8.3"/>
+<packageLib name="GTL" package="Telium SDK" version="9.8.3"/>
+<packageLib name="libcpatch" package="Telium SDK" version="9.8.3"/>
+<packageLib name="PayPassInterface" package="Easy Path to C'Less" version="5.4.0"/>
+<packageLib name="payWaveInterface" package="Easy Path to C'Less" version="5.4.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.8.3"/>
+<packageDefine package="Easy Path to C'Less" version="5.4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.8.3"/>
+<packageInc package="Easy Path to C'Less" version="5.4.0"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_BINARY_NAME=&quot;${appli_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_DATA_FILE_BINARY_NAME=&quot;${appli_full_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_TELIUM1_BINARY_NAME=&quot;${appli_data_file_telium1_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_TELIUM2_BINARY_NAME=&quot;${appli_data_file_telium2_binary_name}&quot;"/>
+<userDefine value="PAYPASS_TORN"/>
+<userDefine value="__USE_ASSERT__"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+<dataFiles>
+<dataFile alias="Resources" isDefault="true" name="Bin\Resources.tar" parentProject="">
+<targetTerminals/>
+</dataFile>
+</dataFiles>
+</config>
+<config codeBaseAddr="0x1000" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="true" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" disassembler="false" enableCPPExceptions="false" gnu4StackProtectionMode="ProPolice" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE" sign="false" teliumCompatibility="All" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+<userInc value="IncGen"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.8.3"/>
+<packageLib name="trap" package="Telium SDK" version="9.8.3"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.8.3"/>
+<packageLib name="AVL" package="Telium SDK" version="9.8.3"/>
+<packageLib name="GraphicLib" package="Telium SDK" version="9.8.3"/>
+<packageLib name="TPass" package="Telium SDK" version="9.8.3"/>
+<packageLib name="GTL" package="Telium SDK" version="9.8.3"/>
+<packageLib name="libcpatch" package="Telium SDK" version="9.8.3"/>
+<packageLib name="PayPassInterface" package="Easy Path to C'Less" version="5.4.0"/>
+<packageLib name="payWaveInterface" package="Easy Path to C'Less" version="5.4.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.8.3"/>
+<packageDefine package="Easy Path to C'Less" version="5.4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.8.3"/>
+<packageInc package="Easy Path to C'Less" version="5.4.0"/>
+</packageIncs>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_BINARY_NAME=&quot;${appli_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_DATA_FILE_BINARY_NAME=&quot;${appli_full_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_TELIUM1_BINARY_NAME=&quot;${appli_data_file_telium1_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_TELIUM2_BINARY_NAME=&quot;${appli_data_file_telium2_binary_name}&quot;"/>
+<userDefine value="PAYPASS_TORN"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+<dataFiles>
+<dataFile alias="Resources" isDefault="true" name="Bin\Resources.tar" parentProject="">
+<targetTerminals/>
+</dataFile>
+</dataFiles>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

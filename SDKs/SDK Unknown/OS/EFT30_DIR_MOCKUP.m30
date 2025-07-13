@@ -1,0 +1,38 @@
+;Mockup System pack mockup  EFT30 Directory included
+;Systeme R+ + arborescence
+8203020742.ddf
+8203020742.sgn
+;Boot Ram
+30140305.ddf
+30140305.sgn
+;Driver Modem
+30150294.ddf
+30150294.sgn
+;Driver Visu 128
+30160210.ddf
+30160210.sgn
+;Driver VFS
+30210323.ddf
+30210323.sgn
+;Booster Full EMV2000 + MockUp
+30938519.ddf
+30938519.sgn
+;Pack Système
+37770900.pdf
+37770900.sgn
+;Driver GPRS
+8200120157.ddf
+8200120157.sgn
+;Driver UMS
+8200210320.ddf
+8200210320.sgn
+;Driver HID
+8200220120.ddf
+8200220120.sgn
+;Driver USB CDC
+8200320404.ddf
+8200320404.sgn
+;LDBG Remote Debugger
+8133080120.ddf
+8133080120.sgn
+

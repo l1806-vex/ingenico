@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?migrationDescriptor version="1.0"?>
+
+<migration name="MigrateToTPlus" description="Telium Plus migration">
+  <functions>
+    <function fromName="ServiceGet" toName="Telium_ServiceGet"/>
+    <function fromName="Powered" toName="Telium_Powered"/>
+    <function fromName="fclose" toName="Telium_Fclose"/>
+    <function fromName="SV_output_command" toName="Telium_Output_command"/>
+    <function fromName="kill" toName="Telium_Kill"/>
+    <function fromName="EMV_apdu" toName="Telium_EMV_apdu"/>
+    <function fromName="ServiceRegister" toName="Telium_ServiceRegister"/>
+    <function fromName="fputc" toName="Telium_Fputc"/>
+    <function fromName="OS_rtc_InitMailBox" toName="Telium_InitMailBox"/>
+    <function fromName="ChngEventFile" toName="Telium_ChngEventFile"/>
+    <function fromName="power_on_sync" toName="Telium_Power_on_sync"/>
+    <function fromName="fwrite" toName="Telium_Fwrite"/>
+    <function fromName="send" toName="Telium_Socket_send"/>
+    <function fromName="fputs" toName="Telium_Fputs"/>
+    <function fromName="stdprt" toName="Telium_Stdprt"/>
+    <function fromName="writesocket" toName="Telium_Socket_write"/>
+    <function fromName="GetErrno" toName="Telium_GetErrno"/>
+    <function fromName="SV_power_on" toName="Telium_Power_on"/>
+    <function fromName="__inet_ntoa" toName="Telium_inet_ntoa"/>
+    <function fromName="OS_rtc_TestReceive" toName="Telium_TestReceive"/>
+    <function fromName="read" toName="Telium_Socket_read"/>
+    <function fromName="ServiceRemove" toName="Telium_ServiceRemove"/>
+    <function fromName="OS_rtc_Send" toName="Telium_Send"/>
+    <function fromName="read_date" toName="Telium_Read_date"/>
+    <function fromName="recvfrom" toName="Telium_Socket_recvfrom"/>
+    <function fromName="fbreak" toName="Telium_Fbreak"/>
+    <function fromName="sendto" toName="Telium_Socket_sendto"/>
+    <function fromName="GetTerminalType" toName="TM_GetTerminalType"/>
+    <function fromName="ServiceCall" toName="Telium_ServiceCall"/>
+    <function fromName="printf" toName="Telium_Printf"/>
+    <function fromName="connect" toName="Telium_Socket_connect"/>
+    <function fromName="getsockname" toName="Telium_Socket_getsockname"/>
+    <function fromName="fgets" toName="Telium_Fgets"/>
+    <function fromName="close" toName="Telium_Socket_close"/>
+    <function fromName="GiveNoTask" toName="Telium_GiveNoTask"/>
+    <function fromName="OS_rtc_StopDelay" toName="Telium_StopDelay"/>
+    <function fromName="fopen" toName="Telium_Fopen"/>
+    <function fromName="exit" toName="Telium_Exit"/>
+    <function fromName="__inet_addr" toName="Telium_inet_addr"/>
+    <function fromName="OS_rtc_Receive" toName="Telium_Receive"/>
+    <function fromName="OS_rtc_StartLDelay" toName="Telium_StartLDelay"/>
+    <function fromName="ferror" toName="Telium_Ferror"/>
+    <function fromName="readsocket" toName="Telium_Socket_read"/>
+    <function fromName="gethostbyaddr_r" toName="Telium_gethostbyaddr_r"/>
+    <function fromName="SV_power_down" toName="Telium_Power_down"/>
+    <function fromName="defdisplaypatterndsp" toName="Telium_Defdisplaypatterndsp"/>
+    <function fromName="__STDOUT" toName="Telium_Stdout"/>
+    <function fromName="USR_ServiceCall" toName="Telium_ServiceCall"/>
+    <function fromName="EMV_power_on" toName="Telium_EMV_power_on"/>
+    <function fromName="fowner" toName="Telium_Fowner"/>
+    <function fromName="getpeername" toName="Telium_Socket_getpeername"/>
+    <function fromName="recv" toName="Telium_Socket_recv"/>
+    <function fromName="setsockopt" toName="Telium_Socket_setsockopt"/>
+    <function fromName="putchar" toName="Telium_Putchar"/>
+    <function fromName="socket" toName="Telium_Socket_socket"/>
+    <function fromName="OS_rtc_EventsOccurred" toName="Telium_EventsOccurred"/>
+    <function fromName="OS_rtc_SignalEvent" toName="Telium_SignalEvent"/>
+    <function fromName="OS_rtc_TestP" toName="Telium_TestP"/>
+    <function fromName="send_receive" toName="Telium_Send_receive"/>
+    <function fromName="sendmsg" toName="Telium_Socket_sendmsg"/>
+    <function fromName="power_down" toName="Telium_Power_down"/>
+    <function fromName="ioctlsocket" toName="Telium_Socket_ioctl"/>
+    <function fromName="SV_read_date" toName="Telium_Read_date"/>
+    <function fromName="output_command" toName="Telium_Output_command"/>
+    <function fromName="SV_input_command" toName="Telium_Input_command"/>
+    <function fromName="OS_rtc_ClearEvents" toName="Telium_ClearEvents"/>
+    <function fromName="shutdown" toName="Telium_Shutdown"/>
+    <function fromName="fioctl" toName="Telium_Fioctl"/>
+    <function fromName="__inet_aton" toName="Telium_inet_aton"/>
+    <function fromName="OS_rtc_P" toName="Telium_P"/>
+    <function fromName="OS_rtc_V" toName="Telium_V"/>
+    <function fromName="getchar" toName="Telium_Getchar"/>
+    <function fromName="getsockopt" toName="Telium_Socket_getsockopt"/>
+    <function fromName="puts" toName="Telium_Puts"/>
+    <function fromName="powered" toName="Telium_Powered"/>
+    <function fromName="ntohl" toName="Telium_ntohl"/>
+    <function fromName="OS_rtc_TaskState" toName="Telium_TaskState"/>
+    <function fromName="ntohs" toName="Telium_ntohs"/>
+    <function fromName="putc" toName="Telium_Putc"/>
+    <function fromName="input_command" toName="Telium_Input_command"/>
+    <function fromName="closesocket" toName="Telium_Socket_close"/>
+    <function fromName="listen" toName="Telium_Socket_listen"/>
+    <function fromName="fork" toName="Telium_Fork"/>
+    <function fromName="fread" toName="Telium_Fread"/>
+    <function fromName="reset_buf" toName="Telium_Reset_buf"/>
+    <function fromName="InitGkDrv" toName="Telium_InitGkDrv"/>
+    <function fromName="gethostbyname_r" toName="Telium_gethostbyname_r"/>
+    <function fromName="power_on" toName="Telium_Power_on"/>
+    <function fromName="power_down_sync" toName="Telium_Power_down_sync"/>
+    <function fromName="stdperif" toName="Telium_Stdperif"/>
+    <function fromName="OS_rtc_Terminate" toName="Telium_Terminate"/>
+    <function fromName="ungetc" toName="Telium_Ungetc"/>
+    <function fromName="vsprintf" toName="Telium_Vsprintf"/>
+    <function fromName="CopyFile" toName="Telium_CopyFile"/>
+    <function fromName="OS_rtc_InitSemaphore" toName="Telium_InitSemaphore"/>
+    <function fromName="htonl" toName="Telium_htonl"/>
+    <function fromName="get_tick_counter" toName="TMT_Retrieve_Clock"/>
+    <function fromName="ctrl_date" toName="Telium_Ctrl_date"/>
+    <function fromName="accept" toName="Telium_Socket_accept"/>
+    <function fromName="download" toName="Telium_Download"/>
+    <function fromName="fprintf" toName="Telium_Fprintf"/>
+    <function fromName="is_iso1" toName="Telium_Is_iso1"/>
+    <function fromName="is_iso3" toName="Telium_Is_iso3"/>
+    <function fromName="is_iso2" toName="Telium_Is_iso2"/>
+    <function fromName="isbattery" toName="Telium_Isbattery"/>
+    <function fromName="mask_event" toName="Telium_Mask_event"/>
+    <function fromName="__STDIN" toName="Telium_Stdin"/>
+    <function fromName="clearerr" toName="Telium_Clearerr"/>
+    <function fromName="pprintf" toName="Telium_Pprintf"/>
+    <function fromName="getc" toName="Telium_Getc"/>
+    <function fromName="shutdownsocket" toName="Telium_Socket_shutdown"/>
+    <function fromName="write" toName="Telium_Socket_write"/>
+    <function fromName="recvmsg" toName="Telium_Socket_recvmsg"/>
+    <function fromName="status" toName="Telium_Status"/>
+    <function fromName="FormatOem" toName="Telium_FormatOem"/>
+    <function fromName="SetErrno" toName="Telium_SetErrno"/>
+    <function fromName="ttestall" toName="Telium_Ttestall"/>
+    <function fromName="mask_event_read" toName="Telium_Mask_event_read"/>
+    <function fromName="OS_rtc_WaitEvents" toName="Telium_WaitEvents"/>
+    <function fromName="SystemFioctl" toName="Telium_Systemfioctl"/>
+    <function fromName="bind" toName="Telium_Socket_bind"/>
+    <function fromName="htons" toName="Telium_htons"/>
+    <function fromName="selectsocket" toName="Telium_Socket_select"/>
+    <function fromName="OS_rtc_CurrentTask" toName="Telium_CurrentTask"/>
+    <function fromName="defdisplaypattern" toName="Telium_Defdisplaypattern"/>
+    <function fromName="OEM_exit" toName="Telium_Exit"/>
+  </functions>
+
+  <includes>
+    <include isSystem="false" fromName="sdk30.h" toName="sdk.h"/>
+  </includes>
+
+  <types> 
+    <type fromName="DATE" toName="Telium_Date_t"/>
+    <type fromName="SAP" toName="svc_callback"/>
+    <type fromName="service_desc_t" toName="svc_service_desc_t"/>
+    <type fromName="FILE" toName="Telium_File_t"/>
+  </types> 
+
+  <!-- Other items list - #ifndef <Name>, #if <Name>, ... -->
+  <otherItems>
+    <item fromName="callback" toName="svc_callback"/>
+  </otherItems>
+
+</migration>
+

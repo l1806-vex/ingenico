@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ICCEMVConfigData xmlns="http://ingenico.com/ns/configuration-service/data" config_id="1" version="0" description="Default ICCEMV Configuration">
+    <iccemv-configuration>
+	<card-providers>
+		<card-provider key="1" name="provider_1" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>AAAAAAA=</tac-online>
+			<tac-default>AAAAAAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="2" name="provider_2" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="99" maximumTargetPercentage="99" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>+Pj8+PA=</tac-online>
+			<tac-default>AAAAAAA=</tac-default>
+			<default-TDOL>AA==</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="3" name="provider_3" floorLimit="0" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>QAAAAAA=</tac-denial>
+			<tac-online>AAAAAAA=</tac-online>
+			<tac-default>AAAAAAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>n0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="4" name="provider_4" floorLimit="0" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>QAAAAAA=</tac-online>
+			<tac-default>AAAAAAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="5" name="provider_5" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>AAAAAAA=</tac-online>
+			<tac-default>QAAAAAA=</tac-default>
+			<default-TDOL>AA==</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="6" name="provider_6" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>+Pj8+PA=</tac-online>
+			<tac-default>QAAAAAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="7" name="provider_7" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>AAAAAAA=</tac-online>
+			<tac-default>uPj8+PA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="8" name="provider_8" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>BwcDBw8=</tac-denial>
+			<tac-online>AAAAAAA=</tac-online>
+			<tac-default>AAAAAAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="9" name="provider_9" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>uPj8+PA=</tac-denial>
+			<tac-online>AAAAAAA=</tac-online>
+			<tac-default>AAAAAAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="10" name="provider_10" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>uPj8+PA=</tac-online>
+			<tac-default>AAAAAAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="11" name="provider_11" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>+Pj8+PA=</tac-online>
+			<tac-default>uPj8+PA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="12" name="provider_12" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="9736" txnCurrencyCode="9736" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>4FCA+AA=</tac-online>
+			<tac-default>4FCAoAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="13" name="provider_13" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="16392" txnCurrencyCode="16392" merchantId="1">
+			<tac-denial>AAAAAAA=</tac-denial>
+			<tac-online>yAAAAAA=</tac-online>
+			<tac-default>yAAAAAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcE</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="14" name="provider_14" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="9736" txnCurrencyCode="9736" merchantId="1">
+			<tac-denial>ABAAAAA=</tac-denial>
+			<tac-online>2EAE+AA=</tac-online>
+			<tac-default>2EAAqAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcE</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="15" name="provider_15" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="9736" txnCurrencyCode="9736" merchantId="1">
+			<tac-denial>ABCAAAA=</tac-denial>
+			<tac-online>cEB8mAA=</tac-online>
+			<tac-default>cEB8iAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcE</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="16" name="provider_16" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="22016" txnCurrencyCode="22016" merchantId="1">
+			<tac-denial>ABAAAAA=</tac-denial>
+			<tac-online>/GCs+AA=</tac-online>
+			<tac-default>/GCsqAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcEn0cBjwGfMgE=</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+		<card-provider key="17" name="provider_17" floorLimit="270991360" threshold="83886080" 
+			targetPercentage="0" maximumTargetPercentage="0" 
+			terminalCountryCode="4103" txnCurrencyCode="4103" merchantId="1">
+			<tac-denial>ABCAAAA=</tac-denial>
+			<tac-online>cEB8mAA=</tac-online>
+			<tac-default>cEB8iAA=</tac-default>
+			<default-TDOL>nwgC</default-TDOL>
+			<default-DDOL>nzcE</default-DDOL>
+            		<acquirer-identifier>7361470000</acquirer-identifier>
+            		<merchant-category-code>12</merchant-category-code>
+            		<transaction-currency-exponent>Ag==</transaction-currency-exponent>
+            		<transaction-reference-currency>5600</transaction-reference-currency>
+ 		        <transaction-reference-currency-exponent>02</transaction-reference-currency-exponent>
+		</card-provider>
+	</card-providers>
+	<emv-card-applications>
+		<emv-card-application key="1" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="512" priorityIndex="0" 
+			selectionAppliFlag="false">
+                        <!--  0xB0 0x12 0x34 0x56 0x78 0x12 0x34 0x00 -->
+			<aid>sBI0VngSNA==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="2" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="512" priorityIndex="0" 
+			selectionAppliFlag="false">
+			<!--  0xA0 0x00 0x00 0x00 0x04 0x10 0x10 0x00 -->
+			<aid>oAAAAAQQEA==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="3" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="512" priorityIndex="0" 
+			selectionAppliFlag="true">
+			<!-- 0xA0 0x00 0x00 0x00 0x10 0x00 -->
+			<aid>oAAAABA=</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="4" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="512" priorityIndex="0" 
+			selectionAppliFlag="false">
+			<!--  0xA0 0x00 0x00 0x00 0x04 0x60 0x00 0x00 0x00 -->
+			<aid>oAAAAARgAA==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="5" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="512" priorityIndex="0" 
+			selectionAppliFlag="false">
+			<!--  0xA0 0x00 0x00 0x00 0x04 0x30 0x60 0x00 -->
+			<aid>oAAAAAQwYA==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="6" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="-29696" priorityIndex="0" 
+			selectionAppliFlag="false">
+			<!--  0xA0 0x00 0x00 0x00 0x99 0x90 0x90 0x00 -->
+			<aid>oAAAAJmQkA==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="7" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="-29696" priorityIndex="0" 
+			selectionAppliFlag="false">
+			<!--  0xA0 0x00 0x00 0x00 0x03 0x10 0x10 0x00 -->
+			<aid>oAAAAAMQEA==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="8" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="-29696" priorityIndex="0" 
+			selectionAppliFlag="false">
+			<!--  0xA0 0x00 0x00 0x00 0x03 0x10 0x20 0x00 -->
+			<aid>oAAAAAMQIA==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="9" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="256" priorityIndex="0" 
+			selectionAppliFlag="true">
+			<!--  0xA0 0x00 0x00 0x00 0x25 0x00 -->
+			<aid>oAAAACU=</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="10" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="2" priorityIndex="0" 
+			selectionAppliFlag="false">
+			<!-- 0xA0 0x00 0x00 0x00 0x65 0x10 0x10 0x00 -->
+			<aid>oAAAAGUQEA==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="11" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="2" priorityIndex="0" 
+			selectionAppliFlag="false">
+			<!--  0xF1 0x23 0x45 0x67 0x89 0x01 0x23 0x00 -->
+			<aid>8SNFZ4kBIw==</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="12" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="256" priorityIndex="0" 
+			selectionAppliFlag="true">
+			<!-- 0xA0 0x00 0x00 0x00 0x05 0x00 -->
+			<aid>oAAAAAU=</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+		<emv-card-application key="13" cardAppLiveFlag="true" 
+			cardProviderKey="1" applicationVersion="-29696" priorityIndex="0" 
+			selectionAppliFlag="true">
+			<!-- 0xA0 0x00 0x00 0x00 0x03 0x00 -->
+			<aid>oAAAAAM=</aid>
+			<trmd></trmd>
+            		<terminal-type>22</terminal-type>
+            		<terminal-capabilities>4PDI</terminal-capabilities>
+	                <additional-terminal-capabilities>/4DwoAE=</additional-terminal-capabilities>
+		</emv-card-application>
+	</emv-card-applications>
+	<rsa-keys>
+		<rsa-key key="1" keyIndicator="-2">
+			<rid>oAAAAAQ=</rid>
+			<key-data>plPqwcD3hshyT3N/FymX1j0cMlHERAIEm4Zbrod9DzmMv76KYDXiSvoIa+/ek1HlS5VwjuZy8JaLzVDc5A94MyKyq6BO8TfvGKvwPH28WBOurvOqd5e6Fd99W6HLr3/VILWkgtjT/uEFB3hxET4jpJrzkmVUpw/hDtcoz3k7YqE=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>milbBfs5DveSP1dhip/aKUH8NOA=</hash>
+		</rsa-key>
+		<rsa-key key="2" keyIndicator="-6">
+			<rid>oAAAAAQ=</rid>
+			<key-data>nGvlrbELS+Pc4gmbSyEGcriWVuugkSBPYT7MYjvtycbXe2YOi67qf3zjDxsVOHmk42RZND0f5HrNvUH81xADDCuh2UYVl5gsbhvdCFVLcm9e/3kTzlnnnjVylcMh4m0Li+JwqUQjRcdT4qoqz8nTCFBgL+bKwAxt32uNnZtIebKCawQqB/DlrlJqPTxNIscrnqpS7tiJOGb4Zjh6wFoTmQ==</key-data>
+			<exponent>Aw==</exponent>
+			<hash>CrytrSx1WMqccIGuVd3ccU+NRfg=</hash>
+		</rsa-key>
+		<rsa-key key="3" keyIndicator="-7">
+			<rid>oAAAAAQ=</rid>
+			<key-data>qZptPgcYie2eOgw5HGmwuAT8FgsrS91XDJLdWg9F9T6GIffJbEAiQmZzXh7hs8BiOK41BGMg/Y6B+M6z+LTJe5QJMKOsXnkAhtrUGmpPURe6HOJDilGsBT6wAq7YZtLEWP1zNZAhoSApoMBDBFwRZk/gIZ7GPBC/IVW7J4RgmhBkIdRRY3mXOMHDCQm7bG/lK7t2OXuXQM4GSmE/+EERhfCIQqQj6tIO3/v/HNbD/gyYIUeRmcJthXLMiv/wh6nD</key-data>
+			<exponent>Aw==</exponent>
+			<hash>M2cS3MKFVICcaqmwI1jeb3VRZNs=</hash>
+		</rsa-key>
+		<rsa-key key="4" keyIndicator="-8">
+			<rid>oAAAAAQ=</rid>
+			<key-data>ofXhyb2GUL1Dq27la4ke90WcCiT6hPkSfRpsedSTD22xhS4lEPGLYc01Tbg6NWvRkLiKuN8EKE0CpCBKe2y3xVUZd6mzY3nKPeGgjmnzAclcwcIFBpWSdfQXI91dKSUpBXnlqVsN9jI/yOknPW+EkZjEmWIJFm2b/Jc8NhzIJuE=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>8G7MbSquvyWbfnVaONmpsk4v890=</hash>
+		</rsa-key>
+		<rsa-key key="5" keyIndicator="-9">
+			<rid>oAAAAAQ=</rid>
+			<key-data>lOpi9tWDIONUwCKt3PBVnYzyBs2S6GlWSQXOIdcg+XG3rqN0gw6+F1cRWoXgiNQca3fPXsgh8wsdiQQXvy+jHlkI3tX6Z3+MexhK0JAo/d6WtqYQmFCqgAF16rzbu2hKlsLrY3nf6gjTL+IzH+EDIzrVjc2x5uB3y58k6uxcJa8=</key-data>
+			<exponent>AQAB</exponent>
+			<hash>7rDdmyR3vuMgmpFM26lMHEqb3tk=</hash>
+		</rsa-key>
+		<rsa-key key="6" keyIndicator="-10">
+			<rid>oAAAAAQ=</rid>
+			<key-data>olpr14Ol72uPtvgwVcJg9fmeoWZ487kFPg9kmOgsP10ejDjxNYgBfisSs9j/b1AWf0ZEKRBynp5NGzc55QZ8Cseh9Eh+NfZ1vBbiMzFRZcsUK/2yXjAaYypUozceurZXLe6683DzN/BX7nO0rkbRqLxNqFPsPMEsjLwtoYMi1oUwxwsivaw1HdNgaK4yHhGr8mT001abtxIUVFAFVY3iYIPHNdt3Y2gXL+jC9chei1uJDMaCkR0t5x+mJriBf8zAiSK3A4afO66sFFnXfNhTdrw2GC9CODFNbEIS+91/I9M=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>UCkJ7VRePI29AOpYLQYX/un29oQ=</hash>
+		</rsa-key>
+		<rsa-key key="7" keyIndicator="-11">
+			<rid>oAAAAAQ=</rid>
+			<key-data>pub7cheVBvhgzMqMJ/mc7NlMfU8xkdMDu+43SBx6oV8jO6dV6eQ3Y0Wppn55lL3BxoC7NSLYyT6wzMka0xrUUNow0zdmLRmsA+K0719uwYKC1JHhl2fXskVC397/b2IYVQNTIGm7s2nju5+xmsbxwwuX0knu52Tgusl/Jchz2XOVPlFTpCBku/q/0GpLtIaGC/ZjdAbJ/DaBOkp191wxzKn2n43lmt7O9r3n4HgA/L4DXTF2r4Rz4j6ao9/uIhGW0RSDAmd8cgz+JUSgPbVT5/G4QnuhzHKw8psS3+9MCB0HbTU+cYgKrf84Y1KvCreyjtSeHmctEfk=</key-data>
+			<exponent>AQAB</exponent>
+			<hash>wiOYBMgJgXC+UtbV1BWegc6EZr8=</hash>
+		</rsa-key>
+		<rsa-key key="8" keyIndicator="-13">
+			<rid>oAAAAAQ=</rid>
+			<key-data>mPDHcPI4ZMLnZt8C0egz3/T/6S1pbhZC8KiMVpTGR50W2xU3v+KeT9xubor9Gw636gEkcjwzMXm/Gek/EGWLL3dugp6H2u2pyUqLM4IZmjUMB3l3yXr/CP0RMQrJUKcsPKUALvUT/MwobmRuPFOHU11QlRSzsybhI0+ctIw23dRLQW0jZUA0pm9AO6URxe+j</key-data>
+			<exponent>Aw==</exponent>
+			<hash>pprHYD2vVm6XLe3Cy0M+B+iwGpo=</hash>
+		</rsa-key>
+		<rsa-key key="9" keyIndicator="-7">
+			<rid>sBI0Vng=</rid>
+			<key-data>pub7cheVBvhgzMqMJ/mc7NlMfU8xkdMDu+43SBx6oV8jO6dV6eQ3Y0Wppn55lL3BxoC7NSLYyT6wzMka0xrUUNow0zdmLRmsA+K0719uwYKC1JHhl2fXskVC397/b2IYVQNTIGm7s2nju5+xmsbxwwuX0knu52Tgusl/Jchz2XOVPlFTpCBku/q/0GpLtIaGC/ZjdAbJ/DaBOkp191wxzKn2n43lmt7O9r3n4HgA/L4DXTF2r4Rz4j6ao9/uIhGW0RSDAmd8cgz+JUSgPbVT5/G4QnuhzHKw8psS3+9MCB0HbTU+cYgKrf84Y1KvCreyjtSeHmctEfk=</key-data>
+			<exponent>AQAB</exponent>
+			<hash>rqykVIDIg0ywvr3MVwt7K3S7S3k=</hash>
+		</rsa-key>
+		<rsa-key key="10" keyIndicator="-5">
+			<rid>oAAAAAQ=</rid>
+			<key-data>qVSN+zmLSBI/r0Hmz6SuHiNStRirS87+zbCz7ewJAofYixIlnzYcHMCI5fBmSUQX6O6Lv4mR4rMv8W+ZRpeEKz1ss3ortXQqRAtjVsYqoz2zxFXlnt33hkcB0Dpbg+6em9g6uTMCrC3+Y+ZhILBRzwgfVjJqcTA9lSuzNv8SYQ0=</key-data>
+			<exponent>Ag==</exponent>
+			<hash>pUy0rsm9nU9Xl1aiueCc20nkd+g=</hash>
+		</rsa-key>
+		<rsa-key key="11" keyIndicator="-4">
+			<rid>oAAAAAQ=</rid>
+			<key-data>s3v9KpZ0rWIhwaABCBxiZT3CgLCpvQUsZ3yRPOeg2QLnexL01NeQN7HpuSOouz+sPGEgRbs5FPjfQemhthv6W0FwWmkdCc5vUw/kizAkDZj05pL/1qrbhyQ7qFl6sjdYbs8lj0FIdRvl2lo75sw0vQ==</key-data>
+			<exponent>Ag==</exponent>
+			<hash>dHVVIfYMrPnSDnWZV9JB4SvgyVc=</hash>
+		</rsa-key>
+		<rsa-key key="12" keyIndicator="-3">
+			<rid>oAAAAAQ=</rid>
+			<key-data>s1crpJrkx7egAZ5RieFCz83tlJjdtfBHBWerC6cTuNoiZCRiKVW1S5N6v++q2XkZ43diHiIZarwUGdWtwSNIQgnqfLcCnmag1UxbRcitYVrttq6eCi91MQ6olhKHJBJFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</key-data>
+			<exponent>Ag==</exponent>
+			<hash>mGkS81lyQ2HTiiqzbu7Fure9AlY=</hash>
+		</rsa-key>
+		<rsa-key key="13" keyIndicator="-12">
+			<rid>oAAAAAQ=</rid>
+			<key-data>nPrVS0ApfBzeI/yz72jTGDQaRyeuHaor6+NYcu89yQdGKXsGbtHOPAfB8jT/VJBCXosUZ0zFfkOXpRWE/166a11U2Z0sn8mdXkyss0h6unkPKOMEmHr6f1+S4i2J/1EMG1gZQRZsfMsR77CN5gdGDQ==</key-data>
+			<exponent>Aw==</exponent>
+			<hash>mM654OjtUqvdhUn9UKzso79Rp4Y=</hash>
+		</rsa-key>
+		<rsa-key key="14" keyIndicator="1">
+			<rid>8SNFZ4k=</rid>
+			<key-data>7QsG7vEkObnm9Sq8yjtkAIU2WEn51h5n6754Dh1/qL4ZsgxFHVWoaMgBOqJciTGCHxui6wBc1VEx5bDwYiDVGbwOOON7OPpYqpaPEUZxtNYWDTHrnzhj7Ty3tm41eQm+2Mhc3naNeXR2TIoVCqW6E8apI7s4SJFY7vFadCcuUIM=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>zMGLk3yFn0KcM6Pb60XjHhdbj9E=</hash>
+		</rsa-key>
+		<rsa-key key="15" keyIndicator="2">
+			<rid>8SNFZ4k=</rid>
+			<key-data>u39RmD/YcH/WInwj3vXVN3pac3zvPFJS5Xjv4Tbfh7UEc/k0HxZAyNJYA04UwWmT/ObGuMPO62X8j7zY63ezsFrHxNCeD6G6Lv6H0xhNtnGK5Bp8rYm43OD+gM61I9XWR/nbWKMdLnGsZ35n+m51ggc2yYk3Ye5KzRHzHb3DSe8=</key-data>
+			<exponent>AQAB</exponent>
+			<hash>WlKihpqTj4K+QaGAo5gJVUbU9qo=</hash>
+		</rsa-key>
+		<rsa-key key="16" keyIndicator="3">
+			<rid>8SNFZ4k=</rid>
+			<key-data>3ty7OcTrGRK1OBXThBy+4IV11oY2gpFbjhllI6Uvs9s/txfe3LSqPWIdHwCGOyIf94Bpe07YIlTsdqnNFq6nQFM7ESPkAVhEoBr94B7TThs33XL+woTZm1FSLVTYm85zU1VnvfssivIAMbIEQnOCMLdn1dC01UcnQR0oKZle+3VGvYE/q5ZR++z9mHF4vOV9</key-data>
+			<exponent>Aw==</exponent>
+			<hash>6WwbMrS67toCmZFRQiNjcv/GimQ=</hash>
+		</rsa-key>
+		<rsa-key key="17" keyIndicator="100">
+			<rid>oAAAACU=</rid>
+			<key-data>sN1VEEfa/NENml4zz0epMz47JOxX6PBmpy3tYOiBqK1Cd3xnrd8HCAQquUNgHuYCSFQLZ+BjcBjus5Ea6chz2tZstAvI9Nx36yWVJSthwhUY95twaqwp59P9TSWdtytubURt1gOG20D1/bB22AN0yZO0uy0duXfDhwiX+d+kVPU=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>eSsSHYbQ86mVgtsGl0SB87LhhFQ=</hash>
+		</rsa-key>
+		<rsa-key key="18" keyIndicator="2">
+			<rid>oAAAAAQ=</rid>
+			<key-data>z0Jk4XAtNMqJfR+bZsXWNpHqzGEsjxRxFrsi0MRjSVvVunD7FThIiVIguK3uw+e6sx6iLB3Jly+gJ9VCZb6/CuOiOooJGH8hyFZge5i9pvyQgRaBbFArPlihRSVO7+4qMzURAiQCi2eAncuAWOJIlQ==</key-data>
+			<exponent>Aw==</exponent>
+			<hash>rxzB/RwbybygfnjabLohY/Fpy7c=</hash>
+		</rsa-key>
+		<rsa-key key="19" keyIndicator="3">
+			<rid>oAAAAAQ=</rid>
+			<key-data>wkkHR/4X6wWEyI1HsWAnBBUK3IjFuZi9Wc4EPt6/D/7jCTrHlWrTtq1FVMbeGaF41topW+FdUiBkXjyBMWZvpL5bhP4THqRLA5MHY4uedKjEJWT4kqZN8csVcStzbjN08bu2gZNxYC2JcOl7kAeTx8KomkoWSaWb5oBXTdC2AUU=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>Wt3yHQknhmEUEXnL7/Jy6jhLE7s=</hash>
+		</rsa-key>
+		<rsa-key key="20" keyIndicator="4">
+			<rid>oAAAAAQ=</rid>
+			<key-data>ptpCg4elAtfd+3p00/QSvnYmJxl7JUNbeoFxanABV93Qb3zJnWyijCRwUn4sA2FrnFkhc1fCZ09YOzulx9zyg4aS0CPjViQgtGFcQ5ypfETcmiSc/Oezv7IvaCKMOvEzKapKYTz43YU1Ajc9YuSaslbSvBcSDlSu3O1tlqQoesxcBGd9SloyDbi+4vd15f7F</key-data>
+			<exponent>Aw==</exponent>
+			<hash>OBoDXaWLSC7ir3X0w/LKRpukqmw=</hash>
+		</rsa-key>
+		<rsa-key key="21" keyIndicator="1">
+			<rid>oAAAAAM=</rid>
+			<key-data>xpYDQhPX2FRphFedHQ8OpRnP+N7/xCk1TPOocab3GD8SKNpcdHDAVThxAMuTWnEsTihk311kupP+fmPnHyWx5fUphXXr4cY6phdwaReRHcKnWsKLJRx+9A8jZZEkkLk5vKISSjCij1RALDSuyjMatn4eebKF3Vdxtdn/eepjC3U=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>00pqd2ARx+fOOuxfA60vjPxVA8w=</hash>
+		</rsa-key>
+		<rsa-key key="22" keyIndicator="3">
+			<rid>oAAAAAM=</rid>
+			<key-data>s+XmZ1BsR8qvsSomM4GTUIRml91lp5blznfFfGJqZvcLtjCRFhKtKDKQm4BiKRvspGzTO2am+cnUjO2LT8hWHIodj7FYYsnrYBeN6ivh+CI2/8/084Q8JyF53N04TVQQU9pqag085I/cLcTj4O7hXw==</key-data>
+			<exponent>Aw==</exponent>
+			<hash>/nCrO01aG5kkIorfgCfHWEg6i34=</hash>
+		</rsa-key>
+		<rsa-key key="23" keyIndicator="7">
+			<rid>oAAAAAM=</rid>
+			<key-data>qJ8lpW+m2iWMjKi0BCfZJ7Sh601+oya7sS+X3tcK5eRID8nF6KlyF3EQocwxjQbS+PXEhErF+nmk3EcLsR7WNWmcFwgbkPG5hPEuksHFKSdtivjsfyhJIJfYzVvs6hb+QIj2z6tKG0IyihuZb5J4sLfjMRyl74VsL4iEdLg2EqguTgDQzUBppngxQEM9UHJf</key-data>
+			<exponent>Aw==</exponent>
+			<hash>tLxWzE6IMkkyy8ZD1omPb+WTsXI=</hash>
+		</rsa-key>
+		<rsa-key key="24" keyIndicator="9">
+			<rid>oAAAAGU=</rid>
+			<key-data>tyqP71sn8rVQOY/cwlb3FLrUl/9WCUt0CDKMtiaqbw5qnfg4jrmIe8kwFwvMEhPpD8Bw1SyNzQ/54Q+tNoAf6T/JmKchcFCR8YvHyYJBytwVornaf7ljFCwKtkDV0BNed+uula8bT++tz5wBI2a92gRVwVZKaIENcSdnbUk4kL0=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>RBDG1Rwvg639klKPpuOKMt8EjQo=</hash>
+		</rsa-key>
+		<rsa-key key="25" keyIndicator="16">
+			<rid>oAAAAGU=</rid>
+			<key-data>mbY0ZO4LSVfk/SO/kj0SthRpuP/4gUNGsu1qeA+JiOqc8EM7weZV8F76ZtDJgJjyW2WdeiW4R4o25Il2DQcfVM33QWlI7XM9gWNJ2iqt2iJ+5Fk2IDy/YozQM6q6XlpuSuN/ustGEbQRPtQnUpxjb2wzBPir3W2a1mBRauh/fy3fHS+kTBZHJ+VrvJuiPAKF</key-data>
+			<exponent>Aw==</exponent>
+			<hash>x15SEMvm6PBZSg8ZEbB0GMrbW6s=</hash>
+		</rsa-key>
+		<rsa-key key="26" keyIndicator="1">
+			<rid>oAAAACU=</rid>
+			<key-data>r61wEPiE4oJGUPdk1H15UaFu7W27iB84Te22cC4PtVwPvvlFogF3BeUob6JJpZHhlL3NdLIXILRM6YbxRCN6JflXifOLR+qVf5rbI3L21dQTQKFH6sKvMk6DWK4RIO8/</key-data>
+			<exponent>Aw==</exponent>
+			<hash>rP5zTPCahMe/Al8P/G+oyiWiKGk=</hash>
+		</rsa-key>
+		<rsa-key key="27" keyIndicator="2">
+			<rid>oAAAACU=</rid>
+			<key-data>r0uNIw/fyxU46XV5Wh20DDlqU1n6oxrglctSKlyC5//7JShg7Cgz7D1KZl8TPdk07hFI2B4rfgP5KZXd9+t8kKdauY5pyS7JGlM7IeHEkYtDr+1XgN4Toyu9N+vDhPo90aRT4yfFYCTayup0qgUsTQ==</key-data>
+			<exponent>Aw==</exponent>
+			<hash>M/WwNElDBII37ImydalVaXGK7iA=</hash>
+		</rsa-key>
+		<rsa-key key="28" keyIndicator="3">
+			<rid>oAAAACU=</rid>
+			<key-data>sMLG4qY4aTPNF8I5SWv0jFfjiRZPKpa/8TNDmuineyBJi9TcaVmrDC0F0HI682aJAZN7Z05aL6kt3V546p1115YgFzzCabNfRjs9Sq/yeU+S5sej+5UyXYq5WWDDBmvlSAh7y2zhJogUSotKZiKK5GWcY0yZ42ARWEwJUIKjo+M=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>hwij47vBuwvnPr2NGdTl0gFmv2w=</hash>
+		</rsa-key>
+		<rsa-key key="29" keyIndicator="2">
+			<rid>oAAAAAU=</rid>
+			<key-data>z0Jk4XAtNMqJfR+bZsXWNpHqzGEsjxRxFrsi0MRjSVvVunD7FThIiVIguK3uw+e6sx6iLB3Jly+gJ9VCZb6/CuOiOooJGH8hyFZge5i9pvyQgRaBbFArPlihRSVO7+4qMzURAiQCi2eAncuAWOJIlQ==</key-data>
+			<exponent>Aw==</exponent>
+			<hash>BF//v5j7fCp2ttEDXRJU3Gka6EE=</hash>
+		</rsa-key>
+		<rsa-key key="30" keyIndicator="3">
+			<rid>oAAAAAU=</rid>
+			<key-data>wkkHR/4X6wWEyI1HsWAnBBUK3IjFuZi9Wc4EPt6/D/7jCTrHlWrTtq1FVMbeGaF41topW+FdUiBkXjyBMWZvpL5bhP4THqRLA5MHY4uedKjEJWT4kqZN8csVcStzbjN08bu2gZNxYC2JcOl7kAeTx8KomkoWSaWb5oBXTdC2AUU=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>PBU4U+j4DQ+Rmc879sTy1IIvY5s=</hash>
+		</rsa-key>
+		<rsa-key key="31" keyIndicator="4">
+			<rid>oAAAAAU=</rid>
+			<key-data>ptpCg4elAtfd+3p00/QSvnYmJxl7JUNbeoFxanABV93Qb3zJnWyijCRwUn4sA2FrnFkhc1fCZ09YOzulx9zyg4aS0CPjViQgtGFcQ5ypfETcmiSc/Oezv7IvaCKMOvEzKapKYTz43YU1Ajc9YuSaslbSvBcSDlSu3O1tlqQoesxcBGd9SloyDbi+4vd15f7F</key-data>
+			<exponent>Aw==</exponent>
+			<hash>ziLBZinLEY8/SeuFkC5EG5sieqs=</hash>
+		</rsa-key>
+		<rsa-key key="32" keyIndicator="-105">
+			<rid>oAAAAAM=</rid>
+			<key-data>rwdU6u2XcEOrb0HWMSqx4ipoCRdb6yjnDV+Zst8Yyuc1GTQbu9Mn0Li+nU0OFfB9Nuo+OgXIkvWxmj6dNBOw2X560QpfXejjiGDArQBLHgb0BAwpWstFeniFUbYSfAsp</key-data>
+			<exponent>Aw==</exponent>
+			<hash>gAHKdsEgOVXixihBzW8gEIflZL8=</hash>
+		</rsa-key>
+		<rsa-key key="33" keyIndicator="-104">
+			<rid>oAAAAAM=</rid>
+			<key-data>ygJuUqaV5yvTCvkoGW7tyfr0phnySS4/sxFpeJwnb/u31DEWZHup4NEGo1QuOWUpLPd4I900yo7sfeNn4IBwiVB3x++tk5kkyxhwZ9v5LLHnhZF704us4MGUyhLfDOW3pQJ1rGG+fDtDaIfKmMn9OQ==</key-data>
+			<exponent>Aw==</exponent>
+			<hash>56yaqO7Rtf8b1TLPFImj5VV1csE=</hash>
+		</rsa-key>
+		<rsa-key key="34" keyIndicator="-103">
+			<rid>oAAAAAM=</rid>
+			<key-data>q3n8yVIIlpZ+d25kRE5dzdbhNhGHTzmFciUgQlKV7qS9DCeB3n8xzT0EH1ZfdHMG7tYpVLF+2ro6bFuFod4b65o0FBrzj8+CecneoNWmcQ0I20Ek8EGUVYfiA1m6tHt1da2UJi1LJfJkrzPe3PKOCWFek33jLtwDxURF/n44J3c=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>Sr/9axxRIS0FVS5DHFsXAH0vXm0=</hash>
+		</rsa-key>
+		<rsa-key key="35" keyIndicator="-2">
+			<rid>oAAAAAU=</rid>
+			<key-data>rOgZKH6Pt4B/2DCuYAs7fcuItJbhZvah04H4BHC+t1es+ELHd7l/yINWTEP5DJ0tpHG5j9qQo3mOToV4oBPczvfzSa/R4b0cqGX6ltJuZ5KvOnuWycd8vzimRmYi9WfbDT0zZbL2fF8om8HO8aR2+SXpfxpKe0FZ+GVMK8mu8EU=</key-data>
+			<exponent>Aw==</exponent>
+			<hash>C8r093wkq4N6F22174gprjj/IN0=</hash>
+		</rsa-key>
+		<rsa-key key="36" keyIndicator="-107">
+			<rid>oAAAAAM=</rid>
+			<key-data>vp4fpemoA4UpmcSrQy2yhgDc2dq3bfqqRzVaD+N7FQisa/OIYNPGwuWxKjyq8qcAWnJB66p3cREsdM+aBjRlL7yg5ZgMVKZHYeoQGhFODwtVcq3VfQELfJyIfhBMpO4Sctpm2Ze5qQtabWJKtsV+c8j5GQAOtfaEiY74w9vvszDGJmC+2I6njpCa/wX22mJ7</key-data>
+			<exponent>Aw==</exponent>
+			<hash>7hURzscQIKm5BEOzex1fbnAwMPY=</hash>
+		</rsa-key>
+	</rsa-keys>
+  </iccemv-configuration>
+</ICCEMVConfigData>
+
+<!-- 
+========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+
+
+-->

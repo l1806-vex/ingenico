@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgetMappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ingenico.com/schemas/widgetmappings/1_0">
+  <widgetMapping idname="GL_ID_OPERAND_1" idval="21"/>
+  <widgetMapping idname="GL_ID_OPERATOR" idval="22"/>
+  <widgetMapping idname="GL_ID_OPERAND_2" idval="23"/>
+  <widgetMapping idname="GL_ID_RESULT" idval="24"/>
+</widgetMappings>

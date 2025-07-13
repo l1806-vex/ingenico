@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--==========================================================================
+COPYRIGHT (C) 2012 Ingenico
+ALL RIGHTS RESERVED
+
+Copyright in the whole and every part of this software program belongs to
+Ingenico.  It may not be used, sold, licensed, transferred, copied
+or reproduced in whole or in part in any manner or form other than in
+accordance with and subject to the terms of a licence from Ingenico
+or with the prior written consent of Ingenico or as
+permitted by applicable law.
+This software program contains confidential and proprietary information and
+must not be disclosed, in whole or in part, to any person or organisation
+without the prior written consent of Ingenico.
+Any copies or reproductions of this software program (in whole or in part)
+made by any method must also include a copy of this legend.
+==========================================================================-->
+
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap"
+                  xmlns:tns="http://ingenico.com/ns/bulk" xmlns:tnsdata="http://ingenico.com/ns/bulk/data"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://ingenico.com/ns/common/data"
+                  xmlns:emm="http://ingenico.com/ns/emm/data" xmlns:ns="http://www.ingenico.com/terminal-config"
+                  xmlns:service="http://ingenico.com/ns/service/data" 
+                  targetNamespace="http://ingenico.com/ns/bulk">
+    <wsdl:types>
+        <schema targetNamespace="http://ingenico.com/ns/bulk/data" xmlns="http://www.w3.org/2001/XMLSchema">
+            <include schemaLocation="./bulk.xsd"/>
+            <xsd:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+            <xsd:import namespace="http://ingenico.com/ns/emm/data" schemaLocation="./emm.xsd"/>
+            <xsd:import namespace="http://ingenico.com/ns/service/data" schemaLocation="./service.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="subscribeTerminalsRequest">
+        <documentation>
+            Request to subscribe list of terminals
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials"/>
+        <wsdl:part name="terminal" type="common:ItidList"/>
+        <wsdl:part name="contract" type="xsd:string"/>
+        <wsdl:part name="service" type="xsd:string"/>
+        <wsdl:part name="status" type="service:SubscriptionStatus"/>
+        <wsdl:part name="profile" type="xsd:string"/>
+        <wsdl:part name="default" type="xsd:boolean"/>
+    </wsdl:message>
+
+    <wsdl:message name="changeTerminalsSecurityKeyRequest">
+        <documentation>
+            Request to change security key for the list of terminals
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials"/>
+        <wsdl:part name="terminal" type="common:ItidList"/>
+        <wsdl:part name="securityKey" type="common:KeyList"/>
+        <wsdl:part name="validDate" type="xsd:date"/>
+    </wsdl:message>
+
+    <wsdl:message name="changeTerminalsRequest">
+        <documentation>
+            Request to change security key for the list of terminals
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials"/>
+        <wsdl:part name="terminal" type="common:ItidList"/>
+        <wsdl:part name="newStatus" type="emm:TerminalStatus"/>
+        <wsdl:part name="expiryDate" type="xsd:date"/>
+        <wsdl:part name="merchant" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="deleteTerminalsRequest">
+        <documentation>
+            Request to delete list of terminals
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials"/>
+        <wsdl:part name="terminal" type="common:ItidList"/>
+    </wsdl:message>
+
+    <wsdl:message name="addTerminalsRequest">
+        <documentation>
+            Request to add list of terminals
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials"/>
+        <wsdl:part name="terminal" type="emm:Terminals"/>
+    </wsdl:message>
+
+    <wsdl:message name="changeSubscriptionsRequest">
+        <documentation>
+            Request to change the list of subscriptions
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials"/>
+        <wsdl:part name="subs" type="service:SubscriptionIdList"/>
+        <wsdl:part name="contract" type="xsd:string"/>
+        <wsdl:part name="newStatus" type="service:SubscriptionStatus"/>
+        <wsdl:part name="profile" type="xsd:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="deleteSubscriptionsRequest">
+        <documentation>
+            Request to delete the list of subscriptions
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials"/>
+        <wsdl:part name="subs" type="service:SubscriptionIdList"/>
+    </wsdl:message>
+
+    <wsdl:message name="resultListResponse">
+        <documentation>
+            Response contains list of object list processing results
+        </documentation>
+        <wsdl:part name="data" type="tnsdata:ResultList"/>
+    </wsdl:message>
+
+    <wsdl:portType name="BulkWSIF">
+        <wsdl:operation name="subscribeTerminals">
+            <documentation>
+		Subscribes all terminals from the list to the service, using contract and profile for subscription and then sets subscription status. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input name="subscribeTerminalsRequest" message="tns:subscribeTerminalsRequest"/>
+            <wsdl:output name="resultListResponse" message="tns:resultListResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="changeTerminalsSecurityKey">
+            <documentation>
+		Changes security key of the terminals to the values specified. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input name="changeTerminalsSecurityKeyRequest" message="tns:changeTerminalsSecurityKeyRequest"/>
+            <wsdl:output name="resultListResponse" message="tns:resultListResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="changeTerminals">
+            <documentation>
+		Sets attributes of all terminals in the list.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input name="changeTerminalsRequest" message="tns:changeTerminalsRequest"/>
+            <wsdl:output name="resultListResponse" message="tns:resultListResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="addTerminals">
+            <documentation>
+		Adds terminals from the list. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input name="addTerminalsRequest" message="tns:addTerminalsRequest"/>
+            <wsdl:output name="resultListResponse" message="tns:resultListResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteTerminals">
+            <documentation>
+		Deletes terminals, which are in status “New”, so which did not perform any activity. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input name="deleteTerminalsRequest" message="tns:deleteTerminalsRequest"/>
+            <wsdl:output name="resultListResponse" message="tns:resultListResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="changeSubscriptions">
+            <documentation>
+		Changes subscription attributes for all subscriptions. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input name="changeSubscriptionsRequest" message="tns:changeSubscriptionsRequest"/>
+            <wsdl:output name="resultListResponse" message="tns:resultListResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteSubscriptions">
+            <documentation>
+		Deletes all subscriptions from the list. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input name="deleteSubscriptionsRequest" message="tns:deleteSubscriptionsRequest"/>
+            <wsdl:output name="resultListResponse" message="tns:resultListResponse"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+    <wsdl:binding name="BulkSoapBinding" type="tns:BulkWSIF">
+        <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="subscribeTerminals">
+            <documentation>
+                Subscribes all terminals from the list to the service
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="changeTerminalsSecurityKey">
+            <documentation>
+                Changes security key of the terminals to the values specified.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="changeTerminals">
+            <documentation>
+                Sets attributes of all terminals in the list.
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="addTerminals">
+            <documentation>
+		Adds terminals from the list. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteTerminals">
+            <documentation>
+		Deletes terminals, which are in status “New”, so which did not perform any activity. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="changeSubscriptions">
+            <documentation>
+		Changes subscription attributes for all subscriptions. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="deleteSubscriptions">
+            <documentation>
+		Deletes all subscriptions from the list. 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Bulk"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://ingenico.com/ns/configuration-service"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="BulkWSIFService">
+        <wsdl:port name="Bulk" binding="tns:BulkSoapBinding">
+            <wsdlsoap:address location="http://localhost:8090/cfgsrv/services/Bulk"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

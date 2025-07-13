@@ -1,0 +1,1 @@
+call migration.cmd migration/rollback3100.sql %*

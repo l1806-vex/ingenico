@@ -1,0 +1,14 @@
+[SST]
+ReaderName=
+CertificateSchemaDir=C:\Program Files\TELIUM Tools\SST30\certificate
+CertificateAppliDir=C:\Program Files\TELIUM Tools\SST30\certificate
+ParametersDir=C:\Users\admin\Desktop\Dopek\TELIUM IMAGE LOADER\SDK\MSG
+DestinationDir=C:\Users\admin\Desktop\Dopek\TELIUM IMAGE LOADER\SDK\MSG\Signed\SST
+ApplicationDir=C:\Users\admin\Desktop\Dopek\TELIUM IMAGE LOADER\SDK\MSG
+TempDir=C:\Users\admin\Desktop\Dopek\TELIUM IMAGE LOADER\SDK\MSG\Temp
+
+[Application]
+ParameterFile=8228810101_T1.TXT
+CertificateFile=Mockup.V03
+ApplicationFile=8228810101.MSG
+CatalogFileExtension=31

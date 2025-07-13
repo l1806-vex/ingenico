@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?><?ingedev version="7.18.1.4"?><projectDescription activeConfig="GNU_ARM_RELEASE" applicationType="0xac06" binaryName="8440380201" dataBinaryFileBaseName="DATAAC06" descr="CGUI Sample" enableUsingCpp="false" projectFamily="CGUI_SAMPLE" projectType="APP" useDataFileNamingConvention="true">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="source\Entry.c" parentProject=""/>
+<file generated="false" name="source\CGUI_Sample.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="false"/>
+<archiveFilesVirtualFolder name="Archive Files">
+<archive dirParentProject="" directoryToArchive="Datas" name="Bin\Datas.tar"/>
+</archiveFilesVirtualFolder>
+</virtualFolders>
+<configs>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG" sign="false" teliumCompatibility="All">
+<userIncs>
+<userInc value="include"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.2"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.2"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.2"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.2"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.2"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="WGUI_" package="Telium SDK" version="9.10.2"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.2"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.2"/>
+</packageIncs>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_BINARY_NAME=&quot;${appli_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_DATA_FILE_BINARY_NAME=&quot;${appli_full_data_file_binary_name}&quot;"/>
+<userDefine value="_DEPRECATED_WGUI_SDK090800_"/>
+</userDefines>
+<dataFiles>
+<dataFile alias="Datas" isDefault="true" name="Bin\Datas.tar" parentProject="">
+<targetTerminals/>
+</dataFile>
+</dataFiles>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="true" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnu4StackProtectionMode="ProPolice" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG_434" sign="false" teliumCompatibility="All" zip="true">
+<userIncs>
+<userInc value="include"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.2"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.2"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.2"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.2"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.2"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="WGUI_" package="Telium SDK" version="9.10.2"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.2"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.2"/>
+</packageIncs>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_BINARY_NAME=&quot;${appli_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_DATA_FILE_BINARY_NAME=&quot;${appli_full_data_file_binary_name}&quot;"/>
+<userDefine value="_DEPRECATED_WGUI_SDK090800_"/>
+</userDefines>
+<dataFiles>
+<dataFile alias="Datas" isDefault="true" name="Bin\Datas.tar" parentProject="">
+<targetTerminals/>
+</dataFile>
+</dataFiles>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE" sign="false" teliumCompatibility="All">
+<userIncs>
+<userInc value="include"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.2"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.2"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.2"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.2"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.2"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="WGUI_" package="Telium SDK" version="9.10.2"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.2"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.2"/>
+</packageIncs>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_BINARY_NAME=&quot;${appli_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_DATA_FILE_BINARY_NAME=&quot;${appli_full_data_file_binary_name}&quot;"/>
+<userDefine value="_DEPRECATED_WGUI_SDK090800_"/>
+</userDefines>
+<externalSchemes/>
+<dataFiles>
+<dataFile alias="Datas" isDefault="true" name="Bin\Datas.tar" parentProject="">
+<targetTerminals/>
+</dataFile>
+</dataFiles>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="true" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnu4StackProtectionMode="ProPolice" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE_434" sign="false" teliumCompatibility="All" zip="true">
+<userIncs>
+<userInc value="include"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.2"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.2"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.2"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.2"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.2"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="WGUI_" package="Telium SDK" version="9.10.2"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.2"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.2"/>
+</packageIncs>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+<userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_DATA_FILE_BINARY_NAME=&quot;${appli_data_file_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_DATA_FILE_BINARY_NAME=&quot;${appli_full_data_file_binary_name}&quot;"/>
+<userDefine value="_DEPRECATED_WGUI_SDK090800_"/>
+</userDefines>
+<externalSchemes/>
+<dataFiles>
+<dataFile alias="Datas" isDefault="true" name="Bin\Datas.tar" parentProject="">
+<targetTerminals/>
+</dataFile>
+</dataFiles>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

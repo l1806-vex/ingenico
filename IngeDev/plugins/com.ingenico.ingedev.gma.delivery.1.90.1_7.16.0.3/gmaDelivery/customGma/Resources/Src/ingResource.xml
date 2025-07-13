@@ -1,0 +1,1678 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?ingResource version="1.0"?>
+
+<?ingedev version="7.2.0.4"?>
+
+<resourcesDescription>
+<stringResources>
+<languages>
+<language charset="Ingenico" code="en"/>
+</languages>
+<strings>
+<string id="IDS_JAN" idValue="100">
+<captions>
+<caption languageCode="en" value="jan"/>
+</captions>
+</string>
+<string id="IDS_FEB" idValue="101">
+<captions>
+<caption languageCode="en" value="feb"/>
+</captions>
+</string>
+<string id="IDS_MAR" idValue="102">
+<captions>
+<caption languageCode="en" value="mar"/>
+</captions>
+</string>
+<string id="IDS_APR" idValue="103">
+<captions>
+<caption languageCode="en" value="apr"/>
+</captions>
+</string>
+<string id="IDS_MAY" idValue="104">
+<captions>
+<caption languageCode="en" value="may"/>
+</captions>
+</string>
+<string id="IDS_JUN" idValue="105">
+<captions>
+<caption languageCode="en" value="jun"/>
+</captions>
+</string>
+<string id="IDS_JUL" idValue="106">
+<captions>
+<caption languageCode="en" value="jul"/>
+</captions>
+</string>
+<string id="IDS_AUG" idValue="107">
+<captions>
+<caption languageCode="en" value="aug"/>
+</captions>
+</string>
+<string id="IDS_SEP" idValue="108">
+<captions>
+<caption languageCode="en" value="sep"/>
+</captions>
+</string>
+<string id="IDS_OCT" idValue="109">
+<captions>
+<caption languageCode="en" value="oct"/>
+</captions>
+</string>
+<string id="IDS_NOV" idValue="110">
+<captions>
+<caption languageCode="en" value="nov"/>
+</captions>
+</string>
+<string id="IDS_DEC" idValue="111">
+<captions>
+<caption languageCode="en" value="dec"/>
+</captions>
+</string>
+<string id="IDS_SMC_APP_SEL" idValue="0">
+<captions>
+<caption languageCode="en" value="SMC APP SELECT"/>
+</captions>
+</string>
+<string id="IDS_APP_SEL" idValue="1">
+<captions>
+<caption languageCode="en" value="APP SELECT"/>
+</captions>
+</string>
+<string id="IDS_PLEASE_WAIT" idValue="2">
+<captions>
+<caption languageCode="en" value="PLEASE WAIT"/>
+</captions>
+</string>
+<string id="IDS_OK" idValue="3">
+<captions>
+<caption languageCode="en" value="OK"/>
+</captions>
+</string>
+<string id="IDS_CANCEL" idValue="4">
+<captions>
+<caption languageCode="en" value="CANCEL"/>
+</captions>
+</string>
+<string id="IDS_CARD_NOT_ACCEPT1" idValue="5">
+<captions>
+<caption languageCode="en" value="Smart Card"/>
+</captions>
+</string>
+<string id="IDS_PLEASE" idValue="6">
+<captions>
+<caption languageCode="en" value="PLEASE"/>
+</captions>
+</string>
+<string id="IDS_REMOVE_SMC" idValue="7">
+<captions>
+<caption languageCode="en" value="REMOVE SMC"/>
+</captions>
+</string>
+<string id="IDS_PLUGIN_MENU_TITLE" idValue="8">
+<captions>
+<caption languageCode="en" value="TERMINAL"/>
+</captions>
+</string>
+<string id="IDS_SEL_APPLICATION" idValue="9">
+<captions>
+<caption languageCode="en" value="SEL. APPLICATION"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_TEXT_CONNECTION_TYPE" idValue="200">
+<captions>
+<caption languageCode="en" value="USE DHCP"/>
+</captions>
+</string>
+<string id="IDS_MAIN_YES" idValue="11">
+<captions>
+<caption languageCode="en" value="YES"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_LOCAL_IP" idValue="201">
+<captions>
+<caption languageCode="en" value="LOCAL IP"/>
+</captions>
+</string>
+<string id="IDS_MAIN_NO" idValue="12">
+<captions>
+<caption languageCode="en" value="NO"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_IP_SUBMASK" idValue="202">
+<captions>
+<caption languageCode="en" value="SUB MASK IP"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_IP_DNS1" idValue="203">
+<captions>
+<caption languageCode="en" value="DNS 1 IP"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_IP_DNS2" idValue="204">
+<captions>
+<caption languageCode="en" value="DNS 2 IP"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_IP_GATEWAY" idValue="205">
+<captions>
+<caption languageCode="en" value="GATEWAY IP"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_ETH_CONFIGURE" idValue="206">
+<captions>
+<caption languageCode="en" value="Settings"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_ETH_PRINT_CONF" idValue="207">
+<captions>
+<caption languageCode="en" value="Print Config."/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_ETH_TESTS" idValue="208">
+<captions>
+<caption languageCode="en" value="Tests"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_ETH_TEST_PING" idValue="209">
+<captions>
+<caption languageCode="en" value="PING"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_ETH_TEST_SOCKET" idValue="210">
+<captions>
+<caption languageCode="en" value="SOCKET"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_ETH_MENU_CONF" idValue="211">
+<captions>
+<caption languageCode="en" value="ETHERNET"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_ETH_RETURN" idValue="212">
+<captions>
+<caption languageCode="en" value="Back"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_PRINT_CONFIG" idValue="213">
+<captions>
+<caption languageCode="en" value="Ethernet configuration"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_PRINT_WAIT" idValue="214">
+<captions>
+<caption languageCode="en" value=" WAIT"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_IP_TO_PING" idValue="215">
+<captions>
+<caption languageCode="en" value=" IP PING"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_SOCKET_IP" idValue="216">
+<captions>
+<caption languageCode="en" value="SOCKET IP"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_SOCKET_TCP" idValue="217">
+<captions>
+<caption languageCode="en" value="TCP PORT"/>
+</captions>
+</string>
+<string id="IDS_ETH_STR_PRESS_A_KEY" idValue="218">
+<captions>
+<caption languageCode="en" value="press a key"/>
+</captions>
+</string>
+<string id="IDS_GSM_STATUS_PRN" idValue="301">
+<captions>
+<caption languageCode="en" value="GSM STATUS"/>
+</captions>
+</string>
+<string id="IDS_GSM_SEL_AUTO_PRN" idValue="302">
+<captions>
+<caption languageCode="en" value="Automatic Carrier Selection"/>
+</captions>
+</string>
+<string id="IDS_GSM_SEL_MAN_PRN" idValue="303">
+<captions>
+<caption languageCode="en" value="Manual Carrier"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_PRN" idValue="304">
+<captions>
+<caption languageCode="en" value="Carrier:"/>
+</captions>
+</string>
+<string id="IDS_GSM_SEL_MAN_AUTO_PRN" idValue="305">
+<captions>
+<caption languageCode="en" value="Manual/Automatic Selection"/>
+</captions>
+</string>
+<string id="IDS_GSM_SEL_NONE_PRN" idValue="306">
+<captions>
+<caption languageCode="en" value="No Carrier Selection"/>
+</captions>
+</string>
+<string id="IDS_GSM_SEL_ERR_PRN" idValue="307">
+<captions>
+<caption languageCode="en" value="Selection Operator Error"/>
+</captions>
+</string>
+<string id="IDS_GSM_OK_PRN" idValue="308">
+<captions>
+<caption languageCode="en" value="GSM Connected"/>
+</captions>
+</string>
+<string id="IDS_GSM_SIGN_PRN" idValue="309">
+<captions>
+<caption languageCode="en" value="Signal (0-31):"/>
+</captions>
+</string>
+<string id="IDS_GSM_OFF_PRN" idValue="310">
+<captions>
+<caption languageCode="en" value="GSM will shut down"/>
+</captions>
+</string>
+<string id="IDS_GSM_NOTOFF_PRN" idValue="311">
+<captions>
+<caption languageCode="en" value="GSM will not shut down"/>
+</captions>
+</string>
+<string id="IDS_GSM_GPRS_NOT_CONN_PRN" idValue="312">
+<captions>
+<caption languageCode="en" value="GPRS not connected"/>
+</captions>
+</string>
+<string id="IDS_GSM_ERROR_PRN" idValue="313">
+<captions>
+<caption languageCode="en" value="Error"/>
+</captions>
+</string>
+<string id="IDS_GSM_GPRS_CONN_PRN" idValue="314">
+<captions>
+<caption languageCode="en" value="GPRS Connected"/>
+</captions>
+</string>
+<string id="IDS_GSM_NEED_PIN_PRN" idValue="315">
+<captions>
+<caption languageCode="en" value="PIN Needed"/>
+</captions>
+</string>
+<string id="IDS_GSM_NEED_PUK_PRN" idValue="316">
+<captions>
+<caption languageCode="en" value="PUK Needed"/>
+</captions>
+</string>
+<string id="IDS_GSM_NO_SIM_PRN" idValue="317">
+<captions>
+<caption languageCode="en" value="No SIM-card"/>
+</captions>
+</string>
+<string id="IDS_GSM_UNKN_ERROR_PRN" idValue="318">
+<captions>
+<caption languageCode="en" value="Unknown error"/>
+</captions>
+</string>
+<string id="IDS_GSM_APN_NOT_SEL_PRN" idValue="319">
+<captions>
+<caption languageCode="en" value="APN not selected"/>
+</captions>
+</string>
+<string id="IDS_GSM_LOCAL_IP_PRN" idValue="320">
+<captions>
+<caption languageCode="en" value="IP:"/>
+</captions>
+</string>
+<string id="IDS_GSM_SOFT_VERSION_PRN" idValue="321">
+<captions>
+<caption languageCode="en" value="Software version:"/>
+</captions>
+</string>
+<string id="IDS_GSM_MODEM_PRN" idValue="322">
+<captions>
+<caption languageCode="en" value="GSM Modem:"/>
+</captions>
+</string>
+<string id="IDS_GSM_FIRMWARE_PRN" idValue="323">
+<captions>
+<caption languageCode="en" value="Firmware:"/>
+</captions>
+</string>
+<string id="IDS_GSM_BUILD_DATE_PRN" idValue="324">
+<captions>
+<caption languageCode="en" value="Creation date:"/>
+</captions>
+</string>
+<string id="IDS_GSM_ERRORS_PRN" idValue="325">
+<captions>
+<caption languageCode="en" value="GSM Errors"/>
+</captions>
+</string>
+<string id="IDS_GSM_NO_ERRORS_PRN" idValue="326">
+<captions>
+<caption languageCode="en" value="No Errors"/>
+</captions>
+</string>
+<string id="IDS_GSM_APN" idValue="327">
+<captions>
+<caption languageCode="en" value="APN"/>
+</captions>
+</string>
+<string id="IDS_GSM_MENU" idValue="328">
+<captions>
+<caption languageCode="en" value="GSM"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENTER_PIN" idValue="329">
+<captions>
+<caption languageCode="en" value="Entry PIN"/>
+</captions>
+</string>
+<string id="IDS_GSM_CONFIG" idValue="330">
+<captions>
+<caption languageCode="en" value="Settings"/>
+</captions>
+</string>
+<string id="IDS_GSM_CONFIG_APN" idValue="331">
+<captions>
+<caption languageCode="en" value="APN"/>
+</captions>
+</string>
+<string id="IDS_GSM_PRINT_STATUS" idValue="332">
+<captions>
+<caption languageCode="en" value="Print Status"/>
+</captions>
+</string>
+<string id="IDS_GSM_EXT_MODEM" idValue="333">
+<captions>
+<caption languageCode="en" value="External Modem"/>
+</captions>
+</string>
+<string id="IDS_GSM_EXTRA" idValue="334">
+<captions>
+<caption languageCode="en" value="Extra"/>
+</captions>
+</string>
+<string id="IDS_GSM_PIN_MENU" idValue="335">
+<captions>
+<caption languageCode="en" value="PIN Menu"/>
+</captions>
+</string>
+<string id="IDS_GSM_PIN" idValue="336">
+<captions>
+<caption languageCode="en" value="PIN"/>
+</captions>
+</string>
+<string id="IDS_GSM_CHANGE_PIN" idValue="337">
+<captions>
+<caption languageCode="en" value="Change PIN"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENA_DIS_PIN" idValue="338">
+<captions>
+<caption languageCode="en" value="Enab/Disab PIN"/>
+</captions>
+</string>
+<string id="IDS_GSM_APN_MENU" idValue="339">
+<captions>
+<caption languageCode="en" value="APN"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENTER_APN" idValue="340">
+<captions>
+<caption languageCode="en" value="APN"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENTER_USER" idValue="341">
+<captions>
+<caption languageCode="en" value="User"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENTER_PASSW" idValue="342">
+<captions>
+<caption languageCode="en" value="Password"/>
+</captions>
+</string>
+<string id="IDS_GSM_PORT" idValue="343">
+<captions>
+<caption languageCode="en" value="Port"/>
+</captions>
+</string>
+<string id="IDS_GSM_EXTRA_MENU" idValue="344">
+<captions>
+<caption languageCode="en" value="Extra"/>
+</captions>
+</string>
+<string id="IDS_GSM_PRINT_ERRORS" idValue="345">
+<captions>
+<caption languageCode="en" value="Print Errors"/>
+</captions>
+</string>
+<string id="IDS_GSM_AT_COMMANDS" idValue="346">
+<captions>
+<caption languageCode="en" value="AT Commands"/>
+</captions>
+</string>
+<string id="IDS_GSM_SIM_NUMBER" idValue="347">
+<captions>
+<caption languageCode="en" value="SIMCARD NUMBER:"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPERATION" idValue="348">
+<captions>
+<caption languageCode="en" value="OPERATION"/>
+</captions>
+</string>
+<string id="IDS_GSM_CANCELLED" idValue="349">
+<captions>
+<caption languageCode="en" value="CANCELED"/>
+</captions>
+</string>
+<string id="IDS_GSM_SIM_PASSWORD" idValue="350">
+<captions>
+<caption languageCode="en" value="SIMCARD PASSWD:"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_DONE" idValue="351">
+<captions>
+<caption languageCode="en" value="OPERATION DONE"/>
+</captions>
+</string>
+<string id="IDS_GSM_PRESS_ENTER" idValue="352">
+<captions>
+<caption languageCode="en" value="PRESS &lt;ENTER&gt;"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENTER_PUK_SMALL" idValue="353">
+<captions>
+<caption languageCode="en" value="PUK:"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENTER_PIN_SMALL" idValue="354">
+<captions>
+<caption languageCode="en" value="PIN:"/>
+</captions>
+</string>
+<string id="IDS_GSM_CONFIRM_SMALL" idValue="355">
+<captions>
+<caption languageCode="en" value="Conf:"/>
+</captions>
+</string>
+<string id="IDS_GSM_TYPING_ERROR" idValue="356">
+<captions>
+<caption languageCode="en" value="TYPING ERROR"/>
+</captions>
+</string>
+<string id="IDS_GSM_IP_ADDRESS" idValue="357">
+<captions>
+<caption languageCode="en" value="IP ADDRESS"/>
+</captions>
+</string>
+<string id="IDS_GSM_SHUTDOWN_MOD" idValue="358">
+<captions>
+<caption languageCode="en" value="SHUT DOWN MODULE"/>
+</captions>
+</string>
+<string id="IDS_GSM_Q" idValue="359">
+<captions>
+<caption languageCode="en" value="GSM?"/>
+</captions>
+</string>
+<string id="IDS_GSM_USE_DHCP_Q" idValue="360">
+<captions>
+<caption languageCode="en" value="USE DHCP?"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENA_PIN_TITLE" idValue="361">
+<captions>
+<caption languageCode="en" value="ENABLE PIN"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_SEL" idValue="362">
+<captions>
+<caption languageCode="en" value="SEL. CARRIER"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_AUTO" idValue="363">
+<captions>
+<caption languageCode="en" value="Automatic"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_MAN" idValue="364">
+<captions>
+<caption languageCode="en" value="Manual"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_MAN_AUTO" idValue="365">
+<captions>
+<caption languageCode="en" value="Manual/Auto"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_NONE" idValue="366">
+<captions>
+<caption languageCode="en" value="Smart"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_FORMAT" idValue="367">
+<captions>
+<caption languageCode="en" value="CARRIER FORMAT"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_FMT_LONGTXT" idValue="368">
+<captions>
+<caption languageCode="en" value="Long Text"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_FMT_SHTTXT" idValue="369">
+<captions>
+<caption languageCode="en" value="Short Text"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_FMT_NUMBER" idValue="370">
+<captions>
+<caption languageCode="en" value="Numeric"/>
+</captions>
+</string>
+<string id="IDS_GSM_CONNECTING" idValue="371">
+<captions>
+<caption languageCode="en" value="Connecting..."/>
+</captions>
+</string>
+<string id="IDS_GSM_PIN_OK" idValue="372">
+<captions>
+<caption languageCode="en" value="PIN OK"/>
+</captions>
+</string>
+<string id="IDS_GSM_ERROR" idValue="373">
+<captions>
+<caption languageCode="en" value="ERROR"/>
+</captions>
+</string>
+<string id="IDS_GSM_A_CONNECT1" idValue="374">
+<captions>
+<caption languageCode="en" value="Prev connected."/>
+</captions>
+</string>
+<string id="IDS_GSM_A_CONNECT2" idValue="375">
+<captions>
+<caption languageCode="en" value="Shutdown needed"/>
+</captions>
+</string>
+<string id="IDS_GSM_A_CONNECT3" idValue="376">
+<captions>
+<caption languageCode="en" value="for changes to"/>
+</captions>
+</string>
+<string id="IDS_GSM_A_CONNECT4" idValue="377">
+<captions>
+<caption languageCode="en" value="take effect."/>
+</captions>
+</string>
+<string id="IDS_GSM_A_CONNECT5" idValue="378">
+<captions>
+<caption languageCode="en" value=""/>
+</captions>
+</string>
+<string id="IDS_GSM_A_CONNECT6" idValue="379">
+<captions>
+<caption languageCode="en" value="Press any key"/>
+</captions>
+</string>
+<string id="IDS_GSM_MODEM_PORT" idValue="380">
+<captions>
+<caption languageCode="en" value="Modem port"/>
+</captions>
+</string>
+<string id="IDS_GSM_CONFIRM" idValue="381">
+<captions>
+<caption languageCode="en" value="Confirm:"/>
+</captions>
+</string>
+<string id="IDS_GSM_GPRS_DISC_TIME" idValue="382">
+<captions>
+<caption languageCode="en" value="GPRS Timeout"/>
+</captions>
+</string>
+<string id="IDS_GSM_GPRS_TIME_SEC" idValue="383">
+<captions>
+<caption languageCode="en" value="Disc. T-out (s)"/>
+</captions>
+</string>
+<string id="IDS_GSM_GPRS_REC_TIME_SEC" idValue="384">
+<captions>
+<caption languageCode="en" value="Recon. Delay (s)"/>
+</captions>
+</string>
+<string id="IDS_MAGCARDMANUAL_ENTRY_TRACK" idValue="400">
+<captions>
+<caption languageCode="en" value="Enter track:"/>
+</captions>
+</string>
+<string id="IDS_RAD_STR_BASERETURN" idValue="410">
+<captions>
+<caption languageCode="en" value="RETURN TO BASE"/>
+</captions>
+</string>
+<string id="IDS_RAD_STR_LOADING" idValue="411">
+<captions>
+<caption languageCode="en" value="LOADING"/>
+</captions>
+</string>
+<string id="IDS_RAD_STR_CONFIG" idValue="412">
+<captions>
+<caption languageCode="en" value="CONFIG"/>
+</captions>
+</string>
+<string id="IDS_RAD_STR_IN_SER_NUM_1" idValue="413">
+<captions>
+<caption languageCode="en" value="INPUT BASE"/>
+</captions>
+</string>
+<string id="IDS_RAD_STR_IN_SER_NUM_2" idValue="414">
+<captions>
+<caption languageCode="en" value="SERIAL NUMBER"/>
+</captions>
+</string>
+<string id="IDS_RAD_CAPT_SYNC_BASE" idValue="415">
+<captions>
+<caption languageCode="en" value="Sync base"/>
+</captions>
+</string>
+<string id="IDS_RAD_CAPT_RADIO" idValue="416">
+<captions>
+<caption languageCode="en" value="Radio mode"/>
+</captions>
+</string>
+<string id="IDS_RAD_CAPT_CONTACT" idValue="417">
+<captions>
+<caption languageCode="en" value="Contact mode"/>
+</captions>
+</string>
+<string id="IDS_RAD_CAPT_TRANSPARENT" idValue="418">
+<captions>
+<caption languageCode="en" value="Transp. mode"/>
+</captions>
+</string>
+<string id="IDS_RAD_STR_PLEASEWAIT" idValue="419">
+<captions>
+<caption languageCode="en" value="PLEASE WAIT"/>
+</captions>
+</string>
+<string id="IDS_RAD_STR_ERROR" idValue="420">
+<captions>
+<caption languageCode="en" value="Error"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_GENERAL" idValue="450">
+<captions>
+<caption languageCode="en" value="General"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_DATE_TIME" idValue="451">
+<captions>
+<caption languageCode="en" value="Date and Time"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_STARTUPAPP" idValue="452">
+<captions>
+<caption languageCode="en" value="Start-up App"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_SLEEP_MODE" idValue="453">
+<captions>
+<caption languageCode="en" value="Sleep Mode"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_CHANGE_DATE" idValue="454">
+<captions>
+<caption languageCode="en" value="Change Date"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_CHANGE_TIME" idValue="455">
+<captions>
+<caption languageCode="en" value="Change Time"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_CONTRAST" idValue="456">
+<captions>
+<caption languageCode="en" value="Contrast"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_BEEP" idValue="457">
+<captions>
+<caption languageCode="en" value="Beep"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_BACK_LIGHT" idValue="458">
+<captions>
+<caption languageCode="en" value="Backlight"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_BACK_LIGHT_TIMEOUT" idValue="459">
+<captions>
+<caption languageCode="en" value="Backlight T-out"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_APP_TO_START" idValue="460">
+<captions>
+<caption languageCode="en" value="APP TO START"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_START_GMA" idValue="461">
+<captions>
+<caption languageCode="en" value="Start GMA"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_SLEEP_ACTIVE" idValue="462">
+<captions>
+<caption languageCode="en" value="Active"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_SLEEP_TIMEOUT" idValue="463">
+<captions>
+<caption languageCode="en" value="Sleep Timeout"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_MENU_SLEEP_MODE_TITLE" idValue="464">
+<captions>
+<caption languageCode="en" value="SLEEP MODE"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_ACTIVE_SLEEP_MODE" idValue="465">
+<captions>
+<caption languageCode="en" value="Active?"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_SLEEP_TIME_SEC" idValue="466">
+<captions>
+<caption languageCode="en" value="Sleep Time (sec)"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_SLEEP_GREATER1" idValue="467">
+<captions>
+<caption languageCode="en" value="MUST BE GREATER"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_SLEEP_GREATER2" idValue="468">
+<captions>
+<caption languageCode="en" value="THAN 10 SECONDS"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_CONNECT_TYPE" idValue="500">
+<captions>
+<caption languageCode="en" value="Connection Type"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_OPTIONS" idValue="501">
+<captions>
+<caption languageCode="en" value="Options"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_LINE_CALIBRATION" idValue="502">
+<captions>
+<caption languageCode="en" value="Line Calibration"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_CONN_SETTINGS" idValue="503">
+<captions>
+<caption languageCode="en" value="CONN. SETTINGS"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_START_MAINT" idValue="504">
+<captions>
+<caption languageCode="en" value="Start Maint."/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_GEN_OPTIONS" idValue="505">
+<captions>
+<caption languageCode="en" value="Gen. Options"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_CONN_SETTINGS_ITEM" idValue="506">
+<captions>
+<caption languageCode="en" value="Conn. Settings"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_MAINTENANCE" idValue="507">
+<captions>
+<caption languageCode="en" value="MAINTENANCE"/>
+</captions>
+</string>
+<string id="IDS_SMF_TOUCH_THE_SCREEN" idValue="508">
+<captions>
+<caption languageCode="en" value="touch the screen"/>
+</captions>
+</string>
+<string id="IDS_SMF_CONNECT_LINE1" idValue="509">
+<captions>
+<caption languageCode="en" value="Connect the line to"/>
+</captions>
+</string>
+<string id="IDS_SMF_CONNECT_LINE2" idValue="510">
+<captions>
+<caption languageCode="en" value="the terminal and"/>
+</captions>
+</string>
+<string id="IDS_SMF_PRESS_ENTER" idValue="511">
+<captions>
+<caption languageCode="en" value="press &lt;enter&gt;"/>
+</captions>
+</string>
+<string id="IDS_SMF_LINE_LEVEL_ANSWER" idValue="512">
+<captions>
+<caption languageCode="en" value="ret=%d/lev=%d"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_RETRY_MAINTENANCE" idValue="513">
+<captions>
+<caption languageCode="en" value="Retry Mainte."/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTIONS_MANUAL" idValue="514">
+<captions>
+<caption languageCode="en" value="Manual"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTIONS_INTER_APPLI" idValue="515">
+<captions>
+<caption languageCode="en" value="Inter Applic."/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTIONS_RECONNECT" idValue="516">
+<captions>
+<caption languageCode="en" value="Reconnect"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_CALL_INFO" idValue="517">
+<captions>
+<caption languageCode="en" value="Call Info"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_REASON" idValue="518">
+<captions>
+<caption languageCode="en" value="Reason"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_RETRIES" idValue="519">
+<captions>
+<caption languageCode="en" value="Retries"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_SCHEDULE_DATE" idValue="520">
+<captions>
+<caption languageCode="en" value="Schedule Date"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_SCHEDULE_TIME" idValue="521">
+<captions>
+<caption languageCode="en" value="Schedule Time"/>
+</captions>
+</string>
+<string id="IDS_SMF_CONN_NAME_MODEM" idValue="522">
+<captions>
+<caption languageCode="en" value="Modem"/>
+</captions>
+</string>
+<string id="IDS_SMF_CONN_NAME_MODEM_HDLC" idValue="523">
+<captions>
+<caption languageCode="en" value="Modem HDLC"/>
+</captions>
+</string>
+<string id="IDS_SMF_CONN_NAME_SERIAL" idValue="524">
+<captions>
+<caption languageCode="en" value="Serial"/>
+</captions>
+</string>
+<string id="IDS_SMF_CONN_NAME_SOCKET" idValue="525">
+<captions>
+<caption languageCode="en" value="Socket"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_CONN_TYPE" idValue="526">
+<captions>
+<caption languageCode="en" value="Connection Type"/>
+</captions>
+</string>
+<string id="IDS_SMF_COUNTRY_BRAZIL" idValue="527">
+<captions>
+<caption languageCode="en" value="Brazil"/>
+</captions>
+</string>
+<string id="IDS_SMF_COUNTRY_FRANCE" idValue="528">
+<captions>
+<caption languageCode="en" value="France "/>
+</captions>
+</string>
+<string id="IDS_SMF_COUNTRY_MEXICO" idValue="529">
+<captions>
+<caption languageCode="en" value="Mexico "/>
+</captions>
+</string>
+<string id="IDS_SMF_COUNTRY_UNITED_KINGDOM" idValue="530">
+<captions>
+<caption languageCode="en" value="United Kingdom"/>
+</captions>
+</string>
+<string id="IDS_SMF_COUNTRY_UNITED_STATES" idValue="531">
+<captions>
+<caption languageCode="en" value="United States"/>
+</captions>
+</string>
+<string id="IDS_SMF_COUNTRY_CANADA" idValue="532">
+<captions>
+<caption languageCode="en" value="Canada "/>
+</captions>
+</string>
+<string id="IDS_SMF_COUNTRY_GERMANY" idValue="533">
+<captions>
+<caption languageCode="en" value="Germany "/>
+</captions>
+</string>
+<string id="IDS_SMF_COUNTRY_SPAIN" idValue="534">
+<captions>
+<caption languageCode="en" value="Spain "/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_NO_COMPRESSION" idValue="535">
+<captions>
+<caption languageCode="en" value="No compression"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_1200_BAUD" idValue="536">
+<captions>
+<caption languageCode="en" value="1200  Baud"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_2400_BAUD" idValue="537">
+<captions>
+<caption languageCode="en" value="2400  Baud"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_9600_BAUD" idValue="538">
+<captions>
+<caption languageCode="en" value="9600  Baud"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_19200_BAUD" idValue="539">
+<captions>
+<caption languageCode="en" value="19200 Baud"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_33600_BAUD" idValue="540">
+<captions>
+<caption languageCode="en" value="33600 Baud"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_DEFAULT" idValue="541">
+<captions>
+<caption languageCode="en" value="DEFAULT"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_NO_CORRECTION" idValue="542">
+<captions>
+<caption languageCode="en" value="No Correction"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_DIAL_UP" idValue="543">
+<captions>
+<caption languageCode="en" value="Dial Up"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_OPTION_INCOMING" idValue="544">
+<captions>
+<caption languageCode="en" value="Incoming"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_MODULATION" idValue="545">
+<captions>
+<caption languageCode="en" value="Modulation"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_COUNTRY" idValue="546">
+<captions>
+<caption languageCode="en" value="Country"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_DATA_COMPRESSION" idValue="547">
+<captions>
+<caption languageCode="en" value="Data Compression"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_ERROR_CORRECTION" idValue="548">
+<captions>
+<caption languageCode="en" value="Error Correction"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_TEL_NUMBER" idValue="549">
+<captions>
+<caption languageCode="en" value="Tel. Number"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_PREFFIX" idValue="550">
+<captions>
+<caption languageCode="en" value="Prefix"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_DET_DIAL_TONE" idValue="551">
+<captions>
+<caption languageCode="en" value="Detect Dial Tone"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_DET_LINE" idValue="552">
+<captions>
+<caption languageCode="en" value="Detect Line"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_TONE_DIALING" idValue="553">
+<captions>
+<caption languageCode="en" value="Tone Dialing"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_CALL_MODE" idValue="554">
+<captions>
+<caption languageCode="en" value="Call Mode"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_RING_NUMBER" idValue="555">
+<captions>
+<caption languageCode="en" value="Ring Number"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_MIN_SPEEDY" idValue="556">
+<captions>
+<caption languageCode="en" value="Min speed"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_MAX_SPEEDY" idValue="557">
+<captions>
+<caption languageCode="en" value="Max speed"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_BAUD_RATE" idValue="558">
+<captions>
+<caption languageCode="en" value="Baud Rate"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_COM_PORT" idValue="559">
+<captions>
+<caption languageCode="en" value="COM Port"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_IP_ADDRESS" idValue="560">
+<captions>
+<caption languageCode="en" value="Ip Address"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_HOST_NAME" idValue="561">
+<captions>
+<caption languageCode="en" value="Host Name"/>
+</captions>
+</string>
+<string id="IDS_SMF_EDIT_ITEM_TCP_PORT" idValue="562">
+<captions>
+<caption languageCode="en" value="TCP port"/>
+</captions>
+</string>
+<string id="IDS_WIFI_STATUS_NOT_CONNECTED" idValue="600">
+<captions>
+<caption languageCode="en" value="NOT CONNECTED"/>
+</captions>
+</string>
+<string id="IDS_WIFI_STATUS_CONNECTED" idValue="601">
+<captions>
+<caption languageCode="en" value="CONNECTED"/>
+</captions>
+</string>
+<string id="IDS_WIFI_STATUS_DISCONNECTED" idValue="602">
+<captions>
+<caption languageCode="en" value="DISCONNECTED"/>
+</captions>
+</string>
+<string id="IDS_WIFI_STATUS_APCHANGE" idValue="603">
+<captions>
+<caption languageCode="en" value="AP CHANGE"/>
+</captions>
+</string>
+<string id="IDS_WIFI_STATUS_AP_OUT_OF_RANGE" idValue="604">
+<captions>
+<caption languageCode="en" value="AP OUT OF RANGE"/>
+</captions>
+</string>
+<string id="IDS_WIFI_STATUS_AP_IN_RANGE" idValue="605">
+<captions>
+<caption languageCode="en" value="AP IN RANGE"/>
+</captions>
+</string>
+<string id="IDS_WIFI_STATUS_ASSOCIATION_FAIL" idValue="606">
+<captions>
+<caption languageCode="en" value="ASSOCIATION FAIL"/>
+</captions>
+</string>
+<string id="IDS_WIFI_STATUS_UNKNOW" idValue="607">
+<captions>
+<caption languageCode="en" value="UNKNOWN"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_PRINT_WAIT" idValue="618">
+<captions>
+<caption languageCode="en" value="      WAIT      "/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_CONF" idValue="619">
+<captions>
+<caption languageCode="en" value="- WI-FI Configuration  -"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_WEP64" idValue="620">
+<captions>
+<caption languageCode="en" value="Security Type:   WEP(64)"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_WEP128" idValue="621">
+<captions>
+<caption languageCode="en" value="Security Type:  WEP(128)"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_KEY" idValue="622">
+<captions>
+<caption languageCode="en" value="KEY"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_NO_SECURITY" idValue="623">
+<captions>
+<caption languageCode="en" value="Security Type:      NONE"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_SECURITY" idValue="624">
+<captions>
+<caption languageCode="en" value="   Security ?   "/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_SEC_TYPE" idValue="625">
+<captions>
+<caption languageCode="en" value="Security Type:"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_1_WEP64" idValue="626">
+<captions>
+<caption languageCode="en" value="WEP 64-bits"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_2_WEP128" idValue="627">
+<captions>
+<caption languageCode="en" value="WEP 128-bits"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_WIFIMENU" idValue="628">
+<captions>
+<caption languageCode="en" value="WI-FI"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_WIFICONF" idValue="629">
+<captions>
+<caption languageCode="en" value="Configuration"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_PRINT" idValue="630">
+<captions>
+<caption languageCode="en" value="Print"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_WIFITEST" idValue="631">
+<captions>
+<caption languageCode="en" value="Network Test"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_LOCAL_IP" idValue="632">
+<captions>
+<caption languageCode="en" value="Local IP"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_IP_SUBMASK" idValue="633">
+<captions>
+<caption languageCode="en" value="IP Sub-Mask"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_IP_DNS1" idValue="634">
+<captions>
+<caption languageCode="en" value="IP DNS 1"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_CFG_SSID" idValue="637">
+<captions>
+<caption languageCode="en" value="SSID"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_IP_DNS2" idValue="635">
+<captions>
+<caption languageCode="en" value="IP DNS 2"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_IP_GATEWAY" idValue="636">
+<captions>
+<caption languageCode="en" value="IP Gateway"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_CFG_SECURITY" idValue="638">
+<captions>
+<caption languageCode="en" value="Security"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_CFG_DHCP" idValue="639">
+<captions>
+<caption languageCode="en" value="DHCP"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_DETECT" idValue="640">
+<captions>
+<caption languageCode="en" value="Detect Networks"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_DETECTED" idValue="641">
+<captions>
+<caption languageCode="en" value="Networks"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_NO_NETWORKS" idValue="642">
+<captions>
+<caption languageCode="en" value="NO NETWORKS"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_AVAILABLE" idValue="643">
+<captions>
+<caption languageCode="en" value="AVAILABLE"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_DHCPQUEST" idValue="644">
+<captions>
+<caption languageCode="en" value="     DHCP ?     "/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_IPTOPING" idValue="645">
+<captions>
+<caption languageCode="en" value="IP TO PING"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_PING_ERROR" idValue="646">
+<captions>
+<caption languageCode="en" value="PING ERROR %d"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_PING_OK" idValue="647">
+<captions>
+<caption languageCode="en" value="PING OK"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_PRESS_OK" idValue="648">
+<captions>
+<caption languageCode="en" value="PRESS A KEY"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_CRASH_INFO" idValue="469">
+<captions>
+<caption languageCode="en" value="Crash Info"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPTIONS" idValue="385">
+<captions>
+<caption languageCode="en" value="Options"/>
+</captions>
+</string>
+<string id="IDS_GSM_ENABLE" idValue="387">
+<captions>
+<caption languageCode="en" value="Enable"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPTION_DETACH" idValue="386">
+<captions>
+<caption languageCode="en" value="Detach"/>
+</captions>
+</string>
+<string id="IDS_GSM_DISABLE" idValue="388">
+<captions>
+<caption languageCode="en" value="Disable"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPTION_PDPDeactivate" idValue="389">
+<captions>
+<caption languageCode="en" value="PDP Deactivate"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPTION_PDPActivate" idValue="390">
+<captions>
+<caption languageCode="en" value="PDP Activate"/>
+</captions>
+</string>
+<string id="IDS_SWIPE" idValue="13">
+<captions>
+<caption languageCode="en" value="SWIPE"/>
+</captions>
+</string>
+<string id="IDS_MAGCARD" idValue="14">
+<captions>
+<caption languageCode="en" value="MAGNETIC CARD"/>
+</captions>
+</string>
+<string id="IDS_OR" idValue="15">
+<captions>
+<caption languageCode="en" value="OR"/>
+</captions>
+</string>
+<string id="IDS_PRESS_CAN" idValue="16">
+<captions>
+<caption languageCode="en" value="PRESS CANCEL"/>
+</captions>
+</string>
+<string id="IDS_SMF_MENU_LAST_ERROR" idValue="563">
+<captions>
+<caption languageCode="en" value="Last Error"/>
+</captions>
+</string>
+<string id="IDS_CARD_NOT_ACCEPT2" idValue="10">
+<captions>
+<caption languageCode="en" value="Refused"/>
+</captions>
+</string>
+<string id="IDS_UNREADABLE_CARD_1" idValue="17">
+<captions>
+<caption languageCode="en" value="Unreadable Card"/>
+</captions>
+</string>
+<string id="IDS_UNREADABLE_CARD_2" idValue="18">
+<captions>
+<caption languageCode="en" value="Try Again"/>
+</captions>
+</string>
+<string id="IDS_SMF_CONN_RETRIES_STR" idValue="564">
+<captions>
+<caption languageCode="en" value="Connect try %d"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_PASS_ENTER" idValue="19">
+<captions>
+<caption languageCode="en" value="Enter Password"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_PASS_UPDATE" idValue="20">
+<captions>
+<caption languageCode="en" value="New Password"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_CHANGE_PASS" idValue="21">
+<captions>
+<caption languageCode="en" value="Date/Time Passwd"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_PASS_OLD" idValue="22">
+<captions>
+<caption languageCode="en" value="Old Password"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_PASS_CONFIRM" idValue="23">
+<captions>
+<caption languageCode="en" value="Confirm Password"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_SECURITY" idValue="24">
+<captions>
+<caption languageCode="en" value="Security"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_PASS_INVALID" idValue="25">
+<captions>
+<caption languageCode="en" value="Invalid Password"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_MENU" idValue="26">
+<captions>
+<caption languageCode="en" value="* Debug Menu *"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_COM1" idValue="27">
+<captions>
+<caption languageCode="en" value="COM1"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_COM2" idValue="28">
+<captions>
+<caption languageCode="en" value="COM2"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_FILE" idValue="29">
+<captions>
+<caption languageCode="en" value="File"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_APP" idValue="30">
+<captions>
+<caption languageCode="en" value="Application"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_HMI" idValue="31">
+<captions>
+<caption languageCode="en" value="Hmi"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_PRN" idValue="32">
+<captions>
+<caption languageCode="en" value="Printer"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_NONE" idValue="33">
+<captions>
+<caption languageCode="en" value="&lt;None&gt;"/>
+</captions>
+</string>
+<string id="IDS_GSM_STR_INFONET" idValue="34">
+<captions>
+<caption languageCode="en" value="NETWORK INFO"/>
+</captions>
+</string>
+<string id="IDS_GSM_STR_INFOCFG" idValue="35">
+<captions>
+<caption languageCode="en" value="CONFIGURATION INFO"/>
+</captions>
+</string>
+<string id="IDS_POR_EDIT_POFF_TIME_SEC" idValue="37">
+<captions>
+<caption languageCode="en" value="Power Off Time"/>
+</captions>
+</string>
+<string id="IDS_POR_EDIT_POFF_ACTIVATION" idValue="38">
+<captions>
+<caption languageCode="en" value="Enable Timer?"/>
+</captions>
+</string>
+<string id="IDS_POR_MENU_POFF_ACTIVATION" idValue="36">
+<captions>
+<caption languageCode="en" value="POff Activation"/>
+</captions>
+</string>
+<string id="IDS_POR_MENU_POFF_TIME" idValue="39">
+<captions>
+<caption languageCode="en" value="POff Time"/>
+</captions>
+</string>
+<string id="IDS_GSM_DISCONNECTING" idValue="40">
+<captions>
+<caption languageCode="en" value="Disconnecting..."/>
+</captions>
+</string>
+<string id="IDS_GSM_ADV_OPTIONS" idValue="41">
+<captions>
+<caption languageCode="en" value="Advanced Options"/>
+</captions>
+</string>
+<string id="IDS_GSM_OP_CONFIG" idValue="42">
+<captions>
+<caption languageCode="en" value="Operator Config"/>
+</captions>
+</string>
+<string id="IDS_GSM_OPER_MODE" idValue="43">
+<captions>
+<caption languageCode="en" value="SELECTION MODE"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH" idValue="44">
+<captions>
+<caption languageCode="en" value="Touch Screen"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG1" idValue="45">
+<captions>
+<caption languageCode="en" value="POINT 1 IS TOUCHED"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG2" idValue="46">
+<captions>
+<caption languageCode="en" value="POINT 2 IS TOUCHED"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG3" idValue="47">
+<captions>
+<caption languageCode="en" value="POINT 3 IS TOUCHED"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG4" idValue="48">
+<captions>
+<caption languageCode="en" value="POINT 4 IS TOUCHED"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG1a" idValue="49">
+<captions>
+<caption languageCode="en" value="Touch POINT 1"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG2a" idValue="50">
+<captions>
+<caption languageCode="en" value="Touch POINT 2"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG3a" idValue="51">
+<captions>
+<caption languageCode="en" value="Touch POINT 3"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG4a" idValue="52">
+<captions>
+<caption languageCode="en" value="Touch POINT 4"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG1b" idValue="53">
+<captions>
+<caption languageCode="en" value="Touch POINT 1 Again"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG2b" idValue="54">
+<captions>
+<caption languageCode="en" value="Touch POINT 2 Again"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG3b" idValue="55">
+<captions>
+<caption languageCode="en" value="Touch POINT 3 Again"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TOUCH_MSG4b" idValue="56">
+<captions>
+<caption languageCode="en" value="Touch POINT 4 Again"/>
+</captions>
+</string>
+<string id="IDS_WIFI_POM_TEXT_WPA" idValue="57">
+<captions>
+<caption languageCode="en" value="Security Type:   WPA"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_LDBG" idValue="58">
+<captions>
+<caption languageCode="en" value="LDbg"/>
+</captions>
+</string>
+<string id="IDS_GSM_DEBUG_LOG" idValue="59">
+<captions>
+<caption languageCode="en" value="Log"/>
+</captions>
+</string>
+<string id="IDS_GSM_IP_DNS1" idValue="60">
+<captions>
+<caption languageCode="en" value="DNS1 ADDRESS"/>
+</captions>
+</string>
+<string id="IDS_GSM_IP_DNS2" idValue="61">
+<captions>
+<caption languageCode="en" value="DNS2 ADDRESS"/>
+</captions>
+</string>
+<string id="IDS_GSM_IP_CONFIGURATION" idValue="62">
+<captions>
+<caption languageCode="en" value="IP CONFIGURATION"/>
+</captions>
+</string>
+<string id="IDS_GSM_MODULE_SHUT" idValue="63">
+<captions>
+<caption languageCode="en" value="GSM Module Shut."/>
+</captions>
+</string>
+<string id="IDS_GSM_DHCP_IP" idValue="64">
+<captions>
+<caption languageCode="en" value="DHCP/IP Config."/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_REDUCTION_STATUS" idValue="65">
+<captions>
+<caption languageCode="en" value="Enable Reduction"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_REDUCTION_VALUE" idValue="66">
+<captions>
+<caption languageCode="en" value="Reduction"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_EDIT_BLKSTRIPE_STATUS" idValue="67">
+<captions>
+<caption languageCode="en" value="Enable BlkStripe"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TEXT_REDUC01" idValue="68">
+<captions>
+<caption languageCode="en" value="Reduction config"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TEXT_REDUC02" idValue="69">
+<captions>
+<caption languageCode="en" value="updated!"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TEXT_REDUC03" idValue="70">
+<captions>
+<caption languageCode="en" value="Rebooting trm.to"/>
+</captions>
+</string>
+<string id="IDS_SETTINGS_TEXT_REDUC04" idValue="71">
+<captions>
+<caption languageCode="en" value="apply changes..."/>
+</captions>
+</string>
+</strings>
+</stringResources>
+<menuResources>
+<languages>
+<language charset="Ingenico" code="en"/>
+</languages>
+<menus>
+<menuRoot id="*" idValue="-1">
+<children>
+<menuItem id="ID_1" idValue="1">
+<captions>
+<caption languageCode="en" value="teste1"/>
+</captions>
+</menuItem>
+</children>
+<captions>
+<caption languageCode="en" value="GMA"/>
+</captions>
+</menuRoot>
+</menus>
+</menuResources>
+</resourcesDescription>

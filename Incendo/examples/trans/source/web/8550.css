@@ -1,0 +1,16 @@
+div.title{background-color: #000000; color: #FFFFFF; width: 100%; margin: 2px;}
+span.title{background-color: #000000; color: #FFFFFF; font-size: large; font-weight: bold; text-align: center; vertical-align: middle;}
+span.center{vertical-align: middle; text-align: center;}
+div.message{height: 100%; }
+span.message{ font-size: large; text-align: center;}
+span{font-size: large;}
+screen{font-size: large;}
+h1{text-align: center;}
+table.message{text-align: center; vertical-align: middle; height: 100%; width: 100%;}
+table.warning{text-align: center; vertical-align: middle; height: 100%; width: 100%;}
+th{text-align: center; vertical-align: middle;}
+table.menu{height: 100%; width: 100%; vertical-align: middle; text-align: center; font-size: large;}
+table.menu2{vertical-align: middle; font-size: large;}
+div.menu{ width: 100%; text-align: left; font-size: large; text-indent: 15%;}
+
+

@@ -1,0 +1,8 @@
+<oe>
+    <widgets>
+        <Terminal/>
+        <Printer maxPrinterLines="100000"/>
+        <EMV_Cards_Eject/>
+    </widgets>
+    <model value="8550" />
+</oe>

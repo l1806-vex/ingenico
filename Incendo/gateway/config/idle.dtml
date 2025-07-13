@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tml xmlns="http://www.ingenico.com/tml">
+
+<#if con_gw_defined>
+    <screen id="ingestate">
+        <next uri="#con_gw">
+            <variant lo="tmlvar:oebr.next_update" op="less_or_equal" ro="tmlvar:terminal.datetime" uri="#apply_update"/>
+        </next>    
+    </screen>
+
+    <screen id="apply_update" next="#con_gw">
+        <call_func name="oebr_update"/>
+    </screen>
+
+    <screen id="con_gw">
+        <next uri="#srv_menu">
+            <variant lo="tmlvar:oebr.next_gateway" op="less_or_equal" ro="tmlvar:terminal.datetime" uri="#apply_con"/>
+        </next>    
+    </screen>
+
+    <screen id="apply_con" next="#srv_menu">
+        <call_func name="connect_to_server"/>
+    </screen>
+</#if>
+
+    <screen id="srv_menu" >
+        <display>
+            <div class="c_bold_large_center">
+                <span class="c_bold_large_center">
+                   Services 
+		</span>
+            </div>
+
+            <div class="menu" >
+<#list services as service>
+				
+                <a class="c_large" href="${service.srvid}://${service.startPage}">${service.name}</a><br/>
+</#list>
+                <a class="c_large" href="emb://embedded.tml">Embedded Menu </a>
+            </div>
+        </display>
+    </screen>
+
+    <#if startup_service_defined>
+    	<screen id="startup" >
+    		<next uri="${startup_service.srvid}://${startup_service.startPage}"/>
+    	</screen>
+    <#else>
+    	<screen id="startup" >
+    		<next uri="idle://idle.tml"/>
+    	</screen>     
+    </#if>
+</tml>

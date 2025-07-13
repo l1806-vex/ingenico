@@ -1,0 +1,381 @@
+01010108000105B600000008443310102.PGN AD2BDEFAULT_KEYMAP  0168460000226C00000000000000000000000000000000000000000000000000000000Keymap                          077F687819BDA6338149D85DAEE4CAA89EC67C1642C3C8479AC51B04D08CF17Fï»¿{
+	"charset":"utf8",
+
+	// Terminal key value
+	"VALIDATION"   :"\uF850",
+	"CANCEL"       :"\uF851",
+	"CORRECTION"   :"\uF852",
+	"PAPER"        :"\uF853",
+	"F"            :"\uF854",
+	"F1"           :"\uF855",
+	"F2"           :"\uF856",
+	"F3"           :"\uF857",
+	"F4"           :"\uF858",
+	"UP"           :"\uF859",
+	"DOWN"         :"\uF85A",
+	"OK"           :"\uF86B",
+	"CLEAR"        :"\uF86C",
+
+	// Virtuals key value
+	"VT_PREVIOUS"  :"\uF81B",
+	"VT_NEXT"      :"\uF81C",
+	"VT_LEFT"      :"\uF800",
+	"VT_RIGHT"     :"\uF801",
+	"VT_UP"        :"\uF802",
+	"VT_DOWN"      :"\uF803",
+
+	// Win32 key
+	"ESC"          :"\u001B",
+	"RETURN"       :"\u000D",
+	"DEL"          :"\u0008",
+
+	"VT_0"         :"0 +\"_'",
+	"VT_1"         :"1qzQZ",
+	"VT_2"         :"2abcABC",
+	"VT_3"         :"3defDEF",
+	"VT_4"         :"4ghiGHI",
+	"VT_5"         :"5jklJKL",
+	"VT_6"         :"6mnoMNO",
+	"VT_7"         :"7prsPRS",
+	"VT_8"         :"8tuvTUV",
+	"VT_9"         :"9wxyWXY",
+	"VT_DOT"       :".,-:?@",
+	"VT_7_"        :"7pqrsPQRS",
+	"VT_9_"        :"9wxyzWXYZ",
+
+	// *********************************************************************************
+	"KEYMAP1":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F4"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"EFTsmart" :"$KEYMAP1",
+	"EFT30"    :"$KEYMAP1",
+	"EFT30PLUS":"$KEYMAP1",
+	"Twin30"   :"$KEYMAP1",
+	"EFT930G"  :"$KEYMAP1",
+	"EFT930B"  :"$KEYMAP1",
+	"EFT930S"  :"$KEYMAP1",
+	"EFT930W"  :"$KEYMAP1",
+	"EFT930P"  :"$KEYMAP1",
+
+	// *********************************************************************************
+	"KEYMAP2":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F3"     :"$VT_LEFT",
+		"$F4"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"Twin33"   :"$KEYMAP2", 
+	"Twin32"   :"$KEYMAP2",
+	"Twin31"   :"$KEYMAP2",
+	
+	// *********************************************************************************
+	"KEYMAP3":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F2"     :"$VT_LEFT",
+		"$F3"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"ML30"     :"$KEYMAP3",
+	"ML30CC"   :"$KEYMAP3",
+	"iWL220"   :"$KEYMAP3",
+	"iWL250"   :"$KEYMAP3",
+
+	// *********************************************************************************
+	"KEYMAP4":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F4"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"SPM"      :"$KEYMAP4",
+	"iPP320"   :"$KEYMAP4",
+	"iPP350"   :"$KEYMAP4",
+	"iCT220"   :"$KEYMAP4",
+	"Unknown"  :"$KEYMAP4",
+	"iCT250"   :"$KEYMAP4",
+	"E532"     :"$KEYMAP4",
+	"iMP320"   :"$KEYMAP4",
+	"iMP350"   :"$KEYMAP4",
+	"iWB220"   :"$KEYMAP4",
+	"iWB250"   :"$KEYMAP4",
+	"generic128x64":"$KEYMAP4",
+	"generic320x240":"$KEYMAP4",
+
+	// *********************************************************************************
+	"KEYMAP7":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F"      :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+
+	"iSC350"   :"$KEYMAP7",
+	"iSC480"   :"$KEYMAP7",
+	"iSC250"   :"$KEYMAP7",
+	"iSC220"   :"$KEYMAP7",
+	"generic640x480":"$KEYMAP7",
+	"generic800x480":"$KEYMAP7",
+	"generic480x272":"$KEYMAP7",
+	
+	// *********************************************************************************
+	"KEYMAP8":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+		"$OK"     :"$VALIDATION",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	
+	"E560"     :"$KEYMAP8",
+
+	// *********************************************************************************
+	"KEYMAP9":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+		"$F"      :"$VT_NEXT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iWL280"   :"$KEYMAP9",
+	"generic240x320":"$KEYMAP9",
+	
+	// *********************************************************************************
+	"KEYMAP10":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+		"$F"      :"$VT_NEXT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iWL350"   :"$KEYMAP10",
+	"generic320x480":"$KEYMAP10",
+
+	// *********************************************************************************
+	"KEYMAP11":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"*"       :"$VT_LEFT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"#"       :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iUP250":"$KEYMAP11",
+
+	// *********************************************************************************
+	"KEYMAP12":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9",
+		"*"       :"$VT_LEFT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"."       :"$VT_RIGHT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iUC180":"$KEYMAP12",
+
+	// *********************************************************************************
+	"KEYMAP13":
+	{
+		"0"       :"$VT_0",
+		"1"       :"$VT_1",
+		"2"       :"$VT_2",
+		"3"       :"$VT_3",
+		"4"       :"$VT_4",
+		"5"       :"$VT_5",
+		"6"       :"$VT_6",
+		"7"       :"$VT_7_",
+		"8"       :"$VT_8",
+		"9"       :"$VT_9_",
+		"."       :"$VT_DOT",
+		"$UP"     :"$VT_PREVIOUS",
+		"$DOWN"   :"$VT_NEXT",
+		"$F1"     :"$VT_LEFT",
+		"$F2"     :"$VT_NEXT",
+		"$F3"     :"$VT_PREVIOUS",
+		"$F4"     :"$VT_RIGHT",
+		"$F"      :"$VT_NEXT",
+
+		"$ESC"    :"$CANCEL",
+		"$RETURN" :"$VALIDATION",
+		"$DEL"    :"$CORRECTION",
+	},
+	"iPP480"   :"$KEYMAP13",
+}
+   hŠ³¥È:qëÿ}#`îÁû›D8zk
+}£©Y­àá´?q†aÒm€³ç“äGL*³Ì®õÞþYÙ˜#^gHü·\4)>åå×¦S;«Ng5/a7v¥°>Î¡~Ö+ EÃ¢Ö§˜3öNâaøD-«õêCü©øyM‰²6ìx¥_àú;óŸèr¬Þ$±)<Ló6ÖTˆ¼E™YÔ˜¼¨‘c *9£öLô¼¦\³Â!pïµþ &Ëü3]Ó¬€IXÒDÐ3ZJZÏ «l²ÌEŽˆêÍÓ´‰Ÿ£À]™)‚g ÿ%‚¯0ãr„×$–^Ô”ß«ÿ„h«È‘¿ ô/   šSAGEM MONETEL.FR0707200807102029Constructor App    í¯Puï¥Ã‚øÿÿ½T²%ÏÝ¥­Ü0>@­Nˆ¬Sq¸Å+7€P.ÁTð!šØW¼½‹Kf°5s$j“ƒ³.¦‡¿³ªv„#lÄûO¢Ö*‡œZøy~ÐÖn
+N7€WºÉo*'¸êÁ9“»ÎŽ7.QZ“uŠÙål%×Û¾žü˜ýöQnÉ^^t€zêÎ|9k’R)I<m7Ür. yù¡ûê2cáSb9Ê¥ÏÑ`ÔPMBÜ.ov°^Wîy`EÖ\Î=²_¤ërDÚ“o†qàùú“yH¹®„ÊhGßm¥a÷€ç%…?žáÓ      ¶ÿÿÿÿÿ 000000ÄóÉUÁðÈ÷‹žsÌ»¹jÎØÃ‡šâã‚µ’$–q~ÔÖ(Ø‡wµ+ÉR!êN²	4­Ir2…eÃ^~Q§×®Ÿ§Ü·ØQ“¦adðG(I·ÎôéÔ°nEmßïO6·¼ˆ?î·×¦ÃR$Ñ*ã€°@
+?T˜H´°CËŠ…|Äº/­éû©ªü‚-x	šéÌÿ»?•öð_eßûEfæ^¬Â±5G‡ÇÝßJZÓöíP‚Ä öCËpDÂJŒžö2‚žž°™[$h–<´ß}GKmÉ¼{Ÿ$AoÓåW„øeù…¨žäÚÔÂžôHêT.Øøø×¿2“›O5(~ù–ƒ†Ïk32#—Ë¬¢²ÉªLeHøvÿ•6ß[èßØì>ÜÖ{³‡7‰I—´m›÷³N|_2ÿÚí]‰±ýÚÂ—·Š‡B[
+±°Ù$iñÖ’‰²²Ùy
+‰²¢ðk	V÷nå™í‡›­ôŒ“*ªÒ2Ê»‚ÖÜÙžêfárÑRÍpò
+ÝV¬p¿f7ñ•:~y¿¯>—®Þ°R‰ûÎÖ$Õ§¿†#ÏÊL³G^n>8¤Üñž|Â¼Yá'}ŽÇÅçp#É™^ŠÕTâb°n˜µshîLÞAéEýµ­pèN´>©˜sWÞ‡>†w\ã–Ê¿   ¥SAGEM MONETEL.FR2409200824122029SMO DEVELPT.FR     áNY25!<³ý\uSb4Ù¡ÂÆÂ
+GŒ¶>ue)l5^áêø‰â”Ÿ˜ú÷G¡V°*'6…–×“!SƒšVª2±ªøÑ"Ó@°UãW.­ê …ò:˜_Ýg†Ù</ß}ús¤)ühäê.62ÍZ*¸/ÅpIêÒ®$ ç€áU´­[Î½¸ƒÞ:¾Œ/×bÎÄžH‰Öâ€6 ÖM»/F*‡š)›‘_˜Ã«÷üª÷ïwëýÀ†ý¬3MŸŒ­â¼l¼mJúk2†’¦ôø)hb%wÌ1Pt’ k½©€a¬¤¾·X¦ÙžÎçµšp°Ôõ¡ŠTF—DÔRÔ      ²ð     000000Ë¶PˆÂŽÒ>}cf ï‚Œ˜=›bhƒÇÏ[?<øj!ÞöÙõqkàæòöùŸ¼ªÆIt+³±
+Ò½æ•e†ÂXÐ>òí“ª=');Ô2Œ`ñ|±mííØöHž;‰
+S%‚5sˆöPD%Û~Õì5 ß
+zÿª¹x˜›Â/àœwkIÁËä™îýD”r¢h`C’wö‘!Èdeµþ
+¾‡)÷ÌYêBb'©‚½_!`phå‚Ë/}–HŠû›'¹ªf ëù¶¼iÐÓÍüUO‰ój.V'~;<Ý‘=~
+í^™ô‘¤¢åçµ±6¶¾AIš2

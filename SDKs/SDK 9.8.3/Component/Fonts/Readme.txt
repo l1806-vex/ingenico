@@ -1,0 +1,20 @@
+In Standard directory (previously New) are provided fonts managing fixed width.
+Must be used for new development.
+Fonts provided in the "Deprecated" directory (previously Old) are kept for compatibility with old applications.
+
+New Fonts names:
+844209=FONT ISO1 DEPRECATED
+844210=FONT ISO2 DEPRECATED
+844211=FONT ISO3 DEPRECATED
+844212=FONT ISO5 DEPRECATED
+844213=FONT ISO6 DEPRECATED
+844214=FONT ISO7 DEPRECATED
+844215=FONT ISO15 DEPRECATED
+
+844216=FONT ISO1 STANDARD
+844217=FONT ISO2 STANDARD
+844218=FONT ISO3 STANDARD
+844219=FONT ISO5 STANDARD
+844220=FONT ISO7 STANDARD
+844221=FONT ISO15 STANDARD
+

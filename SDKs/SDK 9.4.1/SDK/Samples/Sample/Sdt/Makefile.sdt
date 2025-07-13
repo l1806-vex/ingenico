@@ -1,0 +1,66 @@
+#--------------------------------------------------#
+#                  Disc                            #
+#--------------------------------------------------#
+DISK       = D:
+DISK_ARM   = C:
+#--------------------------------------------------#
+#              Base of compiler                    #
+#--------------------------------------------------#
+ROOT_ARM   = C:\ARM251\bin
+#--------------------------------------------------#
+#                  Root of sample                  #
+#--------------------------------------------------#
+Droot      = $(DISK)\Nouveau SDK\Version 4.7\SDK\Samples\Sample
+#--------------------------------------------------#
+#                  Source                          #
+#--------------------------------------------------#
+Dsource    = $(Droot)\src
+#--------------------------------------------------#
+#                  Object                          #
+#--------------------------------------------------#
+Dobj       = $(Droot)\obj_sdt
+#--------------------------------------------------#
+#                  Compiler                        #
+#--------------------------------------------------#
+INCLUDES   = -I ..\..\..\inc -I..\src
+SYSINC     = -J C:\Arm251\Include 
+DEFINES    = -D_EFT30_ -D_EXPORT_
+CCOPT      = -O2 -c -g- -zas1 -apcs /interwork -Ecl -list -D__APCS_INTERWORK
+COMPILE    = tcc $(CCOPT)
+#--------------------------------------------------#
+#                  Assembler                       #
+#--------------------------------------------------#
+ASMOPT     = -keep -16 -g -fpu None
+ASSEMBLE   = "$(ROOT_ARM)\armasm" $(ASMOPT)
+#--------------------------------------------------#
+#                  Linker                          #
+#--------------------------------------------------#
+LINKOPT    = -info totals -ro-base 0 -rw-base 0x200000 -map -first cstartup.o(reset) -symbols file 
+OBJ        =  "$(Dobj)\entry.o" "$(Dobj)\main.o"
+SYSOBJ     = "..\..\..\Lib_sdt\cstartup.o" "..\..\..\Lib_sdt\trap.o" "..\..\..\Lib_sdt\pinlib.alf"
+LIBS       = "..\..\..\Lib_sdt\eft30.alf"
+LINK       = "$(ROOT_ARM)\armlink"
+ELF        = "$(ROOT_ARM)\fromelf"
+#--------------------------------------------------#
+#                  Sample                          #
+#--------------------------------------------------#
+VERSION    = sample
+
+"$(Dobj)\$(VERSION).axf" : $(OBJ) "$(Droot)\makefile.sdt"
+	SET ARMINC=$(DISK_ARM)\ARM251\INCLUDE
+	SET ARMLIB=$(DISK_ARM)\ARM251\LIB
+	cd "$(Dobj)"
+	$(LINK) $(LINKOPT) $(OBJ) $(SYSOBJ) $(LIBS) -output $(VERSION).axf -list $(VERSION).map
+	$(ELF) -nodebug $(VERSION).axf -bin $(VERSION).bin
+	$(ELF) -nodebug $(VERSION).axf -m32 $(VERSION).mot
+
+"$(Dobj)\entry.o" : "$(Dsource)\entry.c"
+	cd "$(Dobj)"
+	copy "$(Dsource)\entry.c"
+	$(COMPILE) $(DEFINES) $(INCLUDES) entry.c
+
+"$(Dobj)\main.o" : "$(Dsource)\main.c"
+	cd "$(Dobj)"
+	copy "$(Dsource)\main.c"
+	$(COMPILE) $(DEFINES) $(INCLUDES) main.c
+

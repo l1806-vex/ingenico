@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<tml xmlns="http://www.ingenico.com/tml" cache="deny">
+
+    <head>
+	<link href="style.css" rev="stylesheet"/>
+    </head>
+
+    <screen id="amnt_big" class="c_center" timeout="1" next="/magcard.tml#void_trans">
+        <display>
+	    <table height="240" width="240"> 
+	        <tr><td align="center" valign="middle">
+	          <table height="240" width="240">
+                    <tr><td align="center" valign="middle">
+                         <table width="100%" height="240">
+			     <tr><td align="center" valign="middle">
+                                 <table class="c_small" height="77">
+		  	            <tr><td align="left" valign="middle">
+		    	               <img src="images/magcard.lib#top.gif" alt=""/>
+                  	            </td></tr>
+                                 </table>
+			     </td></tr>
+			     <tr><td align="center">
+                                 <table width="240" border="0" height="163">
+				     <tr><td align="center" valign="middle" class="c_bold_red_large">Amount Exceeds Top Limit</td></tr>
+				 </table>
+			     </td></tr>
+			 </table>
+		    </td></tr>
+		  </table>
+		</td></tr>
+	    </table>
+	</display>
+    </screen>
+
+</tml>
+
+<!--========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2004-2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

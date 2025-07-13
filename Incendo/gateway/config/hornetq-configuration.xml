@@ -1,0 +1,61 @@
+<configuration xmlns="urn:hornetq"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="urn:hornetq /schema/hornetq-configuration.xsd">
+
+   <!-- Data bindings -->
+<!--                                                                    -->
+<!-- Optional changes below:                                            -->
+<!--                                                                    -->
+   <paging-directory>../hornetq/data/paging</paging-directory>
+   <bindings-directory>../hornetq/data/bindings</bindings-directory>
+   <journal-directory>../hornetq/data/journal</journal-directory>
+   <large-messages-directory>../hornetq/data/large-messages</large-messages-directory>
+
+   <!-- Connectors -->
+   <connectors>
+      <connector name="invm-connector">
+         <factory-class>org.hornetq.core.remoting.impl.invm.InVMConnectorFactory</factory-class>
+      </connector>
+      <connector name="remote-connector">
+         <factory-class>org.hornetq.core.remoting.impl.netty.NettyConnectorFactory</factory-class>
+         <param key="ssl-enabled" value="false"/>
+<!--         <param key="key-store-path" value="config/keystore/ingestate.ks"/> -->
+<!--         <param key="key-store-password" value="ingestate"/>                -->
+<!--                                                                    -->
+<!-- Mandatory changes below:                                           -->
+<!-- IP address and port of the main broker                             -->
+<!--                                                                    -->
+<!--         <param key="host" value="10.10.211.53"/> -->
+         <param key="host" value="localhost"/>
+         <param key="port" value="5445"/>
+      </connector>
+   </connectors>
+   
+   <!-- Acceptors -->
+   <acceptors>
+      <acceptor name="invm-acceptor">
+         <factory-class>org.hornetq.core.remoting.impl.invm.InVMAcceptorFactory</factory-class>
+      </acceptor>
+   </acceptors>
+
+   <!-- Security -->
+   <security-enabled>false</security-enabled>
+    
+   <!-- Queue - Core queue declaration because the bridge is deployed before JMS queue deployment --> 
+   <queues>   
+      <queue name="jms.queue.incendoQueue">
+         <address>jms.queue.incendoQueue</address>
+         <durable>true</durable>
+      </queue>
+   </queues>
+  
+   <!-- Bridge definition -->
+   <bridges>
+      <bridge name="my-bridge">
+          <queue-name>jms.queue.incendoQueue</queue-name>
+          <reconnect-attempts>-1</reconnect-attempts>                           
+          <connector-ref connector-name="remote-connector"/>          
+       </bridge>
+   </bridges>
+
+</configuration>

@@ -1,0 +1,7 @@
+#define DISPLAY_LANGUAGE 1
+#define DISPLAY_HELLO 2
+#define PRINTER_LANGUAGE 3
+#define PRINTER_HELLO 4
+#define DUMMY_1 5
+#define DUMMY_2 6
+#define DUMMY_3 7

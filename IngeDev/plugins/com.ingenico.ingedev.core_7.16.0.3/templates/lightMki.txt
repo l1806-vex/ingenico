@@ -1,0 +1,3 @@
+VersionIngedev=5.03
+ApplicationType=%APPLICATION_TYPE%
+NewDF60Format=%NEW_DF60_FORMAT%

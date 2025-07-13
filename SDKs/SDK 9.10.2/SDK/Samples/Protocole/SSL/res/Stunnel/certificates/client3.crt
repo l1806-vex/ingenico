@@ -1,0 +1,66 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 4 (0x4)
+        Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=FR, ST=IDF, L=PUTEAUX, O=Ingenico, CN=SimulAutho-CA/emailAddress=info@fr.ingenico.com
+        Validity
+            Not Before: Sep  8 15:33:27 2005 GMT
+            Not After : Sep  6 15:33:27 2015 GMT
+        Subject: C=FR, ST=IDF, O=Ingenico, CN=client3/emailAddress=info@fr.ingenico.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    00:ba:47:55:93:ef:46:5f:45:71:94:72:ed:90:65:
+                    e2:c2:ef:72:d7:f4:58:c0:1d:73:63:71:0d:01:a4:
+                    fa:e5:f7:a4:1c:d1:74:8e:1c:5b:e1:63:05:73:a5:
+                    ba:23:72:4e:01:29:d6:a2:71:03:d2:e4:0c:cc:30:
+                    3f:50:01:73:4b:76:00:82:59:1e:0a:25:2b:2a:95:
+                    0c:cb:e4:8c:c3:de:f2:6e:c6:93:01:c5:fb:d6:91:
+                    07:c8:b0:5e:2a:02:86:13:e3:16:8b:b2:4b:db:57:
+                    78:58:b3:44:94:ab:b9:cb:3d:d4:f7:82:ab:58:3d:
+                    aa:ee:8f:4b:5b:7b:4b:e8:67
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                4D:A8:6A:78:7B:BF:EA:CF:6D:30:F0:DE:DC:38:CB:1A:60:3E:3C:E1
+            X509v3 Authority Key Identifier: 
+                keyid:11:07:11:CD:A3:7A:E1:33:35:B1:FB:E2:02:F7:C5:4E:93:FF:68:7D
+                DirName:/C=FR/ST=IDF/L=PUTEAUX/O=Ingenico/CN=SimulAutho-CA/emailAddress=info@fr.ingenico.com
+                serial:E2:3E:95:8A:B6:1F:97:8E
+
+    Signature Algorithm: md5WithRSAEncryption
+        59:a0:b9:84:a0:86:e4:f5:70:10:58:2a:ae:b4:1d:fe:06:7b:
+        a7:cd:57:fc:a4:80:3e:ad:ac:03:9a:6a:6f:94:6c:c1:24:2f:
+        7b:b6:4e:c4:f9:b1:df:4b:ed:91:bd:82:3a:8a:eb:0b:20:2f:
+        b1:7a:81:15:cc:42:bb:c8:c9:f1:ea:ff:ab:d3:05:08:f4:4a:
+        19:d8:49:c2:95:2a:79:2d:9a:59:9d:3e:7b:8e:68:ec:f5:67:
+        5d:0a:67:88:74:93:dd:c9:ab:ab:06:61:20:f4:d9:cb:f2:15:
+        27:fb:0b:97:af:1f:f5:ed:3c:f7:6e:5e:45:2e:c7:cd:3a:51:
+        91:00
+-----BEGIN CERTIFICATE-----
+MIIDaTCCAtKgAwIBAgIBBDANBgkqhkiG9w0BAQQFADB9MQswCQYDVQQGEwJGUjEM
+MAoGA1UECBMDSURGMRAwDgYDVQQHEwdQVVRFQVVYMREwDwYDVQQKEwhJbmdlbmlj
+bzEWMBQGA1UEAxMNU2ltdWxBdXRoby1DQTEjMCEGCSqGSIb3DQEJARYUaW5mb0Bm
+ci5pbmdlbmljby5jb20wHhcNMDUwOTA4MTUzMzI3WhcNMTUwOTA2MTUzMzI3WjBl
+MQswCQYDVQQGEwJGUjEMMAoGA1UECBMDSURGMREwDwYDVQQKEwhJbmdlbmljbzEQ
+MA4GA1UEAxMHY2xpZW50MzEjMCEGCSqGSIb3DQEJARYUaW5mb0Bmci5pbmdlbmlj
+by5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALpHVZPvRl9FcZRy7ZBl
+4sLvctf0WMAdc2NxDQGk+uX3pBzRdI4cW+FjBXOluiNyTgEp1qJxA9LkDMwwP1AB
+c0t2AIJZHgolKyqVDMvkjMPe8m7GkwHF+9aRB8iwXioChhPjFouyS9tXeFizRJSr
+ucs91PeCq1g9qu6PS1t7S+hnAgMBAAGjggEPMIIBCzAJBgNVHRMEAjAAMCwGCWCG
+SAGG+EIBDQQfFh1PcGVuU1NMIEdlbmVyYXRlZCBDZXJ0aWZpY2F0ZTAdBgNVHQ4E
+FgQUTahqeHu/6s9tMPDe3DjLGmA+POEwgbAGA1UdIwSBqDCBpYAUEQcRzaN64TM1
+sfviAvfFTpP/aH2hgYGkfzB9MQswCQYDVQQGEwJGUjEMMAoGA1UECBMDSURGMRAw
+DgYDVQQHEwdQVVRFQVVYMREwDwYDVQQKEwhJbmdlbmljbzEWMBQGA1UEAxMNU2lt
+dWxBdXRoby1DQTEjMCEGCSqGSIb3DQEJARYUaW5mb0Bmci5pbmdlbmljby5jb22C
+CQDiPpWKth+XjjANBgkqhkiG9w0BAQQFAAOBgQBZoLmEoIbk9XAQWCqutB3+Bnun
+zVf8pIA+rawDmmpvlGzBJC97tk7E+bHfS+2RvYI6iusLIC+xeoEVzEK7yMnx6v+r
+0wUI9EoZ2EnClSp5LZpZnT57jmjs9WddCmeIdJPdyaurBmEg9NnL8hUn+wuXrx/1
+7Tz3bl5FLsfNOlGRAA==
+-----END CERTIFICATE-----

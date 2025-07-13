@@ -1,0 +1,56 @@
+;TELIUM MANAGER FRANCE IWB PROD
+;Header BW
+8443730261.lgn
+;M2OS
+8445920961.agn
+;tmtools
+8446220111.lgn
+;CB2A 
+8445930871.lgn
+;Extension
+8445941061.lgn
+;Graphic Librairy
+8445960781.lgn
+;M2OS Parameters
+8445970861.lgn
+;Entry
+8445980781.lgn
+;Cam/Date Librairy
+8445990861.lgn
+;PSC Protocol
+8446010681.lgn
+;Protocol
+8446030891.lgn
+;Cryptographic librairy
+8446060531.lgn
+;Partage
+8446070681.lgn
+;EMV Selection
+8446080721.lgn
+;IAM
+8446090691.lgn
+;Pinpad
+8446100701.lgn
+;PPR30 Export
+8443690333.lgn
+;ums
+8446160691.lgn
+;gprs
+8446210821.lgn
+;Hardware cnf
+8446420311.lgn
+;Security Fr T2
+46850342.lgn
+;INGESTATE COMPATIBILITY T2
+47787401.pgn
+;COLOR
+8446920371.lgn
+;PackM2OS
+8447787401.pgn
+;HEADER EFT930CC/ICT2XX/IPP3XX/ML30CC
+8440850261.lgn
+;DLL E2EE
+8440780406.lgn
+;Telium SDK
+8442291068.pgn
+

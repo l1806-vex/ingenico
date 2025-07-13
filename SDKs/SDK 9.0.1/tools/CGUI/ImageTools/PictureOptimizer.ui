@@ -1,0 +1,396 @@
+<ui version="4.0" >
+ <class>Form</class>
+ <widget class="QWidget" name="Form" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>523</width>
+    <height>233</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Picture optimizer</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset>
+    <normaloff>logo.ico</normaloff>logo.ico</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" colspan="3" >
+    <layout class="QGridLayout" name="grdInput" >
+     <item row="0" column="0" colspan="2" >
+      <widget class="QLabel" name="lblInput" >
+       <property name="text" >
+        <string>Input picture filename</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" >
+      <widget class="QLineEdit" name="txtInput" >
+       <property name="toolTip" >
+        <string>Set the input picture filename to optimize (wildcard mask accepted)</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <widget class="QPushButton" name="butInput" >
+       <property name="maximumSize" >
+        <size>
+         <width>40</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="shortcut" >
+        <string>Ctrl+O</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" colspan="3" >
+    <layout class="QGridLayout" name="grdOutput" >
+     <item row="0" column="0" colspan="2" >
+      <widget class="QLabel" name="lblOutput" >
+       <property name="text" >
+        <string>Output directory</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" >
+      <widget class="QLineEdit" name="txtOutput" >
+       <property name="toolTip" >
+        <string>Set the directory where the optimized pictures will be saved</string>
+       </property>
+       <property name="text" >
+        <string>result</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <widget class="QPushButton" name="butOutput" >
+       <property name="maximumSize" >
+        <size>
+         <width>40</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string>...</string>
+       </property>
+       <property name="shortcut" >
+        <string>Ctrl+S</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" >
+    <layout class="QGridLayout" name="grdFormat" >
+     <item row="0" column="0" colspan="2" >
+      <widget class="QLabel" name="lblFormat" >
+       <property name="text" >
+        <string>Format</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" >
+      <widget class="QComboBox" name="cboFormat" >
+       <property name="minimumSize" >
+        <size>
+         <width>80</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">Set the output picture format :&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">    - &lt;span style=" font-weight:600;">wgu&lt;/span> : this format is fully optimized for POS, it reduces the memory footprint in ram, improve the display speed, this format is the best format for all pictures types :photo, drawing, logo, animated picture, pictures with transparency.&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">    - &lt;span style=" font-weight:600;">png&lt;/span> : Portable Network Graphic format, this format can be used for picture with transparency, photo, drawing and logo.&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">    - &lt;span style=" font-weight:600;">gif&lt;/span> : Graphics Interchange Format, this format must be reserved for animated pictures only.&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">    - &lt;span style=" font-weight:600;">bmp&lt;/span> : Microsoft Bitmap, this format can be used for photo, drawing. Transparency and animated picture are not supported.&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">    - &lt;span style=" font-weight:600;">jpg&lt;/span> : Joint Photographic Experts Group format, this format can be used for photo only. Transparency and the animated picture are not supported.&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">    - &lt;span style=" font-weight:600;">swf&lt;/span> : flash format, require the swfc.exe compiler (http://www.swftools.org), and require the inkscape software version 0.47 (http://www.inkscape.org), add in your PATH environnement variable, the directories where are located these softwares.&lt;/p>&lt;/body>&lt;/html></string>
+       </property>
+       <item>
+        <property name="text" >
+         <string>wgu</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>png</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>bmp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>gif</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>jpg</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>swf</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <spacer name="spcFormat" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="1" >
+    <layout class="QGridLayout" name="grdColor" >
+     <item row="0" column="0" >
+      <widget class="QLabel" name="lblColor" >
+       <property name="text" >
+        <string>Optimizer</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" >
+      <widget class="QComboBox" name="cboColor" >
+       <property name="minimumSize" >
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">&#xd;
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">&#xd;
+p, li { white-space: pre-wrap; }&#xd;
+&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:7.76978pt; font-weight:400; font-style:normal;">&#xd;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">Select the colors optimization algorithm&lt;/p>&#xd;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;">&lt;span style=" font-size:7pt;">   - &lt;/span>&lt;span style=" font-size:7pt; font-weight:600;">Black and white&lt;/span>&lt;span style=" font-size:7pt;"> : convert into black and white image&lt;/span>&lt;/p>&#xd;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7pt;">   - &lt;span style=" font-weight:600;">Gray&lt;/span> : convert into gray scale image&lt;/p>&#xd;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7pt;">   - &lt;span style=" font-weight:600;">8 bits per pixel &lt;/span>: convert in a dithered image with a color palette coded on 8 bits per pixel (poor quality, low memory)&lt;/p>&#xd;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7pt;">   - &lt;span style=" font-weight:600;">16&lt;/span>&lt;span style=" font-weight:600;"> bits per pixel &lt;/span>: convert in a dithered image with a color palette coded on 16 bits per pixel (this is the best quality with a screen limited to 4096 colors)&lt;/p>&#xd;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7pt;">   - &lt;span style=" font-weight:600;">24 bits per pixel &lt;/span>: convert in a dithered image with a color palette coded on 24 bits per pixel (this is the best quality with a screen limited to 262144 colors)&lt;/p>&#xd;
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7pt;">   - &lt;span style=" font-weight:600;">32&lt;/span>&lt;span style=" font-weight:600;"> bits per pixel &lt;/span>: convert in a dithered image with a color palette coded on 32 bits per pixel (this is the best quality with a screen which support full colors)&lt;/p>&lt;/body>&lt;/html></string>
+       </property>
+       <property name="currentIndex" >
+        <number>3</number>
+       </property>
+       <item>
+        <property name="text" >
+         <string>Black and white</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>Gray</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>8 bits per pixel</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>16 bits per pixel</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>24 bits per pixel</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>32 bits per pixel</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <spacer name="spcColor" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="2" >
+    <layout class="QGridLayout" name="grdScale" >
+     <item row="0" column="0" >
+      <widget class="QLabel" name="lblScale" >
+       <property name="text" >
+        <string>Scale</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" >
+      <widget class="QDoubleSpinBox" name="spiScale" >
+       <property name="minimumSize" >
+        <size>
+         <width>80</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>Resize the output picture according to the selected scale</string>
+       </property>
+       <property name="decimals" >
+        <number>3</number>
+       </property>
+       <property name="maximum" >
+        <double>10.000000000000000</double>
+       </property>
+       <property name="singleStep" >
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value" >
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <spacer name="spcScale" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="3" >
+    <widget class="QLabel" name="lblStatus" >
+     <property name="text" >
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" >
+    <spacer name="verticalSpacer" >
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>20</width>
+       <height>7</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="0" colspan="3" >
+    <widget class="Line" name="line" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="3" >
+    <layout class="QHBoxLayout" name="layStart" >
+     <item>
+      <spacer name="spcStartLeft" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="butStart" >
+       <property name="maximumSize" >
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string>Start</string>
+       </property>
+       <property name="shortcut" >
+        <string>Return</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
+       </property>
+       <property name="flat" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="spcStartRight" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>txtInput</tabstop>
+  <tabstop>butInput</tabstop>
+  <tabstop>txtOutput</tabstop>
+  <tabstop>butOutput</tabstop>
+  <tabstop>cboFormat</tabstop>
+  <tabstop>cboColor</tabstop>
+  <tabstop>spiScale</tabstop>
+  <tabstop>butStart</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

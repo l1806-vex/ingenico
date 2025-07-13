@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MagcardConfigData xmlns="http://ingenico.com/ns/configuration-service/data" config_id="1" version="0" description="Default Magcard Configuration">
+    <mag-card-configuration>
+        <iins>
+            <!-- Template
+            <iin key="xxxx" rangeMin="xxxx" rangeMax="yyyy" active="xxxx" ttlKey="xxxx" cardSchemeKey="xxxx" rangeExpiry="yyyy-yy"/>
+            -->
+
+            <!-- Test cards -->
+            <iin key="1" rangeMin="675940111" active="true" ttlKey="10376" cardSchemeKey="3"/>
+            <iin key="2" rangeMin="543484999" active="true" ttlKey="10381" cardSchemeKey="2"/>
+            <iin key="3" rangeMin="492949831" active="true" ttlKey="10380" cardSchemeKey="1"/>
+            <iin key="4" rangeMin="492181791" active="true" ttlKey="10380" cardSchemeKey="1"/>
+            <iin key="5" rangeMin="354082999" active="true" ttlKey="10398" cardSchemeKey="4"/>
+            <iin key="12305" rangeMin="631980412" active="true" ttlKey="10377" cardSchemeKey="10168"/>
+            <iin key="12304" rangeMin="631980411" active="true" ttlKey="10376" cardSchemeKey="10167"/>
+
+            <!-- AMEX -->
+            <iin key="12286" rangeMin="37" active="true" ttlKey="10371" cardSchemeKey="10162"/>
+            <iin key="12285" rangeMin="34" active="true" ttlKey="10371" cardSchemeKey="10162"/>
+
+            <!-- DINERS -->
+            <iin key="12289" rangeMin="30" active="true" ttlKey="10373" cardSchemeKey="10164"/>
+            <iin key="12294" rangeMin="36" active="true" ttlKey="10373" cardSchemeKey="10164"/>
+            <iin key="12295" rangeMin="38" active="true" ttlKey="10373" cardSchemeKey="10164"/>
+            <!-- DINERS exceptions (see other schemes) -->
+            <iin key="12290" rangeMin="306" rangeMax="309" active="false" ttlKey="10373" cardSchemeKey="10164"/>
+
+            <!-- VISA -->
+            <iin key="12308" rangeMin="4" active="true" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="14681" rangeMin="465900" active="true" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15755" rangeMin="4986" active="true" ttlKey="10380" cardSchemeKey="10171"/>
+            <!-- VISA exceptions (ranges uses as non-Visa cards, see other schemes) -->
+            <iin key="15756" rangeMin="498824" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12319" rangeMin="492183" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15753" rangeMin="492181" rangeMax="492182" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12318" rangeMin="491880" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12313" rangeMin="491001" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15745" rangeMin="484450" rangeMax="484455" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15740" rangeMin="484409" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15737" rangeMin="484406" rangeMax="484408" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15736" rangeMin="465950" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15720" rangeMin="456740" rangeMax="456745" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15714" rangeMin="456725" rangeMax="456729" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15713" rangeMin="454742" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15709" rangeMin="454432" rangeMax="454435" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15708" rangeMin="454313" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15706" rangeMin="453978" rangeMax="453979" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12309" rangeMin="450875" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15704" rangeMin="415932" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15699" rangeMin="413733" rangeMax="413737" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12315" rangeMin="49173" rangeMax="49175" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15751" rangeMin="49096" rangeMax="49097" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15741" rangeMin="48441" rangeMax="48444" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15731" rangeMin="46590" rangeMax="46594" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15726" rangeMin="46583" rangeMax="46587" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15719" rangeMin="45673" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12322" rangeMin="4987" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12321" rangeMin="4936" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12320" rangeMin="4928" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12314" rangeMin="4911" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="12310" rangeMin="4903" rangeMax="4905" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+            <iin key="15705" rangeMin="4462" active="false" ttlKey="10380" cardSchemeKey="10171"/>
+
+            <!-- VISA ELECTRON -->
+            <iin key="12410" rangeMin="491880" active="true" ttlKey="10397" cardSchemeKey="10175"/>
+            <iin key="15636" rangeMin="484450" rangeMax="484455" active="true" ttlKey="10397" cardSchemeKey="10175"/>
+            <iin key="15628" rangeMin="484406" rangeMax="484408" active="true" ttlKey="10397" cardSchemeKey="10175"/>
+            <iin key="12404" rangeMin="450875" active="true" ttlKey="10397" cardSchemeKey="10175"/>
+            <iin key="13422" rangeMin="49173" rangeMax="49175" active="true" ttlKey="10397" cardSchemeKey="10175"/>
+            <iin key="15632" rangeMin="48441" rangeMax="48444" active="true" ttlKey="10397" cardSchemeKey="10175"/>
+            <!-- VISA ELECTRON exceptions (see other schemes) -->
+            <iin key="17310" rangeMin="484410" active="false" ttlKey="10397" cardSchemeKey="10175"/>
+
+            <!-- MASTERCARD -->
+            <iin key="12323" rangeMin="51" rangeMax="55" active="true" ttlKey="10381" cardSchemeKey="10172"/>
+
+            <!-- MAESTRO -->
+            <iin key="16118" rangeMin="50" active="true" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16119" rangeMin="56" rangeMax="58" active="true" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16122" rangeMin="6" active="true" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="19076" rangeMin="630490" active="true" ttlKey="10900" cardSchemeKey="10410"/>
+            <!-- MAESTRO exceptions (see other schemes) -->
+            <iin key="20505" rangeMin="633690" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="17352" rangeMin="633586" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16127" rangeMin="631980" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16125" rangeMin="564182" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="17392" rangeMin="560398" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16123" rangeMin="560309" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16417" rangeMin="500163" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="17351" rangeMin="63417" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="17350" rangeMin="63400" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="17349" rangeMin="63193" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="17348" rangeMin="63190" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="17347" rangeMin="60000" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16132" rangeMin="6767" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16131" rangeMin="6759" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16129" rangeMin="6333" rangeMax="6334" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16128" rangeMin="6331" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+            <iin key="16126" rangeMin="6304" active="false" ttlKey="10900" cardSchemeKey="10410"/>
+
+            <!-- DOMESTIC MAESTRO -->
+                <!-- Standart Domestic -->
+            <iin key="12328" rangeMin="63330" rangeMax="63334" active="true" ttlKey="10382" cardSchemeKey="10173"/>
+            <iin key="12329" rangeMin="6759" active="true" ttlKey="10382" cardSchemeKey="10173"/>
+                <!-- Yorkshire bank (NAG) -->
+            <iin key="12369" rangeMin="675905" active="true" ttlKey="10389" cardSchemeKey="10173"/>
+            <iin key="12368" rangeMin="633301" active="true" ttlKey="10389" cardSchemeKey="10173"/>
+                <!-- NatWest Group -->
+            <iin key="12362" rangeMin="675998" active="true" ttlKey="10387" cardSchemeKey="10173"/>
+            <iin key="12357" rangeMin="675918" active="true" ttlKey="10387" cardSchemeKey="10173"/>
+            <iin key="12356" rangeMin="675901" active="true" ttlKey="10387" cardSchemeKey="10173"/>
+            <iin key="12358" rangeMin="67595" rangeMax="675962" active="true" ttlKey="10387" cardSchemeKey="10173"/>
+            <iin key="12355" rangeMin="4936" active="true" ttlKey="10387" cardSchemeKey="10173" rangeExpiry="2007-07"/>
+                <!-- HSBC Group -->
+            <iin key="12352" rangeMin="675938" rangeMax="675940" active="true" ttlKey="10386" cardSchemeKey="10173"/>
+            <iin key="12346" rangeMin="490335" rangeMax="490339" active="true" ttlKey="10386" cardSchemeKey="10173"/>
+            <iin key="12343" rangeMin="49030" active="true" ttlKey="10386" cardSchemeKey="10173"/>
+                <!-- Halifax (or Royal) Bank of Scotland -->
+            <iin key="12342" rangeMin="564182" active="true" ttlKey="10385" cardSchemeKey="10173"/>
+                <!-- Crydesdale bank (NAG) -->
+            <iin key="12335" rangeMin="491180" rangeMax="491182" active="true" ttlKey="10384" cardSchemeKey="10173"/>
+            <iin key="12338" rangeMin="49117" active="true" ttlKey="10384" cardSchemeKey="10173"/>
+            <!-- DOMESTIC MAESTRO exceptions -->
+            <iin key="12339" rangeMin="491170" rangeMax="491173" active="false" ttlKey="10384" cardSchemeKey="10173"/>
+            <iin key="12344" rangeMin="490300" rangeMax="490301" active="false" ttlKey="10386" cardSchemeKey="10173"/>
+
+            <!-- SOLO -->
+                <!-- Standart Domestic -->
+            <iin key="12375" rangeMin="6767" active="true" ttlKey="10391" cardSchemeKey="10174"/>
+            <iin key="12374" rangeMin="6334" active="true" ttlKey="10391" cardSchemeKey="10174"/>
+                <!-- NatWest Group -->
+            <iin key="12403" rangeMin="676798" active="true" ttlKey="10396" cardSchemeKey="10174"/>
+            <iin key="12400" rangeMin="676760" active="true" ttlKey="10396" cardSchemeKey="10174"/>
+            <iin key="12399" rangeMin="67675" active="true" ttlKey="10396" cardSchemeKey="10174"/>
+            <iin key="12398" rangeMin="676718" active="true" ttlKey="10396" cardSchemeKey="10174"/>
+            <iin key="12397" rangeMin="676701" active="true" ttlKey="10396" cardSchemeKey="10174"/>
+            <iin key="12396" rangeMin="633498" active="true" ttlKey="10396" cardSchemeKey="10174" rangeExpiry="2006-10"/>
+                <!-- HSBC Group -->
+            <iin key="12395" rangeMin="676740" active="true" ttlKey="10395" cardSchemeKey="10174"/>
+            <iin key="12394" rangeMin="676703" active="true" ttlKey="10395" cardSchemeKey="10174"/>
+            <iin key="12393" rangeMin="633461" active="true" ttlKey="10395" cardSchemeKey="10174"/>
+                <!-- Halifax (or Royal) Bank of Scotland -->
+            <iin key="12391" rangeMin="676706" rangeMax="676707" active="true" ttlKey="10394" cardSchemeKey="10174"/>
+            <iin key="12388" rangeMin="633495" rangeMax="633497" active="true" ttlKey="10394" cardSchemeKey="10174"/>
+                <!-- Crydesdale bank (NAG) -->
+            <iin key="12387" rangeMin="676795" active="true" ttlKey="10393" cardSchemeKey="10174"/>
+            <iin key="12386" rangeMin="676782" active="true" ttlKey="10393" cardSchemeKey="10174"/>
+            <iin key="12385" rangeMin="676779" active="true" ttlKey="10393" cardSchemeKey="10174"/>
+            <iin key="12384" rangeMin="676774" active="true" ttlKey="10393" cardSchemeKey="10174"/>
+            <iin key="12383" rangeMin="633499" active="true" ttlKey="10393" cardSchemeKey="10174"/>
+            <iin key="12382" rangeMin="633494" active="true" ttlKey="10393" cardSchemeKey="10174"/>
+            <iin key="12381" rangeMin="633478" active="true" ttlKey="10393" cardSchemeKey="10174"/>
+            <iin key="12380" rangeMin="633473" active="true" ttlKey="10393" cardSchemeKey="10174"/>
+                <!-- Yorkshire bank (NAG) -->
+            <iin key="12373" rangeMin="676770" active="true" ttlKey="10390" cardSchemeKey="10174"/>
+            <iin key="12372" rangeMin="676705" active="true" ttlKey="10390" cardSchemeKey="10174"/>
+            <iin key="12371" rangeMin="633481" active="true" ttlKey="10390" cardSchemeKey="10174"/>
+            <iin key="12370" rangeMin="633476" active="true" ttlKey="10390" cardSchemeKey="10174"/>
+
+            <!-- JCB -->
+            <iin key="12413" rangeMin="3528" rangeMax="358" active="true" ttlKey="10398" cardSchemeKey="10176"/>
+
+            <!-- UK cards -->
+                <!-- VISA DELTA (Visa Debit) -->
+            <iin key="12440" rangeMin="49096" rangeMax="49097" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="12444" rangeMin="498824" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="12442" rangeMin="492181" rangeMax="492182" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="17322" rangeMin="484409" rangeMax="484410" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="15589" rangeMin="46590" rangeMax="465950" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="15584" rangeMin="46583" rangeMax="46587" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="12428" rangeMin="456725" rangeMax="456745" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="12427" rangeMin="454742" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="12423" rangeMin="454432" rangeMax="454435" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="12422" rangeMin="454313" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="12420" rangeMin="453978" rangeMax="453979" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="12419" rangeMin="4462" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+            <iin key="14682" rangeMin="413733" rangeMax="413737" active="true" ttlKey="10399" cardSchemeKey="10177"/>
+                <!-- VISA DELTA exceptions (see other schemes) -->
+            <iin key="15590" rangeMin="465900" active="false" ttlKey="10399" cardSchemeKey="10177"/>
+                <!-- STYLE -->
+            <iin key="13420" rangeMin="50016301" active="true" ttlKey="10555" cardSchemeKey="10239"/>
+            <iin key="13418" rangeMin="500163" active="true" ttlKey="10553" cardSchemeKey="10239"/>
+                <!-- FIRST NATIONAL -->
+            <iin key="13429" rangeMin="98261075" rangeMax="98261076" active="true" ttlKey="10557" cardSchemeKey="10241"/>
+            <iin key="13428" rangeMin="503734" active="true" ttlKey="10557" cardSchemeKey="10241"/>
+                <!-- CO-OP and STAPLES CLUB CARD -->
+            <iin key="13439" rangeMin="63194" active="true" ttlKey="10562" cardSchemeKey="10246"/>
+            <iin key="13444" rangeMin="633242" active="true" ttlKey="10562" cardSchemeKey="10246"/>
+                <!-- TIME RETAIL FINANCE -->
+            <iin key="13442" rangeMin="635634" active="true" ttlKey="10564" cardSchemeKey="10248"/>
+            <iin key="13440" rangeMin="633164" rangeMax="633165" active="true" ttlKey="10564" cardSchemeKey="10248"/>
+                <!-- DUET -->
+            <iin key="13447" rangeMin="63190" active="true" ttlKey="10567" cardSchemeKey="10251"/>
+                <!-- VODAFONE -->
+            <iin key="15057" rangeMin="894410" active="true" ttlKey="10772" cardSchemeKey="10338"/>
+            <iin key="15308" rangeMin="8944109" active="true" ttlKey="10772" cardSchemeKey="10378"/>
+                <!-- HOBBS STYLE CARD -->
+            <iin key="14668" rangeMin="98262001" active="true" ttlKey="10773" cardSchemeKey="10339"/>
+                <!-- MORGAN STYLE CARD -->
+            <iin key="14669" rangeMin="98262000" active="true" ttlKey="10774" cardSchemeKey="10340"/>
+                <!-- TRANSAX -->
+            <iin key="14674" rangeMin="992" rangeMax="997" active="true" ttlKey="10776" cardSchemeKey="10342"/>
+                <!-- BURTONS -->
+            <iin key="15309" rangeMin="63193" active="true" ttlKey="10842" cardSchemeKey="10379"/>
+                <!-- DEBENHAMS -->
+            <iin key="15310" rangeMin="60000" active="true" ttlKey="10843" cardSchemeKey="10380"/>
+                <!-- GE CAPITAL  STORECARD -->
+            <iin key="15311" rangeMin="63191" active="true" ttlKey="10844" cardSchemeKey="10381"/>
+                <!-- FCUK CASH CARD -->
+            <iin key="16158" rangeMin="98262003" active="true" ttlKey="10906" cardSchemeKey="10417"/>
+                <!-- ORANGE -->
+            <iin key="16159" rangeMin="894412" active="true" ttlKey="10907" cardSchemeKey="10418"/>
+                <!-- T-MOBILE -->
+            <iin key="16422" rangeMin="894430" active="true" ttlKey="10940" cardSchemeKey="10446"/>
+                <!-- O2 -->
+            <iin key="16706" rangeMin="894411" active="true" ttlKey="10974" cardSchemeKey="10476"/>
+                <!-- TRAVEL INN BUSINESS ACCOUNT -->
+            <iin key="16974" rangeMin="98261332" active="true" ttlKey="11001" cardSchemeKey="10491"/>
+                <!-- VIRGIN MOBILE -->
+            <iin key="16996" rangeMin="894423" active="true" ttlKey="11011" cardSchemeKey="10500"/>
+                <!-- BISTRO CARD (INGENICO) -->
+            <iin key="18013" rangeMin="63198008" active="true" ttlKey="11102" cardSchemeKey="10547"/>
+                <!-- HALIFAX CETELEM -->
+            <iin key="18735" rangeMin="507886" active="true" ttlKey="11165" cardSchemeKey="10579"/>
+            <iin key="18734" rangeMin="507846" active="true" ttlKey="11165" cardSchemeKey="10579"/>
+                <!-- REWARD CARD -->
+            <iin key="19635" rangeMin="982613" active="true" ttlKey="11287" cardSchemeKey="10650"/>
+            <iin key="19634" rangeMin="633619" active="true" ttlKey="11287" cardSchemeKey="10650"/>
+                <!-- CLYDESDALE FINANCIAL SERVICES -->
+            <iin key="19658" rangeMin="633205" active="true" ttlKey="11299" cardSchemeKey="10663"/>
+                <!-- OUR SCHOOL -->
+            <iin key="20504" rangeMin="633690" active="true" ttlKey="11383" cardSchemeKey="10721"/>
+                <!-- TESCO MOBILE -->
+            <iin key="20510" rangeMin="894428" active="true" ttlKey="11386" cardSchemeKey="10724"/>
+                <!-- GE EDGE -->
+            <iin key="20853" rangeMin="9826152" active="true" ttlKey="11429" cardSchemeKey="10755"/>
+        </iins>
+
+        <ttls>
+            <!-- Template
+            <ttl key="xxxx" name="yyyyy" pan="xx" lcr="x" edp="xx" edf="x" scp="xx" sdp="yy" sdf="y" inp="yy" inl="y" lcp="yy" ctp="yy" csnp="yy" aap="yy" pvvidp="yy" pvvp="yy" pvvl="y" cvvp="yy" cavp="yy" t2ccdp="yy" ddp="yy" ddl="yy"/>
+            -->
+
+            <!-- Test cards -->
+            <ttl key="10376" name="VISA TEST" pan="16" lcr="1" edp="1" edf="N" scp="5"/>
+            <ttl key="10377" name="TRAINING-SWITCH" pan="16" lcr="1" edp="1" edf="N" scp="5" inp="13" inl="1" />
+
+            <!-- Common cards -->
+            <ttl key="10371" name="AMEX" pan="15" lcr="1" edp="1"  edf="N" scp="99" sdp="99" sdf="N" lcp="99" ddp="99" ddl="99"/>
+            <ttl key="10373" name="DINERS" pan="14" lcr="0" edp="1"  edf="N" scp="5" sdp="8" sdf="N"/>
+            <ttl key="10381" name="MASTERCARD" pan="16" lcr="1" edp="1" edf="N" scp="5" ddp="8" ddl="13"/>
+            <ttl key="10398" name="JCB" pan="16" lcr="1" edp="1" edf="N" scp="5" pvvidp="8" pvvp="9" pvvl="4" cavp="13"/>
+            <ttl key="10380" name="VISA" pan="13141516" lcr="1" edp="1" edf="N" scp="5"/>
+            <ttl key="10397" name="ELECTRON" pan="13141516" lcr="1" edp="1" edf="N" scp="5"/>
+            <ttl key="10900" name="MAESTRO" pan="111213141516171819" lcr="0" edp="1" edf="N" scp="0"/>
+
+            <!-- UK Domestic Maestro and Solo -->
+            <ttl key="10382" name="DOMESTIC: Standart" pan="16" lcr="1" edp="1" edf="N" scp="5" sdp="14" sdf="C"/>
+            <ttl key="10384" name="DOMESTIC: Crydesdale bank NAG" pan="18" lcr="1" edp="1" edf="N" scp="5" inp="13" inl="1"/>
+            <ttl key="10385" name="DOMESTIC: Halifax Bank Scot" pan="16" lcr="1" edp="1" edf="N" scp="5" inp="8" inl="2"/>
+            <ttl key="10386" name="DOMESTIC: HSBC Group" pan="18" lcr="1" edp="1" edf="N" scp="5" inp="13" inl="1"/>
+            <ttl key="10387" name="DOMESTIC: NatWest Group" pan="19" lcr="1" edp="1" edf="N" scp="5" inp="14" inl="1"/>
+            <ttl key="10389" name="DOMESTIC: Yorkshire bank (NAG)" pan="19" lcr="1" edp="1" edf="N" scp="5" inp="17" inl="1"/>
+            <ttl key="10391" name="SOLO: Standart" pan="16" lcr="1" edp="1" edf="N" scp="5" sdp="14" sdf="C"/>
+            <ttl key="10393" name="SOLO: Crydesdale bank (NAG)" pan="18" lcr="1" edp="1" edf="N" scp="5" inp="13" inl="1"/>
+            <ttl key="10394" name="SOLO: Halifax Bank of Scotland" pan="16" lcr="1" edp="1" edf="N" scp="5" inp="8" inl="2"/>
+            <ttl key="10395" name="SOLO: HSBC Group" pan="18" lcr="1" edp="1" edf="N" scp="5" inp="13" inl="1"/>
+            <ttl key="10396" name="SOLO: NatWest Group" pan="19" lcr="1" edp="1" edf="N" scp="5" inp="14" inl="1"/>
+            <ttl key="10390" name="SOLO: Yorkshire bank (NAG)" pan="19" lcr="1" edp="1" edf="N" scp="5" inp="17" inl="1"/>
+
+            <!-- UK cards -->
+            <ttl key="10399" name="VISA DELTA" pan="16" lcr="0" edp="1" edf="N" scp="5"/>
+            <ttl key="10553" name="STYLE" pan="15" lcr="1" edp="1" edf="N" scp="0"/>
+            <ttl key="10555" name="STYLE" pan="16" lcr="1" edp="1" edf="N" scp="0"/>
+            <ttl key="10557" name="FIRST NATIONAL" pan="16" lcr="2" edp="1" edf="N" scp="0" sdp="13" sdf="C"/>
+            <ttl key="10562" name="CO-OP and STAPLES CLUB CARD" pan="16" lcr="1" edp="1" edf="N" scp="0" sdp="6" sdf="N"/>
+            <ttl key="10564" name="TIME RETAIL FINANCE" pan="16" lcr="1" edp="1" edf="N" scp="0" sdp="6" sdf="N"/>
+            <ttl key="10567" name="DUET" pan="16" lcr="1" edp="1" edf="N" scp="0"/>
+            <ttl key="10772" name="VODAFONE" pan="19" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="10773" name="HOBBS STYLE CARD" pan="16" lcr="1" edp="1" edf="N" scp="0"/>
+            <ttl key="10774" name="MORGAN STYLE CARD" pan="16" lcr="1" edp="1" edf="N" scp="0"/>
+            <ttl key="10776" name="TRANSAX" pan="16" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="10842" name="BURTONS" pan="16" lcr="0" edp="1" edf="N" scp="5"/>
+            <ttl key="10843" name="DEBENHAMS" pan="16" lcr="0" edp="1" edf="N" scp="5"/>
+            <ttl key="10844" name="GE CAPITAL  STORECARD" pan="16" lcr="0" edp="1" edf="N" scp="5"/>
+            <ttl key="10906" name="FCUK CASH CARD" pan="16" lcr="1" edp="1" edf="N" scp="0"/>
+            <ttl key="10907" name="ORANGE" pan="19" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="10940" name="T-MOBILE" pan="19" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="10974" name="O2" pan="19" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="11001" name="TRAVEL INN BUSINESS ACCOUNT" pan="19" lcr="2" edp="1" edf="N" scp="0"/>
+            <ttl key="11011" name="VIRGIN MOBILE" pan="19" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="11102" name="BISTRO CARD (INGENICO)" pan="19" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="11165" name="HALIFAX CETELEM" pan="16" lcr="1" edp="1" edf="N" scp="5"/>
+            <ttl key="11287" name="REWARD CARD" pan="16" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="11299" name="CLYDESDALE FINANCIAL SERVICES" pan="16" lcr="1" edp="1" edf="N" scp="0"/>
+            <ttl key="11383" name="OUR SCHOOL" pan="16" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="11386" name="TESCO MOBILE" pan="19" lcr="0" edp="1" edf="N" scp="0"/>
+            <ttl key="11429" name="GE EDGE" pan="16" lcr="1" edp="1" edf="N" scp="0"/>
+
+            <!-- Not used yet -->
+            <ttl key="10636" name="NA" pan="15" lcr="1" edp="1" edf="N" scp="5" sdp="8" sdf="N"/>
+            <ttl key="10375" name="NA" pan="16" lcr="0" edp="1" edf="N" scp="0" />
+            <ttl key="11283" name="NA" pan="16" lcr="0" edp="1" edf="N" scp="5"/>
+
+        </ttls>
+
+        <card-schemes>
+            <!-- Template
+            <card-scheme key="xxxx" name="xxxx" active="xxxx" floorLimit="xxxx" keyAllowed="xxxx"/>
+            -->
+
+            <!-- Test cards -->
+            <card-scheme key="1" name="VISA_TEST" active="true" floorLimit="100" keyAllowed="true"/>
+            <card-scheme key="2" name="MASTERCARD_TEST" active="true" floorLimit="100" keyAllowed="true"/>
+            <card-scheme key="3" name="SWITCH_TEST" active="true" floorLimit="100" keyAllowed="true"/>
+            <card-scheme key="4" name="JCB_TEST" active="true" floorLimit="100" keyAllowed="true"/>
+            <card-scheme key="10167" name="TRAIN-VISA" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10168" name="TRAINING-SWITCH" active="true" floorLimit="0" keyAllowed="true"/>
+
+            <!-- Common cards -->
+            <card-scheme key="10162" name="AMEX" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10164" name="DINERS" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10171" name="VISA" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10175" name="ELECTRON" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10172" name="MASTERCARD" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10176" name="JCB" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10410" name="MAESTRO" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10173" name="UK MAESTRO" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10174" name="SOLO" active="true" floorLimit="0" keyAllowed="true"/>
+
+            <!-- UK cards -->
+            <card-scheme key="10177" name="DELTA" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10239" name="STYLE" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10241" name="FIRST NATIONAL" active="true" floorLimit="1500" keyAllowed="true"/>
+            <card-scheme key="10246" name="CO-OP STAPLES" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10248" name="TIME RETAIL FIN" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10251" name="DUET" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10338" name="VODAFONE." active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10378" name="VODAFONE" active="true" floorLimit="50" keyAllowed="true"/>
+            <card-scheme key="10339" name="HOBBS STYLE CARD" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10340" name="MORGAN CARD" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10342" name="TRANSAX" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10379" name="BURTONS" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10380" name="DEBENHAMS" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10381" name="GE CAPITAL CARD" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10417" name="FCUK CASH CARD" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10418" name="ORANGE" active="true" floorLimit="50" keyAllowed="true"/>
+            <card-scheme key="10446" name="T-MOBILE" active="true" floorLimit="50" keyAllowed="true"/>
+            <card-scheme key="10476" name="O2" active="true" floorLimit="50" keyAllowed="true"/>
+            <card-scheme key="10491" name="TRAVEL INN ACC" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10500" name="VIRGIN MOBILE" active="true" floorLimit="100" keyAllowed="true"/>
+            <card-scheme key="10547" name="BISTRO CARD ING" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10579" name="HALIFAX CETELEM" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10650" name="REWARD CARD" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10663" name="CLYDESDALE FIN" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10721" name="OUR SCHOOL" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10724" name="TESCO MOBILE" active="true" floorLimit="50" keyAllowed="true"/>
+            <card-scheme key="10755" name="GE EDGE" active="true" floorLimit="0" keyAllowed="true"/>
+
+            <!-- Not used yet -->
+            <card-scheme key="10647" name="PIN TRAINING" active="true" floorLimit="0" keyAllowed="true"/>
+            <card-scheme key="10166" name="FORTOAK" active="true" floorLimit="0" keyAllowed="true"/>
+        </card-schemes>
+
+        <risk-management-verdicts>
+            <!-- Template
+            <risk-management-verdict check="xxxx" verdict="xxxx"/>
+            -->
+
+            <risk-management-verdict check="PanLength" verdict="reject"/>
+            <risk-management-verdict check="LuhnCheckDigit" verdict="reject"/>
+            <risk-management-verdict check="HotCardList" verdict="reject"/>
+            <risk-management-verdict check="ExpiryDate" verdict="online"/>
+            <risk-management-verdict check="StartDate" verdict="ignore"/>
+        </risk-management-verdicts>
+    </mag-card-configuration>
+</MagcardConfigData>
+
+<!-- 
+========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+
+
+-->

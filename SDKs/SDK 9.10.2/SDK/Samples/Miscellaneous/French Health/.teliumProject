@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?><?ingedev version="7.18.1.4"?><projectDescription activeConfig="GNU_ARM_DEBUG" applicationType="0x6e" binaryName="FRENCH_HEAL" dataBinaryFileBaseName="DATA006E" descr="Sample French health" projectFamily="FRENCH_HEALTH" projectType="APP" useDataFileNamingConvention="true">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="Src\Entry.c" parentProject=""/>
+<file generated="false" name="Src\Main.c" parentProject=""/>
+<file generated="false" name="Src\MenuSV.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="false"/>
+<archiveFilesVirtualFolder name="Archive Files"/>
+</virtualFolders>
+<configs>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG" sign="false" teliumCompatibility="All">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.2"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.2"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.2"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.2"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.2"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.2"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.2"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.2"/>
+</packageIncs>
+<userDefines/>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE" sign="false" teliumCompatibility="All">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.2"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.2"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.2"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.2"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.2"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.2"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.2"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.2"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.2"/>
+</packageIncs>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

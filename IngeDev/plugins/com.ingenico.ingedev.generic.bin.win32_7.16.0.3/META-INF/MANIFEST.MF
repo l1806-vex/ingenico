@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Ingenico
+Fragment-Host: com.ingenico.ingedev.generic.bin;bundle-version="7.0.0"
+Bundle-ClassPath: ingedevgenericbinwin32.jar
+Bundle-Version: 7.16.0.3
+Eclipse-PlatformFilter: (osgi.os=win32)
+Bundle-Name: Generic Win32 Binaries Fragment
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ingenico.ingedev.generic.bin.win32;singleton:
+ =true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

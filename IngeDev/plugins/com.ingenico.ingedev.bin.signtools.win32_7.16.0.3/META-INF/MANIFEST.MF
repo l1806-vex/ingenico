@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Ingenico
+Fragment-Host: com.ingenico.ingedev.bin
+Bundle-ClassPath: signtoolswin32.jar
+Bundle-Version: 7.16.0.3
+Eclipse-PlatformFilter: (osgi.os=win32)
+Bundle-Localization: fragment
+Bundle-Name: U32 Bin Sign Tools Fragment
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ingenico.ingedev.bin.signtools.win32; singlet
+ on:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

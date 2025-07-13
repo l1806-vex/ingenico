@@ -1,0 +1,355 @@
+-----------------------------
+ May 2012 - Pack 21
+-----------------------------
+EMV DC 0465:
+ - Certified with the latest EMVCo test cases version 4.3.a.
+ - [FT9874] The track 2 expiration date shall not be checked. This test is not required by EMVCo and some Chinese cards contain '0000'.
+ - [FT10601] PBOC (China) defines the length of tag Cardholder Name Extended to 1-19 instead of 27-45.
+ - [FT10744] [FT11905] The total Issuer Script Length is now 1024 bytes.
+ - [FT10868] [SUPTEL-3109] Bug fix concerning duplicated AIDs in some cases.
+ - [FT11727] Add support for CDA mode 3.
+ - [FT11732] The order of the tags that appear in the response of a READ RECORD during PSE may cause an AID to be ignored.
+ - [FT12266] In few cases, the TSI bit "Offline Data Authentication" was set while the Offline Data Authentication was not performed.
+ - [FT11639] [SUPTEL-3692] The transaction is now aborted if EXTERNAL AUTHENTICATE response includes some data bytes.
+ - [FT11837] Amount Authorised (Binary) is now optional. If not present, Amount Authorised (Numeric) is now used, without truncation. Required by currencies that needs more than 32 bits numbers.
+ - [FT11904] Add support for tags longer than 264 bytes.
+ - [FT12158] Card traces of EMVTool now manage long card responses.
+
+EMV ENGINE 0468:
+ - [FT11595] [SUPTEL-3565] In some cases with an application of type 0x51, the displayed name in the Telium Manager menus were not correct.
+ - [FT11837] Amount Authorised (Binary) is now optional. If not present, Amount Authorised (Numeric) is now used, without truncation. Required by currencies that needs more than 32 bits numbers.
+ - [FT12044] [SUPTEL-3938] ENGINE can now read the card transaction log during a transaction.
+ - [FT12069] ENGINE can now send tags longer than 264 bytes to EMV DC. It is especially required for Issuer Scripts.
+ - [FT12070] Use TlvTree to communicate with EMVTool.
+
+EMV ENGINE Interface Library 0114:
+ - Engine_GetDataElements() and Engine_GetProprietaryDataElements() now support more than 50 tags and values longer than 264 bytes.
+ - Engine_GetDataElement() and Engine_GetProprietaryDataElement() now support values longer than 264 bytes.
+
+ EMV CUSTOM 0127:
+ - [FT11729] Do not generate key beep during PIN entry when using CGUI with 'beep on key' Telium Manager option enabled (key beep during PIN entry is not PCI PTS approved).
+ - [FT11875] The cardholder language selection was not cleared, so it was used for the next transaction.
+ - [FT12044] [SUPTEL-3938] Enable the read of the card transaction log during a transaction.
+ - [FT12131] Use the new TlvTree interface of EMV COMM and YES PROTOCOL.
+ - [FT12212] Add 'Selectable Kernel Configurations' and 'Deletable TACs' ICS options.
+
+EMV COMM (Hyperterminal Protocol) 0505:
+ - [FT12130] Interface with CUSTOM now uses TlvTree data, enabling long tags (especially required for Issuer Scripts).
+
+YES PROTOCOL 0403:
+ - [FT12130] Interface with CUSTOM now uses TlvTree data.
+
+EMV Tool 0210:
+ - [FT12071] TrackIAC now uses TlvTree data, removing all previous limitations (in terms of number of tags and maximum value length).
+ - [FT12158] Card traces now uses accurately  sized buffers, enabling long card responses.
+
+-----------------------------
+ December 2011 - Pack 20.2
+-----------------------------
+EMV ENGINE 0463:
+ - [FT10138] Evolutions to manage the ECash Chinese card.
+ - [FT10660] [SUPTEL-2873] U32 Emulation Layer evolution.
+
+EMV CUSTOM 0122:
+ - [FT10062] French words in comments and code.
+ - [FT10954] Do not use anymore the obsolete schemes that are no more delivered in SDK.
+ - [FT11209] Add tag TAG_CUST_IS_AMOUNT_UNKNOWN_BEFORE_CVM in the ICS checksum calculation.
+ - [FT11385] Improve CGUI management (remove unnecessary function calls, some MSGinfos structures were not correctly initialized, etc.).
+ - [FT11437] Do not use anymore the obsolete function TlvTree_RemoveChild().
+
+EMV ENGINE Interface Library 0113:
+ - Minor optimization of the Engine_ClearTransactionData() function.
+
+EMV DC Interface Library 0117:
+ - [FT10175] Evolutions required by the French ESCOTA project.
+
+EMV Tool 0208:
+ - [FT10378] [SUPTEL-2841] [SUPTEL-2986] The values of tags in the "Track IAC" traces were corrupted.
+
+-----------------------------
+ May 2011 - Pack 20.1
+-----------------------------
+ - [FT10036] Duplicated define TAG_EMV_INT_TRANSACTION_TYPE. This new define introduced by Easy Path to EMV 20 already exists in Add-On C'Less 3.x packages. Since Easy Path to EMV 20.1, this define is renamed in TAG_INT_TRANSACTION_TYPE. For more information, look at the document number ICO-PE-388-IN-EN "TIB FOR TELIUM SDK: Double definition in add-on Contactless 3.10 and Easy Path To EMV 20".
+ - The EMV Tool application was missing in the "KERNEL DEBUG.Mxx" catalog files.
+
+-----------------------------
+ April 2011 - Pack 20
+-----------------------------
+EMV DC 0430:
+ - Certified with the latest EMVCo test cases version 4.2.c.
+ - [FT7223] [SUPTEL-1074] Tag 8A (Authorisation Response Code) is now set at the beginning of Card Action Analysis instead at the end of Terminal Action Analysis. It allows the application to change the result of the Terminal Action Analysis.
+ - [FT7329] [SUPTEL-1134] Fix a bug concerning the management of the Account Type tag.
+ - [FT7698] Add a new function to clear all the kernel data. The application must call this new function at the end of each transaction (see EMV ENGINE Interface Library changes). It is required by PA-DSS.
+ - [FT8138] [SUPTEL-1190] [SUPTEL-1265] Manage proprietary values for the tag 9C (Transaction Type). The application can set the new tag TAG_EMV_INT_TRANSACTION_TYPE to specify the type of the transaction (debit, cashback, …). In such a case, the tag 9C can contain any value as the kernel will not test its value.
+ - [FT8205] [SUPTEL-1672] Improve the random selection processing.
+ - [FT8933] The kernel now continues the transaction if a GET DATA command answers 6A81 or 6A88. Previously, the transaction was aborted.
+ - [FT8969] [SUPTEL-2039] If the card answers 6985 during Card Action Analysis (1st GENERATE AC), the status code is now set to TAG_COND_OF_USE_NOT_SATISFIED instead of TAG_PROCESSING_ERROR.
+ - [FT8988] [SUPTEL-2009] Support for 100 AIDs.
+ - [FT9100] Support for the ICS option “Amount unknown before CVM”.
+ - [FT9101] French mode only: In some cases, the TSI bit “Terminal Risk Management” is not set (when the application requests to not perform the floor limit checking and the random selection).
+ - [FT9221] Check the format of the certificate expiration date.
+ - [FT9225] French mode only: Specific management of the incorrect PIN status.
+
+EMV ENGINE 0461:
+ - [FT7223] [SUPTEL-1074] Tag 8A (Authorisation Response Code) is now set at the beginning of Card Action Analysis instead at the end of Terminal Action Analysis. It allows the application to change the result of the Terminal Action Analysis.
+ - [FT8138] [SUPTEL-1190] [SUPTEL-1265] Manage proprietary values for the tag 9C (Transaction Type). The application can set the new tag TAG_EMV_INT_TRANSACTION_TYPE to specify the type of the transaction (debit, cashback, …). In such a case, the tag 9C can contain any value as the kernel will not test its value.
+ - [FT8961] Allow the application to change the following tags after the Read Application Data step: TAG_DEFAULT_DDOL, TAG_DEFAULT_TDOL, TAG_TERMINAL_FLOOR_LIMIT, TAG_TRESH_VALUE_FOR_BIASED_RAND_SEL, TAG_TARG_PERC_FOR_BIASED_RAND_SEL, TAG_MAX_TARG_PERC_FOR_BIASED_RAND_SEL, TAG_TERMINAL_ACTION_CODE_DENIAL, TAG_TERMINAL_ACTION_CODE_ONLINE, TAG_TERMINAL_ACTION_CODE_DEFAULT, TAG_TERMINAL_FLOOR_LIMIT, TAG_TERMINAL_CAPABILITIES.
+ - [FT8988] [SUPTEL-2009] Support for 100 AIDs.
+ - [FT9100] Support for the ICS option “Amount unknown before CVM”.
+ - [FT9530] [SUPTEL-2251] Allow the application to request for another AID after the final select.
+ - [FT9541] [SUPTEL-2283] PIN Bypass feature did not always work correctly when the bypass was requested during the PIN entry.
+
+EMV CUSTOM 0119:
+ - [FT5224] PIN entry display with a PP30 pinpad was not coherent with others pinpads.
+ - [FT5225] Stars are not correctly displayed during PIN entry with a pinpad.
+ - [FT7070] Correctly manages the FALLBACK service if no amount has been entered.
+ - [FT7070] For testing purpose, messages on a CAD30UCR can be output on an external link (serial or USB).
+ - [FT8138] [SUPTEL-1190] [SUPTEL-1265] Manage proprietary values for the tag 9C (Transaction Type). The application can set the new tag TAG_EMV_INT_TRANSACTION_TYPE to specify the type of the transaction (debit, cashback, …). In such a case, the tag 9C can contain any value as the kernel will not test its value.
+ - [FT8606] Correctly manages the PIN entry timeouts.
+ - [FT8804] Manages the new pinpad iPP280.
+ - [FT8834] Improve PIN entry with CGUI.
+ - [FT9100] Support for the ICS option “Amount unknown before CVM”.
+ - [FT9215] Functions from the PinLib library are deprecated and shall not be used anymore (purge() and SetPprState()). The DLL security now manages automatically these points.
+ - [FT9747] Evolutions to work with CGUI of the SDK7.6.
+
+EMV Tool 0207:
+ - [FT8336] Add a function to check the DOLs.
+ - [FT9669] Change the internal data management from DEL to TlvTree.
+
+Yes Protocol 0402:
+ - [FT8718] Allow to customise the CGUI resources in a signed file.
+
+EMV COMM (Hyperterminal Protocol) 0504
+ - [FT8718] Allow to customise the CGUI resources in a signed file.
+
+EMV DC Interface Library 0116
+ - [FT9207] Generate the GCC 4.3.4 version of the library.
+ - [FT9782] [SUPTEL-2386] Heap memory corruption.
+
+EMV ENGINE Interface Library 0112
+ - [FT7698] Add a new function Engine_ClearTransactionData() to clear all the kernel data. The application must call this function at the end of each transaction. It is required by PA-DSS.
+ - [FT9207] Generate the GCC 4.3.4 version of the library.
+
+DEL Library 0104
+ - [FT9207] Generate the GCC 4.3.4 version of the library.
+
+-----------------------------
+ September 2010 - Pack 19.1
+-----------------------------
+EMV ENGINE 0456:
+ - [5083] Applications can specify the result of the online processing independently of the Authorisation Response Code. To do that, the application must provide the tag TAG_AUTHORISATION_RESULT (9F811A, 1 byte length) with one of the following values: TAG_AUTHORISATION_RESULT_DECLINED, TAG_AUTHORISATION_RESULT_APPROVED, TAG_AUTHORISATION_RESULT_REFERRAL or TAG_AUTHORISATION_RESULT_ERROR.
+ - [8194] Tag TAG_TRANSACTION_SEQ_COUNTER is now correctly managed when TAG_TSC_NOT_MANAGED is set 1. Documentation has been updated.
+ - [8235] Printing of the software loading ticket is now optional (see MANAGER.PAR documentation).
+ - [8291] Improve management of the proprietary tags by using the new tag TAG_PROPRIETARY_TAGS_EX.
+ - [8329] Workaround for the Random Selection for NAR.
+
+EMV CUSTOM 0116:
+ - [7072] The amount given in parameters of the service I_EMVCUST_Perform_Transaction was not used.
+ - [7610] Swipe transactions were not done using the Telium Manager amount (if available).
+ - [7706] Print the PAN according the PA-DSS rules.
+ - [7938] Start of a transaction using shortcut keys (F1 and F2) now correctly works.
+ - Use any version of the CGUI resource file.
+
+EMV COMM 0503:
+ - [8273] Communication timeouts can now be set by using a parameter file.
+
+EMV Tool 0205:
+ - [4407] EMV Tool does not change the Telium Manager font anymore.
+ - [8233] Printing of the software loading ticket is now optional (see MANAGER.PAR documentation).
+
+EMVDC Interface 0112:
+ - [8363] TLV_EMVDC_Ex_SetPrivateDataElements() and TLV_EMVDC_Ex_SetDataElements() functions did not work.
+
+-----------------------------
+ July 2010 - Pack 19
+-----------------------------
+EMV DC 0426:
+ - [7134] Terminal tags must not be accepted during READ RECORD.
+ - [7135] Evolutions for ZKA.
+
+EMV DC 0427:
+ - [7405] Evolutions for ZKA (German market).
+
+EMV ENGINE:
+ - [7074] Wrong management of TAG_IS_ACCOUNT_TYPE parameter.
+ - [7185] Candidate List does not contain TAG_FCI_ISSUER_DISCRET_DATA and TAG_DIRECTORY_DISCRET_TEMPLATE.
+ - [7718] Card detection does not work with SPED.
+
+EMV CUSTOM:
+ - [6856] Header wrongly displayed on graphic B&W screens.
+ - [7069] UCM specific context not deducted correctly.
+ - [7193] Display again the PIN BYPASS menu (required for internal automatic testing).
+ - [7390] ISO2 Reading has been erraneously  removed .
+ - [7784] Add Administrative and Inquiry transactions.
+
+EMVDC Interface Library:
+ - [5919] Changes for CB compliance (French market).
+ - [7303] Changes for ESCOTA compliance (French market).
+
+-----------------------------
+ January 2010 - Pack 18
+-----------------------------
+EMV DC:
+ - [4165] U32 Emulation:Details errors during Application Selection.
+ - [4801] Improve CAM2 management.
+ - [4932] Issuer Script Command with Le does not work.
+ - [5030] When first GENERATE AC with CDA fails, TVR is wrong.
+ - [5031] Allow application to open and close the CAM driver itself.
+ - [5032] The VERIFY command shall be traced in the command buffers.
+ - [5033] Validity of the Issuer, ICC and PIN public key exponents shall be checked.
+ - [5034] If no answer to External Authenticate command, the TVR is wrong.
+ - [5075] Card removal and level 1 errors does not always stop the transaction.
+ - [5076] Optimise the number of SELECT AID commands during application selection.
+ - [5314] During READ RECORD, the length of the tags are not checked.
+ - [5560] During PSE, tags read using READ RECORD are not checked.
+ - [5561] U32 Emulation: Tag DF29 shall be set with the control parameter of GENERATE AC command.
+ - [5562] U32 Emulation: Do not return an error if the CID does not match between command and answer of GENERATE AC.
+ - [5563] U32 Emulation: If INTERNAL AUTHENTICATE returns an error, we shall return an error without setting 'DDA failed' bit in TVR.
+ - [5564] During CDA, if mandatory tags are missing set 'CDA failed' in TVR.
+ - [5645] If the response of a SELECT does not parse correctly (invalid TLV length for ex.), the answer shall be considered as invalid.
+ - [5901] Invalid DOL management when tag is unknown but present in database.
+ - [5902] Invalid status code T=1 card answer only one byte.
+ - [5903] When retrieving keys, the Hash Algorithm Indicator shall be checked.
+ - [5933] Improve management of proprietary tags.
+ - [6134] The kernel wrongly set a default value for tag 9F1C (Terminal Identifier).
+
+EMV ENGINE:
+ - [4228] GIVE_INFOS_CX and SELECT_FUNCTION_EMV registered by engine.
+ - [5033] Validity of the Issuer, ICC and PIN public key exponents is not checked.
+ - [5077] Card removal and level 1 errors does not always stop the transaction.
+ - [6036] Dynamic GET_IDLE_STATE_PARAMETER.
+ - [6062] Workaround for DC bug about CAM2 management.
+ - [6461] Add possibility to stop the transaction by issuing a GENERATE AC (AAC).
+ - [6510] Implement ResumeTransaction in TlvTree mode.
+
+EMV CUSTOM:
+ - [5296] SEC_ISO9563 has to be called only if Injection Key is successful.
+ - [6038] Partial matching does not work.
+ - [6071] Wrong management of CAM2.
+ - [6438] The status code is not given correctly to ENGINE.
+ - [6767] Manage CGUI graphic interface.
+ - [6485] Memory leaks.
+ - [6508] Use Engine Interface library.
+
+EMV COMM:
+ - [6466] Add parameter file to set the port and baudrate of the output.
+ - [6467] Manage CGUI graphic interface.
+
+YES COMM:
+ - [6467] Manage CGUI graphic interface.
+
+-----------------------------
+ October 2009 - Pack 17
+-----------------------------
+Fixes:
+ - KERNEL: Many corrections requested by Germany.
+ - KERNEL & ENGINE: Allow to execute CVM before ODA.
+
+THE KERNEL IS NOT APPROVED !!!
+
+-----------------------------
+ October 2009 - Pack 16.1
+-----------------------------
+New:
+ - Add EMV DC Interface Library.
+
+Fixes:
+ - YESCOMM for Telium 2 is now provided.
+
+-----------------------------
+ June 2009 - Pack 16
+-----------------------------
+New:
+ - KERNEL: Support for CAM2 chip reader (terminal reader when a pinpad is connected).
+ - ENGINE: Support for CAM2 chip reader (terminal reader when a pinpad is connected).
+ - ENGINE: New step after FINAL SELECT (enabled by tag TAG_CUST_FINAL_SELECT_CALL, length 1).
+ - CUSTOM: Support for CAM2 chip reader (terminal reader when a pinpad is connected).
+ - CUSTOM: Usage of TlvTree instead of DEL.
+ - CUSTOM: New documentation.
+ - CUSTOM: New batch file management.
+
+Changes:
+ - KERNEL: Support for EMVco Test Cases version 4.2a.
+
+Fixes:
+ - KERNEL: If card is removed, the kernel now returns the correct status code (especially on GENERATE AC).
+ - KERNEL: Proprietary tags in PDOL was not correctly managed.
+ - ENGINE: Do not request for the display of the "INSERT CARD" message if a card is already present in the reader.
+ - ENGINE: The name of the component was not valid.
+
+-----------------------------
+ March 2009 - Pack 15
+-----------------------------
+New:
+ - KERNEL: Support for CAD30 platform.
+ - CUSTOM: Support for CAD30 platform.
+
+Changes:
+ - CUSTOM: Now delivered as an IngeDev project.
+
+-----------------------------
+ January 2009 - Pack 14
+-----------------------------
+New:
+ - ENGINE: Add support for multiple CUSTOM applications.
+ - ENGINE: Add possibility to suspend the transaction and continue it "later".
+
+-----------------------------
+ October 2008 - Pack 13
+-----------------------------
+New:
+ - Approved with the EMVCo Test Cases 4.1.e.
+ - Support for the new iCT220 terminal (code name X07).
+ - Requires the Security DLL 0204 or newer.
+
+Changes:
+ - KERNEL: The terminal shall terminate the transaction if format errors are detected in CVM List.
+ - KERNEL: No additional CVM shall be processed after "Fail Cvm Processing".
+ - KERNEL: Clarification of EMV specification concerning CVM Results (EMVCo SU48).
+ - KERNEL: Subsequent PIN bypass management (EMVCo SU48).
+ - KERNEL: Use of the Security DLL for PIN management.
+ - KERNEL: Faster RSA algorithm to improve Offline Data Authentication.
+ - ENGINE: A lot of code has been rewritten in order to optimise speed and memory usage and to prepare for future evolutions.
+ - CUSTOM: New parameters management.
+ - CUSTOM: New messages management.
+ - CUSTOM: Use of the Security DLL for PIN entry and DES keys management.
+
+Fixes
+ - CUSTOM: Use of unitialised DEL during script processing.
+ - CUSTOM: Advices during batch collection.
+ - CUSTOM: Comply with terminals that have no F1, F2, F3 and F4 keys (ML30, X07, ...).
+ - COMM: Advices during batch collection.
+
+-----------------------------
+ March 2008 - Pack 12
+-----------------------------
+Changes:
+ - CUSTOM: Choose the AID on the pinpad, if present.
+ - CUSTOM: The reversal message is now sent after the second GENERATE AC.
+ - CUSTOM: Improve management of the advice messages.
+
+Fixes
+ - KERNEL: Fixes due to EMVco tests updates 4.1.d.
+ - CUSTOM: Minor fixes.
+
+-----------------------------
+ February 2008 - Pack 11
+-----------------------------
+New:
+ - Support for CAD30 UCR.
+ - ICS can be different for each AID.
+
+Changes:
+ - Reduce memory usage.
+ - Pinpad management improvements.
+ - PIN bypass optimizations.
+ - Issuer Script maximum length is changed from 128 to 200 bytes.
+
+Fixes:
+ - Minor fixes.
+
+-----------------------------
+ July 2007 - Pack 10
+-----------------------------
+Changes:
+ - EMVco CDA Specification Updates

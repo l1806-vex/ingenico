@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2009 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ingenico.com/ns/service/data" xmlns:common="http://ingenico.com/ns/common/data" targetNamespace="http://ingenico.com/ns/service/data">
+	<xs:annotation>
+		<xs:documentation>
+        </xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>
+            ================== Imported Names ====================================
+        </xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+	<xs:simpleType name="ServiceStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Registered"/>
+			<xs:enumeration value="Enabled"/>
+			<xs:enumeration value="Disabled"/>
+			<xs:enumeration value="Retired"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceProviderStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Enabled"/>
+			<xs:enumeration value="Retired"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SubscriptionStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Subscribed"/>
+			<xs:enumeration value="Activated"/>
+			<xs:enumeration value="Suspended"/>
+			<xs:enumeration value="Deleted"/>
+		</xs:restriction>
+	</xs:simpleType>
+    <xs:simpleType name="ServiceBaseURI">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ServiceRelativeURI">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+	<xs:element name="ServiceProvider" type="tns:ServiceProvider"/>
+	<xs:complexType name="ServiceProvider">
+		<xs:annotation>
+			<xs:documentation>
+                This entity provides service provider info
+            </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:long" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    service provider id
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="srvpid" type="tns:ServiceProvider.SRVPID" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    ingenico service provider id
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" type="tns:ServiceProvider.Name" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    service provider name
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="description" type="tns:ServiceProvider.Description" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+                    service provider description
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="email" type="tns:ServiceProvider.Email" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+                    service provider email
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="phone" type="tns:ServiceProvider.Phone" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+                    service provider phone
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="address" type="tns:ServiceProvider.Address" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+                    service provider address
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="status" type="tns:ServiceProviderStatus" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    status
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="ServiceProviders" type="tns:ServiceProviders"/>
+	<xs:complexType name="ServiceProviders">
+		<xs:annotation>
+			<xs:documentation>
+                list of service providers
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provider" type="tns:ServiceProvider" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ServiceProvider.SRVPID">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceProvider.Name">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceProvider.Description">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceProvider.Email">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceProvider.Phone">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceProvider.Address">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Service" type="tns:Service"/>
+	<xs:complexType name="Service">
+		<xs:annotation>
+			<xs:documentation>
+                This entity provides service info
+            </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:long" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    service id
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="srvid" type="tns:Service.SRVID" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    ingenico service id
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="srvpid" type="tns:ServiceProvider.SRVPID" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    ingenico service provider id
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="name" type="tns:Service.Name" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    service name
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="description" type="tns:Service.Description" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+                    service description
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="status" type="tns:ServiceStatus" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    status
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+        <xs:attribute name="baseuri" type="tns:ServiceBaseURI">
+            <xs:annotation>
+                <xs:documentation>
+                    Service's base URI.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="startpage" type="tns:ServiceRelativeURI">
+            <xs:annotation>
+                <xs:documentation>
+                    Service's start page.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="priority" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Service's priority.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="postconv" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>
+                    Convert post from XML form to HTTP form.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="hashcheck" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>
+                    Check hashes of the service resources.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+	</xs:complexType>
+	<xs:element name="Services" type="tns:Services"/>
+	<xs:complexType name="Services">
+		<xs:annotation>
+			<xs:documentation>
+                list of services
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="service" type="tns:Service" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Service.SRVID">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Service.Name">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Service.Description">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ServiceSubscription" type="tns:ServiceSubscription"/>
+	<xs:complexType name="ServiceSubscription">
+		<xs:annotation>
+			<xs:documentation>
+                This entity provides service subscription info
+            </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:long" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    service subscription id
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="contract" type="tns:ServiceSubscription.Contract" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    ingenico service subscription contract
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="itid" type="common:Terminal.ITID" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    ingenico terminal itid
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="srvid" type="tns:Service.SRVID" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    ingenico service id
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="profile" type="common:Profile.Name" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    configuration profile id
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="status" type="tns:SubscriptionStatus" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    status
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="startup" type="xs:boolean" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                    startup subsctiption flag
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="ServiceSubscriptions" type="tns:ServiceSubscriptions"/>
+	<xs:complexType name="ServiceSubscriptions">
+		<xs:annotation>
+			<xs:documentation>
+                list of service subscriptions
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="subscription" type="tns:ServiceSubscription" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="ServiceSubscription.Contract">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ServiceProviderSortList" type="tns:ServiceProviderSortList"/>
+	<xs:complexType name="ServiceProviderSortList">
+		<xs:annotation>
+			<xs:documentation>
+                list of sortable fields for service provider
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="site" type="tns:ServiceProviderSortField" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceProviderSortField" type="tns:ServiceProviderSortField"/>
+	<xs:complexType name="ServiceProviderSortField">
+		<xs:annotation>
+			<xs:documentation>
+            </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="fieldName" type="tns:ServiceProviderSortFieldType" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sortDirection" type="common:SortDirection" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="ServiceProviderSortFieldType">
+		<xs:annotation>
+			<xs:documentation>
+                Types of sort fields
+            </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="srvpid"/>
+			<xs:enumeration value="name"/>
+			<xs:enumeration value="status"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ServiceSortList" type="tns:ServiceSortList"/>
+	<xs:complexType name="ServiceSortList">
+		<xs:annotation>
+			<xs:documentation>
+                list of sortable fields for service
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="site" type="tns:ServiceSortField" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceSortField" type="tns:ServiceSortField"/>
+	<xs:complexType name="ServiceSortField">
+		<xs:annotation>
+			<xs:documentation>
+            </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="fieldName" type="tns:ServiceSortFieldType" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sortDirection" type="common:SortDirection" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="ServiceSortFieldType">
+		<xs:annotation>
+			<xs:documentation>
+                Types of sort fields
+            </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="srvid"/>
+			<xs:enumeration value="srvpid"/>
+			<xs:enumeration value="name"/>
+			<xs:enumeration value="status"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ServiceSubscriptionSortList" type="tns:ServiceSubscriptionSortList"/>
+	<xs:complexType name="ServiceSubscriptionSortList">
+		<xs:annotation>
+			<xs:documentation>
+                list of sortable fields for service subscription
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="site" type="tns:ServiceSubscriptionSortField" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceSubscriptionSortField" type="tns:ServiceSubscriptionSortField"/>
+	<xs:complexType name="ServiceSubscriptionSortField">
+		<xs:annotation>
+			<xs:documentation>
+            </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="fieldName" type="tns:ServiceSubscriptionSortFieldType" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sortDirection" type="common:SortDirection" use="required">
+			<xs:annotation>
+				<xs:documentation>
+                </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="ServiceSubscriptionSortFieldType">
+		<xs:annotation>
+			<xs:documentation>
+                Types of sort fields
+            </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="contract"/>
+			<xs:enumeration value="status"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ServiceProviderQuery" type="tns:ServiceProviderQuery"/>
+	<xs:complexType name="ServiceProviderQuery">
+		<xs:annotation>
+			<xs:documentation>
+                Service provider query data
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="srvpid" type="tns:ServiceProvider.SRVPID" minOccurs="0"/>			
+			<xs:element name="name" type="tns:ServiceProvider.Name" minOccurs="0"/>
+			<xs:element name="status" type="tns:ServiceProviderStatus" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceQuery" type="tns:ServiceQuery"/>
+	<xs:complexType name="ServiceQuery">
+		<xs:annotation>
+			<xs:documentation>
+                Service query data
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="srvid" type="tns:Service.SRVID" minOccurs="0"/>
+			<xs:element name="name" type="tns:Service.Name" minOccurs="0"/>
+			<xs:element name="status" type="tns:ServiceStatus" minOccurs="0" maxOccurs="3"/>
+			<xs:element name="srvpid" type="tns:ServiceProvider.SRVPID" minOccurs="0"/>
+            <xs:element name="baseuri" type="tns:ServiceBaseURI" minOccurs="0"/>
+            <xs:element name="startpage" type="tns:ServiceRelativeURI" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceSubscriptionQuery" type="tns:ServiceSubscriptionQuery"/>
+	<xs:complexType name="ServiceSubscriptionQuery">
+		<xs:annotation>
+			<xs:documentation>
+                Service subscription query data
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="contract" type="tns:Service.Name" minOccurs="0"/>
+			<xs:element name="status" type="tns:SubscriptionStatus" minOccurs="0"/>
+			<xs:element name="srvid" type="tns:Service.SRVID" minOccurs="0"/>
+			<xs:element name="itid" type="common:Terminal.ITID" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="ServiceAvailabilityStatus">
+  		<xs:restriction base="xs:string">
+    			<xs:enumeration value="Available"/>
+    			<xs:enumeration value="NotAvailable"/>
+    			<xs:enumeration value="Disabled"/>
+    			<xs:enumeration value="Retired"/>
+  		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceProviderAvailabilityStatus">
+  		<xs:restriction base="xs:string">
+    			<xs:enumeration value="Enabled"/>
+    			<xs:enumeration value="Retired"/>
+  		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="ServicesAvailability" type="tns:ServicesAvailability"/>
+	<xs:complexType name="ServicesAvailability">
+  		<xs:sequence>
+    			<xs:element minOccurs="0" maxOccurs="unbounded" type="tns:ServiceAvailability" />
+  		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="ServiceAvailability" type="tns:ServiceAvailability"/>
+	<xs:complexType name="ServiceAvailability">
+		<xs:attribute name="srvid" type="tns:Service.SRVID" use="required"/>
+  		<xs:attribute name="status" type="tns:ServiceAvailabilityStatus" use="required"/>
+	</xs:complexType>
+
+	<xs:element name="ServiceProviderAvailability" type="tns:ServiceProviderAvailability"/>
+	<xs:complexType name="ServiceProviderAvailability">
+		<xs:sequence>
+			<xs:element name="srvpid" type="tns:ServiceProvider.SRVPID" use="required"/>
+  			<xs:element name="status" type="tns:ServiceProviderAvailabilityStatus" use="required"/>
+			<xs:element name="service" type="tns:ServicesAvailability"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="Resource" type="tns:Resource"/>
+	<xs:complexType name="Resource">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long" use="required"/>
+			<xs:element name="data" type="xs:string" use="required"/>
+  			<xs:element name="hash" type="xs:string" use="required"/>
+  			<xs:element name="name" type="xs:string" use="required"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+    <xs:element name="ServiceIcon" type="tns:ServiceIcon"/>
+    <xs:complexType name="ServiceIcon">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" use="required"/>
+            <xs:element name="srvid" type="xs:long" use="required"/>
+            <xs:element name="data1" type="xs:string" use="required"/>
+            <xs:element name="data1Version" type="xs:long" use="required"/>
+        </xs:sequence>
+    </xs:complexType>
+
+	<xs:element name="ServiceProvidersAvailability" type="tns:ServiceProvidersAvailability"/>
+	<xs:complexType name="ServiceProvidersAvailability">
+  		<xs:sequence>
+    			<xs:element minOccurs="0" maxOccurs="unbounded" type="tns:ServiceProviderAvailability" />
+  		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="SubscriptionId" type="tns:SubscriptionId"/>
+	<xs:complexType name="SubscriptionId">
+		<xs:attribute name="subsid" type="xs:long" use="required"/>
+	</xs:complexType>
+
+	<xs:element name="SubscriptionIdList" type="tns:SubscriptionIdList"/>
+	<xs:complexType name="SubscriptionIdList">
+		<xs:annotation>
+			<xs:documentation>
+                list of service subscriptions
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="subsid" type="tns:SubscriptionId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

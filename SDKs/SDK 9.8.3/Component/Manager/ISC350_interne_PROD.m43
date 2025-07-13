@@ -1,0 +1,121 @@
+;TELIUM MANAGER FRANCE ISC350 GOAL PROD
+;HEADER ISC3XX
+8440860311.lgn
+;M2OS
+8445921011.agn
+;tmtools
+8446220211.lgn
+;CB2A 
+8445930911.lgn
+;Extension
+8445941111.lgn
+;Graphic Librairy
+8445960811.lgn
+;M2OS Parameters
+8445970911.lgn
+;Entry
+8445980811.lgn
+;Cam/Date Librairy
+8445990911.lgn
+;PSC Protocol
+8446010711.lgn
+;Protocol
+8446030911.lgn
+;Cryptographic librairy
+8446060611.lgn
+;Partage
+8446070711.lgn
+;EMV Selection
+8446080811.lgn
+;IAM
+8446090711.lgn
+;Pinpad
+8446100811.lgn
+;PPR30 Export
+8443690333.lgn
+;ums
+8446160711.lgn
+;gprs
+8446210911.lgn
+;Hardware cnf
+8446420411.lgn
+;Security Fr T2
+46850352.lgn
+;INGESTATE COMPATIBILITY T2
+47787411.pgn
+;COLOR
+8446920411.lgn
+;PackM2OS
+8447787411.pgn
+;DLL E2EE
+8440780410.lgn
+;GL DLL FOR EFT930CC/ICT250/IPP350/ML30CC/IWL250
+8443510411.lgn
+;GM RESOURCE FOR ISC3XX
+8443587411.pgn
+;Telium SDK
+8442291083.pgn
+; Image WGU decoder (mandatory)
+8443000343.LGN
+; Graphical server (mandatory)
+8440560343.LGN
+; Tools library (mandatory)
+8440540343.LGN
+; Plugin video for GOAL (optional)
+8443200343.LGN
+; Font file manager(mandatory)
+8440580343.PGN
+; Graphical library (mandatory)
+8440550343.LGN
+; Skin for the 640x480 screen (mandatory for screen 640x480)
+8440620343.PGN
+; Plugin signature capture for GOAL (optional)
+8443210343.LGN
+; Data abstract layer thunder II and III (mandatory)
+8205320011.LGN
+; Graphical driver thunder III (mandatory)
+8205170223.DGN
+; CGUI web browser (optional)
+8136870209.LGN
+; CGUI multimedia plugin (optional)
+8139100211.LGN
+; CGUI signature capture plugin (optional)
+8139090213.LGN
+; CGUI monospace font (optional)
+8440160116.PGN
+; CGUI sans serif font (optional)
+8440170111.PGN
+; CGUI serif font (optional)
+8440180111.PGN
+; ZLIB DLL (optional)
+8443020343.LGN
+; Image JPEG decoder (optional), Dependencies LIBJPG DLL
+8443040343.LGN
+; Image GIF decoder (optional), Dependencies LIBGIF DLL
+8443060343.LGN
+; Image BMP decoder (optional)
+8443080343.LGN
+; Image PNG decoder (optional), Dependencies LIBPNG DLL and ZLIB DLL
+8443010343.LGN
+; LIBPNG DLL (optional)
+8443030343.LGN
+; LIBJPG DLL (optional)
+8443050343.LGN
+; LIBGIF DLL (optional)
+8443070343.LGN
+; Barcode QR encoder (optional)
+8443320343.LGN
+; Barcode CODE 39 encoder (optional)
+8443350343.LGN
+; Barcode EAN 13 encoder (optional)
+8443370343.LGN
+; Barcode CODE 128 encoder (optional)
+8443330343.LGN
+; Barcode PDF 417 encoder (optional)
+8443380343.LGN
+; Barcode CODE 25 encoder (optional)
+8443340343.LGN
+; Barcode EAN 8 encoder (optional)
+8443360343.LGN
+; Keymap
+8443310104.PGN

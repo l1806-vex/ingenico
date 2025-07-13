@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="net.amduat.eclipse.team.cvs.sspi"
+   name="CVS SSPI Plug-in"
+   version="1.0.0"
+   provider-name="amduat.net"
+   class="net.amduat.eclipse.team.cvs.sspi.SSPIPlugin">
+
+   <runtime>
+      <library name="sspi.jar">
+         <export name="*"/>
+      </library>
+   </runtime>
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.team.cvs.core"/>
+      <import plugin="org.eclipse.team.core"/>
+   </requires>
+   <extension id="sspi" point="org.eclipse.team.cvs.core.connectionmethods">
+      <adapter>
+         <run class="net.amduat.eclipse.team.cvs.sspi.SSPIConnectionMethod">
+            <parameter name="trace" value="false"/>
+         </run>
+      </adapter>
+   </extension>
+
+</plugin>

@@ -1,0 +1,30 @@
+;Mockup System pack  for E532
+;Boot Ram
+30140503.dgn
+;Driver VFS
+30210328.dgn
+;Pack System
+37771104.pgn
+;Driver Modem 930
+40150322.dgn
+;Driver GPRS
+8200120206.dgn
+;Driver UMS
+8200210320.dgn
+;Driver HID
+8200220124.dgn
+;Driver USB CDC
+8200320616.dgn
+;System R+
+8200361110.dgn
+;Driver CLESS
+8200490230.dgn
+;Driver CAM Thunder II
+8203040104.dgn
+;BOOSTER III Boot Flash
+8300630015.dgn
+;Booster III system Mockup
+8300648243.dgn
+;LDBG Remote Debugger
+8133080134.dgn
+

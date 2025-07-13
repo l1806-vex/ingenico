@@ -1,0 +1,15 @@
+<epdPar>
+  
+    <trcOutput>1</trcOutput>
+    <periph>0</periph>
+    <cardEntry>1</cardEntry>
+    <amountEntry>1</amountEntry>
+    <clessSupport>1</clessSupport>
+    <checkBmp>1</checkBmp>
+    <tpassBmp>1</tpassBmp>
+    <pp2Lines>0</pp2Lines>
+    <ppGraphic>1</ppGraphic>
+    <c30>1</c30>
+    <bwHeader>1</bwHeader>
+
+</epdPar>

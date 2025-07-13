@@ -1,0 +1,75 @@
+; Lines beginning with ';' are commentaries
+
+KernelID=AQ05
+TerminalID=AQ05
+BmpPathName=AQ55.bmp
+MaskPathName=AQ55_mask.bmp
+BmpScreenWidth=460
+ScreenUpperLeftCorner=219,834
+ScreenRealSizePixels=128,64
+KeyboardId=1
+PrinterNbCharsPerLine=24
+
+; Type = Standard or Touch
+ScreenType=Standard
+
+; Screen nb bits per pixels (1, 4, or 8)
+ScreenNbBitsPerPixel=1
+
+;ShiftCapability (0 = not shifted, 1 = left shifted) -> Shift values are returned on each mouse right clic
+ShiftCapability=1
+
+;Enter
+Button=Elliptic, 0x3A, 0x0F, 0x49, 611, 1350, 716, 1530, 0x0D
+
+;Paper feed (PC = Page Up)
+Button=Rectangular, 0x00, 0x0B, 0x00, 179, 1458, 287, 1530, 0x21
+
+;Clear (PC = Escape)
+Button=Rectangular, 0x3B, 0x05, 0x49, 610, 1137, 713, 1209, 0x1B
+
+;Corr (PC = Backspace)
+Button=Rectangular, 0x3D, 0x06, 0x49, 611, 1242, 715, 1315, 0x08
+
+;9
+Button=Rectangular, 0x39, 0x0E, 0x48, 469, 1349, 574, 1421, 0x69, 0x39
+
+;8
+Button=Rectangular, 0x38, 0x09, 0x47, 326, 1348, 434, 1421, 0x68, 0x38
+
+;7
+Button=Rectangular, 0x37, 0x04, 0x46, 183, 1348, 292, 1421, 0x67, 0x37
+
+;6
+Button=Rectangular, 0x36, 0x0D, 0x45, 469, 1241, 574, 1314, 0x66, 0x36
+
+;5
+Button=Rectangular, 0x35, 0x08, 0x44, 330, 1241, 436, 1314, 0x65, 0x35
+
+;4
+Button=Rectangular, 0x34, 0x03, 0x43, 187, 1240, 295, 1313, 0x64, 0x34
+
+;3
+Button=Rectangular, 0x33, 0x0C, 0x42, 472, 1137, 575, 1208, 0x63, 0x33
+
+;2
+Button=Rectangular, 0x32, 0x07, 0x41, 322, 1137, 437, 1208, 0x62, 0x32
+
+;1
+Button=Rectangular, 0x31, 0x02, 0x40, 193, 1135, 300, 1208, 0x61, 0x31
+
+;0
+Button=Elliptic, 0x30, 0x0A, 0x3E, 322, 1458, 431, 1531, 0x60, 0x30
+
+;00
+Button=Rectangular, 0x3C, 0x01, 0x3F, 467, 1459, 575, 1531, 0x6E
+
+
+;F3 this key is drawn on the aqua terminal : you can left click on this draw to activate the key
+Button=Rectangular, 0x42, 0x0E, 0x00, 513, 1087, 528, 1112, 0x72
+
+;F2 this key is drawn on the aqua terminal : you can left click on this draw to activate the key
+Button=Rectangular, 0x41, 0x0D, 0x00, 372, 1086, 401, 1110, 0x71, 0x26
+
+;F1 this key is drawn on the aqua terminal : you can left click on this draw to activate the key
+Button=Rectangular, 0x40, 0x0C, 0x00, 234, 1086, 265, 1111, 0x70, 0x28

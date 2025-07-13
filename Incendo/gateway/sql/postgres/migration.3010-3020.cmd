@@ -1,0 +1,1 @@
+call %~dp0/migration.cmd %~dp0/migration/3020.sql %*

@@ -1,0 +1,67 @@
+Migration under GOAL (Graphic Object Advanced Library) of the projets regarding the SDK Training session.
+!!! GOAL supports ONLY Telium 2 terminal.
+To get the full features of the projects, please follow the instructions below:
+
+1) Load the OS MOCKUP catalog into SWAP disk  using LLT (\Program Files\TeliumSDK\SDK 9.8.0\Component\OS)
+2) Load the Manager GOAL_EXPORT_PROD catalog into SWAP disk using LLT (\Program Files\TeliumSDK\SDK 9.8.0\Component\Manager)
+3) Disconnect from LLT and configure the terminal.
+4) Import the 5 following projects under IngeDev 
+      - BeepDll, BeepLib, CashRegister, Training and User2.
+5) Rebuild the 5 projects under IngeDev and copy into directory "Catalogue Parameters" :
+      - TRAININGV01.AGN (Telium2) (see Training\Bin\GNU_ARM_DEBUG)
+      - USER2V01.AGN (Telium2) (see User2\Bin\GNU_ARM_DEBUG)
+      - BEEPDLLV01.LGN (Telium2) (see BeepDll\Bin\GNU_ARM_DEBUG)
+6) LinkLayer: copy into directory "Catalogue Parameters" :
+      - 36280330.AGN (see \Program Files\TeliumSDK\SDK 9.8.0\Component\LinkLayer\WithIP)
+7) Font Candara: run FontGenerator.exe with the project CandaraLatin1.FonPrj and generate CANDARA.FON then use SAT to generate CANDARA.PGN,
+   then copy into directory "Catalogue Parameters" :
+      - CANDARA.PGN (Telium2) 
+      !!! To get FontGenerator running properly, copy inside this directory \Font the complete sub directory FontGenerator :
+          - \FontGenerator (see \Program Files\TeliumSDK\SDK x.x.x\tools\GOAL\FontGenerator)
+      and copy inside this directory \Font\Candara\font the following fonts :
+          - CANDARA.TTF   (see C:\WINDOWS\Fonts)
+          - CANDARAB.TTF  (see C:\WINDOWS\Fonts)
+          - CANDARAI.TTF  (see C:\WINDOWS\Fonts)
+          - CANDARAZ.TTF  (C:\WINDOWS\Fonts) 
+8) Font Manager: copy the following fonts into directory "Catalogue Parameters" :
+      - 8442450102.PGN => Font GOAL_LATIN_IT (All Latin italic characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+      - 8442460102.PGN => Font GOAL_LATIN_BO (All Latin bold characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+      - 8442470102.PGN => Font GOAL_LATIN_BI (All Latin bold italic characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+      - 8442480102.PGN => Font GOAL_CYGRE_NO (All Cyrillic and Greek normal characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+      - 8442490102.PGN => Font GOAL_CYGRE_IT (All Cyrillic and Greek italic characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+      - 8442500102.PGN => Font GOAL_CYGRE_BO (All Cyrillic and Greek bold characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+      - 8442510102.PGN => Font GOAL_CYGRE_BI (All Cyrillic and Greek bold italic characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+      - 8442520102.PGN => Font GOAL_ORIENTA_NO (All Arabic and Hebrew normal characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+      - 8442530102.PGN => Font GOAL_ORIENTA_BO (All Arabic and Hebrew bold characters Arial (sans-serif)) (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\GOAL)
+9) Application Message: run Sample.bat to generate SAMPLEMSG.MSG then use SAT to generate SAMPLEMSG.PGN,
+   then copy into directory "Catalogue Parameters" :
+      - SAMPLEMSG.PGN (Telium2)
+      !!! To get Sample.bat running properly, copy inside this directory \Message the following tools :
+          - BUILDMSG.EXE (see \Program Files\TeliumSDK\SDK 9.8.0\tools\MSG tool)
+          - MSG2C.EXE    (see \Program Files\TeliumSDK\SDK 9.8.0\tools\MSG tool)
+10) Manager Message: run RussianEFT.bat to generate EFT.MSG then SAT to generate EFT.PGN,
+    then copy into directory "Catalogue Parameters" :
+      - EFT.PGN (Telium2) 
+      - 8442190111.PGN => [For compatibility] Font ISO5 (Russian) Standard (see \Program Files\TeliumSDK\SDK 9.8.0\Component\Fonts\Standard)
+      !!! To get RussianEFT.bat running properly, copy inside this directory \Message the following tools :
+          - BUILDMSG.EXE (see \Program Files\TeliumSDK\SDK 9.8.0\tools\MSG tool)
+          - MSG2C.EXE    (see \Program Files\TeliumSDK\SDK 9.8.0\tools\MSG tool) 
+          
+At this step, connect the terminal to LLT then select the directory "Catalogue Parameters" 
+and load the appropriate CATALOGBW.Mxx (Black&White terminal) or CATALOGCOL.Mxx (Color terminal) then disconnect.
+The terminal is now ready to show all features done during the SDK training session.
+ 
+11) Load the CashRegister project to start a transaction from a terminal connected by USB to a cash register simulator (Hyper Terminal => CashRegister.ht)
+      - Scripts Hyper Terminal to run under => Transfert - Send a file text... :
+        CANCEL_Transaction.txt
+        IAM_Message.txt
+        SVC_TransactionCredit200.txt
+        SVC_TransactionDebit500.txt
+        SVC_TransactionExtcancel100.txt
+        SVC_TransactionPreauth400.txt
+
+This last step is to introduce the ServiceCall100 to start a transaction selection from the terminal when receiving the transaction type, amount and currency
+from a cash register.  
+
+
+

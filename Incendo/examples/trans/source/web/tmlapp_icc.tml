@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<tml xmlns="http://www.ingenico.com/tml">
+
+    <head>
+        <link href="8550.css" rev="stylesheet"/>
+        <defaults cancel="tmlapp.tml"/>
+        <error uri="#error_scr"/>
+    </head>
+        
+    <!-- use the same stylesheet as tmlapp.tml -->
+    
+    <!-- String containing PIN verification method  -->
+    <vardcl name="txt_cvm" perms="rw---"/>
+
+    <!-- list of EMV applications that will be displayed for manual selection -->
+    <vardcl name="btmlpa.emv.selection_list" perms="rw---"/>
+    
+    <!-- used to select a particular item from the list -->
+    <vardcl name="btmlpa.emv.selected_item" perms="rw---"/>
+    
+    <vardcl name="app_item"/>
+    <vardcl name="app_sel_mode"/>
+    <vardcl name="app_list"/>
+    <vardcl name="aid_list"/>
+    <vardcl name="index" type="integer"/>
+    <vardcl name="count" type="integer"/>
+    <vardcl name="app"/>
+    <vardcl name="aid"/>
+    <vardcl name="app_status"/>
+    <vardcl name="sep"/>
+
+
+    <!--===========================================================================
+    If card requires cardholder confirmation, display the list
+    else, check if there are several applications or only a single one
+    ============================================================================-->
+    <screen id="check_apps">
+        <setvar name="count" lo="tmlvar:card.emv.app_status_list" op="number"/>
+        <next uri="tmlapp.tml#assert">
+            <variant uri="#man_app_sel" lo="tmlvar:card.emv.selected_app" op="equal" ro="manual"/>
+            <variant uri="#chk_multi" lo="tmlvar:card.emv.selected_app" op="equal" ro=""/>
+        </next>
+    </screen>
+
+    <!--===========================================================================
+    Check if there are several applications or only a single one.
+    If there are several applications, display the list fo manual selection , even if not required (best practice)
+    If there is only a single one, try to select it automatically
+    ============================================================================-->
+    <screen id="chk_multi">
+        <next uri="#man_app_sel">
+            <variant uri="#auto_app_sel" lo="tmlvar:count" op="equal" ro="1"/>
+        </next>
+    </screen>
+
+    <!--===========================================================================
+    Enable automatic application selection
+    ============================================================================-->
+    <screen id="auto_app_sel" next="#final_select" timeout="1">
+        <!-- save the label of the application that will be used for the transaction -->
+        <setvar name="btmlpa.emv.txn_app" lo="tmlvar:card.emv.app_list"/>
+        
+        <setvar name="app_sel_mode" lo="auto"/>
+        <setvar name="card.emv.selected_app" lo=""/>
+  
+        <display>
+            <table class="message"><tr><td>
+                <span>
+                
+                    Auto selection
+                    
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!--===========================================================================
+    Enable cardholder manual application selection
+    ============================================================================-->
+    <screen id="man_app_sel" timeout="1">
+        <setvar name="app_sel_mode" lo="manual"/>
+        <next uri="tmlapp.tml#assert">
+             <variant uri="#prepare_list" lo="card.emv.app_list" op="not_equal" ro=""/>
+        </next>
+        <display>
+            <table class="message"><tr><td>
+                <span>
+            
+                    Manual selection
+                
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+<!--=========================================================
+        Building an application list for user selection
+===========================================================-->	
+    
+ <!--    Enable cardholder manual application selection   -->
+    <screen id="prepare_list">
+        <setvar name="sep" lo=""/>
+        <setvar name="app_list" lo=""/>
+        <setvar name="aid_list" lo=""/>
+        <setvar name="btmlpa.emv.selection_list" lo=""/>
+        <setvar name="index" lo="0"/>
+        <setvar name="count" lo="tmlvar:card.emv.app_status_list" op="number"/>
+        <next uri="tmlapp.tml#assert">
+            <variant uri="#check_status" lo="0" op="less" ro="tmlvar:count"/>
+        </next>
+    </screen>
+
+<!--
+    Copy the active applications into the list to be displayed. Inactive applications
+    are just skipped.
+    -->
+    <screen id="check_status" next="#copy_app1">
+        <setvar name="app_status" lo="tmlvar:card.emv.app_status_list" op="item" ro="tmlvar:index"/>
+        <next uri="tmlapp.tml#assert">
+            <variant uri="#copy_app1" lo="tmlvar:app_status" op="equal" ro="active"/>
+            <variant uri="#loop_app" lo="tmlvar:app_status" op="equal" ro="inactive"/>
+        </next>
+    </screen>
+        
+<!--
+    Copy an application into the list of application to be displayed
+ -->
+    <screen id="copy_app1" next="#copy_app2">
+        <setvar name="app" lo="tmlvar:card.emv.app_list" op="item" ro="tmlvar:index"/>
+        <strtemplate name="app_item" format="%1%2: %3">
+            <getvar name="sep" />
+            <getvar name="index" format="^00"/>
+            <getvar name="app" />
+        </strtemplate>
+    </screen>
+    
+    <screen id="copy_app2" next="#loop_app">
+        <setvar name="btmlpa.emv.selection_list" lo="tmlvar:btmlpa.emv.selection_list" op="plus" ro="tmlvar:app_item" />
+        <setvar name="app" lo="tmlvar:sep" op="plus" ro="tmlvar:app" />
+        <setvar name="app_list" lo="tmlvar:app_list" op="plus" ro="tmlvar:app" />
+        <setvar name="aid" lo="tmlvar:card.emv.aid_list" op="item" ro="tmlvar:index"/>
+        <setvar name="aid" lo="tmlvar:sep" op="plus" ro="tmlvar:aid"/>
+        <setvar name="aid_list" lo="tmlvar:aid_list" op="plus" ro="tmlvar:aid"/>
+        <setvar name="sep" lo=";"/>
+    </screen>
+
+ <!--
+    Move forward the index for application status check process 
+   -->
+    <screen id="loop_app">
+        <setvar name="index" lo="tmlvar:index" op="plus" ro="1"/>
+        <next uri="#check_status">
+            <variant uri="#select_first" lo="tmlvar:index" op="equal" ro="tmlvar:count"/>
+        </next>
+    </screen>
+
+ <!--
+    Check whether the list of available applications is empty or not
+    -->
+    <screen id="select_first">
+        <setvar name="count" lo="tmlvar:app_list" op="number"/>
+        <next uri="#rej_no_app">
+            <variant uri="#show_app_lst" lo="0" op="less" ro="tmlvar:count"/>
+        </next>
+    </screen>
+    
+<!--
+    If none of the application sare active, abort the transaction
+  -->
+    <screen id="rej_no_app" next="tmlapp.tml#trans_abrt">
+        <display>
+            <table border="2" class="warning"><tr><td>
+                <span>
+                
+                    All applications are inactive.<br/>
+                    Transaction will be rejected.
+                
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+ <!--===========================================================================
+    Show the list of available applications for cardholder selection
+    ============================================================================-->
+    <!-- input a value from the list -->
+    <screen id="show_app_lst" cancel="tmlapp.tml#trans_abrt">
+        <setvar name="btmlpa.emv.selected_item" lo="tmlvar:btmlpa.emv.selection_list" op="item" ro="0"/>
+        <next uri="tmlapp.tml#assert">
+            <variant uri="#select_aid1" lo="tmlvar:btmlpa.emv.selected_item" op="not_equal" ro=""/>
+        </next>
+        <display>
+            <form>
+                <div class="title">
+                    <span class="title">
+                        Select ICC Application:
+                    </span>
+                </div>
+                <div class="menu">
+                    <input type="list" name="btmlpa.emv.selected_item" value="tmlvar:btmlpa.emv.selection_list" rows="4" width="100%" multiple="no" />
+                </div>
+            </form>
+        </display>
+    </screen>
+    
+<!--===========================================================================
+    Based on cardholder selection, fill the card.emv.selected_aid
+ ============================================================================-->
+    
+    <!-- get the aid value from the list value -->
+    <screen id="select_aid1" cancel="tmlapp.tml" timeout="1">
+    
+        <!-- formatting 'btmlpa.emv.selected_item' to contain only the first two digits, but not the rest of the list item.
+             for instance, if you have selected "00: VISA CREDIT" from the list on the
+             'show_app_lst' screen, after format operation,
+             'btmlpa.emv.selected_item' will contain only "00"  -->
+        <setvar name="btmlpa.emv.selected_item" lo="tmlvar:btmlpa.emv.selected_item" op="format" format="nn"/>
+        <!-- 'btmlpa.emv.selected_item' contains only digits, so it can be cast into integer -->
+        <setvar name="index" lo="tmlvar:btmlpa.emv.selected_item"/>
+        
+        <!-- set up variables for the card parser -->
+        <setvar name="card.emv.selected_app" lo=""/>
+        <setvar name="card.emv.selected_aid" lo="tmlvar:aid_list" op="item" ro="tmlvar:index"/>
+        
+        <!-- set variables that will be used in other modules of the BTMLPA 
+            such as receipt printing -->
+        <setvar name="btmlpa.emv.txn_aid" lo="tmlvar:card.emv.selected_aid" />
+        <setvar name="btmlpa.emv.txn_app" lo="tmlvar:app_list" op="item" ro="tmlvar:index" />
+        
+        <next uri="tmlapp.tml#assert">
+            <variant uri="#final_select" lo="tmlvar:card.emv.selected_aid" op="not_equal" ro=""/>
+        </next>
+        <display>
+            <table class="message"><tr><td>
+                <span>
+                
+                    <getvar name="btmlpa.emv.txn_app"/><br/>
+                    <getvar name="btmlpa.emv.txn_aid"/><br/>
+                
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+    
+
+    <!--===========================================================================
+    Final application selection and initialization after application 
+    auto/manual choice
+    ============================================================================-->
+     
+    <screen id="final_select" next="#chk_resel">
+        <tform>
+            <baddata max="1" next="tmlapp.tml#trans_abrt">
+                <table border="2" class="warning"><tr><td>
+                    <span>
+                    
+                        <getvar name="err.baddata_reason"/> <br/>
+                        err.high = <getvar name="err.code.high"/> <br/>
+                        err.low  = <getvar name="err.code.low"/><br/>
+                        card.emv.apdu_list: <getvar name="card.emv.apdu_list"/>
+                    
+                    </span>
+                </td></tr></table>
+            </baddata>
+            <card parser="icc_emv" parser_params="final_select"/>
+        </tform>
+    </screen>
+
+    <!--===========================================================================
+    Ensure the final selection was ok. If not, application list shall be 
+    re-displayed
+    If application selection was OK, go to PIN check
+    If application selection failed, try to select another one
+    ============================================================================-->
+    <screen id="chk_resel">
+        <next uri="#icc_get_cvm">
+            <!-- application selection failed -->
+            <variant uri="#dsp_selfld" lo="tmlvar:err.code.low" op="equal" ro="-32817"/>
+            <variant uri="#dsp_selfld" lo="tmlvar:err.code.low" op="equal" ro="-4380"/>
+        </next>
+    </screen>
+    
+ <!--####################################################################-->   
+    <!-- these screens are not used by the BTMLPA. They can be used to safely cancel an initiated transaction.
+        This can be used, for example, to read the customer name from an EMV card after the application selection, but to correctly
+        stop the transaction from going further
+        this cancellation should not be required for normal EMV transaction-->
+    
+    <screen id="cncltran" next="#dspcncl">
+        <tform>
+            <baddata max="1" next="tmlapp.tml#trans_abrt">
+                <table border="2" class="warning"><tr><td>
+                    <span>
+                    
+                        <getvar name="err.baddata_reason"/>
+                        
+                    </span>
+                </td></tr></table>
+            </baddata>
+            <card parser="icc_emv" parser_params="cancel"/>
+        </tform>        
+    </screen>
+    
+    <screen id="dspcncl" next="tmlapp.tml#trans_abrt">
+        <display>
+            The transaction has been canceled <br/>
+            Cardholder name = <getvar name="card.cardholder_name"/><br/>
+            AAC = <getvar name="card.emv.aac"/>
+        </display>
+    </screen>
+<!--####################################################################-->  
+ 
+    <!--===========================================================================
+    If final application selection failed, prompt the cardholder for another 
+    application selection if a list was previously displayed
+    ============================================================================-->
+    <screen id="dsp_selfld">
+        <next uri="#auto_app_sel">
+            <variant uri="#man_app_sel" lo="tmlvar:app_sel_mode" op="equal" ro="manual"/>
+        </next>
+        <display>
+            <table border="2" class="warning"><tr><td> 
+                 <span>
+                 
+                    <getvar name="err.baddata_reason"/> <br/>
+                    err.high = <getvar name="err.code.high"/> <br/>
+                    err.low  = <getvar name="err.code.low"/><br/>
+                    card.emv.apdu_list: <getvar name="card.emv.apdu_list"/><br/>
+                    app: <getvar name="card.emv.app_list"/><br/>
+                    status: <getvar name="card.emv.app_status_list"/>
+                
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+
+    
+    
+    <!-- icc screen analyses card verification method -->
+    <screen id="icc_get_cvm" next="#chksign">
+        
+        <tform>
+            <baddata max="1" next="tmlapp.tml#trans_abrt">
+                <table border="2" class="warning"><tr><td>
+                    <span>
+                    
+                        <getvar name="err.baddata_reason"/>
+                        err.high = <getvar name="err.code.high"/> <br/>
+                        err.low  = <getvar name="err.code.low"/><br/>
+                        card.emv.apdu_list: <getvar name="card.emv.apdu_list"/>
+                        
+                    </span>
+                </td></tr></table>
+            </baddata>
+            <card parser="icc_emv" parser_params="get_cvm"/>
+        </tform>
+    </screen>
+    
+    <screen id="chksign">
+        <setvar name="txt_cvm" lo=""/>
+        <next uri="#chkcvm">
+            <variant lo="tmlvar:card.emv.signature" op="equal" ro="1" uri="#set_sign"/>
+        </next>
+    </screen>
+    
+    <screen id="set_sign" next="#chkcvm">
+        <setvar name="txt_cvm" lo=" + SIGNATURE"/>
+    </screen>
+    
+    <screen id="chkcvm">
+        <next uri="tmlapp.tml#assert">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="tmlapp.tml#reject_trans"/>
+            <variant lo="tmlvar:card.parser.cvm" op="equal" ro="pin" uri="#enter_pin"/>
+            <variant lo="tmlvar:card.parser.cvm" op="equal" ro="pin_online" uri="#online_cvm"/>
+            <variant lo="tmlvar:card.parser.cvm" op="equal" ro="no_cv" uri="#cv_no_cv"/>
+            <variant lo="tmlvar:card.parser.cvm" op="equal" ro="" uri="#icc_rsk_mgmt"/> 
+         </next>
+    </screen>
+
+    <!-- Empty form, just to set the cvr -->
+    <screen id="online_cvm" next="#bypass_cvm" timeout="1">
+        <display>
+            <table class="message"><tr><td>
+                <span>
+                
+                    ONLINE PIN <getvar name="txt_cvm"/>
+                
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <screen id="bypass_cvm" next="#icc_get_cvm">
+        <setvar name="card.parser.cvr" lo="bypassed"/>
+    </screen>
+
+    <!-- Empty form, just to set the cvr -->
+    <screen id="cv_no_cv" next="#icc_get_cvm" timeout="1">
+        <setvar name="card.parser.cvr" lo="ok"/>
+        <display>
+            <table class="message"><tr><td>
+                <span>
+                
+                    NO CVM <getvar name="txt_cvm"/>
+                    
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!--
+     Check if it is last attempt
+     in case user presses cancel we should set present him next type of 
+     card verification method 
+     -->
+    <screen id="enter_pin" cancel="#cvr_no_pin" timeout="1">
+        <next uri="tmlapp.tml#assert">
+            <variant lo="tmlvar:card.emv.last_attempt" op="equal" ro="0" uri="#enterpin"/>
+            <variant lo="tmlvar:card.emv.last_attempt" op="equal" ro="1" uri="#enterpinlast"/>
+        </next>
+        <display>
+            <table class="message"><tr><td>
+                <span>
+                
+                    Offline PIN <getvar name="txt_cvm"/>
+                    
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!-- 
+     in case user presses cancel we should present him next type of 
+     card verification method
+     -->
+    <screen id="enterpin" cancel="#cvr_no_pin" next="#verify_pin">
+        <tform>
+                                
+            <baddata max="1" next="tmlapp.tml#trans_abrt">
+                <table border="2" class="warning"><tr><td>
+                    <span>
+                
+                        <getvar name="err.baddata_reason"/><br/>
+                        err.high = <getvar name="err.code.high"/> <br/>
+                        err.low  = <getvar name="err.code.low"/><br/>
+                        
+                    </span>
+                </td></tr></table>
+            </baddata>
+            <!-- calls SSA for secure PIN entry -->
+                <pinentry type="icc" prompt="Enter PIN" />
+
+        </tform>
+    </screen>
+
+    <!-- 
+     Sets cvr to "failed" as the customer refused to enter pin (instead of 
+     "failed" "bypassed" value may be used to bypass "pin" method)
+    -->
+    <screen id="cvr_no_pin" next="#icc_get_cvm">
+        <setvar name="card.parser.cvr" lo="failed"/>
+    </screen>
+
+    <!-- 
+     in case user presses cancel we should present him next type of 
+     card verification method
+     -->
+    <screen id="enterpinlast" timeout="3" cancel="#cvr_no_pin" next="#pinlast">
+        <display>
+            <table class="message"><tr><td>
+                <span>
+                
+                    Last Try.
+                
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!-- 
+     in case user preses cancel we should present him next type of 
+     card verification method
+     -->
+    <screen id="pinlast" cancel="#cvr_no_pin" next="#verify_pin">
+        <tform>
+            <baddata next="tmlapp.tml#trans_abrt">
+                <table border="2" class="warning"><tr><td>
+                    <span>
+                    
+                        <getvar name="err.baddata_reason"/>
+                        
+                    </span>
+                </td></tr></table>
+            </baddata>
+                 
+                <pinentry type="icc" prompt="Enter PIN"/>
+            
+        </tform>
+    </screen>
+
+    <!-- Verifies pin -->
+    <screen id="verify_pin">
+        <next uri="tmlapp.tml#assert">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="tmlapp.tml#reject_trans"/>
+
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="ok" uri="#icc_get_cvm"/>
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="ok_msg" uri="#pin_ok_msg"/>
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="failed" uri="#wrong_pin"/>
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="pin_tries" uri="#wrong_pin"/>
+        </next>
+        <tform>
+            <baddata max="1" next="tmlapp.tml#trans_abrt">
+                <table border="2" class="warning"><tr><td>
+                    <span>
+                    
+                        <getvar name="err.baddata_reason"/><br/>
+                        err.high = <getvar name="err.code.high"/> <br/>
+                        err.low  = <getvar name="err.code.low"/>
+                        
+                    </span>
+                </td></tr></table>
+            </baddata>
+            <card parser="icc_emv" parser_params="verify"/>
+        </tform>
+    </screen>
+
+    <!-- Notifies that user entered correct pin -->
+    <screen id="pin_ok_msg" timeout="1" cancel="#icc_get_cvm" next="#icc_get_cvm">
+        <display>
+            <table class="message"><tr><td>
+                <span>
+                
+                    PIN OK
+                    
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!-- Notifies that user entered incorrect pin -->
+    <screen id="wrong_pin" timeout="1" cancel="#icc_get_cvm">
+        <next uri="tmlapp.tml#assert">
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="failed" uri="#enter_pin"/>
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="pin_tries" uri="#icc_get_cvm"/>
+        </next>
+        <display>
+            <table class="message"><tr><td>
+                <span>
+                
+                    Incorrect PIN
+                    
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+    
+<!-- Perform the risk management. 
+    The "icc_emv" parser will:
+        analyse amount and transaction type;
+        analyse previous submission attempt ("oebr.econn" TML value);
+        update "card.parser.verdict" variable;
+        fill "card.parser.reject_reason" variable, if necessary. 
+ -->
+       
+    <screen id="icc_rsk_mgmt" next="#chk_verdict">
+        <setvar name="btmlpa.emv.txn_aid" lo="tmlvar:card.emv.aid"/>
+        <setvar name="transaction.message.transaction-date" lo="tmlvar:terminal.datetime"/>
+          <setvar name="payment.auth_code" lo=""/>
+           <setvar name="payment.auth_resp_code" lo=""/>
+        <tform>
+            <baddata max="1" next="tmlapp.tml#trans_abrt">
+                <table border="2" class="warning"><tr><td>
+                    <span>
+                    
+                        <getvar name="err.baddata_reason"/><br/>
+                        err.high=<getvar name="err.code.high"/><br/>
+                        err.low=<getvar name="err.code.low"/>
+                        card.emv.apdu_list: <getvar name="card.emv.apdu_list"/>
+                        
+                    </span>
+                </td></tr></table>
+            </baddata>
+            <card parser="icc_emv" parser_params="risk_mgmt"/>
+        </tform>
+    </screen>
+    
+    <screen id="chk_verdict">
+        <setvar name="oebr.submit_mode" lo="tmlvar:card.parser.verdict"/>
+        <next uri="tmlapp.tml#assert">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="#off_rej"/>
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="offline" uri="#off_comp"/>
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="online" uri="#icc_submit"/>
+        </next>
+  
+    </screen>
+
+
+
+    <screen id="off_rej" next="tmlapp.tml#trans_abrt" timeout="1">
+        <display>
+            <table border="2" class="warning"><tr><td>
+                <span>
+                
+                    REJECTED
+                
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <screen id="off_comp" next="#icc_submit" timeout="1">
+        <display>
+            <table border="0" class="message"><tr><td>
+                <span>
+                
+                    TRANSACTION PROCESSED OFFLINE
+                    
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+    
+<!--==========================================
+    Submits transaction data to host
+ ============================================ -->
+
+<!-- 	In case of the successful online submit (oebr.submit_mode ="online") the next screen that will be executed will be
+    the dynamic TML page generated by the host.
+    In case of the successful offline submit the next screen is determined by the "next" attribute.
+    In case of a submission error, no values are submitted and the next screen is determined by the "econn" attribute -->
+  <screen id="icc_submit" next="tmlapp.tml#receipt">
+    	<!-- to process the test cards that are expired. Remove for normal operations -->
+      	<setvar name="card.expiry_date" lo="2999/12/31"/>
+    	<!-- set the submit mode to either online or offline -->
+    	<setvar name="oebr.submit_mode" lo="tmlvar:card.parser.verdict"/> 
+	<setvar name="transaction.message.type" lo="100"/>
+	<setvar name="transaction.message.date" lo="tmlvar:transaction.message.transaction-date"/>
+	<setvar name="transaction.message.transaction-functioncode" lo="100"/>
+	<setvar name="transaction.message.card-iso2track" lo="tmlvar:card.mag.iso2_track"/>
+	<setvar name="transaction.message.card-pan" lo="tmlvar:card.pan"/>
+	<setvar name="transaction.message.card-expiry" lo="tmlvar:card.expiry_date"/>
+	<setvar name="transaction.message.transaction-amount" lo="tmlvar:payment.amount"/>
+	<setvar name="transaction.message.transaction-amount2" lo="tmlvar:payment.amount_other"/>
+	<setvar name="isofield.10" lo="12345"/>
+
+        <txnsubmit tgt="/auth" econn="#icc_conn_fld">
+            <getvar name="oebr.submit_mode"/>
+            <getvar name="card.issue_number"/>
+            <getvar name="card.cardholder_name"/>
+            <getvar name="card.effective_date"/>
+            <getvar name="card.input_type"/>
+            <!-- ICC data -->
+            <getvar name="card.emv.aid"/>
+            <getvar name="card.emv.aip"/>
+            <getvar name="card.emv.auc"/>
+            <getvar name="card.emv.atc"/>
+            <getvar name="card.emv.aac"/>
+            <getvar name="card.emv.tc"/>
+            <getvar name="card.emv.arqc"/>
+            <getvar name="card.emv.iad"/>
+            <getvar name="card.emv.tvr"/>
+            <getvar name="card.emv.unumber"/>
+            <getvar name="oebr.time_zone"/>
+            <!-- Transaction data -->
+            <getvar name="transaction.message.id"/>
+            <getvar name="transaction.message.type"/>
+            <getvar name="transaction.message.date"/>
+            <getvar name="transaction.message.transaction-type"/>
+            <getvar name="transaction.message.transaction-functioncode"/>
+            <getvar name="transaction.message.transaction-date"/>
+            <getvar name="transaction.message.card-pan"/>
+            <getvar name="transaction.message.card-expiry"/>
+            <getvar name="transaction.message.card-iso2track"/>
+            <getvar name="transaction.message.transaction-amount"/>
+            <getvar name="transaction.message.transaction-amount2"/>
+            <getvar name="transaction.message.transaction-currency"/>
+        </txnsubmit>
+    </screen>
+ 
+ <!--===========================================================================
+    This screen is used when the host is unreachable
+    ============================================================================-->
+    <!-- this screen is reached in case there was an error with either online or offline submit
+     first check which one of then caused the error-->
+   
+    <screen id="icc_conn_fld">
+        <next uri="tmlapp.tml#assert">
+            <variant  lo="tmlvar:oebr.submit_mode" op="equal" ro="online" uri="#con_fld_onln"/>
+            <variant  lo="tmlvar:oebr.submit_mode" op="equal" ro="offline" uri="#con_fld_ofln"/>
+        </next>
+    </screen>
+    
+    <!-- submission error during online submission. The card should perform its risk management to see if it is ok to do an 
+        offline transaction or the transaction should be rejected -->
+    <screen id="con_fld_onln" next="#icc_rsk_mgmt" timeout="2">
+        <display>
+            <table border="2" class="warning"><tr><td>
+                <span>
+                
+                    HOST IS UNREACHABLE
+                    
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+    
+    <!-- this screen is reached if an offline submission failed. This occurs
+        if the Offline Transaction Pull is full and OEGW can not be reached to clear the pull.
+        The transaction should be rejected -->
+    <screen id="con_fld_ofln" next="#off_rej" timeout="2">
+        <display>
+            <table border="2" class="warning"><tr><td>
+                <span>
+                
+                    OFFLINE TRANSACTION PULL IS FULL
+                    
+                </span>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    
+    <!-- Screen which dynamic TML may refer to -->
+    <screen id="icc_tc_aac" cancel="tmlapp.tml#trans_abrt">
+        <setvar name="oebr.submit_mode" lo="offline"/>
+        <next uri="tmlapp.tml#void_trans">
+            <variant lo="tmlvar:card.emv.tc" op="not_equal" ro="" uri="tmlapp.tml#receipt"/>
+        </next>
+        <submit tgt="/auth_icc_2" econn="tmlapp.tml#compl_txn">            
+            <getvar name="card.emv.aac"/>
+            <getvar name="card.emv.tc"/>
+            <getvar name="transaction.message.id"/>
+        </submit>
+    </screen>    
+
+
+    <screen id="error_scr">
+         <display>
+            <table border="2" class="warning"><tr><td>
+                <span>
+                
+                    code-low: <getvar name="err.code.low"/> <br/>
+                    code-high: <getvar name="err.code.high"/> <br/>
+                    baddata_reason: <getvar name="err.baddata_reason"/> <br/>
+                    descr: <getvar name="err.description"/> <br/>
+                
+                </span>
+            </td></tr></table>
+         </display>
+    </screen>
+    
+    
+    
+
+</tml>
+
+<!--========================================================================
+
+ COPYRIGHT (C) 2008 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ========================================================================-->

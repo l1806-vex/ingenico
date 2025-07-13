@@ -1,0 +1,36 @@
+;TELIUM MANAGER EXPORT SPM PROD
+;M2OS T2
+45920863.agn
+;Extens T2
+45940963.lgn
+;Graphic Librairy T2 
+45960683.lgn
+;M2OS Parameters T2
+45970763.lgn
+;Entry T2
+45980683.lgn
+;Cam/Date Librairy T2
+45990763.lgn
+;PSC Protocol T2
+46010583.lgn
+;NULL Protocole T2
+46020593.lgn
+;Crypto T2
+46060433.lgn
+;EMV selection T2
+46080623.lgn
+;IAM T2
+46090593.lgn
+;UMS T2
+46160593.lgn
+;GPRS T2
+46210723.lgn
+;HWCNF T2
+46420262.lgn
+;Security Exp T2
+46560321.lgn
+;PackM2OS T2
+47786503.pgn
+;Telium SDK
+8442291003.pgn
+

@@ -1,0 +1,60 @@
+ /** \page Before Getting Started
+
+\section tcpsec1 Resource Requirements
+*
+* Prepare the following materials to test this sample.
+*
+<b>Hardware:</b>
+- Any Telium terminal that supports Ethernet. Works on: <b>ICT250, ISC350, and IWL280</b>.
+- Downloading cable appropriate for the Telium terminal.
+
+*
+<b>Software:</b>
+- Latest version of LLT(Local Loading Tool) 
+- Latest Telium SDK Package. 
+- Ingedev v7.14.0.2 or later.
+- Any TCP/IP socket testing tool to act as server/client on the PC side. In this sample application, Hercules Setup Utility tool was used. Download from www.HW-group.com.
+*
+\section tcpsec2 Terminal Preparation and Configuration
+*
+* Perform the following on the terminal:
+- \ref tcpsubt1
+- \ref tcpsubt2
+- \ref tcpsubt3
+- \ref tcpsubt4
+*
+\subsection tcpsubt1 Load the Latest SDK and other files
+*
+* On LLT,
+- Load the OS, Manager (GOAL_export_PROD) and Link Layer
+- Load any html file
+*
+\subsection tcpsubt2 Load the TCP/IP Sample Application
+*
+* On Ingedev,
+- Import the TCP/IP sample project in Ingedev workspace and build it. Please see Ingedev help documentation to see how to import and build an existing Ingedev project.
+- Download the project into the Telium terminal using Ingedev. Make sure that the LLT was set up correctly and that Telium terminal is connected to the proper USB port.
+*
+\subsection tcpsubt3 Setup Ethernet
+*
+* On the terminal, Ensure the terminal is connected to Ethernet LAN - an LAN icon should be displayed on idle screen with color GREEN. Do the following if the icon is colored RED:
+- Press F to activate Telium Manager's menu.
+- Select Initialization > Hardware > Ethernet Setup 
+- Select "Boot Proto" and then select between "Static Address" and "DHCP". DHCP is recommended to obtain the terminal IP address automatically. if Static address is selected, manually enter the IP address and Subnet Mask.
+- Save the configuration by selecting "Save."
+- Terminal reboots for the changes to take effect.
+- The LAN icon should turn to color GREEN. Otherwise, check the LAN connection.
+*
+\subsection tcpsubt4 Activate or Deactivate Debug Mode
+*
+* The TCP/IP sample application can be tested with or without traces. Activate (with trace) or Deactivate (without trace) Debug.
+*
+* To activate,
+- Restart the terminal and press F when the LDBG setup prompt is displayed. Enter the value '5' to trace using USB. Before doing this make sure that the terminal LAN connection has already been setup. The project settings in Ingedev should be in GNU_ARM_DEBUG configuration.
+- The terminal restarts and "COM5:115200,N,8,1" text message is displayed on the screen.
+- Right click the project name and click "Debug As" and "Telium Remote Application". Make sure that remote debug preferences are properly set in Ingedev preferences. See Ingedev help manual for more information.
+*
+* To Deactivate,
+- Restart the terminal and press F when the LDBG setup prompt is displayed. Enter the value '0'
+
+  */

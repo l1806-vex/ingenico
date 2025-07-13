@@ -1,0 +1,1130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2009 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:tns="http://ingenico.com/ns/service" xmlns:tnsdata="http://ingenico.com/ns/service/data" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://ingenico.com/ns/common/data" xmlns:ns="http://www.ingenico.com/terminal-config" targetNamespace="http://ingenico.com/ns/service">
+	<wsdl:types>
+		<schema targetNamespace="http://ingenico.com/ns/service/data" xmlns="http://www.w3.org/2001/XMLSchema">
+			<include schemaLocation="./service.xsd"/>
+			<xsd:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="addResourceRequest">
+		<documentation>
+            		request with resource data
+                </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="resource" type="xsd:string">
+		<documentation>
+                resource data
+            	</documentation>
+		</wsdl:part>
+		<wsdl:part name="hash" type="xsd:string">
+		<documentation>
+                resource data hash
+            	</documentation>
+		</wsdl:part>
+		<wsdl:part name="name" type="xsd:string">
+		<documentation>
+                resource name
+            	</documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addResourceResponse">
+		<documentation>
+            		response with icon ID
+                </documentation>
+		<wsdl:part name="resid" type="xsd:long">
+		<documentation>
+                resource ID
+            	</documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="setIconRequest">
+        <documentation>
+                    request with icon data
+                </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string">
+        <documentation>
+                service id
+                </documentation>
+        </wsdl:part>
+         <wsdl:part name="data1" type="xsd:string">
+        <documentation>
+                icon data
+                </documentation>
+        </wsdl:part>
+        <wsdl:part name="data1_version" type="xsd:int">
+        <documentation>
+                icon version
+                </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="setIconResponse">
+        <documentation>
+                    response with icon ID
+                </documentation>
+        <wsdl:part name="icid" type="xsd:long">
+        <documentation>
+                    icon ID
+        </documentation>
+        </wsdl:part>
+    </wsdl:message>
+        <wsdl:message name="getIconDataRequest">
+        <documentation>
+                    request for the icon
+                </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string">
+        <documentation>
+                service id
+                </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getIconDataResponse">
+        <documentation>
+                    get icon response
+                </documentation>
+        <wsdl:part name="serviceIcon" type="tnsdata:ServiceIcon">
+        <documentation>
+                icon data
+                </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteIconRequest">
+        <documentation>
+                    delete icon for the service
+                </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string">
+        <documentation>
+                icon id
+                </documentation>
+        </wsdl:part>
+    </wsdl:message>
+   	<wsdl:message name="getResourceRequest">
+		<documentation>
+            		request for the resource
+                </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="id" type="xsd:long">
+		<documentation>
+                resource id
+            	</documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getResourceResponse">
+		<documentation>
+            		get icon response
+                </documentation>
+		<wsdl:part name="resource" type="tnsdata:Resource">
+		<documentation>
+                icon data
+            	</documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="deleteResourceRequest">
+		<documentation>
+            		load icon for the service
+                </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="resid" type="xsd:long">
+		<documentation>
+                resource id
+            	</documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="assignIconRequest">
+		<documentation>
+            		request to assign icon for the service
+                </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="srvid" type="xsd:string">
+		<documentation>
+                service id
+            	</documentation>
+		</wsdl:part>
+		<wsdl:part name="resid" type="xsd:long">
+		<documentation>
+                resource id
+            	</documentation>
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="addServiceProviderRequest">
+		<documentation>
+            add a new service provider
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="provider" type="tnsdata:ServiceProvider">
+			<documentation>
+                service provider data
+            </documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="changeServiceProviderRequest">
+		<documentation>
+            change service provider
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="srvpid" type="xsd:string"/>
+		<wsdl:part name="provider" type="tnsdata:ServiceProvider">
+			<documentation>
+                service provider data
+            </documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="serviceProviderIDRequest">
+		<documentation>
+            enable service provider
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="srvpid" type="xsd:string">
+			<documentation>
+                service provider id
+            </documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addServiceRequest">
+		<documentation>
+            add a new service
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="service" type="tnsdata:Service">
+			<documentation>
+                service data
+            </documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="changeServiceRequest">
+		<documentation>
+            change service
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="srvid" type="xsd:string"/>
+		<wsdl:part name="service" type="tnsdata:Service">
+			<documentation>
+                service data
+            </documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="serviceIDRequest">
+		<documentation>
+            service id
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="srvid" type="xsd:string">
+			<documentation>
+                service id
+            </documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="addServiceSubscriptionRequest">
+		<documentation>
+            add a new service subscription
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="subscription" type="tnsdata:ServiceSubscription">
+			<documentation>
+                service data
+            </documentation>
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getServiceSubscriptionByIdRequest">
+		<documentation>
+            change service subscription
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="subsid" type="xsd:long"/>
+		<documentation>
+            service subscription identifying data
+        </documentation>
+	</wsdl:message>
+
+	<wsdl:message name="serviceSubscriptionIDRequest">
+		<documentation>
+            change service subscription
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="contract" type="xsd:string"/>
+		<wsdl:part name="itid" type="xsd:string"/>
+		<wsdl:part name="srvid" type="xsd:string"/>
+		<documentation>
+            service subscription identifying data
+        </documentation>
+	</wsdl:message>
+	<wsdl:message name="getServiceProviderListRequest">
+		<documentation>
+            query a list of service providers
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="serviceProviderQuery" type="tnsdata:ServiceProviderQuery">
+			<documentation>
+                Query object containing the query restrictions
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="sortOrder" type="tnsdata:ServiceProviderSortList"/>
+	</wsdl:message>
+	<wsdl:message name="getServiceListRequest">
+		<documentation>
+            query a list of services
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="serviceQuery" type="tnsdata:ServiceQuery">
+			<documentation>
+                Query object containing the query restrictions
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="sortOrder" type="tnsdata:ServiceSortList"/>
+	</wsdl:message>
+	<wsdl:message name="getServiceSubscriptionListRequest">
+		<documentation>
+            query a list of services
+        </documentation>
+		<wsdl:part name="auth" type="common:AuthCredentials">
+			<documentation>
+                authentication data
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="serviceSubscriptionQuery" type="tnsdata:ServiceSubscriptionQuery">
+			<documentation>
+                Query object containing the query restrictions
+            </documentation>
+		</wsdl:part>
+		<wsdl:part name="sortOrder" type="tnsdata:ServiceSubscriptionSortList"/>
+	</wsdl:message>
+    <wsdl:message name="getStartupServiceRequest">
+        <documentation>
+            get startup service
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="itid" type="common:Terminal.ITID">
+            <documentation>
+                itid of the terminal having startup service
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getStartupServiceResponse">
+        <documentation>
+            get startup service
+        </documentation>
+        <wsdl:part name="subscription" type="tnsdata:ServiceSubscription">
+            <documentation>
+                service data
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="setStartupServiceRequest">
+        <documentation>
+            set startup service
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="itid" type="common:Terminal.ITID">
+            <documentation>
+                itid of the terminal to set startup service
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="subs" type="tnsdata:ServiceSubscription">
+            <documentation>
+                new startup subscription
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="checkVASRequest">
+        <documentation>
+            set startup service
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srpid" type="xsd:string">
+            <documentation>
+                name of service provider, optional field
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="srvid" type="xsd:string">
+            <documentation>
+                service name, optional field
+            </documentation>
+        </wsdl:part>
+    </wsdl:message>
+	<wsdl:message name="checkVASResponse">
+		<documentation>
+            Response contains a structure with statuses of the VAS and VAS providers
+        </documentation>
+		<wsdl:part name="provider" type="tnsdata:ServiceProvidersAvailability"/>
+	</wsdl:message>
+
+	<wsdl:message name="baseResponse">
+		<documentation>
+            Response contains result (valid or not), error message in case of any errors
+        </documentation>
+		<wsdl:part name="rslt" type="xsd:long"/>
+		<wsdl:part name="errormsg" type="xsd:string"/>
+	</wsdl:message>
+	<wsdl:message name="getServiceProviderResponse">
+		<documentation>
+            Response contains a single service provider
+        </documentation>
+		<wsdl:part name="provider" type="tnsdata:ServiceProvider"/>
+	</wsdl:message>
+	<wsdl:message name="getServiceResponse">
+		<documentation>
+            Response contains a single service
+        </documentation>
+		<wsdl:part name="service" type="tnsdata:Service"/>
+	</wsdl:message>
+	<wsdl:message name="getServiceSubscriptionResponse">
+		<documentation>
+            Response contains a single service subscription
+        </documentation>
+		<wsdl:part name="subscription" type="tnsdata:ServiceSubscription"/>
+	</wsdl:message>
+	<wsdl:message name="getServiceProviderListResponse">
+		<documentation>
+            Response contains list of service providers
+        </documentation>
+		<wsdl:part name="providers" type="tnsdata:ServiceProviders"/>
+	</wsdl:message>
+	<wsdl:message name="getServiceListResponse">
+		<documentation>
+            Response contains list of services
+        </documentation>
+		<wsdl:part name="services" type="tnsdata:Services"/>
+	</wsdl:message>
+	<wsdl:message name="getServiceSubscriptionListResponse">
+		<documentation>
+            Response contains list of service subscriptions
+        </documentation>
+		<wsdl:part name="subscriptions" type="tnsdata:ServiceSubscriptions"/>
+	</wsdl:message>
+	<wsdl:portType name="ServiceWSIF">
+		<wsdl:operation name="assignIcon">
+			<documentation>
+                		Assigns icon for the service
+                        </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="assignIconRequest" message="tns:assignIconRequest"/>
+			<wsdl:output name="assignIconResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getResource">
+			<documentation>
+                		Gets resource data for displaying/processing
+                        </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="getResourceRequest" message="tns:getResourceRequest"/>
+			<wsdl:output name="getResourceResponse" message="tns:getResourceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="addResource">
+			<documentation>
+                		Adds resource to the database
+                        </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="addResourceRequest" message="tns:addResourceRequest"/>
+			<wsdl:output name="addResourceResponse" message="tns:addResourceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="setIcon">
+            <documentation>
+                        Adds icon to the database
+                        </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input name="setIconRequest" message="tns:setIconRequest"/>
+            <wsdl:output name="setIconResponse" message="tns:setIconResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getIconData">
+            <documentation>
+                        Gets icon data for displaying/processing
+                        </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input name="getIconDataRequest" message="tns:getIconDataRequest"/>
+            <wsdl:output name="getIconDataResponse" message="tns:getIconDataResponse"/>
+        </wsdl:operation>
+      <wsdl:operation name="deleteIcon">
+            <documentation>
+                        Deletes icon from the database
+                        </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input name="deleteIconRequest" message="tns:deleteIconRequest"/>
+            <wsdl:output name="deleteIconResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+		<wsdl:operation name="deleteResource">
+			<documentation>
+                		Deletes resource from the database
+                        </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="deleteResourceRequest" message="tns:deleteResourceRequest"/>
+			<wsdl:output name="deleteResourceResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="addServiceProvider">
+			<documentation>
+                Add a service provider to the system. Must have a unique SRVPID
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="addServiceProviderRequest" message="tns:addServiceProviderRequest"/>
+			<wsdl:output name="addServiceProviderResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="changeServiceProvider">
+			<documentation>
+                Update an existing service provider ( identified by srvid) information
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="changeServiceProviderRequest" message="tns:changeServiceProviderRequest"/>
+			<wsdl:output name="changeServiceProviderResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="enableServiceProvider">
+			<documentation>
+                enable supplied service provider.
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="enableServiceProviderRequest" message="tns:serviceProviderIDRequest"/>
+			<wsdl:output name="enableServiceProviderResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="retireServiceProvider">
+			<documentation>
+                retire service provider
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="retireServiceProviderRequest" message="tns:serviceProviderIDRequest"/>
+			<wsdl:output name="retireServiceProviderResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceProvider">
+			<documentation>
+                Return service provider data
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="getServiceProviderRequest" message="tns:serviceProviderIDRequest"/>
+			<wsdl:output name="getServiceProviderResponse" message="tns:getServiceProviderResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="addService">
+			<documentation>
+                Add a service to the system. Must have a unique SRVID
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="addServiceRequest" message="tns:addServiceRequest"/>
+			<wsdl:output name="addServiceResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="changeService">
+			<documentation>
+                Update an existing service ( identified by srvid) information
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="changeServiceRequest" message="tns:changeServiceRequest"/>
+			<wsdl:output name="changeServiceResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="enableService">
+			<documentation>
+                enable supplied service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="enableServiceRequest" message="tns:serviceIDRequest"/>
+			<wsdl:output name="enableServiceResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="disableService">
+			<documentation>
+                disable supplied service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="disableServiceRequest" message="tns:serviceIDRequest"/>
+			<wsdl:output name="disableServiceResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="retireService">
+			<documentation>
+                retire service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="retireServiceRequest" message="tns:serviceIDRequest"/>
+			<wsdl:output name="retireServicerResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getService">
+			<documentation>
+                Return service data
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="getServiceRequest" message="tns:serviceIDRequest"/>
+			<wsdl:output name="getServiceResponse" message="tns:getServiceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="addServiceSubscription">
+			<documentation>
+                Add a service subscription to the system.
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="addServiceSubscriptionRequest" message="tns:addServiceSubscriptionRequest"/>
+			<wsdl:output name="addServiceSubscriptionResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="activateServiceSubscription">
+			<documentation>
+                activate supplied service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="activateServiceSubscriptionRequest" message="tns:serviceSubscriptionIDRequest"/>
+			<wsdl:output name="activateServiceSubscriptionResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="suspendServiceSubscription">
+			<documentation>
+                suspend supplied service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="suspendServiceSubscriptionRequest" message="tns:serviceSubscriptionIDRequest"/>
+			<wsdl:output name="suspendServiceSubscriptionResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="deleteServiceSubscription">
+			<documentation>
+                delete supplied service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="deleteServiceSubscriptionRequest" message="tns:serviceSubscriptionIDRequest"/>
+			<wsdl:output name="deleteServiceSubscriptionResponse" message="tns:baseResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceSubscriptionById">
+			<documentation>
+                Return service subscription data
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="getServiceSubscriptionByIdRequest" message="tns:getServiceSubscriptionByIdRequest"/>
+			<wsdl:output name="getServiceSubscriptionResponse" message="tns:getServiceSubscriptionResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceSubscription">
+			<documentation>
+                Return service subscription data
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="getServiceSubscriptionRequest" message="tns:serviceSubscriptionIDRequest"/>
+			<wsdl:output name="getServiceSubscriptionResponse" message="tns:getServiceSubscriptionResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceProviders">
+			<documentation>
+                Return list of service providers
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="getServiceProviderListRequest" message="tns:getServiceProviderListRequest"/>
+			<wsdl:output name="getServiceProviderListResponse" message="tns:getServiceProviderListResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getServices">
+			<documentation>
+                Return list of services
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="getServiceListRequest" message="tns:getServiceListRequest"/>
+			<wsdl:output name="getServiceListResponse" message="tns:getServiceListResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceSubscriptions">
+			<documentation>
+                Return list of services
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input name="getServiceSubscriptionListRequest" message="tns:getServiceSubscriptionListRequest"/>
+			<wsdl:output name="getServiceSubscriptionListResponse" message="tns:getServiceSubscriptionListResponse"/>
+		</wsdl:operation>
+        <wsdl:operation name="getStartupService">
+            <documentation>
+                Return startup service of the terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input name="getStartupServiceRequest" message="tns:getStartupServiceRequest"/>
+            <wsdl:output name="getStartupServiceResponse" message="tns:getStartupServiceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setStartupService">
+            <documentation>
+                Sets startup service of the terminal, resets if null passed
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input name="setStartupServiceRequest" message="tns:setStartupServiceRequest"/>
+            <wsdl:output name="setStartupServiceResponse" message="tns:baseResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="checkVAS">
+            <documentation>
+                Checks status of VAS providers and VAS
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input name="checkVASRequest" message="tns:checkVASRequest"/>
+            <wsdl:output name="checkVASResponse" message="tns:checkVASResponse"/>
+        </wsdl:operation>
+
+	</wsdl:portType>
+	<wsdl:binding name="ServiceSoapBinding" type="tns:ServiceWSIF">
+		<wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="assignIcon">
+			<documentation>
+                Assign icon for the service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getResource">
+			<documentation>
+                Gets icon of the service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addResource">
+			<documentation>
+                Add resource to the database
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+	    <wsdl:operation name="setIcon">
+            <documentation>
+                Add icon to the database
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getIconData">
+            <documentation>
+                get icon from the database
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteIcon">
+            <documentation>
+                Delete icon from the database
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:output>
+        </wsdl:operation> 
+		<wsdl:operation name="deleteResource">
+			<documentation>
+                Delete resource from the database
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addServiceProvider">
+			<documentation>
+                Adds a new service provider
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="changeServiceProvider">
+			<documentation>
+                changes service provider
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="enableServiceProvider">
+			<documentation>
+                enables service provider
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="retireServiceProvider">
+			<documentation>
+                retires service provider
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceProvider">
+			<documentation>
+                gets service provider
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addService">
+			<documentation>
+                Adds a new service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="changeService">
+			<documentation>
+                changes service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="enableService">
+			<documentation>
+                enables service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="disableService">
+			<documentation>
+                disables service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="retireService">
+			<documentation>
+                retires service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getService">
+			<documentation>
+                gets service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="addServiceSubscription">
+			<documentation>
+                Adds a new service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="activateServiceSubscription">
+			<documentation>
+                Activates service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="suspendServiceSubscription">
+			<documentation>
+                Suspends service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="deleteServiceSubscription">
+			<documentation>
+                Deletes service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceSubscriptionById">
+			<documentation>
+                gets service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceSubscription">
+			<documentation>
+                gets service subscription
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceProviders">
+			<documentation>
+                gets service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getServices">
+			<documentation>
+                gets service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceSubscriptions">
+			<documentation>
+                gets service
+            </documentation>
+			<wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+			<wsdl:input>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+			</wsdl:output>
+		</wsdl:operation>
+        <wsdl:operation name="setStartupService">
+            <documentation>
+                sets service subscription as startup for the terminal
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getStartupService">
+            <documentation>
+                returns current startup service of the terminal 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:output>
+        </wsdl:operation>       
+        <wsdl:operation name="checkVAS">
+            <documentation>
+                check availability of VAS providers and their VAS 
+            </documentation>
+            <wsdlsoap:operation soapAction="/cfgsrv/services/Service"/>
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ingenico.com/ns/service"/>
+            </wsdl:output>
+        </wsdl:operation>       
+        		
+	</wsdl:binding>
+	<wsdl:service name="ServiceWSIFService">
+		<wsdl:port name="Service" binding="tns:ServiceSoapBinding">
+			<wsdlsoap:address location="http://localhost:8090/cfgsrv/services/Service"/>
+		</wsdl:port>
+	</wsdl:service>
+	<!--    <wsdl:message name="serviceProviderListRequest">
+        <documentation>
+            query a list of service providers
+        </documentation>
+        <wsdl:part name="auth" type="common:AuthCredentials">
+            <documentation>
+                authentication data
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="serviceProviderQuery" type="tnsdata:ServiceProviderQuery">
+            <documentation>
+                Query object containing the query restrictions
+            </documentation>
+        </wsdl:part>
+        <wsdl:part name="sortOrder" type="tnsdata:ServiceProviderSortList"/>
+    </wsdl:message>  -->
+</wsdl:definitions>

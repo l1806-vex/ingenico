@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ingenico.ingedev.u32addons"
+      label="Unicapt32 Development Add-ons"
+      version="7.16.1.3"
+      provider-name="Ingenico"
+      plugin="com.ingenico.ingedev.product.ui">
+
+   <license url="license.html">
+      This LICENSE AGREEMENT is made between: 
+INGENICO SA, a limited liability company registered under the
+French laws and having its registered office at 192, Avenue Charles
+de Gaulle, 92200 Neuilly-sur-Seine, FRANCE (hereinafter referred
+to as &quot;Ingenico&quot;)
+and
+The IngeDev user (hereinafter referred to as “Customer”) 
+WHEREAS:
+(A) Ingenico has developed the IngeDev Software, as defined hereunder,
+and,
+(B) Ingenico has agreed on the terms and conditions set out below
+to supply, at no cost, Customer with the Software named IngeDev
+and,
+(C) Customer has agreed to license the IngeDev Software from
+Ingenico on the terms and subject to the conditions set out in
+this Agreement.
+NOW THEREFORE THE PARTIES HEREBY AGREE AS FOLLOWS:
+1. Definitions
+1.1 In this Agreement the following definitions shall have the
+meanings set opposite them, namely: 
+“Agreement” shall mean this license agreement;
+“Clause” shall mean a clause of this Agreement (unless the context
+requires otherwise);
+“Confidential Information” shall mean trade secrets, commercial,
+financial, marketing, technical and other information of either
+party of a confidential nature including, without limitation,
+all confidential information relating to the Software and any
+source codes, object codes, materials or information relating
+to the Software;
+“Intellectual Property Rights” shall mean patents, inventions,
+discoveries, trade marks (whether registered or unregistered),
+design rights (whether registered or unregistered), copyright,
+database rights, and any and all other forms of intellectual
+property rights together with any applications for any of the
+foregoing;
+“IngeDev Software” shall mean the Software and the Eclipse components
+in machine readable object code form. The Eclipse components
+are subject to the Eclipse Public License (http://www.eclipse.org).
+“Software” shall mean the proprietary software developed by Ingenico.
+1.2 In this Agreement, unless the context or otherwise requires:
+(a)  words denoting the singular number only shall include the
+plural number also and vice versa and references to the masculine
+shall include the feminine and the neuter;
+(b)  words denoting persons shall include corporations, partnerships
+and unincorporated associations;
+(c)  references to any party shall, where relevant, be deemed
+to be references to or to include, as appropriate, their respective
+successors or permitted assignees;
+(d) headings have been included for convenience only and shall
+not be used in construing any provision of this Agreement;
+2. Term
+This Agreement shall be deemed to have commenced on the date
+on which this Agreement is entered into by clicking on the “I
+accept the terms in the License Agreement” button or upon installation
+or use of the IngeDev Software by Customer, whichever occurs
+earlier (the &quot;Commencement Date&quot;) and shall subject to Clause
+13 continue for an unlimited amount of time. 
+3. Exclusivity
+Nothing in this Agreement shall prohibit Ingenico from supplying
+the same or similar IngeDev Software to third parties.
+4. License
+4.1 Ingenico hereby grants to Customer a free, worldwide, non-transferable
+(subject to the right to grant sub-licenses hereunder), non exclusive
+license, to use the IngeDev Software. Ingenico hereby grants
+to Customer the right to grant free sub licenses of the IngeDev
+Software to third party (subject to previously inform Ingenico)
+under the same terms herein. Customer shall not reverse engineer,
+alter, modify, copy or analyse the Software, subject to any applicable
+mandatory provisions. Pursuant to the Eclipse Public License,
+the source code of the Eclipse components is available on demand
+by addressing a request to IngedevTeam.fr@ingenico.com or via
+the &quot;Contact Us&quot; form available on the following web site: www.ingenico.com.
+.
+4.2 Customer shall commit to ensure that each free sub-license
+agreement with third party includes, inter alia: 
+(a) acknowledgements that the Software is the sole property of
+Ingenico and that the third party shall not reverse engineer,
+alter, modify, copy or analyse the Software, subject to any applicable
+mandatory provisions, or sub license or assign its right to use
+the Software to any third party; and
+(b) acknowledgements that the IngeDev Software includes the Eclipse
+components, subject to the Eclipse Public License provisions
+and that pursuant to the Eclipse Public License, the source code
+of the Eclipse components is available at on demand by addressing
+a request to IngedevTeam.fr@ingenico.com or via the &quot;Contact
+Us&quot; form available on the following web site: www.ingenico.com.
+(c) a prohibition on the third party using the Software other
+than for its own use.
+4.3 Customer acknowledges that Ingenico has the right to enforce
+its Intellectual Property Rights against third party who breaches
+the terms of its sub-license to use the Software, as set out
+in the sub-license. In the event that Ingenico intends to enforce
+its Intellectual Property Rights against a third party, Ingenico
+shall notify Customer of this in writing.
+5. Data Protection
+Each party shall ensure that it obtains such consents as are
+necessary by require law, to enable it to exercise its rights
+and carry out its obligations under this Agreement.
+6. Warranties
+Given the nature of software, no warranty is given that the IngeDev
+Software will operate error free however best endeavours will
+be taken by Ingenico to keep such errors to a minimum. All errors
+shall be dealt with in Ingenico. Any personnel employed by Ingenico
+shall be suitably qualified and carry out such services with
+all due diligence skill and care.
+It is understood and agreed that notwithstanding the foregoing,
+the Eclipse components are provided on an “AS IS” basis, without
+warranties or conditions of any kind, either express or implied
+including, without limitation, any warranties or conditions of
+merchantability or fitness for a particular purpose.
+7. Customer’s Warranties
+Customer shall: 
+(a)  not make (and shall use all reasonable endeavours to ensure
+that no third party makes) any alterations or improvements to
+the Software ;
+(b)  ensure that third party shall use the Software license in
+accordance with the terms and obligations of this Agreement and
+the sub-license.
+8. Confidentiality
+8.1 Subject to Clause 8.2 below, each party hereby undertakes
+at all times to keep confidential, not to use other than for
+the purposes of this Agreement and not to disclose to any third
+party without the other party&apos;s prior written consent, all and
+any Confidential Information supplied by the other or obtained
+as a result of this Agreement. Each party shall procure that
+its employees, agents and sub contractors involved in carrying
+out the obligations hereunder shall keep all Confidential Information
+of the other party confidential at all times.
+8.2 Nothing contained in this Clause shall apply to prevent either
+party from disclosing any information: 
+(a)  that was in the possession of the receiving party prior
+to its disclosure; or
+(b)  which is public knowledge other than by breach of this Agreement;
+or
+(c)  which it may independently develop or was received from
+a third party (which has full right to disclose); or
+(d)  to another company in the group of companies to which that
+party belongs (provided that such party has obtained the prior
+written consent of the other party).
+8.3 Each party hereby undertakes (except as may be required by
+law or in order to instruct professional advisers in connection
+with this Agreement) not to disclose or permit disclosure of
+any detail of this Agreement or any information concerning or
+relating thereto to the news, media or other third party other
+than subcontractors or to disclose the name of the other in any
+promotion or marketing or announcement of orders, without the
+prior written consent of the other party.
+9. Trade Marks
+9.1 Nothing in this Agreement shall be construed as conferring
+any license or granting any rights in favour of Customer under
+any trade marks owned or claimed to be owned by Ingenico.
+9.2 Customer shall promptly bring to the attention of Ingenico
+upon becoming aware of the same any improper or wrongful use
+of the trade marks or trade name or other Intellectual Property
+Rights owned or claimed by Ingenico in relation to the IngeDev
+Software which may come to its notice.
+9.3 Customer shall not use nor seek to register any trade mark
+or trade name (including any company name) which is identical
+to or confusingly similar with or incorporates the trade marks
+or any trade names of Ingenico.
+10. Intellectual Property Rights 
+Customer shall promptly (upon becoming aware of the same) give
+to Ingenico, notice in writing of any claims, actions or proceedings
+being made, threatened or brought against Customer by any third
+party alleging infringement of the Intellectual Property Rights
+of such third party due to Customer’s use or the use by a third
+party of the Software. Customer shall not at any time admit liability
+or attempt to settle or compromise the said claim, action or
+proceeding without written consent of Ingenico. Customer shall
+act in accordance with the reasonable wishes of Ingenico and
+give to Ingenico (at Ingenico&apos;s expense) such assistance as it
+shall reasonably require in respect of the conduct of the said
+defence of the same.
+Ingenico expressly disclaims all warranties and conditions, express
+and implied, of title and non infringement for the Eclipse components.
+11. Limitation of Liability 
+11.1 Neither party shall have any obligation, duty or liability
+to the other party in contract, tort or breach of statutory duty
+or otherwise beyond that of a duty to exercise reasonable care
+and skill. 
+11.2 Neither party shall be liable to the other for any direct,
+indirect, incidental, special, exemplary  or consequential damages
+(including without limitation lost profits) whatsoever or howsoever
+arising in any way out of the use or distribution of the IngeDev
+Software, even if advised of the possibility of such damages
+12. Termination and Cancellation
+12.1 Notwithstanding any other rights of termination set out
+elsewhere in this Agreement, either party shall be entitled to
+terminate this Agreement forthwith by written notice to the other
+party if the other party commits a material breach of any of
+its obligations hereunder and fails to remedy such breach within
+a period of 1 calendar month after receipt of notice specifying
+the breach and requiring remedy.
+12.2 Either party shall be entitled to terminate this Agreement,
+subject to the law, forthwith if: 
+(a) the other party ceases or threatens to cease to carry on
+its business (b) either party makes an assignation for the benefit
+of or a composition with its creditors or another arrangement
+of similar import;
+(c) the other party has a receiver, administrative receiver,
+administrator or similar officer appointed to it or over all
+or any part of its assets or undertakings;
+(d) the other party goes into liquidation (otherwise than for
+the purposes of an amalgamation or reconstruction);
+(e) the other party is dissolved, adjudged bankrupt or insolvent
+or is otherwise rendered incapable of performing its obligations
+under this Agreement without the consent of the other party.
+12.3 Any termination or expiration of this Agreement shall be
+without prejudice to any rights of the parties accrued up to
+the date of such termination or expiration or to any obligations
+under this Agreement which are intended or expressed to survive
+such a termination or expiration.  
+12.4 Termination of this Agreement shall not bring to an end
+the provisions of Clauses 5, 6, 7, 8, 9, 10, 11, 16 and 18. 
+13. Force Majeure
+Neither party shall be liable for any delay or failure to meet
+its obligations under this Agreement due to any cause outside
+its reasonable control including (without limitation) any acts
+of God, war, riot, malicious acts of damage by third parties,
+civil commotion, strike, lock out or industrial action, unavoidable
+power failure or fire. If the performance of the obligations
+under this Agreement is substantially prevented for a continuous
+period of 3 months or more by virtue of any of the aforesaid
+events, then either party shall be entitled to terminate this
+Agreement by written notice to the other.
+14. Notices
+All communications between the parties made in the course of
+operating this Agreement or terminating the same or giving notice
+of breach or alleged breach which are sent dispatched as set
+out below shall be deemed to have been given to the addressee
+at the time stated provided that the communication is addressed
+to the address or facsimile number of the other party as given
+below and properly franked or otherwise prepaid (if appropriate):
+(a)  by facsimile transmission (with correct answer back);
+(b)  by hand delivery   immediately upon receipt by the recipient.
+15. General
+15.1 No failure to exercise and no delay in exercising on the
+part of either party any right or privilege under this Agreement
+shall operate as a waiver thereof.
+15.2 If any part, term or provision of this Agreement shall be
+held to be illegal or unenforceable, the validity or enforceability
+of the remainder of this Agreement shall not be affected.
+15.3 This Agreement represents the entire understanding of the
+parties relating to the subject matter hereto and supersedes
+all previous communications whether oral or written regarding
+the subject matter of this Agreement. 
+15.4 This Agreement may only be modified by a written agreement
+duly signed by both parties.
+15.5 Neither party may assign the benefit of this Agreement or
+any interest under this Agreement except with the prior written
+consent of the other, provided that, in the case of either party
+wishing to assign this Agreement to any company within the group
+of companies to which it belongs, such consent shall not be unreasonably
+withheld or delayed.
+16. Dispute Resolution
+In the event of a dispute between the parties concerning any
+aspect of this Agreement the parties shall meet in good faith
+to resolve the dispute. If those discussions do not result in
+a settlement of the dispute within 14 days of their commencement
+then the provisions of the clause 18 below shall apply.
+17. Protection against software viruses
+17.1 Both parties shall use their reasonable endeavours to ensure
+that software viruses are not unwittingly created, introduced
+into or transmitted between themselves.
+17.2 In the event that one party can demonstrate to the reasonable
+satisfaction of the other that a software virus has been introduced
+into the other party&apos;s system, the parties agree that they shall
+use reasonable endeavours to assist in the isolation and removal
+of such software virus. Each party shall bear its own costs in
+this respect. It is expressly understood by the parties hereto
+that nothing within this Clause shall confer any legal liability
+upon either party other than that contained in this Clause.
+18. Governing Law
+This Agreement shall governed by and construed in accordance
+with French law and the parties agree, subject to Clause 16,
+to submit to the non-exclusive jurisdiction of the French court,
+Tribunal de Commerce de Paris.
+   </license>
+
+   <includes
+         id="com.ingenico.ingedev.gma.delivery.1.90.1"
+         version="7.16.1.3"/>
+
+   <plugin
+         id="com.ingenico.ingedev.bin.signtools.win32"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         fragment="true"/>
+
+   <plugin
+         id="com.ingenico.ingedev.download.core"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"/>
+
+   <plugin
+         id="com.ingenico.ingedev.download.ui"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.remotedebug.core"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.remotedebug.mi.core"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.remotedebug.mi.ui"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.remotedebug.ui"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.gma"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.remotedebug.launch.ui"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ingenico.com/ns/common/data"
+           targetNamespace="http://ingenico.com/ns/common/data">
+    <xs:annotation>
+        <xs:documentation>
+            Definitions of common Transfer Object (aka Value Object) data types
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="AuthCredentials" type="tns:AuthCredentials">
+        <xs:annotation>
+            <xs:documentation>
+                Transfer Object (aka Value Object) holding
+                data for login/password-based user identification and authentication
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="AuthCredentials">
+        <xs:attribute name="user" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    User login
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="password" type="xs:string" use="optional"/>
+        <xs:attribute name="session" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:element name="SessionCredentials">
+        <xs:annotation>
+            <xs:documentation>
+                Transfer Object (aka Value Object) holding
+                data for session-based user identification
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="SessionCredentials">
+        <xs:attribute name="sessionId" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Client-side session id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="SortList" type="tns:SortList">
+        <xs:annotation>
+            <xs:documentation>
+                Transfer Object (aka Value Object) holding
+                multiple order-by clauses for sorting operation
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="SortList">
+        <xs:sequence>
+            <xs:element ref="tns:SortableField" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="SortableField" type="tns:SortableField">
+        <xs:annotation>
+            <xs:documentation>
+                Transfer Object (aka Value Object) holding
+                single order-by clause for sorting operation
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="SortableField">
+        <xs:sequence>
+            <xs:element name="fieldName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        The name of the field for sorting operation
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SortDirection" type="tns:SortDirection">
+                <xs:annotation>
+                    <xs:documentation>
+                        The direction (ASC or DESC) for sorting operation
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="SortDirection">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ASC"/>
+            <xs:enumeration value="DESC"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="SortDirection" type="tns:SortDirection">
+        <xs:annotation>
+            <xs:documentation>
+                Transfer Object (aka Value Object) holding
+                sort direction
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="NameValuePairs" type="tns:NameValuePairs">
+        <xs:annotation>
+            <xs:documentation>
+                Transfer Object (aka Value Object) holding
+                multiple NameValuePair objects
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="NameValuePairs">
+        <xs:sequence>
+            <xs:element ref="tns:NameValuePair" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="NameValuePair" type="tns:NameValuePair">
+        <xs:annotation>
+            <xs:documentation>
+                Transfer Object (aka Value Object) holding
+                single Name-Value pair object
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="NameValuePair">
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The name (aka key) of the pair
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The value of the pair
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="Config.Id">
+        <xs:restriction base="xs:long"/>
+    </xs:simpleType>
+    <xs:element name="Config.Id" type="tns:Config.Id"/>
+
+    <xs:simpleType name="Config.VersionId">
+        <xs:restriction base="xs:long"/>
+    </xs:simpleType>
+    <xs:element name="Config.VersionId" type="tns:Config.VersionId"/>
+
+    <xs:simpleType name="Config.Name">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Config.Name" type="tns:Config.Name"/>
+
+    <xs:simpleType name="Config.Description">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Config.Description" type="tns:Config.Description"/>
+
+    <xs:simpleType name="Terminal.ITID">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="32"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Terminal.ITID" type="tns:Terminal.ITID"/>
+
+    <xs:simpleType name="Terminal.Merchant">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Terminal.Merchant" type="tns:Terminal.Merchant"/>
+
+    <xs:simpleType name="Terminal.SerialNumber">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Terminal.SerialNumber" type="tns:Terminal.SerialNumber"/>
+
+    <xs:simpleType name="Terminal.PartNumber">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Terminal.PartNumber" type="tns:Terminal.PartNumber"/>
+    
+    <xs:simpleType name="Terminal.Seckey">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Terminal.Seckey" type="tns:Terminal.Seckey"/>
+
+    <xs:simpleType name="Terminal.OwnerReference">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Terminal.OwnerReference" type="tns:Terminal.OwnerReference"/>    
+
+    <xs:simpleType name="Profile.Name">
+	<xs:restriction base="xs:string">
+		<xs:maxLength value="32"/>
+ 	</xs:restriction>
+    </xs:simpleType>
+    <xs:element name="Profile.Name" type="tns:Profile.Name"/>    
+
+    <xs:element name="IngenicoTerminalReference" type="tns:IngenicoTerminalReference"/>
+    <xs:complexType name="IngenicoTerminalReference">
+        <xs:annotation>
+            <xs:documentation>
+                terminal reference
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="itid" type="tns:Terminal.ITID" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    terminal id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:element name="SecurityKey" type="tns:SecurityKey"/>
+    <xs:complexType name="SecurityKey">
+        <xs:annotation>
+            <xs:documentation>
+                terminal security key
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="key" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:element name="ItidList" type="tns:ItidList"/>
+    <xs:complexType name="ItidList">
+        <xs:annotation>
+            <xs:documentation>
+                list of terminal references
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="itid" type="tns:IngenicoTerminalReference" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="KeyList" type="tns:KeyList"/>
+    <xs:complexType name="KeyList">
+        <xs:annotation>
+            <xs:documentation>
+                list of security keys
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="key" type="tns:SecurityKey" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="ingDateTime">
+        <xs:restriction base="xs:long"/>
+    </xs:simpleType>
+</xs:schema>

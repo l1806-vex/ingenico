@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?><?ingedev version="7.18.0.3"?><projectDescription activeConfig="GNU_ARM_DEBUG_434" applicationType="0x6e" binaryName="VENDING" dataBinaryFileBaseName="DATA006E" descr="Vending" enableUsingCpp="false" projectFamily="VENDING" projectType="APP" useDataFileNamingConvention="true">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="Src\Entry.c" parentProject=""/>
+<file generated="false" name="Src\Main.c" parentProject=""/>
+<file generated="false" name="Src\Util.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="false"/>
+<archiveFilesVirtualFolder name="Archive Files"/>
+</virtualFolders>
+<configs>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG_343" sign="false" teliumCompatibility="All" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AUDIT" package="Telium Unattended" version="4.0"/>
+<packageLib name="DEXUCS" package="Telium Unattended" version="4.0"/>
+<packageLib name="P40" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMC" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMHOST" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMSTART" package="Telium Unattended" version="4.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.0"/>
+<packageDefine package="Telium Unattended" version="4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.0"/>
+<packageInc package="Telium Unattended" version="4.0"/>
+</packageIncs>
+<userDefines/>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG_434" sign="false" teliumCompatibility="All" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AUDIT" package="Telium Unattended" version="4.0"/>
+<packageLib name="DEXUCS" package="Telium Unattended" version="4.0"/>
+<packageLib name="P40" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMC" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMHOST" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMSTART" package="Telium Unattended" version="4.0"/>
+</packageLibraries>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.0"/>
+<packageDefine package="Telium Unattended" version="4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.0"/>
+<packageInc package="Telium Unattended" version="4.0"/>
+</packageIncs>
+<userDefines/>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+<dataFiles/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE_343" sign="false" teliumCompatibility="Telium 1" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AUDIT" package="Telium Unattended" version="4.0"/>
+<packageLib name="DEXUCS" package="Telium Unattended" version="4.0"/>
+<packageLib name="P40" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMHOST" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMSTART" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMC" package="Telium Unattended" version="4.0"/>
+</packageLibraries>
+<packageDefines>                                                             
+<packageDefine package="Telium SDK" version="9.10.0"/>
+<packageDefine package="Telium Unattended" version="4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.0"/>
+<packageInc package="Telium Unattended" version="4.0"/>
+</packageIncs>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<userDefines/>
+<dataFiles/>
+<externalSchemes/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm4" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE_434" sign="false" teliumCompatibility="Telium 1" zip="false">
+<userIncs>
+<userInc value="Inc"/>
+</userIncs>
+<packageLibraries>
+<packageLib name="eft30" package="Telium SDK" version="9.10.0"/>
+<packageLib name="trap" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IAPP" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AVL" package="Telium SDK" version="9.10.0"/>
+<packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SEC" package="Telium SDK" version="9.10.0"/>
+<packageLib name="dll_wifi" package="Telium SDK" version="9.10.0"/>
+<packageLib name="FTP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="SSL_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="IP_" package="Telium SDK" version="9.10.0"/>
+<packageLib name="AUDIT" package="Telium Unattended" version="4.0"/>
+<packageLib name="DEXUCS" package="Telium Unattended" version="4.0"/>
+<packageLib name="P40" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMHOST" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMSTART" package="Telium Unattended" version="4.0"/>
+<packageLib name="UCMC" package="Telium Unattended" version="4.0"/>
+</packageLibraries>
+<packageDefines>                                                             
+<packageDefine package="Telium SDK" version="9.10.0"/>
+<packageDefine package="Telium Unattended" version="4.0"/>
+</packageDefines>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.0"/>
+<packageInc package="Telium Unattended" version="4.0"/>
+</packageIncs>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<externalSchemes/>
+<userDefines/>
+<dataFiles/>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

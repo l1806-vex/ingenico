@@ -1,0 +1,1441 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2004-2011 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ingenico.com/ns/configuration-service/data"
+           xmlns:tns="http://ingenico.com/ns/configuration-service/data"
+           xmlns:common="http://ingenico.com/ns/common/data"
+           targetNamespace="http://ingenico.com/ns/configuration-service/data" elementFormDefault="qualified"
+           version="1.0" xml:lang="en">
+  <xs:annotation>
+    <xs:documentation>
+            Terminal Magnetic card parser configuration file structure description
+
+            COPYRIGHT (C) 2004-2011 Ingenico
+            ALL RIGHTS RESERVED
+
+    </xs:documentation>
+  </xs:annotation>
+  <xs:annotation>
+    <xs:documentation>
+        ================== Imported Names ====================================
+    </xs:documentation>
+  </xs:annotation>
+  <xs:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+  <xs:simpleType name="CheckType">
+    <xs:annotation>
+      <xs:documentation>Card check type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PanLength">
+        <xs:annotation>
+          <xs:documentation>Check for correct PAN length (described in TTL table)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LuhnCheckDigit">
+        <xs:annotation>
+          <xs:documentation>Check for PAN Luhn Check Digit (PAN checksum)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HotCardList">
+        <xs:annotation>
+          <xs:documentation>Check for Hot Card List</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ExpiryDate">
+        <xs:annotation>
+          <xs:documentation>Check for card expiry date</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StartDate">
+        <xs:annotation>
+          <xs:documentation>Check for card start (effective) date</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VerdictType">
+    <xs:annotation>
+      <xs:documentation>Risk management verdict type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="online">
+        <xs:annotation>
+          <xs:documentation>Transaction should be made online</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="reject">
+        <xs:annotation>
+          <xs:documentation>Transaction should be rejected</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ignore">
+        <xs:annotation>
+          <xs:documentation>Check should not be performed at all</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>
+      ================ Document Structure ==================================
+    </xs:documentation>
+  </xs:annotation>
+  <xs:element name="MagcardConfigData" type="MagcardConfigData" />
+  <xs:complexType name="MagcardConfigData">
+    <xs:annotation>
+      <xs:documentation>
+        This is full terminal configuration magcard data
+        Contains id and current version of config
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="mag-card-configuration" />
+    </xs:sequence>
+    <xs:attribute name="config_id" type="common:Config.Id" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Configuration id, as described in the 'Configuration' complex type above
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="version" type="common:Config.VersionId" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Configuration version. This is a read-only field. If updating configuration. This value must be the
+          same as when it was retrieved from the database. This is used by the system to check that there were no updates
+          by another user since the data was retrieved. An error will be returned from any save method (see the error
+          map details) if this value has changed in the database, to highlight the concurrent change.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="description" type="common:Config.Description" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          A description of the configuration
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="timestamp" type="xs:date" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          The date the config was created
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="lastupdate" type="xs:long" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          The timestamp of the last update to this configuration.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="mag-card-configuration" type="mag-card-configuration" />
+  <xs:complexType name="mag-card-configuration">
+    <xs:annotation>
+      <xs:documentation>        
+	    Magnetic card parser configuration data.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="iins" />
+      <xs:element ref="ttls" />
+      <xs:element ref="card-schemes" />
+      <xs:element ref="risk-management-verdicts" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="iins" type="iins" />
+  <xs:complexType name="iins">
+    <xs:annotation>
+      <xs:documentation>
+        IIN (Issuer Identification Number) ranges table - describes IIN ranges with reference to
+        TTL and Card Scheme tables.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="iin">
+        <xs:annotation>
+          <xs:documentation>
+            IINs table record - describes properties for IIN ranges and reference to
+            corresponding TTL and Card Scheme records.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ttls" type="ttls" />
+  <xs:complexType name="ttls">
+    <xs:annotation>
+      <xs:documentation>TTL (Track Two Layout) table - describes various card layouts.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="ttl">
+        <xs:annotation>
+          <xs:documentation>
+            TTLs table record - describes magnetic stripe fields for current track layout.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="card-schemes" type="card-schemes" />
+  <xs:complexType name="card-schemes">
+    <xs:annotation>
+      <xs:documentation>        
+	    Card Scheme table - describes card schemes.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="card-scheme" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="risk-management-verdicts" type="risk-management-verdicts" />
+  <xs:complexType name="risk-management-verdicts">
+    <xs:annotation>
+      <xs:documentation>
+        Risk management verdict table - describes verdicts for card checks fail.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="5" ref="risk-management-verdict" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Magcard.IIN.Range">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="19" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Magcard.IIN.RangeExpiry">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="7" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="iin" type="iin" />
+  <xs:complexType name="iin">
+    <xs:annotation>
+      <xs:documentation>
+        IINs table record - describes properties for IIN ranges and reference to corresponding TTL
+        and Card Scheme records.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="key" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>record unique id</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="rangeMin" type="Magcard.IIN.Range" use="required">
+      <xs:annotation>
+        <xs:documentation>            
+          IIN range minimum value
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="rangeMax" type="Magcard.IIN.Range" use="optional">
+      <xs:annotation>
+        <xs:documentation>            
+          IIN range maximum value
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="active" type="xs:boolean" use="required" />
+    <xs:attribute name="ttlKey" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>reference to record in TTLs table (unique Id)</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="cardSchemeKey" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>reference to record in Card Scheme table (unique Id)</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="rangeExpiry" type="Magcard.IIN.RangeExpiry" use="optional">
+      <xs:annotation>
+        <xs:documentation>Defines validity period for exception ranges (YYYY-MM)</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="ttl" type="ttl" />
+  <xs:complexType name="ttl">
+    <xs:annotation>
+      <xs:documentation>
+        TTLs table record - describes magnetic stripe fields for current track layout.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="key" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>record unique id</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute default="NA" name="name" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          track layout name (from issuers documentation).
+          NA - not available
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="30" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="pan" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          2-digit PAN length. If the PAN can have variable length, the possible lengths in the
+          value of the attribute follow each other without any separators.
+          For example, pan="13141516" means that the PAN can contain 13, 14, 15, or 16 digits.
+          PAN max length is 19 digits.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="38" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="lcr" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          the Luhn check required attribute specifying whether or not any checks of the PAN read
+          from the card are required.
+          Possible values:
+            "0" : no check required;
+            "1" : Luhn formula should be used;
+            "2" : a specialised algorithm should be used;
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:enumeration value="2" />
+          <xs:enumeration value="1" />
+          <xs:enumeration value="0" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="edp" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          expiry date position
+          0 - if absent
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="edf" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          expiry date format:
+            'N' - normal == YYMM
+            'R' - reversed == MMYY
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="R" />
+          <xs:enumeration value="N" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="scp" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          service code position
+          0 - if absent,
+          99 - reserved for Amex cards
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="sdp" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          start date (validity period) position
+          0 - if absent
+          99 - reserved for Amex cards
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="N" name="sdf" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          start date format
+          N - normal == YYMM
+          C - calculated == MM
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="N" />
+          <xs:enumeration value="C" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="inp" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          issue number position
+          0 - if absent
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="inl" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          issue number length
+          Possible values:
+          0 - if issue number absent,
+          1 or 2
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:enumeration value="0" />
+          <xs:enumeration value="1" />
+          <xs:enumeration value="2" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="lcp" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          language code position
+          0 - if absent
+          99 - reserved for Amex cards
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="ctp" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          card type position
+          0 - if absent;
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="csnp" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          card sequence number position
+          0 - if absent
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="aap" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          auth amount position
+          0 - if absent
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="pvvidp" use="optional">
+      <xs:annotation>
+        <xs:documentation>PVV Id (Pin Verification Value Id) position</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="pvvp" use="optional">
+      <xs:annotation>
+        <xs:documentation>PVV (Pin Verification Value) position;</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="pvvl" use="optional">
+      <xs:annotation>
+        <xs:documentation>PVV (Pin Verification Value) length (posiable values: 0, 4 or 5)</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:enumeration value="0" />
+          <xs:enumeration value="4" />
+          <xs:enumeration value="5" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="cvvp" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          CVV (Card Verification Value) position
+          0 - if absent;
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="cavp" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          CAV (Card Authentication Value) position
+          0 - if absent
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="t2ccdp" use="optional">
+      <xs:annotation>
+        <xs:documentation>track 2 CCD position</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="ddp" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          descritionary data position
+          0 - if absent
+          99 - reserved for Amex cards
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute default="0" name="ddl" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          descritionary data length
+          0 - if absent
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="card-scheme" type="card-scheme" />
+  <xs:complexType name="card-scheme">
+    <xs:annotation>
+      <xs:documentation>Card-Scheme table record - describes card scheme properties.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="key" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>record unique id</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="name" use="required">
+      <xs:annotation>
+        <xs:documentation>current card scheme name (e.g. VISA, AMEX)</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="16" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="active" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>card scheme active flag</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="floorLimit" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>floor limit for online Top transaction;</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="keyAllowed" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>flag for manual keying of card details</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="risk-management-verdict" type="risk-management-verdict" />
+  <xs:complexType name="risk-management-verdict">
+    <xs:annotation>
+      <xs:documentation>
+        Risk management verdict table record - describes verdict for one check.
+        In case of some check are not described then "reject" verdict will be used as default
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="check" type="CheckType" use="required">
+      <xs:annotation>
+        <xs:documentation>describe card check type</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="verdict" type="VerdictType" use="required">
+      <xs:annotation>
+        <xs:documentation>descrive verdict for card check</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>
+        ================== Varlib configurations ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+    <xs:element name="vardcls" type="tns:vardcls">
+        <xs:annotation>
+            <xs:documentation>
+                array of var declarations
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="vardcls">
+        <xs:sequence>
+            <xs:element ref="vardcl" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="setvars" type="tns:setvars">
+        <xs:annotation>
+            <xs:documentation>
+                array of set variables
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="setvars">
+        <xs:sequence>
+            <xs:element ref="setvar" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="VarlibScopeTerminalConfigData" type="tns:VarlibScopeTerminalConfigData">
+        <xs:annotation>
+            <xs:documentation>
+                varlib scope config data
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="VarlibScopeServiceConfigData" type="tns:VarlibScopeServiceConfigData">
+        <xs:annotation>
+            <xs:documentation>
+                varlib scope config data for services.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="varlib-configuration" type="tns:varlib-configuration">
+        <xs:annotation>
+            <xs:documentation>Varlib configuration data</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="varlib-configuration">
+        <xs:sequence>
+            <xs:element ref="vardcls"/>
+            <xs:element ref="setvars"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="VarlibScopeConfigData">
+        <xs:sequence>
+            <xs:element ref="tns:varlib-configuration"/>
+        </xs:sequence>
+        <xs:attribute name="config_id" type="common:Config.Id" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Configuration id, as described in the 'Configuration' complex type above
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="version" type="common:Config.VersionId" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Configuration version. See the MagcardConfigData entity above for a fuller description.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="description" type="common:Config.Description" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    A description of teh configuration
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="timestamp" type="xs:date" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    The date the config was created
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="lastupdate" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    The timestamp of the last update to this configuration.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="varlibType" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    type of varlib config (for service or for terminal.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="VarlibScopeServiceConfigData">
+        <xs:complexContent>
+            <xs:extension base="VarlibScopeConfigData"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="VarlibScopeTerminalConfigData">
+        <xs:complexContent>
+            <xs:extension base="VarlibScopeConfigData">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="vardcl" type="tns:vardcl"/>
+    <xs:complexType name="vardcl">
+        <xs:attribute name="name" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKENS">
+                    <xs:maxLength value="50"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="type" default="string">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="integer"/>
+                    <xs:enumeration value="string"/>
+                    <xs:enumeration value="date"/>
+                    <xs:enumeration value="opaque"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="volatile" default="yes">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="yes"/>
+                    <xs:enumeration value="no"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="format">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="20"/>
+                </xs:restriction>
+            </xs:simpleType>            
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+        <xs:attribute name="perms" type="tns:perms" default="rw-rw"/>
+        <xs:attribute name="key" type="xs:integer" use="required"/>
+    </xs:complexType>
+    <xs:simpleType name="perms">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[r\-][w\-][x\-][r\-][w\-]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="setvar" type="tns:setvar"/>
+    <xs:complexType name="setvar">
+        <xs:attribute name="name" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="format">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="20"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+        <xs:attribute name="key" type="xs:integer" use="required"/>
+    </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>
+        ================== ICC-EMV configurations ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="ICCEMVConfigData" type="ICCEMVConfigData">
+    <xs:annotation>
+      <xs:documentation>
+        This is full terminal iccemv configuration data
+        Contains id and current version of config
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ICCEMVConfigData">
+    <xs:sequence>
+      <xs:element ref="iccemv-configuration" />
+    </xs:sequence>
+    <xs:attribute name="config_id" type="common:Config.Id" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Configuration id, as described in the 'Configuration' complex type above
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="version" type="common:Config.VersionId" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Configuration version. See the MagcardConfigData entity above for a fuller description.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="description" type="common:Config.Description" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          A description of the configuration
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="timestamp" type="xs:date" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          The date the config was created
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="lastupdate" type="xs:long" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          The timestamp of the last update to this configuration.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="iccemv-configuration" type="iccemv-configuration">
+    <xs:annotation>
+      <xs:documentation>ICCEMV configuration data, contains of 3 parts</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="iccemv-configuration">
+    <xs:sequence>
+      <xs:element ref="card-providers">
+        <xs:annotation>
+          <xs:documentation>Card providers data</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="emv-card-applications">
+        <xs:annotation>
+          <xs:documentation>EMV card applications</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="rsa-keys">
+        <xs:annotation>
+          <xs:documentation>RSA keys</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="card-providers" type="card-providers">
+    <xs:annotation>
+      <xs:documentation>Card providers data</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="card-providers">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="card-provider" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="emv-card-applications" type="emv-card-applications">
+    <xs:annotation>
+      <xs:documentation>EMV Card Applications</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="emv-card-applications">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="emv-card-application" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="rsa-keys" type="rsa-keys">
+    <xs:annotation>
+      <xs:documentation>RSA keys data</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="rsa-keys">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="rsa-key" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="card-provider" type="card-provider">
+    <xs:annotation>
+      <xs:documentation>
+         Card provider data
+       </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="card-provider">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="tac-denial">
+        <xs:annotation>
+          <xs:documentation>
+            Terminal Action Code - Denial (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="tac-online">
+        <xs:annotation>
+          <xs:documentation>
+            Terminal Action Code - Online (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="tac-default">
+        <xs:annotation>
+          <xs:documentation>
+            Terminal Action Code - Default (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="default-TDOL">
+        <xs:annotation>
+          <xs:documentation>
+            A default transaction certificate data object list (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="252" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="default-DDOL">
+        <xs:annotation>
+          <xs:documentation>
+            A default dynamic data object list (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="252" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="acquirer-identifier">
+        <xs:annotation>
+          <xs:documentation>
+            Acquirer identifier
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="12" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="merchant-category-code">
+        <xs:annotation>
+          <xs:documentation>
+            Merchant category code (0-9999)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="transaction-currency-exponent">
+        <xs:annotation>
+          <xs:documentation>
+            Transaction currency exponent (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="transaction-reference-currency">
+        <xs:annotation>
+          <xs:documentation>
+            Transaction reference currency (0-9999)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="4" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="transaction-reference-currency-exponent">
+        <xs:annotation>
+          <xs:documentation>
+            Transaction reference currency exponent (0-99)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="252" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="key" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          element key number
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="floorLimit" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          floor limit (4-byte little-endian number)
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="threshold" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          threshold (4-byte little-endian number)
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="targetPercentage" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          target percentage (integer from 0 to 99)
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="maximumTargetPercentage" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          maximum target percentage (integer from 0 to 99)
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="terminalCountryCode" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          identifier (code) of the country (numeric-3 codes, BCD in little-endian)
+        </xs:documentation>
+      </xs:annotation>    
+	  <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99999" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="txnCurrencyCode" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          identifier (code) of the currency (numeric-3 codes, BCD in little-endian)
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:integer">
+          <xs:minInclusive value="0" />
+          <xs:maxInclusive value="99999" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="merchantId" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          merchant identifier
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:maxLength value="15" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="emv-card-application" type="emv-card-application">
+    <xs:annotation>
+      <xs:documentation>
+                card application data
+            </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="emv-card-application">
+    <xs:sequence>
+      <xs:element name="aid">
+        <xs:annotation>
+          <xs:documentation>
+            application identifier (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="32" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="trmd">
+        <xs:annotation>
+          <xs:documentation>
+                	terminal risk management data (base64 encoded hex)
+            	    </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="16" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="terminal-type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="2" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="terminal-capabilities">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="6" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="1" name="additional-terminal-capabilities">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="key" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          element key number
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="cardAppLiveFlag" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          whether or not an application is active
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="cardProviderKey" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          key of the corresponding card provider
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="applicationVersion" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          application version number (hex)
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="priorityIndex" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          priority of the application
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="selectionAppliFlag" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          whether or not an application can be selected
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="rsa-key" type="rsa-key">
+    <xs:annotation>
+      <xs:documentation>
+        RSA key data
+        </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="rsa-key">
+    <xs:sequence>
+      <xs:element name="rid">
+        <xs:annotation>
+          <xs:documentation>
+            registered application provider identifier (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="10" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="key-data" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            modulus of the RSA key (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="exponent">
+        <xs:annotation>
+          <xs:documentation>
+              exponent of the RSA key (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="64" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="hash">
+        <xs:annotation>
+          <xs:documentation>
+            hash of the RSA key (base64 encoded hex)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="28" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="key" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          element key number
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="keyIndicator" type="xs:integer" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          key indicator (signed byte as hex)
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>
+        ================== Hotcard list configurations ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+    <xs:element name="HCLConfigData" type="tns:HCLConfigData">
+        <xs:annotation>
+            <xs:documentation>
+                This is full terminal hcl configuration data
+                Contains id and current version of config
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="HCLConfigData">
+        <xs:sequence>
+            <xs:element ref="tns:hot-card-list-configuration"/>
+        </xs:sequence>
+        <xs:attribute name="config_id" type="common:Config.Id" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Configuration id, as described in the 'Configuration' complex type above
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="version" type="common:Config.VersionId" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    Configuration version. See the MagcardConfigData entity above for a fuller description.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="description" type="common:Config.Description" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    A description of the configuration
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="timestamp" type="xs:date" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    The date the config was created
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="lastupdate" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    The timestamp of the last update to this configuration.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="clear" default="no">
+            <xs:annotation>
+                <xs:documentation>The "clear" attribute used to describe should be clearing performed before new data
+                    writing or not.
+                    "yes" - clear current Hot Card List stored in terminal before writing new data;
+                    "no" - don't clear current Hot Card List, just update stored cards (insert/remove);
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="yes"/>
+                    <xs:enumeration value="no"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="hot-card-list-configuration" type="tns:hot-card-list-configuration"/>
+    <xs:complexType name="hot-card-list-configuration">
+        <xs:annotation>
+            <xs:documentation>Hot card list update data</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="hot-card" type="hot-card" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="hot-card" type="tns:hot-card"/>
+    <xs:complexType name="hot-card">
+        <xs:annotation>
+            <xs:documentation>New hot card</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="key" type="xs:integer" use="required">
+            <xs:annotation>
+                <xs:documentation>record unique id</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="operation" default="insert">
+            <xs:annotation>
+                <xs:documentation>The "operation" attribute used to describe operation that should be performad with new
+                    hot card:
+                    "insert" - append new hot card into terminal Hot Card List;
+                    "delete" - remove hot card from terminal Hot Card List (if present);
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="insert"/>
+                    <xs:enumeration value="delete"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="PAN" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>The "PAN" attribute used to store hot card data.
+                    If an issue number is to be checked by the terminal, the last digit of the PAN is dropped and the
+                    one or two digit issue number is appended.
+                    Then field is left filled to 19 digits with zeros.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

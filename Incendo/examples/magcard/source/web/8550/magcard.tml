@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<tml xmlns="http://www.ingenico.com/tml">
+
+<!-- Example of simple TML application-->    
+
+    <head>
+        <link href="style.css" rev="stylesheet"/>
+        <defaults menu="idle://idle.tml" cancel="#init_prompt"/>
+    </head>
+
+    <!-- transaction id -->
+    <vardcl name="transid" type="integer" perms="rw---"/>
+    
+    <!-- Initial screen -->
+    <screen id="init_prompt" class="c_center" cancel="idle://idle.tml" next="#read_amount">
+        <tform>
+            <baddata class="c_center">
+                <table height="240" width="240"> 
+                <tr><td align="center" valign="middle">
+                  <table height="240" width="240">
+                    <tr><td align="center" valign="middle">
+                         <table width="100%" height="240">
+                             <tr><td align="center" valign="middle">
+                                 <table class="c_small" height="77">
+                                    <tr><td align="left" valign="middle">
+                                       <img src="images/magcard.lib#top.gif" alt=""/>
+                                    </td></tr>
+                                 </table>
+                             </td></tr>
+                             <tr><td align="center">
+                                 <table width="240" border="0" height="163">
+                                     
+                                     <tr><td align="center" valign="middle" class="c_bold_red_large"><getvar name="err.baddata_reason"/></td></tr>
+                                     
+                                 </table>
+                             </td></tr>
+                         </table>
+                    </td></tr>
+                  </table>
+                </td></tr>
+                </table>
+            </baddata>
+            <card parser="mag" parser_params="read_data"/>
+            <prompt>
+                <table height="240" width="240"> 
+                <tr><td align="center" valign="middle">
+                  <table height="240" width="240">
+                    <tr><td align="center" valign="middle">
+                         <table width="100%" height="240">
+                             <tr><td align="center" valign="middle">
+                                 <table class="c_small" height="77">
+                                    <tr><td align="left" valign="middle">
+                                       <img src="images/magcard.lib#top.gif" alt=""/>
+                                    </td></tr>
+                                 </table>
+                             </td></tr>
+                             <tr><td align="center">
+                                 <table width="240" border="0" height="163">
+                                     <tr><td align="center" valign="middle" class="c_bold_large">
+                                         OpenEstate MAGCARD 3.1.5.0-RC4<br/>
+                                         Mag Cards Processing Example<br/>
+                                         Please Swipe Card
+                                     </td></tr>
+                                 </table>
+                             </td></tr>
+                         </table>
+                    </td></tr>
+                  </table>
+                </td></tr>
+                </table>
+            </prompt>
+        </tform>
+    </screen>
+
+     <!-- Read the transaction data. Only amount is read (transaction type)
+           and possibly other amount should be read in real application -->
+    <screen id="read_amount" next="#mag_rm">
+        <!-- Increase transaction counter -->
+        <setvar name="transid" lo="tmlvar:oebr.unique_id"/>
+        <display>
+            <form>
+                <table height="240" width="240"> 
+                <tr><td align="center" valign="middle">
+                  <table height="240" width="240">
+                    <tr><td align="center" valign="middle">
+                         <table width="100%" height="240">
+                             <tr><td align="center" valign="middle">
+                                 <table class="c_small" height="77">
+                                    <tr><td align="left" valign="middle">
+                                       <img src="images/magcard.lib#top.gif" alt=""/>
+                                    </td></tr>
+                                 </table>
+                             </td></tr>
+
+                              <tr><td align="center">
+                                 <table width="240" border="0" height="163">
+                                        <tr><td valign="middle" colspan="2"><table height="30" width="100"><tr><td valign="middle">&#160;</td></tr></table></td></tr>
+                                        <tr><td align="center" valign="middle" colspan="2"><table width="120">
+                                            <tr>
+                                                <td align="left" class="c_href_menu">Amount:&#160;&#160;<input alt="Amount:" type="number" name="payment.amount" size="10" format="^*0.00"/></td>
+                                            </tr>
+                                        </table></td></tr>
+                                        <tr><td valign="middle" colspan="2"><table height="35" width="100%"><tr><td valign="middle">&#160;</td></tr></table></td></tr>
+                                        <tr>
+                                            <td align="center"><a href="#mag_rm"><img src="images/magcard.lib#ok_up.gif" alt="images/magcard.lib#ok_dn.gif"/></a></td>
+                                            <td align="center"><a href="#init_prompt"><img src="images/magcard.lib#can_up.gif" alt="images/magcard.lib#can_dn.gif"/></a></td>
+                                        </tr>
+                                 </table>
+                               </td></tr>
+                         </table>
+                     </td></tr>
+                   </table>
+                </td></tr>
+            </table>
+            </form>
+        </display>
+    </screen>
+
+    <!-- The parser should:
+             analyse amount and transaction type;
+             analyse previous submission attempt ("oebr.econn" TML value);
+             update "card.parser.verdict" variable;
+             fill "card.parser.reject_reason" variable, if necessary. 
+             
+         If the parser recommends offline transaction, it should
+         take into account the transaction amount (for example, add it to
+         the sum, which is compared with the floor limit during Risk Management).
+         
+         When postponed submits are transmitted to the server, the HTTP
+         client informs the parser about it.
+      -->
+    <screen id="mag_rm">
+        <next uri="#mag_submit">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="#reject_trans"/>
+        </next>
+        <tform>    
+            <card parser="mag" parser_params="risk_mgmt"/>
+        </tform>
+    </screen>
+    
+    <!-- Submit data to the server for further processing -->
+    <screen id="mag_submit" next="#receipt">
+        <setvar name="oebr.submit_mode" lo="tmlvar:card.parser.verdict"/>
+        <submit tgt="/authtxn" econn="#check_err">
+            <getvar name="card.parser.type"/>
+            <getvar name="card.cardholder_name"/>
+            <getvar name="card.pan"/>
+            <getvar name="card.issuer_name"/>
+            <getvar name="card.issue_number"/>
+            <getvar name="card.scheme"/>
+            <getvar name="card.effective_date"/>
+            <getvar name="card.expiry_date"/>
+            <getvar name="card.mag.iso2_track"/>
+            <getvar name="transid"/>
+            <getvar name="payment.amount"/>
+        </submit>
+    </screen>
+
+	<!-- Reset the amount of offline transactions in case of online transaction -->
+	<screen id="online_ok" next="#receipt">
+        <tform>
+            <card parser="mag" parser_params="reset"/>
+        </tform>
+	</screen>
+
+    <!-- Check for offline transaction with full pool and connection error -->
+    <screen id="check_err">
+        <next uri="#mag_rm">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="offline" uri="#pool_full"/>
+            <variant lo="tmlvar:oebr.submit_mode" op="equal" ro="offline" uri="#pool_full"/>
+        </next>
+    </screen>
+
+    <screen id="pool_full" class="c_center" next="#void_trans">
+        <display>
+            <table height="240" width="240"> 
+                <tr><td align="center" valign="middle">
+                  <table height="240" width="240">
+                    <tr><td align="center" valign="middle">
+                         <table width="100%" height="240">
+                             <tr><td align="center" valign="middle">
+                                 <table class="c_small" height="77">
+                                    <tr><td align="left" valign="middle">
+                                       <img src="images/magcard.lib#top.gif" alt=""/>
+                                    </td></tr>
+                                 </table>
+                             </td></tr>
+                             <tr><td align="center">
+                                 <table width="240" border="0" height="163">
+                                     <tr><td align="center" valign="middle" class="c_bold_large">
+                                        Transactions offline pool is full and connection to server fails.<br/> 
+                                        Transaction will be rejected.
+                                     </td></tr>
+                                 </table>
+                             </td></tr>
+                         </table>
+                    </td></tr>
+                  </table>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+
+    <!-- Receipt to be printed. The example is obviously incomplete. -->
+    <screen id="receipt" next="#compl_trans">
+        <print>
+            <table>
+                <tr><td>Date:</td><td><getvar name="terminal.datetime"/></td></tr>
+                <tr><td>Card:</td><td><getvar name="card.pan" format="n4n#*n4"/></td></tr>
+                <tr><td>Transaction ID:</td><td><getvar name="transid"/></td></tr>
+                <tr><td>Amount:</td><td><getvar name="payment.amount" format="^*0.00"/></td></tr>
+            </table>
+            <br/>
+            ----------------------------------------------------------------
+            <br/><br/><br/>
+        </print>
+    </screen>
+
+    <!-- Message to be rendered to describe transaction rejection reason -->
+    <screen id="reject_trans" class="c_center" next="#void_trans">
+        <display>
+            <table height="240" width="240"> 
+                <tr><td align="center" valign="middle">
+                  <table height="240" width="240">
+                    <tr><td align="center" valign="middle">
+                         <table width="100%" height="240">
+                             <tr><td align="center" valign="middle">
+                                 <table class="c_small" height="77">
+                                    <tr><td align="left" valign="middle">
+                                       <img src="images/magcard.lib#top.gif" alt=""/>
+                                    </td></tr>
+                                 </table>
+                             </td></tr>
+                             <tr><td align="center">
+                                 <table width="240" border="0" height="163">
+                                     <tr><td align="center" valign="middle" class="c_bold_large"><getvar name="card.parser.reject_reason"/></td></tr>
+                                 </table>
+                             </td></tr>
+                         </table>
+                    </td></tr>
+                  </table>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+    
+    <!-- Message to be rendered to confirm transaction rejection or canceling -->
+    <screen id="void_trans" class="c_center" timeout="1" next="#init_prompt">
+        <display>
+            <table height="240" width="240"> 
+                <tr><td align="center" valign="middle">
+                  <table height="240" width="240">
+                    <tr><td align="center" valign="middle">
+                         <table width="100%" height="240">
+                             <tr><td align="center" valign="middle">
+                                 <table class="c_small" height="77">
+                                    <tr><td align="left" valign="middle">
+                                       <img src="images/magcard.lib#top.gif" alt=""/>
+                                    </td></tr>
+                                 </table>
+                             </td></tr>
+                             <tr><td align="center">
+                                 <table width="240" border="0" height="163">
+                                     <tr><td align="center" valign="middle" class="c_bold_large">Transaction Declined</td></tr>
+                                 </table>
+                             </td></tr>
+                         </table>
+                    </td></tr>
+                  </table>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+   
+    <!-- Message to be rendered to confirm successful transaction completion -->
+    <screen id="compl_trans" class="c_center" timeout="1" next="#init_prompt">
+        <display>
+            <table height="240" width="240"> 
+                <tr><td align="center" valign="middle">
+                  <table height="240" width="240">
+                    <tr><td align="center" valign="middle">
+                         <table width="100%" height="240">
+                             <tr><td align="center" valign="middle">
+                                 <table class="c_small" height="77">
+                                    <tr><td align="left" valign="middle">
+                                       <img src="images/magcard.lib#top.gif" alt=""/>
+                                    </td></tr>
+                                 </table>
+                             </td></tr>
+                             <tr><td align="center">
+                                 <table width="240" border="0" height="163">
+                                     <tr><td align="center" valign="middle" class="c_bold_large">Transaction Completed</td></tr>
+                                 </table>
+                             </td></tr>
+                         </table>
+                    </td></tr>
+                  </table>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+
+</tml>
+
+<!--========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2004-2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

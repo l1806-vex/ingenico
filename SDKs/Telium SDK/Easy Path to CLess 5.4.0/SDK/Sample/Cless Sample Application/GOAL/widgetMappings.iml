@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgetMappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ingenico.com/schemas/widgetmappings/1_0">
+  <widgetMapping idname="ID_LABEL" idval="1"/>
+  <widgetMapping idname="ID_PICTURE_CLESS" idval="10"/>
+  <widgetMapping idname="ID_LABEL_AMOUNT" idval="11"/>
+  <widgetMapping idname="ID_LABEL_PRESENT" idval="12"/>
+</widgetMappings>

@@ -1,0 +1,5 @@
+#define GL_ID_OPERAND_1 21
+#define GL_ID_OPERATOR 22
+#define GL_ID_OPERAND_2 23
+#define GL_ID_RESULT 24
+

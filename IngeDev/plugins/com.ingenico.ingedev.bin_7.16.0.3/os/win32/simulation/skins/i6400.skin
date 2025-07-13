@@ -1,0 +1,73 @@
+; Lines beginning with ';' are commentaries
+
+KernelID=6400
+TerminalID=6400
+BmpPathName=i6400.bmp
+MaskPathName=i6400_mask.bmp
+BmpScreenWidth=211
+ScreenUpperLeftCorner=148, 102
+ScreenRealSizePixels=128, 64
+KeyboardId=3
+PrinterNbCharsPerLine=24
+
+; Type = Standard or Touch
+ScreenType=Standard
+
+ScreenNbBitsPerPixel=1
+
+;Enter
+Button=Rectangular, 0x3A, 0x00, 300, 517, 369, 556, 0x0D
+
+;Language (PC = F5)
+Button=Rectangular, 0x44, 0x00, 133, 464, 197, 500, 0x74
+
+;? (PC = F6)
+Button=Rectangular, 0x45, 0x00, 300, 464, 367, 501, 0x75
+
+;Clear (PC = Escape)
+Button=Rectangular, 0x3B, 0x00, 129, 518, 196, 559, 0x1B
+
+;Corr (PC = Backspace)
+Button=Rectangular, 0x3D, 0x00, 216, 518, 281, 560, 0x08
+
+;9
+Button=Rectangular, 0x39, 0x00, 301, 413, 363, 448, 0x69, 0x39
+
+;8
+Button=Rectangular, 0x38, 0x00, 219, 413, 282, 450, 0x68, 0x38
+
+;7
+Button=Rectangular, 0x37, 0x00, 138, 412, 200, 447, 0x67, 0x37
+
+;6
+Button=Rectangular, 0x36, 0x00, 301, 363, 362, 397, 0x66, 0x36
+
+;5
+Button=Rectangular, 0x35, 0x00, 220, 364, 284, 397, 0x65, 0x35
+
+;4
+Button=Rectangular, 0x34, 0x00, 142, 363, 202, 398, 0x64, 0x34
+
+;3
+Button=Rectangular, 0x33, 0x00, 300, 318, 359, 352, 0x63, 0x33
+
+;2
+Button=Rectangular, 0x32, 0x00, 223, 318, 282, 350, 0x62, 0x32
+
+;1
+Button=Rectangular, 0x31, 0x00, 148, 318, 205, 351, 0x61, 0x31
+
+;0
+Button=Rectangular, 0x30, 0x00, 216, 461, 280, 501, 0x60, 0x30
+
+;F1
+Button=Rectangular, 0x40, 0x00, 94, 161, 128, 190, 0x70
+
+;F2
+Button=Rectangular, 0x41, 0x00, 94, 114, 130, 144, 0x71
+
+;F3
+Button=Rectangular, 0x42, 0x00, 378, 158, 414, 187, 0x72
+
+;F4
+Button=Rectangular, 0x43, 0x00, 379, 111, 414, 143, 0x73

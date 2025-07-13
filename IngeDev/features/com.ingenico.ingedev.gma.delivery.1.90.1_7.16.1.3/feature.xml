@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ingenico.ingedev.gma.delivery.1.90.1"
+      label="GMA Delivery 1.90.1"
+      version="7.16.1.3"
+      plugin="com.ingenico.ingedev.product.ui">
+
+   <requires>
+      <import feature="com.ingenico.ingedev.u32" version="6.6.1" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.ingenico.ingedev.gma.delivery.1.90.1"
+         download-size="0"
+         install-size="0"
+         version="7.16.0.3"/>
+
+</feature>

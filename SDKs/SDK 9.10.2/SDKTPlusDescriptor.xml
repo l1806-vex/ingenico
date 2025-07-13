@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?packageDescriptor version="1.1"?> 
+<!DOCTYPE package [
+	<!ENTITY deviceHwConf SYSTEM "deviceHwConf.xml"> 
+]>
+
+<packageV2 name="Telium SDK" version="9.10.2" type="SDK" framework="FrameWork TeliumPlus" description="Telium Plus Software Development Kit" >
+	
+
+	<documents>
+		<documentDirectory name="SDKTPLUS/HW_T2/Documents" includeSubDirs="true"/>
+	</documents>
+
+	<toolchains>
+	<!-- change attribute from libraryLocation to location because used for not only for libs but also for incs/defines -->
+		<toolchain id="gnuArm4" location="SDKTPLUS/HW_T2/gnu_434" />
+	</toolchains>
+
+
+	<!-- include may be toolchain specific or global-->
+	<includeDirectories>
+		<!--releative include path to the given toolchain location (ex SDK/gnu_343/../commonT2/inc" -->
+		<includeDirectory location="inc" toolchainId="gnuArm4"/>
+	</includeDirectories>
+	
+	<!-- link will be performed with <libraries> and <objects> -->
+	<!-- so are dyanmic libs, "*.a, *.lib, and *.elf" are static libs -->
+	<libraries>
+
+		<!-- 									T2 SPECIFIC LIBS					-->
+		<library name="eft30tplus" description="Manager APIs" state="mandatory">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<library name="TRAP_TELIUM_PLUS" description="OS APIs" state="mandatory">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<library name="OSLayer" description="Core platform" state="mandatory">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<!-- 				Security LIBS			     	-->	
+		<library name="SECTPLUS" description="Security" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<library name="SEC_extend" description="Additionnal librairy for Dll Security" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<!-- Temp !!! <library name="Digest" description="DLL Digest" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<library name="E2EE_DLL" description="DLL E2EE" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>       	-->
+		
+		<!-- 				Protocole LIBS					-->
+		<library name="FTP_TPlus" description="DLL FTP" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<library name="IP_TPlus" description="TCPIP library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<library name="LinkLayerExeInterface_TPlus" description="Link layer library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<!-- Temp !!! <library name="SNMP_" description="SNMP library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>         	-->
+		
+		<library name="SSL_TPlus" description="DLL SSL" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>         
+		
+		<library name="IPA280_TPlus" description="SPMCI library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<!-- 				Contactless LIBS					-->
+		<library name="MifareTPlus" description="Mifare library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<library name="TPassTPlus" description="TPass library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<library name="GTLTPlus" description="GTL library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+		<!-- Temp !!! <library name="NDEF" description="NDEF library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>            -->
+		
+		<!-- 				<library name="AVL" description="AVL library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>    			  -->
+		
+		<library name="XMLs_TPlus" description="XMLs library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>   
+		
+		<library name="TlvTree_TPlus" description="TlvTree library" state="unsettable">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>    
+		
+		<!-- 				LIBS attached to a dedicated wizard -->
+		<!-- 	the category attribute specifies in which wizard this libs should be added by default -->
+		<!-- this lib is considered as unsettable (optional and set by default) for GOAL, 
+					and settable (optional and unset by default) for other projects 			  -->
+		<library name="GraphicLib" description="GOAL (Graphic Object Advanced Library)" category="GOAL">
+			<toolchains>
+				<toolchain id="gnuArm4" extension=".lib" location="lib"/>
+			</toolchains>
+		</library>
+		
+  	</libraries>
+	
+	<linkerStartupFiles name="APP">			  
+		<!-- Startup files for T+ DLL -->
+		<linkerStartupfile name="cstartupTplus.o" path="startfiles" position="begin" toolchainId="gnuArm4"/>
+		<linkerStartupfile name="libcpatch.o" path="startfiles" position="begin" toolchainId="gnuArm4"/>
+	</linkerStartupFiles>
+	<linkerStartupFiles name="DLL">	   
+		<!-- Startup files for T+ DLL -->
+	    <linkerStartupfile name="dllcstartupTplus.o" path="startfiles" position="begin" toolchainId="gnuArm4"/>
+		<linkerStartupfile name="libcpatch.o" path="startfiles" position="begin" toolchainId="gnuArm4"/>
+	</linkerStartupFiles>
+
+	
+	
+	<defines>
+		<!-- we may now manage defines by toolchains, and add a vvalue attribute which is optional-->
+		<define id="_EXPORT_" /> <!-- defines to be added only for specified toolchain-->
+		<define id="__FRAMEWORK_TELIUM_PLUS__" />
+		<define id="_PACKAGE_VERSION_" value="9.10.0" />
+		<define id="_PACKAGE_NAME_" value="TeliumPlusSDK" />
+	</defines>
+
+	<schemes location="Component/Schemes"/>
+
+	<tools location="tools" />
+	
+	<!-- IngeDev Templates : not yet delivered -->
+	<ingeDevTemplates/>
+	
+	<!-- Useful to describe which file to use to migrate a project from a framework to an other framework -->
+	<frameworkMigrations>
+		<framework name="MigrateToTPlus.xml" source="fwT2"  destination="fwTplus"/>
+	</frameworkMigrations>	
+	
+
+	
+	<goal description="GOAL Components for IngeDev">
+		<xsd>
+			<dalSchema location="tools/IngeDev/XSD_Schemas/DAL.xsd" description="XSD Validation schema for DAL"/>
+			<dalNameSpaceSchema location="tools/IngeDev/XSD_Schemas/DALns.xsd" description="XSD Validation schema for DAL with namespace"/>
+			<goalSchema location="tools/IngeDev/XSD_Schemas/GL.xsd" description="XSD Validation schema for GOAL"/>			
+			<dalDefinesSchema location="tools/IngeDev/XSD_Schemas/DALdefines.xsd" description="XSD Validation schema DAL Common Definition"/>
+		</xsd>
+		<dll>
+			<preview location="tools/IngeDev/GOAL/dll/win32/GLJava.dll" os="win32" version="3.50" description="GOAL DLL for Win32 Preview"/>		
+		</dll>
+		<jars>
+			<jarPreview location="tools/IngeDev/GOAL/java/jars/GL.jar" version="3.50" description="GOAL JAR for Win32 Preview"/>
+		</jars>
+		<skins location="tools/IngeDev/GOAL/skins/fileSystem" />
+	</goal>
+
+  	&deviceHwConf;
+
+</packageV2>

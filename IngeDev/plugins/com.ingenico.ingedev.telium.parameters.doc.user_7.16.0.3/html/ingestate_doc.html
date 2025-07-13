@@ -1,0 +1,3670 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>IngEstate - The Core IngEstate Database</title>
+
+<link rel="stylesheet" type="text/css" href="ingestate_doc.css" /> 
+
+</head>
+
+<body lang=FR link=blue vlink=purple>
+<a name="haut">
+<div class=Section1>
+
+<p class=ITitle1><span >IngEstate - Parameter Management Template
+Format</span></p>
+
+<p class=ITitle1><span >&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:12.0pt;text-align:left'><span
+ style='font-size:14.0pt'>Service Business Unit</span></p>
+
+<p class=MsoNormal align=left style='margin-bottom:12.0pt;text-align:left'><span
+ style='font-size:14.0pt'>May 23, 2012</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+<p class=MsoNormal><span >&nbsp;</span></p>
+<div style='border:none;border-bottom:solid #EE3338 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel1><a name="_history"></a><a name="_Toc325555535"><span
+ style='color:#EE3338'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Document History    </span></a></p>
+
+</div>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <thead>
+  <tr style='page-break-inside:avoid'>
+   <td width=66 style='width:49.55pt;border:solid #EE3338 1.0pt;background:
+   #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+   <p class=MsoNormal><span >Version</span></p>
+   </td>
+   <td width=94 style='width:70.8pt;border:solid #EE3338 1.0pt;border-left:
+   none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+   <p class=MsoNormal><span >Date</span></p>
+   </td>
+   <td width=357 style='width:267.45pt;border:solid #EE3338 1.0pt;border-left:
+   none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+   <p class=MsoNormal><span >Nature of modifications</span></p>
+   </td>
+   <td width=61 style='width:45.9pt;border:solid #EE3338 1.0pt;border-left:
+   none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+   <p class=MsoNormal><span >Author</span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='page-break-inside:avoid'>
+  <td width=66 style='width:49.55pt;border:solid #EE3338 1.0pt;border-top:none;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal><span >1.0</span></p>
+  </td>
+  <td width=94 style='width:70.8pt;border-top:none;border-left:none;border-bottom:
+  solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal><span >14/05/2012</span></p>
+  </td>
+  <td width=357 style='width:267.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal><span >Initial Release</span></p>
+  </td>
+  <td width=61 style='width:45.9pt;border-top:none;border-left:none;border-bottom:
+  solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal><span >LWI</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+<p class=MsoNormal><span >&nbsp;</span></p>
+<p class=MsoNormal><span >&nbsp;</span></p>
+<div style='border:none;border-bottom:solid #EE3338 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel1><a name="_Toc205782639"></a><a name="_Toc325555535"><span
+ style='color:#EE3338'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Introduction    </span></a><span style='font:6.0pt "Times New Roman"'><a href="#haut">Up</a></p>
+
+</div>
+
+<p class=MsoNormal><span >IngEstate Parameter Management is a new
+module introduced in IngEstate v7.2. Parameter Management concerns the
+definition, configuration, storage, and downloading of parameters associated
+with a specific terminal application.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >An important source input into the
+Parameter Management functionality is the parameter template file. This is an
+XML file responsible for detailing the following:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >General information about the template.</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Parameter definitions &amp; their validation
+rules.</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Parameter layout rules for MMI clients.</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >File generation rules (where ultimately the
+files will be sent to a terminal).</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span >Although
+these individual sections will generally be produced by different people at
+different times, they are currently packaged together in the same XML file for
+convenience. </span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc205782640"></a><a name="_Toc325555536"><span
+ style='color:#EE3338'>1.1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Purpose</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The purpose of this document is to clearly
+define the expected format of a parameter template XML file, in order that they
+may be created and actively maintained by the relevant people. This document
+will not describe any other part of the Parameter Management process.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc205782641"></a><a name="_Toc325555537"><span
+ style='color:#EE3338'>1.2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Scope</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >This document will be of use to all people
+involved in the production of a Parameter Template; namely terminal application
+developers and IngEstate administrators.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc205782642"></a><a name="_Toc325555538"><span
+ style='color:#EE3338'>1.3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >References</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >None.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555539"><span  style='color:#EE3338'>1.4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>Glossary</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span class=Name><span
+>API </span></span><span class=Name><span 
+style='font-weight:normal'>Application Programming Interface</span></span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span class=Name><span
+>DB </span></span><span class=Name><span 
+style='font-weight:normal'>Database</span></span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span class=Name><span
+>MMI </span></span><span class=Name><span 
+style='font-weight:normal'>Man Machine Interface (Graphical Client)</span></span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span class=Name><span
+>XML </span></span><span class=Name><span 
+style='font-weight:normal'>Extensible Markup Language</span></span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span class=Name><span
+ style='font-weight:normal'>&nbsp;</span></span></p>
+
+<div style='border:none;border-bottom:solid #EE3338 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel1><a name="_Toc325555540"><span  style='color:#EE3338'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Parameter Template Definition    </span></a><span style='font:6.0pt "Times New Roman"'><a href="#haut">Up</a></p>
+
+</div>
+
+<p class=MsoNormal><span >A parameter template XML file is used to
+define parameters for one or more versions of a terminal application. If a
+terminal application is updated without the need for new parameters, then the
+parameter template itself will not need to change.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><i><span >Note
+that currently a parameter template file has no direct reference to the
+specific terminal application and versions it is concerned with (at best, there
+may be an indirect reference in the template description), and it is the
+responsibility of the IngEstate administrators to ensure that the correct
+templates are sent to the correct terminals.</span></i></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span >&nbsp;</span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span >The
+basic format of a parameter template file is as follows:</span></p>
+
+<p class=IBullets style='margin-left:0cm;text-indent:0cm'><span >&nbsp;</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt'>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'>&lt;template&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> &lt;fields&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> &lt;!--</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> Field Definition Section (see Section <b>3</b>)</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> Defines all parameters (&amp; their validation
+rules) required for the template</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> --&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> &lt;/fields&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> &lt;layout&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> &lt;!--</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> Layout Definition Section (see Section <b>4</b>)</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> Defines how parameters should be displayed in
+a MMI</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> --&gt;<br>
+ &lt;/layout&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> &lt;output&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> &lt;!--</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> Output Definition Section (see Section <b>5</b>)</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> Defines how parameters should be written to
+files for sending to a terminal --&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'> &lt;/output&gt;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=IBullets align=left style='margin-left:0cm;text-align:left;text-indent:
+0cm;border:none;padding:0cm'><span  style='font-size:8.0pt;
+font-family:"Courier New"'>&lt;/template&gt;</span></p>
+
+</div>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >A small working example of a parameter
+template XML file can be found in Section <b>6</b>.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555541"><span  style='color:#EE3338'>2.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;template&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >This is the main root element for the
+parameter template xml file.</span></p>
+
+<p class=ILevel3><a name="_Toc154219083"></a><a name="_Toc295225056"></a><a
+name="_Toc325555542"><span  style='color:#EE3338'>2.1.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+>Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;template&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;border-top:
+  none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>id</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>String detailing the id of the template.</span></p>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>The template id and version uniquely identify the
+  template in IngEstate.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;border-top:
+  none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>version</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>String detailing the version of the template. This
+  can be up to five characters in length.</span></p>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>The template id and version uniquely identify the
+  template in IngEstate.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;border-top:
+  none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>String detailing a user friendly name for the
+  template. This may be used by a MMI for display to a user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;border-top:
+  none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>description</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>String detailing a description for the template. This
+  may be used by a MMI for display to a user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;border-top:
+  none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>xmlns</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Fixed string detailing the default
+  namespace of the XML elements and attributes.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The Value must be </span><span 
+  style='font-size:9.0pt'>&quot;http://www.ingenico.com/ingestate/paramTemplate&quot;</span></p>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555543"></a><a name="_Toc154219084"></a><a
+name="_Toc295225057"><span  style='color:#EE3338'>2.1.2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Nested
+</span></a><span >Elements</span></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;template&gt;</span>
+element has exactly one of each of the following nested elements, in the order
+specified.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;border-top:
+  none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>fields</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>This element details the parameters applicable to
+  this template, along with their basic validation rules.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;border-top:
+  none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>layout</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>This element details how the parameters should be
+  presented in a MMI.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;border-top:
+  none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>output</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><span 
+  style='font-size:9.0pt'>This element details how the parameters should be
+  written to files for sending to a terminal.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<div style='border:none;border-bottom:solid #EE3338 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel1><a name="_Ref325013258"></a><a name="_Toc325555544"><span
+ style='color:#EE3338'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Field Definition Section    </span></a><span style='font:6.0pt "Times New Roman"'><a href="#haut">Up</a></p>
+
+</div>
+
+<p class=MsoNormal><span >The field definition section details all
+parameters applicable to this template, along with their basic validation
+rules.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><i><span >Note: A parameter validation check is
+always performed for stored parameter values immediately prior to parameter
+files being generated for sending to a terminal. If any parameter fails a
+validation check, then the whole parameter set is deemed invalid and no files will
+be sent.</span></i></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The field definition section is usually
+created by the terminal application developer.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555545"><span  style='color:#EE3338'>3.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;fields&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >This is the main element for the field
+definition section.</span></p>
+
+<p class=ILevel3><a name="_Toc325555546"><span  style='color:#EE3338'>3.1.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+>Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;fields&gt;</span>
+element has no attributes.</span></p>
+
+<p class=ILevel3><a name="_Toc325555547"><span  style='color:#EE3338'>3.1.2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;fields&gt;</span>
+element can contain any amount of the following nested elements, and in any
+order (not important to the functionality). As a minimum, at least one element
+must be supplied.</span></p>
+
+<p class=MsoNormal><span ></span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>dataField</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details a standard data
+  parameter.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>choiceField</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details a choice parameter. A
+  choice parameter may have a value which can be chosen from a finite defined
+  set.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>structureField</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details a structure
+  parameter. A structure parameter consists of multiple sub-parameters (which
+  may be individually configured), and may contain 1 or more rows. It is
+  analogous to a table.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Ref324932154"></a><a name="_Toc325555548"><span
+ style='color:#EE3338'>3.2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >&lt;dataField&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;dataField&gt;</b> element is
+used to define a standard single-value parameter. In a MMI, these types of
+parameters tend to be displayed in a free-form text entry box.</span></p>
+
+<p class=ILevel3><a name="_Toc325555549"><span  style='color:#EE3338'>3.2.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;dataField&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>id</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the unique id of the
+  parameter. No two parameters in a template may share the same id. </span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>name</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly name for
+  the parameter. This may be used by a MMI for display to a user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>description</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly
+  description for the parameter. This may be used by a MMI for display to a
+  user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>access</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the parameter access.
+  Valid access options are as follows:<br>
+  <br>
+  <b>HIDDEN</b> - Not to be shown to users of a MMI.<br>
+  <b>READONLY</b> - Can be read by users of a MMI, but not edited. <br>
+  <b>READWRITE</b> - Can be both read and edited by users of a MMI.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>defaultValue</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String representing the default value for
+  the parameter in cases where a value has not been explicitly set and stored
+  in the DB.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>mandatory</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Boolean that determines whether or not a
+  value for the parameter is required to exist (either explicitly set and
+  stored in the DB, or defined via the <b>defaultValue</b> attribute).</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>type</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the type of the
+  parameter. Valid options are as follows:<br>
+  <br>
+  <b>alphanumeric</b></span><span  style='font-size:9.0pt'> -
+  Parameter can consist of any printable characters. Empty strings are allowed.
+  (e.g. &quot;abc123.-*&quot;)</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>letters</span></b><span 
+  style='font-size:9.0pt'> - Parameter can only consist of alphabetical
+  characters. Empty strings are allowed. (e.g. &quot;abc&quot;)<br>
+  <b>numeric</b> - Parameter can only consist of numerical characters. Empty
+  strings are not allowed. (e.g. &quot;123&quot;)<br>
+  <b>alphanumStrict</b> - Parameter can only consist of alphabetical and
+  numerical characters. Empty strings are allowed. (e.g. &quot;abc123&quot;) <br>
+  <b>hexadecimal</b> - Parameter can only consist of hexadecimal characters.
+  Empty strings are not allowed. (e.g. &quot;aaff0011&quot;)</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>&nbsp;</span></b></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>If this attribute is not specified, then
+  the parameter can be of any type.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>&nbsp;</span></b></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>minLength</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Non-negative integer that specifies the
+  minimum length (in characters) for the parameter.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>maxLength</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Positive integer that specifies the
+  maximum length (in characters) for the parameter.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>minValue</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Integer that specifies the minimum value
+  for the parameter. It is expected that the parameter is a valid number, and
+  any non-numerical parameter will fail this check.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>maxValue</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Integer that specifies the maximum value
+  for the parameter. It is expected that the parameter is a valid number, and
+  any non-numerical parameter will fail this check.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>regularExp</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a regular expression
+  pattern that the parameter must match.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>For more information regarding regular
+  expression construction, refer to the Pattern class in the Java 1.6 API
+  (http://download.oracle.com/javase/6/docs/api/).</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>e.g.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&quot;[01]{8}&quot; will match a parameter
+  value with exactly eight &quot;0&quot; or &quot;1&quot; characters - in any
+  order.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&quot;[^abc]&quot; will match a parameter
+  value with any character except &quot;a&quot;, &quot;b&quot; or
+  &quot;c&quot;.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>dateTimeFormat</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a format for a date-time
+  value that the parameter must match. Valid formats are as defined for the
+  SimpleDateFormat class in the Java 1.6 API
+  (http://download.oracle.com/javase/6/docs/api/).</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>As symbols are defined in the local of the
+  IngEstate server JVM, it is recommended that only the numeric codes are used
+  for the required sub-components of the date-time.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>e.g.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&quot;dd/MM/yyyy&quot; will match a
+  parameter value of &quot;31/12/2012&quot;.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&quot;YYYYMM&quot; will match a parameter
+  value of &quot;201212&quot;.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&quot;dd/MM HH:mm:ss&quot; will match a
+  parameter value of &quot;31/12 22:00:00&quot;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555550"><span  style='color:#EE3338'>3.2.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><a name="_Ref324932558"><span >The <b>&lt;dataField&gt;</b>
+element has no nested elements.</span></a></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Ref325015950"></a><a name="_Toc325555551"><span
+ style='color:#EE3338'>3.3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >&lt;choiceField&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;choiceField&gt;</b> element is
+used to define a single-value choice parameter. This is a parameter which may
+take on a value from a finite defined set. In a MMI, these types of parameters
+tend to be displayed as a drop-down box, or as a set of radio-buttons.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><i><span >Note: The parameter validation check
+ensures that a choice parameter has a value matching one of its defined set.</span></i></p>
+
+<p class=ILevel3><a name="_Toc325555552"><span  style='color:#EE3338'>3.3.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;choiceField&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>id</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the unique id of the
+  parameter. No two parameters in a template may share the same id. </span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>name</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly name for
+  the parameter. This may be used by a MMI for display to a user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>description</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly
+  description for the parameter. This may be used by a MMI for display to a
+  user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>access</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the parameter access.
+  Valid access options are as follows:<br>
+  <br>
+  <b>HIDDEN</b> - Not to be shown to users.<br>
+  <b>READONLY</b> - Can be read by users, but not edited. <br>
+  <b>READWRITE</b> - Can be both read and edited by users.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>defaultValue</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String representing the default value for
+  the parameter to assume in cases where a value has not been explicitly set
+  and stored in the DB. Naturally, it only makes sense that this value matches
+  one of the defined choices.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>mandatory</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Boolean that determines whether or not a
+  value for the parameter is required to exist (either explicitly set and
+  stored in the DB, or defined via the <b>defaultValue</b> attribute).</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>type</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the choice type of the
+  parameter. Valid options are as follows:<br>
+  <br>
+  <b>SINGLE</b></span><span  style='font-size:9.0pt'> - The parameter
+  can take on the value of only one of the defined choices.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555553"><span  style='color:#EE3338'>3.3.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;choiceField&gt;</span>
+element can contain one or more of the following nested elements.</span></p>
+
+<p class=MsoNormal><span ></span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>choiceValue</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details one valid choice for
+  the choice parameter.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555554"><span  style='color:#EE3338'>3.4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;choiceValue&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;choiceField&gt;</b> element is
+used to define a single choice for the choice parameter. </span></p>
+
+<p class=ILevel3><a name="_Toc325555555"><span  style='color:#EE3338'>3.4.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;choiceValue&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>label</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly name for
+  the choice. This may be used by a MMI for display to a user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>value</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the actual value for the
+  choice. This will be the value saved to the database, and if using standard
+  IngEstate download commands, will be the actual value that ends up being sent
+  down to the terminal.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555556"><span  style='color:#EE3338'>3.4.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;choiceValue&gt;</span>
+element has no nested elements.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Ref325016204"></a><a name="_Toc325555557"><span
+ style='color:#EE3338'>3.5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >&lt;structureField&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;structureField&gt;</b> element
+is used to define a structure parameter. A structure parameter can be considered
+as analogous to a table. It will have one or more defined sub-parameters
+(columns), and can grow dynamically (consisting of zero or more rows). </span></p>
+
+<p class=ILevel3><a name="_Toc325555558"><span  style='color:#EE3338'>3.5.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;structureField&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>id</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the unique id of the
+  parameter. No two parameters in a template may share the same id. </span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>name</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly name for
+  the parameter. This may be used by a MMI for display to a user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>description</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly
+  description for the parameter. This may be used by a MMI for display to a
+  user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>access</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the parameter access.
+  Valid access options are as follows:<br>
+  <br>
+  <b>HIDDEN</b> - Not to be shown to users.<br>
+  <b>READONLY</b> - Can be read by users, but not edited. <br>
+  <b>READWRITE</b> - Can be both read and edited by users.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>minRows</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Positive integer that specifies the
+  minimum number of rows that require to be populated for the structure. </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is 1.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>maxRows</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Positive integer that specifies the
+  maximum number of rows that require to be populated for the structure. </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is 1.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This attribute is used in the parameter
+  validation check.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=ILevel3><a name="_Ref325034891"></a><a name="_Ref325035028"></a><a
+name="_Ref325037271"></a><a name="_Toc325555559"><span 
+style='color:#EE3338'>3.5.2.<span style='font:7.0pt "Times New Roman"'> </span></span><span
+>Nested Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;structureField&gt;</span>
+element can contain any amount of the following nested elements, and in any
+order. As a minimum, at least one element must be supplied.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The order of these elements is very
+important, as it determines in what order a structure's sub-parameters are
+written to generated files (as specified in the template's output definition
+section - see Section <b>5</b>).</span></p>
+
+<p class=MsoNormal><span ></span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>dataField</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details a standard data
+  parameter as a structure sub-parameter.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This is as defined in <b>Section 3.2</b>,
+  except that:</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>&nbsp;</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>1. The <b>access</b> attribute cannot be
+  set to HIDDEN (it will be treated as read-only).</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>2. The id of the sub-parameter defined by
+  this element only needs to be unique only to the structure parameter (that
+  is, two different structures may contain sub-parameters that have the same
+  defined id).</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>choiceField</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details a choice parameter as
+  a structure sub-field.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This is as defined in <b>Section </b></span></i><b><i><span  style='font-size:9.0pt'>3.3</span></i></b><i><span 
+  style='font-size:9.0pt'>, except that:</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>&nbsp;</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>1. The <b>access</b> attribute cannot be
+  set to HIDDEN (it will be treated as read-only).</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>2. The id of the sub-parameter defined by
+  this element only needs to be unique only to the structure parameter (that
+  is, two different structures may contain sub-parameters that have the same
+  defined id).</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<div style='border:none;border-bottom:solid #EE3338 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel1><a name="_Ref325013287"></a><a name="_Toc325555560"><span
+ style='color:#EE3338'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Layout Definition Section    </span></a><span style='font:6.0pt "Times New Roman"'><a href="#haut">Up</a></p>
+
+</div>
+
+<p class=MsoNormal><span >The layout definition section details how
+the template parameters are to be displayed by the MMI (client interface) to
+the end user. </span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The following rules are applicable to the
+layout section:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Parameters can be displayed in any order, and do
+not need to follow the order as defined in the field definition section.</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >A parameter can only be displayed once in the
+layout.</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >A layout does not need to show all parameters
+defined in the field definition section (but a defined structure layout <i>must</i>
+show all of that structure's sub-parameters).</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The layout definition section is usually
+created by the IngEstate Administrator.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555561"><span  style='color:#EE3338'>4.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;layout&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >This is the main element for the layout
+definition section.</span></p>
+
+<p class=ILevel3><a name="_Toc325555562"><span  style='color:#EE3338'>4.1.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+>Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;layout&gt;</span>
+element has no attributes.</span></p>
+
+<p class=ILevel3><a name="_Toc325555563"><span  style='color:#EE3338'>4.1.2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;layout&gt;</span>
+element can contain one or more of the following nested elements.</span></p>
+
+<p class=MsoNormal><span ></span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>container</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details a container into
+  which a defined sub-set of parameters can be grouped for display.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555564"><span  style='color:#EE3338'>4.2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;container&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;container&gt;</b> element is
+used to define a physical component into which a sub-set of parameters can be
+grouped for display purposes. </span></p>
+
+<p class=ILevel3><a name="_Toc325555565"><span  style='color:#EE3338'>4.2.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;container&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>name</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly name for
+  the container. This may be used by a MMI for display to a user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>type</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the container type. Valid
+  options are as follows:<br>
+  <br>
+  <b>TAB</b></span><span  style='font-size:9.0pt'> - All parameters
+  referenced in this element will be positioned on the same Tab component in
+  the MMI.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>description</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing a user-friendly
+  description for the container. This may be used by a MMI for display to a user.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555566"><span  style='color:#EE3338'>4.2.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;container&gt;</span>
+element can contain any amount of the following nested elements, and in any
+order. As a minimum, at least one element must be supplied.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The order in which the elements are defined
+here is the order in which the relevant parameters will appear within the
+container.</span></p>
+
+<p class=MsoNormal><span ></span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>fieldLayout</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details the layout of a
+  standard data or choice parameter.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>structureLayout</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details the layout of a
+  structure parameter.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Ref324933032"></a><a name="_Toc325555567"><span
+ style='color:#EE3338'>4.3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span><span >&lt;fieldLayout&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;fieldLayout&gt;</b> element is
+used to define the layout of a standard data parameter (see Section <b>3.2</b>),
+or a choice parameter (see Section <b>3.3</b>).</span></p>
+
+<p class=ILevel3><a name="_Toc325555568"><span  style='color:#EE3338'>4.3.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;fieldLayout&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>fieldId</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the parameter id to be
+  displayed.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>The parameter id must exactly match one
+  that has been specified in the field definition section.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>type</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the MMI component to be
+  used in visualising the parameter. Valid options are as follows:<br>
+  <br>
+  <b>TEXT</b> - A basic text field component.<br>
+  <b>DROPDOWN - A drop-down menu (sometimes known as a combo-box).</b> <br>
+  <br>
+  </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>Note that a DROPDOWN component<b> </b>can
+  only be specified for choice parameters of type SINGLE.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555569"><span  style='color:#EE3338'>4.3.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;fieldLayout&gt;</span>
+element has no nested elements.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555570"><span  style='color:#EE3338'>4.4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+>&lt;structureLayout&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;structureLayout&gt;</b> element
+is used to define the layout of a structure parameter only (see Section <b>3.5</b>).</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >This layout is currently always shown as a
+table component in the MMI, irrespective of how many rows the structure is set
+to have.</span></p>
+
+<p class=ILevel3><a name="_Toc325555571"><span  style='color:#EE3338'>4.4.1.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;structureLayout&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>fieldId</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the parameter id to be
+  displayed.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>The parameter id must exactly match one
+  that has been specified in the field definition section.</span></i></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555572"><span  style='color:#EE3338'>4.4.2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>Nested Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;structureLayout&gt;</span>
+element must contain exactly one <b>&lt;fieldLayout&gt;</b> element for every
+sub-parameter of the structure as defined in the field definition section (see
+Section <b>3.5.2)</b>. </span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The order in which the elements are defined
+here is the order in which the relevant sub-parameters will appear within the
+table component (and may therefore differ from the order defined in the field
+definition section).</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>fieldLayout</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details the layout of a
+  standard data or choice parameter, which itself must be a recognised
+  sub-parameter of the structure.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>This is as defined in <b>Section </b></span></i><b><i><span  style='font-size:9.0pt'>4.3</span></i></b><span 
+  style='font-size:9.0pt'>.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<div style='border:none;border-bottom:solid #EE3338 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel1><a name="_Ref324948285"></a><a name="_Toc325555573"><span
+ style='color:#EE3338'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Output Definition Section     </span></a><span style='font:6.0pt "Times New Roman"'><a href="#haut">Up</a></p>
+
+</div>
+
+<p class=MsoNormal><span >The output definition section details how
+the template parameters are to be written to files for sending to a terminal.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The following rules are applicable to the
+output section:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >The generated output can consist of one or more
+files </span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >A parameter may be written in as many different
+locations as required (either in the same file, as well as across multiple
+files).</span></p>
+
+<p class=IBullets><span  style='font-family:Symbol;color:#EE3338'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >All parameters written (or defined free text)
+are done so on a separate line in the file.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The output definition section is usually
+created by the terminal application developer.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555574"><span  style='color:#EE3338'>5.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;output&gt; Element</span></a><span > </span></p>
+
+</div>
+
+<p class=MsoNormal><span >This is the main element for the layout
+definition section.</span></p>
+
+<p class=ILevel3><a name="_Toc325555575"><span  style='color:#EE3338'>5.1.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
+>Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;output&gt;</span>
+element has no attributes</span></p>
+
+<p class=ILevel3><a name="_Toc325555576"><span  style='color:#EE3338'>5.1.2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;output&gt;</span>
+element has zero or more of the following nested elements</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=114 style='width:85.55pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=408 style='width:305.7pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=57 style='width:42.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='text-indent:1.5pt;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=114 valign=top style='width:85.55pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>propertyParamFile</span></b></p>
+  </td>
+  <td width=408 valign=top style='width:305.7pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details the generation of one
+  parameter file.</span></p>
+  </td>
+  <td width=57 valign=top style='width:42.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555577"><span  style='color:#EE3338'>5.2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;propertyParamFile&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;propertyParamFile&gt;</b>
+element is used to define the layout of one distinct file to be generated for
+sending to a terminal.</span></p>
+
+<p class=ILevel3><a name="_Toc325555578"><span  style='color:#EE3338'>5.2.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;propertyParamFile&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=131 style='width:98.55pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=389 style='width:292.05pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=62 style='width:46.65pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:9.05pt'>
+  <td width=131 valign=top style='width:98.55pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>destination</span></b></p>
+  </td>
+  <td width=389 valign=top style='width:292.05pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the final destination of
+  the file in the terminal. The actual format is specific to the terminal type
+  being targeted by the template (a current restriction is that a template can
+  only be targeted to one terminal type).</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>Telium Terminal Format</span></b><span
+   style='font-size:9.0pt'>:
+  &quot;&lt;volume&gt;:&lt;filename&gt;&quot;, or &quot;filename&quot; (with an
+  assumed volume of SWAP).</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.65pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=131 valign=top style='width:98.55pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>propertyValueSep</span></b></p>
+  </td>
+  <td width=389 valign=top style='width:292.05pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String to be placed between the property
+  name and the property value.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is &quot;=&quot;.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.65pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=131 valign=top style='width:98.55pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>valueEnclosingString</span></b></p>
+  </td>
+  <td width=389 valign=top style='width:292.05pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String to be placed immediately before and
+  after the property value.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>e.g.&quot;&amp;quot;&quot; will give:</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myParamId=<b>&quot;</b>myParamValue<b>&quot;</b></span></i></p>
+  <p class=MsoNormal align=left style='text-align:left'><span 
+  style='font-size:10.0pt;font-family:Arial'>&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is nothing.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.65pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:11.7pt'>
+  <td width=131 valign=top style='width:98.55pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>beginLineString</span></b></p>
+  </td>
+  <td width=389 valign=top style='width:292.05pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String to be placed at the beginning of
+  each line on which a parameter is written.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is nothing.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.65pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:11.7pt'>
+  <td width=131 valign=top style='width:98.55pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>endLineString</span></b></p>
+  </td>
+  <td width=389 valign=top style='width:292.05pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String to be placed at the end of each
+  line on which a parameter is written.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is nothing.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.65pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555579"><span  style='color:#EE3338'>5.2.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;propertyParamFile&gt;</span>
+element can contain any amount of the following nested elements, and in any
+order. As a minimum, at least one element must be supplied.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >The order in which the elements are defined
+here is the order in which the relevant parameters and text will be written to
+the file.</span></p>
+
+<p class=MsoNormal><span ></span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 style='width:76.25pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Element Name</span></b></p>
+  </td>
+  <td width=413 style='width:309.45pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=64 style='width:48.0pt;border:solid #EE3338 1.0pt;border-left:none;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>fieldOutput</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details the writing of a
+  standard data parameter to the file.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>structureOutput</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details the writing of a
+  structure parameter to the file.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=102 valign=top style='width:76.25pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>freeOutput</span></b></p>
+  </td>
+  <td width=413 valign=top style='width:309.45pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>This element details the writing of custom
+  'free text' to the file.</span></p>
+  </td>
+  <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
+  border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555580"><span  style='color:#EE3338'>5.3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;fieldOutput&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;fieldOutput&gt;</b> element is
+used to define the writing of a standard data parameter (see Section <b>3.2</b>),
+or a choice parameter (see Section <b>3.3</b>) to the file.</span></p>
+
+<p class=ILevel3><a name="_Toc325555581"><span  style='color:#EE3338'>5.3.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;fieldOutput&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border:solid #EE3338 1.0pt;
+  border-left:none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:
+  10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border:solid #EE3338 1.0pt;
+  border-left:none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:
+  10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:9.05pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>fieldId</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the parameter id to be
+  output. This is also used as the property name that will be written in the
+  file <i>unless</i> the <b>propertyValue </b></span><span 
+  style='font-size:9.0pt'>attribute is set.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'></span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>The parameter id must exactly match one
+  that has been specified in the field definition section.</span></i></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>propertyValue</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the value to be written
+  as the property name in the file .</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Unless specified, the <b>fieldId</b> will
+  be written as the property name.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>writeEmptyValue</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Boolean which indicates whether or not the
+  parameter should be written to the file if it has an empty value
+  (&quot;&quot;). </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is <b>false</b>.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:11.7pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>writeNullValue</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Boolean which indicates whether or not the
+  parameter should be written to the file if it has a null value. </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is <b>false</b>.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555582"><span  style='color:#EE3338'>5.3.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;fieldOutput&gt;</span>
+element has no nested elements. </span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555583"><span  style='color:#EE3338'>5.4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;structureOutput&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;structureOutput&gt;</b> element
+is used to define the layout of a structure parameter only (see Section <b>3.5</b>).</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span >All values for the structure's
+sub-parameters will be written in the order as defined in the field definition
+section (see Section <b>3.5.2</b>).</span></p>
+
+<p class=ILevel3><a name="_Toc325555584"><span  style='color:#EE3338'>5.4.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;structureOutput&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=130 style='width:97.75pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=386 style='width:289.6pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=62 style='width:46.35pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:9.05pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>fieldId</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the parameter id to be
+  output. This is also used as the property name that will be written in the
+  file <i>unless</i> the <b>propertyValue </b></span><span 
+  style='font-size:9.0pt'>attribute is set.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'></span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>The parameter id must exactly match one
+  that has been specified in the field definition section.</span></i></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>propertyValue</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the value to be written
+  as the property name in the file .</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Unless specified, the <b>fieldId</b> will
+  be written as the property name.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>writeEmptyValue</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Boolean which indicates whether or not
+  sub-parameter values should be written to the file if it has an empty value
+  (&quot;&quot;). </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is <b>false</b>.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:11.7pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>writeNullValue</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Boolean which indicates whether or not
+  sub-parameter values should be written to the file if it has a null value. </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is <b>false</b>.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:11.7pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>fieldSeparator</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the separator between
+  sub-parameter values written. </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>e.g. &quot;.&quot; will give:</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId=subParameter1Value<b>.</b>subParameter2Value<b>.</b>subParameter3Value</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Care should be taken to ensure that the
+  sub-parameter value cannot contain this string itself.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is &quot;.&quot; (dot).</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:11.7pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>indexSeparator</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the separator between the
+  property name written, and the structure row index.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>e.g. &quot;.&quot; will give:</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId<b>.</b>1=&lt;values...&gt;</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId<b>.</b>2=&lt;values...&gt;</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is &quot;.&quot; (dot).</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:11.7pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>indexFixedSize</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Integer detailing the number of digits
+  used to represent the index. If an index number does not use this amount of
+  digits, then it will be left-padded with 0's. </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Note that the index is only written for
+  structures with more than one row. </span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The value -1 means that no index has to be
+  written.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The value 0 means that natural numbers are
+  written (with no formatting).</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Any other value means to format the index
+  to the given size. If the index number exceeds the given size then no
+  formatting is done and the index number is written out as is.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>e.g. &quot;3&quot; will give:</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.<b>001</b>=&lt;values...&gt;</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.<b>002</b>=&lt;values...&gt;</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>In all cases, the Index starts with value
+  1.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:11.7pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>flatOutput</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Boolean detailing whether or not
+  structures have to be written with a sub-parameter value per line (instead of
+  all sub-parameter values for a row appearing on the same line).</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>e.g.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&quot;false&quot; will give:</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.1=subParameter1Value.subParameter2Value.subParameter3value</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.2=subParameter1Value.subParameter2Value.subParameter3value</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&quot;true&quot; will give:</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.subParameter1Id.1=subParameter1Value</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.subParameter2Id.1=
+  subParamete2Value</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.subParameter3Id.1=
+  subParameter3Value myStructureId.subParameter1Id.2=subParameter1Value</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.subParameter2Id.2=
+  subParamete2Value</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><i><span
+   style='font-size:9.0pt'>myStructureId.subParameter3Id.2=
+  subParameter3Value</span></i></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>The default value is false.</span></p>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:11.7pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>No</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555585"><span  style='color:#EE3338'>5.4.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;structureOutput&gt;</span>
+element has no nested elements.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555586"><span  style='color:#EE3338'>5.5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>&lt;freeOutput&gt; Element</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The <b>&lt;freeOutput&gt;</b> element is
+used to define a custom string of text to be written to the file. </span></p>
+
+<p class=ILevel3><a name="_Toc325555587"><span  style='color:#EE3338'>5.5.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span >Attributes</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;freeOutput&gt;</span>
+element has the following attributes:</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<table class=Ingenico border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <tr style='page-break-inside:avoid;height:10.9pt'>
+  <td width=130 style='width:97.75pt;border:solid #EE3338 1.0pt;background:
+  #D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Attribute Name</span></b></p>
+  </td>
+  <td width=386 style='width:289.6pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Description</span></b></p>
+  </td>
+  <td width=62 style='width:46.35pt;border:solid #EE3338 1.0pt;border-left:
+  none;background:#D9D9D9;padding:0cm 4.25pt 0cm 4.25pt;height:10.9pt'>
+  <p class=MsoNormal style='layout-grid-mode:char'><b><span 
+  style='font-size:9.0pt'>Required</span></b></p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid;height:9.05pt'>
+  <td width=130 valign=top style='width:97.75pt;border:solid #EE3338 1.0pt;
+  border-top:none;padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><b><span
+   style='font-size:9.0pt'>output</span></b></p>
+  </td>
+  <td width=386 valign=top style='width:289.6pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>String detailing the custom text to be
+  written to the file.</span></p>
+  </td>
+  <td width=62 valign=top style='width:46.35pt;border-top:none;border-left:
+  none;border-bottom:solid #EE3338 1.0pt;border-right:solid #EE3338 1.0pt;
+  padding:0cm 4.25pt 0cm 4.25pt;height:9.05pt'>
+  <p class=MsoNormal align=left style='text-align:left;layout-grid-mode:char'><span
+   style='font-size:9.0pt'>Yes</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILevel3><a name="_Toc325555588"><span  style='color:#EE3338'>5.5.2.<span
+style='font:7.0pt "Times New Roman"'> </span></span><span >Nested
+Elements</span></a></p>
+
+<p class=MsoNormal><span >The <span class=Name>&lt;freeOutput&gt;</span>
+element has no nested elements.</span></p>
+
+<div style='border:none;border-bottom:solid #EE3338 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel1><a name="_Ref325553695"></a><a name="_Toc325555589"><span
+ style='color:#EE3338'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span >Small Parameter Template XML Example    </span></a><span style='font:6.0pt "Times New Roman"'><a href="#haut">Up</a></p>
+
+</div>
+
+<p class=MsoNormal><span >This section gives a small (and contrived)
+example of how a parameter template XML file can be constructed. It also shows
+screenshots demonstrating how the layout will be rendered by the IngEstate
+Parameter Management MMI, and also how the relevant parameter files will be
+generated for the terminal.</span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555590"><span  style='color:#EE3338'>6.1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+>The Template XML</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >The example parameter template XML file is
+as follows. It defines a variety of different field types, multiple tabs for
+the MMI, and multiple as the output for the terminal.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 1.0pt 1.0pt 1.0pt'>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&lt;template id=&quot;example&quot; name=&quot;Example
+Template&quot; description=&quot;Example Template For IngEstate Parameter
+management&quot; version=&quot;12345&quot;
+xmlns=&quot;http://www.ingenico.com/ingestate/paramTemplate&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fields&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;account&quot; name=&quot;Account
+Number&quot; description=&quot;Full customer account number&quot;
+minLength=&quot;5&quot; maxLength=&quot;5&quot; type=&quot;numeric&quot;
+access=&quot;READWRITE&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;internal&quot; name=&quot;Ref
+ID&quot; description=&quot;Customer internal reference id&quot;
+defaultValue=&quot;To Be Assigned&quot; access=&quot;READONLY&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceField id=&quot;title&quot; name=&quot;Title&quot;
+description=&quot;Customer title&quot; type=&quot;SINGLE&quot;
+access=&quot;READWRITE&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceValue label=&quot;Mr&quot;
+value=&quot;0&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceValue label=&quot;Mrs&quot;
+value=&quot;1&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceValue label=&quot;Ms&quot;
+value=&quot;2&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceValue label=&quot;Master&quot;
+value=&quot;3&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/choiceField&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;structureField id=&quot;name&quot; name=&quot;Name&quot;
+description=&quot;Customer name&quot; access=&quot;READWRITE&quot;
+minRows=&quot;1&quot; maxRows=&quot;1&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;first&quot; name=&quot;First
+Name&quot; description=&quot;Customer first name&quot; type=&quot;letters&quot;
+access=&quot;READWRITE&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;middle&quot; name=&quot;Middle
+Name(s)&quot; description=&quot;Customer middle name(s)&quot;
+type=&quot;letters&quot; access=&quot;READWRITE&quot;/&gt; </span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;last&quot; name=&quot;Surname&quot;
+description=&quot;Customer surname&quot; type=&quot;letters&quot; access=&quot;READWRITE&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/structureField&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;dob&quot; name=&quot;Date Of
+Birth&quot; description=&quot;Customer date of birth (dd-mm-yyyy)&quot;
+dateTimeFormat=&quot;dd-MM-yyyy&quot; access=&quot;READWRITE&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;structureField id=&quot;phone&quot;
+name=&quot;Phone&quot; description=&quot;Customer phone details&quot;
+access=&quot;READWRITE&quot; mandatory=&quot;false&quot;
+maxRows=&quot;10&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceField id=&quot;type&quot; name=&quot;Type&quot;
+description=&quot;Phont type&quot; type=&quot;SINGLE&quot;
+access=&quot;READWRITE&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceValue label=&quot;Mobile&quot;
+value=&quot;M&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceValue label=&quot;Home&quot;
+value=&quot;H&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;choiceValue label=&quot;Work&quot;
+value=&quot;W&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/choiceField&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;number&quot;
+name=&quot;Number&quot; description=&quot;Full number (including area
+code)&quot; type=&quot;numeric&quot; access=&quot;READWRITE&quot;/&gt; </span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/structureField&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;8bits&quot; name=&quot;8 Bits&quot;
+description=&quot;Example of how 8 bits may be inserted and validated&quot;
+type=&quot;alphanumeric&quot; minLength=&quot;8&quot; maxLength=&quot;8&quot;
+regularExp=&quot;[01]{8}&quot; access=&quot;READWRITE&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;dataField id=&quot;hex&quot; name=&quot;Hex
+Value&quot; description=&quot;2 digit hex value&quot;
+type=&quot;hexadecimal&quot; minLength=&quot;2&quot; maxLength=&quot;2&quot;
+access=&quot;READWRITE&quot; mandatory=&quot;true&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/fields&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;layout&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;container name=&quot;Customer&quot; type=&quot;TAB&quot;
+description=&quot;Personal information regarding the customer&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;account&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;internal&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;title&quot;
+type=&quot;DROPDOWN&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;structureLayout fieldId=&quot;name&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;first&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;middle&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;last&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/structureLayout&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;dob&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;structureLayout fieldId=&quot;phone&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;type&quot;
+type=&quot;DROPDOWN&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;number&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/structureLayout&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/container&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;container name=&quot;Other Examples&quot;
+type=&quot;TAB&quot; description=&quot;Some random fields showing different
+input and validation examples&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;8bits&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldLayout fieldId=&quot;hex&quot;
+type=&quot;TEXT&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/container&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/layout&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;output&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;propertyParamFile destination=&quot;customer.par&quot;
+valueEnclosingString=&quot;&amp;quot;&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldOutput fieldId=&quot;account&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldOutput fieldId=&quot;title&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;structureOutput fieldId=&quot;name&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;fieldOutput fieldId=&quot;dob&quot;/&gt; </span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/propertyParamFile&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;propertyParamFile destination=&quot;phone.par&quot;
+valueEnclosingString=&quot;&amp;quot;&quot;&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;structureOutput fieldId=&quot;name&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;structureOutput fieldId=&quot;phone&quot;/&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/propertyParamFile&gt; </span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'> &lt;/output&gt;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-autospace:none;
+border:none;padding:0cm'><span  style='font-size:7.0pt;font-family:
+"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='border:none;padding:0cm'><span 
+style='font-size:7.0pt;font-family:"Courier New"'>&lt;/template&gt;</span></p>
+
+</div>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555591"><span  style='color:#EE3338'>6.2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
+>Layout On IngEstate Parameter Management MMI</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >Based on the layout definition section in
+the example parameter template XML file, the following screens will be
+presented to the user by the IngEstate Parameter Management MMI.</span></p>
+
+<p class=MsoNormal><span ></span></p>
+
+<p class=MsoNormal><u><span >Customer Tab</span></u></p>
+
+<p class=MsoNormal><u><span ><span style='text-decoration:none'>&nbsp;</span></span></u></p>
+
+<p class=MsoNormal><span ><img width=747 height=597
+src="images/image001.png"></span></p>
+
+<p class=MsoNormal><u><span ><span style='text-decoration:none'>&nbsp;</span></span></u></p>
+
+<p class=MsoNormal><u><span >Drop Down For Phone Type</span></u></p>
+
+<p class=MsoNormal><u><span ><span style='text-decoration:none'>&nbsp;</span></span></u></p>
+
+<p class=MsoNormal><span ><img width=276 height=221
+src="images/image002.jpg"></span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left'><u><span >Other
+Examples Tab</span></u></p>
+
+<p class=MsoNormal align=left style='text-align:left'><u><span ><span
+ style='text-decoration:none'>&nbsp;</span></span></u></p>
+
+<p class=MsoNormal align=left style='text-align:left'><span ><img
+width=448 height=449 src="images/image003.png"></span></p>
+
+<div style='border:none;border-bottom:solid #999999 1.0pt;padding:0cm 0cm 2.0pt 0cm'>
+
+<p class=ILevel2><a name="_Toc325555592"><span  style='color:#EE3338'>6.3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
+>Generated Files</span></a></p>
+
+</div>
+
+<p class=MsoNormal><span >Based on the output definition section in
+the example parameter template XML file, the following files will be generated
+by IngEstate for sending down to the terminal.</span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><i><span >Note that the file generation and
+downloading is performed by an appropriate command in the IngEstate Automatic
+Download application, details of which are outwith the scope of this document.</span></i></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><u><span >File 'customer.par'</span></u></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><span ><img width=179 height=180
+src="images/image004.jpg"></span></p>
+
+<p class=MsoNormal><span >&nbsp;</span></p>
+
+<p class=MsoNormal><u><span >File 'phone.par'</span></u></p>
+
+<p class=MsoNormal><u><span ><span style='text-decoration:none'>&nbsp;</span></span></u></p>
+
+<p class=MsoNormal><span ><img width=746 height=599
+src="images/image005.png"></span></p>
+</div>
+</body>
+</html>

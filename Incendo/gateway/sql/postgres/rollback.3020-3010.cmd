@@ -1,0 +1,1 @@
+call %~dp0/migration.cmd %~dp0/migration/rollback3020.sql %*

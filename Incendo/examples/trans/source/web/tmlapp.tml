@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<tml xmlns="http://www.ingenico.com/tml">
+
+    <head>
+        <link href="8550.css" rev="stylesheet"/>
+        <link href="images/trans.iml" rev="image/lib"/>
+        <defaults cancel="#init_prompt"/>
+        <error uri="#error_scr"/>
+    </head>
+    
+<!--================================-->
+<!-- Start of the variable declarations -->
+    
+<!-- Start of the containers for creating transactions. 
+DO NOT USE them for processing of card/amount information as we have predefined embedded variables for this case
+-->
+    <!-- Currency code the terminal works -->
+    <vardcl name="transaction.message.transaction-currency" value="EUR" perms="rw---"/>
+    <!-- Number of digits after point in amounts -->
+    <vardcl name="transaction.message.transaction-minor" value="2" perms="rw---"/>
+    <!-- function-code, see ISO 8583 -->
+    <vardcl name="transaction.message.transaction-functioncode" value="100" perms="rw---"/>
+    <!-- Card ISO 2 track -->
+    <vardcl name="transaction.message.card-iso2track" perms="rw---"/>
+    <!-- Card PAN -->
+    <vardcl name="transaction.message.card-pan" perms="rw---"/>
+    <!-- Card expiry -->
+    <vardcl name="transaction.message.card-expiry" perms="rw---"/>
+    <!-- Transaction amount -->
+    <vardcl name="transaction.message.transaction-amount" perms="rw---"/>
+    <!-- Transaction amount -->
+    <vardcl name="transaction.message.transaction-amount2" perms="rw---"/>
+    <!-- ISO field 10 -->
+    <vardcl name="isofield.10" perms="rw---"/>
+<!-- End of containers for creating transactions -->
+    <!-- used in the "remove_card" screen -->
+    <vardcl name="screen_after_call" perms="rw---"/>
+    <!-- set it to 0 if signature check is not required -->
+    <vardcl name="btmlpa.signature_check" type="integer" perms="rw---"/>
+    <!-- variables set by the tmlapp_icc -->
+    <!-- AID of the EMV application used for the transaction -->
+    <vardcl name="btmlpa.emv.txn_aid" perms="rw---"/>
+    <!-- name of the EMV application used for the transaction -->
+    <vardcl name="btmlpa.emv.txn_app" perms="rw---"/>
+    
+<!-- End of Variable declarations -->
+<!--==============================-->
+    
+<!-- TRANSACTION PREPARATION block of screens -->
+    <screen id="init_prompt" cancel="idle://idle.tml" next="#main_menu">
+        <tform>
+            <baddata max="3" next="idle://idle.tml">
+                <table border="2" class="warning">
+                    <tr><td>
+                        <span>
+                        
+                            <getvar name="err.baddata_reason"/>
+                            
+                        </span>
+                    </td></tr>
+                </table>
+            </baddata>
+            <card parser="mag" parser_params="clean"/>
+            <prompt>
+                <table class="message">
+                    <tr><td>
+                        <span>
+                        
+                            Transaction preparation
+                            
+                        </span>
+                    </td></tr>
+                </table>
+            </prompt>
+        </tform>
+    </screen>
+    <!-- Initial screen 
+         Wakes up in case of clicking menu key
+         or by swiping magnetic card
+         or by icc
+         In case of clicking menu key the user is forwarded to
+         transaction menu screen
+         In case of swiping card appropriate parser reads the card
+         and forwards to transaction type menu
+    -->
+    
+    <screen id="main_menu" cancel="idle://idle.tml" next="#trans_abrt">
+        <display>
+            <!-- this table is designed to scale to any screen size -->
+            <table class="menu">
+                  <tr>
+                    <td><!-- left edge --></td>
+                    <td>
+                    <!-- content -->
+                        <table class="menu2" border="0" cellpadding="0">
+                            <!-- align the columns and set explicit width -->
+                            <colgroup>
+                                <!-- this column contains transaction icons -->
+                                <col align="left" width="40" />
+                                <!-- this column contains links 
+                                    most links span 2 cells -->
+                                <col width="114" align="left" />
+                                <!-- this column contains the credit card images -->
+                                <col align="right" width="66"/>
+                            </colgroup>
+                            <tr>
+                                <td colspan="3" align="center">
+                                    <img src="images/trans.iml#nbg_top.gif" width="224" alt="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/trans.iml#nbg_ics.gif" alt="" /></td>
+                                <td colspan="2"><a href="#debit">Debit<img src="images/trans.iml#nbg_next.gif" alt=""/></a></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/trans.iml#nbg_icsw.gif" alt="" /></td>
+                                <td colspan="2"><a href="#credit">Credit<img src="images/trans.iml#nbg_next.gif" alt=""/></a></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/trans.iml#nbg_icr.gif" alt="" /></td>
+                                <td colspan="2"><a href="#cash">Cash<img src="images/trans.iml#nbg_next.gif" alt="" /></a></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/trans.iml#nbg_icv.gif" alt="" /></td>
+                                <td><a href="#cashback">Cashback</a></td>
+                                <td><img src="images/trans.iml#nbg_pic1.gif" alt=""/></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/trans.iml#nbg_icd.gif" alt="" /></td>
+                                <td><a href="#reconc">Reconciliation</a></td>
+                                <td><img src="images/trans.iml#nbg_pic2.gif" alt=""/></td>
+                            </tr>
+                            <tr>
+                                <td><img src="images/trans.iml#nbg_i.gif" alt="" /></td>
+                                <td colspan="2"><a href="#about">About</a></td>
+                            </tr>
+                
+                        </table>
+                          </td>
+                    <td><!-- right edge --></td>
+                </tr>
+            </table>
+        </display>
+    </screen>
+    
+    <!-- the table element is used to align the text. span element is to adjust the text properties from the CSS -->
+    <screen id="about" timeout="3" next="#init_prompt">
+        <display>
+            <table class="message">
+                <tr><td>
+                    <span>
+                    
+                        Transaction Sample 
+                        Service @FULL_VERSION@
+                        
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+    
+    
+    <!-- set the transaction type to an appropriate value -->
+    <screen id="debit" next="#read_card">
+        <setvar name="payment.trans_type" lo="debit"/>
+    </screen>
+    
+    <!-- set the transaction type to an appropriate value -->
+    <screen id="credit" next="#read_card">
+        <setvar name="payment.trans_type" lo="return"/>
+    </screen>
+    
+    <!-- set the transaction type to an appropriate value -->
+    <screen id="cash" next="#read_card">
+        <setvar name="payment.trans_type" lo="deposit"/>
+    </screen>
+
+    <!-- set the transaction type to an appropriate value -->
+    <screen id="cashback" next="#read_card">
+        <setvar name="payment.trans_type" lo="cashback"/>
+    </screen>
+    
+<!--=======================================-->
+<!-- INITIATE TRANSACTION block of screens -->
+
+<!--==============================================================================
+          The screen that waits for magnetic card swipe or insertion of ICC EMV card
+  ================================================================================-->
+    <screen id="read_card" menu="#man_entry" next="#read_amount">
+        <!-- resetting the variables for a new transaction -->
+        <setvar name="oebr.submit_mode" lo=""/>
+        <!-- reset transaction amounts -->
+        <setvar name="payment.amount" lo="0"/>
+        <setvar name="payment.amount_other" lo="0"/>
+        <!-- no reversal possible until transaction is completed -->
+        <tform>
+            <baddata max="3" next="#to_man_entry">
+                <table border="2" class="warning">
+                    <tr><td>
+                        <span>
+                        
+                            <getvar name="err.baddata_reason"/>
+                            
+                        </span>
+                    </td></tr>
+                </table>
+            </baddata>
+            <card parser="mag" parser_params="read_data"/>
+            <card parser="icc_emv" parser_params="init_app"/>
+            <prompt>
+                <table class="message">
+                    <tr><td>
+                        <span>
+                        
+                            Please, swipe/insert card<br/>
+                            Press MENU for keying
+                            
+                        </span>
+                      </td></tr>
+                </table>
+            </prompt>
+        </tform>
+    </screen>
+<!-- End of INITIATE TRANSACTION block of screens -->
+<!--==============================================-->
+
+<!--===============================-->
+<!-- MANUAL ENTRY block of screens -->
+
+    <!-- Forward user to manual entry -->
+    <screen id="to_man_entry" timeout="1" next="#man_entry">
+        <display>
+            <table class="message">
+                <tr><td>
+                    <span>
+                    
+                        Card Is Not Readable.<br/>
+                        Forwarding To Manual entry.
+                        
+                    </span>
+                 </td></tr>
+            </table>
+        </display>
+    </screen>
+    
+    <!-- The screen just sets card input mode to manual mode
+         and forwards to transaction menu screen
+    -->
+    <screen id="man_entry" next="#card_nmb">
+        <setvar name="card.input_type" lo="3"/>
+        <setvar name="card.parser.type" lo=""/>
+        <setvar name="card.pan" lo=""/>
+        <setvar name="card.expiry_date" lo="2007/01/01"/>
+        <setvar name="card.effective_date" lo=""/>
+    </screen>
+    <!-- Manual card number entry in case of manual entry of card details
+         Manual card expiry date entry in case of manual entry of card details
+    -->
+    <screen id="card_nmb" cancel="#trans_abrt" next="#read_amount">
+        <display>
+            <form>
+                <table class="message">
+                    <tr><td>
+                        <span>
+                            Key in card number:<br/>
+                            <input alt="PAN:" name="card.pan" format="n*" size="19"/><br/>                
+                            Key In Expiry Date [MM/YY]:<br/>
+                            <input alt="Expiry Date:" type="date" name="card.expiry_date" format="MM/YY" size="5" value="tmlvar:card.expiry_date">
+                                <baddata class="c_center" next="#card_nmb">
+                                    <table border="2" height="100%" width="100%">
+                                        <tr><td align="center" valign="middle">
+                                        
+                                                <getvar name="err.baddata_reason"/>
+                                                
+                                        </td></tr>
+                                    </table>
+                                </baddata>
+                            </input>
+                            <br/>
+                            <input alt="OK" type="submit"/>
+                        </span>
+                    </td></tr>
+                </table>
+            </form>
+        </display>
+    </screen>
+<!-- End of MANUAL ENTRY block of screens -->
+<!--======================================-->
+
+<!--=====================================-->
+<!-- TRANSACTION AMOUNT block of screens -->
+
+    <!-- Forwards to correspondent read amount screen -->
+    <screen id="read_amount" cancel="#close_trans">
+        <next uri="#assert">
+            <variant lo="tmlvar:payment.trans_type" op="contains" ro="debit" uri="#read_sale"/>
+            <variant lo="tmlvar:payment.trans_type" op="contains" ro="return" uri="#read_credit"/>
+            <variant lo="tmlvar:payment.trans_type" op="contains" ro="deposit" uri="#read_cash"/>
+            <variant lo="tmlvar:payment.trans_type" op="contains" ro="cashback" uri="#read_scb"/>
+        </next>
+    </screen>
+    
+    <!-- Ask user to enter read amount and then forward to risk management
+     to analyse how to process transaction in case of magnetic card
+     or to icc processing
+    -->
+    <screen id="read_sale" cancel="#trans_abrt">
+        <setvar name="payment.amount" lo=""/>
+        <!-- transaction.type is managed by txnnew -->
+        <!--<setvar name="transaction.type" lo="00"/>-->
+        <setvar name="transaction.message.transaction-type" lo="00"/>
+        <setvar name="transaction.amount" lo=""/>
+        <next uri="tmlapp_icc.tml#check_apps">
+            <variant lo="tmlvar:card.parser.type" op="equal" ro="mag" uri="#mg_risk_mgmt"/>
+            <variant lo="tmlvar:card.input_type" op="equal" ro="3" uri="#mg_risk_mgmt"/>
+        </next>
+        <display>
+            <form>
+                <table class="message">
+                    <tr><td>
+                        <span>
+                        
+                            Purchase Amount:<br/>
+                            <input alt="Amount:" type="number" name="payment.amount" size="10" min="1" format="^*0.00"/>
+                            
+                        </span>
+                    </td></tr>
+                </table>		
+            </form>
+        </display>
+    </screen>
+    
+    <!-- Ask user to enter read amount and then forward to risk management
+     to analyse how to process transaction in case of magnetic card
+     or to icc processing
+    -->
+    <screen id="read_credit" cancel="#trans_abrt">
+      <!--<setvar name="transaction.type" lo="20"/>-->
+      <setvar name="transaction.message.transaction-type" lo="20"/>
+      <next uri="tmlapp_icc.tml#check_apps">
+        <variant lo="tmlvar:card.parser.type" op="equal" ro="mag" uri="#mg_risk_mgmt"/>
+        <variant lo="tmlvar:card.input_type" op="equal" ro="3" uri="#mg_risk_mgmt"/>
+      </next>
+      <display>
+        <form>
+          <table class="message">
+            <tr><td>
+                <span>
+                  
+                  Refund Amount:<br/>
+                  <input alt="Amount:" type="number" name="payment.amount" size="10" min="1" format="^*0.00"/>
+                  
+                </span>
+            </td></tr>
+          </table>
+        </form>
+      </display>
+    </screen>
+    
+    
+    <!-- Ask user to enter read amount and then forward to risk management
+     to analyse how to process transaction in case of magnetic card
+     or to icc processing
+    -->
+    <screen id="read_cash" cancel="#trans_abrt">
+      <!--<setvar name="transaction.type" lo="21"/>-->
+      <setvar name="transaction.message.transaction-type" lo="21"/>
+      <next uri="tmlapp_icc.tml#check_apps">
+        <variant lo="tmlvar:card.parser.type" op="equal" ro="mag" uri="#mg_risk_mgmt"/>
+        <variant lo="tmlvar:card.input_type" op="equal" ro="3" uri="#mg_risk_mgmt"/>
+      </next>
+      <display>
+        <form>
+          <table class="message">
+            <tr><td>
+                <span>
+                  
+                  Cash Amount:<br/>
+                  <input alt="Amount:" type="number" name="payment.amount_other" size="10" min="1" format="^*0.00"/>
+                  
+                </span>
+            </td></tr>
+          </table>
+        </form>
+      </display>
+    </screen>
+
+    <!-- Ask user to enter read amount as well as cashback amount and 
+         then forward to risk management
+     to analyse how to process transaction
+    -->
+    <screen id="read_scb" next="#scb_check" cancel="#trans_abrt">
+      <setvar name="transaction.type" lo="25"/>
+      <setvar name="transaction.message.transaction-type" lo="25"/>
+      <display>
+        <form>
+          <table class="message">
+            <tr><td>
+                <span>
+                  
+                  Purchase Amount:<br/>
+                  <input alt="Amount:" type="number" name="payment.amount" size="10" min="1" format="^*0.00"/>
+                  <br/>                
+                  Cashback Amount:<br/>
+                  <input alt="Amount:" type="number" name="payment.amount_other" size="10" min="1" format="^*0.00"/>
+                  <br/>
+                  <input alt="OK" type="submit"/>
+                  
+                </span>
+            </td></tr>
+          </table>
+        </form>
+      </display>
+    </screen>
+    
+    <!-- Checks amounts -->
+    <screen id="scb_check" cancel="#close_trans">
+        <next uri="tmlapp_icc.tml#check_apps">
+            <variant lo="tmlvar:payment.amount" op="less_or_equal" ro="tmlvar:payment.amount_other" uri="#scb_check_f"/>
+            <variant lo="tmlvar:card.parser.type" op="equal" ro="mag" uri="#mg_risk_mgmt"/>
+            <variant lo="tmlvar:card.input_type" op="equal" ro="3" uri="#mg_risk_mgmt"/>
+        </next>
+    </screen>
+
+
+    <screen id="scb_check_f" next="#close_trans" timeout="8">
+        <display>
+            <table border="2" class="warning">
+                <tr><td>
+                    <span>
+                    
+                        Cashback amount is greater than sale amount.<br/>
+                        Not allowed.
+                
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+<!-- End of TRANSACTION AMOUNT block of screens -->
+<!--============================================-->
+
+ <!--=======================================================================-->
+ <!-- RISK MANAGEMENT block of screens (for magnetic card and manual entry) -->
+ 
+    <!-- Analyse verdict of the card parser
+     In case all is ok forwards to customer validation -->
+    <screen id="mg_risk_mgmt">
+        <setvar name="transaction.message.transaction-date" lo="tmlvar:terminal.datetime"/>
+        <setvar name="transaction.date" lo="tmlvar:terminal.datetime"/>
+        <next uri="#mg_txnnew">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="#reject_txn"/>
+        </next>
+        <tform>
+            <baddata max="1" next="#trans_abrt">
+                <table border="2" class="warning">
+                    <tr><td>
+                        <span>
+                        
+                            <getvar name="err.baddata_reason"/>
+                            
+                        </span>
+                    </td></tr>
+                </table>
+            </baddata>
+            <card parser="mag" parser_params="risk_mgmt"/>
+        </tform>
+    </screen>
+
+<!-- End of RISK MANAGEMENT block of screens (for magnetic card and manual entry) -->
+<!--==============================================================================-->
+
+<!--===================================================================-->
+<!-- SUBMIT DATA block of screens (for magnetic card and manual entry) -->
+
+    <screen id="mg_txnnew" next="#mg_submit" cancel="#trans_abrt" timeout="1">
+        <setvar name="transaction.amount" lo="tmlvar:payment.amount"/>
+        <next uri="#txnnew_deb">
+            <variant lo="tmlvar:payment.trans_type" op="contains" ro="return" uri="#txnnew_ret"/>
+            <variant lo="tmlvar:payment.trans_type" op="contains" ro="deposit" uri="#txnnew_dep"/>
+            <variant lo="tmlvar:payment.trans_type" op="contains" ro="cashback" uri="#txnnew_cash"/>
+        </next>      
+    </screen>
+
+    <screen id="txnnew_deb" next="#mg_submit" cancel="#trans_abrt" timeout="1">
+        <txnnew type="transaction.type.DEBIT"/>
+    </screen>
+    <screen id="txnnew_ret" next="#mg_submit" cancel="#trans_abrt" timeout="1">
+        <txnnew type="transaction.type.RETURN"/>
+    </screen>
+    <screen id="txnnew_dep" next="#mg_submit" cancel="#trans_abrt" timeout="1">
+        <txnnew type="transaction.type.DEPOSIT"/>
+    </screen>
+    <screen id="txnnew_cash" next="#mg_submit" cancel="#trans_abrt" timeout="1">
+        <txnnew type="transaction.type.CASHBACK"/>
+    </screen>
+    
+    
+    <!-- Post data to host -->
+    <screen id="mg_submit" next="#chk_auth" cancel="#trans_abrt">
+        
+    
+    
+        <setvar name="transaction.message.type" lo="100"/>
+        <setvar name="transaction.message.date" lo="tmlvar:transaction.message.transaction-date"/>
+        <setvar name="transaction.message.transaction-functioncode" lo="100"/>
+        <setvar name="transaction.message.card-iso2track" lo="tmlvar:card.mag.iso2_track"/>
+        <setvar name="transaction.message.card-pan" lo="tmlvar:card.pan"/>
+        <setvar name="transaction.message.card-expiry" lo="tmlvar:card.expiry_date"/>
+        <setvar name="transaction.message.transaction-amount" lo="tmlvar:payment.amount"/>
+        <setvar name="transaction.message.transaction-minor" lo="2"/>
+        <setvar name="transaction.message.currency" lo="tmlvar:transaction.message.transaction-currency"/>
+        <setvar name="transaction.message.transaction-amount2" lo="tmlvar:payment.amount_other"/>
+	
+        <!-- part regarding seeting for gateway part -->
+        <setvar name="transaction.message.amount"   lo="tmlvar:payment.amount"/>
+        
+        <!-- part regarding recording value on terminal -->
+        <setvar name="transaction.date"     lo="tmlvar:transaction.message.transaction-date"/>
+        <setvar name="transaction.currency" lo="EUR"/>
+        <setvar name="transaction.authcode" lo="tmlvar:transaction.message.authcode"/>
+        <setvar name="transaction.amount"   lo="tmlvar:payment.amount"/>
+	
+        <setvar name="isofield.10" lo="12345"/>
+
+        <txnsubmit tgt="/transservlet" econn="#conn_failed">
+          <getvar name="transaction.message.id"/>
+          <getvar name="transaction.message.type"/>
+          <getvar name="transaction.message.date"/>
+          <getvar name="transaction.message.transaction-type"/>
+          <getvar name="transaction.message.transaction-functioncode"/>
+          <getvar name="transaction.message.transaction-date"/>
+          <getvar name="transaction.message.card-pan"/>
+          <getvar name="transaction.message.card-expiry"/>
+          <getvar name="transaction.message.card-iso2track"/>
+          <getvar name="transaction.message.transaction-amount"/>
+          <getvar name="transaction.message.transaction-amount2"/>
+          <getvar name="transaction.message.transaction-currency"/>
+          <getvar name="transaction.message.transaction-minor"/>
+        </txnsubmit>
+    </screen>
+    
+    <screen id="chk_auth" next="#mg_txnconf" cancel="#trans_abrt" timeout="1">
+        <next uri="#mg_txnconf">
+            <variant lo="tmlvar:transaction.message.authcode" op="contains" ro="ERROR" uri="#reject_txn"/>
+        </next>      
+    </screen>
+
+    <!--<screen id="mg_txnconf" next="#receipt" cancel="#trans_abrt" timeout="1">-->
+    <screen id="mg_txnconf" next="#mg_txnconf2" cancel="#trans_abrt" timeout="1">
+        <!--<display><p>txnconfirm status=transaction.status.AUTHORIZED</p>
+        </display>-->
+        <txnconfirm status="transaction.status.AUTHORIZED"/> 
+    </screen>
+
+    
+    <screen id="mg_txnconf2" next="#receipt" cancel="#trans_abrt" timeout="1">    
+        <display><br/><p>txnconfirm status=transaction.status.AUTHORIZED</p>
+        </display>
+    </screen>
+    
+<!-- End of SUBMIT DATA block of screens (for magnetic card and manual entry) -->
+<!--==========================================================================-->
+
+<!--====================================-->
+<!-- RECONCILIATION block of screens -->
+
+    <!-- Analyse what we should do in case connection is failed -->
+    <screen id="reconc" next="#rec_succ" cancel="#trans_abrt" timeout="1">
+        <!--<display><p>reconciliation</p>
+        </display>-->
+       <reconciliation/>
+    </screen>
+
+    <screen id="rec_succ" timeout="8" next ="#init_prompt">
+	<display>
+            <table border="2" class="warning">
+                <tr><td>
+                    <span>
+                    
+                        Reconciliation completed.
+                        
+                    </span>
+                </td></tr>
+            </table>
+	</display>
+    </screen>
+
+<!--====================================-->
+<!-- CONNECTION FAILED block of screens -->
+
+    <!-- Analyse what we should do in case connection is failed -->
+    <screen id="conn_failed" timeout="8" >
+        <next uri="#mg_risk_mgmt">
+            <variant lo="tmlvar:oebr.submit_mode" op="equal" ro="offline" uri="#print_pf"/>
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="offline" uri="#print_pf"/>
+        </next>
+    </screen>
+    <screen id="print_pf" next="#trans_abrt">
+        <display>
+            <table border="2" class="warning">
+                <tr><td>
+                    <span>
+                    
+                        Cannot go offline: offline pool is full.
+                        
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+<!-- End of CONNECTION FAILED block of screens -->
+<!--===========================================-->
+
+<!--==============================-->
+<!-- REMOVE CARD block of screens -->
+
+    <!-- Displays that the message that asks customer to remove the card
+    -->
+    <screen id="remove_card" next="tmlvar:screen_after_call">
+        <tform>
+            <card parser="icc_emv" parser_params="wait_remove_card"/>
+            <prompt>
+                <table class="message">
+                    <tr><td>
+                        <span>
+                        
+                            Please, Remove Card
+                        
+                        </span>
+                    </td></tr>
+                </table>
+            </prompt>
+        </tform>
+    </screen>
+<!-- End of REMOVE CARD block of screens -->
+<!--=====================================-->
+
+<!--========================================-->
+<!-- TRANSACTION COMPLETED block of screens -->
+
+    <!-- Transaction completed -->
+    <screen id="compl_txn" timeout="4" next="#init_prompt">
+        <setvar name="err.baddata_reason" lo=""/>
+        <display>
+            <table class="message">
+                <tr><td>
+                    <span>
+                    
+                        Transaction Completed
+                        
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+<!-- End of TRANSACTION COMPLETED block of screens -->
+<!--===============================================-->
+
+<!--===============-->
+<!-- ASSERT screen -->
+
+    <!-- When the screen is reached it is most likely a programming error -->
+    <screen id="assert" timeout="3" next="#init_prompt">
+        <display>
+            <table border="2" class="warning">
+                <tr><td>
+                    <span>
+                    
+                        Assertion Error<br/>
+                        on screen "<getvar name="oebr.prev_screen"/>"
+                        
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+<!-- End of ASSERT screen -->
+<!--======================-->
+    
+<!--=======================================-->
+<!-- TRANSACTION REJECTED block of screens -->
+
+    <!-- Transaction rejected -->
+    <screen id="reject_txn" class="c_center" next="#reject_txn2">
+        <txnconfirm status="transaction.status.FAILED"/> 
+    </screen>
+    
+    <screen id="reject_txn2" next="#trans_abrt">
+        <display>
+            <table border="2" class="warning">
+                <tr><td>
+                    <span>
+                    
+                        <getvar name="card.parser.reject_reason"/>
+                        <getvar name="transaction.message.errormessage"/>
+                        
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+    
+    <!-- Transaction voided -->
+    <screen id="void_trans" timeout="1" next="#close_trans">
+        <display>
+            <table border="2" class="warning">
+                <tr><td>
+                    <span>
+                    
+                        Transaction Cancelled
+                    
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+    
+    <screen id="close_trans">
+        <setvar name="screen_after_call" lo="#init_prompt"/>
+        <next uri="#init_prompt">
+            <variant lo="tmlvar:card.input_type" op="equal" ro="2" uri="#remove_card"/>
+        </next>
+    </screen>
+    
+    <!-- Screen informs a customer about transaction abort -->
+    <screen id="trans_abrt" timeout="1" next="#close_trans">
+        <display>
+            <table border="2" class="warning">
+                <tr><td>
+                    <span>
+                    
+                        Transaction has been aborted.
+                        
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+<!-- End of TRANSACTION REJECTED block of screens -->
+<!--==============================================-->
+
+    <!-- preparing for receipt printing -->
+    <screen id="receipt" timeout="2" next="#compl_txn">
+        <!-- this screen is used to keep the receipt printing 
+        separate from the main application code. -->
+        <display>
+            <table border="2" class="warning">
+                <tr><td>
+                    <span>
+                    
+                        Receipt is printing.
+                        
+                    </span>
+                </td></tr>
+            </table>
+        </display>
+    </screen>
+    
+<!-- ===================================================== -->
+<!-- ERROR SCREEN -->
+    <screen id="error_scr" next="tmlapp.tml#init_prompt" timeout="8" >
+        <display>
+            <table border="2" class="warning"><tr><td>
+                <span>
+                
+                    code-low: <getvar name="err.code.low"/> <br/>
+                    code-high: <getvar name="err.code.high"/> <br/>				
+                    <getvar name="err.baddata_reason"/> <br/>
+                    <getvar name="err.description"/>
+                
+                </span>
+            </td></tr></table>
+         </display>
+    </screen>
+<!-- ====================================================== -->
+    
+</tml>
+
+<!--========================================================================
+
+ COPYRIGHT (C) 2009 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ========================================================================-->

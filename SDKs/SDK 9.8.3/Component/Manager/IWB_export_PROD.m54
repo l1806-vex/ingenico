@@ -1,0 +1,52 @@
+;TELIUM MANAGER EXPORT IWB PROD
+;INGESTATE COMPATIBILITY T2
+47787411.pgn
+;Header BW
+8443730311.lgn
+;M2OS
+8445921011.agn
+;tmtools
+8446220211.lgn
+;Extension
+8445941111.lgn
+;Graphic Librairy
+8445960811.lgn
+;M2OS Parameters
+8445970911.lgn
+;Entry
+8445980811.lgn
+;Cam/Date Librairy
+8445990911.lgn
+;PSC Protocol
+8446010711.lgn
+;NULL Protocol
+8446020711.lgn
+;Cryptographic librairy
+8446060611.lgn
+;EMV Selection
+8446080811.lgn
+;IAM
+8446090711.lgn
+;Pinpad
+8446100811.lgn
+;PPR30 Export
+8443690333.lgn
+;ums
+8446160711.lgn
+;gprs
+8446210911.lgn
+;Hardware cnf
+8446420411.lgn
+;Security Exp T2
+46560352.lgn
+;COLOR
+8446920411.lgn
+;PackM2OS
+8447787411.pgn
+;HEADER EFT930CC/ICT2XX/IPP3XX/ML30CC
+8440850311.lgn
+;DLL E2EE
+8440780410.lgn
+;Telium SDK
+8442291083.pgn
+

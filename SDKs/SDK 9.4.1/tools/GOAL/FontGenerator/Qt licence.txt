@@ -1,0 +1,13 @@
+Qt Licensing
+We license Qt under the terms of the GNU Lesser General Public License (LGPL) version 2.1.
+
+This version of Qt is appropriate for the development of Qt applications (proprietary or open source) provided you can comply
+with the terms and conditions contained in the GNU LGPL version 2.1.
+Learn more about the LGPL license here (http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).
+
+Additionally, we have reached an agreement with Digia, who provides Qt under the terms of a commercial licensing agreement.
+This version of Qt is called Qt Commercial (http://qt.digia.com/en/downloads/).
+To find out more about Qt Commercial, please visit http://qt.digia.com/.
+
+
+

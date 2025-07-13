@@ -1,0 +1,10 @@
+=== example utilisation santé
+
+1- Charger le terminal avec la configuration health.m30
+2- Application EI96 + superviseur   (632 et 633)
+
+ATTENTION : l'application Vitale doit être activée avec une carte d'activation.
+
+3 - Recompiler l'application (avec GCC)
+
+

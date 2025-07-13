@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?>
+
+<?ingedev version="7.18.1.6"?>
+
+<projectDescription activeConfig="GNU_ARM_DEBUG" applicationType="0x122" binaryName="CLESSCUSTOM" dataBinaryFileBaseName="DATA0122" descr="" enableUsingCpp="false" projectFamily="CLESSCUSTOM" projectType="APP" useDataFileNamingConvention="true">
+  <virtualFolders>
+    <virtualFolder name="Source Files" sources="true">
+      <file generated="false" name="Src\Entry.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_BlackList.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Common.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Customisation.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Disk.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_ExpressPay.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Fill.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_GuiState.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Messages.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Parameters.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_ParametersManagement.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_PayPass.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_payWave.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Status.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Term.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Transaction.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_UserInterfaceHelpers.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_VisaWave.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Discover.c" parentProject=""/>
+      <file generated="false" name="Src\SDSA_Interac.c" parentProject=""/>
+    </virtualFolder>
+    <virtualFolder name="Other Files" sources="false"/>
+    <archiveFilesVirtualFolder name="Archive Files"/>
+  </virtualFolders>
+  <configs>
+    <config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" disassembler="false" enableCPPExceptions="false" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG" sign="false" teliumCompatibility="All" zip="false">
+      <userIncs>
+        <userInc value="Inc"/>
+      </userIncs>
+      <packageLibraries>
+        <packageLib name="eft30" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="trap" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="IAPP" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="AVL" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="SEC" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="dll_wifi" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="FTP_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="SSL_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="IP_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="SNMP_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="IMG_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="WGUI_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="TPass" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="GTL" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="ExpressPayInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="DiscoverInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="InteracInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="PayPassInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="payWaveInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="VisaWaveInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="DEL" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="libcpatch" package="Telium SDK" version="9.8.3"/>
+      </packageLibraries>
+      <packageDefines>
+        <packageDefine package="Telium SDK" version="9.8.3"/>
+        <packageDefine package="Easy Path to C'Less" version="5.3.0 Beta"/>
+      </packageDefines>
+      <packageIncs>
+        <packageInc package="Telium SDK" version="9.8.3"/>
+        <packageInc package="Easy Path to C'Less" version="5.3.0 Beta"/>
+      </packageIncs>
+      <userDefines>
+        <userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+        <userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+        <userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+        <userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+        <userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+        <userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+        <userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+      </userDefines>
+      <prebuild command="" description=""/>
+      <postbuild command="" description=""/>
+      <externalSchemes/>
+      <dataFiles/>
+    </config>
+    <config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="true" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" disassembler="false" enableCPPExceptions="false" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE" sign="false" teliumCompatibility="All" zip="true">
+      <userIncs>
+        <userInc value="Inc"/>
+      </userIncs>
+      <packageLibraries>
+        <packageLib name="eft30" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="trap" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="IAPP" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="AVL" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="LinkLayerExeInterface" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="SEC" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="dll_wifi" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="FTP_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="SSL_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="IP_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="SNMP_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="IMG_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="WGUI_" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="TPass" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="GTL" package="Telium SDK" version="9.8.3"/>
+        <packageLib name="ExpressPayInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="DiscoverInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="InteracInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="PayPassInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="payWaveInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="VisaWaveInterface" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="DEL" package="Easy Path to C'Less" version="5.3.0 Beta"/>
+        <packageLib name="libcpatch" package="Telium SDK" version="9.8.3"/>
+      </packageLibraries>
+      <packageDefines>
+        <packageDefine package="Telium SDK" version="9.8.3"/>
+        <packageDefine package="Easy Path to C'Less" version="5.3.0 Beta"/>
+      </packageDefines>
+      <packageIncs>
+        <packageInc package="Telium SDK" version="9.8.3"/>
+        <packageInc package="Easy Path to C'Less" version="5.3.0 Beta"/>
+      </packageIncs>
+      <userDefines>
+        <userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+        <userDefine value="_ING_APPLI_FAMILY=&quot;${appli_family}&quot;"/>
+        <userDefine value="_ING_APPLI_TYPE=${appli_type}"/>
+        <userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+        <userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+        <userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+        <userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+      </userDefines>
+      <prebuild command="" description=""/>
+      <postbuild command="" description=""/>
+    </config>
+  </configs>
+  <groupConfigs/>
+</projectDescription>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ingenico.ingedev.telium.build.signature.feature"
+      label="Telium Build Signature Feature"
+      version="7.18.0.3"
+      provider-name="Ingenico">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.build.signature.sat"
+         download-size="0"
+         install-size="0"
+         version="7.18.0.3"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.build.signature.sst"
+         download-size="0"
+         install-size="0"
+         version="7.18.0.3"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.build.signature.jsat"
+         download-size="0"
+         install-size="0"
+         version="7.18.0.3"
+         unpack="false"/>
+
+</feature>

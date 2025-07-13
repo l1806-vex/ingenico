@@ -1,0 +1,449 @@
+<deviceHwConf>
+  <terminals>
+    <!-- Wireless color terminals -->
+    <terminal name="iWL350" description="Wireless iWL350">
+      <screen>
+        <width>320</width>
+        <height>480</height>
+        <colordepth>18BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <footerthickness>240</footerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>yes</touchscreen>
+      </screen>
+      <catalogtype>M51</catalogtype>
+      <thunder>3</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="iWL280" description="Wireless iWL280">
+      <screen>
+        <width>240</width>
+        <height>320</height>
+        <colordepth>18BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <footerthickness>94</footerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>yes</touchscreen>
+      </screen>
+      <catalogtype>M48</catalogtype>
+      <thunder>3</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="iWL250" description="Wireless iWL250">
+      <screen>
+        <width>320</width> 
+        <height>240</height>
+        <colordepth>12BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <footerthickness>14</footerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>no</touchscreen>
+      </screen>        
+      <catalogtype>M44</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="EFT930G" description="Wireless EFT930G Color"> 
+      <screen>
+        <width>320</width>
+        <height>240</height>
+        <colordepth>12BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M39</catalogtype>
+      <thunder>1</thunder>
+      <booster>2</booster>
+    </terminal>
+
+    <terminal name="EFT930B" description="Wireless EFT930B Color"> 
+      <screen>
+        <width>320</width>
+        <height>240</height>
+        <colordepth>12BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M39</catalogtype>
+      <thunder>1</thunder>
+      <booster>2</booster>
+    </terminal>
+
+    <terminal name="EFT930W" description="Wireless EFT930W Color"> 
+      <screen>
+        <width>320</width>
+        <height>240</height>
+        <colordepth>12BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M39</catalogtype>
+      <thunder>1</thunder>
+      <booster>2</booster>
+    </terminal>
+
+    <terminal name="EFT930P" description="Wireless EFT930P Color"> 
+      <screen>
+        <width>320</width>
+        <height>240</height>
+        <colordepth>12BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M39</catalogtype>
+      <thunder>1</thunder>
+      <booster>2</booster>
+    </terminal>
+
+    <!-- Wireless black and white terminals -->
+    <terminal name="iWL220" description="Wireless iWL220">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <headerthickness>20</headerthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M44</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="EFT930S" description="Wireless EFT930S Black and white"> 
+      <screen>
+        <width>128</width>
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M31</catalogtype>
+      <thunder>1</thunder>
+      <booster>1</booster>
+    </terminal>
+
+    <!-- Countertop color terminals -->
+    <terminal name="iCT250" description="Countertop iCT250">
+      <screen>
+        <width>320</width> 
+        <height>240</height>
+        <colordepth>18BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <footerthickness>14</footerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M40</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <!-- Countertop black and white terminals -->
+    <terminal name="iCT220" description="Countertop iCT220">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen> 
+      <catalogtype>M40</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="E532" description="Countertop E532">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen> 
+      <catalogtype>M10</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="EFTsmart" description="Countertop EFT Smart"> 
+      <screen>
+        <width>128</width>
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M30</catalogtype>
+      <thunder>1</thunder>
+      <booster>1</booster>
+    </terminal>
+
+    <terminal name="EFT30" description="EFT30F"> 
+      <screen>
+        <width>128</width>
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M30</catalogtype>
+      <thunder>1</thunder>
+      <booster>1</booster>
+    </terminal>
+
+    <terminal name="EFTsmart2" description="Countertop EFT Smart 2"> 
+      <screen>
+        <width>128</width>
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M37</catalogtype>
+      <thunder>1</thunder>
+      <booster>2</booster>
+    </terminal>
+
+    <!-- Signature capture terminals -->
+    <terminal name="iSC250" description="Signature Capture iSC250">
+      <screen>
+        <width>480</width>
+        <height>272</height>
+        <colordepth>18BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <footerthickness>46</footerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>yes</touchscreen>
+      </screen>
+      <catalogtype>M45</catalogtype>
+      <thunder>3</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="iSC350" description="Signature Capture iSC350">
+      <screen> 
+        <width>640</width>
+        <height>480</height>
+        <colordepth>18BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <footerthickness>94</footerthickness>
+        <verticalfooterthickness>64</verticalfooterthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>yes</touchscreen>
+      </screen>
+      <catalogtype>M43</catalogtype>
+      <thunder>3</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <!-- Health terminals -->
+    <terminal name="Twin30" description="Health TWIN30">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen> 
+      <catalogtype>M32</catalogtype>
+      <thunder>1</thunder>
+      <booster>0</booster>
+    </terminal>
+
+    <terminal name="Twin32" description="Health TWIN32">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen> 
+      <catalogtype>M32</catalogtype>
+      <thunder>1</thunder>
+      <booster>0</booster>
+    </terminal>
+
+    <terminal name="Twin33" description="Health TWIN33">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <touchscreen>no</touchscreen>
+        <colordepth>BW</colordepth>
+      </screen> 
+      <catalogtype>M32</catalogtype>
+      <thunder>1</thunder>
+      <booster>0</booster>
+    </terminal>
+
+    <!-- Pinpads -->
+    <terminal name="iPP350" description="Pinpad iPP350">
+      <screen> 
+        <width>320</width>
+        <height>240</height>
+        <colordepth>12BPP</colordepth> 
+        <headerthickness>56</headerthickness>
+        <footerthickness>14</footerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M46</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="iPP320" description="Pinpad iPP320">
+      <screen>
+        <width>128</width>
+        <height>64</height>
+        <colordepth>BW</colordepth> 
+        <headerthickness>20</headerthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M46</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="iPP480" description="Pinpad iPP480">
+      <screen>
+        <width>240</width>
+        <height>320</height>
+        <colordepth>18BPP</colordepth>
+        <headerthickness>56</headerthickness>
+        <footerthickness>94</footerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>yes</touchscreen>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M52</catalogtype>
+      <thunder>3</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="ML30" description="Pinpad ML30">
+      <screen>
+        <width>128</width>
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M36</catalogtype>
+      <thunder>1</thunder>
+      <booster>2</booster>
+    </terminal>
+
+    <terminal name="ML30CC" description="Pinpad ML30 contactless color">
+      <screen> 
+        <width>320</width>
+        <height>240</height>
+        <colordepth>12BPP</colordepth> 
+        <headerthickness>56</headerthickness>
+        <footerthickness>14</footerthickness>
+        <ledsthickness>10</ledsthickness>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M36</catalogtype>
+      <thunder>1</thunder>
+      <booster>2</booster>
+    </terminal>
+
+    <!-- Contactless devices --> 
+    <terminal name="iST150" description="iST150">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M47</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+   </terminal>
+
+    <!-- Mobile payment terminals -->
+    <terminal name="SPM" description="Payment PDA iPA280">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M41</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="iMP320" description="Mobile Payment iMP320">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M42</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+    <terminal name="iMP350" description="Mobile Payment iMP350">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M42</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+    
+    <!-- Unattended terminals -->
+    <terminal name="CAD30UCM" description="Unattended CAD30">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M34</catalogtype>
+      <thunder>1</thunder>
+      <booster>0</booster>
+    </terminal>
+
+    <terminal name="CAD30UCR" description="Unattended CAD30UCR">
+      <catalogtype>M38</catalogtype>
+      <thunder>1</thunder>
+      <booster>0</booster>
+    </terminal>
+
+    <terminal name="iUC150" description="Unattended iUN iUC150">
+      <catalogtype>M50</catalogtype>
+      <thunder>2</thunder>
+      <booster>0</booster>
+    </terminal>
+    
+    <terminal name="iUC180" description="Unattended iUN iUC180">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M50</catalogtype>
+      <thunder>2</thunder>
+      <booster>0</booster>
+    </terminal>
+
+    <terminal name="iUP250" description="Unattended iUN iUP250">
+      <screen>
+        <width>128</width> 
+        <height>64</height>
+        <colordepth>BW</colordepth>
+        <touchscreen>no</touchscreen>
+      </screen>
+      <catalogtype>M49</catalogtype>
+      <thunder>2</thunder>
+      <booster>3</booster>
+    </terminal>
+
+  </terminals>
+</deviceHwConf>

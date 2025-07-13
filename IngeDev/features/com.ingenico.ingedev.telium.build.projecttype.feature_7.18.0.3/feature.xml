@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ingenico.ingedev.telium.build.projecttype.feature"
+      label="Telium Build Project Type Feature"
+      version="7.18.0.3"
+      provider-name="Ingenico">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.build.projecttype.app"
+         download-size="0"
+         install-size="0"
+         version="7.18.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.build.projecttype.dll"
+         download-size="0"
+         install-size="0"
+         version="7.18.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="com.ingenico.ingedev.telium.build.projecttype.res"
+         download-size="0"
+         install-size="0"
+         version="7.18.0.3"
+         unpack="false"/>
+
+</feature>

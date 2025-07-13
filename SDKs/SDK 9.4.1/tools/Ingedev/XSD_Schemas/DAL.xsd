@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+		
+    <xs:include schemaLocation="GL.xsd"/>
+
+  <xs:element name="DAL" type="DAL" >
+    </xs:element>
+    
+     <xs:complexType name="VERSION">
+        <xs:attribute name="DAL_version" type="xs:string"/>       
+        <xs:attribute name="this_version" type="xs:string"/>                
+       </xs:complexType>
+        
+      <xs:complexType name="DAL">
+        <xs:sequence>
+            <xs:element name="version" type="VERSION" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="goal" type="GOAL" minOccurs="1" maxOccurs="1">
+                <xs:annotation><xs:documentation>Goal element</xs:documentation></xs:annotation>
+            </xs:element>
+        </xs:sequence>      
+    </xs:complexType>
+    
+</xs:schema>

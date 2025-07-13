@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<tml xmlns="http://www.ingenico.com/tml">
+
+    <!-- This TML page is example of the card parsers usage in the
+         payment applications. -->
+
+    <head>
+        <defaults  menu="idle://idle.tml" cancel="#init_prompt"/>
+    </head>
+    
+    <!-- transaction id -->
+    <vardcl name="transid" type="integer" perms="rw---"/>
+
+    <!-- Initial screen: prompt for merchant -->
+    <screen id="init_prompt" class="c_center" cancel="idle://idle.tml" next="#final_init">
+        <tform>
+            <baddata class="c_center" max="1" next="#remove_card">
+                <table border="2" height="100%" width="100%"><tr><td align="center" valign="middle">
+                    <getvar name="err.baddata_reason"/>
+                </td></tr></table>
+            </baddata>            
+            <card parser="icc_emv" parser_params="init_app"/>
+            <prompt>
+                <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                        OpenEstate ICCEMV 3.1.5.0-RC4<br/>
+                        Smartcards Processing Example<br/>
+                        Please Insert Card
+                </td></tr></table>
+            </prompt>
+        </tform>
+    </screen>
+
+    <!-- application selection (automatic) -->
+    <screen id="final_init" next="#read_amount">
+        <setvar name="card.emv.selected_app" lo=""/>
+        <tform>
+            <baddata class="c_center" max="1" next="#remove_card">
+                <table border="2" height="100%" width="100%"><tr><td align="center" valign="middle">
+                            <getvar name="err.baddata_reason"/>
+                </td></tr></table>
+            </baddata>
+            <card parser="icc_emv" parser_params="final_select"/>
+        </tform>
+    </screen>
+
+    <!-- Read the transaction data. Only amount is read (transaction type)
+         and possibly other amount should be read in real application -->
+    <screen id="read_amount" next="#get_cvm">
+        <!-- Increase transaction counter -->
+        <setvar name="transid" lo="tmlvar:oebr.unique_id"/>
+        <display>
+            <form>
+                <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                    Amount:<br/><input alt="Amount:" type="number" name="payment.amount" size="10" format="^*0.00"/>
+                </td></tr></table>
+            </form>            
+        </display>
+    </screen>        
+
+    <!-- Receipt to be printed. The example is obviously incomplete. -->
+    <screen id="receipt" next="#compl_trans">
+        <print>
+            <table>
+                <tr><td>Date:</td><td><getvar name="terminal.datetime"/></td></tr>
+                <tr><td>Card:</td><td><getvar name="card.pan" format="n4n#*n4"/></td></tr>
+                <tr><td>Transaction ID:</td><td><getvar name="transid"/></td></tr>
+                <tr><td>Amount:</td><td><getvar name="payment.amount" format="^*0.00"/></td></tr>
+            </table>
+            <br/>
+            ----------------------------------------------------------------
+            <br/><br/><br/>
+        </print>
+    </screen>
+
+    <!-- Message rendered to describe the reason of transaction rejecting -->
+    <screen id="reject_trans" class="c_center" next="#void_trans">
+        <display>
+            <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                <getvar name="card.parser.reject_reason"/>
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!-- Message rendered when the transaction id rejected or canceled -->
+    <screen id="void_trans" class="c_center" timeout="1" next="#remove_card">
+        <display>
+            <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                Transaction Declined
+            </td></tr></table>
+        </display>
+    </screen>
+
+    <!-- Transaction completion notification -->
+    <screen id="compl_trans" class="c_center" timeout="1" 
+            next="#remove_card">
+        <display>
+            <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                Transaction Completed
+            </td></tr></table>
+        </display>
+    </screen>
+        
+    <!-- Displays that the message that asks customer to remove the card
+    -->
+    <screen id="remove_card" class="c_center" next="#init_prompt">        
+            <tform>
+                <card parser="icc_emv" parser_params="wait_remove_card"/>
+                <prompt>
+                    <table height="100%" width="100%"><tr><td valign="middle" align="center">
+                        Please, Remove Card
+                    </td></tr></table>
+                </prompt>
+            </tform>
+    </screen>
+
+    <!-- Parser should interact with the card to find out its
+         capabilities and retrieve the list of possible cardholder
+         verification methods. -->
+         
+    <screen id="get_cvm">
+        <next uri="#assert">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="#reject_trans"/>
+
+            <variant lo="tmlvar:card.parser.cvm" op="equal" ro="pin" uri="#enter_pin"/>
+            <variant lo="tmlvar:card.parser.cvm" op="equal" ro="pin_online" uri="#bypass_cvm"/>
+            <variant lo="tmlvar:card.parser.cvm" op="equal" ro="no_cv" uri="#cv_no_cvm"/>
+
+            <variant lo="tmlvar:card.parser.cvm" op="equal" ro="" uri="#risk_mgmt"/>
+        </next>
+        <tform>
+            <card parser="icc_emv" parser_params="get_cvm"/>
+        </tform>
+    </screen>
+
+    <!-- Empty form, just to set the cvr -->
+    <screen id="bypass_cvm" next="#get_cvm">
+        <setvar name="card.parser.cvr" lo="bypassed"/>
+    </screen>
+
+    <!-- Empty screen, just to set the cvr -->
+    <screen id="cv_no_cvm" next="#get_cvm">
+        <setvar name="card.parser.cvr" lo="ok"/>
+    </screen>
+
+    <!-- Screen to enter the PIN -->
+    <screen id="enter_pin" cancel="#cvr_no_pin" next="#verify_pin">
+        <tform>
+            <baddata class="c_center" max="3" next="#init_prompt">
+                <table border="2" height="100%" width="100%"><tr><td align="center" valign="middle">
+                    <getvar name="err.baddata_reason"/>
+                </td></tr></table>
+            </baddata>
+            <pinentry type="icc" prompt="Enter PIN"/>
+        </tform>
+    </screen>
+
+    <!-- 
+     Sets cvr to "failed" as the customer refused to enter pin (instead of 
+     "failed" "bypassed" value may be used to bypass "pin" method)
+    -->
+    <screen id="cvr_no_pin" next="#get_cvm">
+        <setvar name="card.parser.cvr" lo="failed"/>
+    </screen>
+
+    <!-- Call Card Parser to verify the PIN -->
+    <screen id="verify_pin">
+        <next uri="#assert">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="#reject_trans"/>
+
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="ok" uri="#get_cvm"/>
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="ok_msg" uri="#get_cvm"/>
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="failed" uri="#enter_pin"/>
+            <variant lo="tmlvar:card.parser.cvr" op="equal" ro="pin_tries" uri="#get_cvm"/>
+        </next>
+        <tform>
+            <card parser="icc_emv" parser_params="verify"/>
+        </tform>
+    </screen>
+    
+    <!-- Request for signature. The example is obviously incomplete. -->
+    <screen id="check_sign" next="#ask_merchant">
+        <print>
+            <table>
+                <tr><td>Date:</td><td><getvar name="terminal.datetime"/></td></tr>
+                <tr><td>Card:</td><td><getvar name="card.pan"/></td></tr>
+                <tr><td>Transaction ID:</td><td><getvar name="transid"/></td></tr>
+                <tr><td>Amount:</td><td><getvar name="payment.amount" format="^*0.00"/></td></tr>
+                <tr><td colspan="2">Signature:____________</td></tr>
+            </table>
+            <br/>
+            ----------------------------------------------------------------
+            <br/><br/><br/>
+        </print>
+    </screen>
+
+    <!-- Ask merchant to check the signature -->
+    <screen id="ask_merchant" class="c_center" cancel="#reject_trans">
+        <display>
+            <table height="100%" width="100%"><tr><td align="center" valign="middle">
+                Signature OK?<br/>
+                <a href="#compl_trans">YES</a><br/>
+                <a href="#void_trans">NO</a>
+            </td></tr></table>
+        </display>
+    </screen>
+    
+    <!-- Perform the risk management. 
+         Parser should:
+             analyse amount and transaction type;
+             analyse previous submission attempt ("oebr.econn" TML value);
+             update "card.parser.verdict" variable;
+             fill "card.parser.reject_reason" variable, if necessary. 
+       -->
+    <screen id="risk_mgmt">
+        <next uri="#submit">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" 
+                     uri="#reject_trans"/>
+        </next>
+        <tform><card parser="icc_emv" parser_params="risk_mgmt"/></tform>
+    </screen>
+
+    <screen id="submit">
+        <setvar name="oebr.submit_mode" lo="tmlvar:card.parser.verdict"/>
+        <next uri="#receipt">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" uri="#void_trans"/>
+        </next>
+        <submit tgt="/authtxn" econn="#icc_conn_fld">
+            <getvar name="oebr.submit_mode"/>
+            <getvar name="card.pan"/>
+            <getvar name="card.effective_date"/>
+            <getvar name="card.expiry_date"/>
+            <getvar name="card.emv.app_pan_seq"/>
+            <getvar name="card.emv.aip"/>
+            <getvar name="card.emv.auc"/>
+            <getvar name="card.emv.atc"/>
+            <getvar name="card.emv.aac"/>
+            <getvar name="card.emv.tc"/>
+            <getvar name="card.emv.arqc"/>
+            <getvar name="card.emv.iad"/>
+            <getvar name="card.emv.tvr"/>
+            <getvar name="card.emv.unumber"/>
+            <getvar name="transid"/>
+            <getvar name="payment.amount"/>
+        </submit>
+    </screen>
+
+    <!-- Analise what we should do in case connection is failed
+    -->
+    <screen id="icc_conn_fld">
+        <next uri="#risk_mgmt">
+            <variant lo="tmlvar:oebr.submit_mode" op="equal" ro="offline" uri="#void_trans"/>
+        </next>
+    </screen>
+
+    <!-- Screen which dynamic TML may refer to -->
+    <screen id="subm_tc_aac">
+        <setvar name="oebr.submit_mode" lo="offline"/>
+        <next uri="#end_trans"/>
+        <submit tgt="/subm_tc_aac" econn="#end_trans">
+            <getvar name="oebr.submit_mode"/>
+            <getvar name="card.emv.aac"/>
+            <getvar name="card.emv.tc"/>
+            <getvar name="transid"/>
+        </submit>
+    </screen>
+
+    <screen id="end_trans">
+        <next uri="#receipt">
+            <variant lo="tmlvar:card.parser.verdict" op="equal" ro="reject" 
+                uri="#void_trans"/>
+            <variant lo="tmlvar:payment.txn_result" op="equal" ro="0" uri="#void_trans"></variant>
+            <variant lo="tmlvar:card.emv.signature" op="not_equal" ro="0" 
+                uri="#check_sign"/>
+        </next>
+    </screen>
+
+    <!-- When the screen is reached it is most likely a programming error -->
+    <screen id="assert" timeout="3" class="c_center" next="#init_prompt">
+        <display>
+            <table border="2" height="100%" width="100%"><tr><td align="center" valign="middle">
+                Assertion Error<br/>
+                on screen "<getvar name="oebr.prev_screen"/>"
+            </td></tr></table>
+        </display>
+    </screen>
+
+</tml>
+
+<!--========================================================================
+ 
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as permitted by
+ applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

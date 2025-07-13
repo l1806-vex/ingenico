@@ -1,0 +1,105 @@
+ /** \page HowTo Basic Operation
+
+* SSL Sample Application requires a socket tool to act as a client or a server. 
+*
+* A sample open source software that can be used is the Hercules SETUP Utility. Go to http://www.hw-group.com/products/hercules/index_en.html to download the tool.
+*
+* \section sslsecht1 Configuring Socket Tool/s
+*
+* \b Hercules:
+*
+* 1. Open Hercules (..\SSL\res)
+*
+* 2. Click the TCP Server tab, indicate the port to be used then hit the LISTEN button
+*
+* \b Stunnel:
+*
+* 1. Check stunnel.conf file (..\SSL\res\Stunnel). It contains the following information:
+*
+* CAfile = ca.crt
+*
+* CApath = certificates
+*
+* cert = server.pem
+*
+* client = no
+*
+* verify = 3
+*
+* debug = 7
+*
+* [host_simulator]
+*
+* accept = 8000 -->the value here should be same as the port number set in the terminal.
+*
+* connect = 127.0.0.1:1000 -->the value here (1000) should be same as the port number set in the TCP server on hercules.
+*
+* 2. Open stunnel-4.11 application (..\SSL\res\Stunnel).
+*
+* \section sslsecht2 Adding, Deleting and Listing Profiles 
+*
+* <b>To Add Profiles:</b>
+*
+* \b Note: Before adding a profile, make sure that the following files are loaded in the terminal:
+* 
+* - client.crt (Client Certificate) 
+* - client_key.pem (Client RSA Keys)
+* - ca.crt (CA Certificates)
+* 
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+* 
+* 2. On the Telium Manager's menu, select SSL.
+* 
+* 3. It will show the SSL menu. Select Profiles.
+* 
+* 4. On the profiles menu, select Add. Terminal creates profile.
+*
+* <b>To Delete Profiles:</b>
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select SSL.
+*
+* 3. It will show the SSL menu. Select Profiles.
+*
+* 4. On the profiles menu, select Delete. 
+*
+* 5. Select profile to be deleted then press ENTER key. Terminal deletes profile.
+*
+* <b>To List/Print Profiles:</b>
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select SSL.
+*
+* 3. It will show the SSL menu. Select Profiles.
+*
+* 4. On the profiles menu, select List. Terminal prints each profile that has been created in the terminal.
+*
+* \section sslsecht3 Configuring SSL 
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select SSL.
+*
+* 3. It will show the SSL menu. Select Config.
+*
+* 4. Enter the Host Name or IP address where the terminal should connect (The IP address where the stunnel is).
+*
+* 5. Enter the Port Number (8000).
+*
+* 6. Select Profile to be used.
+*
+* \section sslsecht4 Connecting SSL 
+*
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select SSL.
+*
+* 3. It will show the SSL menu. Select Connection. Make sure terminal has been configure and Socket tools set up (Hercules and Stunnel) is performed prior to this step.
+
+
+
+
+  */

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ingenico.com/ns/configuration-service/data"
+           xmlns:mc="http://ingenico.com/ns/configuration-service/data"
+           xmlns:iccemv="http://ingenico.com/ns/configuration-service/data"
+           xmlns:hcl="http://ingenico.com/ns/configuration-service/data"
+           xmlns:ing="http://ingenico.com/ns/configuration-service/data"
+           xmlns:common="http://ingenico.com/ns/common/data"
+           targetNamespace="http://ingenico.com/ns/configuration-service/data">
+    <xs:annotation>
+        <xs:documentation>
+            Schema definition for data types required to administer the oegw
+        </xs:documentation>
+    </xs:annotation>
+    <xs:annotation>
+        <xs:documentation>
+            ================== Imported Names ====================================
+        </xs:documentation>
+    </xs:annotation>
+    <xs:include schemaLocation="./configs.xsd"/>
+    <xs:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+    <xs:simpleType name="ConfigType">
+        <xs:annotation>
+            <xs:documentation>
+                Types of configurations
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="magcard"/>
+            <xs:enumeration value="iccemv"/>
+            <xs:enumeration value="hcl"/>
+            <xs:enumeration value="varlibscope_terminal"/>
+            <xs:enumeration value="varlibscope_service"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AssignmentGroupType">
+        <xs:annotation>
+            <xs:documentation>
+                Groups that config can be assigend to
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="terminal"/>
+        </xs:restriction>
+    </xs:simpleType>    
+    <xs:simpleType name="ConfigurationSortFieldType">
+        <xs:annotation>
+            <xs:documentation>
+                Fields that can be sorted
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="type"/>
+            <xs:enumeration value="configId"/>
+            <xs:enumeration value="version"/>
+            <xs:enumeration value="name"/>
+            <xs:enumeration value="description"/>
+            <xs:enumeration value="lastupdate"/>
+        </xs:restriction>
+    </xs:simpleType>    
+    <xs:element name="Configuration" type="tns:Configuration"/>
+    <xs:complexType name="Configuration">
+        <xs:annotation>
+            <xs:documentation>
+                This entity provides common data regarding terminal configuration:
+                configuration id, type, name and description
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="configId" type="common:Config.Id" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The identifier for configurations. Configurations are version controlled, so if the configuration is
+                    updated, this id is unchanged,
+                    but a new entry is created with an incremented version number. Configurations can be uniquely
+                    identified using this id, the version
+                    number **and** the configuration type. Configuration id is a system generated field.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="type" type="tns:ConfigType" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The configuration type - MAGCARD, ICCEMV, HOTCARD or VARLIB SCOPE
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="version" type="common:Config.VersionId" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    The version number of the configuration as described above.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="name" type="common:Config.Name" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    A textual short 'name' of the configuration
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="description" type="common:Config.Description" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    A fuller description of the configuration
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="lastupdate" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    The timestamp of the last update to this configuration. Note that this is a readonly field.
+                    You may set it in the xml, no exceptions will be thrown, but the value will be ignored and
+                    a system generated value will be returned when querying the system
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="Configurations" type="tns:Configurations"/>
+    <xs:complexType name="Configurations">
+        <xs:annotation>
+            <xs:documentation>
+                A list containing Configuration entities.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="config" type="tns:Configuration" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="TerminalConfigDump" type="tns:TerminalConfigDump"/>
+    <xs:complexType name="TerminalConfigDump">
+        <xs:annotation>
+            <xs:documentation>
+                A list containing UploadConfiguration entities.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="config" type="tns:TerminalConfigDumpData" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="TerminalConfigDumps" type="tns:TerminalConfigDumps"/>
+    <xs:complexType name="TerminalConfigDumps">
+        <xs:annotation>
+            <xs:documentation>
+                A list containing UploadConfiguration entities.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="config" type="tns:TerminalConfigDumpData" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ConfigurationQuery" type="tns:ConfigurationQuery"/>
+    <xs:complexType name="ConfigurationQuery">
+        <xs:annotation>
+            <xs:documentation>
+                Terminal query data
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="assigneeReference" type="xs:string" minOccurs="0"/>
+            <xs:element name="assigneeType" type="tns:AssignmentGroupType" minOccurs="0"/>
+            <xs:element name="configId" type="xs:long" minOccurs="0"/>
+            <xs:element name="version" type="xs:long" minOccurs="0"/>
+            <xs:element name="type" type="tns:ConfigType" minOccurs="0"/>
+            <xs:element name="retrieveDefault" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="AssignedConfigurationQuery" type="tns:AssignedConfigurationQuery"/>
+    <xs:complexType name="AssignedConfigurationQuery">
+        <xs:annotation>
+            <xs:documentation>
+                Terminal query data
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="assigneeReference" type="xs:string" minOccurs="0"/>
+            <xs:element name="assigneeType" type="tns:AssignmentGroupType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="TerminalConfiguration" type="tns:TerminalConfiguration"/>
+    <xs:complexType name="TerminalConfiguration">
+        <xs:annotation>
+            <xs:documentation>
+                This is full range of configurations for a terminal. This includes all of the configuration
+                types>terminal configuration magcard data Contains id and current version of config
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="magcard" type="tns:Configuration" minOccurs="0"/>
+            <xs:element name="iccemv" type="tns:Configuration" minOccurs="0"/>
+            <xs:element name="varlib" type="tns:Configuration" minOccurs="0"/>
+            <xs:element name="hcl" type="tns:Configuration" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Profiles" type="tns:Profiles"/>
+    <xs:complexType name="Profiles">
+        <xs:sequence>
+            <xs:element name="profile" type="tns:Profile" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Profile" type="tns:Profile"/>
+    <xs:complexType name="Profile">
+            <xs:attribute name="id" type="xs:long" use="required"/>
+            <xs:attribute name="magcardId" type="common:Config.Id"/>
+            <xs:attribute name="iccemvId" type="common:Config.Id"/>
+            <xs:attribute name="varlibId" type="common:Config.Id"/>
+            <xs:attribute name="hclId" type="common:Config.Id"/>
+            <xs:attribute name="name" type="common:Profile.Name"/>
+    </xs:complexType>
+
+    <xs:element name="TerminalApplication" type="tns:TerminalApplication"/>
+    <xs:complexType name="TerminalApplication">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>                
+    <xs:element name="ConfigurationSortFieldList" type="tns:ConfigurationSortFieldList"/>
+    <xs:complexType name="ConfigurationSortFieldList">
+        <xs:sequence>
+            <xs:element name="sortField" type="tns:ConfigurationSortField" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ConfigurationSortField" type="tns:ConfigurationSortField"/>
+    <xs:complexType name="ConfigurationSortField">
+        <xs:attribute name="fieldName" type="tns:ConfigurationSortFieldType" use="required"/>
+        <xs:attribute name="sortDirection" type="common:SortDirection" use="required"/>
+    </xs:complexType>
+    <xs:element name="TerminalConfigDumpData" type="tns:TerminalConfigDumpData"/>
+    <xs:complexType name="TerminalConfigDumpData">
+        <xs:attribute name="id" type="xs:long" use="required"/>
+        <xs:attribute name="cid" type="xs:long" use="required"/>
+        <xs:attribute name="timestamp" type="common:ingDateTime" use="required"/>
+        <xs:attribute name="config" type="xs:string" use="required"/>
+    </xs:complexType>    
+</xs:schema>

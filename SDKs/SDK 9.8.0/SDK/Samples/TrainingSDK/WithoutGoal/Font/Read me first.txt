@@ -1,0 +1,1 @@
+Copy in this directory the following tools = TTF2BDF.EXE and BDF2FON.EXE from SDK

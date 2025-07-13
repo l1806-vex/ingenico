@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?teliumProject version="2.0"?>
+
+<?ingedev version="7.16.1.3"?>
+
+<projectDescription activeConfig="GNU_ARM_DEBUG" binaryName="GOAL_SAMPLE" descr="" projectType="LIB">
+<virtualFolders>
+<virtualFolder name="Source Files" sources="true">
+<file generated="false" name="Src/GL_TutorialStepData.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepDataGml.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepEvent.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepEventGml.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepFooter.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepGraphicLib.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepId.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepInput.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepLayout.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialSteps.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepScrollView.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepScrollViewGml.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepWindow.c" parentProject=""/>
+<file generated="false" name="Src/GL_TutorialStepWindowGml.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Other Files" sources="false"/>
+<virtualFolder name="Dialog" sources="true">
+<file generated="false" name="Src/GL_SampleDialogAmount.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogChoice.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogColor.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogDate.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogFile.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogIconButtonMenu.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogIconMenu.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogIp.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogMedia.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogMenu.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogMessage.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogMultiChoice.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogMultiFile.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogPassword.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogPicture.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogProgress.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogScheme.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogSignature.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogSlider.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogText.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDialogVirtualKeyboard.c" parentProject=""/>
+</virtualFolder>
+<virtualFolder name="Widget" sources="true">
+<file generated="false" name="Src/GL_SampleAllWidgets.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleButton.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleButtonStretch.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleCheckButton.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleCustomVirtualKeyboard.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDocument.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleDrawing.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleEdit.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleEditMask.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleEditMode.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleEditMultiline.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleFont.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleHScrollBar.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleHSlider.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleIcon.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleIconButton.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleLabel.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleLayout.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleList.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleListIcon.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleListDynamic.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleMedia.c" parentProject=""/>
+<file generated="false" name="Src/GL_SamplePalette.c" parentProject=""/>
+<file generated="false" name="Src/GL_SamplePicture.c" parentProject=""/>
+<file generated="false" name="Src/GL_SamplePictureStretch.c" parentProject=""/>
+<file generated="false" name="Src/GL_SamplePlayer.c" parentProject=""/>
+<file generated="false" name="Src/GL_SamplePlugin.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleProgressBar.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleRadioButton.c" parentProject=""/>
+<file generated="false" name="Src/GL_Samples.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleScrollView.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleSignature.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleTimer.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleVirtualKeyboard.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleUserMaskVirtualKeyboard.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleVScrollBar.c" parentProject=""/>
+<file generated="false" name="Src/GL_SampleWindow.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleScrollText.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleLabelUtf8.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleLabelBig5.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleLabelEscapeSequence.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleSendClick.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleSendKey.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleButtonWithSkinedIcon.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleInstanciateResource.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleFontStyle.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleCalculator.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleUserControl.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleArrowButton.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleDrawingNotVectorized.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleOrientation.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleBarcodeCODE128.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleBarcodeCODE25.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleBarcodeCODE39.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleBarcodeEAN13.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleBarcodeEAN8.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleBarcodePdf417.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleBarcodeQr.c" parentProject=""/>
+<file generated="false" name="Src\GL_SampleUserList.c" parentProject=""/>
+</virtualFolder>
+</virtualFolders>
+<exportedHeaders>
+<exportedHeader name="${workspace_loc:/[LIB] GOAL_Sample}"/>
+</exportedHeaders>
+<configs>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="false" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnuOptim="-O0" linkerCustomOpt="" name="GNU_ARM_DEBUG" sign="false" teliumCompatibility="Telium 2" zip="false">
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="OS_TELIUM_2"/>
+</userDefines>
+<prebuild command="" description=""/>
+<externalSchemes/>
+<postbuild command="" description=""/>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.2"/>
+</packageIncs>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.2"/>
+</packageDefines>
+<userIncs>
+<userInc value="..\..\..\..\..\..\_Inc_SDK\Component\GraphicLibCommon"/>
+<userInc value="..\..\..\..\..\..\_Inc_SDK\Component\GraphicLib"/>
+<userInc value="${workspace_loc:/[APP] GOAL_Sample/IncGen}"/>
+<userInc value="Inc"/>
+</userIncs>
+<dataFiles/>
+</config>
+<config codeBaseAddr="0x0" compiler="gnuArm" compilerCustomOpt="" cpuMode="thumb" crc="true" dataBaseAddr="0x200000" defaultTeliumCompatibility="Telium 2" enableCPPExceptions="false" gnuOptim="-Os" linkerCustomOpt="" name="GNU_ARM_RELEASE" sign="false" teliumCompatibility="Telium 2" zip="true">
+<userDefines>
+<userDefine value="_ING_APPLI_BINARY_NAME=&quot;${appli_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_NAME=&quot;${appli_current_config_name}&quot;"/>
+<userDefine value="_ING_APPLI_FULL_BINARY_NAME=&quot;${appli_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM1_FULL_BINARY_NAME=&quot;${appli_telium1_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM2_FULL_BINARY_NAME=&quot;${appli_telium2_full_binary_name}&quot;"/>
+<userDefine value="_ING_APPLI_TELIUM_COMPATIBILITY=&quot;${appli_telium_compatibility}&quot;"/>
+<userDefine value="_ING_APPLI_SIGN_MODE=&quot;${appli_sign_mode}&quot;"/>
+<userDefine value="_ING_APPLI_CATALOG_FILE_EXTENSION=&quot;${appli_catalog_file_extension}&quot;"/>
+<userDefine value="_ING_APPLI_CURRENT_CONFIG_TOOLCHAIN_ROOT_LOCATION=&quot;${appli_current_config_toolchain_root_location}&quot;"/>
+<userDefine value="OS_TELIUM_2"/>
+</userDefines>
+<prebuild command="" description=""/>
+<postbuild command="" description=""/>
+<packageIncs>
+<packageInc package="Telium SDK" version="9.10.2"/>
+</packageIncs>
+<packageDefines>
+<packageDefine package="Telium SDK" version="9.10.2"/>
+</packageDefines>
+<externalSchemes/>
+<userIncs>
+<userInc value="..\..\..\..\..\..\_Inc_SDK\Component\GraphicLibCommon"/>
+<userInc value="..\..\..\..\..\..\_Inc_SDK\Component\GraphicLib"/>
+<userInc value="${workspace_loc:/[APP] GOAL_Sample/IncGen}"/>
+<userInc value="Inc"/>
+</userIncs>
+</config>
+</configs>
+<groupConfigs/>
+</projectDescription>

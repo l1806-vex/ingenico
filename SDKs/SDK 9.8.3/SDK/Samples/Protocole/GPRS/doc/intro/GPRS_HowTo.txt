@@ -1,0 +1,142 @@
+ /** \page HowTo Basic Operation
+
+* GPRS Sample Application requires a socket tool to act as a client or a server. 
+*
+* A sample open source software that can be used is the Hercules SETUP Utility. Go to http://www.hw-group.com/products/hercules/index_en.html to download the tool.
+*
+* \section gprsecht1 Configuring Socket Tool/s
+*
+* \b Hercules:
+*
+* 1. Open Hercules (..\SSL\res)
+*
+* 2. Click the TCP Server tab, indicate the port to be used then hit the LISTEN button
+*
+* \section gprsecht2 Configuring GPRS, PPP, TCP/IP and GSM
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select GPRS.
+*
+* 3. It will show the GPRS menu. Select Configuration.
+*
+* \b GPRS:
+*
+* 1. On Configuration Menu, Select GPRS.
+*
+* 2. Enter APN. 
+*
+* \b PPP:
+*
+* 1. On Configuration Menu, Select PPP.
+*
+* 2. Enter Authentication Login (if any). 
+*
+* 3. Enter Authentication Password (if any). 
+*
+* \b TCP/IP:
+*
+* 1. On Configuration Menu, Select TCP/IP.
+*
+* 2. Enter Host Name or IP Address (the public IP address).
+*
+* 3. Enter Port number (same as the port in hercules - tcp server).
+*
+* \b GSM:
+*
+* 1. On Configuration Menu, Select GSM.
+*
+* 2. Enter Phone Number.
+*
+* 3. Choose Modulation from List.
+*
+* 4. Choose RLP mode. Enable or Disable.
+*
+* \section gprsecht3 Running GPRS, PPP, TCP/IP and GSM 
+*
+* <b>To Activate GPRS:</b>
+*
+* \b Note: Before activating GPRS, ensure that APN is configured.
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select \b GPRS.
+*
+* 3. It will show the GPRS application menu. Select \b GPRS. 
+*
+* 4. Terminal displays option to Activate and Deactivate. 
+*
+* 5. Select \b Activate. If pin is required/enabled in the SIM, terminal will prompt for PIN Code.
+*
+* 6. Terminal displays "Activated".
+* 
+* 7. Terminal connects to GPRS network indicated by the GPRS signal.
+*
+* <b>To Deactivate GPRS:</b>
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select GPRS.
+*
+* 3. It will show the GPRS application menu. Select GPRS. 
+*
+* 4. Terminal displays option to Activate and Deactivate. 
+*
+* 5. Select Deactivate. Terminal disconnects to GPRS network.
+*
+* <b>To Connect PPP:</b>
+*
+* \b Note: Before running PPP, ensure that PPP is configured and that GPRS is activated in the terminal
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select \b GPRS.
+*
+* 3. It will show the GPRS application menu. Select \b PPP. 
+*
+* 4. Terminal displays option to Connect and Disconnect PPP. 
+*
+* 5. Select \b Connect. PPP Connection is established when lift phone logo appears on the terminal.
+*
+* <b>To Disconnect PPP:</b>
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select \b GPRS.
+*
+* 3. It will show the GPRS application menu. Select \b PPP. 
+*
+* 4. Terminal displays option to Connect and Disconnect PPP. 
+*
+* 5. Select \b Disconnect. PPP Connection is disconnected when phone logo is not lifted in the terminal screen
+*
+* <b>To Run TCP/IP:</b>
+*
+* \b Note: Before running TCP/IP, ensure TCP/IP is configured and that a successful PPP connection is established.
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select \b GPRS.
+*
+* 3. It will show the GPRS application menu. Select \b TCP/IP. 
+* 
+* 4. The Terminal will now connect to the server (hercules), it will try to connect for 30 seconds. If connection is not established connection failed will be displayed.
+* 
+* 5. If the connection is succesful, The terminal will send the data "Test Send". If the sending is not successful a sending failed error message will be displayed.
+* 
+* 7. At the end of the test, the terminal will be disconnected from the server.
+* 
+*  <b>To Run GSM:</b>
+*
+* \b Note: Before running GSM, ensure GSM is configured.
+*
+* 1. Activate Telium Manager's menu by pressing 'F' key 
+*
+* 2. On the Telium Manager's menu, select \b GPRS.
+*
+* 3. It will show the GPRS application menu. Select \b GSM. 
+
+
+
+
+  */

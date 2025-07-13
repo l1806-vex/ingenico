@@ -1,0 +1,73 @@
+2013-03-04 14:31:01,641 TRC.main INFO    : Starting Play Thread
+2013-03-04 14:31:01,921 TRC.ScriptEditor INFO    : File saved as : D:\dvp\uta\wrkspace\STKH_DEV\Samples\SourceCode\trunk\CardEntry\tst\TRC_SDK9.8.0\Run_All_Tests.py
+2013-03-04 14:31:02,002 TRC.main INFO    : Starting script
+2013-03-04 14:31:02,002 TRC.main INFO    : Clearing History
+2013-03-04 14:31:02,032 TRC.main INFO    : Starting script D:\dvp\uta\wrkspace\STKH_DEV\Samples\SourceCode\trunk\CardEntry\tst\TRC_SDK9.8.0\Run_All_Tests.py
+2013-03-04 14:31:02,421 root     INFO    : starting test suite
+2013-03-04 14:31:02,562 root     INFO    : starting test crd_trm_001.py
+2013-03-04 14:31:02,982 TRC.main INFO    : SendKey('1')
+2013-03-04 14:31:05,694 TRC.main INFO    : SendKey('2')
+2013-03-04 14:31:08,713 TRC.main INFO    : SendKey('3')
+2013-03-04 14:31:11,752 TRC.main INFO    : SendKey('4')
+2013-03-04 14:31:14,753 TRC.main INFO    : SendKey('V')
+2013-03-04 14:31:17,572 TRC.main INFO    : InsertCard
+2013-03-04 14:31:18,572 TRC.main INFO    : RemoveCard
+2013-03-04 14:31:18,681 root     INFO    : test ok (no exceptions)
+2013-03-04 14:31:18,832 root     INFO    : starting test crd_trm_002.py
+2013-03-04 14:31:19,173 TRC.main INFO    : SendKey('1')
+2013-03-04 14:31:22,193 TRC.main INFO    : SendKey('2')
+2013-03-04 14:31:25,200 TRC.main INFO    : SendKey('3')
+2013-03-04 14:31:27,891 TRC.main INFO    : SendKey('4')
+2013-03-04 14:31:30,680 TRC.main INFO    : SendKey('V')
+2013-03-04 14:31:33,651 TRC.main INFO    : Swipe: Swipe(track2='B4970100000010006301D12121010000000000F7')
+2013-03-04 14:31:33,812 root     INFO    : test ok (no exceptions)
+2013-03-04 14:31:33,992 root     INFO    : starting test crd_trm_003.py
+2013-03-04 14:31:34,342 TRC.main INFO    : SendKey('1')
+2013-03-04 14:31:36,142 TRC.main INFO    : SendKey('2')
+2013-03-04 14:31:38,372 TRC.main INFO    : SendKey('3')
+2013-03-04 14:31:40,012 TRC.main INFO    : SendKey('4')
+2013-03-04 14:31:41,809 TRC.main INFO    : SendKey('V')
+2013-03-04 14:31:43,742 TRC.main INFO    : SendKey('F')
+2013-03-04 14:31:45,802 TRC.main INFO    : SendKey('4')
+2013-03-04 14:31:47,732 TRC.main INFO    : SendKey('0')
+2013-03-04 14:31:49,661 TRC.main INFO    : SendKey('2')
+2013-03-04 14:31:51,522 TRC.main INFO    : SendKey('8')
+2013-03-04 14:31:54,592 TRC.main INFO    : SendKey('9')
+2013-03-04 14:31:56,503 TRC.main INFO    : SendKey('2')
+2013-03-04 14:31:58,102 TRC.main INFO    : SendKey('0')
+2013-03-04 14:31:59,892 TRC.main INFO    : SendKey('0')
+2013-03-04 14:32:01,793 TRC.main INFO    : SendKey('0')
+2013-03-04 14:32:03,670 TRC.main INFO    : SendKey('2')
+2013-03-04 14:32:05,630 TRC.main INFO    : SendKey('4')
+2013-03-04 14:32:07,569 TRC.main INFO    : SendKey('6')
+2013-03-04 14:32:09,609 TRC.main INFO    : SendKey('5')
+2013-03-04 14:32:11,490 TRC.main INFO    : SendKey('6')
+2013-03-04 14:32:13,561 TRC.main INFO    : SendKey('5')
+2013-03-04 14:32:15,463 TRC.main INFO    : SendKey('6')
+2013-03-04 14:32:17,552 TRC.main INFO    : SendKey('V')
+2013-03-04 14:32:19,423 TRC.main INFO    : SendKey('1')
+2013-03-04 14:32:21,533 TRC.main INFO    : SendKey('1')
+2013-03-04 14:32:23,394 TRC.main INFO    : SendKey('1')
+2013-03-04 14:32:25,227 TRC.main INFO    : SendKey('3')
+2013-03-04 14:32:27,138 TRC.main INFO    : SendKey('V')
+2013-03-04 14:32:28,125 root     INFO    : test ok (no exceptions)
+2013-03-04 14:32:28,265 root     INFO    : starting test crd_trm_004.py
+2013-03-04 14:32:28,654 TRC.main INFO    : SendKey('1')
+2013-03-04 14:32:30,424 TRC.main INFO    : SendKey('2')
+2013-03-04 14:32:32,532 TRC.main INFO    : SendKey('3')
+2013-03-04 14:32:34,592 TRC.main INFO    : SendKey('4')
+2013-03-04 14:32:36,592 TRC.main INFO    : SendKey('5')
+2013-03-04 14:32:38,513 TRC.main INFO    : SendKey('6')
+2013-03-04 14:32:40,533 TRC.main INFO    : SendKey('7')
+2013-03-04 14:32:42,579 TRC.main INFO    : SendKey('C')
+2013-03-04 14:32:43,319 TRC.main INFO    : SendKey('C')
+2013-03-04 14:32:45,160 TRC.main INFO    : SendKey('V')
+2013-03-04 14:32:47,079 TRC.main INFO    : SendKey('A')
+2013-03-04 14:32:47,779 root     INFO    : test ok (no exceptions)
+2013-03-04 14:32:47,910 root     INFO    : test suite is done
+2013-03-04 14:32:48,009 TRC.main INFO    : SendKey('A')
+2013-03-04 14:32:48,750 TRC.main INFO    : SendKey('A')
+2013-03-04 14:32:49,589 TRC.main INFO    : SendKey('A')
+2013-03-04 14:32:50,970 TRC.main INFO    : Finished script D:\dvp\uta\wrkspace\STKH_DEV\Samples\SourceCode\trunk\CardEntry\tst\TRC_SDK9.8.0\Run_All_Tests.py
+2013-03-04 14:32:51,240 TRC.main INFO    : ----------------------------------
+2013-03-04 14:32:51,260 TRC.main INFO    : Test OK

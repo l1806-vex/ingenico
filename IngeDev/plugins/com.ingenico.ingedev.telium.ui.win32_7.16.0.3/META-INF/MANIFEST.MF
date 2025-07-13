@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Ingenico
+Fragment-Host: com.ingenico.ingedev.telium.ui;bundle-version="7.8.0"
+Bundle-Version: 7.16.0.3
+Eclipse-PlatformFilter: (osgi.os=win32)
+Bundle-Name: Telium UI Win32 Fragment
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.ingenico.ingedev.telium.ui.win32;singleton:=t
+ rue
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+
+

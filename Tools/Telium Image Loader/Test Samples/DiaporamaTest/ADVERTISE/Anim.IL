@@ -1,0 +1,9 @@
+ADVERTISE
+duration=2
+01.jpg
+duration=2
+02.jpg
+duration=2
+03.jpg
+duration=2
+04.jpg

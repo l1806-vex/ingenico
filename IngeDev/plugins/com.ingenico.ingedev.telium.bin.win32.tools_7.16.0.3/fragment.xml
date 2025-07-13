@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         point="com.ingenico.ingedev.telium.bin.teliumToolsPathProviders">
+      <teliumToolsPathProvider
+            class="com.ingenico.ingedev.telium.bin.win32.tools.Win32TeliumToolsPathProvider"
+            name="name">
+      </teliumToolsPathProvider>
+   </extension>
+</fragment>

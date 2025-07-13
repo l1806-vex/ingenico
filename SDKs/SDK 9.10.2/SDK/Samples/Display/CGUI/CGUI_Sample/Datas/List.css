@@ -1,0 +1,77 @@
+
+/* Identify body only in PC browser - debug only*/
+BODY
+{
+	background-color:silver;  
+}
+
+/* For PC only : same appearance if you visited or not the link*/
+A:visited
+{
+	color:white;
+	background-color:blue;
+	text-decoration:none;
+}
+
+/*default appearance of a link*/
+A:link
+{
+	color:white; 
+	text-decoration:none;
+}
+
+/* firefox only*/
+A:focus
+{
+	color:blue;
+	background-color:white;
+	text-decoration:none;
+}
+
+/*when the link are selected*/
+A:active 
+{
+	color:blue;
+	background-color:white;
+	text-decoration:none;
+}
+
+/*when having mouse cursor on the ahref*/
+A:hover 
+{
+	color:blue;
+	background-color:white;
+	text-decoration:none;
+}
+
+/*master container of the HTML*/
+DIV#Container
+{
+	font-family:sans-serif;
+	background-color:blue;
+	width:312px;
+	height:236px;
+	border-color:white;
+	border-width:0px 4px 4px 4px;
+	border-style:solid;
+	overflow:auto;
+}
+
+/*title of the window*/
+P#MenuTitle
+{
+	margin:0px;
+	padding:0px;
+	color:blue;
+	background-color:white;
+	text-align:center;
+	font-weight:bold;
+}
+
+/*List of menu*/
+UL#MenuList
+{
+	padding-left : 10px;
+	list-style-type:none;
+	color:white; 
+}

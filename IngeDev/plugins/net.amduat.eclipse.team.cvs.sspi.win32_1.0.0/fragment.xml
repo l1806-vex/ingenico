@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<fragment
+   id="net.amduat.eclipse.team.cvs.sspi.win32"
+   name="CVS SSPI Win32 Fragment"
+   version="1.0.0"
+   provider-name="amduat.net"
+   plugin-id="net.amduat.eclipse.team.cvs.sspi"
+   plugin-version="1.0.0">
+
+</fragment>

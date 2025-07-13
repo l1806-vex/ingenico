@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?packageDescriptor version="1.0"?>
+
+<package name="Easy Path to EMV" version="21" type="EASY_PATH" description="Easy Path to EMV">
+	<documents>
+		<document name="Custom.chm" description="EMV CUSTOM Documentation" location="Documents" />
+		<document name="EMV DC Interface.chm" description="EMV DC Interface Library Documentation" location="Documents" />
+		<document name="Parameters management.pdf" description="EMV Parameters management" location="Documents" />
+	</documents>
+	<includeDirectories>
+		<includeDirectory location="SDK/Inc" />
+	</includeDirectories>
+	<toolchains>
+		<toolchain id="gnuArm" librariesLocation="SDK/lib_gnu" />
+		<toolchain id="gnuArm4" librariesLocation="SDK/lib_gnu_434" />
+		<toolchain id="armRvds" librariesLocation="SDK/lib_rvd" />
+	</toolchains>
+	<libraries>
+		<library name="DEL" description="DEL Management Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="EmvDcInterface" description="EMV DC Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+		<library name="EngineInterface" description="EMV ENGINE Interface Library">
+			<toolchains>
+				<toolchain id="gnuArm" extension=".lib"/>
+				<toolchain id="gnuArm4" extension=".lib"/>
+				<toolchain id="armRvds" extension=".lib"/>
+			</toolchains>
+		</library>
+	</libraries>
+	<defines>
+		<define id="EMVDC" />
+		<define id="EMVDCTAG" />
+		<define id="LEN_AID=16" />
+	</defines>
+	<samples>
+		<sample name="Custom" description="EMV Application Sample" location="SDK/EmvCustom" />
+		<sample name="Comm" description="EMV Communication Sample" location="SDK/EmvComm" />
+	</samples>
+	<components>
+		<component name="EMV Kernel" location="Component/Kernel">
+			<catalogFiles>
+				<catalogFile name="KERNEL.M10" terminal="M10" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M30" terminal="M30" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M31" terminal="M31" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M34" terminal="M34" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M36" terminal="M36" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M37" terminal="M37" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M38" terminal="M38" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M39" terminal="M39" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M40" terminal="M40" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M41" terminal="M41" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M42" terminal="M42" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M43" terminal="M43" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M44" terminal="M44" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M45" terminal="M45" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M46" terminal="M46" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M48" terminal="M48" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M49" terminal="M49" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M51" terminal="M51" description="EMV Kernel" />
+				<catalogFile name="KERNEL.M52" terminal="M52" description="EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M10" terminal="M10" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M30" terminal="M30" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M31" terminal="M31" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M34" terminal="M34" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M36" terminal="M36" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M37" terminal="M37" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M38" terminal="M38" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M39" terminal="M39" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M40" terminal="M40" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M41" terminal="M41" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M42" terminal="M42" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M43" terminal="M43" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M44" terminal="M44" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M45" terminal="M45" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M46" terminal="M46" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M48" terminal="M48" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M49" terminal="M49" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M51" terminal="M51" description="Debug EMV Kernel" />
+				<catalogFile name="KERNEL DEBUG.M52" terminal="M52" description="Debug EMV Kernel" />
+			</catalogFiles>
+		</component>
+		<component name="EMV Sample Application" location="Component/Sample">
+			<catalogFiles>
+				<catalogFile name="DEMO.M10" terminal="M10" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M30" terminal="M30" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M31" terminal="M31" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M34" terminal="M34" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M36" terminal="M36" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M37" terminal="M37" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M38" terminal="M38" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M39" terminal="M39" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M40" terminal="M40" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M41" terminal="M41" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M42" terminal="M42" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M43" terminal="M43" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M44" terminal="M44" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M45" terminal="M45" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M46" terminal="M46" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M48" terminal="M48" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M49" terminal="M49" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M51" terminal="M51" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO.M52" terminal="M52" description="EMV Sample Demo Application" />
+				<catalogFile name="DEBUG.M10" terminal="M10" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M30" terminal="M30" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M31" terminal="M31" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M34" terminal="M34" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M36" terminal="M36" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M37" terminal="M37" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M38" terminal="M38" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M39" terminal="M39" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M40" terminal="M40" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M41" terminal="M41" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M42" terminal="M42" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M43" terminal="M43" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M44" terminal="M44" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M45" terminal="M45" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M46" terminal="M46" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M48" terminal="M48" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M49" terminal="M49" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M51" terminal="M51" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG.M52" terminal="M52" description="EMV Sample Debug Application" />
+				<catalogFile name="DEMO CGUI.M36" terminal="M36" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M39" terminal="M39" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M40" terminal="M40" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M43" terminal="M43" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M44" terminal="M44" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M45" terminal="M45" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M46" terminal="M46" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M48" terminal="M48" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M51" terminal="M51" description="EMV Sample Demo Application" />
+				<catalogFile name="DEMO CGUI.M52" terminal="M52" description="EMV Sample Demo Application" />
+				<catalogFile name="DEBUG CGUI.M36" terminal="M36" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M39" terminal="M39" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M40" terminal="M40" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M43" terminal="M43" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M44" terminal="M44" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M45" terminal="M45" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M46" terminal="M46" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M48" terminal="M48" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M51" terminal="M51" description="EMV Sample Debug Application" />
+				<catalogFile name="DEBUG CGUI.M52" terminal="M52" description="EMV Sample Debug Application" />
+			</catalogFiles>
+		</component>
+	</components>
+</package>

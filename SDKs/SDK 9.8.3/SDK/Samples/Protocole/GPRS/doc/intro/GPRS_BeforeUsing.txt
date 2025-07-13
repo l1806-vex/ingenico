@@ -1,0 +1,48 @@
+ /** \page Before Getting Started
+
+\section gprsec1 Resource Requirements
+*
+* Prepare the following materials to test this sample.
+*
+<b>Hardware:</b>
+- Any Telium terminal that supports GPRS. GPRS Sample works on terminals that have sim slots such as: <b>ICT250, ISC350, and IWL280</b>.
+- Downloading cable appropriate for the Telium terminal.
+- SIM Card
+*
+<b>Software:</b>
+- Latest version of LLT(Local Loading Tool) 
+- Latest Telium SDK Package. 
+- Ingedev v7.14.0.2 or later.
+- Any TCP/IP socket testing tool to act as server/client on the PC side. In this sample application, Hercules Setup Utility tool was used. Download from www.HW-group.com.
+*
+\section gprsec2 Terminal Preparation and Configuration
+*
+* Perform the following on the terminal:
+- \ref gprsubt1
+- \ref gprsubt2
+- \ref gprsubt3
+*
+\subsection gprsubt1 Load the Latest SDK and other files
+*
+* On LLT,
+- Load the OS, Manager (GOAL_export_PROD), Link Layer 
+*
+\subsection gprsubt2 Load the GPRS Sample Application
+*
+* On Ingedev,
+- Import the GPRS sample project in Ingedev workspace and build it. Please see Ingedev help documentation to see how to import and build an existing Ingedev project.
+- Download the project into the Telium terminal using Ingedev. Make sure that the LLT was set up correctly and that Telium terminal is connected to the proper USB port.
+*
+\subsection gprsubt3 Activate or Deactivate Debug Mode
+*
+* The SSL sample application can be tested with or without traces. Activate (with trace) or Deactivate (without trace) Debug.
+*
+* To activate,
+- Restart the terminal and press F when the LDBG setup prompt is displayed. Enter the value '5' to trace using USB. Before doing this make sure that the terminal LAN connection has already been setup. The project settings in Ingedev should be in GNU_ARM_DEBUG configuration.
+- The terminal restarts and "COM5:115200,N,8,1" text message is displayed on the screen.
+- Right click the project name and click "Debug As" and "Telium Remote Application". Make sure that remote debug preferences are properly set in Ingedev preferences. See Ingedev help manual for more information.
+*
+* To Deactivate,
+- Restart the terminal and press F when the LDBG setup prompt is displayed. Enter the value '0'
+
+  */

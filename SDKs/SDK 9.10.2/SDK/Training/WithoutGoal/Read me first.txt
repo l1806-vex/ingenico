@@ -1,0 +1,65 @@
+To get the full features of the projects regarding the SDK Training, please follow the instructions below:
+
+1) Load the OS MOCKUP catalog into SWAP disk using LLT (\Program Files\TeliumSDK\SDK 9.10.0\Component\OS).
+2) Load the Manager EXPORT_PROD catalog into SWAP disk using LLT (\Program Files\TeliumSDK\SDK 9.10.0\Component\Manager).
+3) Disconnect from LLT and configure the terminal.
+4) Import the 5 following projects under IngeDev 
+      - BeepDll, BeepLib, CashRegister, Training and User2.
+5) Rebuild the 5 projects under IngeDev and copy into directory "Catalogue Parameters" :
+      - TRAININGV01.SGN and TRAININGV01.ADF (Telium1) (see Training\Bin\GNU_ARM_DEBUG)
+      - TRAININGV01.AGN (Telium2) (see Training\Bin\GNU_ARM_DEBUG)
+      - USER2V01.SGN and USER2V01.ADF (Telium1) (see User2\Bin\GNU_ARM_DEBUG)
+      - USER2V01.AGN (Telium2)(see User2\Bin\GNU_ARM_DEBUG)
+      - BEEPDLLV01.SGN and BEEPDLLV01.LDF (Telium1)(see BeepDll\Bin\GNU_ARM_DEBUG)
+      - BEEPDLLV01.LGN (Telium2)(see BeepDll\Bin\GNU_ARM_DEBUG)
+6) LinkLayer: copy into directory "Catalogue Parameters" :
+      - 36280412.SGN/ADF and 36280412.AGN (see \Program Files\TeliumSDK\SDK 9.10.0\Component\LinkLayer\WithIP)
+7) Font Candara: run ttf2fon.bat to generate CANDARA.FON then use SST or SAT to generate CANDARA.SGN/PDF or CANDARA.PGN,
+   then copy into directory "Catalogue Parameters" :
+      - CANDARA.SGN and CANDARA.PDF (Telium1)
+      - CANDARA.PGN (Telium2) 
+      !!! To get ttf2fon.bat running properly, copy inside this directory \Font the following tools :
+          - TTF2BDF.EXE (see \Program Files\TeliumSDK\SDK 9.10.0\tools\FONT tool)
+          - BDF2FON.EXE (see \Program Files\TeliumSDK\SDK 9.10.0\tools\FONT tool)
+      and copy inside this directory \Font\Candara the following fonts :
+          - CANDARA.TTF   (see C:\WINDOWS\Fonts)
+          - CANDARAB.TTF  (see C:\WINDOWS\Fonts)
+          - CANDARAI.TTF  (see C:\WINDOWS\Fonts)
+          - CANDARAZ.TTF  (C:\WINDOWS\Fonts)    
+8) Font Manager: copy the following fonts into directory "Catalogue Parameters" :
+      - 8442160111.SGN/PDF and PGN => Font ISO1 Standard (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\Standard)
+      - 8442170111.SGN/PDF and PGN => Font ISO2 Standard (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\Standard)
+      - 8442180111.SGN/PDF and PGN => Font ISO3 Standard (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\Standard)
+      - 8442190111.SGN/PDF and PGN => Font ISO5 Standard (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\Standard)
+      - 8442130111.SGN/PDF and PGN => Font ISO6 Standard (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\Standard)
+      - 8442200111.SGN/PDF and PGN => Font ISO7 Standard (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\Standard)
+      - 8442210111.SGN/PDF and PGN => Font ISO15 Standard (see \Program Files\TeliumSDK\SDK 9.10.0\Component\Fonts\Standard)
+9) Application Message: run Sample.bat to generate SAMPLEMSG.MSG then use SST or SAT to generate SAMPLEMSG.SGN/PDF or SAMPLEMSG.PGN,
+   then copy into directory "Catalogue Parameters" :
+      - SAMPLEMSG.SGN and SAMPLEMSG.PDF (Telium1)
+      - SAMPLEMSG.PGN (Telium2)
+      !!! To get Sample.bat running properly, copy inside this directory \Message the following tools :
+          - BUILDMSG.EXE (see \Program Files\TeliumSDK\SDK 9.10.0\tools\MSG tool)
+          - MSG2C.EXE    (see \Program Files\TeliumSDK\SDK 9.10.0\tools\MSG tool)
+10) Manager Message: run RussianEFT.bat to generate EFT.MSG then use SST or SAT to generate EFT.SGN/PDF or EFT.PGN,
+    then copy into directory "Catalogue Parameters" :
+      - EFT.SGN and EFT.PDF (Telium1)
+      - EFT.PGN (Telium2) 
+      !!! To get RussianEFT.bat running properly, copy inside this directory \Message the following tools :
+          - BUILDMSG.EXE (see \Program Files\TeliumSDK\SDK 9.10.0\tools\MSG tool)
+          - MSG2C.EXE    (see \Program Files\TeliumSDK\SDK 9.10.0\tools\MSG tool)   
+
+At this step, connect the terminal to LLT then select the directory "Catalogue Parameters" and load the appropriate CATALOG.Mxx then disconnect.
+The terminal is now ready to show all features done during the SDK training session.
+
+11) Load the CashRegister project to start a transaction from a terminal connected by USB to a cash register simulator (Hyper Terminal => CashRegister.ht)
+      - Scripts Hyper Terminal to run under => Transfert - Send a file text... :
+        CANCEL_Transaction.txt
+        IAM_Message.txt
+        SVC_TransactionCredit200.txt
+        SVC_TransactionDebit500.txt
+        SVC_TransactionExtcancel100.txt
+        SVC_TransactionPreauth400.txt
+
+This last step is to introduce the ServiceCall100 to start a transaction selection from the terminal when receiving the transaction type, amount and currency
+from a cash register.  

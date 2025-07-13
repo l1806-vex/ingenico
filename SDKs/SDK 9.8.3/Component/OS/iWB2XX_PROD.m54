@@ -1,0 +1,38 @@
+;System pack prod for iWB2XX
+;Pack System
+37772808.pgn
+;Boot Ram
+30140520.dgn
+;Driver VFS
+30210332.dgn
+;Driver Modem 930
+40150340.dgn
+;Driver GPRS
+8200120238.dgn
+;Driver UMS
+8200210320.dgn
+;Driver HID
+8200220124.dgn
+;Driver USB CDC
+8200320628.dgn
+;System R+
+8200361474.dgn
+;Driver CLESS
+8200490239.dgn
+;Driver BC06 handheld T1 T2
+8201250514.dgn
+;Driver BC06 base T1 T2
+8201260514.dgn
+;iWL220-250 base list
+8201360102.pgn
+;driver color
+8203120105.dgn
+;Driver SSC_DAA
+8203680101.dgn
+;Driver Modem V34
+8203690105.dgn
+;BOOSTER III Boot Flash
+8300630016.dgn
+;Booster III system
+8300640361.dgn
+

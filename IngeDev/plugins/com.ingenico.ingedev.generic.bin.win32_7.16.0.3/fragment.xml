@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<fragment>
+   <extension
+         id="win32"
+         point="com.ingenico.ingedev.generic.bin.genericBinPathProviders">
+      <genericBinPathProvider
+            class="com.ingenico.ingedev.generic.bin.win32.Win32GenericBinPathProvider"
+            name="Generic win32 binaries path provider">
+      </genericBinPathProvider>
+   </extension>
+
+</fragment>

@@ -1,0 +1,4243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" xml:lang="en"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.ingenico.com/tml"
+    xmlns="http://www.ingenico.com/tml"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    elementFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation>
+    TML XML Schema based on
+        XHTML 1.0 (Second Edition) Strict XML Schema
+
+    COPYRIGHT (C) 2004-2010 Ingenico
+    ALL RIGHTS RESERVED
+
+    $Id: tml.xsd,v 1.43 2009/06/25 15:08:13 divanov Exp $
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== Imported Names ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="ContentType">
+    <xs:annotation>
+      <xs:documentation>
+      Content type for linked or embedded resource, similar to XHTML. 
+      For example, "text/css" for CSS files and "text/tml" for TML pages.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Charset">
+    <xs:annotation>
+      <xs:documentation>
+      Character encoding, similar to XHTML. For example, "ISO-8859-1"
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Character">
+    <xs:annotation>
+      <xs:documentation>
+      A single character, as per section 2.2 of [XML]
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:length value="1" fixed="true"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Number">
+    <xs:annotation>
+      <xs:documentation>
+      One or more digits.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:pattern value="[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PositiveNumber">
+    <xs:annotation>
+      <xs:documentation>
+      A positive integer number.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:positiveInteger">
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LinkTypes">
+    <xs:annotation>
+      <xs:documentation>
+      A space-separated list of link types.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="URI">
+    <xs:annotation>
+      <xs:documentation>
+      A Uniform Resource Identifier, see [RFC2396].
+      It can only be relative to the service 
+      base directory due to Incendo security restriction. 
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Datetime">
+    <xs:annotation>
+      <xs:documentation>
+      Date and time information in ISO date and time format i.e. YYYY-MM-DD hh:mm:ss
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:dateTime"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Text">
+    <xs:annotation>
+      <xs:documentation>
+      A text string.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Length">
+    <xs:annotation>
+      <xs:documentation>
+      Pixel or percentage length:
+      * 'nn' for number of pixels. i.e. '128' for 128 pixels
+      * 'nn%' for a percentage value. i.e. '10%'
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\-+]?(\d+|\d+(\.\d+)?%)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MultiLength">
+    <xs:annotation>
+      <xs:documentation>
+      Pixel, percentage, or relative length:
+      * 'nn' for number of pixels. i.e. '128' for 128 pixels
+      * 'nn%' for a percentage value. i.e. '10%'
+      * 'n*' for a relative length, for instance '1*'
+      
+      When allocating space for elements, Icnendo Browser first processes pixel and
+      percentage lengths, then divides the remaining space among all elements with
+      a relative length. An element with a length of '3*' will be allocated with space
+      three times bigger than an element with length '1*'. The value '*' is equivalent
+      to '1*' and instructs the Browser to fill the remaining space.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\-+]?(\d+|\d+(\.\d+)?%)|[1-9]?(\d+)?\*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Pixels">
+    <xs:annotation>
+      <xs:documentation>
+      Integer representing length in pixels
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Generic Attributes ===============================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:attributeGroup name="coreattrs">
+    <xs:annotation>
+      <xs:documentation>
+      Core attributes common to most elements
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="id" type="xs:ID">
+      <xs:annotation>
+        <xs:documentation>
+          Document-wide unique id. In practice only used for {screen} elements. Maximum length of
+          a screen ID is 32 characters.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="class" type="xs:NMTOKENS">
+      <xs:annotation>
+        <xs:documentation>
+          Space separated list of classes. Used for CSS formatting.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="attrs">
+    <xs:attributeGroup ref="coreattrs"/>
+  </xs:attributeGroup>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Common Attributes ===============================
+    </xs:documentation>
+  </xs:annotation>
+  
+
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Text Elements ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:group name="inline.forms">
+    <xs:choice>
+      <xs:element ref="input"/>
+      <xs:element ref="textarea"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="special">
+    <xs:choice>
+      <xs:element ref="br"/>
+      <xs:element ref="span"/>
+      <xs:element ref="getvar"/>
+      <xs:element ref="img"/>
+      <xs:element ref="dynamic"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="inline">
+    <xs:annotation>
+      <xs:documentation>
+      elements of inline.forms may appear only inside the form element
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="a"/>
+      <xs:group ref="special"/>
+      <xs:group ref="inline.forms"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="Inline" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+      "Inline" covers inline or "text-level" elements
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="inline"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== Block level elements ==============================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:group name="heading">
+    <xs:choice>
+      <xs:element ref="h1"/>
+      <xs:element ref="h2"/>
+      <xs:element ref="h3"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="lists">
+    <xs:choice>
+      <xs:element ref="ul"/>
+      <xs:element ref="ol"/>
+      <xs:element ref="dl"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="blocktext">
+    <xs:choice>
+      <xs:element ref="pre"/>
+      <xs:element ref="hr"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:group name="block">
+    <xs:choice>
+      <xs:element ref="p"/>
+      <xs:group ref="heading"/>
+      <xs:element ref="div"/>
+      <xs:group ref="lists"/>
+      <xs:group ref="blocktext"/>
+      <xs:element ref="table"/>
+      <xs:element ref="log"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="Block">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="block"/>
+      <xs:element ref="form"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="NoForm" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+      Block-level elements without form.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="block"/>
+      <xs:group ref="inline"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="Flow" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+      "Flow" mixes block and inline and is used for list items etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="block"/>
+      <xs:element ref="form"/>
+      <xs:group ref="inline"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:annotation>
+    <xs:documentation>
+    ===================== Variables ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="Formatter">
+    <xs:annotation>
+      <xs:documentation>
+         The TML can contain directive to pretty print the variable value.
+         This can be specified using additional formatter attribute. This
+         applies for all variable types except opaque. So, there are three
+         formatters - number, string and date.
+
+         The special symbols defined for each formatter can be escaped with
+         the \, i.e. the \ denies the special meaning of the one following
+         symbol, f.e. the \ itself.
+
+         Number formatter can contain any characters. All symbols except
+         explicitly specified below are printed "as is". The following special
+         symbols are available:
+
+         '^' at the beginning of the formatter. The positions in the fixed
+             part of the string will be occupied from right to left. On the
+             position other that first it is considered as normal printable
+             symbol
+         '0' specifies fixed amount of decimals. If this position is empty in
+             the real number, the zero is printed instead
+         '*' means any number of decimals. This symbol can be present only
+             once in the formatter and it can only be present after the fixed
+             positions. The term "after" takes into account the printing
+             direction above.
+
+         String formatter is a more complex formatter. It can contain any
+         characters. All symbols except explicitly specified below are printed
+         "as is". The following special symbols are available:
+
+         'c' or 'n' means normal symbol or number at this position
+         'c#' or 'n#' means hidden symbol or decimal, i.e. '*' at this position
+         '*' or number can follow above specifiers, indicating the required
+             amount of such symbols in the string ('*' means unlimited and
+             similar to number formatter can not be specified more than once)
+
+         Date formatter can contain any characters. All symbols except
+         explicitly specified below are printed "as is". The following special
+         symbols are available:
+
+         'YYYY' or 'yyyy' - year in full form, 4 digits wide
+         'YY' or 'yy' - year in short form, 2 digits wide
+         'MM' - month
+         'DD' or 'dd' - day
+         'HH' or 'hh' - hour
+         'mm' - minute
+         'SS' or 'ss' - seconds
+         'am/pm' or 'AM/PM' - 12-hour clock
+         "am/pm" turns into "am" or "pm", "AM/PM" turns into "AM" or "PM"
+         Each specifier can present only once.
+
+         Date formatter escaped symbols:
+         "Y", "y", "M", "m", "D", "d", "H", "h", "S", "s".
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="ValrefFormatter">
+    <xs:annotation>
+      <xs:documentation>
+         The same as 'Formatter', but the format pattern can be specified either as
+         a value string or as a variable reference to a string variable that contains the
+         pattern. The referenced variable name must be prefixed by 'tmlvar:'
+         i.e. 'tmlvar:variable.name'
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="Valref"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="Permissions">
+    <xs:annotation>
+      <xs:documentation>
+         Variable access permissions that are set by using a 5-character string.
+         
+         The rights are the following:
+          # read in the scope the variable belongs to
+          # write in the scope the variable belongs to
+          # instanciate the variable in scopes below. Only relevant for system-scope variables.
+          # read in scopes below. Only relevant for system-scope variables.
+          # write in scopes below. Only relevant for system-scope variables.
+         The pattern is the following - "rwxrw".
+
+         Any symbol except the '-' declares that the bit is set
+
+         The default is "rw-rw" - all operations allowed
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:element name="vardcl">
+    <xs:annotation>
+      <xs:documentation>
+      The element is used to declare a TML variable.
+      
+      When a variable is declared, its parameters and the initial value are written into the terminal
+      flash memory. So, the variable will stay declared even if the terminal is power-cycled.
+      
+      The variable properties are set at the declaration time. After that, only the variable value can
+      be changed.
+      
+      When a variable is declared by a TML page of your service or by the service varlib, it has a
+      service scope. This means that it is visible only to your service, and only your service can
+      access or modify the variable value.
+      
+      There are also a number of system variables. These variables are pre-defined by the Incendo
+      Browser or by the terminal variable configuration file (terminal varlib). They are responsible
+      for terminal settings, system parameters, or terminal behavior.
+
+      These system scope variables are visible to all services (i.e. you can not declare a variable in
+      your service with the same name as the system variable). However, you may be able to read or
+      write the variable value only if you have appropriate permissisons.
+     
+      For more information on the use of variables and variable properties see the variables TML
+      tutorial.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>
+          Variable name. The name should be unique (per service), and can not be the same as the
+          system variables.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="type" default="string">
+        <xs:annotation>
+          <xs:documentation>
+          Defines the variable type. This affects which data can be stored by the variable and
+          the variable formatter patterns.
+          </xs:documentation>
+        </xs:annotation> 
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="integer">
+              <xs:annotation>
+                <xs:documentation>
+                A signed integer. This is used for numeric data, such as payment amounts, indexes
+                etc. Integer range is from '-2147483648' to '2147483647' 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="string">
+              <xs:annotation>
+                <xs:documentation>
+                A string or a semicolon ';' separated string list. Used for messages to be displayed
+                or printed, user names etc. 
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="date">
+              <xs:annotation>
+                <xs:documentation>
+                Date and time information. These variables are used for storing and displaying date
+                and time information in various formats.  
+                </xs:documentation>
+              </xs:annotation>                
+            </xs:enumeration>
+            <xs:enumeration value="opaque">
+              <xs:annotation>
+                <xs:documentation>
+                These variables contain binary data. They are used for images, signature capture,
+                crypto data, etc.   
+                </xs:documentation>
+              </xs:annotation>                  
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="volatile" default="yes">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute specifies the memory management mechanism for variable values.   
+          </xs:documentation>
+        </xs:annotation> 
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes">
+              <xs:annotation>
+                <xs:documentation>
+                Volatile variables. These variables have quick read and write access speeds, but they
+                are not guaranteed to keep their value over terminal reboot or power cycle.
+                </xs:documentation>
+              </xs:annotation> 
+            </xs:enumeration>
+            <xs:enumeration value="no">
+              <xs:annotation>
+                <xs:documentation>
+                Non-volatile variables. These variables have quick read access, but very slow write
+                access speeds. However, these variabes preserve their values if the terminal is switched
+                off.
+                </xs:documentation>
+              </xs:annotation>             
+            </xs:enumeration>
+            <xs:enumeration value="txnvar">
+              <xs:annotation>
+                <xs:documentation>
+                Special variables for reliable transactions. Essentially these are volatile variables,
+                but their values are saved at each step of the reliable transaction.
+                </xs:documentation>
+              </xs:annotation> 
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="value" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the initial value of the variable. If this attribute is not used, one of the
+          default values will be assigned, depending on the variable type:
+          * 'string' - an empty string
+          * 'integer' - '0'
+          * 'date' - '1970/01/01 00:00:00' in the 'YYYY/MM/DD hh:mm:ss' format
+          * 'opaque' - empty
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="format" type="Formatter">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the default formatter that will be used for the variable. This can be overwritten by the
+          {getvar} or {setvar} elements.
+          
+          Note that 'format' affects how the variable value is displayed or printed, but does not
+          affect the interanl variabel value.
+          
+          If this attribute is not used, the variable will have a default formatter depending on the
+          variable type:
+          * 'string' - "c*" - all characters as is  
+          * 'integer' - "-0*" - a positive or a negative integer 
+          * 'date' - "YYYY/MM/DD" - year/month/day i.e. 2010/09/24
+          * 'opaque' - "base64" - a base 64 encoded string           
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="perms" type="Permissions" default="rw-rw">
+        <xs:annotation>
+          <xs:documentation> 
+          Variable access permissions. Together with the variable scope, they determine whether your
+          service can read and/or modify the variable value.
+          
+          The variables declared by your service TMl pages will be in the service scope.
+          
+          Default value gives full read and write access for the variable to your service. Since
+          the service that declared the variable is the only one that has visibility of the variable
+          and can access it, normally there is no need to modify this attribute. 
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="Valref">
+    <xs:annotation>
+      <xs:documentation>
+       This attribute can be either a value string, a reference to the variable that contains
+       the value, an embedded funciton call or math/logical expression.
+       
+       If variable reference is used, the name of the variable must be prefixed by 'tmlvar:'
+       i.e. 'tmlvar:variable.name'
+
+       If embedded function is used it must be prefixed by 'func:'. The syntax corresponds to
+       WMLScript format, i.e. a TML variable as a parameter is specified as '$(tml_var_name)',
+       integer constants are specified as decimal numbers and string constants as 'string'.
+
+       Result of function call is converted to the string and replaces {Valref}
+
+       Embedded functions are:
+       * 'String.length(string)' - calculates length of the string
+            Example:
+                * String.length('123456') returns "6"
+       * 'String.subString(string, start_index, sub_string_len)' - returns substring of the 
+            string.
+            Examples: 
+                * String.subString('123456', 2, 3) returns "345"
+                * String.subString('123456', -1, 3) returns "123"
+                * String.subString('123456', 7, 3) returns ""
+                * String.subString('123456', 2, 13) returns "3456"
+       * 'String.subStringLast(string, start_index, sub_string_len)' - returns substring
+            of the string counting from the end.
+            Examples:
+                * String.subStringLast('123456', 2, 3) returns "234"
+                * String.subStringLast('123456', -1, 3) returns "456"
+                * String.subStringLast('123456', 7, 3) returns ""
+                * String.subStringLast('123456', 2, 13) returns "1234"
+       * 'Card.luhn(string)' - calculates Luhn code.
+            Example:
+                * Card.luhn('3540829999421012') returns "9"
+       * 'Strlist.size(string)' - returns size of the string list (semicollon separated)
+            Examples:
+                * Strlist.size('it1;it2;it3;it4;it5') returns "5"
+                * Strlist.size('') returns "0"
+                * Strlist.size(';;;') returns "4"
+       * 'Strlist.get(string, index)' - returns element of the string list
+            Examples:
+                * Strlist.get('it1;it2;it3;it4;it5', 0) returns "it1"
+                * Strlist.get('it1;it2;it3;it4;it5', 2) returns "it3"
+                * Strlist.get('it1;it2;it3;it4;it5', -2) returns ";"
+                * Strlist.get('it1;it2;it3;it4;it5', 7) returns ";"
+       * 'Strlist.add(string, string)' - adds an element or another list to the string list
+            Examples:
+                * Strlist.add('it1;it2;it3', 'it') returns "it1;it2;it3;it"
+                * Strlist.add('it1;it2;it3', 'it1;it2') returns "it1;it2;it3;it1;it2"
+                * Strlist.add('', '') returns ""
+                * Strlist.add('', 'it1') returns "it1"
+                * Strlist.add(';', 'it1') returns ";it1"
+       * 'Strlist.remove(string, index)' - removes an element from the string list
+            Examples:
+                * Strlist.remove('it1;it2;it3', 1) returns "it1;it3"
+                * Strlist.remove('it1;it2;it3', 4) returns "it1;it2;it3"
+                * Strlist.remove('it1;it2;it3', -2) returns "it1;it2;it3"
+                * Strlist.remove('it1', 0) returns ""
+       * 'Strlist.find(string, string)' - find an item first occurence in the string list.
+            Examples:
+                * Strlist.find('it1;it2;it3', 'it2') returns "1"
+                * Strlist.find('it1;it2;it3', '') returns "-1"
+                * Strlist.find('it1;it2;it3', 'it125') returns "-1"
+       * 'Strlist.splitLeft(string, index)' - split a string list on two and returns left part
+            Examples:
+                * Strlist.splitLeft('it1;it2;it3', 1) returns "it1"
+                * Strlist.splitLeft('it1;it2;it3', 4) returns "it1;it2;it3"
+                * Strlist.splitLeft('it1;it2;it3', -2) returns ""
+                * Strlist.splitLeft('it1;it2;it3', 0) returns ""
+       * 'Strlist.splitLeft(string, index)' - split a string list on two and returns right part
+            Examples:
+                * Strlist.splitLeft('it1;it2;it3', 1) returns "it2;it3"
+                * Strlist.splitLeft('it1;it2;it3', 4) returns ""
+                * Strlist.splitLeft('it1;it2;it3', -2) returns "it1;it2;it3"
+                * Strlist.splitLeft('it1;it2;it3', 0) returns "it1;it2;it3"
+
+       If math/logical expression is used it must be prefixed by 'exp:'. Expression could 
+       contain numeric constants or TML variable names. 
+       Supported oerators: 
+       * '.lt.' - less
+       * '.le.' - less or equal
+       * '.gt.' - greater
+       * '.ge.' - greater or equal
+       * '.eq.' - equal
+       * '.ne.' - not equal
+       * '.and.' - logical 'and'
+       * '.or.' - logical 'or'
+       * '.not.' - logical 'not'
+       * '(', ')' - priority operators
+       * '+', '-', '*', '/', '%' - binary arithmetic operators
+       * '**' - exponentiation
+       * '+', '-' - unary arithmetic operators
+
+       Result of math expression is casted to an integer number, converted to the string 
+       and replaces {Valref}. Result of logical expression is "1" or "0" (TRUE or FALSE) 
+       and replases {Valref}
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:element name="setvar">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to modify the value of a TML variable.
+      
+      Incendo Browser processes the {setvar} elements in sequence every time it switches to a new
+      {screen} element. The only exception is when a screen is re-displayed after a {baddata} error
+      message.
+      
+      {setvar} can only operate on the variables that have been declared previously using the {vardcl}
+      elements, defined by a service or terminal variables library configurations or are pre-defined
+      by the Incendo Browser.  
+
+      The variable that will be modified is specified using the 'name' attribute. Your service should
+      have the write access permission for this variable.
+      
+      To assign a value to a variable, simply use the required value for the 'lo' attribute. 'ro' and
+      'op' attributes should be empty.
+      
+      Instead of specifying the variable value explicitly, you can define a simple expression of two
+      operands, the result of which will be assigned to the variable. The operands are specified
+      using 'lo' and 'ro' attributes and operation is defined by the 'op' attribute. 
+       
+      Available operations depend on the type of the variable specified by the 'name' attribute.
+      
+      Only direct assignment is allowed for opaque data.
+      
+      If the type of the operands does not match the type of the variable being set, the operands
+      will be cast to the appropriate type:
+      * 'integer' -> 'string' : numeric string representation
+      * 'integer' -> 'date'   : date corresponding to the number of seconds since '1970/01/01 00:00:00'
+      * 'string' -> 'integer' : integer value. Must correspond to a valid integer formatter pattern
+      * 'string' -> 'date'    : timestamp. Must correspond to a valid date formatter pattern.
+      * 'date' -> 'integer'   : number of seconds since '1970/01/01 00:00:00'
+      * 'date' -> 'string'    : string representation of the date according to the date formatter pattern.
+      * 'opaque' -> 'string'  : string representation of the binary data according to the opaque
+      formatter pattern 
+      
+      For more details and examples see the variables TML tutorial.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> 
+          Specifes the variable that is being set.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="format" type="Formatter">
+        <xs:annotation>
+          <xs:documentation> 
+          This attribute defines the pattern for the 'format' operation.
+          </xs:documentation>
+        </xs:annotation>           
+      </xs:attribute>
+      <xs:attribute name="lo" use="required" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The required attribute defines the left operand of the expression. If 'ro' and 'op'
+          attributes are omitted, the value specified in 'lo' attribute is assigned to the variable.
+          
+          If you use a variable reference as the 'lo' parameter, you must have the read permissions
+          for that variable.
+          </xs:documentation>
+        </xs:annotation>           
+      </xs:attribute>
+      <xs:attribute name="ro" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute represents the right operand of the expression.
+          
+          If you use a variable reference as the 'ro' parameter, you must have the read permissions
+          for that variable.
+          </xs:documentation>
+        </xs:annotation>       
+      </xs:attribute>
+      <xs:attribute name="op">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute defines a logical operation that is performed on the left and right
+          operands. 
+          
+          For direct assigment, use only the 'lo' attribute, 'ro' and 'op' should be empty.
+          
+          The possible operations depend on the type of variable being set.
+          </xs:documentation>
+        </xs:annotation> 
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="plus">
+              <xs:annotation>
+                <xs:documentation>
+                This operation applies to the 'integer', 'string' and 'date' variables: 
+                * 'integer' variables - add the values of the 'lo' and 'ro'
+                * 'string' variables - concatenate 'ro' to the 'lo'
+                * 'date' variables - add the number of seconds, specified by the 'ro', to the
+                date specified by the 'lo' attribute. 'lo' must reference a 'date'-type variable,
+                while 'ro' must be an integer constant or reference an 'integer'-type variable. 
+                </xs:documentation>
+              </xs:annotation>             
+            </xs:enumeration>
+            <xs:enumeration value="minus">
+              <xs:annotation>
+                <xs:documentation>
+                This operation applies to the 'integer', 'string' and 'date' variables:
+                * 'integer' variables -  substract the value of the 'ro' from the 'lo' 
+                * 'string' variables - removes the number of characters corresponding to the value of
+                the 'ro' attribute from the contents of the 'lo' attribute.
+                'lo' must be a string or a reference to a 'string'-type variable. 'ro' must be a number or a
+                reference to an 'integer'-type variable.
+                If the value of the 'ro' is positive, the characters are removed from the right-hand
+                side of the 'lo' string. If 'ro' is negative, the characters are removed from the
+                left-hand side.
+                * 'date' variables - substracts the number of seconds, specified by the 'ro', from the
+                date specified by the 'lo' attribute. 'lo' must reference a 'date'-type variable,
+                while 'ro' must be an integer constant or reference an 'integer'-type variable.              
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="format">
+              <xs:annotation>
+                <xs:documentation>
+                This operation applies the pattern of the 'format' attribute to the 'lo' attribute and
+                assignes the result to the variable specifed by the 'name' attribute.
+                'name' variable must be of the 'string' type.
+                'lo' can be either a constant (it is assumed to be of a 'string' type), or a variable
+                reference. This variable can be of any type.
+                'format' attribute pattern must correspond to the type of the 'lo'
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="item">
+              <xs:annotation>
+                <xs:documentation>
+                This operation is applicable to the string lists - 'string' variables that contain
+                items separated by the semicolon ';' character.
+                The 'item' operation will assign the contents of an item from a string list to the
+                'string'-type variable, defined by the 'name' attribute.
+                'lo' attribute should contain a string list. It can be a constant or a reference to
+                a 'string' variable.
+                'ro' attribute is should be set to the index of the item that you are trying to get.
+                It can be a constant or a reference to an 'integer'-type variable. The numbering of
+                the items starts from '0'. If the value of the 'ro' attribute is outside of the bounds
+                of the string list, the variable defined by the name attribute is set to ';'
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="number">
+              <xs:annotation>
+                <xs:documentation>
+                Returns the number of items in the string list, contained in the 'lo' attribute.
+                'ro' attribute must be empty.
+                The variable referenced by the 'name' attribute must be of the 'integer' type. 'lo'
+                attribute can contain a constant or reference a 'string'-type variable.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getvar">
+    <xs:annotation>
+      <xs:documentation>
+      This element returns the value of the variable specified by the 'name' attribute. This
+      value can be formatted using the 'format' attribute.
+      
+      Note that you must have the appropriate read permissions to access the variable.
+      
+      See the variables tutorial for a detailed explanation and examples of TML variable use.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the name of the referenced variable.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="format" type="ValrefFormatter">
+        <xs:annotation>
+          <xs:documentation>
+          Defines a formatter pattern for the variable value. The pattern must be valid for the
+          type of the variable you are trying to access.
+          
+          The value of the variable will be transformed according to this pattern before being
+          displayed/printed.
+          
+          Note that the contents of the 'format' attribute can be either be a valid formatter or
+          a reference to a 'string' - type variable that contains the pattern
+          </xs:documentation>
+        </xs:annotation>        
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="variant">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used for code branching, similar to 'IF' construct in some other languages.
+      
+      It defines a URI of a destination screen – alternative to the URI specified by the 'uri'
+      attribute of the parent {next} element.
+      
+      The {variant} element are processed in sequence. The first {variant} with the true condition
+      will be used. If none are true, then the 'uri' of the parent {next} element is used.
+      
+      There are two types of {variant} elements, processed at a different stage of the screen
+      lifecycle:
+      * key-type variants are processed while the screen is being displayed. These variants have
+      'key' or 'timeout' attributes and they are checked when the terminal keypad is pressed (or
+      in case of 'timeout', when it is not pressed)
+      * logical variants compare the values of the 'lo' and 'ro' attributes according to the
+      operation specified by the 'op' attribute. These variants are processed after the screen
+      has been displayed, and when the Browser is about to switch to the next screen. 
+      
+      Note that if you are comparing the values of the 2 variables, they should be of the same type.
+      
+      Note that the hyperlinks within a page disable the logical variants, but not the key-type ones.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="uri" use="required" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          URI of the screen Incendo Browser should switch to if the condition defined by the other
+          attribute(s) of the element is satisfied.
+        
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service(s).
+          * 'return' - return back to caller (embedded, idle, VAS or native application).
+          * 'menu' - a link to the URI defined by the 'menu' attribute of the parent {screen} element
+          * 'cancel' - a link to the URI defined by the 'cancel' attribute of the parent {screen} 
+          Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+          into the input fields are cleared - input is cancelled.          
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="lo" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute representing the left operand of the logical expression.
+          
+          If both 'lo' and 'ro' attributes are variable references, the variables
+          should be of the same time.
+          
+          The attribute is required if the 'key' or 'timeout' attribute is not present. Its use is
+          illegal in presence of the 'key' or 'timeout' attribute.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="ro" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute representing the right operand of the logical expression.
+          
+          If both 'lo' and 'ro' attributes are variable references, the variables
+          should be of the same time. 
+                   
+          The attribute is required if the 'key' or 'timeout' attribute is not present. Its use is
+          illegal in presence of the 'key' or 'timeout' attribute.          
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="op" default="equal">
+        <xs:annotation>
+          <xs:documentation> 
+          Defines a logical operation that is performed on the left ('lo') and right ('ro') operands.
+          
+          Note that the operations may differ depending on the variable type.
+          
+          The attribute is required if the 'key' or 'timeout' attribute is not present. Its use is
+          illegal in presence of the 'key' or 'timeout' attribute.
+          </xs:documentation>
+        </xs:annotation> 
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of 'lo' is equal to the value of 'ro'
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="not_equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of 'lo' is NOT equal to the value of 'ro'
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="less">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of the 'lo' operand is less than the 'ro'.
+                For string-type variables only the length of the strings is compared.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="less_or_equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of the 'lo' operand is less than the 'ro'.
+                For string-type variables only the length of the strings is compared.                
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="contains">
+              <xs:annotation>
+                <xs:documentation> 
+                Only applies to string operands. This operation returns true, if the string
+                represented by the left operand contains as its part the string represented
+                by the right operand.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="format" type="Formatter">
+        <xs:annotation>
+          <xs:documentation> 
+          If one of the operands ('lo' or 'ro') is a constant, this attribute defines the formatting
+          pattern applied to this constant prior to performing the operation defined by the 'op'
+          attribute.
+          
+          If both operands are constants or both are variable references, this attribute is ignored. It
+          is also ignored if the 'key' or 'timeout' attributes are present.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="timeout" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          Specifies the key-press timeout. This condition evaluates to true if no keys are pressed for
+          the specified number of seconds.
+          
+          As soon as any key is pressed, the timeout is reset.
+          
+          This can be useful, for example, when waiting for user input.
+          
+          Note that this {variant} condition is different from the 'timeout' attribute of the {screen}
+          element.
+          
+          You can not use this attribute if the 'key' or 'lo' + 'ro' + 'op' attributes are present.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="key">
+        <xs:annotation>
+          <xs:documentation>
+          The attribute specifying a terminal keypad key which, if pressed, initiates a jump onto the
+          screen whose URI is defined by the 'uri' attribute.
+          
+          This can be used, for example, for quick navigation.
+
+          You can not use this attribute if the 'timeout' or 'lo' + 'ro' + 'op' attributes are present. 
+          </xs:documentation>
+        </xs:annotation>     
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="00"/>
+            <xs:enumeration value="f1"/>
+            <xs:enumeration value="f2"/>
+            <xs:enumeration value="f3"/>
+            <xs:enumeration value="f4"/>
+            <xs:enumeration value="f5"/>
+            <xs:enumeration value="f6"/>
+            <xs:enumeration value="f7"/>
+            <xs:enumeration value="f8"/>
+            <xs:enumeration value="f9"/>
+            <xs:enumeration value="down"/>
+            <xs:enumeration value="up"/>
+            <xs:enumeration value="menu"/>
+            <xs:enumeration value="stop"/>
+            <xs:enumeration value="cancel"/>
+            <xs:enumeration value="enter"/>
+            <xs:enumeration value="any"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="condition">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used for code branching, similar to 'IF' construct in some other languages.
+      
+      The {condition} element consist of {setvar} elements.
+            
+      Conditioins compare the values of the 'lo' and 'ro' attributes according to the
+      operation specified by the 'op' attribute. If condition is true the {setvar} 
+      elements are processed in sequence.
+      
+      Note that if you are comparing the values of the 2 variables, they should be of the same type.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="setvar" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="lo" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute representing the left operand of the logical expression.
+          
+          If both 'lo' and 'ro' attributes are variable references, the variables
+          should be of the same time.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="ro" type="Valref">
+        <xs:annotation>
+          <xs:documentation> 
+          The attribute representing the right operand of the logical expression.
+          
+          If both 'lo' and 'ro' attributes are variable references, the variables
+          should be of the same time. 
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="op" default="equal">
+        <xs:annotation>
+          <xs:documentation> 
+          Defines a logical operation that is performed on the left ('lo') and right ('ro') operands.
+          
+          Note that the operations may differ depending on the variable type.
+          </xs:documentation>
+        </xs:annotation> 
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of 'lo' is equal to the value of 'ro'
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="not_equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of 'lo' is NOT equal to the value of 'ro'
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="less">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of the 'lo' operand is less than the 'ro'.
+                For string-type variables only the length of the strings is compared.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="less_or_equal">
+              <xs:annotation>
+                <xs:documentation> 
+                True if the value of the 'lo' operand is less than the 'ro'.
+                For string-type variables only the length of the strings is compared.                
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+            <xs:enumeration value="contains">
+              <xs:annotation>
+                <xs:documentation> 
+                Only applies to string operands. This operation returns true, if the string
+                represented by the left operand contains as its part the string represented
+                by the right operand.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="format" type="Formatter">
+        <xs:annotation>
+          <xs:documentation> 
+          If one of the operands ('lo' or 'ro') is a constant, this attribute defines the formatting
+          pattern applied to this constant prior to performing the operation defined by the 'op'
+          attribute.
+          
+          If both operands are constants or both are variable references, this attribute is ignored.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="strtemplate">
+    <xs:annotation>
+      <xs:documentation>
+      This tag assigns a formatted string of text to a variable of the string type.
+      
+      The name of a variable to be set is defined by the 'name' attribute. Your service should have
+      the write access permissions for this variable.
+      
+      The value assigned to a variable is defined by the 'format' attribute of the {strtemplate}
+      element and its child {getvar} elements.
+      
+      The value of the format attribute may contain pieces of text and placeholders representing
+      results of the child {getvar} elements processing.
+      
+      Each placeholder is specified like this: '%n', where 'n' is an integer number in the range from
+      '1' to '9', representing the number of the child {getvar} element. For example, '%3' would mean
+      the third of the {getvar} elements.
+      
+      To insert the '%' character as part of the variable value, you should escape the special meaning
+      of '%' by placing the backslash character ('\') in front of it: '\%'
+      
+      For more information see the variables TMl tutorial.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="getvar" minOccurs="0" maxOccurs="9"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+          The name of the variable that will be modified. Your service should have
+          the write access permissions for this variable.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="format" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+          Formatting pattern that will be turned into the variable value. This pattern may contain
+          pieces of text and placeholders representing the results of the child {getvar} elements
+          processing.
+      
+          Each placeholder is specified like this: '%n', where 'n' is an integer number in the range
+          from '1' to '9', representing the number of the child {getvar} element. For example, '%3'
+          would mean the third of the {getvar} elements.
+      
+          To insert the '%' character as part of the variable value, you should escape the special
+          meaning of '%' by placing the backslash character ('\') in front of it: '\%'
+      
+          For example a pattern "Welcome, %1!" will substitute the value of the first {getvar} element
+          in place of '%1' and assign the result to the variable defined by the 'name' attribute.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="NextScreen">
+    <xs:annotation>
+      <xs:documentation>
+      Specifies URI of the screen the Browser should switch to.
+
+      Usually URI is specified as a constant or variable reference in
+      the mandatory 'uri' attribute. However it's allowed to specify
+      several conditional variants. This variants are processed
+      one-by-one in the specified order and first matching is used.
+
+      If no matching variants are found, the URI specified in the
+      attribute 'uri' is used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="variant" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="uri" use="required" type="Valref">
+      <xs:annotation>
+        <xs:documentation>
+        Specifies a URI of the next screen the Browser will process if there are no child
+        {variant} elements or all {variant} conditions have failed.
+                
+        The URI should reference either a TML page or a screen id. Screen id should be preceded
+        by the hash '#' symbol, i.e. '#screen_id'
+                
+        There are also several special URIs:
+        * 'back' - return to the previous screen
+        * 'exit' - exit the service(s).
+        * 'return' - return back to caller (embedded, idle, VAS or native application).
+        * 'menu' - a link to the URI defined by the 'menu' attribute of the parent {screen} element
+        * 'cancel' - a link to the URI defined by the 'cancel' attribute of the parent {screen} 
+        Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+        into the input fields are cleared - input is cancelled.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <xs:annotation>
+    <xs:documentation>
+    ===================== User Logger ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="layout">
+    <xs:annotation>
+      <xs:documentation>
+      Used within the {logdcl} element to specify a log record rendering pattern and, thus, to define
+      how log records should be shown on the terminal display or printed.
+        
+      The element may contain any inline and block elements with the exception of the {form}
+      element. However, in practice the element will normally contain text fragments, {getvar}
+      elements and the tags defining the appearance of the log records  (such, for example, as {p},
+      {br}, {h1} and so on).
+        
+      Variables referenced by {getvar} elements should be a subset of the log variables - the ones
+      enumerated by means of {vardcl} elements within the parent {logdcl} element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="NoForm">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attribute name="name" use="required" type="xs:NMTOKEN">
+            <xs:annotation>
+              <xs:documentation>
+              This attribute identifies the layout. It should be unique per log.
+              </xs:documentation>
+            </xs:annotation>            
+           </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="logdcl">
+    <xs:annotation>
+      <xs:documentation>
+      This element declares a log.
+      
+      The child {vardcl} elements define the list of variables whose values are included in each
+      separate log record (that is, written to corresponding log file). Please note that the {vardcl}
+      elements within the {logdcl} just name the variables rather than declare them. Consequently,
+      the referenced variables must have already been declared.
+      
+      Your service must have the read permissions for the variables you wish to log.
+      
+      The child {layout} elements define various possible patterns according to which separate log
+      records may and should be rendered, that is, shown on the terminal display or printed.
+      
+      You can specify the CSS that should be used when displaying or printing the logs by using the
+      'css' attribute.
+      
+      Log records are appended to the log file using the {logrec} element.
+      
+      You can clear a log by using the 'clear_log' command with the {call_func} element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="vardcl" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="layout" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>
+          Log id. Should be unique per service.
+          </xs:documentation>
+        </xs:annotation>             
+      </xs:attribute>
+      <xs:attribute name="css" type="URI">
+        <xs:annotation>
+          <xs:documentation>
+          URI of the CSS that should be used to display or print the logs.
+          </xs:documentation>
+        </xs:annotation>             
+      </xs:attribute>
+      <xs:attribute name="perms" type="Permissions" default="rw-rw">
+        <xs:annotation>
+          <xs:documentation>
+          Log access permissions. It is similar to the variable access permissions, but the 'x'
+          attribute is ignored.
+          </xs:documentation>
+        </xs:annotation>       
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="logrec">
+    <xs:annotation>
+      <xs:documentation>
+      Used within the {screen} element to append one record to a log, identified by the 'name'
+      attribute. This records the current values of all variables declared by the corresponding
+      {logdcl} element.
+      
+      Your service should have the appropriate write permissions for the log that is recorded.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>
+          Log id that corresponds to the 'name' attribute of the {logdcl} element.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="log">
+    <xs:annotation>
+      <xs:documentation>
+      Used within the {display} or the {print} element to display or print a log.
+      
+      The logs must first be declared using the {logdcl} element. The log data is recorded using the 
+      {logrec} element.
+      
+      The required attributes 'name' and 'layout' define which of the logs is to be displayed or printed
+      and which of the layouts (rendering patterns) is to be used.
+      
+      The optional 'type' attribute specifies the order in which the log records should appear.
+      
+      Note that your service must have the appropriate read permissions to access the log. 
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the name of the log that should be displayed or printed. The attribute value should
+          correspond to the 'name' attribute of the corresponding {logdcl} element.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="layout" use="required" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the name of the layout (rendering pattern) for the log records. The value of this
+          attribute should correspond to the 'name' attribute of one of the child {layout} elements
+          of the corresponding {logdcl} element.
+          </xs:documentation>
+        </xs:annotation>       
+      </xs:attribute>
+      <xs:attribute name="type" use="optional" default="normal">
+        <xs:annotation>
+          <xs:documentation>
+          Optional attribute defining the order in which the log records are to be shown.
+          </xs:documentation>
+        </xs:annotation>     
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="normal">
+              <xs:annotation>
+                <xs:documentation>
+                Most recent records should be shown closer to the end (bottom) of the log. The
+                oldest records will be at the start of the log.
+                </xs:documentation>
+              </xs:annotation>                 
+            </xs:enumeration>
+            <xs:enumeration value="reverse">
+              <xs:annotation>
+                <xs:documentation>
+                Most recent records should be shown at the start of the log.
+                </xs:documentation>
+              </xs:annotation>                
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="submit_log">
+    <xs:annotation>
+      <xs:documentation>
+      Used within the {submit} element to submit a log to the application server.
+      
+      The attribute 'name' defines which of the logs is to be submitted.
+      
+      Consequently, the 'name' attribute should reference an existing log's name (i.e. be the same
+      as the name attribute of the corresponding {logdcl} element).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN">
+        <xs:annotation>
+          <xs:documentation>
+          The name of the log to be submitted.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Document Structure ==================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="tml">
+    <xs:annotation>
+      <xs:documentation>
+      This is the root tag of the TML page.
+
+      'cache' attribute determines whether the page should be saved in the terminal mememory. When
+      the Incendo Browser accesses the URI of a page that has been cached, the page will be taken
+      from the terminal memory. Uncached pages will be loaded from the application host.
+      
+      Dynamically generated pages - since they are likely to change depending on the input parameters -
+      should not be cached. 
+      
+      A TML page must contain at least one {screen} element
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="head" minOccurs="0"/>
+        <xs:element ref="vardcl" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="logdcl" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="interface" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="screen" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="cache" default="allow">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute determines whether the page should be saved in the terminal mememory. 
+          
+          When the Incendo Browser accesses the URI of a page that has been cached, the page will
+          be taken from the terminal memory. Uncached pages will be loaded from the application host.
+          </xs:documentation>
+        </xs:annotation>      
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="allow">
+              <xs:annotation>
+                <xs:documentation>
+                The page will be cached.
+                </xs:documentation>
+              </xs:annotation>               
+            </xs:enumeration>
+            <xs:enumeration value="deny">
+              <xs:annotation>
+                <xs:documentation>
+                The page will not be cached.
+                </xs:documentation>
+              </xs:annotation>            
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Document Head =======================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="head">
+    <xs:annotation>
+      <xs:documentation>
+      This element represents a TML page header. It contains page-wide settings and defaults
+      specified by the means of its child elements.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="link" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="base" minOccurs="0"/>
+        <xs:element ref="defaults" minOccurs="0"/>
+        <xs:element ref="error" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="defaults">
+    <xs:annotation>
+      <xs:documentation>
+      Defines default values for 'menu' and 'cancel' attributes of the {screen} elements within
+      the TML page. The attributes are used for setting URIs of the screens to switch to when
+      the user presses the 'Menu' or 'Cancel' button on the terminal.
+      
+      Defines also default TML {interface}.
+
+      The interface id be prefixed by the hash '#' symbol i.e. '#interface_id'.
+
+      The screen id in the URIs should be prefixed by the hash '#' symbol. i.e.
+      'page_uri#screen_id' or just '#screen_id' if the screen is on the current page.
+      
+      Note that if you use a variable reference for the attributes it will be resolved dynamically
+      - the screen URI will be the value of the variable at the time 'Menu' or 'Cancel' are pressed.
+      
+      You can always override these settings for a particular screen by defining 'menu' and 'cancel'
+      attributes of the corresponding {screen} element.
+      
+      If you omit the element or specify empty values for the element attributes,
+      pressing 'Menu' and 'Cancel' buttons on the terminal will have no effect.
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="menu" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the default URI to switch to if a user presses the 'Menu' button on the terminal.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="cancel" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the default URI to switch to if a user presses the 'Cancel' button on the terminal.
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="interface" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the default interface to be used for default calls (without an interface specified).
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="base">
+    <xs:annotation>
+      <xs:documentation>
+      Depreciated.
+      
+      This element defines the base URI for all relative links on your page.
+      
+      If this element is omitted, the service base URI is used for all relative links.      
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="href" use="required" type="URI">
+        <xs:annotation>
+          <xs:documentation>
+            An absolute URI or a URI relative to the service base.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="link">
+    <xs:annotation>
+      <xs:documentation>
+        This element is used to establish a relationship between the current page 
+        and one or more other related pages.
+        
+        Incendo Browser loads and caches the linked documents and files in advance,
+        before rendering the page. It is also used to attach a CSS to the TML page.
+        
+        You can link the following:
+        * static TML pages
+        * image libraries
+        * CSS
+        
+        The type of the linked content is specified by the 'rev' attribute. Content source is specified
+        by the 'href' attribute.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="charset" type="Charset">
+        <xs:annotation>
+          <xs:documentation>
+            Ignored by the Browser
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="href" type="URI" use="required">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the location of the linked content. You can use the {base} element to set the base
+          for relative links.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="type" type="ContentType">
+        <xs:annotation>
+          <xs:documentation>
+            Ignored by the Browser
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rel" type="LinkTypes">
+        <xs:annotation>
+          <xs:documentation>
+            Ignored by the Browser
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rev" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Specifies the type of content that should be linked.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="stylesheet">
+              <xs:annotation>
+                <xs:documentation>
+                  a CSS stylesheet
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="text/tml">
+              <xs:annotation>
+                <xs:documentation>
+                  a TML page
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="image/lib">
+              <xs:annotation>
+                <xs:documentation>
+                  an image library
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Service Interface =======================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="param">
+    <xs:annotation>
+      <xs:documentation>
+      A parameter of TML {interface}.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NMTOKENS">
+        <xs:annotation>
+          <xs:documentation>
+            A refference ID. 
+            'incendo.caller_id' is reserved in TML interfaces to pass calling application/service 
+            name automatically.
+            'incendo.password' is reserved to get password in base64(SHA1(password)) form.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS">
+        <xs:annotation>
+          <xs:documentation>
+            Name of TML variable associated with interface input parameter.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="retval">
+    <xs:annotation>
+      <xs:documentation>
+      A value returned from service/plug-in/TML function.
+
+      Is used rather in TML {interface} or {call} screen.
+       
+      For TML {interface} - on the end of VAS call the value is taken from 
+      appropriate TML variable  and is put to the data block returned back to 
+      caller (a VAS/native application).
+
+      For {cal}l screen - value returned back from plug-in/VAS/TML function is 
+      stored to the appropriate TML variable.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NMTOKENS">
+        <xs:annotation>
+          <xs:documentation>
+            A refference ID.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="name" use="required" type="xs:NMTOKENS">
+        <xs:annotation>
+          <xs:documentation>
+            Name of TML variable associated with returned value.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="interface">
+    <xs:annotation>
+      <xs:documentation>
+      This element represents a TML interface. It contains root screen name,
+      input/output parameters correspoding to TML variables.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="param" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="retval" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID">
+        <xs:annotation>
+          <xs:documentation>
+          Interface unique ID.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="next" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the TML page screen will be processed first if 
+          interface is called.
+                    
+          The URI should reference a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Block level elements =================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="div">
+    <xs:annotation>
+      <xs:documentation>
+      This element defines a section or division of a document that requires a special
+      formatting style - i.e. font size or style, text alignment etc. The styles are 
+      defined using CSS.
+      
+      {div} is a block element, so it is delimited by line breaks.
+      
+      The big difference from the XHTML element is that TML CSS does not support
+      positioning styles. So, for screen layout it is better to use {table} element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Paragraphs =======================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="p">
+    <xs:annotation>
+      <xs:documentation>
+      Used to delimit a paragraph. It is a block element, so it is surrounded by line breaks.
+      </xs:documentation>
+    </xs:annotation>  
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Headings =========================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="h1">
+    <xs:annotation>
+      <xs:documentation>
+      A heading element, similar to the XHTML tag. Heading styles can be controlled via CSS.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="h2">
+    <xs:annotation>
+      <xs:documentation>
+      A heading element, similar to the XHTML tag. Heading styles can be controlled via CSS.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="h3">
+    <xs:annotation>
+      <xs:documentation>
+      A heading element, similar to the XHTML tag. Heading styles can be controlled via CSS.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Lists ============================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="ul">
+    <xs:annotation>
+      <xs:documentation>
+      Unordered list
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="li"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ol">
+    <xs:annotation>
+      <xs:documentation>
+      Ordered (numbered) list
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="li"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="li">
+    <xs:annotation>
+      <xs:documentation>
+      A list item for ordered or unordered lists. See the description of the {ol} and {ul} elements.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    definition lists - dt for term, dd for its definition
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="dl">
+    <xs:annotation>
+      <xs:documentation>
+      This element denotes a definition list. In a definition list, an introduced term
+      or a phrase is followed by a definition or explanation. The element is only used
+      with the {dt} element, which defines the term, and the {dd} element, which describes
+      the definition.
+      
+      You can also use the {ol} element to create an ordered list and the {ul} element to
+      create an unordered list.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="dt"/>
+        <xs:element ref="dd"/>
+      </xs:choice>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="dt">
+    <xs:annotation>
+      <xs:documentation>
+      This element represents the term in definition lists. It should be followed by a {dd} element
+      with the term explanation.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="dd">
+    <xs:annotation>
+      <xs:documentation>
+      This element represents the explanation in the definition lists. It should be preceded by
+      a {dt} element with the term definition.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Horizontal Rule ==================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="hr">
+     <xs:annotation>
+      <xs:documentation>
+      This tag is used to render a horizontal rule (line). The element should not contain any text.
+      
+      The appearance of the line is controlled using the CSS.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Preformatted Text ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="pre">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to display preformatted text. The text specified within the element
+      is rendered on the output device as is, including white spaces, tabs, and line breaks.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+           <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================== The Anchor Element ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="a">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to create a hyperlink to a TML page or to a specific TML screen.
+      
+      Note that when a screen contains hyperlinks its timeout is disabled. The Browser waits
+      for the user input to proceed to the next screen.
+      
+      The keypress timeout (defined by the 'timeout' attribute of the {variant} element)
+      still works as expected.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attribute name="href" type="Valref">
+             <xs:annotation>
+              <xs:documentation>
+                Specifies an URI of the screen to which the Browser switches to once the link is
+                activated.
+                
+                The URI should reference either a TML page or a screen id. Screen id should be preceded
+                by the hash '#' symbol, i.e. '#screen_id'
+                
+                There are also several special URIs:
+                * 'back' - return to the previous screen
+                * 'exit' - exit the service(s).
+                * 'return' - return back to caller (embedded, idle, VAS or native application).
+                * 'menu' - a link to the URI defined by the 'menu' attribute of the parent "screen" element
+                * 'cancel' - a link to the URI defined by the 'cancel' attribute of the parent "screen" 
+                Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+                into the input fields are cleared - input is cancelled.
+              </xs:documentation>
+            </xs:annotation>                
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ===================== Inline Elements ================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="span">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to apply CSS styles to inline content. For example, you can wrap a protion
+      of text to modify font properties etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Inline">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="br">
+    <xs:annotation>
+      <xs:documentation>
+      This tag is used to create a line break. 
+      
+      Note that normally, just like an HTML browser, Incendo Browser ignores newline characters
+      and excessive white space, so this tag is necessary to force a new line.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="coreattrs"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="dynamic" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>
+      Dynamic content delimiter. The text within this tag will not be considered when static TML
+      pages are signed.
+      
+      It can be used, for example, to insert current time or personalized welcome message.
+      
+      Note that this tag can not have any TML elements within it, only text.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Images ===========================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="img">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to insert an image directly into the text flow. No additional line breaks
+      or carriage returns are automatically inserted before or after the image. 
+      
+      The vertical and horizontal allignment of the image can be controlled by means of CSS, same as
+      for normal text. However, for complex layouts you should probably place the image within the
+      {table} element.
+      
+      The image source is specified by means of the 'src' attribute. The image source can be either:
+      * A URI to a *.gif, *.bmp, *.jpeg or *.png file i.e. 'images/image.gif'
+      * A URI to an image inside an image library i.e. 'images/my_lib.iml#image.gif'
+      * A reference to an 'opaque'-type TML variable that contains image data
+      
+      {img} element can be placed inside an {a} tag to provide a clickable image for a hyperlink. In
+      that case, if present, 'alt' attribute is used to display another image when the hyperlink is 
+      in focus.
+      
+      Only bitmap (2 color) images should be used for monochrome terminals and for printing. Color
+      images will cause an error.
+      
+      Maximum allowed image size is 64KB.
+      
+      Color images should be in Ingenico palette, or they will be converted to Ingenico patette by the
+      Incendo Gateway. Note that you will achieve better visual results if you convert the images
+      yourself with appropriate dithering settings.
+      
+      If an image is wider than the terminal screen or printer width, the image will be cropped. 
+      
+      Image height is not limited. If an image is taller than the terminal screen, the image will be
+      scrollable. 
+      
+      Note, that in TML the {img} element does not support the 'align', 'border', 'hspace', 'vspace'
+      and 'usemap' XHTML attributes.
+      
+      An image library allows combining many images into a single file. It is transferred more
+      efficiently over the network, and can also be pre-loaded by using the {link} element. However,
+      the combined image library size can not exceed 64KB.      
+      
+      See the image TML tutorial for more details and example of the image use.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="src" use="required" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the source of the image data. Can be either:
+          * A URI to a *.gif, *.bmp, *.jpeg or *.png file i.e. 'images/image.gif'
+          * A URI to an image inside an image library i.e. 'images/my_lib.iml#image.gif'
+          * A reference to an 'opaque'-type TML variable that contains image data
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="alt" use="required" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specfies the image that will be shown when the {img} element is part of the 
+          hyperlink which is in focus. The format is identical to the 'src' attribute.
+          
+          This alternative image should be the same size and the same color depth 
+          (i.e. color or bitmap) as the image specified by the 'src' attribute.
+          
+          If the 'alt' attribute is empty, the 'src' image is used for on focus links.         
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="height" type="Length">
+        <xs:annotation>
+          <xs:documentation>
+          An attribute setting the height of the image in pixels or relative to the height
+          of the screen. Can also be specified using CSS.
+          
+          If it is less than image height, the image will be cropped. If it is more that the
+          image height, the extra space will be filled with the background color.
+          
+          In practice you can ommit this attribute - the Browser will use the height of the
+          actual image.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="width" type="Length">
+        <xs:annotation>
+          <xs:documentation>
+          An attribute setting the width of the image in pixels or relative to the width
+          of the screen. Can also be specified using CSS.
+          
+          If it is less than image width, the image will be cropped. If it is more that the
+          image width, the extra space will be filled with the background color.
+          
+          In practice you can ommit this attribute - the Browser will use the width of the
+          actual image.          
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:annotation>
+    <xs:documentation>
+    ======================= Tables =======================================
+
+    Derived from IETF HTML table standard, see [RFC1942]
+    </xs:documentation>
+  </xs:annotation>
+
+
+
+  <xs:attributeGroup name="cellspan">
+    <xs:attribute name="rowspan" default="1" type="Number">
+      <xs:annotation>
+        <xs:documentation>
+        Allows a cell to span vertically two or more rows (cells).
+        </xs:documentation>
+      </xs:annotation>         
+    </xs:attribute>
+    <xs:attribute name="colspan" default="1" type="Number">
+      <xs:annotation>
+        <xs:documentation>
+        Allows a cell to span horizontally two or more columns (cells).
+        </xs:documentation>
+      </xs:annotation>               
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="cellhalign">
+    <xs:attribute name="align">
+      <xs:annotation>
+        <xs:documentation>
+        Horizontal alignment attributes for cell contents. Note that you can use CSS properties instead.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="left"/>
+          <xs:enumeration value="center"/>
+          <xs:enumeration value="right"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="cellvalign">
+    <xs:attribute name="valign">
+      <xs:annotation>
+        <xs:documentation>
+        Vertical alignment attributes for cell contents. Note that currently you can not set
+        this property via CSS.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="top"/>
+          <xs:enumeration value="middle"/>
+          <xs:enumeration value="bottom"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:element name="table">
+    <xs:annotation>
+      <xs:documentation>
+      This element defines a table, similar to XHTML. A table is a structural presentation of data
+      using rows and columns.
+      
+      The table structure is built using the child elements.
+      
+      Since TML CSS does not allow absolute or relative positioning properties, {table} element is
+      the best way of controlling screen layout.
+      
+      By default, the table will be row-centric. If you wish to organize your data around columns
+      instead, you can use the child {colgroup} or {col} elements.
+      
+      You can have nested tables, or place tables inside the {div} elements.
+      
+      You should use CSS to control the table appearance. Some useful CSS properties are:
+      * border-width - to specify width of border (in pixels), to use insead of the 'border' attribute
+      * border-color - to specify color of the border
+      * border-style - none | dotted | dashed | solid | double - to specify style of the border.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="col"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="colgroup"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="thead"/>
+        <xs:element minOccurs="0" ref="tfoot"/>
+        <xs:choice>
+          <xs:element maxOccurs="unbounded" ref="tbody"/>
+          <xs:element maxOccurs="unbounded" ref="tr"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="width" type="Length">
+        <xs:annotation>
+          <xs:documentation>
+	      Table width. This attribute can be set via CSS.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="height" type="Length">
+        <xs:annotation>
+          <xs:documentation>
+	      Table height. This attribute can be set via CSS.
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="border" type="Pixels">
+        <xs:annotation>
+          <xs:documentation>
+	      The thickness of table border. You can use 'border-width' CSS attribute instead.
+          </xs:documentation>
+        </xs:annotation>       
+      </xs:attribute>
+      <xs:attribute name="rules" default="all" >
+        <xs:annotation>
+          <xs:documentation>
+          Defines which border lines should appear inside the table.
+          
+          Note if border thickness is set to '0' no borders will be displayed regardless of this
+          attribute.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none">
+              <xs:annotation>
+                <xs:documentation>
+                No internal borders.
+                </xs:documentation>
+              </xs:annotation>      
+            </xs:enumeration>
+            <xs:enumeration value="rows">
+              <xs:annotation>
+                <xs:documentation>
+                Borders between table rows only.
+                </xs:documentation>
+              </xs:annotation>        
+            </xs:enumeration>
+            <xs:enumeration value="cols">
+              <xs:annotation>
+                <xs:documentation>
+                Borders between table columns.
+                </xs:documentation>
+              </xs:annotation>        
+            </xs:enumeration>
+            <xs:enumeration value="all">
+              <xs:annotation>
+                <xs:documentation>
+                Borders between both rows and columns.
+                </xs:documentation>
+              </xs:annotation>        
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>       
+      </xs:attribute>
+      <xs:attribute name="cellspacing" type="Length">
+         <xs:annotation>
+          <xs:documentation>
+	      Sets the amount of white space (in pixels) between adjacent cells and between a cell and
+	      the outer border of the table.
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="cellpadding" type="Length">
+         <xs:annotation>
+          <xs:documentation>
+	      Sets the amount of white space (in pixels) between a cell border and the contents of the cell.
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="thead">
+    <xs:annotation>
+      <xs:documentation>
+      This element defines the header portion of a TML table.
+      
+      It should be used in conjunction with the {tfoot} and {tbody} elements.      
+      </xs:documentation>
+    </xs:annotation>  
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="tr"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tfoot">
+    <xs:annotation>
+      <xs:documentation>
+      This tag defines the footer portion of a TML table.
+      
+      It should be used in conjunction with the {thead} and {tbody} elements.      
+      </xs:documentation>
+    </xs:annotation>  
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="tr"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tbody">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to group the body content in an TML table.
+      
+      It should be used in conjunction with the {thead} and {tfoot} elements.
+      
+      You can use multiple body sections when you want to have borders between groups of table rows.       
+      </xs:documentation>
+    </xs:annotation>  
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="tr"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="colgroup">
+    <xs:annotation>
+      <xs:documentation>
+      This element allows you to create a column-centric table as compared to the standard
+      row-centric XHTML table. You can organise semantically related columns in one or more
+      columns groups.
+      If the 'span' attribute is not specified for a group, you can assign attributes to the
+      individual columns using the {col} element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="col"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="span" default="1" type="PositiveNumber">
+        <xs:annotation>
+          <xs:documentation>
+          Sets the number of columns that are associated with each column group. If the
+          columns are unequal, it is recommended to use the {col} element to create each
+          column instead.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="width" type="MultiLength">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the width for each spanned column.
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="col">
+    <xs:annotation>
+      <xs:documentation>
+      Assigns width and alignment properties to the individual columns within the {colgroup} element. 
+      
+      You should not use this element if you have already specified 'span' attribute for
+      the {colgroup}.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="span" default="1" type="Number">
+        <xs:annotation>
+          <xs:documentation>
+          Defines how many columns are affected by this {col} element.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="width" type="MultiLength">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the width for each spanned column.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tr">
+    <xs:annotation>
+      <xs:documentation>
+      This element defines a row in a {table} element. The number of rows can be arbitrary.
+      
+      A row should have one or more cells created using either the {td} or {th} elements.
+      
+      Each row in a table should contain the same number of cells.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="th"/>
+        <xs:element ref="td"/>
+      </xs:choice>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attributeGroup ref="cellhalign"/>
+      <xs:attributeGroup ref="cellvalign"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="th">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to create header cells within table rows.
+    
+      For standard cells use the {td} element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attributeGroup ref="cellspan"/>
+          <xs:attributeGroup ref="cellhalign"/>
+          <xs:attributeGroup ref="cellvalign"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="td">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to create standard cells within table rows.
+    
+      For header cells use {th} element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="Flow">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attributeGroup ref="cellspan"/>
+          <xs:attributeGroup ref="cellhalign"/>
+          <xs:attributeGroup ref="cellvalign"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:annotation>
+    <xs:documentation>
+    =================== Screens ====================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="error" type="NextScreen">
+    <xs:annotation>
+      <xs:documentation>
+      Specifies the URI of the screen the Browser will switch to if an error occurs.
+      
+      If used within the {head} element, {error} defines the default error processing options
+      for the TML page. A {screen} can override this deafult by using its own child {error} element.
+      
+      You can process the error conditions using the child {variant} elements.
+      </xs:documentation>
+    </xs:annotation>  
+  </xs:element>
+
+  <xs:element name="next" type="NextScreen">
+    <xs:annotation>
+      <xs:documentation>
+      Used within the {screen} element to specify the URI of the next screen that should be processed
+      by the Browser.
+      
+      Note that you should use either this element or the 'next' attribute of the {screen} 
+      element. However, when you use the {next} tag it allows you to implement code branching using the
+      child {variant} elements.
+      </xs:documentation>
+    </xs:annotation>   
+  </xs:element>
+
+
+  <xs:element name="screen">
+    <xs:annotation>
+      <xs:documentation>
+      Defines the screen, which is a logical unit of a TML page. Each screen must have a unique name,
+      defined by its 'id' attribute.
+      
+      TML supports several types of screens, including display, print, submit, terminal form and 
+      function call screens. The type of the screen is specified using one of the child elements
+       ({display}, {print}, etc.).
+       
+      After the opening {screen} tag, you can list the variables whose values should be modified
+      using the child {setvar} and {strtemplate} elements. The variable operations are performed in a
+      sequence, starting from the first {setvar} element.
+      
+      Note that the variable operations are executed every time the Icendo Browser switches to the
+      screen. The only exception is if the screen is re-displayed after a {baddata} element is 
+      processed.
+      
+      Use the {next} element, or 'next' attribute of the {screen} element to define the URI of the next
+      screen. If both the element and the attribute are specified, the element takes precedence.
+      
+      The {next} element can be used to implement code branching, using the child {varaiant} elements.
+      
+      The 'timeout' attribute of the {screen} element can be used to specify the screen timout - 
+      the amount of time screen contents should be displayed before the Browser switches to the next
+      screen.
+      
+      If the element's content includes hyperlinks, both the 'next' attribute of the {screen} element and
+      the 'uri' attribute of the {next} element are ignored. However, some child {variant} elements of the
+      {next} tag - the ones with 'key' or 'timeout' attribute - can still be used and be effective.
+      
+      To specify the URI of the screen to switch to if an error occurs, use the {error} element.
+      
+      To associate other screens' URIs with the "Menu" (F2) and "Cancel" terminal keys, use the 'menu'
+      and 'cancel' attributes.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="condition" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="setvar" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+        <xs:element ref="strtemplate" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="logrec" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="next" minOccurs="0" />
+        <xs:element ref="error" minOccurs="0" />
+        <xs:choice>
+            <xs:element ref="display" minOccurs="0"/>
+            <xs:element ref="print" minOccurs="0"/>
+            <xs:element ref="tform" minOccurs="0"/>
+            <xs:element ref="call_func" minOccurs="0"/>
+            <xs:element ref="call" minOccurs="0"/>
+            <xs:element ref="submit" minOccurs="0"/>
+            <xs:element ref="txnnew" minOccurs="0"/>
+            <xs:element ref="txnsubmit" minOccurs="0"/>
+            <xs:element ref="txnconfirm" minOccurs="0"/>
+            <xs:element ref="reconciliation" minOccurs="0"/>
+        </xs:choice>
+      </xs:sequence> 
+      <xs:attribute name="next" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the next screen to switch to when Incendo Browser finishes processing
+          the current screen.
+          
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service(s).
+          * 'return' - return back to caller (embedded, idle, VAS or native application).
+          * 'menu' - a link to the URI defined by the 'menu' attribute
+          * 'cancel' - a link to the URI defined by the 'cancel' attribute  
+          Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+          into the input fields are cleared - input is cancelled. 
+          
+          If the {next} element is also specified for the screen, it will have precedence over this
+          attribute.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="menu" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the screen to switch to if the user presses the "Menu" (F2) button
+          while browsing the screen. The URI specified in the attribute has precedence over the URI
+          defined by the {defaults} element.
+          
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service(s).
+          * 'return' - return back to caller (embedded, idle, VAS or native application).
+          </xs:documentation>
+        </xs:annotation>        
+      </xs:attribute>
+      <xs:attribute name="cancel" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the screen to switch to if the user presses the "Cancel" button while 
+          browsing the screen. The URI specified in the attribute has precedence over the URI defined
+          by the {defaults} element.
+          
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service(s).
+          * 'return' - return back to caller (embedded, idle, VAS or native application).
+
+          Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+          into the input fields are cleared - input is cancelled. 
+          </xs:documentation>
+        </xs:annotation>          
+      </xs:attribute>
+      <xs:attribute name="timeout" type="Valref" default="0">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the maximum amount of time (in seconds) Incendo Browser should wait for the user
+          input. When the specified time has elapsed (or a key is pressed), the Browser switches to
+          the screen specified in the child {next} element or the 'next' attribute of the
+          {screen} element. 
+          
+          Note that unlike the 'timeout' attribute of {variant}, this attribute is ignored if the
+          screen contains hyperlinks or input forms.
+          </xs:documentation>
+        </xs:annotation>               
+      </xs:attribute>
+      <xs:attribute name="beep" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies a duration of time (in seconds) of inactivity after which the Incendo Browser
+          should beep. When the specified time has elapsed (with no activity), the Browser will
+          beep using the configured audio.inactivity_beep.
+          </xs:documentation>
+        </xs:annotation>               
+      </xs:attribute>
+      <xs:attributeGroup ref="attrs"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="display">
+    <xs:annotation>
+      <xs:documentation>
+      The content of this tag will be rendered on the terminal display.
+      
+      The elements and text within this tags behave in a way similar to XHTML. The appearance
+      and layout of the elements and text can be controlled using CSS (specifed using {link} element).
+      
+      If the displayed content does not have any cross-links or input forms, the content will be
+      displayed until:
+      * the user presses a button
+      * the screen timeout (see 'timeout' attribute of the {screen} element)
+      * keypress timeout (see the 'timeout' attribute of the {variant} element)                 
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="Flow"/>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="print">
+    <xs:annotation>
+      <xs:documentation>
+      The content which is placed between the element tags is printed on the embedded terminal printer.
+      
+      Just as for a {display} screen, you can use the CSS to format print output.
+      
+      Only bitmap (i.e. black and white) images can be printed. Color images will cause an error.
+            
+      Input form should not be used within the {print} element and hyperlinks are ignored. 
+           
+      When the printing is complete, Incendo Browser switches to the screen specified by the 'next'
+      attribute of the parent {screen} element or the {next} element.
+      
+      Note that whenever you print something the printer may be out of paper. So you should always
+      use an {error} element with print screens that will check for out of paper condition 
+      ('err.code.high' or 'err.code.low' pre-defined variables set to "-32921"). In case the printer
+      out of paper, you should ask the user to replace the paper roll and then print the receipt again.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+         <xs:extension base="NoForm"/>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="arg">
+    <xs:annotation>
+      <xs:documentation>
+      An argument passed to plug-in/TML function/TML interface within {call} screen.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NMTOKENS">
+        <xs:annotation>
+          <xs:documentation>
+            A refference ID. 
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attribute name="value" use="required" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+            Assigns a value, such as a text, number or TML variable name, to the argument.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="call">
+    <xs:annotation>
+      <xs:documentation>
+        The {call} element is used for calling of external application (plug-in),
+        service or TML function. 
+
+        For the embedded functions it replaces call_func screens:
+
+        *incendo.send_offline_posts - the terminal connects to the Gateway and all 
+        offline posts of the current service are sent to the application host. 
+        *incendo.print_offline_posts - prints all offline posts of the current 
+        service on the terminal printer. 
+        *incendo.cancel_offline_post - cancels an offline post.
+        *incendo.clear_http_cache - deletes cached TML pages of the current service 
+        from the terminal cache.
+        *incendo.connect_to_server - forces the terminal to connect to Incendo Gateway. 
+        *incendo.release_transport - disconnect from the Gateway if connected.
+        *incendo.clear_log - clear a log.
+        *incendo.remove_services - removes the cached resources, configurations and 
+        variables data for all services.
+        *incendo.net_initialisation - activates the terminal initialisation procedure.
+        *incendo.oebr_update - forces a connection to IngEstate TMS. 
+
+        For more details see interfaces of embedded.tml.
+
+        The order and the source of input parameters are specified by the child {arg}
+        elements.
+        
+        After the application call, the result is passed using the output parameters,
+        specified by the child {retval} elements.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="arg" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="retval" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the id of the plug-in, service or TML function that should be called.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="type"  use="optional" default="app">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the type of the call:
+          *'func' - TML function is called
+          *'app' - native terminal application (plug-in) is called
+          *'vas' - another VAS is called
+          </xs:documentation>
+        </xs:annotation>         
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="func"/>
+            <xs:enumeration value="app"/>
+            <xs:enumeration value="vas"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>      
+      <xs:attribute name="disp_ctrl" use="optional" default="plugin">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies if the display is controlled weather by browser or plug-in:
+          *'plug-in' (default)
+          *'browser'
+          Ignored for all non-application calls.
+          </xs:documentation>
+        </xs:annotation>         
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="plugin"/>
+            <xs:enumeration value="browser"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>      
+      <xs:attribute name="password" use="optional" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Password passed to the plug-in/TML interface/TML function.
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>      
+    </xs:complexType> 
+  </xs:element>
+
+  <xs:element name="call_func">
+    <xs:annotation>
+      <xs:documentation>
+      This element intiates a system function call that allows you to perform various system
+      functions. For example, using {call_func} you can clear the cached service resources,
+      force a connection to the Gateway etc.
+      
+      The function that you wish to perform is specified by the 'name' attribute.
+      
+      Some functions require specific TML variables to be used as function parameters.
+
+      Before a function call you must specify two URIs:
+      * the URI to switch to if the function call was successful. This URI is specified
+      using the 'next' attribute of the parent {screen} element or the {next} element.
+      * the URI that will be used of function call failed. This is set using the {error} element
+      
+      If the funtcion call failed, the 'err.code.high', 'err.code.low' and 'err.description'
+      variables will be set.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Specifies the function that should be called.
+          </xs:documentation>
+        </xs:annotation> 
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="send_offline_posts">
+              <xs:annotation>
+                <xs:documentation>
+                  The terminal connects to the Gateway and all offline posts of the current service
+                  are sent to the application host. 
+                  If performed from the embedded, offline posts of all the services are sent.
+                  The configurations and terminal cache are not updated.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="print_offline_posts">
+              <xs:annotation>
+                <xs:documentation>
+                  Prints all offline posts of the current service on the terminal printer. If
+                  performed from the embedded, offline posts from all services are printed.
+                  The amount of details that is printed for each post is deterimed by the value
+                  of the 'oebr.posts.print.mode' system variable:
+                  * 'HEADER' - timestamp, post id, service name, destinatin URI. This is the default.
+                  * 'NAME' - same as header, but also a list of names of all variables in the post
+                  * 'VALUE' - same as header, with additional list of both variable names and variable values.
+                  
+                  The value of the 'oebr.posts.print.mode' variable can be set using the terminal varlib
+                  configuration. The "VALUE" setting should never be used for the terminals in production
+                  environment!
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="cancel_offline_post">
+              <xs:annotation>
+                <xs:documentation>
+                  Cancels an offline post. The ID of the post to be cancelled is defined by
+                  the value of the predefined variable 'oebr.post_id'
+                  Its value should be properly set prior to calling this function.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="clear_http_cache">
+              <xs:annotation>
+                <xs:documentation>
+                  Deletes cached TML pages of the current service from the terminal cache.
+                  The function does not affect cached offline transactions or the page from which
+                  it is called.
+                  If called from the embedded, cached pages for all services are cleared.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="connect_to_server">
+              <xs:annotation>
+                <xs:documentation>
+                  Forces the terminal to connect to Incendo Gateway. The actions that will be performed
+                  depending whether the 'oebr.connect.pool_off', 'oebr.connect.sync_cache' and
+                  'oebr.connect.sync_config' variables are set to "yes" or "no":
+                  * 'oebr.connect.pool_off' set to "yes" - submit to the Application Server all offline posts
+                  of the current service
+                  * 'oebr.connect.sync_cache' set to "yes" - request the updated versions of all 
+                  TML resources cached in the terminal memory (TML pages, images, etc.)
+                  * 'oebr.connect.sync_config' set to "yes" - request the updates of service and terminal
+                  configuration data and variable libraries
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="release_transport">
+              <xs:annotation>
+                <xs:documentation>
+                  Disconnect from the Gateway if connected. This will close the modem or GPRS connection.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="clear_log">
+              <xs:annotation>
+                <xs:documentation>
+                  Delete all log records for the log specified in the predefined variable 'oebr.log_id'
+                  The value of this variable should be properly set prior to performing the function call.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>            
+            <xs:enumeration value="remove_services">
+              <xs:annotation>
+                <xs:documentation>
+                  Removes the cached resources, configurations and variables data for all services.
+                  Terminal configuration and variables library are not affected.
+                  This function call can be performed only from the embedded service. 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="net_initialisation">
+              <xs:annotation>
+                <xs:documentation>
+                  Activates the terminal initialisation procedure. All old service data will be deleted,
+                  similarly to 'remove_services'. 
+                  This function call can be performed only from the embedded service. 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>           
+            <xs:enumeration value="oebr_update">
+              <xs:annotation>
+                <xs:documentation>
+                  Forces a connection to IngEstate TMS. If there is a new version of Incendo Broswer
+                  available, it is downloaded and installed.
+                  This function call can be performed only from the embedded service.                  
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>              
+            <xs:enumeration value="touch_calibration">
+              <xs:annotation>
+                <xs:documentation>
+                  Launches a touch screen calibration utility if the terminal has a touchscreen.
+                  This function call can be performed only from the embedded service.                  
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>                             
+          </xs:restriction>  
+        </xs:simpleType>       
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="econn" type="NextScreen">
+    <xs:annotation>
+      <xs:documentation>
+      Specifies the URI of the screen to switch to if the Browser could not connect to the application
+      server.
+      
+      You can process the error conditions using the child {variant} elements.
+      </xs:documentation>
+    </xs:annotation>  
+  </xs:element>
+
+  <xs:element name="submit">
+    <xs:annotation>
+      <xs:documentation>
+      This element is used to send the values of TML variables or a TML log to the URI specified by
+      the 'tgt' attribute.
+       
+      The variables whose values should be submitted are specified by means of the child {getvar}
+      elements that are listed one by one. In the case of a log the {submit_log} child element is
+      used.
+      
+      You must have the read access permissions for the log or variables you wish to send to the
+      application host.
+      
+      Each post performed by a terminal is assigned a unique ID. The variable data is transmitted inside the
+      body of HTTP POST, as either an XML or a key-value structure. The timestamp, terminal ITID and
+      post ID are automatically included in every post.
+      
+      Submitting may be either online or offline, depending on the value of the TML variable
+      'oebr.submit_mode'
+      * if 'oebr.submit_mode' is set to "online", Incendo Browser will attempt to immediately connect
+      to the application host URI. If the connection is successful, the application host must generate
+      a valid TML page and send it as the HTTP response. The Browser will switch to this page after a
+      succesful submit. If no valid TML is received as the response, a connection error is assumed and
+      the Browser proceeds to the screen specified by the 'econn' attribute of {submit}.
+      * if 'oebr.submit_mode' is set to "offline", the Browser will generate the TML post data and
+      store it in the terminal cache memory for future submission. The Browser will then proceed to the
+      screen defined by the 'next' attribute of {submit}. If the terminal cache memery is full, the next
+      screen will be determied by the 'econn' attribute.
+      
+      You can send the offline posts cached by your service by using the 'send_offline_posts' command
+      of the {call_func} element. Alternatively, if you set the system variable 'oebr.connect.pool_off'
+      to "yes", the offline posts will be sent every time the terminal connects to the Gateway.
+      
+      You can also delete an offline post using the 'cancel_offline_post' command of the {call_func}, and print
+      the overview of the offline post using the 'print_offline_posts' command.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="econn" minOccurs="0" />
+        <xs:choice>
+          <xs:element ref="getvar" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="submit_log" minOccurs="0"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="tgt" type="Valref">
+       <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the host module component that will be the traget of HTTP POST.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="econn" type="Valref">
+       <xs:annotation>
+          <xs:documentation>
+          Specifies the URI of the screen to switch if there is an error during data submission. The
+          'econn' URI is used in different cases, depending if it is an offline or an online post:
+          * For an online post, this URI will be used if the Incendo Browser did not receive a valid
+          TML page as a response to the post.
+          * For an offline post, 'econn' URI is used if the terminal cache is full.
+          
+          The URI should reference either a TML page or a screen id. Screen id should be preceded
+          by the hash '#' symbol, i.e. '#screen_id'
+                
+          There are also several special URIs:
+          * 'back' - return to the previous screen
+          * 'exit' - exit the service(s).
+          * 'return' - return back to caller (embedded, idle, VAS or native application).
+          * 'menu' - a link to the URI defined by the 'menu' attribute of the parent {screen} element
+          * 'cancel' - a link to the URI defined by the 'cancel' attribute of the parent {screen}    
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="cache" default="deny">
+        <xs:annotation>
+          <xs:documentation>
+          Depreciated. Do not use.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="allow"/>
+            <xs:enumeration value="deny"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>      
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="txnsubmit">
+    <xs:annotation>
+      <xs:documentation>
+      submit transaction to server
+      "econn" attribute or element is required
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="econn" minOccurs="0"/>
+        <xs:choice>
+          <xs:element ref="getvar" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="tgt" type="Valref"/>
+      <xs:attribute name="econn" type="Valref"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="txnnew">
+    <xs:annotation>
+      <xs:documentation>
+      tag that creates a new transaction.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="type" use="required" type="xs:NMTOKENS"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="txnconfirm">
+    <xs:annotation>
+      <xs:documentation>
+      tag that confirms the transaction.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="status" use="required" type="xs:NMTOKENS"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="reconciliation">
+    <xs:annotation>
+      <xs:documentation>
+      This tag starts the reconciliation stage of the reliable transaction.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Terminal forms ============================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="tform">
+    <xs:annotation>
+      <xs:documentation>
+      This element defines a terminal form screen.
+      
+      Depending on the child elements, a {tform} screen can be used to:
+      * interact with a magnetic or ICC card - 'mag' and 'icc_emv' parsers of the the {card} element
+      * call embedded plug-in applications - 'pam' parser of the {card} element
+      * scan a barcode (U32 terminals) - 'img' parser of the {card} element
+      * perform secure PIN entry - {pinentry} element 
+      
+      The read data is assigned to the predefined variables according to the input type.
+      
+      Child {baddata} element is used for error handling.
+      
+      Using a child {prompt} element, you can define a short message to be rendered on the terminal
+      screen, prompting a user for input.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="baddata" minOccurs="0"/>
+        <xs:choice>
+          <xs:sequence>
+            <xs:element ref="card" maxOccurs="unbounded"/>
+            <xs:element ref="prompt" minOccurs="0"/>
+          </xs:sequence>
+          <xs:element ref="pinentry"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="prompt">
+    <xs:annotation>
+      <xs:documentation>
+      Used within {tform} to render a short message on the terminal screen, prompting a user to swipe,
+      insert, or remove a card. The message disappears when the requested action is completed.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="NoForm">
+          <xs:attributeGroup ref="attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="baddata">
+    <xs:annotation>
+      <xs:documentation>
+      Defines a message to be rendered on the screen in the case an incorrect data is entered
+      into an input field or if there is an error interacting with terminal periferals. 
+      
+      The message is rendered for the amount of time specified by the 'timeout' attribute or
+      until the user presses a key. 
+      
+      The user returns back to the parent screen until the number
+      of tries, specified by the 'max' attribute, is exceeded. Once that happens, the user proceeds to
+      the screen defined by the 'next' attribute. 
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="NoForm">
+          <xs:attributeGroup ref="attrs"/>
+          <xs:attribute name="timeout" default="2" type="Valref">
+            <xs:annotation>
+              <xs:documentation>
+                The message is rendered for the amount of time specified by this attribute or
+                until the user presses a key.
+                
+                If the timeout is set to '0' it does not expire - the user must press
+                a key to return to the parent screen.
+              </xs:documentation>
+            </xs:annotation>         
+          </xs:attribute>
+          <xs:attribute name="max" default="0" type="Number">
+            <xs:annotation>
+              <xs:documentation>
+                Specifies the maximum number of attempts the user is allowed for entering the data.
+                If the user has exhausted the attempts but still failed to provide the correct data,
+                the Browser switches to the screen specified in the 'next' attribute.
+              </xs:documentation>
+            </xs:annotation>                 
+          </xs:attribute>
+          <xs:attribute name="next" default="tmlvar:oebr.prev_screen"
+                        type="Valref">
+             <xs:annotation>
+              <xs:documentation>
+                Specifies an URI of the screen to which the Browser switches if the user failed to
+                enter the valid data.
+                
+                The URI should reference either a TML page or a screen id. Screen id should be preceded
+                by the hash '#' symbol, i.e. '#screen_id'
+                
+                There are also several special URIs:
+                * 'back' - return to the previous screen
+                * 'exit' - exit the service(s).
+                * 'return' - return back to caller (embedded, idle, VAS or native application).
+                * 'menu' - a link to the URI defined by the 'menu' attribute of the parent {screen} element
+                * 'cancel' - a link to the URI defined by the 'cancel' attribute of the parent {screen} 
+                Additionally, if 'cancel' URI is used within a form screen, the values that have been entered
+                into the input fields are cleared - input is cancelled.
+              </xs:documentation>
+            </xs:annotation>                
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="card">
+    <xs:annotation>
+      <xs:documentation>
+      This element allows TML application to interact with the card parsers and control 
+      terminal card readers.
+      
+      'parser' attribute specifies which card parser the terminal should to process the card data.
+      
+      You define the type of a card operation using the 'parser_params' attribute. It instructs 
+      the parser to perform a particular action or sequence of actions with the card.
+      
+      The results of the card data processing are assigned to various system variables.
+      
+      The errors should be handled by the {baddata} element of the parent {tform}.
+      
+      Note that to use the 'mag' and 'icc_emv' parsers your service should be provisioned
+      with the correct magcard and iccemv configurations.
+      
+      See payment application tutorials and BTMLPA application for detailed description
+      the each parser commands.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="parser" use="required">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute specifies which parser should be used.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="mag">
+              <xs:annotation>
+                <xs:documentation>
+                  This parser is used to process magnetic stripe cards. 
+                  Note that your service must have a valid magcard configuration assigned to it.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="icc_emv">
+              <xs:annotation>
+                <xs:documentation>
+                  This parser is used to process ICC cards. The communication protocols and
+                  workflow conform to the EMV schema.
+                  Note that your service must have a valid iccemv configuration assigned to it.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="pam">
+              <xs:annotation>
+                <xs:documentation>
+                  This parser is used to call embedded plug-in applications. 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="img">
+              <xs:annotation>
+                <xs:documentation>
+                  This parser is used to interact with the barcode scanner. Note that 
+                  this is applicable only to U32 terminals. Telium barcode scanners act as a 
+                  keyboard proxy. They can be used to directly input data into an {input} field.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>      
+      </xs:attribute>
+      <xs:attribute name="parser_params" use="required">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute specifies the operation that should be performed by the parser.
+          Some operations are common for all parser types, while some are parser-specific.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="init">
+              <xs:annotation>
+                <xs:documentation>
+                Initialise the parser during first system initialization.
+                Used by both 'mag' and 'icc_emv' parsers. 
+                Note that this occurs automatically and there is no need for your TML application to 
+                perform this operation manually.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="reset">
+              <xs:annotation>
+                <xs:documentation>
+                Reset risk management values.
+                Used by both 'mag' and 'icc_emv' parsers. 
+                Note that this occurs automatically and there is no need for your TML application to
+                perform this operation manually.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="clean">
+              <xs:annotation>
+                <xs:documentation>
+                Perform TML variables cleanup.
+                Used by both 'mag' and 'icc_emv' parsers. 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="risk_mgmt">
+              <xs:annotation>
+                <xs:documentation>
+                Perform risk mgmt 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="read_data">
+              <xs:annotation>
+                <xs:documentation>
+                Read data from card 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="init_app">
+              <xs:annotation>
+                <xs:documentation>
+                Perform emv init application 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+             <xs:enumeration value="final_select">
+              <xs:annotation>
+                <xs:documentation>
+                Select an EMV application from ICC
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>           
+            <xs:enumeration value="get_cvm">
+              <xs:annotation>
+                <xs:documentation>
+                Perform card holder verification 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>            
+            <xs:enumeration value="verify">
+              <xs:annotation>
+                <xs:documentation>
+                Perform PIN validation 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>            
+             <xs:enumeration value="auth">
+              <xs:annotation>
+                <xs:documentation>
+                Generate AC after online authorization.
+                'icc_emv' parser only.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>           
+            <xs:enumeration value="wait_remove_card">
+              <xs:annotation>
+                <xs:documentation>
+                Display a message while waiting for the customer to remove the card from the reader.
+                'icc_emv' parser only.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>            
+            <xs:enumeration value="is_card_inserted">
+              <xs:annotation>
+                <xs:documentation>
+                Check if ICC card is in the card reader and is powered on.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration> 
+            <xs:enumeration value="cancel">
+              <xs:annotation>
+                <xs:documentation>
+                Cancel the current EMV transaction.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration> 
+            <xs:enumeration value="get_emv_data">
+              <xs:annotation>
+                <xs:documentation>
+                Retrieve EMV data from EMV kernel. 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration> 
+            <xs:enumeration value="set_emv_data">
+              <xs:annotation>
+                <xs:documentation>
+                Set EMV data within EMV kernel 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="read_aux">
+              <xs:annotation>
+                <xs:documentation>
+                Command to read auxilary data 
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration> 
+  
+          </xs:restriction>
+        </xs:simpleType>        
+      
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="pinentry">
+    <xs:annotation>
+      <xs:documentation>
+      Used within the {tform} for the card PIN entry. The application switches to the secure mode and
+      uses the security features of the terminal to accept user input and encrypt it according to the
+      specified encryption algorithm. This ensures that the pin is never stored in an unencrypted form,
+      and therefore can not be compromised.
+      
+      The encryption algorithm is set by the 'type' attribute.
+      
+      For most encryption types:
+      # 'card.pan' variable should be filled with the card PAN number. You can do this by reading it
+       from the card or setting the PAN number manually.
+      # 'card.pin.array' variable may be set to the DUKPT array you wish to use. You can leave it set
+       to the default value of '0'.
+      # use the {pinentry} element with the appropriate encryption type. After the PIN is entered, it
+       will be processed by the secure hardware of the terminal. 
+       
+      This will set the following variables:
+      * 'card.pin' - encrypted PIN
+      * 'card.pin.smid' -  key serial number
+      * 'card.pin.length' - the number of characters in the entered PIN
+      
+      You will usually need to submit the 'card.pin' and 'card.pin.smid' variables to the acquirer for
+      verification.
+      
+      The 'icc' encryption type is different:
+      # During an ICC EMV transaction, cardholder verification methods are requested from the card
+      using the {card} element - the 'get_cvm' command of the 'icc_emv' parser. If after the parser
+      call the 'card.parser.cvm' variable is set to "pin", this indicates that an offline PIN
+      verification is required.
+      # To perform the PIN entry, use the {pinenetry} element with the 'type' attribute set to
+      "icc". The terminal will interact with the ICC to securely input the PIN data.
+      # To verify the PIN, use the 'verify' command of the 'icc_emv' parser (see {card} element
+      description). It will set the 'card.parser.cvr' variable.
+      # If the value of the 'card.parser.cvr' is set to "failed" it means that an incorrect PIN has
+      been entered, but the maximum number of tries has not yet been exceeded. You should perform the 
+      {pinentry} command again until the 'card.parser.cvr' is set to "ok" or "ok_msg" - correct PIN -
+      or "pin_tries" - maximum number of tries exceeded.
+      
+      For more information of the ICC EMV program flow see the ICC EMV tutorial or BTMLPA application
+      example.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+          <xs:extension base="Flow">
+              <xs:attributeGroup ref="attrs"/>
+              <xs:attribute name="prompt" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                      The text message that should be displayed by the terminal during the PIN entry process. For
+                      example, "Enter PIN"
+                  </xs:documentation>
+                </xs:annotation>     
+              </xs:attribute>
+              <xs:attribute name="length" default="4" type="Number">
+                <xs:annotation>
+                  <xs:documentation>
+                      The number of digits the PIN should contain (minimum should be '4').
+                  </xs:documentation>
+                </xs:annotation>        
+              </xs:attribute>
+              <xs:attribute name="type">
+                <xs:annotation>
+                  <xs:documentation>
+                      PIN encryption algorithm.
+                  </xs:documentation>
+                </xs:annotation>          
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="icc">
+                      <xs:annotation>
+                        <xs:documentation>
+                            Offline ICC PIN verification.
+                        </xs:documentation>
+                      </xs:annotation>            
+                    </xs:enumeration>
+                    <xs:enumeration value="3des"/>
+                    <xs:enumeration value="dukpt"/>
+                    <xs:enumeration value="dukpt3des"/>
+                    <xs:enumeration value="dukptlight"/>
+                    <xs:enumeration value="dukptl3des"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+          </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+    ================ Forms ============================================
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="form">
+    <xs:annotation>
+      <xs:documentation>
+      This element defines the layout of the user input form. The data input is controlled by
+      the child {input} and {textarea} elements.
+      
+      When a form contains at least one {input} or {textarea} element, the Browser
+      switches into the form processing mode. It defines specific navigation rules within the form:
+      * The screen timeout - set by the 'timeout' attribute of the {screen} element - is disabled. However,
+      the keypress timeout - the 'timeout' version of the {variant} element - still works.
+      * A user navigates within the form until he or she presses the 'OK', 'Menu' or 'Cancel' keypad keys.
+      * Pressing 'Menu' or 'Cancel' makes the Browser jump to a screen defined by the 'menu' or 'cancel' 
+      attribute of {screen} or {defaults} element. Changes to the form fields are not saved
+      i.e. the variables are reset to their initial values
+      * Pressing 'Up' and 'Down' keys will move the focus onto the previous or next {input} or
+      {textarea} element. An element in focus is marked visually somehow; in most cases such element
+      has a thickened border.
+      * To set checkbox, radio button or list input fields use the '1' key 
+      * If the form screen does not have any links ({a} elements), when the 'OK' button is pressed
+      the Browser will save the form data and go to the URI defined by the {next} element or 'next' 
+      attribute of the parent {screen}. The only exception is if the {input} element of the 'reset'
+      type is in focus - the form variables will be reset to the original values
+      * If the form screen has some links 'OK' button will have no effect unless {input} element of
+      the 'submit' or 'reset' type or one of the links is in focus.
+      * If the user leaves the input form using a link or because of the keypress timeout the form
+      data is saved
+      
+      An input form within the {print} element is ignored. It will not be printed.
+      
+      Note: you should avoid using the 'key' - type {variant} elements within the form screen. They
+      will make it difficult to input values.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="NoForm"/>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:attributeGroup name="input.restrictions">
+    <xs:annotation>
+      <xs:documentation>
+      restrictions for data entered via "input" and "textarea".
+      min and max restrict the value for numbers and dates and the length
+      for strings and opaque.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="equal" type="Valref">
+      <xs:annotation>
+        <xs:documentation>
+        This is a validity check attribute. The Browser checkes whether the data entered by the user 
+        is equal to the value specified by this attribute. If not, the flow control is passed to the
+        child {baddata} element.
+        
+        If {baddata} is omitted validity checks are skipped.
+        </xs:documentation>
+      </xs:annotation>   
+    </xs:attribute>
+    <xs:attribute name="not_equal" type="Valref">
+      <xs:annotation>
+        <xs:documentation>
+        This is a validity check attribute. The Browser checkes whether the data entered by the user 
+        is not equal to the value specified by this attribute. If not, the flow control is passed to
+        the child {baddata} element.
+        
+        If {baddata} is omitted validity checks are skipped.
+        </xs:documentation>
+      </xs:annotation>         
+    </xs:attribute>
+    <xs:attribute name="min" type="Valref">
+      <xs:annotation>
+        <xs:documentation>
+        This is a validity check attribute. The Browser checkes whether the data entered by the user 
+        is more than the minimum value specified by this attribute. If not, the flow control is passed
+        to the child {baddata} element.
+        
+        For text input the length of the enetered string is checked.
+        
+        If {baddata} is omitted validity checks are skipped.
+        </xs:documentation>
+      </xs:annotation>        
+    </xs:attribute>
+    <xs:attribute name="max" type="Valref">
+      <xs:annotation>
+        <xs:documentation>
+        This is a validity check attribute. The Browser checkes whether the data entered by the user 
+        is less than the maximum value specified by this attribute. If not, the flow control is passed
+        to the child {baddata} element.
+        
+        For text input the length of the enetered string is checked.
+        
+        If {baddata} is omitted validity checks are skipped.
+        </xs:documentation>
+      </xs:annotation>          
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="InputType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="number">
+        <xs:annotation>
+          <xs:documentation>
+          An input field for entering non-negative integer numbers. The number of digits in the input
+          number can not exceed 10. Thus, the maximum number that can be entered is '9999999999'. You
+          can use the 'format' attribute so that the input field displays the numeric value in a way
+          appropriate to the data being entered.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:enumeration>
+      <xs:enumeration value="date">
+        <xs:annotation>
+          <xs:documentation>
+          An input field for entering dates. Note that if you are using a 'date'-type variable as a
+          reference for the 'value' attribute, you can set this variable to a special value of
+          '0000/00/00 00:00:00' to display an empty input field.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:enumeration>
+      <xs:enumeration value="text">
+        <xs:annotation>
+          <xs:documentation>
+          An input field for entering text
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:enumeration>
+      <xs:enumeration value="password">
+        <xs:annotation>
+          <xs:documentation>
+          A text input field where the text is masked. Password is automatically checked for PCI DSS compliance: 
+          * at least 7 symbols
+          * at least 1 number
+          * at least 1 capital and 1 small letter
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:enumeration>
+      <xs:enumeration value="checkbox">
+        <xs:annotation>
+          <xs:documentation>
+          A check box, a switching element representing an option which can be either selected or not.
+          
+          As any other input element, a check box has a TML variable associated with it, which is 
+          specified by the 'name' attribute. It must be of a 'string' type. The initial state of a
+          check box on the screen is defined by the value of this variable and the value of the 'value'
+          attribute. If these two are the same, the check box is initially selected; if otherwise, the
+          check box is not selected.
+          
+          If a user changes the state of a check box, the value of the variable associated with it is
+          updated; if otherwise - remains unchanged. If a user selects a check box, the variable is
+          assigned the value defined by the 'value' attribute. If a user deselects a checkbox, the
+          variable is assigned an empty string ("") as its value.
+          
+          Several checkboxes can be associated with the same variable. The value of multiple checkboxes
+          is assigned to the variable as a semicolon-separated string list. Similarly, several checkboxes
+          associated with the same variable can be initialy selected if the value of this variable contains
+          a string list with the items that correspond to the 'value' attributes of the checkboxes.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:enumeration>
+      <xs:enumeration value="radio">
+        <xs:annotation>
+          <xs:documentation>
+          A radio button is an element representing one of several possible options.
+          
+          A radio button usually belongs to a group in which there are at least two radio buttons. Only
+          one radio button within the group can be selected. (The situation when none of the radio
+          buttons in the group are selected or when there is only one radio button in the group is 
+          treated as normal.)
+          
+          All radio buttons in the group have the same value of the 'name' attribute - the name of a
+          TML variable associated with the group. When one of the radio buttons is selected, this 
+          variable is assigned a value defined by the 'value' attribute of the radio button that has
+          been selected.
+          
+          The initial state of a radio button on the screen is defined by the current value of the
+          variable associated with the group and the value of the 'value' attribute. If those two match
+          the radio button is initially selected; if otherwise, the radio button is not selected.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:enumeration>
+      <xs:enumeration value="submit">
+        <xs:annotation>
+          <xs:documentation>
+          Displays a button that will assign the input form values to the corresponding variables. The
+          Browser will then proceed to the next screen. The label of the button can be customized using
+          the 'value' attribute.Note that you do not need to use this input field to save the form data.
+          See the description of the {form} element for more detail. 
+          </xs:documentation>
+        </xs:annotation>           
+      </xs:enumeration>
+      <xs:enumeration value="reset">
+        <xs:annotation>
+          <xs:documentation>
+          Displays a button that will reset the input form fields to their intial values. The label of
+          the button can be customized using the 'value' attribute.
+          </xs:documentation>
+        </xs:annotation>        
+      </xs:enumeration>
+      <xs:enumeration value="signature">
+        <xs:annotation>
+          <xs:documentation>
+          A signature capture input field. This works only with touch screen terminals. The binary data
+          of the bitmap image of the signature will be assigned to the input variable. So, 'opaque'-type
+          variable should be used for the 'name' attribute.
+          </xs:documentation>
+        </xs:annotation>            
+      </xs:enumeration>
+      <xs:enumeration value="list">
+        <xs:annotation>
+          <xs:documentation>
+          A drop-down box or an open box of several rows, depending on the value of the
+          'rows' and 'multiple' attributes. The drop-down box can be opened and closed by pressing any 
+          number keys on the terminal keypad.
+          
+          A list input allows a selection of a single item or a number of items from a semicolon-separated
+          list of available values. The 'multiple' attribute defines whether or not multiple selections
+          are possible. By default, the value "no" is assumed meaning that only one of the list items
+          can be selected.
+          
+          Initial items that are selected in the list are determined by the value of the variable referenced
+          by the 'name' attribute. If the value of this attribute matches an item in the list, that
+          item will be displayed as selected. If the input field allows multiple selection, you can
+          specify several initial items by using a semicolon-separated list as the value of the 'name' 
+          variable. All matching items will be selected.  
+                 
+          Selected items are assigned to the variable defined by the 'name' attribute. If there are multiple
+          items selected, they are concatenated into a semicolon ';' separated string list before being
+          assigned.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:enumeration>
+      <xs:enumeration value="pinentry">
+        <xs:annotation>
+          <xs:documentation>
+          An input field for PIN entering. 
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="input">
+    <xs:annotation>
+      <xs:documentation>
+      This tag is used within the {form} element to collect information (text, password, etc.) entered
+      by the user.
+      
+      {input} can be used to create input fields of different types. The type of the {input} element is
+      defined by the value of the 'type' attribute.
+      
+      The element has a number of validity check attributes that allow to restrict user input. These
+      attributes are 'equal', 'not_equal', 'max' and 'min'. 
+      
+      If the validity check fails, Incendo Browser switches to the URI specified in the child {baddata}
+      element. If you omit {baddata}, all validity checks are skipped.
+      
+      If the input data is valid, the value entered by the user is assigned to the variable specified
+      by the mandatory 'name' attribute.
+      
+      Default value that will be shown by the input field is set using the 'value' attribute.
+      
+      Two special input types - 'submit' and 'reset' - are used to save or reset the form data.
+
+      One special input type - 'pinentry' is used within the {pinentry} elemnt of {tform}.
+      
+      For more information on the input forms see the description of the {form} element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="baddata" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="type" default="text" type="InputType">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute determines the type of the input field.
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the name of the variable which receives the value entered by the user.
+          
+          Depending on the type of the input field, 'name' attribute may need reference the variables
+          of a specific type:
+          * 'checkbox' - 'string'-type variables
+          * 'signature' - 'opaque'-type variables
+          * 'list' - 'string'-type variable
+          * others - any variable type
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="alt" type="Text">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute is used as a text label for the virtual keyboard (touch-screen terminals only).
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attribute name="readonly">
+        <xs:annotation>
+          <xs:documentation>
+          If this attribute is set, the input field will be read-only, i.e. its value can
+          not be changed.
+          </xs:documentation>
+        </xs:annotation>    
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="readonly"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="size" type="Number">
+        <xs:annotation>
+          <xs:documentation>      
+          Sets the minimum width of a single-line input box for input elements of the 'date', 'number',
+          'password' and 'text' types. The value defines how many characters should fit in the box. 
+      
+          In addition to that, the value of this attribute defines the maximum length 
+          (measured in the number of characters) of the input value. Unlike the 'max' attribute, there
+          is no need for a child {baddata} element. Rather, the Browser will not allow you to input
+          more characters than specified by 'size'.
+          </xs:documentation>
+        </xs:annotation>     
+      </xs:attribute>
+      <xs:attributeGroup ref="input.restrictions"/>
+      <xs:attribute name="value" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          The purpose of this attribute varies slightly depending on the input type:
+          * For input elements of the 'date', 'number', 'password', and 'text' types this attribute
+          defines an initial value to be displayed in the input box.
+          * For input elements of the 'checkbox' and 'radio' types: specifies the value to be assigned
+          to the variable defined by the 'name' attribute when the element is selected.
+          * For the 'list'-type elements, the value attribute should contain a semi-colon ';' separated
+          list of possible selection choices, i.e. "one;two;three"
+          * For the 'submit' and 'reset' input types this attribute specifies the text that will be
+          displayed by the button
+          
+          If you use a variable reference its value is formatted according to the 'format' attribute
+          pattern before being used by the input field.
+          
+          It is recommended to refernce the same type of variable as the one that is specified by the
+          'name' attribute. 
+          </xs:documentation>
+        </xs:annotation>          
+      </xs:attribute>
+      <xs:attribute name="format" type="Formatter">
+         <xs:annotation>
+          <xs:documentation>
+          'format' attribute is used in three ways:
+          * If a variable reference is used as a 'value' attribute, its contents are formatted
+          according to the pattern before being assigned to the input field.
+          * While the text is being entered, its representation in the input field is modified
+          depending on the formatter.
+          * When the form data is saved, the value of the input field is de-formatted according to
+          this pattern before being assigned to the variable specified by the 'name' attribute.
+          
+          The formatter pattern that should be used depends on the input field type:
+          * 'number' - integer formatter
+          * 'date' - date formatter
+          * others - string formatter          
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="width" type="Length">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the width of the input field. This property can be set via CSS.
+          
+          Note that this attribute will be ignored if the specifed width is less that the width of the
+          initial contents of the input field or less that the width set by the 'size' attribute.
+          </xs:documentation>
+        </xs:annotation>           
+      </xs:attribute>
+      <xs:attribute name="height" type="Length">
+        <xs:annotation>
+          <xs:documentation>
+          For most input types, specifies the height of the input field. For 'list'-type input, sets the
+          height of each row in the list box.
+          
+          This property can be set via CSS.
+          
+          Note that this attribute will be ignored if the specifed height is less that the height of the
+          initial contents of the input field.    
+          </xs:documentation>
+        </xs:annotation>         
+      </xs:attribute>
+      <xs:attribute name="rows" type="Number">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute should only be present for 'list'-type input fields. Determines how many rows
+          of the list should be displayed.
+          
+          If the 'rows' attribute is not used for the 'list'-type input, it is assumed to have a value
+          of "1".
+          
+          If the 'multiple' attribute is omitted or its value is set to "no", the 'rows' attribute
+          set to "0" or "1" would specify a drop-down list box.
+          
+          if the number of rows is greater than '1' a scrollable open list box is displayed.
+          </xs:documentation>
+        </xs:annotation>          
+      </xs:attribute>
+      <xs:attribute name="multiple" default="no">
+        <xs:annotation>
+          <xs:documentation>
+          Should only be used for 'list'-type input. Determines whether more than one list item can be
+          selected.
+          </xs:documentation>
+        </xs:annotation>            
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes">
+              <xs:annotation>
+                <xs:documentation>
+                More than one items can be selected from the input list. This will also turn the 'list' 
+                input field into a scrollable open box.
+                </xs:documentation>
+              </xs:annotation>                 
+            </xs:enumeration>
+            <xs:enumeration value="no">
+              <xs:annotation>
+                <xs:documentation>
+                Only a single item can be selected form the list. If the 'rows' attribute is set to
+                '0' or '1' the list will be a drop-down box.
+                </xs:documentation>
+              </xs:annotation>             
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="textarea">
+    <xs:annotation>
+      <xs:documentation>
+      This tag is used within the {form} element to define a multi-line field for entering text.
+      
+      Similar to the 'text'-type {input} element, {textarea} has a number of validity check attributes
+      that allow restricting user input. These are 'equal', 'not_equal', 'max' and 'min'. If the
+      validity check fails, Incendo Browser switches to the URI specified in the child {baddata}
+      element. If you omit {baddata}, validity check is skipped.
+      
+      If the input data is valid, the value entered by the user is assigned to the variable specified
+      by the mandatory 'name' attribute.
+      
+      Default value that will be shown by the input field is set using the 'value' attribute.
+      
+      The way the text is displayed is controlled by means of the 'format' attribute.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="baddata" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="alt" type="Text">
+        <xs:annotation>
+          <xs:documentation>
+          This attribute is used as a text label for the virtual keyboard (touch-screen terminals only).
+          </xs:documentation>
+        </xs:annotation>      
+      </xs:attribute>
+      <xs:attributeGroup ref="attrs"/>
+      <xs:attribute name="name" use="required">
+        <xs:annotation>
+          <xs:documentation>
+          Specifies the name of the variable which receives the value entered by the user.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="readonly">
+        <xs:annotation>
+          <xs:documentation>
+          If this attribute is set, the input field will be read-only, i.e. its value can not be
+          changed.
+          </xs:documentation>
+        </xs:annotation>      
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="readonly"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rows" use="required" type="Number">
+        <xs:annotation>
+          <xs:documentation>
+          Defines the height of the input fields in characters
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="cols" use="required" type="Number">
+        <xs:annotation>
+          <xs:documentation>
+          Defines the width of the input fields in characters
+          </xs:documentation>
+        </xs:annotation>            
+      </xs:attribute>
+      <xs:attributeGroup ref="input.restrictions"/>
+      <xs:attribute name="value" type="Valref">
+        <xs:annotation>
+          <xs:documentation>
+          Assigns an initial value, such as a text or number, to the input field.
+          
+          If you use a variable reference its value is formatted according to the 'format' attribute
+          pattern before being used by the input field.
+          </xs:documentation>
+        </xs:annotation>            
+      </xs:attribute>
+      <xs:attribute name="format" type="Formatter">
+        <xs:annotation>
+          <xs:documentation>
+          'format' attribute is used in three ways:
+          * If a variable reference is used as a 'value' attribute, its contents are formatted
+          according to the pattern before being assigned to the input field.
+          * While the text is being entered, its representation in the input field is modified
+          depending on the formatter.
+          * When the form data is saved, the value of the input field is de-formatted according to
+          this pattern before being assigned to the variable specified by the 'name' attribute.
+          
+          {textarea} uses the string-type formatter pattern.
+          </xs:documentation>
+        </xs:annotation>           
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
+
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2004-2005 Ingenico UK
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico UK.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico UK
+ or with the prior written consent of Ingenico UK or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico UK.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->

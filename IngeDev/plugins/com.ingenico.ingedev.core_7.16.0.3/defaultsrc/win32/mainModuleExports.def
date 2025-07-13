@@ -1,0 +1,7 @@
+; This file describes the function exported from a 'MainModule' DLL.
+EXPORTS
+	InitDll
+	ApplicationMain
+	getJumpTables
+	JumpTableGet
+	InitDll2

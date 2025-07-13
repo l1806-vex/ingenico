@@ -1,0 +1,15 @@
+/////////////////////////////////////////////////////////////////
+//// Macros & preprocessor definitions //////////////////////////
+
+
+//// Global variables ///////////////////////////////////////////
+//extern Word g_nCallingTaskNumber;
+
+//// Static function definitions ////////////////////////////////
+
+//// Functions //////////////////////////////////////////////////
+int PerformCallHost( int nRemoteType,
+					 const char *szCallNumber,
+					 const char *szCallingAppliName,
+					 const char *szContractNumber,
+					 const char *szSoftwareName );

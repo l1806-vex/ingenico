@@ -1,0 +1,205 @@
+
+div.logo {
+margin: 0px;
+padding: 10px 0px 10px 152px;
+
+/* position: absolute;
+left: 120px;
+top: 0px
+width: 100%;*/
+
+text-align: left;
+vertical-align: middle;
+text-decoration: none;
+
+font-family: "Verdana", Sans-serif;
+font-size: 32px;
+font-weight: bold;
+border-bottom-width: 1px;
+border-style: none none dotted;
+border-bottom-color: #A0A0A0;
+}
+
+
+
+div.navigation {
+position: absolute;
+left: 0px;
+top: 0px;
+/*float: left;*/
+text-size: 16px;
+width: 100px;
+margin: 0px;
+border: 0px;
+padding: 10px;
+
+
+text-align: center;
+background: #A0A0A0;
+}
+
+div.content {
+position: absolute;
+left: 120px;
+/*top: 52px;
+float:left;*/
+margin: 0px;
+border: 0px;
+padding: 10px 2em;
+
+text-align: left;
+text-size: 1em;
+}
+
+
+/* INCENDO LOGO STYLES */
+
+span.logo_in {
+font-family: "Arial", Sans-serif;
+text-decoration: none;
+font-weight: bold;
+font-style: normal;
+background-color: #FFFFFF;
+color: rgb(238,51,56);
+}
+
+span.logo_cendo {
+font-family: "Arial", Sans-serif;
+text-decoration: none;
+font-weight: bold;
+font-style: normal;
+background-color: #FFFFFF;
+color: #000000;
+}
+
+span.logo_online {
+font-family: "Arial", Sans-serif;
+text-decoration: none;
+font-weight: normal;
+font-style: italic;
+background-color: rgb(238,51,56);
+color: #FFFFFF;
+}
+
+
+
+/* TABLE PROPERTIES */
+
+table {
+border-style: solid;
+border-width: 2px;
+border-color: rgb(238,51,56);
+border-collapse: collapse;
+}
+
+th {
+text-weight: bold;
+text-align: center;
+background-color: #A0A0A0;
+border-style: solid;
+border-width: 1px;
+border-color: rgb(238,51,56);
+padding-left: 1em;
+padding-right: 1em;
+padding-top: 0px;
+padding-bottom: 0px;
+}
+
+td {
+text-weight: normal;
+text-align: left;
+border-style: solid;
+border-width: 1px;
+border-color: rgb(238,51,56);
+padding-left: 1em;
+padding-right: 1em;
+padding-top: 0px;
+padding-bottom: 0px;
+}
+
+
+/* HEADER STYLES */
+
+h1 {
+
+font-size: 2em;
+font-weight: bold;
+text-align: left;
+text-decoration: none;
+color: #808080;
+border-style: none none solid;
+border-bottom-width: 2px;
+border-bottom-color: rgb(238,51,56);
+margin-bottom 2em;
+margin-top:0.5em;
+}
+
+h2 {
+
+font-size: 1.5em;
+font-weight: bold;
+text-align: left;
+text-decoration: none;
+color: #808080;
+border-style: none none solid;
+border-bottom-width: 1px;
+border-bottom-color: #A0A0A0;
+margin-bottom 2em;
+}
+
+.type {
+font-family: "Georgia", Serif;
+}
+
+/* ELEMENT LINKS */
+
+a.element:link {
+font-size: 1em;
+font-weight: bold;
+color: black;
+text-decoration: none;
+}
+
+a.element:visited {
+font-size: 1em;
+font-weight: bold;
+color: black;
+text-decoration: none;
+}
+
+a.element:hover {
+font-size: 1em;
+font-weight: bold;
+color: black;
+text-decoration: underline;
+}
+
+a.element:active {
+font-size: 1em;
+font-weight: bold;
+color: #909090;
+text-decoration: none;
+}
+
+/* TEXT EFFECTS */
+span.highlight {
+font-weight: bold;
+}
+
+/* LIST STYLES */
+ul {
+/*
+padding: 0px;
+margin: 0px;
+*/
+}
+
+li.list1 {
+list-style-type: disc;
+
+}
+
+li.list2 {
+list-style-type: circle;
+margin-left: 1em;
+}

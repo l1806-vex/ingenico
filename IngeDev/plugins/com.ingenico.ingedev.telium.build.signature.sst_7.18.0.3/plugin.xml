@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="SstSignatureProvider_ProjectTypeSettings" name="Telium Build Sst Signature Provider Project Type Settings" schema="schema/SstSignatureProvider_ProjectTypeSettings.exsd"/>
+   <extension
+         point="com.ingenico.ingedev.telium.core.signatureProvider">
+      <signatureProviderDef
+            class="com.ingenico.ingedev.telium.build.signature.sst.SstTeliumBuildSignatureProvider">
+      </signatureProviderDef>
+   </extension>
+
+</plugin>

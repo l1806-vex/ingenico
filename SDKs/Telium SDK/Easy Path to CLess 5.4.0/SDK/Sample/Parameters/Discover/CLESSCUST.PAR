@@ -1,0 +1,58 @@
+<?xml version="1.0" standalone="yes" ?>
+
+<!-- Default parameters -->
+<tlvtree ver="1.0">
+	<node tag="0x0">
+		<node tag="0x9F918801"> 44 69 73 63 6F 76 65 72 </node>													<!-- TAG_SAMPLE_PARAMETERS_LABEL : Parameters identifier label -->
+
+		<node tag="0xBF918800">																					<!-- TAG_SAMPLE_AID_PARAMETERS -->
+			<node tag="0x1000">
+				<!-- AID : Discover AID for debit -->
+				<node tag="0x9F06"> A0 00 00 03 24 10 10 </node>												<!-- TAG_AID_TERMINAL : Discover AID -->
+				<node tag="0x9F928101"> 01 02 </node>															<!-- TAG_EP_KERNEL_TO_USE : Discover -->
+				<node tag="0x9F928100"> 05 03 00 00 </node>														<!-- TAG_EP_AID_OPTIONS : Partial AID & Zero amount -->
+				<node tag="0x9F1A"> 01 24 </node>																<!-- TAG_EMV_TERMINAL_COUNTRY_CODE -->
+			</node>
+		</node>																									<!-- End node 0xBF918800 : TAG_SAMPLE_AID_PARAMETERS -->
+
+
+		<node tag="0xBF918801">																					<!-- TAG_SAMPLE_CAKEYS_PARAMETERS -->
+		</node>																									<!-- End node 0xBF918801 : TAG_SAMPLE_CAKEYS_PARAMETERS-->
+
+		<node tag="0xBF918802">																					<!-- TAG_SAMPLE_CAREVOK_PARAMETERS -->
+		</node>																									<!-- End node 0xBF918802 : TAG_SAMPLE_CAREVOK_PARAMETERS -->
+
+		<node tag="0xBF918803">																					<!-- TAG_SAMPLE_ICS_PARAMETERS -->
+			<node tag="0x1000">
+				<!-- ICS0 values -->
+				<node tag="0x9F928210"> 03 00 00 00 </node>														<!-- TAG_GENERIC_DETECTION_TYPE -->
+				<node tag="0x9F928212"> 00 00 17 70 </node>														<!-- TAG_GENERIC_DETECTION_GLOBAL_TIMEOUT : 6000 -->
+				<node tag="0x9F928214"> 01 </node>																<!-- TAG_GENERIC_DETECTION_NB_CARDS_TO_DETECT -->
+				<node tag="0x9F918804"> 03 A9 80 </node>														<!-- TAG_SAMPLE_NO_CARD_TIMEOUT : 4 minutes (240000ms = 3A980) (Interac GUI mode) -->
+
+				<!-- Application Independent Data -->
+				<node tag="0x9F1A"> 00 56 </node>																<!-- TAG_EMV_TERMINAL_COUNTRY_CODE -->
+				<node tag="0x9F40"> 60 00 F0 B0 01 </node>														<!-- TAG_EMV_ADD_TERMINAL_CAPABILITIES -->
+				<node tag="0x9F35"> 22 </node>																	<!-- TAG_EMV_TERMINAL_TYPE -->
+
+				<!-- Application Dependent Data -->
+				<node tag="0x9F01"> 01 23 45 67 89 01 </node>													<!-- TAG_EMV_ACQUIRER_IDENTIFIER -->
+				<node tag="0x9F15"> 00 00 </node>																<!-- TAG_EMV_MERCHANT_CATEGORY_CODE -->
+				<node tag="0x9F16"> 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 </node>						<!-- TAG_EMV_MERCHANT_IDENTIFIER -->
+				<node tag="0x9F1C"> 31 32 33 34 35 36 37 38 </node>												<!-- TAG_EMV_TERMINAL_IDENTIFICATION -->
+			</node>																								<!-- End node 1000 -->
+		</node>																									<!-- End node 0xBF918803 : TAG_SAMPLE_ICS_PARAMETERS-->
+
+		<node tag="0xBF918804">																					<!-- TAG_SAMPLE_SPECIFIC_PARAMETERS -->
+			<!-- Discover Specific parameters -->
+			<node tag="0x1000">
+				<node tag="0x9F928101"> 01 02 </node>															<!-- TAG_EP_KERNEL_TO_USE : DISCOVER -->
+			</node>																								<!-- End node 1000 -->
+
+			<node tag="0x9F918802" format="ascii"> "EUR9782,.1" </node>											<!-- TAG_SAMPLE_GENERIC_MONEY_EXTENDED EUR9782,.1 -->
+			<node tag="0x9F918802" format="ascii"> "MYR4582,.1" </node>											<!-- TAG_SAMPLE_GENERIC_MONEY_EXTENDED MYR4582,.1 -->
+			<node tag="0x9F918802" format="ascii"> "CAD1242,.1" </node>											<!-- TAG_SAMPLE_GENERIC_MONEY_EXTENDED CAD1242,.1 -->
+			<node tag="0x9F918802" format="ascii"> "USD8402,.1" </node>											<!-- TAG_SAMPLE_GENERIC_MONEY_EXTENDED USD8402,.1 -->
+		</node>																									<!-- End node 0xBF918804 : TAG_SAMPLE_SPECIFIC_PARAMETERS-->
+	</node>																										<!-- End node 0 -->
+</tlvtree>

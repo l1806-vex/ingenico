@@ -1,0 +1,35 @@
+<!-- ============================================================= -->
+<!-- widgetMappings.iml                                            -->
+<!-- ============================================================= -->
+<!-- WARNING: This file must be located at project root.           -->
+<!--          This file is used in all GML files of the project    -->
+<!-- ============================================================= -->
+<!-- In GML files, all the widgets are identified by an "<idname>" -->
+<!-- element. They allow to manage interactions between the        -->
+<!-- application business part (written in "C" code) and           -->
+<!-- the screen resource.                                          -->
+<!-- The "idname" and "idval" attributes are used to build in      -->
+<!-- include file (IncGen/widgeMappings.h) to develop the          -->
+<!-- application business part in "C".                             -->
+<!-- For each <widgetMapping> tag, the "#define idname idval" line -->
+<!-- is generated in "widgeMappings.h" file.                       -->
+<!-- That is the reason why "idname" must follow the same ANSI     -->
+<!-- rules used in a "#define".                                    -->
+<!-- "idval" is the string representation of an integer.           -->
+<!-- Only ids declared in "idname" attributes can be used id GML   -->
+<!-- files.                                                        -->
+<widgetMappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ingenico.com/schemas/widgetmappings/1_0">
+    <widgetMapping idname="ID_LABEL_NAME" idval="1"/>
+    <widgetMapping idname="ID_EDIT_NAME" idval="2"/>
+    <widgetMapping idname="ID_LABEL_AGE" idval="3"/>
+    <widgetMapping idname="ID_EDIT_AGE" idval="4"/>
+    <widgetMapping idname="ID_LABEL_ZIP" idval="5"/>
+    <widgetMapping idname="ID_EDIT_ZIP" idval="6"/>
+    <widgetMapping idname="ID_LABEL_CITY" idval="7"/>
+    <widgetMapping idname="ID_EDIT_CITY" idval="8"/>
+    <widgetMapping idname="ID_RADIO_MALE" idval="9"/>
+    <widgetMapping idname="ID_RADIO_FEMALE" idval="10"/>
+    <widgetMapping idname="ID_CHECK_MARITAL" idval="11"/>
+    <widgetMapping idname="ID_BUTTON_OK" idval="12"/>
+    <widgetMapping idname="ID_BUTTON_CANCEL" idval="13"/>
+</widgetMappings>

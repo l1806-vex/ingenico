@@ -1,0 +1,10 @@
+2013-04-08 14:38:54,602 TRC.main INFO    : Init is done. Enjoy your testing.
+2013-04-08 14:38:55,737 TRC.main INFO    : Terminal iCT250 is connected
+2013-04-08 14:40:55,256 TRC.main INFO    : Starting Play Thread
+2013-04-08 14:40:55,766 TRC.ScriptEditor INFO    : File saved as : C:\Program Files (x86)\Ingenico\Terminal Remote Control\myscripts\01_serial_com.py
+2013-04-08 14:40:55,907 TRC.main INFO    : Starting script
+2013-04-08 14:40:55,907 TRC.main INFO    : Clearing History
+2013-04-08 14:40:55,927 TRC.main INFO    : Starting script C:\Program Files (x86)\Ingenico\Terminal Remote Control\myscripts\01_serial_com.py
+2013-04-08 14:41:01,546 TRC.main INFO    : Finished script C:\Program Files (x86)\Ingenico\Terminal Remote Control\myscripts\01_serial_com.py
+2013-04-08 14:41:01,786 TRC.main INFO    : ----------------------------------
+2013-04-08 14:41:01,805 TRC.main INFO    : Test OK

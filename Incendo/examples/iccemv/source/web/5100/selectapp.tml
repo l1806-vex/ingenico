@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tml xmlns="http://www.ingenico.com/tml" cache="allow">
+    <head>
+        <defaults menu="idle://idle.tml" cancel="#emv"/>
+    </head>
+
+	<!-- PRIMARY LIST -->
+	<vardcl name="primary_list" type="string" perms="rwx--"/>		
+	<!-- SECONDARY LIST-->
+	<vardcl name="secondary_list" type="string" perms="rwx--"/>		
+
+	<!-- Application parametres chosen from the list on the current loop step-->
+	<vardcl name="current_app" type="string"/>						
+	<vardcl name="current_status" type="string"/>					
+	<vardcl name="current_icc" type="string"/>						
+	<vardcl name="current_asf" type="string"/>						
+
+	<!-- The number of the application in the list-->
+	<vardcl name="app_number" type="integer"/>						
+
+	<!-- Indicates wheather there are some inactive applications in the primary list-->
+	<vardcl name="inactive_flag" type="integer"/>					
+
+	<!-- Current loop step-->
+	<vardcl name="index" type="integer"/>							
+
+	<!--==============================================================================
+	Cleaning variables
+	==================================================================================
+	-->
+	<screen id="index" cancel="idle://idle.tml" next="#emv">
+        <tform>
+            <baddata class="c_center" max="3" next="idle://idle.tml">
+				Cleaning failed
+            </baddata>
+			<card parser="icc_emv" parser_params="clean"/>
+        </tform>	
+	</screen>
+
+	<!--==============================================================================
+	The screen that waits for magnetic card swipe or insertion of ICC EMV card
+	==================================================================================
+	-->
+	<screen id="emv" class="c_center" next="#init">
+		<tform>
+			<baddata class="c_center" max="1" next="#no_app">
+				err.baddata_reason = [<getvar name="err.baddata_reason"/>]
+			</baddata>
+			<card parser="icc_emv" parser_params="init_app"/>
+			<prompt>
+			<table height="100%" width="100%"><tr><td align="center" valign="middle">
+				Please insert the card<br/>
+				Press MENU for cancel working with card.
+			</td></tr></table>
+			</prompt>
+		</tform>
+	</screen>
+
+	<screen id="init" next="#make_list">
+		<setvar name="inactive_flag" lo="0"/>
+		<setvar name="primary_list" lo=""/>
+		<setvar name="secondary_list" lo=""/>
+		<setvar name="app_number" op="number" lo="tmlvar:card.emv.app_list"/>
+		<setvar name="index" lo="0"/>
+	</screen>
+	
+	<!--	When the ICC is not present or not equal to "CAN"
+			the application should be added to the PRIMARY list
+	-->
+	
+	<screen id="make_list">
+		<setvar name="current_app" op="item" lo="tmlvar:card.emv.app_list" ro="tmlvar:index"/>
+		<setvar name="current_icc" op="item" lo="tmlvar:card.emv.icc_list" ro="tmlvar:index"/>
+		<setvar name="current_asf" op="item" lo="tmlvar:card.emv.asf_list" ro="tmlvar:index"/>
+		<setvar name="current_status" op="item" lo="tmlvar:card.emv.app_status_list" ro="tmlvar:index"/>
+		<setvar name="index" op="plus" lo="tmlvar:index" ro="1"/>
+		<next uri="#sel_flag">
+			<variant uri="#app_choice" lo="tmlvar:app_number" ro="tmlvar:index" op="less"/>
+			<variant uri="#primary" lo="tmlvar:current_icc" ro="CAN" op="not_equal"/>
+		</next>
+	</screen>
+
+	<!-- 	Check the ASF. If the application is not used by
+			this type of the terminal skip it
+	-->
+
+	<screen id="sel_flag">
+		<next uri="#make_list">
+			<variant uri="#primary" lo="tmlvar:current_asf" ro="10" op="equal"/>
+			<variant uri="#primary" lo="tmlvar:current_asf" ro="XX" op="equal"/>
+			<variant uri="#secondary" lo="tmlvar:current_asf" ro="01" op="equal"/>
+			<variant uri="#primary" lo="tmlvar:current_asf" ro="00" op="equal"/>
+			<!-- 11 or 00 (depends on the type of the terminal, if POS - 11, if non-ABM - 00)-->
+		</next>
+	</screen>
+	
+	<!--If the application is inactive - set inact_flag to 1t
+	-->
+	<screen id="primary">
+		<next uri="#add_pr">
+			<variant uri="#inact_flag" lo="tmlvar:current_status" ro="inactive" op="equal"/>
+		</next>
+	</screen>
+	<!--	Addition of the application to the primary list
+	-->
+
+	<screen id="add_pr" next="#make_list">
+		<setvar name="current_app" lo="tmlvar:current_app" ro=";" op="plus"/>
+		<setvar name="primary_list" lo="tmlvar:primary_list" ro="tmlvar:current_app" op="plus"/>
+	</screen>
+
+	<screen id="inact_flag" next="#make_list">
+		<setvar name="inactive_flag" lo="1"/>
+	</screen>
+
+	<!--	Addition of the application to the secondary list
+	-->
+
+	<screen id="secondary" next="#make_list">
+		<setvar name="current_app" lo="tmlvar:current_app" ro=";" op="plus"/>
+		<setvar name="secondary_list" lo="tmlvar:secondary_list" ro="tmlvar:current_app" op="plus"/>
+	</screen>	
+
+	<!-- The <variant> elements are in the strict order,
+		if primary list is empty AND inactive_flag is not equal to 0
+		(which means that there are only blocked applications in the primary list)
+		then the transaction should be terminated.
+		If both lists are empty - terminate transaction
+	-->
+
+	<screen id="app_choice">
+		<next uri="#no_app">
+			<variant uri="#pr_list" lo="tmlvar:primary_list" ro="" op="not_equal"/>
+			<variant uri="#no_app" lo="tmlvar:inactive_flag" ro="0" op="not_equal"/>
+			<variant uri="#s_list" lo="tmlvar:secondary_list" ro="" op="not_equal"/>
+		</next>
+	</screen>
+
+	<!-- Manual application selection
+	-->
+
+	<screen id="pr_list" next="#final">
+		<display>
+			<form>
+			<table height="100%" width="100%"><tr><td align="center" valign="middle">
+   					<input type="list" width="100%" rows="3" name="card.emv.selected_app" value="tmlvar:primary_list" multiple="no"/><br/>
+				</td></tr></table>
+			</form>
+		</display>
+	</screen>
+	
+	<screen id="s_list" next="#final">
+		<display>
+			<form>
+				<table height="100%" width="100%"><tr><td align="center" valign="middle">
+   					<input type="list" width="100%" rows="3" name="card.emv.selected_app" value="tmlvar:secondary_list" multiple="no"/><br/>
+				</td></tr></table>
+
+			</form>
+		</display>
+	</screen>
+	
+	<screen id="final" class="c_center" menu="idle://idle.tml">
+		<next uri="#no_app">
+		<!-- If the application is not chosen (card.emv.app_list is not empty
+			or baddata - the overall procedure should be repeated
+		-->
+			<variant uri="#ok" lo="tmlvar:card.emv.app_list" ro="" op="equal"/>
+		</next>
+		<tform>
+			<baddata class="c_center" max="1" next="#init">
+			This aApplication can not be chosen
+			</baddata>
+			<card parser="icc_emv" parser_params="final_select"/>
+		</tform>
+	</screen>
+
+	<screen id="no_app" timeout="3" class="c_center" next="#remove_card">
+		<display>
+		<table height="100%" width="100%"><tr><td align="center" valign="middle">
+			No applications available<br/>
+			Press Enter
+		</td></tr></table>
+		</display>
+	</screen>
+
+	<screen id="ok" class="c_center" next="#remove_card">
+		<display>
+		<table height="100%" width="100%"><tr><td align="center" valign="middle">
+ 		Application <br/>
+		AID: <getvar name="card.emv.aid"/> <br/>
+		has been successfully selected<br/>
+		Press Enter
+		</td></tr></table>
+		</display>
+	</screen>
+	
+	<screen id="remove_card" class="c_center" next="#emv">        
+		<tform>
+			<card parser="icc_emv" parser_params="wait_remove_card"/>
+			<prompt>
+				Please, Remove Card
+			</prompt>
+			</tform>
+	</screen>
+</tml>

@@ -1,0 +1,108 @@
+# ----------------------------------------------------------------------------
+#                   INGENICO Technical Software Department
+# ----------------------------------------------------------------------------
+# Copyright (c) 2009, Ingenico.
+# 192 avenue Charles de Gaulle 92200 Neuilly-sur-Seine, France.
+# All rights reserved.
+#
+# \file libx264-ingenico.ffpreset
+# \brief Recommanded libx264 settings for Ingenico payment devices
+# \date 01/10/2009 11:14
+#
+# Ensure this file has unix end-of-line, otherwise FFmpeg won't accept it.
+# Requires FFmpeg version SVN-20600 (2009.11.24) or better.
+#
+# Usage: 
+# 1. Copy this file in $HOME/.ffmpeg/libx264-ingenico.ffpreset
+# 2. Encode any input video with :
+#    $ ffmpeg -i any.video -vcodec libx264 -vpre ingenico ...
+# ----------------------------------------------------------------------------
+
+# Video bitrate (kb/s)
+b=300k
+
+##
+# Frame-type options 
+##
+
+# Baseline H.264 profile 
+# - disable CABAC entropy coding
+# - no B-frames
+coder=0
+bf=0
+
+# Number of I reference frames (up to 16)
+refs=4
+
+# GOP max (maximum distance between I-frames)
+g=200
+
+# GOP min (minimum distance between I-frames)
+keyint_min=25
+
+# Level 3.0 (40500 macroblocks/s, max 720x480@30)
+# Level 3.1 (108000 macroblocks/s, max 1280x720@30)
+level=30
+
+# Enable loop filter
+flags=+loop
+
+# Scene cut detection (default)
+sc_threshold=40
+
+# full pel me compare function
+cmp=+chroma
+
+##
+# Rate control (keep default settings)
+##
+qcomp=0.6
+qmin=10
+qmax=51
+qdiff=4
+
+# Qscale difference between I-frames and P-frames
+i_qfactor=0.71
+
+# VBV (video buffering verifier) parameters
+maxrate=1500000
+bufsize=8000000
+
+##
+# Analysis
+##
+
+# Weighted prediction analysis for p-frames (requires ffmpeg>=SVN-20600)
+# 0: off
+# 1: fast blind weighting (one reference duplicate with -1 offset)
+# 2: smart weighting (full fade detection analysis)
+# Warning: put 1 or 2 here will switch to Main profile
+wpredp=0
+
+# Macroblock subpartition sizes to consider
+partitions=+parti8x8+parti4x4+partp8x8+partp4x4-partb8x8
+
+# Motion estimation (dia, hex, uhm, esa, tesa)
+# tesa (transformed exhaustive) is an algorithm which attempts to approximate the effect of running a Hadamard transform comparison at each motion vector
+me_method=tesa
+
+# Subpixel estimation complexity. [0-10]
+subq=10
+
+# Controls the max range of the motion search.
+me_range=24
+
+# Performs Trellis quantization to increase efficiency. [0-2]. Requires CABAC?
+# 0: disabled. uniform deadzone quantizer
+# 1: enabled only on the final encode of a MB
+# 2: enabled on all mode decisions
+trellis=2
+
+# None, Spatial, Temporal, Auto
+directpred=3
+
+# dct8x8: high profile 8x8 transform (H.264)
+# wpred: weighted biprediction for b-frames (H.264)
+# mixed_refs: one reference per partition, as opposed to one reference per macroblock
+# fastpskip: early skip detection on P-frames (H.264)
+flags2=+mixed_refs-dct8x8-fastpskip-wpred

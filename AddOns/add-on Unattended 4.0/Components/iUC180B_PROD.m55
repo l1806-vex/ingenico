@@ -1,0 +1,16 @@
+;Components for iUC180B platform
+;UCMC
+33860400.agn
+;UCM Start
+33870400.lgn
+;Pack UCM Components
+37930401.pgn
+;DLL UCI
+8130390103.lgn
+;OS iUR250
+8203730376.dgn
+;DLL ExtReader
+8442330201.lgn
+;iUC180 + SAMS + NOEP
+UCMJZ01c.PAS
+

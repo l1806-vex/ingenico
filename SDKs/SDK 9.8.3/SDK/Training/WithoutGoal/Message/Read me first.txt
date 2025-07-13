@@ -1,0 +1,1 @@
+Copy in this directory the following tools = BUILDMSG.EXE and MSG2C.EXE from SDK

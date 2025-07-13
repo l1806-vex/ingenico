@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+    <!-- 
+    
+    This file contains the terminal representation of OS dependent values
+    User should specify:
+        serial number,
+        identificator of the manufacturer,
+        referrence identifier,
+        date of manufacturing,
+        version of OS kernel,
+        version of OS,
+
+    -->
+<terminal>
+    <model value="8550">
+        <serial value="987654321012"/>
+        <manufacturer_id value="000001"/>
+        <reference_id value="I8550_SIMULATOR"/>
+        <manufacturing_date value="2005"/>
+        <prk_name value="8550A0202591"/>
+        <app_name value="GB0H00_OE_Mi"/>
+        <program_name value="8550A0202601"/>
+        <version value="03.27"/>
+    </model>
+    <!--model value="8500"-->
+        <!--serial value="123456789012"/-->
+        <!--manufacturer_id value="000001"/-->
+        <!--reference_id value="I8500_SIMULATOR"/-->
+        <!--manufacturing_date value="2005"/-->
+        <!--prk_name value="8500A0202591"/-->
+        <!--app_name value="GB0H00_OE_Mi"/-->
+        <!--program_name value="8500A0202601"/-->
+        <!--version value="03.27"/-->
+    <!--/model-->
+    <model value="5100">
+        <serial value="987654321012"/>
+        <manufacturer_id value="000001"/>
+        <reference_id value="I5100_SIMULATOR"/>
+        <manufacturing_date value="2005"/>
+        <prk_name value="5100A0202591"/>
+        <app_name value="GB0H00_OE_Mi"/>
+        <program_name value="5100A0202601"/>
+        <version value="03.27"/>
+    </model>
+    <model value="7910">
+        <serial value="987654321012"/>
+        <manufacturer_id value="000001"/>
+        <reference_id value="I7910_SIMULATOR"/>
+        <manufacturing_date value="2005"/>
+        <prk_name value="7910A0202591"/>
+        <app_name value="GB0H00_OE_Mi"/>
+        <program_name value="7910A0202601"/>
+        <version value="03.27"/>
+    </model>
+
+    <model value="6550">
+        <serial value="987654321012"/>
+        <manufacturer_id value="000001"/>
+        <reference_id value="I6550_SIMULATOR"/>
+        <manufacturing_date value="2006"/>
+        <prk_name value="6550A0202591"/>
+        <app_name value="GB0H00_OE_Mi"/>
+        <program_name value="6550A0202601"/>
+        <version value="03.27"/>
+    </model>
+
+    <model value="6780">
+        <serial value="987654321012"/>
+        <manufacturer_id value="000001"/>
+        <reference_id value="I6780_SIMULATOR"/>
+        <manufacturing_date value="2006"/>
+        <prk_name value="6780A0202591"/>
+        <app_name value="GB0H00_OE_Mi"/>
+        <program_name value="6780A0202601"/>
+        <version value="03.27"/>
+    </model>
+
+    <model value="6580">
+        <serial value="987654321012"/>
+        <manufacturer_id value="000001"/>
+        <reference_id value="I6580_SIMULATOR"/>
+        <manufacturing_date value="2007"/>
+        <prk_name value="6580A0202591"/>
+        <app_name value="GB0H00_OE_Mi"/>
+        <program_name value="6580A0202601"/>
+        <version value="03.27"/>
+    </model>
+</terminal>

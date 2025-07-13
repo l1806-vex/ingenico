@@ -1,0 +1,42 @@
+/* Output format */
+OUTPUT_FORMAT("elf32-littlearm")
+
+/* Entry point */
+ENTRY(_start)
+
+/* Memory mapping */
+MEMORY {
+    rom : org = 0x00000000, l = 1M
+    ram : org = 0x00200000, l = 1M
+}
+
+/* Sections */
+SECTIONS {
+    /* Code */
+    .text : {
+        __text_start = . ;
+        *(.first)
+        *(.text)
+        *(.strings)
+        *(.strings.*)
+        *(.rodata)
+        *(.rodata.*)
+        *(.glue_7)
+        *(.glue_7t)
+        __text_end = . ;
+    } > rom
+    /* Initialised variables : initial values*/
+    .init : AT(__text_end) {
+        __data_start = . ;
+        *(.data)
+        __data_end = . ;
+    } > ram
+    /* Uninitialised variables */
+    .bss : {
+        __bss_start = . ;
+        *(.bss)
+        *(COMMON)
+        __bss_end = . ;
+        end = . ;
+    } > ram
+}

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--========================================================================
+
+ ==========================================================================
+ COPYRIGHT (C) 2007 Ingenico
+ ALL RIGHTS RESERVED
+
+ Copyright in the whole and every part of this software program belongs to
+ Ingenico.  It may not be used, sold, licensed, transferred, copied
+ or reproduced in whole or in part in any manner or form other than in
+ accordance with and subject to the terms of a licence from Ingenico
+ or with the prior written consent of Ingenico or as
+ permitted by applicable law.
+ This software program contains confidential and proprietary information and
+ must not be disclosed, in whole or in part, to any person or organisation
+ without the prior written consent of Ingenico.
+ Any copies or reproductions of this software program (in whole or in part)
+ made by any method must also include a copy of this legend.
+ ==========================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	   xmlns:tns="http://ingenico.com/ns/emm/data"
+           xmlns:common="http://ingenico.com/ns/common/data" 
+           targetNamespace="http://ingenico.com/ns/emm/data">
+    <xs:annotation>
+        <xs:documentation>
+        </xs:documentation>
+    </xs:annotation>
+    <xs:annotation>
+        <xs:documentation>
+            ================== Imported Names ====================================
+        </xs:documentation>
+    </xs:annotation>
+    <xs:import namespace="http://ingenico.com/ns/common/data" schemaLocation="./common.xsd"/>
+
+    <xs:simpleType name="TerminalStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="New"/>
+            <xs:enumeration value="Active"/>
+            <xs:enumeration value="Suspended"/>
+            <xs:enumeration value="Swapped"/>
+            <xs:enumeration value="Reset"/>
+            <xs:enumeration value="Retired"/>
+            <xs:enumeration value="Replaced"/>
+            <xs:enumeration value="Locked"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="GroupStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Active"/>
+            <xs:enumeration value="Suspended"/>
+            <xs:enumeration value="Retired"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TerminalSortFieldType">
+        <xs:annotation>
+            <xs:documentation>
+                Types of configurations
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="initialitid"/>
+            <xs:enumeration value="model"/>
+            <xs:enumeration value="code"/>
+            <xs:enumeration value="serial"/>
+            <xs:enumeration value="partNumber"/>
+            <xs:enumeration value="status"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="GroupSortFieldType">
+        <xs:annotation>
+            <xs:documentation>
+                Types of configurations
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="groupReference"/>
+            <xs:enumeration value="parentReference"/>
+            <xs:enumeration value="name"/>
+            <xs:enumeration value="address"/>
+            <xs:enumeration value="details"/>
+            <xs:enumeration value="status"/>
+        </xs:restriction>
+    </xs:simpleType>    
+    <xs:element name="Terminal" type="tns:Terminal"/>
+    <xs:complexType name="Terminal">
+        <xs:annotation>
+            <xs:documentation>
+                This entity provides terminal info
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="xs:long" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    terminal id, -1 means new terminal
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="itid" type="common:Terminal.ITID" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    ingenico terminal id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>      
+        <xs:attribute name="clientIdExt" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    external client id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>      
+        <xs:attribute name="merchant" type="common:Terminal.Merchant" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    serial number
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="serial" type="common:Terminal.SerialNumber" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    serial number
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="partNumber" type="common:Terminal.PartNumber" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    part number
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="status" type="tns:TerminalStatus" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    status
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="synch" type="xs:boolean" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    synch
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="seckey" type="common:Terminal.Seckey" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    security key
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="expired" type="xs:long" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    expired date, in milliseconds since 1970 in gmt
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="replitid" type="common:Terminal.ITID" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    itid of replaced terminal
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="initialitid" type="common:Terminal.ITID" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    initial itid
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="idle" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    idle name
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="Terminals" type="tns:Terminals"/>
+    <xs:complexType name="Terminals">
+        <xs:annotation>
+            <xs:documentation>
+                list of terminals
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="terminal" type="tns:Terminal" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="TerminalQuery" type="tns:TerminalQuery"/>
+    <xs:complexType name="TerminalQuery">
+        <xs:annotation>
+            <xs:documentation>
+                Terminal query data
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="itid" type="common:Terminal.ITID" minOccurs="0"/>            
+            <xs:element name="serial" type="common:Terminal.SerialNumber" minOccurs="0"/>
+            <xs:element name="partNumber" type="common:Terminal.PartNumber" minOccurs="0"/>
+            <xs:element name="status" type="tns:TerminalStatus" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="Owner.Name">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Owner.Address">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Owner.Details">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="SwapoutDetails" type="tns:SwapoutDetails"/>
+    <xs:complexType name="SwapoutDetails">
+        <xs:annotation>
+            <xs:documentation>
+                Parameters required for terminal swapout
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="olditid" type="common:Terminal.ITID"/>
+            <xs:element name="newitid" type="common:Terminal.ITID" minOccurs="0"/>
+            <xs:element name="newSerialNumber" type="common:Terminal.SerialNumber"/>
+            <xs:element name="newPartNumber" type="common:Terminal.PartNumber"/>
+            <xs:element name="newSecurityKey" type="common:Terminal.Seckey"/>
+            <xs:element name="newSecurityKeyExpiry" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ReplacementData" type="tns:ReplacementData"/>
+    <xs:complexType name="ReplacementData">
+        <xs:annotation>
+            <xs:documentation>
+                Parameters required for terminal replacement
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="newItid" type="common:Terminal.ITID" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="serialNumber" type="common:Terminal.SerialNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="partNumber" type="common:Terminal.PartNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="securityKey" type="common:Terminal.Seckey" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="securityExpirationDate" type="xs:long" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="effectDate" type="xs:long" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ReplacementExecuted" type="tns:ReplacementExecuted"/>
+    <xs:complexType name="ReplacementExecuted">
+        <xs:annotation>
+            <xs:documentation>
+                Result data after replacement
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="newItid" type="common:Terminal.ITID" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="serialNumber" type="common:Terminal.SerialNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="partNumber" type="common:Terminal.PartNumber" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="securityKey" type="common:Terminal.Seckey" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="securityExpirationDate" type="xs:long" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="effectDate" type="xs:long" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="TerminalSortList" type="tns:TerminalSortList"/>
+    <xs:complexType name="TerminalSortList">
+        <xs:annotation>
+            <xs:documentation>
+                list of sortable fields for terminals
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="site" type="tns:TerminalSortField" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="TerminalSortField" type="tns:TerminalSortField"/>
+    <xs:complexType name="TerminalSortField">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="fieldName" type="tns:TerminalSortFieldType" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="sortDirection" type="common:SortDirection" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="GroupSortList" type="tns:GroupSortList"/>
+    <xs:complexType name="GroupSortList">
+        <xs:annotation>
+            <xs:documentation>
+                list of sortable fields for groups ( i.e. bank/merchant/site)
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="site" type="tns:GroupSortField" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="GroupSortField" type="tns:GroupSortField"/>
+    <xs:complexType name="GroupSortField">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="fieldName" type="tns:GroupSortFieldType" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="sortDirection" type="common:SortDirection" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="TerminalLogs" type="tns:TerminalLogs"/>
+    <xs:complexType name="TerminalLogs">
+        <xs:annotation>
+            <xs:documentation>
+                A list containing TerminalLog entities.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="log" type="tns:TerminalLog" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TerminalLog">
+        <xs:attribute name="id" type="xs:long" use="required"/>
+        <xs:attribute name="cid" type="common:Terminal.ITID" use="required"/>
+        <xs:attribute name="name" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="uri" type="xs:string" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="TerminalLogRecords">
+        <xs:sequence>
+            <xs:element name="record" type="tns:TerminalLogRecord" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TerminalLogRecord">
+        <xs:attribute name="id" type="xs:long" use="required"/>
+        <xs:attribute name="lid" type="xs:long" use="required"/>
+        <xs:attribute name="term_date" type="common:ingDateTime" use="required"/>
+        <xs:attribute name="module" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="severity" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="20"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="descr" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="255"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="TerminalCapabilities">
+        <xs:attribute name="model" type="xs:string" use="required"/>
+        <xs:attribute name="browser" type="xs:string" use="required"/>
+        <xs:attribute name="magcardEnabled" type="xs:boolean" use="required"/>
+        <xs:attribute name="iccemvEnabled" type="xs:boolean" use="required"/>
+        <xs:attribute name="clessEnabled" type="xs:boolean" use="required"/>
+        <xs:attribute name="pinpadEnabled" type="xs:boolean" use="required"/>
+        <xs:attribute name="screenType" type="xs:string" use="required"/>
+        <xs:attribute name="resolution" type="xs:string" use="required"/>
+        <xs:attribute name="touchEnabled" type="xs:boolean" use="required"/>
+        <xs:attribute name="printerEnabled" type="xs:boolean" use="required"/>
+    </xs:complexType>
+    <xs:element name="Histories" type="tns:Histories"/>
+    <xs:complexType name="Histories">
+        <xs:annotation>
+            <xs:documentation>
+                A list containing Terminal's Histories.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="history" type="tns:History" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="History" type="tns:History"/> 
+    <xs:complexType name="History">
+    	<xs:annotation>
+            <xs:documentation>
+                This entity provides terminal history info
+            </xs:documentation>
+        </xs:annotation>
+        
+       <xs:attribute name="id" type="xs:long" use="required">
+       		<xs:annotation>
+                <xs:documentation>
+                    history elt id
+                </xs:documentation>
+            </xs:annotation>
+       </xs:attribute>
+       
+        <xs:attribute name="itid" type="common:Terminal.ITID" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    ingenico terminal id
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>   
+        
+        <xs:attribute name="clientIdExt"  use="required" type="xs:integer">
+        	<xs:annotation>
+                <xs:documentation>
+                    ingenico terminal owner
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>        
+        
+        <xs:attribute name="status" use="required" type="tns:TerminalStatus">
+            <xs:annotation>
+                <xs:documentation>
+                    terminal status
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        
+        <xs:attribute name="statusDate" type="xs:long" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    status date
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    
+    </xs:complexType>
+    
+</xs:schema>

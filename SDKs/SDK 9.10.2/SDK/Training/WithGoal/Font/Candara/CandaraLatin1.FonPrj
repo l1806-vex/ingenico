@@ -1,0 +1,172 @@
+{
+    "py/object": "FontTools.Fonts", 
+    "binaryName": "83530101", 
+    "fonts": [
+        {
+            "py/object": "FontTools.Font", 
+            "direction": 0, 
+            "sizeRead": null, 
+            "families": {
+                "py/object": "FontTools.Families"
+            }, 
+            "weight": 0, 
+            "family": 0, 
+            "sizes": {
+                "py/object": "FontTools.Sizes", 
+                "ratio": 0.9, 
+                "sizes": [
+                    10, 
+                    13, 
+                    16, 
+                    20, 
+                    26, 
+                    33, 
+                    42, 
+                    53
+                ], 
+                "bitmapFont": false, 
+                "minSize": 10, 
+                "stepSize": 8, 
+                "maxSize": 53, 
+                "size": 7
+            }, 
+            "fontFilename": "font\\CANDARA.TTF", 
+            "charset": 2, 
+            "bitmapFont": 0, 
+            "weights": {
+                "py/object": "FontTools.Weights"
+            }, 
+            "directions": {
+                "py/object": "FontTools.Directions"
+            }, 
+            "charsets": {
+                "py/object": "FontTools.Charsets"
+            }
+        }, 
+        {
+            "py/object": "FontTools.Font", 
+            "direction": 0, 
+            "sizeRead": null, 
+            "families": {
+                "py/object": "FontTools.Families"
+            }, 
+            "weight": 1, 
+            "family": 0, 
+            "sizes": {
+                "py/object": "FontTools.Sizes", 
+                "ratio": 1.0, 
+                "sizes": [
+                    10, 
+                    13, 
+                    16, 
+                    20, 
+                    26, 
+                    33, 
+                    42, 
+                    53
+                ], 
+                "bitmapFont": false, 
+                "minSize": 10, 
+                "stepSize": 8, 
+                "maxSize": 53, 
+                "size": 7
+            }, 
+            "fontFilename": "font\\CANDARAB.TTF", 
+            "charset": 2, 
+            "bitmapFont": 0, 
+            "weights": {
+                "py/object": "FontTools.Weights"
+            }, 
+            "directions": {
+                "py/object": "FontTools.Directions"
+            }, 
+            "charsets": {
+                "py/object": "FontTools.Charsets"
+            }
+        }, 
+        {
+            "py/object": "FontTools.Font", 
+            "direction": 0, 
+            "sizeRead": null, 
+            "families": {
+                "py/object": "FontTools.Families"
+            }, 
+            "weight": 2, 
+            "family": 0, 
+            "sizes": {
+                "py/object": "FontTools.Sizes", 
+                "ratio": 1.0, 
+                "sizes": [
+                    10, 
+                    13, 
+                    16, 
+                    20, 
+                    26, 
+                    33, 
+                    42, 
+                    53
+                ], 
+                "bitmapFont": false, 
+                "minSize": 10, 
+                "stepSize": 8, 
+                "maxSize": 53, 
+                "size": 7
+            }, 
+            "fontFilename": "font\\CANDARAI.TTF", 
+            "charset": 2, 
+            "bitmapFont": 0, 
+            "weights": {
+                "py/object": "FontTools.Weights"
+            }, 
+            "directions": {
+                "py/object": "FontTools.Directions"
+            }, 
+            "charsets": {
+                "py/object": "FontTools.Charsets"
+            }
+        }, 
+        {
+            "py/object": "FontTools.Font", 
+            "direction": 0, 
+            "sizeRead": null, 
+            "families": {
+                "py/object": "FontTools.Families"
+            }, 
+            "weight": 3, 
+            "family": 0, 
+            "sizes": {
+                "py/object": "FontTools.Sizes", 
+                "ratio": 1.0, 
+                "sizes": [
+                    10, 
+                    13, 
+                    16, 
+                    20, 
+                    26, 
+                    33, 
+                    42, 
+                    53
+                ], 
+                "bitmapFont": false, 
+                "minSize": 10, 
+                "stepSize": 8, 
+                "maxSize": 53, 
+                "size": 7
+            }, 
+            "fontFilename": "font\\CANDARAZ.TTF", 
+            "charset": 2, 
+            "bitmapFont": 0, 
+            "weights": {
+                "py/object": "FontTools.Weights"
+            }, 
+            "directions": {
+                "py/object": "FontTools.Directions"
+            }, 
+            "charsets": {
+                "py/object": "FontTools.Charsets"
+            }
+        }
+    ], 
+    "binaryPath": "Generate", 
+    "name": "CANDARA"
+}

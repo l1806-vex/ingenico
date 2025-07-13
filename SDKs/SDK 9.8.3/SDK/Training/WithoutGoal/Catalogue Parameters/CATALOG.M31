@@ -1,0 +1,53 @@
+; Training Application
+; Generated after building Training project (see \WithoutGoal\Training)
+TRAININGV01.SGN
+TRAININGV01.ADF
+; User2 Application
+; Generated after building User2 project (see \WithoutGoal\User2)
+USER2V01.SGN
+USER2V01.ADF
+; BeepDll Library
+; Generated after building BeepDll project (see \WithoutGoal\BeepDll)
+BEEPDLLV01.SGN
+BEEPDLLV01.LDF
+; LinkLayer (see \Program Files\TeliumSDK\SDK 9.8.1\Component\LinkLayer\WithIP)
+36280331.SGN
+36280331.ADF
+; Appli Message Parameter
+; Generated with BuildMSG tool and S.S.T (see \WithoutGoal\Message\Appli Messages\Sample.bat)
+SAMPLEMSG.SGN
+SAMPLEMSG.PDF
+; Manager Message Parameter
+; Generated with BuildMSG tool and S.S.T (see \WithoutGoal\Message\Manager Messages\RussianEFT.bat)
+EFT.SGN
+EFT.PDF
+; Font ISO1 Standard (see \Program Files\TeliumSDK\SDK 9.8.1\Component\Fonts\Standard)
+8442160111.SGN
+8442160111.PDF
+; Font ISO2 Standard (see \Program Files\TeliumSDK\SDK 9.8.1\Component\Fonts\Standard)
+8442170111.SGN
+8442170111.PDF
+; Font ISO3 Standard (see \Program Files\TeliumSDK\SDK 9.8.1\Component\Fonts\Standard)
+8442180111.SGN
+8442180111.PDF
+; Font ISO5 Standard (see \Program Files\TeliumSDK\SDK 9.8.1\Component\Fonts\Standard)
+8442190111.SGN
+8442190111.PDF
+; Font ISO6 Standard (see \Program Files\TeliumSDK\SDK 9.8.1\Component\Fonts\Standard)
+8442130111.SGN
+8442130111.PDF
+; Font ISO7 Standard (see \Program Files\TeliumSDK\SDK 9.8.1\Component\Fonts\Standard)
+8442200111.SGN
+8442200111.PDF
+; Font ISO15 Standard (see \Program Files\TeliumSDK\SDK 9.8.1\Component\Fonts\Standard)
+8442210111.SGN
+8442210111.PDF
+; Font USER CANDARA     (Latin ISO1 [normal, bold, italic, bold italic] characters Candara (sans-serif)) 
+; Generated with Font Tool and S.S.T (see \WithoutGoal\Font\Candara\ttf2fon.bat)
+CANDARA.SGN
+CANDARA.PDF
+-eHOST
+TIGERD.BMP
+TIGERP.BMP
+FILE.PAR
+VFS.TXT
