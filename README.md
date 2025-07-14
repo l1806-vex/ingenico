@@ -111,6 +111,12 @@ Now when the device is connected via serial, thru a tool like PuTTY it will disp
   <tr><td>Maintenance</td><td>Allows to write configuration data (.CFG) to the device</td></tr>
 </table>
 
+## Known LLT errors
+<table>
+  <tr><th>Error</th><th>What it means</th></tr>
+  <tr><td>Incorrect signature (Bad signature SIGX XXXXXXXXXXXX.XXX)</td><td>This happens to .PGN, .DGN, this indicates that those files certifacte/key missmatches those that are installed on the device.</td></tr>
+</table>
+
 ## How does the LLT connection work?
 The LLT connection works via Windows PBK, RAS Dialer and thru PPPD (Point-To-Point Daemon), First the connection is created via RAS phone dialer, when is connects, the PPPD IP gets assigned and then a FTP port is opened where it can be accessed thru LLT tool. <br><br>
 This was disclosed via `CVE-2018-17771`, that app has hardcoded PPPD credentials which were
