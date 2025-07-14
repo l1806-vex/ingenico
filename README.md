@@ -7,7 +7,7 @@ Since 2 years this topic has bothered me, I was really keen on exploring this to
 ## TeliumOS PoS terminals
 TeliumOS has been developed since 2004 and has been discontinued in 2018, since 2018 Ingenico PoS terminals run Tetra (extended TeliumOS)
 
-## Source 
+## Sources
 Those tools were once confidential but since the support for Telium was dropped, they were leaked. I have uploaded them while also checking most of them in terms of functionality. 
 
 <div style="display: flex; gap: 40px; flex-wrap: wrap;">
