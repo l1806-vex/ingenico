@@ -5,7 +5,7 @@ My personal research about known data about TeliumOS (version 1 and 2) and Ingen
 Since 2 years this topic has bothered me, I was really keen on exploring this topic more. There is a lot of data hidden behind developer portals that cannot be accessed, so this repo can help someone develop some kind of fun stuff that can be done on those PoS devices.
 
 ## Sources
-Those tools were once confidential but since the support for Telium was dropped, they were leaked. I have uploaded them while also checking most of them in terms of functionality. 
+Those tools were once confidential but since the support for Telium was dropped, they were leaked. I have uploaded them while also checking most of them in terms of functionality. While it can be possible to found some software it is definetly rare and very restricted.
 
 ## TeliumOS PoS terminals
 TeliumOS has been developed since 2004 and has been discontinued in 2018, since 2018 Ingenico PoS terminals run Tetra (extended TeliumOS)
